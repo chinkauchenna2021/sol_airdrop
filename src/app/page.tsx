@@ -1,103 +1,214 @@
-import Image from "next/image";
+'use client'
 
-export default function Home() {
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { ArrowRight, Twitter, Wallet, Trophy, Coins, Users, TrendingUp } from 'lucide-react'
+import { useWalletStore } from '@/store/useWalletStore'
+import { WalletButton } from '@/components/wallet/WalletButton'
+import { FloatingElements } from '@/components/animations/FloatingElements'
+import { CountUp } from '@/components/animations/CountUp'
+
+export default function HomePage() {
+  const { connected } = useWalletStore()
+  const [stats, setStats] = useState({
+    totalUsers: 0,
+    totalRewards: 0,
+    totalEngagements: 0,
+  })
+
+  useEffect(() => {
+    fetchStats()
+  }, [])
+
+  const fetchStats = async () => {
+    try {
+      const res = await fetch('/api/stats')
+      if (res.ok) {
+        const data = await res.json()
+        setStats(data)
+      }
+    } catch (error) {
+      console.error('Failed to fetch stats:', error)
+    }
+  }
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="min-h-screen gradient-bg">
+      <FloatingElements />
+      
+      {/* Hero Section */}
+      <section className="relative pt-20 pb-32 px-4">
+        <div className="max-w-7xl mx-auto text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-5xl md:text-7xl font-bold text-white mb-6"
+          >
+            Earn <span className="gradient-text">Rewards</span> with
+            <br />
+            Every Engagement
+          </motion.h1>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
+          >
+            Connect your wallet, link Twitter, and start earning tokens through social engagement.
+            The more you participate, the more you earn!
+          </motion.p>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {!connected ? (
+              <WalletButton />
+            ) : (
+              <>
+                <Link
+                  href="/dashboard"
+                  className="px-8 py-4 bg-solana-green text-black font-semibold rounded-lg hover:bg-solana-green/90 transition-all flex items-center gap-2"
+                >
+                  Go to Dashboard <ArrowRight className="w-5 h-5" />
+                </Link>
+                <Link
+                  href="/leaderboard"
+                  className="px-8 py-4 bg-white/10 text-white font-semibold rounded-lg hover:bg-white/20 transition-all glass-effect"
+                >
+                  View Leaderboard
+                </Link>
+              </>
+            )}
+          </motion.div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="stats-card text-center"
+          >
+            <Users className="w-12 h-12 text-solana-purple mx-auto mb-4" />
+            <h3 className="text-3xl font-bold text-white mb-2">
+              <CountUp end={stats.totalUsers} />
+            </h3>
+            <p className="text-gray-400">Active Users</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="stats-card text-center"
+          >
+            <Coins className="w-12 h-12 text-solana-green mx-auto mb-4" />
+            <h3 className="text-3xl font-bold text-white mb-2">
+              <CountUp end={stats.totalRewards} prefix="$" />
+            </h3>
+            <p className="text-gray-400">Total Rewards</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="stats-card text-center"
+          >
+            <TrendingUp className="w-12 h-12 text-solana-purple mx-auto mb-4" />
+            <h3 className="text-3xl font-bold text-white mb-2">
+              <CountUp end={stats.totalEngagements} />
+            </h3>
+            <p className="text-gray-400">Total Engagements</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="py-20 px-4">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-white text-center mb-16">
+            How It <span className="gradient-text">Works</span>
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-center"
+            >
+              <div className="w-20 h-20 bg-solana-purple/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Wallet className="w-10 h-10 text-solana-purple" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">1. Connect Wallet</h3>
+              <p className="text-gray-400">
+                Connect your Solana wallet to get started and secure your rewards
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-center"
+            >
+              <div className="w-20 h-20 bg-solana-green/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Twitter className="w-10 h-10 text-solana-green" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">2. Link Twitter</h3>
+              <p className="text-gray-400">
+                Connect your Twitter account to track your social engagements
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-center"
+            >
+              <div className="w-20 h-20 bg-solana-purple/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Trophy className="w-10 h-10 text-solana-purple" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-2">3. Earn Rewards</h3>
+              <p className="text-gray-400">
+                Complete tasks, engage with content, and climb the leaderboard
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="p-12 rounded-2xl glass-effect"
+          >
+            <h2 className="text-3xl font-bold text-white mb-4">
+              Ready to Start Earning?
+            </h2>
+            <p className="text-gray-300 mb-8">
+              Join thousands of users already earning rewards through social engagement
+            </p>
+            {!connected && <WalletButton />}
+          </motion.div>
+        </div>
+      </section>
+    </main>
+  )
 }
