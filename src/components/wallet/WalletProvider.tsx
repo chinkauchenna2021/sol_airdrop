@@ -41,7 +41,7 @@ export function WalletProvider({ children }: WalletProviderProps) {
       new LedgerWalletAdapter(),
     //   new SolletWalletAdapter({ network }),
     //   new SolletExtensionWalletAdapter({ network }),
-    new UnsafeBurnerWalletAdapter(),
+    // new UnsafeBurnerWalletAdapter(),
     ],
     [network]
   )
