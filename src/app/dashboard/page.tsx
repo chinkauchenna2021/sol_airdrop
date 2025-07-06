@@ -43,10 +43,10 @@ export default function DashboardPage() {
   const [data, setData] = useState<DashboardData | null>(null)
 
   useEffect(() => {
-    if (!connected) {
-      router.push('/')
-      return
-    }
+    // if (!connected) {
+    //   router.push('/')
+    //   return
+    // }
     fetchDashboardData()
   }, [connected, router])
 

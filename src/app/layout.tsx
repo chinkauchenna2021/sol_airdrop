@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { Toaster } from 'react-hot-toast'
 import './globals.css'
 import { WalletProvider } from '@/components/wallet/WalletProvider'
+import { Providers } from './providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,7 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
-        <WalletProvider>
+        <Providers>
         <Toaster
           position="top-right"
           toastOptions={{
@@ -42,7 +43,8 @@ export default function RootLayout({
           }}
         />
                {children}
-        </WalletProvider>
+
+        </Providers>
       </body>
     </html>
   )

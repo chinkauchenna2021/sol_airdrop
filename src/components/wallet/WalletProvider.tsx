@@ -8,14 +8,19 @@ import {
   SolflareWalletAdapter,
   TorusWalletAdapter,
   LedgerWalletAdapter,
+  UnsafeBurnerWalletAdapter,
 //   SolletWalletAdapter,
 //   SolletExtensionWalletAdapter,
 } from '@solana/wallet-adapter-wallets'
-import { WalletModalProvider } from '@solana/wallet-adapter-react-ui'
+import { WalletModalProvider ,     WalletDisconnectButton, WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { clusterApiUrl } from '@solana/web3.js'
 
+
+
+
+
 // Import wallet adapter CSS
-require('@solana/wallet-adapter-react-ui/styles.css')
+import '@solana/wallet-adapter-react-ui/styles.css';
 
 interface WalletProviderProps {
   children: ReactNode
@@ -36,6 +41,7 @@ export function WalletProvider({ children }: WalletProviderProps) {
       new LedgerWalletAdapter(),
     //   new SolletWalletAdapter({ network }),
     //   new SolletExtensionWalletAdapter({ network }),
+    new UnsafeBurnerWalletAdapter(),
     ],
     [network]
   )
@@ -43,7 +49,9 @@ export function WalletProvider({ children }: WalletProviderProps) {
   return (
     <ConnectionProvider endpoint={endpoint}>
       <SolanaWalletProvider wallets={wallets} autoConnect>
-        <WalletModalProvider>{children}</WalletModalProvider>
+        <WalletModalProvider>
+            {children}
+        </WalletModalProvider>
       </SolanaWalletProvider>
     </ConnectionProvider>
   )
