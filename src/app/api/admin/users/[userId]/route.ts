@@ -5,10 +5,11 @@ import prisma from '@/lib/prisma'
 import { adminUserUpdateSchema } from '@/lib/validation'
 
 export async function GET(
-  req: NextRequest,
-  { params }: { params: { userid: string } }
+  req: NextRequest
 ) {
   // Check admin authentication
+  const requestUrl = new URL(req.url);
+  const userid = requestUrl.searchParams.get("userid");
   const session = await getSession(req)
   if (!session || !session.user.isAdmin) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
@@ -16,7 +17,7 @@ export async function GET(
 
   try {
     const user = await prisma.user.findUnique({
-      where: { id: params.userid },
+      where: { id: userid  as string},
       include: {
         engagements: {
           orderBy: { createdAt: 'desc' },

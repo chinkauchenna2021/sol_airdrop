@@ -4,9 +4,11 @@ import { verifyEngagement, verifyFollow, trackEngagement } from '@/lib/twitter'
 import prisma from '@/lib/prisma'
 
 export async function POST(
-  req: NextRequest,
-  { params }: { params: { taskId: string } }
+  req: NextRequest
 ) {
+
+  const requestUrl = new URL(req.url);
+  const taskId = requestUrl.searchParams.get("taskId");
   const session = await getSession(req)
   
   if (!session) {
@@ -14,7 +16,6 @@ export async function POST(
   }
 
   try {
-    const { taskId } = params
 
     // Get user with Twitter info
     const user = await prisma.user.findUnique({
@@ -35,7 +36,7 @@ export async function POST(
 
     // Get task details
     const task = await prisma.task.findUnique({
-      where: { id: taskId }
+      where: { id: taskId  as string}
     })
 
     if (!task || !task.isActive) {

@@ -3,9 +3,11 @@ import { getSession } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
 export async function GET(
-  req: NextRequest,
-  { params }: { params: { claimId: string } }
+  req: NextRequest
 ) {
+
+    const requestUrl = new URL(req.url);
+  const claimId = requestUrl.searchParams.get("claimId");
   const session = await getSession(req)
   
   if (!session) {
@@ -13,10 +15,9 @@ export async function GET(
   }
 
   try {
-    const { claimId } = params
 
     const claim = await prisma.claim.findUnique({
-      where: { id: claimId },
+      where: { id: claimId as string },
       select: {
         id: true,
         status: true,
