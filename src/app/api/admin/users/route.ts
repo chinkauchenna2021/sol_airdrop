@@ -74,7 +74,7 @@ export async function GET(req: NextRequest) {
 
     // Calculate ranks and enhance user data
     const usersWithRanks = await Promise.all(
-      users.map(async (user) => {
+      users.map(async (user:any | unknown) => {
         const rank = await prisma.user.count({
           where: {
             totalPoints: { gt: user.totalPoints }
@@ -115,7 +115,7 @@ export async function GET(req: NextRequest) {
         totalPages: Math.ceil(total / limit)
       },
       // ADD: Activity distribution summary for admin insights
-      activitySummary: activitySummary.map(stat => ({
+      activitySummary: activitySummary.map((stat:any | unknown) => ({
         activity: stat.twitterActivity,
         count: stat._count,
         tokensPerUser: stat.twitterActivity === 'HIGH' ? 4000 
@@ -128,7 +128,7 @@ export async function GET(req: NextRequest) {
         activities: ['HIGH', 'MEDIUM', 'LOW']
       }
     })
-  } catch (error) {
+  } catch (error:any) {
     console.error('Admin users error:', error)
     return NextResponse.json(
       { error: 'Failed to fetch users' },
