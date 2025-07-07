@@ -88,10 +88,11 @@ export async function GET(
 }
 
 export async function PATCH(
-  req: NextRequest,
-  { params }: { params: { userid: string } }
+  req: NextRequest
 ) {
   // Check admin authentication
+  const requestUrl = new URL(req.url);
+  const userid = requestUrl.searchParams.get("userid");
   const session = await getSession(req)
   if (!session || !session.user.isAdmin) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
@@ -102,14 +103,14 @@ export async function PATCH(
     const validatedData = adminUserUpdateSchema.parse(body)
 
     const user = await prisma.user.update({
-      where: { id: params.userid },
+      where: { id: userid as string },
       data: validatedData
     })
 
     // Log admin action
     await prisma.pointHistory.create({
       data: {
-        userId: params.userid,
+        userId: userid as string,
         points: 0,
         action: 'ADMIN_UPDATE',
         description: `Admin updated user settings`,
@@ -124,7 +125,7 @@ export async function PATCH(
     // ADD: If twitterActivity was updated, recalculate level
     if (validatedData) {
       const updatedUser = await prisma.user.update({
-        where: { id: params.userid },
+        where: { id: userid as string },
         data: {
           level: Math.floor(user.totalPoints / 1000) + 1
         }
@@ -149,10 +150,11 @@ export async function PATCH(
 }
 
 export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { userid: string } }
+  req: NextRequest
 ) {
   // Check admin authentication
+  const requestUrl = new URL(req.url);
+  const userid = requestUrl.searchParams.get("userid");
   const session = await getSession(req)
   if (!session || !session.user.isAdmin) {
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
@@ -161,14 +163,14 @@ export async function DELETE(
   try {
     // Soft delete - just deactivate the user
     await prisma.user.update({
-      where: { id: params.userid },
+      where: { id: userid as string },
       data: { isActive: false }
     })
 
     // Log admin action
     await prisma.pointHistory.create({
       data: {
-        userId: params.userid,
+        userId: userid as string,
         points: 0,
         action: 'ADMIN_DEACTIVATE',
         description: `Admin deactivated user account`,
