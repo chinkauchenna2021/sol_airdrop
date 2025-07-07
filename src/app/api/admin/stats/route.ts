@@ -102,7 +102,7 @@ export async function GET(req: NextRequest) {
       newUsersToday,
       // ADD: Enhanced analytics
       activityDistribution,
-      claimStats: claimStats.map(stat => ({
+      claimStats: claimStats.map((stat:any | unknown ) => ({
         status: stat.status,
         count: stat._count,
         totalAmount: stat._sum.amount || 0
