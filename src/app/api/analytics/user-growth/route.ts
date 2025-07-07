@@ -3,7 +3,7 @@ import { requireAdmin } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 import { subDays, format, startOfDay } from 'date-fns'
 
-export const GET = requireAdmin(async (req: NextRequest) => {
+export async function GET (req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const days = parseInt(searchParams.get('days') || '30')
 
@@ -78,4 +78,4 @@ export const GET = requireAdmin(async (req: NextRequest) => {
       { status: 500 }
     )
   }
-})
+}
