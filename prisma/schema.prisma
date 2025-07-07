@@ -25,6 +25,14 @@ model User {
   twitterUsername   String?
   twitterName       String?
   twitterImage      String?
+  twitterFollowers  Int?             @default(0)
+  // ADD: These new fields for enhanced functionality
+  twitterActivity   TwitterActivity? @default(LOW)
+  level             Int              @default(1)
+  streak            Int              @default(0)
+  lastCheckIn       DateTime?
+  referralCode      String           @unique @default(cuid())
+  
   email             String?          @unique
   totalPoints       Int              @default(0)
   rank              Int              @default(0)
@@ -39,12 +47,95 @@ model User {
   pointHistory      PointHistory[]
   referrals         Referral[]       @relation("ReferrerUser")
   referredBy        Referral?        @relation("ReferredUser")
+  // ADD: New relations
+  achievements      UserAchievement[]
+  notifications     Notification[]
   
   @@index([walletAddress])
   @@index([twitterId])
   @@index([totalPoints])
+  // ADD: New indexes
+  @@index([twitterActivity])
+  @@index([level])
 }
 
+// ADD: New Achievement model (add after Analytics model):
+model Achievement {
+  id               String          @id @default(cuid())
+  name             String
+  description      String
+  icon             String
+  requirements     Json
+  points           Int
+  isSecret         Boolean         @default(false)
+  createdAt        DateTime        @default(now())
+
+  userAchievements UserAchievement[]
+
+  @@map("achievements")
+}
+
+// ADD: New UserAchievement model:
+model UserAchievement {
+  id               String          @id @default(cuid())
+  userId           String
+  achievementId    String
+  unlockedAt       DateTime        @default(now())
+  progress         Int             @default(100)
+
+  user             User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  achievement      Achievement     @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, achievementId])
+  @@map("user_achievements")
+}
+
+// ADD: New Notification model:
+model Notification {
+  id               String          @id @default(cuid())
+  userId           String
+  title            String
+  message          String
+  type             NotificationType @default(INFO)
+  read             Boolean         @default(false)
+  actionUrl        String?
+  createdAt        DateTime        @default(now())
+
+  user             User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notifications")
+}
+
+// ADD: New TwitterAnalytics model for better tracking:
+model TwitterAnalytics {
+  id               String          @id @default(cuid())
+  userId           String?
+  tweetId          String
+  likes            Int             @default(0)
+  retweets         Int             @default(0)
+  comments         Int             @default(0)
+  impressions      Int             @default(0)
+  engagement_rate  Float           @default(0)
+  calculatedAt     DateTime        @default(now())
+
+  @@unique([tweetId])
+  @@map("twitter_analytics")
+}
+
+// ADD: New enums (add after PaymentMethod enum):
+enum TwitterActivity {
+  HIGH    // 4000 tokens
+  MEDIUM  // 3500 tokens  
+  LOW     // 3000 tokens
+}
+
+enum NotificationType {
+  INFO
+  SUCCESS
+  WARNING
+  ERROR
+  ACHIEVEMENT
+}
 model TwitterEngagement {
   id                String           @id @default(cuid())
   userId            String

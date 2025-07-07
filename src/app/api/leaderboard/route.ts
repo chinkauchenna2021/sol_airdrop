@@ -8,6 +8,7 @@ export async function GET(req: NextRequest) {
   const range = searchParams.get('range') || 'all'
   const limit = parseInt(searchParams.get('limit') || '100')
   const page = parseInt(searchParams.get('page') || '1')
+  console.log(range, limit , page)
   
   const session = await getSession(req)
 

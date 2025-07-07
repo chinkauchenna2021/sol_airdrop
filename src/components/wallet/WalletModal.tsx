@@ -20,6 +20,7 @@ export function WalletModal({ open, onClose }: WalletModalProps) {
     try {
       setConnecting(walletName)
       select(walletName as any)
+       console.log(walletName)
       await connect()
       
       // Authenticate with backend
