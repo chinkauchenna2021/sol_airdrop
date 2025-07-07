@@ -75,12 +75,12 @@ export async function GET(req: NextRequest) {
     ])
 
     // Calculate total distributed tokens
-    const completedClaims = claimStats.find((s) => s.status === 'COMPLETED')
+    const completedClaims = claimStats.find((s: any | unknown) => s.status === 'COMPLETED')
     const totalDistributed = completedClaims?._sum.amount || 0
-    const totalClaims = claimStats.reduce((sum, stat) => sum + stat._count, 0)
+    const totalClaims = claimStats.reduce((sum:number, stat:any) => sum + stat._count, 0)
 
     // ENHANCE: Calculate activity-based token allocation
-    const activityDistribution = activityStats.reduce((acc, stat) => {
+    const activityDistribution = activityStats.reduce((acc: Record<string, any>, stat: any) => {
       const activity = stat.twitterActivity || 'LOW'
       const tokensPerUser = activity === 'HIGH' ? 4000 : activity === 'MEDIUM' ? 3500 : 3000
       acc[activity.toLowerCase()] = {
