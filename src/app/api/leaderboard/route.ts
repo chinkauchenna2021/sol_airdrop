@@ -41,7 +41,7 @@ export async function GET(req: NextRequest) {
     })
 
     // Calculate rank changes (simplified - in production, track historical ranks)
-    const leaderboard = users.map((user, index) => ({
+    const leaderboard = users.map((user:any | unknown, index:number) => ({
       rank: (page - 1) * limit + index + 1,
       user,
       change: 0, // In production, calculate from historical data

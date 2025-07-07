@@ -16,7 +16,7 @@ export async function GET() {
       }
     })
 
-    const configMap = configs.reduce((acc, config) => {
+    const configMap = configs.reduce((acc:any, config:any) => {
       acc[config.key] = config.value
       return acc
     }, {} as Record<string, any>)

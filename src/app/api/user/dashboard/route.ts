@@ -110,7 +110,7 @@ export async function GET(req: NextRequest) {
         streak: await calculateStreak(user.id),
         nextLevelPoints: (Math.floor(user.totalPoints / 1000) + 1) * 1000 - user.totalPoints
       },
-      recentActivity: recentActivity.map(activity => ({
+      recentActivity: recentActivity.map((activity:any | unknown) => ({
         id: activity.id,
         action: activity.description || activity.action,
         points: activity.points,

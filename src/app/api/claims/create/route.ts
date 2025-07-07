@@ -43,9 +43,9 @@ export async function POST(req: NextRequest) {
     }
 
     // Parse config
-    const claimsEnabled = config.find(c => c.key === 'claimsEnabled')?.value as boolean ?? true
-    const minClaimAmount = config.find(c => c.key === 'minClaimAmount')?.value as number ?? 100
-    const claimRate = config.find(c => c.key === 'claimRate')?.value as number ?? 0.001
+    const claimsEnabled = config.find((c:any | unknown) => c.key === 'claimsEnabled')?.value as boolean ?? true
+    const minClaimAmount = config.find((c:any | unknown) => c.key === 'minClaimAmount')?.value as number ?? 100
+    const claimRate = config.find((c:any | unknown) => c.key === 'claimRate')?.value as number ?? 0.001
 
     if (!claimsEnabled) {
       return NextResponse.json(

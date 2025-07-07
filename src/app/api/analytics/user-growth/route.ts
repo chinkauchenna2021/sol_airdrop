@@ -35,7 +35,7 @@ export async function GET (req: NextRequest) {
     }
 
     // Count new users per day
-    users.forEach((user) => {
+    users.forEach((user: any | unknown) => {
       const date = format(new Date(user.createdAt), 'yyyy-MM-dd')
       const data = dateMap.get(date)
       if (data) {
@@ -44,7 +44,7 @@ export async function GET (req: NextRequest) {
     })
 
     // Count active users per day (users who were active that day)
-    users.forEach((user) => {
+    users.forEach((user:any | unknown) => {
       const date = format(new Date(user.updatedAt), 'yyyy-MM-dd')
       const data = dateMap.get(date)
       if (data) {
@@ -71,7 +71,7 @@ export async function GET (req: NextRequest) {
       })
 
     return NextResponse.json(chartData)
-  } catch (error) {
+  } catch (error: any) {
     console.error('User growth analytics error:', error)
     return NextResponse.json(
       { error: 'Failed to fetch user growth data' },

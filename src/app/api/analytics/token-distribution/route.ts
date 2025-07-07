@@ -34,7 +34,7 @@ export async function GET(req: NextRequest) {
     }
 
     // Update with database config values if they exist
-    configs.forEach(config => {
+    configs.forEach((config:any | unknown) => {
       if (config.key in tokenAllocations) {
         tokenAllocations[config.key as keyof typeof tokenAllocations] = config.value as number
       }
@@ -132,7 +132,7 @@ export async function GET(req: NextRequest) {
     }
 
     // Create user breakdown for analytics
-    const userBreakdown = activityDistribution.map(item => ({
+    const userBreakdown = activityDistribution.map((item:any) => ({
       activity: item.name.split(' ')[0], // High, Medium, Low
       userCount: item.userCount,
       totalTokens: item.value,
@@ -150,7 +150,7 @@ export async function GET(req: NextRequest) {
     }
 
     return NextResponse.json(response)
-  } catch (error) {
+  } catch (error:any) {
     console.error('Token distribution API error:', error)
     
     // Return fallback data that ensures the frontend doesn't break
