@@ -46,7 +46,7 @@ export async function GET(req: NextRequest) {
     let totalDistributed = 0
 
     // Count total users first
-    userStats.forEach(stat => {
+    userStats.forEach((stat:any | unknown) => {
       totalUsers += stat._count.id
     })
 
