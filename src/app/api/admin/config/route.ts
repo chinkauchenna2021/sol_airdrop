@@ -2,6 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getSession } from '@/lib/auth'
 import prisma from '@/lib/prisma'
+import { JsonValue } from '@prisma/client/runtime/library'
 
 const CONFIG_KEYS = [
   'claimsEnabled',
@@ -37,7 +38,13 @@ export async function GET(req: NextRequest) {
       }
     })
 
-    const configMap = configs.reduce((acc, config) => {
+    const configMap = configs.reduce((acc:Record<string, any>, config:{
+    id: string;
+    updatedAt: Date;
+    description: string | null;
+    key: string;
+    value: JsonValue;
+}) => {
       acc[config.key] = config.value
       return acc
     }, {} as Record<string, any>)
