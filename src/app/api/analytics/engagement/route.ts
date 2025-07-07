@@ -43,7 +43,7 @@ export async function GET(req: NextRequest) {
     }
 
     // Fill in actual engagement data
-    engagements.forEach((engagement) => {
+    engagements.forEach((engagement: any | unknown ) => {
       const date = format(new Date(engagement.createdAt), 'yyyy-MM-dd')
       const data = dateMap.get(date)
       
@@ -61,7 +61,7 @@ export async function GET(req: NextRequest) {
       .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
 
     return NextResponse.json(chartData)
-  } catch (error) {
+  } catch (error: any) {
     console.error('Engagement analytics error:', error)
     return NextResponse.json(
       { error: 'Failed to fetch engagement data' },
