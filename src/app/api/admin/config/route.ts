@@ -1,5 +1,6 @@
+// src/app/api/admin/config/route.ts - REPLACE your existing file
 import { NextRequest, NextResponse } from 'next/server'
-import { requireAdmin } from '@/lib/auth'
+import { getSession } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
 const CONFIG_KEYS = [
@@ -13,9 +14,22 @@ const CONFIG_KEYS = [
   'pointsPerFollow',
   'pointsPerReferral',
   'dailyCheckInPoints',
+  // ADD: New activity-based token allocation keys
+  'highActivityTokens',
+  'mediumActivityTokens',
+  'lowActivityTokens',
+  'highActivityThreshold',
+  'mediumActivityThreshold',
 ]
 
-export const GET = requireAdmin(async (req: NextRequest) => {
+// FIX: Properly typed GET handler
+export async function GET(req: NextRequest) {
+  // Check admin authentication
+  const session = await getSession(req)
+  if (!session || !session.user.isAdmin) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+  }
+
   try {
     const configs = await prisma.systemConfig.findMany({
       where: {
@@ -42,9 +56,16 @@ export const GET = requireAdmin(async (req: NextRequest) => {
       { status: 500 }
     )
   }
-})
+}
 
-export const PUT = requireAdmin(async (req: NextRequest) => {
+// FIX: Properly typed PUT handler
+export async function PUT(req: NextRequest) {
+  // Check admin authentication
+  const session = await getSession(req)
+  if (!session || !session.user.isAdmin) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+  }
+
   try {
     const updates = await req.json()
 
@@ -73,7 +94,7 @@ export const PUT = requireAdmin(async (req: NextRequest) => {
         metadata: {
           action: 'CONFIG_UPDATE',
           updates,
-          adminId: req.headers.get('x-user-id'),
+          adminId: session.user.id,
         }
       }
     })
@@ -89,7 +110,7 @@ export const PUT = requireAdmin(async (req: NextRequest) => {
       { status: 500 }
     )
   }
-})
+}
 
 function serializeConfigValue(value: unknown): any {
   // Accept primitives as-is, stringify objects/arrays, otherwise null
@@ -119,6 +140,12 @@ function getDefaultValue(key: string): any {
     pointsPerFollow: 50,
     pointsPerReferral: 100,
     dailyCheckInPoints: 5,
+    // ADD: Default values for activity-based token allocation
+    highActivityTokens: 4000,
+    mediumActivityTokens: 3500,
+    lowActivityTokens: 3000,
+    highActivityThreshold: 1000,
+    mediumActivityThreshold: 500,
   }
   return defaults[key] ?? null
 }
@@ -135,6 +162,12 @@ function getConfigDescription(key: string): string {
     pointsPerFollow: 'Points awarded for following',
     pointsPerReferral: 'Points awarded for successful referral',
     dailyCheckInPoints: 'Points awarded for daily check-in',
+    // ADD: Descriptions for activity-based configs
+    highActivityTokens: 'Tokens allocated to high activity users (1000+ followers)',
+    mediumActivityTokens: 'Tokens allocated to medium activity users (500+ followers)',
+    lowActivityTokens: 'Tokens allocated to low activity users',
+    highActivityThreshold: 'Follower count threshold for high activity classification',
+    mediumActivityThreshold: 'Follower count threshold for medium activity classification',
   }
   return descriptions[key] || ''
 }
