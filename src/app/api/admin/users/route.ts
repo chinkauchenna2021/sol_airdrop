@@ -1,13 +1,21 @@
+// src/app/api/admin/users/route.ts - REPLACE your existing file
 import { NextRequest, NextResponse } from 'next/server'
-import { requireAdmin } from '@/lib/auth'
+import { getSession } from '@/lib/auth'
 import prisma from '@/lib/prisma'
-import { paginationSchema } from '../../../../lib/validation'
+import { paginationSchema } from '@/lib/validation'
 
-export const GET = requireAdmin(async (req: NextRequest) => {
+export async function GET(req: NextRequest) {
+  // Check admin authentication
+  const session = await getSession(req)
+  if (!session || !session.user.isAdmin) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+  }
+
   try {
     const { searchParams } = new URL(req.url)
     const filter = searchParams.get('filter') || 'all'
     const search = searchParams.get('search') || ''
+    const activityFilter = searchParams.get('activity') || '' // ADD: Activity filter
     
     // Parse pagination params
     const { page, limit, sortBy, sortOrder } = paginationSchema.parse({
@@ -26,6 +34,14 @@ export const GET = requireAdmin(async (req: NextRequest) => {
       where.isActive = false
     } else if (filter === 'admin') {
       where.isAdmin = true
+    } else if (filter === 'twitter') {
+      // ADD: Filter for users with Twitter connected
+      where.twitterId = { not: null }
+    }
+
+    // ADD: Activity level filter
+    if (activityFilter && ['HIGH', 'MEDIUM', 'LOW'].includes(activityFilter)) {
+      where.twitterActivity = activityFilter
     }
 
     if (search) {
@@ -36,7 +52,7 @@ export const GET = requireAdmin(async (req: NextRequest) => {
       ]
     }
 
-    // Get users with counts
+    // Get users with enhanced data
     const [users, total] = await Promise.all([
       prisma.user.findMany({
         where,
@@ -56,7 +72,7 @@ export const GET = requireAdmin(async (req: NextRequest) => {
       prisma.user.count({ where })
     ])
 
-    // Calculate ranks
+    // Calculate ranks and enhance user data
     const usersWithRanks = await Promise.all(
       users.map(async (user) => {
         const rank = await prisma.user.count({
@@ -65,9 +81,30 @@ export const GET = requireAdmin(async (req: NextRequest) => {
           }
         }) + 1
 
-        return { ...user, rank }
+        // ADD: Calculate token allocation and other enhanced fields
+        const tokenAllocation = user.twitterActivity === 'HIGH' ? 4000 
+                              : user.twitterActivity === 'MEDIUM' ? 3500 
+                              : 3000
+
+        const level = Math.floor(user.totalPoints / 1000) + 1
+
+        return { 
+          ...user, 
+          rank,
+          tokenAllocation,
+          level: user.level || level
+        }
       })
     )
+
+    // ADD: Get activity distribution summary
+    const activitySummary = await prisma.user.groupBy({
+      by: ['twitterActivity'],
+      _count: true,
+      where: {
+        twitterActivity: { not: null }
+      }
+    })
 
     return NextResponse.json({
       users: usersWithRanks,
@@ -76,6 +113,19 @@ export const GET = requireAdmin(async (req: NextRequest) => {
         limit,
         total,
         totalPages: Math.ceil(total / limit)
+      },
+      // ADD: Activity distribution summary for admin insights
+      activitySummary: activitySummary.map(stat => ({
+        activity: stat.twitterActivity,
+        count: stat._count,
+        tokensPerUser: stat.twitterActivity === 'HIGH' ? 4000 
+                      : stat.twitterActivity === 'MEDIUM' ? 3500 
+                      : 3000
+      })),
+      // ADD: Filter options for frontend
+      filters: {
+        available: ['all', 'active', 'inactive', 'admin', 'twitter'],
+        activities: ['HIGH', 'MEDIUM', 'LOW']
       }
     })
   } catch (error) {
@@ -85,4 +135,4 @@ export const GET = requireAdmin(async (req: NextRequest) => {
       { status: 500 }
     )
   }
-})
+}

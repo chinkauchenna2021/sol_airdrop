@@ -1,9 +1,16 @@
+// src/app/api/admin/stats/route.ts - REPLACE your existing file
 import { NextRequest, NextResponse } from 'next/server'
-import { requireAdmin } from '@/lib/auth'
+import { getSession } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 import { startOfDay } from 'date-fns'
 
-export const GET = requireAdmin(async (req: NextRequest) => {
+export async function GET(req: NextRequest) {
+  // Check admin authentication
+  const session = await getSession(req)
+  if (!session || !session.user.isAdmin) {
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+  }
+
   try {
     const today = startOfDay(new Date())
 
@@ -15,6 +22,8 @@ export const GET = requireAdmin(async (req: NextRequest) => {
       pendingClaims,
       totalEngagements,
       newUsersToday,
+      // ADD: Activity-based user distribution
+      activityStats,
     ] = await Promise.all([
       // Total users
       prisma.user.count(),
@@ -54,12 +63,33 @@ export const GET = requireAdmin(async (req: NextRequest) => {
           createdAt: { gte: today }
         }
       }),
+
+      // ADD: User distribution by activity level
+      prisma.user.groupBy({
+        by: ['twitterActivity'],
+        _count: true,
+        where: {
+          twitterActivity: { not: null }
+        }
+      }),
     ])
 
     // Calculate total distributed tokens
     const completedClaims = claimStats.find(s => s.status === 'COMPLETED')
     const totalDistributed = completedClaims?._sum.amount || 0
     const totalClaims = claimStats.reduce((sum, stat) => sum + stat._count, 0)
+
+    // ENHANCE: Calculate activity-based token allocation
+    const activityDistribution = activityStats.reduce((acc, stat) => {
+      const activity = stat.twitterActivity || 'LOW'
+      const tokensPerUser = activity === 'HIGH' ? 4000 : activity === 'MEDIUM' ? 3500 : 3000
+      acc[activity.toLowerCase()] = {
+        userCount: stat._count,
+        tokensPerUser,
+        totalTokens: stat._count * tokensPerUser
+      }
+      return acc
+    }, {} as Record<string, any>)
 
     return NextResponse.json({
       totalUsers,
@@ -70,6 +100,13 @@ export const GET = requireAdmin(async (req: NextRequest) => {
       totalDistributed,
       totalEngagements,
       newUsersToday,
+      // ADD: Enhanced analytics
+      activityDistribution,
+      claimStats: claimStats.map(stat => ({
+        status: stat.status,
+        count: stat._count,
+        totalAmount: stat._sum.amount || 0
+      }))
     })
   } catch (error) {
     console.error('Admin stats error:', error)
@@ -78,4 +115,4 @@ export const GET = requireAdmin(async (req: NextRequest) => {
       { status: 500 }
     )
   }
-})
+}
