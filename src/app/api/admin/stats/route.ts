@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getSession } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 import { startOfDay } from 'date-fns'
-import { Prisma } from '@prisma/client'
 
 export async function GET(req: NextRequest) {
   // Check admin authentication
@@ -76,12 +75,7 @@ export async function GET(req: NextRequest) {
     ])
 
     // Calculate total distributed tokens
-    const completedClaims = claimStats.find((s: Prisma.PickEnumerable<Prisma.ClaimGroupByOutputType, "status"[]> & {
-    _count: number;
-    _sum: {
-        amount: number | null;
-    };
-}) => s.status === 'COMPLETED')
+    const completedClaims = claimStats.find((s) => s.status === 'COMPLETED')
     const totalDistributed = completedClaims?._sum.amount || 0
     const totalClaims = claimStats.reduce((sum, stat) => sum + stat._count, 0)
 
