@@ -50,12 +50,12 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
   }
 
   const menuItems = [
-    { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
-    { href: '/admin/users', label: 'Users', icon: Users },
-    { href: '/admin/analytics', label: 'Analytics', icon: BarChart3 },
-    { href: '/admin/claims', label: 'Claims', icon: Coins },
-    { href: '/admin/twitter', label: 'Twitter Tasks', icon: Twitter },
-    { href: '/admin/settings', label: 'Settings', icon: Settings },
+    { href: '/admin' as const, label: 'Dashboard', icon: LayoutDashboard },
+    { href: '/admin/users' as const, label: 'Users', icon: Users },
+    { href: '/admin/analytics' as const, label: 'Analytics', icon: BarChart3 },
+    { href: '/admin/claims' as const, label: 'Claims', icon: Coins },
+    { href: '/admin/twitter' as const, label: 'Twitter Tasks', icon: Twitter },
+    { href: '/admin/settings' as const, label: 'Settings', icon: Settings },
   ]
 
   if (loading) {
@@ -96,7 +96,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
               return (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={item.href as any}
                   onClick={() => setSidebarOpen(false)}
                   className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:text-white hover:bg-white/10 transition-all"
                 >
