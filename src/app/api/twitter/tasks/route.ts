@@ -50,7 +50,7 @@ export async function GET(req: NextRequest) {
     })
 
     // Format tasks with completion status
-    const formattedTasks = tasks.map(task => {
+    const formattedTasks = tasks.map((task:any | unknown ) => {
       const requirements = task.requirements as any
       const isCompleted = user.tasks.some((t:{
     taskId: string;
