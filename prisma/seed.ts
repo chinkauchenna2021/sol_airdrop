@@ -1,5 +1,5 @@
 // prisma/seed.ts - REPLACE your existing seed file with this
-import prisma from '../src/lib/prisma'
+import prisma from '@/lib/prisma'
 import { randomUUID } from 'crypto'
 
 
