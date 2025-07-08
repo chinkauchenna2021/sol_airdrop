@@ -184,7 +184,7 @@ async function calculateStreak(userId: string): Promise<number> {
     let currentDate = startOfDay(new Date())
     
     const activityDates = new Set(
-      recentDays.map(day => startOfDay(day.createdAt).getTime())
+      recentDays.map((day: any | unknown) => startOfDay(day.createdAt).getTime())
     )
 
     while (activityDates.has(currentDate.getTime())) {
@@ -213,7 +213,7 @@ async function getUserAchievements(userId: string) {
       }
     })
 
-    return achievements.map(achievement => ({
+    return achievements.map((achievement: any | unknown) => ({
       id: achievement.id,
       title: achievement.name,
       description: achievement.description,
