@@ -1,4 +1,4 @@
-import { User, TwitterEngagement, Task, TaskCompletion, Claim, PointHistory, Referral } from '@prisma/client'
+import { User, TwitterEngagement, Task, TaskCompletion, Claim, PointHistory, Referral } from '../../src/app/generated/prisma'
 
 export interface ExtendedUser extends User {
   engagements?: TwitterEngagement[]
