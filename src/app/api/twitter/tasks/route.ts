@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getSession } from '@/lib/auth'
 import prisma from '@/lib/prisma'
+import { $Enums } from '@prisma/client'
 
 export async function GET(req: NextRequest) {
   const session = await getSession(req)
@@ -52,8 +53,10 @@ export async function GET(req: NextRequest) {
     // Format tasks with completion status
     const formattedTasks = tasks.map(task => {
       const requirements = task.requirements as any
-      const isCompleted = user.tasks.some(t => t.taskId === task.id) ||
-        completedEngagements.some(e => 
+      const isCompleted = user.tasks.some((t:{
+    taskId: string;
+}) => t.taskId === task.id) ||
+        completedEngagements.some((e:{tweetId: string;engagementType: $Enums.EngagementType}) => 
           e.tweetId === requirements.targetId && 
           e.engagementType === requirements.action?.toUpperCase()
         )
