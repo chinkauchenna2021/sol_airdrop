@@ -64,7 +64,7 @@ export function useAuth() {
 
   const requireAuth = useCallback((redirectTo = '/') => {
     if (!user) {
-      router.push(redirectTo)
+      router.push(redirectTo as any)
       toast.error('Please connect your wallet to continue')
       return false
     }
@@ -73,7 +73,7 @@ export function useAuth() {
 
   const requireAdmin = useCallback((redirectTo = '/') => {
     if (!user?.isAdmin) {
-      router.push(redirectTo)
+      router.push(redirectTo as any)
       toast.error('Admin access required')
       return false
     }
