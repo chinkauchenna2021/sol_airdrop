@@ -1,6 +1,10 @@
 import { auth } from "@/lib/better-auth"
-import { toNextJsHandler } from "better-auth/next-js"
+import { NextRequest } from "next/server"
 
-const handler = toNextJsHandler(auth)
+export async function GET(request: NextRequest) {
+  return await auth.handler(request)
+}
 
-export { handler as GET, handler as POST }
+export async function POST(request: NextRequest) {
+  return await auth.handler(request)
+}
