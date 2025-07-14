@@ -9,6 +9,8 @@ import { useWalletStore } from '@/store/useWalletStore'
 import { WalletButton } from '@/components/wallet/WalletButton'
 import { FloatingElements } from '@/components/animations/FloatingElements'
 import { CountUp } from '@/components/animations/CountUp'
+import { TwitterConnection } from '@/components/twitter/TwitterConnection'
+import { TwitterConnectionButton } from '@/components/better/twitter/TwitterConnectionButton'
 
 export default function HomePage() {
   const { connected } = useWalletStore()
@@ -37,8 +39,12 @@ export default function HomePage() {
   return (
     <main className="min-h-screen gradient-bg">
       <FloatingElements />
-      
+      <TwitterConnection  />
+      {/* <TwitterConnectionButton /> */}
       {/* Hero Section */}
+      {
+        connected && <WalletButton />
+      }
       <section className="relative pt-20 pb-32 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <motion.h1
@@ -74,7 +80,7 @@ export default function HomePage() {
               <>
                 <Link
                   href="/dashboard"
-                  className="px-8 py-4 bg-solana-green text-black font-semibold rounded-lg hover:bg-solana-green/90 transition-all flex items-center gap-2"
+                  className="px-8 py-4 bg-solana-green text-black font-semibold bg-white rounded-lg hover:bg-solana-green/90 transition-all flex items-center gap-2"
                 >
                   Go to Dashboard <ArrowRight className="w-5 h-5" />
                 </Link>

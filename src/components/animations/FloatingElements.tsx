@@ -9,6 +9,7 @@ export function FloatingElements() {
     <div className="fixed inset-0 overflow-hidden pointer-events-none">
       {elements.map((i) => (
         <motion.div
+          suppressHydrationWarning
           key={i}
           className="absolute w-64 h-64 rounded-full"
           style={{

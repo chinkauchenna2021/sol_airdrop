@@ -1,11 +1,12 @@
 'use client'
-
 import { useEffect, useState } from 'react'
 import { useWallet } from '@solana/wallet-adapter-react'
-import { WalletReadyState } from '@solana/wallet-adapter-base'
+import { WalletName, WalletReadyState } from '@solana/wallet-adapter-base'
 import { X } from 'lucide-react'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
+import { useWalletStore } from '@/store/useWalletStore'
+
 
 interface WalletModalProps {
   open: boolean
@@ -13,40 +14,39 @@ interface WalletModalProps {
 }
 
 export function WalletModal({ open, onClose }: WalletModalProps) {
-  const { wallets, select, connect } = useWallet()
+ const { wallet: currentWallet,wallets, select, connect, connected, connecting: walletConnecting, publicKey } = useWallet()
   const [connecting, setConnecting] = useState<string | null>(null)
-
-  const handleWalletSelect = async (walletName: string) => {
-    try {
-      setConnecting(walletName)
-      select(walletName as any)
-       console.log(walletName)
-      await connect()
-      
-      // Authenticate with backend
-      const wallet = wallets.find(w => w.adapter.name === walletName)
-      if (wallet?.adapter.publicKey) {
-        const res = await fetch('/api/auth/wallet', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            walletAddress: wallet.adapter.publicKey.toBase58()
-          })
-        })
-        
-        if (res.ok) {
-          toast.success('Wallet connected successfully!')
-          onClose()
-        }
+  // const {publicKey , connected} = useWalletStore()
+ const [selectedWalletName, setSelectedWalletName] = useState<string | null>(null)
+const {publicKey: walletAddress} = useWalletStore()
+// Auto-connect when wallet is selected
+useEffect(() => {
+  const autoConnect = async () => {
+    if (currentWallet && selectedWalletName && !connected && !walletConnecting) {
+      try {
+        await connect()
+        // Your backend auth here...
+        setSelectedWalletName(null)
+      } catch (error) {
+        console.error('Auto-connect failed:', error)
       }
-    } catch (error) {
-      console.error('Failed to connect wallet:', error)
-      toast.error('Failed to connect wallet')
-    } finally {
-      setConnecting(null)
     }
   }
+  autoConnect()
+}, [currentWallet, selectedWalletName, connected, walletConnecting])
 
+const handleWalletSelect = async (walletName: WalletName) => {
+  if (currentWallet?.adapter.name === walletName) {
+    // Same wallet, connect immediately
+    if (!connected && !walletConnecting) {
+      await connect()
+    }
+  } else {
+    // Different wallet, select and let useEffect handle connection
+    select(walletName)
+    setSelectedWalletName(walletName)
+  }
+}
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && open) {
@@ -65,6 +65,8 @@ export function WalletModal({ open, onClose }: WalletModalProps) {
   const otherWallets = wallets.filter(
     wallet => wallet.readyState !== WalletReadyState.Installed
   )
+
+  console.log(walletAddress, "=========Wallet Address======")
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">

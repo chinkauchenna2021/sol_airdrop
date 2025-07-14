@@ -1,43 +1,69 @@
-// prisma/seed.ts - REPLACE your existing seed file with this
-import prisma from '@/lib/prisma'
-import { randomUUID } from 'crypto'
+// prisma/seed.ts
+import {PrismaClient} from '../src/app/generated/prisma'
+import { 
+  TwitterActivity, 
+  NotificationType, 
+  EngagementType, 
+  TaskType, 
+  ClaimStatus, 
+  PaymentMethod 
+} from '../src/app/generated/prisma'
+
+
+const prisma = new PrismaClient
 
 
 async function main() {
   console.log('🌱 Starting database seed...')
 
   try {
-    // Create/update system configurations (preserving your existing ones + adding new)
-    const configs = [
-      // Existing configs
+    // 1. System Configuration
+    console.log('📝 Creating system configurations...')
+    const systemConfigs = [
+      // Core claim settings
       { key: 'claimsEnabled', value: true, description: 'Enable/disable claims globally' },
       { key: 'minClaimAmount', value: 100, description: 'Minimum points required to claim' },
       { key: 'claimRate', value: 0.001, description: 'Conversion rate from points to tokens' },
+      { key: 'claimFeePercentage', value: 2.5, description: 'Fee percentage for claims' },
+      
+      // Points system
       { key: 'pointsPerLike', value: 10, description: 'Points awarded for liking a tweet' },
       { key: 'pointsPerRetweet', value: 20, description: 'Points awarded for retweeting' },
       { key: 'pointsPerComment', value: 15, description: 'Points awarded for commenting' },
+      { key: 'pointsPerQuote', value: 25, description: 'Points awarded for quote tweeting' },
       { key: 'pointsPerFollow', value: 50, description: 'Points awarded for following' },
       { key: 'pointsPerReferral', value: 100, description: 'Points awarded for successful referral' },
       { key: 'dailyCheckInPoints', value: 5, description: 'Points awarded for daily check-in' },
       
-      // NEW: Activity-based token allocation configs (your main requirement)
+      // Activity-based token allocation
       { key: 'highActivityTokens', value: 4000, description: 'Tokens for high activity users (1000+ followers)' },
       { key: 'mediumActivityTokens', value: 3500, description: 'Tokens for medium activity users (500+ followers)' },
       { key: 'lowActivityTokens', value: 3000, description: 'Tokens for low activity users' },
       
-      // NEW: Activity thresholds
+      // Activity thresholds
       { key: 'highActivityThreshold', value: 1000, description: 'Follower count for high activity' },
       { key: 'mediumActivityThreshold', value: 500, description: 'Follower count for medium activity' },
       
-      // NEW: Platform settings
+      // Platform settings
       { key: 'maintenanceMode', value: false, description: 'Enable maintenance mode' },
       { key: 'registrationEnabled', value: true, description: 'Allow new user registration' },
       { key: 'twitterTrackingEnabled', value: true, description: 'Enable Twitter tracking' },
       { key: 'airdropEnabled', value: true, description: 'Enable airdrop functionality' },
+      
+      // Referral settings
+      { key: 'maxReferrals', value: 50, description: 'Maximum referrals per user' },
+      { key: 'referralBonusMultiplier', value: 1.5, description: 'Bonus multiplier for referral points' },
+      
+      // Level system
+      { key: 'pointsPerLevel', value: 1000, description: 'Points required per level increase' },
+      { key: 'maxLevel', value: 100, description: 'Maximum user level' },
+      
+      // Streak bonuses
+      { key: 'streakBonusEnabled', value: true, description: 'Enable streak bonus system' },
+      { key: 'streakMultiplier', value: 0.1, description: 'Bonus multiplier per streak day' }
     ]
 
-    console.log('📝 Creating/updating system configurations...')
-    for (const config of configs) {
+    for (const config of systemConfigs) {
       await prisma.systemConfig.upsert({
         where: { key: config.key },
         update: { 
@@ -48,200 +74,478 @@ async function main() {
           key: config.key,
           value: config.value,
           description: config.description
-        },
+        }
       })
     }
 
-    // Create default tasks (preserving existing structure)
-    const existingTasks = await prisma.task.findMany()
-    
-    if (existingTasks.length === 0) {
-      console.log('🎯 Creating default tasks...')
-      
-      const tasks = [
-        {
-          name: 'Follow on Twitter',
-          description: 'Follow our official Twitter account',
-          type: 'SOCIAL_TWITTER',
-          points: 50,
-          requirements: { action: 'follow', targetId: '@SolanaAirdrop' },
+    // 2. Default Tasks
+    console.log('🎯 Creating default tasks...')
+    const defaultTasks = [
+      {
+        name: 'Connect Twitter Account',
+        description: 'Link your Twitter account to start earning points',
+        type: TaskType.SOCIAL_TWITTER,
+        points: 50,
+        requirements: { action: 'connect_twitter' },
+        isActive: true
+      },
+      {
+        name: 'Connect Wallet',
+        description: 'Connect your Solana wallet to the platform',
+        type: TaskType.WALLET_CONNECT,
+        points: 25,
+        requirements: { action: 'connect_wallet' },
+        isActive: true
+      },
+      {
+        name: 'Daily Check-in',
+        description: 'Visit the platform daily to earn points and maintain your streak',
+        type: TaskType.DAILY_CHECK_IN,
+        points: 5,
+        requirements: { frequency: 'daily' },
+        isActive: true
+      },
+      {
+        name: 'Follow Official Account',
+        description: 'Follow our official Twitter account @SolanaAirdrop',
+        type: TaskType.SOCIAL_TWITTER,
+        points: 50,
+        requirements: { 
+          action: 'follow', 
+          targetId: '@SolanaAirdrop',
+          verificationRequired: true 
         },
-        {
-          name: 'Daily Check-in',
-          description: 'Visit the platform daily to earn points',
-          type: 'DAILY_CHECK_IN',
-          points: 5,
-          requirements: { frequency: 'daily' },
+        isActive: true
+      },
+      {
+        name: 'Like Announcement Tweet',
+        description: 'Like our platform announcement tweet',
+        type: TaskType.SOCIAL_TWITTER,
+        points: 10,
+        requirements: { 
+          action: 'like', 
+          tweetId: 'announcement_tweet_id',
+          verificationRequired: true 
         },
-        {
-          name: 'Connect Wallet',
-          description: 'Connect your Solana wallet to the platform',
-          type: 'WALLET_CONNECT',
-          points: 25,
-          requirements: { action: 'connect' },
+        isActive: true
+      },
+      {
+        name: 'Retweet Announcement',
+        description: 'Retweet our announcement to spread the word',
+        type: TaskType.SOCIAL_TWITTER,
+        points: 20,
+        requirements: { 
+          action: 'retweet', 
+          tweetId: 'announcement_tweet_id',
+          verificationRequired: true 
         },
-        {
-          name: 'Refer a Friend',
-          description: 'Invite friends to join the platform',
-          type: 'REFERRAL',
-          points: 100,
-          requirements: { action: 'refer', minReferrals: 1 },
+        isActive: true
+      },
+      {
+        name: 'Quote Tweet with Comment',
+        description: 'Quote tweet our announcement with your thoughts',
+        type: TaskType.SOCIAL_TWITTER,
+        points: 30,
+        requirements: { 
+          action: 'quote', 
+          tweetId: 'announcement_tweet_id',
+          requireComment: true,
+          verificationRequired: true 
         },
-        // NEW: Enhanced Twitter tasks
-        {
-          name: 'Like Announcement Tweet',
-          description: 'Like our platform announcement',
-          type: 'SOCIAL_TWITTER',
-          points: 10,
-          requirements: { action: 'like', tweetId: 'announcement_tweet' },
+        isActive: true
+      },
+      {
+        name: 'Refer a Friend',
+        description: 'Invite friends to join the platform using your referral code',
+        type: TaskType.REFERRAL,
+        points: 100,
+        requirements: { 
+          action: 'refer', 
+          minReferrals: 1,
+          referralMustComplete: true 
         },
-        {
-          name: 'Retweet with Comment',
-          description: 'Retweet our announcement with your thoughts',
-          type: 'SOCIAL_TWITTER', 
-          points: 25,
-          requirements: { action: 'retweet', tweetId: 'announcement_tweet', requireComment: true },
+        isActive: true
+      },
+      {
+        name: 'Join Discord',
+        description: 'Join our Discord community',
+        type: TaskType.SOCIAL_DISCORD,
+        points: 25,
+        requirements: { 
+          action: 'join_discord',
+          serverId: 'discord_server_id' 
         },
-      ]
-
-      for (const task of tasks) {
-        try {
-          await prisma.task.create({
-            data: task as any,
-          })
-        } catch (error) {
-          console.log(`Task "${task.name}" might already exist, skipping...`)
-        }
+        isActive: true
+      },
+      {
+        name: 'Complete Profile',
+        description: 'Fill out your complete user profile',
+        type: TaskType.CUSTOM,
+        points: 15,
+        requirements: { 
+          action: 'complete_profile',
+          requiredFields: ['email', 'twitterUsername'] 
+        },
+        isActive: true
       }
-    } else {
-      console.log(`✅ Found ${existingTasks.length} existing tasks, skipping task creation`)
+    ]
+
+    for (const task of defaultTasks) {
+      await prisma.task.upsert({
+        where: { 
+          id: crypto.randomUUID()
+        },
+        update: {
+          description: task.description,
+          points: task.points,
+          requirements: task.requirements,
+          isActive: task.isActive
+        },
+        create: task
+      })
     }
 
-    // Create achievements if Achievement table exists
-    try {
-      const existingAchievements = await prisma.achievement.findMany()
-      
-      if (existingAchievements.length === 0) {
-        console.log('🏆 Creating achievements...')
-        
-        const achievements = [
-          {
-            name: 'First Steps',
-            description: 'Complete your first task',
-            icon: '👋',
-            requirements: { tasksCompleted: 1 },
-            points: 25,
-          },
-          {
-            name: 'Twitter Pioneer', 
-            description: 'Connect your Twitter account',
-            icon: '🐦',
-            requirements: { twitterConnected: true },
-            points: 50,
-          },
-          {
-            name: 'Point Collector',
-            description: 'Earn your first 100 points',
-            icon: '💎',
-            requirements: { totalPoints: 100 },
-            points: 50,
-          },
-          {
-            name: 'Social Butterfly',
-            description: 'Complete 10 Twitter engagements',
-            icon: '🦋',
-            requirements: { twitterEngagements: 10 },
-            points: 100,
-          },
-          {
-            name: 'Streak Master',
-            description: 'Maintain a 7-day check-in streak',
-            icon: '🔥',
-            requirements: { checkInStreak: 7 },
-            points: 150,
-          },
-          {
-            name: 'High Activity User',
-            description: 'Achieve high activity status (1000+ followers)',
-            icon: '⭐',
-            requirements: { twitterFollowers: 1000 },
-            points: 500,
-            isSecret: true,
-          },
-        ]
-
-        for (const achievement of achievements) {
-          await prisma.achievement.create({
-            data: achievement,
-          })
-        }
+    // 3. Achievements
+    console.log('🏆 Creating achievements...')
+    const achievements = [
+      {
+        name: 'Welcome Aboard',
+        description: 'Complete your first task on the platform',
+        icon: '👋',
+        requirements: { tasksCompleted: 1 },
+        points: 25,
+        isSecret: false
+      },
+      {
+        name: 'Twitter Connected',
+        description: 'Successfully connect your Twitter account',
+        icon: '🐦',
+        requirements: { twitterConnected: true },
+        points: 50,
+        isSecret: false
+      },
+      {
+        name: 'Wallet Master',
+        description: 'Connect your Solana wallet',
+        icon: '💰',
+        requirements: { walletConnected: true },
+        points: 25,
+        isSecret: false
+      },
+      {
+        name: 'Point Collector',
+        description: 'Earn your first 100 points',
+        icon: '💎',
+        requirements: { totalPoints: 100 },
+        points: 50,
+        isSecret: false
+      },
+      {
+        name: 'Social Butterfly',
+        description: 'Complete 10 Twitter engagements',
+        icon: '🦋',
+        requirements: { twitterEngagements: 10 },
+        points: 100,
+        isSecret: false
+      },
+      {
+        name: 'Streak Starter',
+        description: 'Maintain a 3-day check-in streak',
+        icon: '🔥',
+        requirements: { checkInStreak: 3 },
+        points: 75,
+        isSecret: false
+      },
+      {
+        name: 'Streak Master',
+        description: 'Maintain a 7-day check-in streak',
+        icon: '🚀',
+        requirements: { checkInStreak: 7 },
+        points: 150,
+        isSecret: false
+      },
+      {
+        name: 'Streak Legend',
+        description: 'Maintain a 30-day check-in streak',
+        icon: '👑',
+        requirements: { checkInStreak: 30 },
+        points: 500,
+        isSecret: false
+      },
+      {
+        name: 'Referral Champion',
+        description: 'Successfully refer 5 friends',
+        icon: '🤝',
+        requirements: { successfulReferrals: 5 },
+        points: 250,
+        isSecret: false
+      },
+      {
+        name: 'High Activity Influencer',
+        description: 'Achieve high activity status (1000+ followers)',
+        icon: '⭐',
+        requirements: { 
+          twitterFollowers: 1000,
+          twitterActivity: 'HIGH' 
+        },
+        points: 500,
+        isSecret: true
+      },
+      {
+        name: 'Point Millionaire',
+        description: 'Accumulate 10,000 points',
+        icon: '💸',
+        requirements: { totalPoints: 10000 },
+        points: 1000,
+        isSecret: true
+      },
+      {
+        name: 'Level 10 Master',
+        description: 'Reach level 10',
+        icon: '🏅',
+        requirements: { level: 10 },
+        points: 300,
+        isSecret: false
+      },
+      {
+        name: 'Early Adopter',
+        description: 'One of the first 100 users to join',
+        icon: '🌟',
+        requirements: { 
+          userId: 100,
+          registrationRank: 100 
+        },
+        points: 200,
+        isSecret: true
       }
-    } catch (error) {
-      console.log('Achievement table not found, skipping achievements creation')
+    ]
+
+    for (const achievement of achievements) {
+      await prisma.achievement.upsert({
+        where: { id: crypto.randomUUID()},
+        update: {
+          description: achievement.description,
+          icon: achievement.icon,
+          requirements: achievement.requirements,
+          points: achievement.points,
+          isSecret: achievement.isSecret
+        },
+        create: achievement
+      })
     }
 
-    // Create demo data only in development
+    // 4. Demo Users (only in development)
     if (process.env.NODE_ENV === 'development') {
       console.log('👤 Creating demo users for testing...')
       
-      const existingDemoUser = await prisma.user.findFirst({
-        where: { walletAddress: { contains: '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM' } }
-      })
+      const demoUsers = [
+        {
+          walletAddress: '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM',
+          twitterId: '1234567890',
+          twitterUsername: 'demo_admin',
+          twitterName: 'Demo Admin',
+          twitterImage: 'https://via.placeholder.com/400x400',
+          twitterFollowers: 1500,
+          twitterActivity: TwitterActivity.HIGH,
+          level: 3,
+          streak: 15,
+          lastCheckIn: new Date(),
+          email: 'admin@demo.com',
+          totalPoints: 2500,
+          rank: 1,
+          isAdmin: true,
+          isActive: true
+        },
+        {
+          walletAddress: '8VzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWN',
+          twitterId: '1234567891',
+          twitterUsername: 'demo_user_medium',
+          twitterName: 'Demo User Medium',
+          twitterImage: 'https://via.placeholder.com/400x400',
+          twitterFollowers: 750,
+          twitterActivity: TwitterActivity.MEDIUM,
+          level: 2,
+          streak: 7,
+          lastCheckIn: new Date(Date.now() - 24 * 60 * 60 * 1000), // Yesterday
+          email: 'medium@demo.com',
+          totalPoints: 1200,
+          rank: 2,
+          isAdmin: false,
+          isActive: true
+        },
+        {
+          walletAddress: '7UzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWO',
+          twitterId: '1234567892',
+          twitterUsername: 'demo_user_low',
+          twitterName: 'Demo User Low',
+          twitterImage: 'https://via.placeholder.com/400x400',
+          twitterFollowers: 300,
+          twitterActivity: TwitterActivity.LOW,
+          level: 1,
+          streak: 3,
+          lastCheckIn: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // 2 days ago
+          email: 'low@demo.com',
+          totalPoints: 450,
+          rank: 3,
+          isAdmin: false,
+          isActive: true
+        }
+      ]
 
-      if (!existingDemoUser) {
-        const demoUsers = [
-          {
-            walletAddress: '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM',
-            isAdmin: true,
-            totalPoints: 1500,
-            level: 2,
-            twitterUsername: 'demo_admin',
-            twitterFollowers: 1500,
-            twitterActivity: 'HIGH',
-          },
-          {
-            walletAddress: '8VzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWN', 
-            totalPoints: 750,
-            level: 1,
-            twitterUsername: 'demo_user_medium',
-            twitterFollowers: 750,
-            twitterActivity: 'MEDIUM',
-          },
-          {
-            walletAddress: '7UzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWO',
-            totalPoints: 300,
-            level: 1,
-            twitterUsername: 'demo_user_low',
-            twitterFollowers: 300,
-            twitterActivity: 'LOW',
-          },
-        ]
+      for (const userData of demoUsers) {
+        const user = await prisma.user.upsert({
+          where: { walletAddress: userData.walletAddress },
+          update: userData,
+          create: userData
+        })
 
-        for (const user of demoUsers) {
-          try {
-            await prisma.user.create({
-              data: user as any,
-            })
-          } catch (error) {
-            console.log(`Demo user already exists, skipping...`)
-          }
+        // Create some sample engagements for demo users
+        if (userData.twitterUsername !== 'demo_admin') {
+          await prisma.twitterEngagement.createMany({
+            data: [
+              {
+                userId: user.id,
+                tweetId: 'demo_tweet_1',
+                engagementType: EngagementType.LIKE,
+                points: 10,
+                verified: true
+              },
+              {
+                userId: user.id,
+                tweetId: 'demo_tweet_2',
+                engagementType: EngagementType.RETWEET,
+                points: 20,
+                verified: true
+              },
+              {
+                userId: user.id,
+                tweetId: 'demo_tweet_3',
+                engagementType: EngagementType.COMMENT,
+                points: 15,
+                verified: true
+              }
+            ],
+            skipDuplicates: true
+          })
+
+          // Create sample point history
+          await prisma.pointHistory.createMany({
+            data: [
+              {
+                userId: user.id,
+                points: 50,
+                action: 'TWITTER_CONNECT',
+                description: 'Connected Twitter account'
+              },
+              {
+                userId: user.id,
+                points: 25,
+                action: 'WALLET_CONNECT',
+                description: 'Connected Solana wallet'
+              },
+              {
+                userId: user.id,
+                points: 10,
+                action: 'TWITTER_LIKE',
+                description: 'Liked announcement tweet'
+              }
+            ]
+          })
+
+          // Create sample notifications
+          await prisma.notification.createMany({
+            data: [
+              {
+                userId: user.id,
+                title: 'Welcome to the Platform!',
+                message: 'Thanks for joining our airdrop platform. Start completing tasks to earn points!',
+                type: NotificationType.SUCCESS,
+                read: false
+              },
+              {
+                userId: user.id,
+                title: 'Achievement Unlocked!',
+                message: 'You\'ve unlocked the "Welcome Aboard" achievement!',
+                type: NotificationType.ACHIEVEMENT,
+                read: false
+              }
+            ]
+          })
         }
       }
+
+      // Create demo referral relationships
+      const users = await prisma.user.findMany()
+      if (users.length >= 2) {
+        await prisma.referral.upsert({
+          where: { referredId: users[1].id },
+          update: {},
+          create: {
+            referrerId: users[0].id,
+            referredId: users[1].id,
+            points: 100,
+            completed: true
+          }
+        })
+      }
+    }
+
+    // 5. Sample Analytics Data
+    console.log('📊 Creating sample analytics...')
+    const today = new Date()
+    const analyticsData = []
+    
+    for (let i = 0; i < 30; i++) {
+      const date = new Date(today)
+      date.setDate(date.getDate() - i)
+      
+      analyticsData.push({
+        date,
+        totalUsers: Math.floor(Math.random() * 1000) + 100 + i * 10,
+        activeUsers: Math.floor(Math.random() * 500) + 50 + i * 5,
+        totalClaims: Math.floor(Math.random() * 50) + i,
+        totalPoints: Math.floor(Math.random() * 100000) + 10000 + i * 1000,
+        totalEngagements: Math.floor(Math.random() * 1000) + 100 + i * 20,
+        metadata: {
+          dailyGrowth: Math.random() * 5,
+          topEngagementType: ['LIKE', 'RETWEET', 'COMMENT'][Math.floor(Math.random() * 3)]
+        }
+      })
+    }
+
+    for (const data of analyticsData) {
+      await prisma.analytics.upsert({
+        where: { 
+          id: crypto.randomUUID()
+        },
+        update: data,
+        create: data
+      })
     }
 
     console.log('✅ Database seeded successfully!')
     
-    // Show summary
-    const [configCount, taskCount] = await Promise.all([
+    // Display summary
+    const summary = await Promise.all([
       prisma.systemConfig.count(),
       prisma.task.count(),
+      prisma.achievement.count(),
+      prisma.user.count(),
+      prisma.analytics.count()
     ])
     
-    console.log('📊 Summary:')
-    console.log(`   - ${configCount} system configurations`)
-    console.log(`   - ${taskCount} tasks`)
-    console.log('   - Activity-based token allocation: HIGH(4000) | MEDIUM(3500) | LOW(3000)')
-    
+    console.log('\n📊 Seed Summary:')
+    console.log(`   • ${summary[0]} system configurations`)
+    console.log(`   • ${summary[1]} tasks created`)
+    console.log(`   • ${summary[2]} achievements available`)
+    console.log(`   • ${summary[3]} demo users created`)
+    console.log(`   • ${summary[4]} analytics records`)
+    console.log('\n🎯 Activity-based token allocation:')
+    console.log('   • HIGH activity (1000+ followers): 4000 tokens')
+    console.log('   • MEDIUM activity (500+ followers): 3500 tokens')
+    console.log('   • LOW activity (<500 followers): 3000 tokens')
+    console.log('\n🚀 Your platform is ready to go!')
+
   } catch (error) {
     console.error('❌ Seed error:', error)
     throw error
@@ -250,9 +554,10 @@ async function main() {
 
 main()
   .catch((e) => {
-    console.error('❌ Seed error:', e)
+    console.error('❌ Seed failed:', e)
     process.exit(1)
   })
   .finally(async () => {
     await prisma.$disconnect()
+    console.log('🔌 Database connection closed')
   })

@@ -1,2 +1,17 @@
+ignoredBuiltDependencies:
+  - '@prisma/client'
+  - '@prisma/engines'
+  - '@tailwindcss/oxide'
+  - blake-hash
+  - bufferutil
+  - esbuild
+  - nx
+  - prisma
+  - protobufjs
+  - sharp
+  - tiny-secp256k1
+  - unrs-resolver
+  - usb
+  - utf-8-validate
 onlyBuiltDependencies:
   - bigint-buffer

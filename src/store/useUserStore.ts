@@ -9,6 +9,9 @@ interface User {
   totalPoints: number
   rank: number
   isAdmin: boolean
+  twitterActivity? : "HIGH"|'LOW'|'MEDIUM'
+  twitterFollowers?:number
+
 }
 
 interface UserState {

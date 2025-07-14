@@ -18,8 +18,8 @@ const queryClient = new QueryClient({
 export function Providers({ children }: { children: ReactNode }) {
   return (
     <ErrorBoundary>
+      <WalletProvider>
       <QueryClientProvider client={queryClient}>
-        <WalletProvider>
           <Toaster
             position="top-right"
             toastOptions={{
@@ -44,8 +44,8 @@ export function Providers({ children }: { children: ReactNode }) {
             }}
           />
           {children}
-        </WalletProvider>
       </QueryClientProvider>
+        </WalletProvider>
     </ErrorBoundary>
   )
 }

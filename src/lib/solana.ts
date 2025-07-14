@@ -15,10 +15,10 @@ import {
   TOKEN_PROGRAM_ID,
 } from '@solana/spl-token'
 
-const SOLANA_RPC_URL = process.env.NEXT_PUBLIC_SOLANA_RPC_URL || 'https://api.devnet.solana.com'
-const TOKEN_MINT = process.env.NEXT_PUBLIC_TOKEN_MINT_ADDRESS
-const AIRDROP_WALLET = process.env.NEXT_PUBLIC_AIRDROP_WALLET_ADDRESS
-const PRIVATE_KEY = process.env.SOLANA_PRIVATE_KEY
+const SOLANA_RPC_URL = process.env.NEXT_PUBLIC_SOLANA_RPC_URL! || 'https://api.devnet.solana.com'
+const TOKEN_MINT = process.env.NEXT_PUBLIC_TOKEN_MINT_ADDRESS!
+const AIRDROP_WALLET = process.env.NEXT_PUBLIC_AIRDROP_WALLET_ADDRESS!
+const PRIVATE_KEY = process.env.SOLANA_PRIVATE_KEY!
 
 export const connection = new Connection(SOLANA_RPC_URL, 'confirmed')
 
@@ -31,10 +31,34 @@ export const getAirdropKeypair = () => {
 }
 
 export const validateSolanaAddress = (address: string): boolean => {
+  console.log('🔍 Validating Solana address:', address)
+  
   try {
-    new PublicKey(address)
+    if (!address || typeof address !== 'string') {
+      console.log('❌ Invalid address type or empty')
+      return false
+    }
+
+    // Trim whitespace
+    const trimmedAddress = address.trim()
+    if (trimmedAddress.length === 0) {
+      console.log('❌ Empty address after trim')
+      return false
+    }
+
+    // Check basic format (Base58, correct length)
+    if (!/^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(trimmedAddress)) {
+      console.log('❌ Address format validation failed')
+      return false
+    }
+
+    // Validate with Solana PublicKey
+    new PublicKey(trimmedAddress)
+    console.log('✅ Solana address validation passed')
     return true
-  } catch {
+    
+  } catch (error) {
+    console.error('❌ Solana address validation error:', error)
     return false
   }
 }

@@ -1,46 +1,71 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { useConnection, useWallet } from '@solana/wallet-adapter-react'
-import { Wallet, LogOut, Copy, Check } from 'lucide-react'
-import { useWalletStore } from '@/store/useWalletStore'
-import { WalletModal } from './WalletModal'
-import toast from 'react-hot-toast'
+import { useEffect, useState } from "react";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import { Wallet, LogOut, Copy, Check } from "lucide-react";
+import { useWalletStore } from "@/store/useWalletStore";
+import { WalletModal } from "./WalletModal";
+import toast from "react-hot-toast";
 
 export function WalletButton() {
-  const { connected, publicKey } = useWallet()
-  const { connect, disconnect, select } = useWallet()
-  const { connection } = useConnection()
-  const [showModal, setShowModal] = useState(false)
-  const [copied, setCopied] = useState(false)
-  const { setWalletState } = useWalletStore()
+  const { connected, publicKey } = useWallet();
+  const { connect, disconnect, select } = useWallet();
+  const { connection } = useConnection();
+  const [showModal, setShowModal] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const { setWalletState } = useWalletStore();
 
   const handleConnect = async () => {
-    setShowModal(true)
-  }
+    setShowModal(true);
+  };
 
   const handleDisconnect = async () => {
     try {
-      await disconnect()
-      setWalletState({ connected: false, publicKey: null, balance: 0 })
-      toast.success('Wallet disconnected')
+      await disconnect();
+      setWalletState({ connected: false, publicKey: null, balance: 0 });
+      toast.success("Wallet disconnected");
     } catch (error) {
-      toast.error('Failed to disconnect wallet')
+      toast.error("Failed to disconnect wallet");
     }
-  }
+  };
 
   const copyAddress = () => {
     if (publicKey) {
-      navigator.clipboard.writeText(publicKey.toBase58())
-      setCopied(true)
-      toast.success('Address copied!')
-      setTimeout(() => setCopied(false), 2000)
+      navigator.clipboard.writeText(publicKey.toBase58());
+      setCopied(true);
+      toast.success("Address copied!");
+      setTimeout(() => setCopied(false), 2000);
     }
-  }
+  };
 
   const truncateAddress = (address: string) => {
-    return `${address.slice(0, 4)}...${address.slice(-4)}`
-  }
+    return `${address.slice(0, 4)}...${address.slice(-4)}`;
+  };
+
+  useEffect(() => {
+    (async()=>{
+      
+      if (connected && publicKey) {  
+        console.log(publicKey , "WALLET CONNECTION")           
+        const res = await fetch('/api/auth/wallet', {      
+          method: 'POST',       
+          headers: { 'Content-Type': 'application/json' },       
+          body: JSON.stringify({       
+            walletAddress: publicKey?.toBase58()       
+          })      
+        }) 
+        const data = await res.json()
+        console.log(data, "====Wallet auth")
+        
+        setWalletState({
+            connected: true,
+            publicKey: publicKey?.toBase58(),
+            balance: 0,
+          });    
+        }
+    })()
+    
+  }, [connected,publicKey]);
 
   if (connected && publicKey) {
     return (
@@ -51,7 +76,11 @@ export function WalletButton() {
         >
           <Wallet className="w-4 h-4" />
           <span>{truncateAddress(publicKey.toBase58())}</span>
-          {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+          {copied ? (
+            <Check className="w-4 h-4" />
+          ) : (
+            <Copy className="w-4 h-4" />
+          )}
         </button>
         <button
           onClick={handleDisconnect}
@@ -60,7 +89,7 @@ export function WalletButton() {
           <LogOut className="w-4 h-4" />
         </button>
       </div>
-    )
+    );
   }
 
   return (
@@ -74,5 +103,5 @@ export function WalletButton() {
       </button>
       <WalletModal open={showModal} onClose={() => setShowModal(false)} />
     </>
-  )
+  );
 }

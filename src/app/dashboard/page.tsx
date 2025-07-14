@@ -67,7 +67,7 @@ export default function EnhancedDashboard() {
 
   const fetchDashboardData = async () => {
     try {
-      const res = await fetch('/api/user/enhanced-dashboard')
+      const res = await fetch('/api/user/dashboard')
       if (res.ok) {
         const dashboardData = await res.json()
         setData(dashboardData)
@@ -358,7 +358,7 @@ export default function EnhancedDashboard() {
 
                     <div className="text-center mb-6">
                       <div className="text-4xl font-bold text-white mb-2">
-                        {data.stats.tokenAllocation.toLocaleString()}
+                        {data?.stats?.tokenAllocation == undefined? "" : data.stats?.tokenAllocation?.toLocaleString()}
                       </div>
                       <div className="text-gray-400">Tokens Available</div>
                     </div>
