@@ -199,7 +199,7 @@ export default function CryptoNavbar() {
               </motion.button>
 
               {/* Notifications */}
-              {connected && (
+              {/* {connected && (
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -212,7 +212,7 @@ export default function CryptoNavbar() {
                     </span>
                   )}
                 </motion.button>
-              )}
+              )} */}
 
               {/* User Points */}
               {connected && user && (

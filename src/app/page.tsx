@@ -81,21 +81,21 @@ export default function EnhancedHomepage() {
     {
       name: "Alex Chen",
       role: "DeFi Enthusiast",
-      avatar: "/",
+      avatar: "/images/01.gif",
       content: "SolDrop has completely changed how I engage with crypto communities. The rewards are real!",
       rating: 5
     },
     {
       name: "Maria Rodriguez",
       role: "Crypto Trader",
-      avatar: "/",
+      avatar: "/images/02.gif",
       content: "Amazing platform! I've earned over $500 just by being active on Twitter and completing simple tasks.",
       rating: 5
     },
     {
       name: "David Kim",
       role: "Community Manager",
-      avatar: "/",
+      avatar: "/images/03.gif",
       content: "The tokenomics are brilliant and the community is incredibly supportive. Highly recommended!",
       rating: 5
     }
@@ -210,6 +210,18 @@ export default function EnhancedHomepage() {
             )}
           </motion.div>
 
+
+          {/* Twitter Connection Section */}
+            {
+              connected && 
+              (
+            <section className="relative py-16 px-4">
+              <div className="max-w-4xl mx-auto">
+                <TwitterConnection />
+              </div>
+            </section>
+              )
+            }
           {/* Stats Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -468,13 +480,6 @@ export default function EnhancedHomepage() {
               )}
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Twitter Connection Section */}
-      <section className="relative py-16 px-4">
-        <div className="max-w-4xl mx-auto">
-          <TwitterConnection />
         </div>
       </section>
     </main>

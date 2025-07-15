@@ -134,9 +134,10 @@ export default function EnhancedDashboard() {
       </motion.div>
 
       {/* Floating Particles */}
-      <div className="fixed inset-0 pointer-events-none">
+      <div className="fixed inset-0 pointer-events-none" suppressHydrationWarning>
         {[...Array(20)].map((_, i) => (
           <motion.div
+          suppressHydrationWarning
             key={i}
             className="absolute w-2 h-2 bg-purple-400 rounded-full opacity-30"
             animate={{
