@@ -4,6 +4,9 @@ import { Toaster } from 'react-hot-toast'
 import './globals.css'
 import { WalletProvider } from '@/components/wallet/WalletProvider'
 import { Providers } from './providers'
+import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
+import CryptoNavbar from '@/components/layout/Navbar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,6 +35,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <Providers>
+          <CryptoNavbar />
         <Toaster
           position="top-right"
           toastOptions={{
@@ -44,6 +48,7 @@ export default function RootLayout({
         />
                {children}
 
+            <Footer />
         </Providers>
       </body>
     </html>
