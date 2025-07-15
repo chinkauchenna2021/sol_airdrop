@@ -1,4 +1,3 @@
-// app/api/user/dashboard/route.ts - Enhanced version of your existing API
 import { NextRequest, NextResponse } from 'next/server'
 import { getSession } from '@/lib/auth'
 import prisma from '@/lib/prisma'
@@ -35,7 +34,7 @@ export async function GET(req: NextRequest) {
     }
 
     // Calculate stats - enhanced calculations
-    const [todayPoints, weeklyPoints, recentActivity] = await Promise.all([
+    const [todayPoints, weeklyPoints, recentActivity, referralData, totalEarned] = await Promise.all([
       // Today's points
       prisma.pointHistory.aggregate({
         where: {
@@ -67,6 +66,31 @@ export async function GET(req: NextRequest) {
           createdAt: true,
           metadata: true
         }
+      }),
+
+      // Referral data
+      prisma.referral.findMany({
+        where: { referrerId: user.id },
+        include: {
+          referred: {
+            select: {
+              walletAddress: true,
+              twitterUsername: true,
+              isActive: true
+            }
+          }
+        },
+        orderBy: { createdAt: 'desc' },
+        take: 5
+      }),
+
+      // Total earned from referrals
+      prisma.referral.aggregate({
+        where: { 
+          referrerId: user.id,
+          completed: true 
+        },
+        _sum: { points: true }
       })
     ])
 
@@ -78,14 +102,14 @@ export async function GET(req: NextRequest) {
     })
     const rank = usersAhead + 1
 
-    // ADD: Calculate Twitter activity level and token allocation
-    const twitterActivityLevel = await calculateTwitterActivityLevel(user)
-    const tokenAllocation = getTokenAllocation(twitterActivityLevel, user.twitterFollowers || 0)
+    // Calculate Twitter activity level and token allocation
+    const twitterActivityLevel = user.twitterActivity || 'LOW'
+    const tokenAllocation = getTokenAllocation(twitterActivityLevel)
 
-    // ADD: Get achievements if they exist
-    const achievements = await getUserAchievements(user.id)
+    // Calculate streak
+    const streak = await calculateStreak(user.id)
 
-    // Enhanced response with your existing structure + new features
+    // Enhanced response with referral data
     const response = {
       user: {
         id: user.id,
@@ -95,30 +119,40 @@ export async function GET(req: NextRequest) {
         twitterUsername: user.twitterUsername,
         twitterId: user.twitterId,
         twitterImage: user.twitterImage,
-        // ADD: New fields without breaking existing ones
         twitterFollowers: user.twitterFollowers || 0,
         level: Math.floor(user.totalPoints / 1000) + 1,
-        activityLevel: twitterActivityLevel,
-        tokenAllocation: tokenAllocation
+        twitterActivity: twitterActivityLevel,
+        streak: streak,
+        referralCode: user.referralCode
       },
       stats: {
         todayPoints: todayPoints._sum.points || 0,
         weeklyPoints: weeklyPoints._sum.points || 0,
         totalEngagements: user._count.engagements,
         referralCount: user._count.referrals,
-        // ADD: New stats
-        streak: await calculateStreak(user.id),
-        nextLevelPoints: (Math.floor(user.totalPoints / 1000) + 1) * 1000 - user.totalPoints
+        tokenAllocation: tokenAllocation
       },
-      recentActivity: recentActivity.map((activity:any | unknown) => ({
+      recentActivity: recentActivity.map((activity: any) => ({
         id: activity.id,
         action: activity.description || activity.action,
         points: activity.points,
         createdAt: activity.createdAt.toISOString(),
         metadata: activity.metadata
       })),
-      // ADD: Include achievements if available
-      achievements: achievements
+      achievements: [], // Placeholder for achievements
+      referrals: {
+        totalReferrals: referralData.length,
+        activeReferrals: referralData.filter(r => r.completed && r.referred.isActive).length,
+        totalEarned: totalEarned._sum.points || 0,
+        recentReferrals: referralData.map(r => ({
+          id: r.id,
+          walletAddress: r.referred.walletAddress,
+          twitterUsername: r.referred.twitterUsername,
+          points: r.points,
+          completed: r.completed,
+          createdAt: r.createdAt.toISOString()
+        }))
+      }
     }
 
     return NextResponse.json(response)
@@ -131,33 +165,8 @@ export async function GET(req: NextRequest) {
   }
 }
 
-// ADD: Helper functions to enhance your existing functionality
-async function calculateTwitterActivityLevel(user: any): Promise<'HIGH' | 'MEDIUM' | 'LOW'> {
-  if (!user.twitterId) return 'LOW'
-  
-  try {
-    const followers = user.twitterFollowers || 0
-    const engagements = await prisma.twitterEngagement.count({
-      where: {
-        userId: user.id,
-        createdAt: {
-          gte: subDays(new Date(), 30) // Last 30 days
-        }
-      }
-    })
-
-    // Activity level logic - can be configured via system config
-    if (followers >= 1000 || engagements >= 50) return 'HIGH'
-    if (followers >= 500 || engagements >= 20) return 'MEDIUM'
-    return 'LOW'
-  } catch (error) {
-    console.error('Error calculating activity level:', error)
-    return 'LOW'
-  }
-}
-
-function getTokenAllocation(activityLevel: string, followers: number): number {
-  // These can be moved to system config later
+// Helper functions
+function getTokenAllocation(activityLevel: string): number {
   switch (activityLevel) {
     case 'HIGH': return 4000
     case 'MEDIUM': return 3500
@@ -171,6 +180,7 @@ async function calculateStreak(userId: string): Promise<number> {
     const recentDays = await prisma.pointHistory.findMany({
       where: {
         userId,
+        action: 'DAILY_CHECK_IN',
         createdAt: {
           gte: subDays(new Date(), 30)
         }
@@ -184,7 +194,7 @@ async function calculateStreak(userId: string): Promise<number> {
     let currentDate = startOfDay(new Date())
     
     const activityDates = new Set(
-      recentDays.map((day: any | unknown) => startOfDay(day.createdAt).getTime())
+      recentDays.map((day: any) => startOfDay(day.createdAt).getTime())
     )
 
     while (activityDates.has(currentDate.getTime())) {
@@ -196,33 +206,5 @@ async function calculateStreak(userId: string): Promise<number> {
   } catch (error) {
     console.error('Error calculating streak:', error)
     return 0
-  }
-}
-
-async function getUserAchievements(userId: string) {
-  try {
-    // Check if achievements table exists
-    const achievements = await prisma.achievement.findMany({
-      take: 5, // Just get a few for now
-      select: {
-        id: true,
-        name: true,
-        description: true,
-        icon: true,
-        requirements: true
-      }
-    })
-
-    return achievements.map((achievement: any | unknown) => ({
-      id: achievement.id,
-      title: achievement.name,
-      description: achievement.description,
-      icon: achievement.icon,
-      unlocked: false, // TODO: Calculate based on user progress
-      progress: 0 // TODO: Calculate based on requirements
-    }))
-  } catch (error) {
-    // If achievements don't exist yet, return empty array
-    return []
   }
 }

@@ -148,6 +148,7 @@ export async function clearAuthCookie(response?: NextResponse): Promise<NextResp
   }
 }
 
+
 export async function authenticateWallet(walletAddress: string) {
   console.log('🔐 authenticateWallet called for:', walletAddress)
   
@@ -162,6 +163,8 @@ export async function authenticateWallet(walletAddress: string) {
     let user = await prisma.user.findUnique({
       where: { walletAddress },
     })
+
+    const isNewUser = !user
 
     if (user) {
       console.log('✅ Existing user found:', user.id)
@@ -179,6 +182,7 @@ export async function authenticateWallet(walletAddress: string) {
             walletAddress,
             isAdmin,
             isActive: true,
+            referralCode: generateReferralCode(), // Generate unique referral code
           },
         })
         console.log('✅ New user created:', user.id)
@@ -204,6 +208,11 @@ export async function authenticateWallet(walletAddress: string) {
         console.error('❌ Error creating user:', createError)
         throw new Error(`Failed to create user: ${createError instanceof Error ? createError.message : 'Unknown error'}`)
       }
+    }
+
+    // Handle referral if this is a new user
+    if (isNewUser) {
+      await handlePendingReferral(user.id)
     }
 
     // Create JWT token
@@ -234,6 +243,32 @@ export async function authenticateWallet(walletAddress: string) {
       throw new Error('Unknown authentication error')
     }
   }
+}
+
+// Helper function to handle pending referrals
+async function handlePendingReferral(newUserId: string) {
+  try {
+    // Check if there's a pending referral in the session storage (client-side)
+    // This would need to be passed from the client side
+    console.log('🔗 Checking for pending referrals...')
+    
+    // Note: In a real implementation, you'd need to pass the referral code
+    // from the client side when making the wallet authentication request
+    
+  } catch (error) {
+    console.error('Error handling referral:', error)
+    // Don't throw here, as referral processing shouldn't block wallet connection
+  }
+}
+
+// Helper function to generate unique referral codes
+function generateReferralCode(): string {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+  let result = ''
+  for (let i = 0; i < 8; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length))
+  }
+  return result
 }
 
 // FIXED: Better error handling for auth middleware

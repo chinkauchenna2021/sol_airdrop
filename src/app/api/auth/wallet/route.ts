@@ -1,16 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { authenticateWallet } from '@/lib/auth'
 import { validateSolanaAddress } from '@/lib/solana'
+import prisma from '@/lib/prisma'
+
 
 export async function POST(req: NextRequest) {
   console.log('🚀 Wallet auth endpoint called')
   
   try {
-    // Parse request body
     let body;
     try {
       body = await req.json()
-      console.log('📦 Request body parsed:', { walletAddress: body?.walletAddress })
+      console.log('📦 Request body parsed:', { 
+        walletAddress: body?.walletAddress,
+        hasReferralCode: !!body?.referralCode 
+      })
     } catch (error) {
       console.error('❌ Failed to parse request body:', error)
       return NextResponse.json(
@@ -19,7 +23,7 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const { walletAddress } = body
+    const { walletAddress, referralCode } = body
 
     // Validate wallet address
     console.log('🔍 Validating wallet address:', walletAddress)
@@ -31,28 +35,7 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    if (typeof walletAddress !== 'string') {
-      console.log('❌ Wallet address is not a string:', typeof walletAddress)
-      return NextResponse.json(
-        { error: 'Wallet address must be a string' },
-        { status: 400 }
-      )
-    }
-
-    // Check Solana address validation
-    let isValidAddress;
-    try {
-      isValidAddress = validateSolanaAddress(walletAddress)
-      console.log('✅ Address validation result:', isValidAddress)
-    } catch (error) {
-      console.error('❌ Address validation error:', error)
-      return NextResponse.json(
-        { error: 'Address validation failed' },
-        { status: 400 }
-      )
-    }
-
-    if (!isValidAddress) {
+    if (!validateSolanaAddress(walletAddress)) {
       console.log('❌ Invalid Solana address format')
       return NextResponse.json(
         { error: 'Invalid wallet address format' },
@@ -60,29 +43,36 @@ export async function POST(req: NextRequest) {
       )
     }
 
+    // Check if user already exists
+    const existingUser = await prisma.user.findUnique({
+      where: { walletAddress }
+    })
+
     // Authenticate wallet
     console.log('🔐 Calling authenticateWallet...')
-    let authResult;
-    try {
-      authResult = await authenticateWallet(walletAddress)
-      console.log('✅ Authentication successful:', {
-        userId: authResult.user.id,
-        isNewUser: !authResult.user.createdAt,
-        tokenLength: authResult.token.length
-      })
-    } catch (error) {
-      console.error('❌ Authentication failed:', error)
-      return NextResponse.json(
-        { 
-          error: 'Authentication failed',
-          message: error instanceof Error ? error.message : 'Unknown error',
-          details: error instanceof Error ? error.stack : undefined
-        },
-        { status: 500 }
-      )
-    }
+    const { user, token } = await authenticateWallet(walletAddress)
 
-    const { user, token } = authResult
+    // Process referral if this is a new user and referral code is provided
+    if (!existingUser && referralCode) {
+      console.log('🔗 Processing referral for new user...')
+      try {
+        const referralResponse = await fetch(`${process.env.NEXT_PUBLIC_APP_URL}/api/referrals/process`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            referralCode,
+            newUserId: user.id
+          })
+        })
+
+        if (referralResponse.ok) {
+          console.log('✅ Referral processed successfully')
+        }
+      } catch (referralError) {
+        console.error('❌ Referral processing failed:', referralError)
+        // Don't fail the wallet connection if referral processing fails
+      }
+    }
 
     // Create response
     const response = NextResponse.json({
@@ -93,24 +83,19 @@ export async function POST(req: NextRequest) {
         isAdmin: user.isAdmin,
         totalPoints: user.totalPoints,
         twitterUsername: user.twitterUsername,
+        referralCode: user.referralCode,
       },
       message: 'Wallet connected successfully'
     })
 
     // Set auth cookie
-    console.log('🍪 Setting auth cookie...')
-    try {
-      response.cookies.set('auth-token', token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === 'production',
-        sameSite: 'lax',
-        maxAge: 60 * 60 * 24, // 24 hours
-        path: '/',
-      })
-      console.log('✅ Auth cookie set successfully')
-    } catch (error) {
-      console.error('❌ Failed to set cookie:', error)
-    }
+    response.cookies.set('auth-token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 60 * 60 * 24, // 24 hours
+      path: '/',
+    })
 
     return response
 
@@ -119,8 +104,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       { 
         error: 'Internal server error',
-        message: error instanceof Error ? error.message : 'Unknown error',
-        stack: process.env.NODE_ENV === 'development' ? (error instanceof Error ? error.stack : undefined) : undefined
+        message: error instanceof Error ? error.message : 'Unknown error'
       },
       { status: 500 }
     )
