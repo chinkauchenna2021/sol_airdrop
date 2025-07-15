@@ -7,10 +7,14 @@ import {
   Star, Activity, Target, Gift, Zap, ArrowUpRight,
   CheckCircle, Circle, Calendar, Award, Copy, Check,
   Eye, Heart, MessageCircle, Repeat, UserPlus, Share2,
-  ExternalLink, Crown, Medal,
-  Clock
+  ExternalLink, Crown, Medal, Clock, BarChart3
 } from 'lucide-react'
 import toast from 'react-hot-toast'
+
+// Import the new components
+import { TasksComponent } from '@/components/dashboard/Tasks'
+import { RewardsComponent } from '@/components/dashboard/Rewards'
+import { AnalyticsComponent } from '@/components/dashboard/Analytics'
 
 interface DashboardData {
   user: {
@@ -261,10 +265,10 @@ export default function EnhancedDashboard() {
         <div className="flex space-x-1 bg-black/20 backdrop-blur-xl rounded-2xl p-1">
           {[
             { id: 'overview', name: 'Overview', icon: Activity },
-            { id: 'referrals', name: 'Referrals', icon: UserPlus },
             { id: 'tasks', name: 'Tasks', icon: Target },
             { id: 'rewards', name: 'Rewards', icon: Gift },
-            { id: 'analytics', name: 'Analytics', icon: TrendingUp }
+            { id: 'referrals', name: 'Referrals', icon: UserPlus },
+            { id: 'analytics', name: 'Analytics', icon: BarChart3 }
           ].map((tab) => (
             <motion.button
               key={tab.id}
@@ -472,6 +476,39 @@ export default function EnhancedDashboard() {
             </motion.div>
           )}
 
+          {activeTab === 'tasks' && (
+            <motion.div
+              key="tasks"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+            >
+              <TasksComponent userId={data.user.id} />
+            </motion.div>
+          )}
+
+          {activeTab === 'rewards' && (
+            <motion.div
+              key="rewards"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+            >
+              <RewardsComponent userId={data.user.id} />
+            </motion.div>
+          )}
+
+          {activeTab === 'analytics' && (
+            <motion.div
+              key="analytics"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+            >
+              <AnalyticsComponent userId={data.user.id} />
+            </motion.div>
+          )}
+
           {activeTab === 'referrals' && (
             <motion.div
               key="referrals"
@@ -661,51 +698,6 @@ export default function EnhancedDashboard() {
                   </div>
                 )}
               </motion.div>
-            </motion.div>
-          )}
-
-          {activeTab === 'tasks' && (
-            <motion.div
-              key="tasks"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="space-y-6"
-            >
-              <h2 className="text-3xl font-bold text-white">Available Tasks</h2>
-              <div className="text-gray-400 text-center py-20">
-                Tasks system will be implemented here
-              </div>
-            </motion.div>
-          )}
-
-          {activeTab === 'rewards' && (
-            <motion.div
-              key="rewards"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="space-y-6"
-            >
-              <h2 className="text-3xl font-bold text-white">Rewards & Achievements</h2>
-              <div className="text-gray-400 text-center py-20">
-                Rewards system will be implemented here
-              </div>
-            </motion.div>
-          )}
-
-          {activeTab === 'analytics' && (
-            <motion.div
-              key="analytics"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="space-y-6"
-            >
-              <h2 className="text-3xl font-bold text-white">Analytics Dashboard</h2>
-              <div className="text-gray-400 text-center py-20">
-                Analytics system will be implemented here
-              </div>
             </motion.div>
           )}
         </AnimatePresence>
