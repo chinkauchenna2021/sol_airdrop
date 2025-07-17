@@ -139,7 +139,13 @@ exports.Prisma.UserScalarFieldEnum = {
   isAdmin: 'isAdmin',
   isActive: 'isActive',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  permissions: 'permissions',
+  riskScore: 'riskScore',
+  suspiciousFlags: 'suspiciousFlags',
+  isBanned: 'isBanned',
+  bannedAt: 'bannedAt',
+  lastActivity: 'lastActivity'
 };
 
 exports.Prisma.AchievementScalarFieldEnum = {
@@ -203,6 +209,56 @@ exports.Prisma.TaskScalarFieldEnum = {
   requirements: 'requirements',
   isActive: 'isActive',
   expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AdminSessionScalarFieldEnum = {
+  id: 'id',
+  adminId: 'adminId',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  permissions: 'permissions',
+  expiresAt: 'expiresAt',
+  lastActivity: 'lastActivity',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AdminAuditLogScalarFieldEnum = {
+  id: 'id',
+  adminId: 'adminId',
+  action: 'action',
+  metadata: 'metadata',
+  timestamp: 'timestamp',
+  ipAddress: 'ipAddress'
+};
+
+exports.Prisma.FraudAlertScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  severity: 'severity',
+  userId: 'userId',
+  description: 'description',
+  evidence: 'evidence',
+  riskScore: 'riskScore',
+  status: 'status',
+  createdAt: 'createdAt',
+  investigatedBy: 'investigatedBy',
+  resolvedAt: 'resolvedAt'
+};
+
+exports.Prisma.CampaignConfigScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  tokenMint: 'tokenMint',
+  totalAllocation: 'totalAllocation',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  eligibilityCriteria: 'eligibilityCriteria',
+  distributionRules: 'distributionRules',
+  isActive: 'isActive',
+  createdBy: 'createdBy',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -275,12 +331,12 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.JsonNullValueInput = {
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull
 };
 
-exports.Prisma.NullableJsonNullValueInput = {
-  DbNull: Prisma.DbNull,
+exports.Prisma.JsonNullValueInput = {
   JsonNull: Prisma.JsonNull
 };
 
@@ -289,15 +345,15 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
-};
-
 exports.Prisma.JsonNullValueFilter = {
   DbNull: Prisma.DbNull,
   JsonNull: Prisma.JsonNull,
   AnyNull: Prisma.AnyNull
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 exports.TwitterActivity = exports.$Enums.TwitterActivity = {
   HIGH: 'HIGH',
@@ -351,6 +407,10 @@ exports.Prisma.ModelName = {
   TwitterAnalytics: 'TwitterAnalytics',
   TwitterEngagement: 'TwitterEngagement',
   Task: 'Task',
+  AdminSession: 'AdminSession',
+  AdminAuditLog: 'AdminAuditLog',
+  FraudAlert: 'FraudAlert',
+  CampaignConfig: 'CampaignConfig',
   TaskCompletion: 'TaskCompletion',
   Claim: 'Claim',
   PointHistory: 'PointHistory',

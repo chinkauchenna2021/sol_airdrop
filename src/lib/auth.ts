@@ -132,10 +132,17 @@ export async function setAuthCookie(token: string, response?: NextResponse): Pro
   }
 }
 
+
 export async function clearAuthCookie(response?: NextResponse): Promise<NextResponse | void> {
   if (response) {
-    // When called from API routes
-    response.cookies.delete('auth-token')
+    // When called from API routes - properly clear the cookie
+    response.cookies.set('auth-token', '', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      maxAge: 0, // Expire immediately
+      path: '/',
+    })
     return response
   } else {
     // When called from server actions/components
@@ -161,7 +168,7 @@ export async function authenticateWallet(walletAddress: string) {
     // Find existing user
     console.log('👤 Looking for existing user...')
     let user = await prisma.user.findUnique({
-      where: { walletAddress },
+      where: {walletAddress: walletAddress },
     })
 
     const isNewUser = !user

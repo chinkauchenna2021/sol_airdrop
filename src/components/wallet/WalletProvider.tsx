@@ -8,16 +8,9 @@ import {
   SolflareWalletAdapter,
   TorusWalletAdapter,
   LedgerWalletAdapter,
-  UnsafeBurnerWalletAdapter,
-//   SolletWalletAdapter,
-//   SolletExtensionWalletAdapter,
 } from '@solana/wallet-adapter-wallets'
-import { WalletModalProvider ,     WalletDisconnectButton, WalletMultiButton } from '@solana/wallet-adapter-react-ui'
+import { WalletModalProvider } from '@solana/wallet-adapter-react-ui'
 import { clusterApiUrl } from '@solana/web3.js'
-
-
-
-
 
 // Import wallet adapter CSS
 import '@solana/wallet-adapter-react-ui/styles.css';
@@ -29,28 +22,28 @@ interface WalletProviderProps {
 export function WalletProvider({ children }: WalletProviderProps) {
   const network = (process.env.NEXT_PUBLIC_SOLANA_NETWORK || 'devnet') as WalletAdapterNetwork
   const endpoint = useMemo(() => 
-    process.env.NEXT_PUBLIC_SOLANA_RPC_URL || clusterApiUrl(network),
+    process.env.NEXT_PUBLIC_SOLANA_RPC_URL as string || clusterApiUrl(network),
     [network]
   )
-
+  console.log(endpoint)
   const wallets = useMemo(
     () => [
       new PhantomWalletAdapter(),
       new SolflareWalletAdapter(),
       new TorusWalletAdapter(),
       new LedgerWalletAdapter(),
-    //   new SolletWalletAdapter({ network }),
-    //   new SolletExtensionWalletAdapter({ network }),
-    // new UnsafeBurnerWalletAdapter(),
     ],
     [network]
   )
 
   return (
     <ConnectionProvider endpoint={endpoint}>
-      <SolanaWalletProvider wallets={wallets} autoConnect>
+      <SolanaWalletProvider 
+        wallets={wallets} 
+        autoConnect={true} // IMPORTANT: Disable auto-connect to prevent reconnection
+      >
         <WalletModalProvider>
-            {children}
+          {children}
         </WalletModalProvider>
       </SolanaWalletProvider>
     </ConnectionProvider>

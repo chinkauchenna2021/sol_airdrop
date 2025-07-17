@@ -11,6 +11,7 @@ export async function POST(req: NextRequest) {
     let body;
     try {
       body = await req.json()
+      console.log(body,"=======Body=====")
       console.log('📦 Request body parsed:', { 
         walletAddress: body?.walletAddress,
         hasReferralCode: !!body?.referralCode 

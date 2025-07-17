@@ -41,6 +41,19 @@ model User {
   // ADD: New relations
   achievements      UserAchievement[]
   notifications     Notification[]
+
+  permissions     Json?      // For role-based access control
+  riskScore       Int        @default(0)
+  suspiciousFlags String[]   @default([])
+  isBanned        Boolean    @default(false)
+  bannedAt        DateTime?
+  lastActivity    DateTime?
+  
+  // Relations
+  adminSessions   AdminSession[]
+  auditLogs       AdminAuditLog[]
+  fraudAlerts     FraudAlert[]
+  campaigns       CampaignConfig[]
   
   @@index([walletAddress])
   @@index([twitterId])
@@ -160,6 +173,77 @@ model Task {
   @@index([type])
   @@index([isActive])
 }
+
+
+
+model AdminSession {
+  id           String   @id @default(cuid())
+  adminId      String
+  ipAddress    String
+  userAgent    String
+  permissions  Json
+  expiresAt    DateTime
+  lastActivity DateTime
+  createdAt    DateTime @default(now())
+
+  admin User @relation(fields: [adminId], references: [id], onDelete: Cascade)
+
+  @@map("admin_sessions")
+}
+
+model AdminAuditLog {
+  id        String   @id @default(cuid())
+  adminId   String
+  action    String
+  metadata  Json
+  timestamp DateTime @default(now())
+  ipAddress String
+
+  admin User @relation(fields: [adminId], references: [id], onDelete: Cascade)
+
+  @@map("admin_audit_logs")
+}
+
+model FraudAlert {
+  id          String   @id @default(cuid())
+  type        String   // SYBIL_ATTACK, WALLET_CLUSTERING, etc.
+  severity    String   // LOW, MEDIUM, HIGH, CRITICAL
+  userId      String
+  description String
+  evidence    Json
+  riskScore   Int
+  status      String   @default("PENDING") // PENDING, INVESTIGATING, RESOLVED, FALSE_POSITIVE
+  createdAt   DateTime @default(now())
+  investigatedBy String?
+  resolvedAt  DateTime?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("fraud_alerts")
+}
+
+model CampaignConfig {
+  id              String   @id @default(cuid())
+  name            String
+  description     String?
+  tokenMint       String
+  totalAllocation BigInt
+  startDate       DateTime
+  endDate         DateTime
+  eligibilityCriteria Json
+  distributionRules   Json
+  isActive        Boolean  @default(true)
+  createdBy       String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  creator User @relation(fields: [createdBy], references: [id])
+
+  @@map("campaign_configs")
+}
+
+
+
 
 model TaskCompletion {
   id                String           @id @default(cuid())

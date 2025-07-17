@@ -61,9 +61,10 @@ export default function CryptoFooter() {
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-black to-purple-900">
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" suppressHydrationWarning>
         {[...Array(20)].map((_, i) => (
           <motion.div
+            suppressHydrationWarning
             key={i}
             className="absolute w-1 h-1 bg-purple-400 rounded-full opacity-30"
             animate={{

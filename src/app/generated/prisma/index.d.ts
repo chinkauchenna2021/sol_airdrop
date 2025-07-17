@@ -49,6 +49,26 @@ export type TwitterEngagement = $Result.DefaultSelection<Prisma.$TwitterEngageme
  */
 export type Task = $Result.DefaultSelection<Prisma.$TaskPayload>
 /**
+ * Model AdminSession
+ * 
+ */
+export type AdminSession = $Result.DefaultSelection<Prisma.$AdminSessionPayload>
+/**
+ * Model AdminAuditLog
+ * 
+ */
+export type AdminAuditLog = $Result.DefaultSelection<Prisma.$AdminAuditLogPayload>
+/**
+ * Model FraudAlert
+ * 
+ */
+export type FraudAlert = $Result.DefaultSelection<Prisma.$FraudAlertPayload>
+/**
+ * Model CampaignConfig
+ * 
+ */
+export type CampaignConfig = $Result.DefaultSelection<Prisma.$CampaignConfigPayload>
+/**
  * Model TaskCompletion
  * 
  */
@@ -364,6 +384,46 @@ export class PrismaClient<
     * ```
     */
   get task(): Prisma.TaskDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.adminSession`: Exposes CRUD operations for the **AdminSession** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AdminSessions
+    * const adminSessions = await prisma.adminSession.findMany()
+    * ```
+    */
+  get adminSession(): Prisma.AdminSessionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.adminAuditLog`: Exposes CRUD operations for the **AdminAuditLog** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AdminAuditLogs
+    * const adminAuditLogs = await prisma.adminAuditLog.findMany()
+    * ```
+    */
+  get adminAuditLog(): Prisma.AdminAuditLogDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.fraudAlert`: Exposes CRUD operations for the **FraudAlert** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more FraudAlerts
+    * const fraudAlerts = await prisma.fraudAlert.findMany()
+    * ```
+    */
+  get fraudAlert(): Prisma.FraudAlertDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.campaignConfig`: Exposes CRUD operations for the **CampaignConfig** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CampaignConfigs
+    * const campaignConfigs = await prisma.campaignConfig.findMany()
+    * ```
+    */
+  get campaignConfig(): Prisma.CampaignConfigDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.taskCompletion`: Exposes CRUD operations for the **TaskCompletion** model.
@@ -871,6 +931,10 @@ export namespace Prisma {
     TwitterAnalytics: 'TwitterAnalytics',
     TwitterEngagement: 'TwitterEngagement',
     Task: 'Task',
+    AdminSession: 'AdminSession',
+    AdminAuditLog: 'AdminAuditLog',
+    FraudAlert: 'FraudAlert',
+    CampaignConfig: 'CampaignConfig',
     TaskCompletion: 'TaskCompletion',
     Claim: 'Claim',
     PointHistory: 'PointHistory',
@@ -895,7 +959,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "achievement" | "userAchievement" | "notification" | "twitterAnalytics" | "twitterEngagement" | "task" | "taskCompletion" | "claim" | "pointHistory" | "referral" | "systemConfig" | "analytics"
+      modelProps: "user" | "achievement" | "userAchievement" | "notification" | "twitterAnalytics" | "twitterEngagement" | "task" | "adminSession" | "adminAuditLog" | "fraudAlert" | "campaignConfig" | "taskCompletion" | "claim" | "pointHistory" | "referral" | "systemConfig" | "analytics"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1414,6 +1478,302 @@ export namespace Prisma {
           count: {
             args: Prisma.TaskCountArgs<ExtArgs>
             result: $Utils.Optional<TaskCountAggregateOutputType> | number
+          }
+        }
+      }
+      AdminSession: {
+        payload: Prisma.$AdminSessionPayload<ExtArgs>
+        fields: Prisma.AdminSessionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AdminSessionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminSessionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AdminSessionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminSessionPayload>
+          }
+          findFirst: {
+            args: Prisma.AdminSessionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminSessionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AdminSessionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminSessionPayload>
+          }
+          findMany: {
+            args: Prisma.AdminSessionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminSessionPayload>[]
+          }
+          create: {
+            args: Prisma.AdminSessionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminSessionPayload>
+          }
+          createMany: {
+            args: Prisma.AdminSessionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AdminSessionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminSessionPayload>[]
+          }
+          delete: {
+            args: Prisma.AdminSessionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminSessionPayload>
+          }
+          update: {
+            args: Prisma.AdminSessionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminSessionPayload>
+          }
+          deleteMany: {
+            args: Prisma.AdminSessionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AdminSessionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AdminSessionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminSessionPayload>[]
+          }
+          upsert: {
+            args: Prisma.AdminSessionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminSessionPayload>
+          }
+          aggregate: {
+            args: Prisma.AdminSessionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAdminSession>
+          }
+          groupBy: {
+            args: Prisma.AdminSessionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AdminSessionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AdminSessionCountArgs<ExtArgs>
+            result: $Utils.Optional<AdminSessionCountAggregateOutputType> | number
+          }
+        }
+      }
+      AdminAuditLog: {
+        payload: Prisma.$AdminAuditLogPayload<ExtArgs>
+        fields: Prisma.AdminAuditLogFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AdminAuditLogFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminAuditLogPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AdminAuditLogFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>
+          }
+          findFirst: {
+            args: Prisma.AdminAuditLogFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminAuditLogPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AdminAuditLogFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>
+          }
+          findMany: {
+            args: Prisma.AdminAuditLogFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>[]
+          }
+          create: {
+            args: Prisma.AdminAuditLogCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>
+          }
+          createMany: {
+            args: Prisma.AdminAuditLogCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AdminAuditLogCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>[]
+          }
+          delete: {
+            args: Prisma.AdminAuditLogDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>
+          }
+          update: {
+            args: Prisma.AdminAuditLogUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>
+          }
+          deleteMany: {
+            args: Prisma.AdminAuditLogDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AdminAuditLogUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AdminAuditLogUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>[]
+          }
+          upsert: {
+            args: Prisma.AdminAuditLogUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>
+          }
+          aggregate: {
+            args: Prisma.AdminAuditLogAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAdminAuditLog>
+          }
+          groupBy: {
+            args: Prisma.AdminAuditLogGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AdminAuditLogGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AdminAuditLogCountArgs<ExtArgs>
+            result: $Utils.Optional<AdminAuditLogCountAggregateOutputType> | number
+          }
+        }
+      }
+      FraudAlert: {
+        payload: Prisma.$FraudAlertPayload<ExtArgs>
+        fields: Prisma.FraudAlertFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.FraudAlertFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FraudAlertPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.FraudAlertFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FraudAlertPayload>
+          }
+          findFirst: {
+            args: Prisma.FraudAlertFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FraudAlertPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.FraudAlertFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FraudAlertPayload>
+          }
+          findMany: {
+            args: Prisma.FraudAlertFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FraudAlertPayload>[]
+          }
+          create: {
+            args: Prisma.FraudAlertCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FraudAlertPayload>
+          }
+          createMany: {
+            args: Prisma.FraudAlertCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.FraudAlertCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FraudAlertPayload>[]
+          }
+          delete: {
+            args: Prisma.FraudAlertDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FraudAlertPayload>
+          }
+          update: {
+            args: Prisma.FraudAlertUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FraudAlertPayload>
+          }
+          deleteMany: {
+            args: Prisma.FraudAlertDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.FraudAlertUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FraudAlertUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FraudAlertPayload>[]
+          }
+          upsert: {
+            args: Prisma.FraudAlertUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FraudAlertPayload>
+          }
+          aggregate: {
+            args: Prisma.FraudAlertAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateFraudAlert>
+          }
+          groupBy: {
+            args: Prisma.FraudAlertGroupByArgs<ExtArgs>
+            result: $Utils.Optional<FraudAlertGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.FraudAlertCountArgs<ExtArgs>
+            result: $Utils.Optional<FraudAlertCountAggregateOutputType> | number
+          }
+        }
+      }
+      CampaignConfig: {
+        payload: Prisma.$CampaignConfigPayload<ExtArgs>
+        fields: Prisma.CampaignConfigFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CampaignConfigFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignConfigPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CampaignConfigFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignConfigPayload>
+          }
+          findFirst: {
+            args: Prisma.CampaignConfigFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignConfigPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CampaignConfigFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignConfigPayload>
+          }
+          findMany: {
+            args: Prisma.CampaignConfigFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignConfigPayload>[]
+          }
+          create: {
+            args: Prisma.CampaignConfigCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignConfigPayload>
+          }
+          createMany: {
+            args: Prisma.CampaignConfigCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.CampaignConfigCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignConfigPayload>[]
+          }
+          delete: {
+            args: Prisma.CampaignConfigDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignConfigPayload>
+          }
+          update: {
+            args: Prisma.CampaignConfigUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignConfigPayload>
+          }
+          deleteMany: {
+            args: Prisma.CampaignConfigDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CampaignConfigUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.CampaignConfigUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignConfigPayload>[]
+          }
+          upsert: {
+            args: Prisma.CampaignConfigUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignConfigPayload>
+          }
+          aggregate: {
+            args: Prisma.CampaignConfigAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCampaignConfig>
+          }
+          groupBy: {
+            args: Prisma.CampaignConfigGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CampaignConfigGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CampaignConfigCountArgs<ExtArgs>
+            result: $Utils.Optional<CampaignConfigCountAggregateOutputType> | number
           }
         }
       }
@@ -1952,6 +2312,10 @@ export namespace Prisma {
     twitterAnalytics?: TwitterAnalyticsOmit
     twitterEngagement?: TwitterEngagementOmit
     task?: TaskOmit
+    adminSession?: AdminSessionOmit
+    adminAuditLog?: AdminAuditLogOmit
+    fraudAlert?: FraudAlertOmit
+    campaignConfig?: CampaignConfigOmit
     taskCompletion?: TaskCompletionOmit
     claim?: ClaimOmit
     pointHistory?: PointHistoryOmit
@@ -2059,6 +2423,10 @@ export namespace Prisma {
     referrals: number
     achievements: number
     notifications: number
+    adminSessions: number
+    auditLogs: number
+    fraudAlerts: number
+    campaigns: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2069,6 +2437,10 @@ export namespace Prisma {
     referrals?: boolean | UserCountOutputTypeCountReferralsArgs
     achievements?: boolean | UserCountOutputTypeCountAchievementsArgs
     notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
+    adminSessions?: boolean | UserCountOutputTypeCountAdminSessionsArgs
+    auditLogs?: boolean | UserCountOutputTypeCountAuditLogsArgs
+    fraudAlerts?: boolean | UserCountOutputTypeCountFraudAlertsArgs
+    campaigns?: boolean | UserCountOutputTypeCountCampaignsArgs
   }
 
   // Custom InputTypes
@@ -2129,6 +2501,34 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: NotificationWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAdminSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminSessionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAuditLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminAuditLogWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountFraudAlertsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FraudAlertWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountCampaignsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CampaignConfigWhereInput
   }
 
 
@@ -2216,6 +2616,7 @@ export namespace Prisma {
     streak: number | null
     totalPoints: number | null
     rank: number | null
+    riskScore: number | null
   }
 
   export type UserSumAggregateOutputType = {
@@ -2224,6 +2625,7 @@ export namespace Prisma {
     streak: number | null
     totalPoints: number | null
     rank: number | null
+    riskScore: number | null
   }
 
   export type UserMinAggregateOutputType = {
@@ -2246,6 +2648,10 @@ export namespace Prisma {
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    riskScore: number | null
+    isBanned: boolean | null
+    bannedAt: Date | null
+    lastActivity: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -2268,6 +2674,10 @@ export namespace Prisma {
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    riskScore: number | null
+    isBanned: boolean | null
+    bannedAt: Date | null
+    lastActivity: Date | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -2290,6 +2700,12 @@ export namespace Prisma {
     isActive: number
     createdAt: number
     updatedAt: number
+    permissions: number
+    riskScore: number
+    suspiciousFlags: number
+    isBanned: number
+    bannedAt: number
+    lastActivity: number
     _all: number
   }
 
@@ -2300,6 +2716,7 @@ export namespace Prisma {
     streak?: true
     totalPoints?: true
     rank?: true
+    riskScore?: true
   }
 
   export type UserSumAggregateInputType = {
@@ -2308,6 +2725,7 @@ export namespace Prisma {
     streak?: true
     totalPoints?: true
     rank?: true
+    riskScore?: true
   }
 
   export type UserMinAggregateInputType = {
@@ -2330,6 +2748,10 @@ export namespace Prisma {
     isActive?: true
     createdAt?: true
     updatedAt?: true
+    riskScore?: true
+    isBanned?: true
+    bannedAt?: true
+    lastActivity?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -2352,6 +2774,10 @@ export namespace Prisma {
     isActive?: true
     createdAt?: true
     updatedAt?: true
+    riskScore?: true
+    isBanned?: true
+    bannedAt?: true
+    lastActivity?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -2374,6 +2800,12 @@ export namespace Prisma {
     isActive?: true
     createdAt?: true
     updatedAt?: true
+    permissions?: true
+    riskScore?: true
+    suspiciousFlags?: true
+    isBanned?: true
+    bannedAt?: true
+    lastActivity?: true
     _all?: true
   }
 
@@ -2483,6 +2915,12 @@ export namespace Prisma {
     isActive: boolean
     createdAt: Date
     updatedAt: Date
+    permissions: JsonValue | null
+    riskScore: number
+    suspiciousFlags: string[]
+    isBanned: boolean
+    bannedAt: Date | null
+    lastActivity: Date | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -2524,6 +2962,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    permissions?: boolean
+    riskScore?: boolean
+    suspiciousFlags?: boolean
+    isBanned?: boolean
+    bannedAt?: boolean
+    lastActivity?: boolean
     engagements?: boolean | User$engagementsArgs<ExtArgs>
     tasks?: boolean | User$tasksArgs<ExtArgs>
     claims?: boolean | User$claimsArgs<ExtArgs>
@@ -2532,6 +2976,10 @@ export namespace Prisma {
     referredBy?: boolean | User$referredByArgs<ExtArgs>
     achievements?: boolean | User$achievementsArgs<ExtArgs>
     notifications?: boolean | User$notificationsArgs<ExtArgs>
+    adminSessions?: boolean | User$adminSessionsArgs<ExtArgs>
+    auditLogs?: boolean | User$auditLogsArgs<ExtArgs>
+    fraudAlerts?: boolean | User$fraudAlertsArgs<ExtArgs>
+    campaigns?: boolean | User$campaignsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2555,6 +3003,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    permissions?: boolean
+    riskScore?: boolean
+    suspiciousFlags?: boolean
+    isBanned?: boolean
+    bannedAt?: boolean
+    lastActivity?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2577,6 +3031,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    permissions?: boolean
+    riskScore?: boolean
+    suspiciousFlags?: boolean
+    isBanned?: boolean
+    bannedAt?: boolean
+    lastActivity?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -2599,9 +3059,15 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    permissions?: boolean
+    riskScore?: boolean
+    suspiciousFlags?: boolean
+    isBanned?: boolean
+    bannedAt?: boolean
+    lastActivity?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walletAddress" | "twitterId" | "twitterUsername" | "twitterName" | "twitterImage" | "twitterFollowers" | "twitterActivity" | "level" | "streak" | "lastCheckIn" | "referralCode" | "email" | "totalPoints" | "rank" | "isAdmin" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walletAddress" | "twitterId" | "twitterUsername" | "twitterName" | "twitterImage" | "twitterFollowers" | "twitterActivity" | "level" | "streak" | "lastCheckIn" | "referralCode" | "email" | "totalPoints" | "rank" | "isAdmin" | "isActive" | "createdAt" | "updatedAt" | "permissions" | "riskScore" | "suspiciousFlags" | "isBanned" | "bannedAt" | "lastActivity", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     engagements?: boolean | User$engagementsArgs<ExtArgs>
     tasks?: boolean | User$tasksArgs<ExtArgs>
@@ -2611,6 +3077,10 @@ export namespace Prisma {
     referredBy?: boolean | User$referredByArgs<ExtArgs>
     achievements?: boolean | User$achievementsArgs<ExtArgs>
     notifications?: boolean | User$notificationsArgs<ExtArgs>
+    adminSessions?: boolean | User$adminSessionsArgs<ExtArgs>
+    auditLogs?: boolean | User$auditLogsArgs<ExtArgs>
+    fraudAlerts?: boolean | User$fraudAlertsArgs<ExtArgs>
+    campaigns?: boolean | User$campaignsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2627,6 +3097,10 @@ export namespace Prisma {
       referredBy: Prisma.$ReferralPayload<ExtArgs> | null
       achievements: Prisma.$UserAchievementPayload<ExtArgs>[]
       notifications: Prisma.$NotificationPayload<ExtArgs>[]
+      adminSessions: Prisma.$AdminSessionPayload<ExtArgs>[]
+      auditLogs: Prisma.$AdminAuditLogPayload<ExtArgs>[]
+      fraudAlerts: Prisma.$FraudAlertPayload<ExtArgs>[]
+      campaigns: Prisma.$CampaignConfigPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2648,6 +3122,12 @@ export namespace Prisma {
       isActive: boolean
       createdAt: Date
       updatedAt: Date
+      permissions: Prisma.JsonValue | null
+      riskScore: number
+      suspiciousFlags: string[]
+      isBanned: boolean
+      bannedAt: Date | null
+      lastActivity: Date | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -3050,6 +3530,10 @@ export namespace Prisma {
     referredBy<T extends User$referredByArgs<ExtArgs> = {}>(args?: Subset<T, User$referredByArgs<ExtArgs>>): Prisma__ReferralClient<$Result.GetResult<Prisma.$ReferralPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     achievements<T extends User$achievementsArgs<ExtArgs> = {}>(args?: Subset<T, User$achievementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAchievementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     notifications<T extends User$notificationsArgs<ExtArgs> = {}>(args?: Subset<T, User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    adminSessions<T extends User$adminSessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$adminSessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    auditLogs<T extends User$auditLogsArgs<ExtArgs> = {}>(args?: Subset<T, User$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    fraudAlerts<T extends User$fraudAlertsArgs<ExtArgs> = {}>(args?: Subset<T, User$fraudAlertsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FraudAlertPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    campaigns<T extends User$campaignsArgs<ExtArgs> = {}>(args?: Subset<T, User$campaignsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CampaignConfigPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3098,6 +3582,12 @@ export namespace Prisma {
     readonly isActive: FieldRef<"User", 'Boolean'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly permissions: FieldRef<"User", 'Json'>
+    readonly riskScore: FieldRef<"User", 'Int'>
+    readonly suspiciousFlags: FieldRef<"User", 'String[]'>
+    readonly isBanned: FieldRef<"User", 'Boolean'>
+    readonly bannedAt: FieldRef<"User", 'DateTime'>
+    readonly lastActivity: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -3670,6 +4160,102 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: NotificationScalarFieldEnum | NotificationScalarFieldEnum[]
+  }
+
+  /**
+   * User.adminSessions
+   */
+  export type User$adminSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminSession
+     */
+    select?: AdminSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminSession
+     */
+    omit?: AdminSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminSessionInclude<ExtArgs> | null
+    where?: AdminSessionWhereInput
+    orderBy?: AdminSessionOrderByWithRelationInput | AdminSessionOrderByWithRelationInput[]
+    cursor?: AdminSessionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AdminSessionScalarFieldEnum | AdminSessionScalarFieldEnum[]
+  }
+
+  /**
+   * User.auditLogs
+   */
+  export type User$auditLogsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminAuditLog
+     */
+    select?: AdminAuditLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminAuditLog
+     */
+    omit?: AdminAuditLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminAuditLogInclude<ExtArgs> | null
+    where?: AdminAuditLogWhereInput
+    orderBy?: AdminAuditLogOrderByWithRelationInput | AdminAuditLogOrderByWithRelationInput[]
+    cursor?: AdminAuditLogWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AdminAuditLogScalarFieldEnum | AdminAuditLogScalarFieldEnum[]
+  }
+
+  /**
+   * User.fraudAlerts
+   */
+  export type User$fraudAlertsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FraudAlert
+     */
+    select?: FraudAlertSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FraudAlert
+     */
+    omit?: FraudAlertOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FraudAlertInclude<ExtArgs> | null
+    where?: FraudAlertWhereInput
+    orderBy?: FraudAlertOrderByWithRelationInput | FraudAlertOrderByWithRelationInput[]
+    cursor?: FraudAlertWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: FraudAlertScalarFieldEnum | FraudAlertScalarFieldEnum[]
+  }
+
+  /**
+   * User.campaigns
+   */
+  export type User$campaignsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CampaignConfig
+     */
+    select?: CampaignConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CampaignConfig
+     */
+    omit?: CampaignConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CampaignConfigInclude<ExtArgs> | null
+    where?: CampaignConfigWhereInput
+    orderBy?: CampaignConfigOrderByWithRelationInput | CampaignConfigOrderByWithRelationInput[]
+    cursor?: CampaignConfigWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CampaignConfigScalarFieldEnum | CampaignConfigScalarFieldEnum[]
   }
 
   /**
@@ -10408,6 +10994,4520 @@ export namespace Prisma {
 
 
   /**
+   * Model AdminSession
+   */
+
+  export type AggregateAdminSession = {
+    _count: AdminSessionCountAggregateOutputType | null
+    _min: AdminSessionMinAggregateOutputType | null
+    _max: AdminSessionMaxAggregateOutputType | null
+  }
+
+  export type AdminSessionMinAggregateOutputType = {
+    id: string | null
+    adminId: string | null
+    ipAddress: string | null
+    userAgent: string | null
+    expiresAt: Date | null
+    lastActivity: Date | null
+    createdAt: Date | null
+  }
+
+  export type AdminSessionMaxAggregateOutputType = {
+    id: string | null
+    adminId: string | null
+    ipAddress: string | null
+    userAgent: string | null
+    expiresAt: Date | null
+    lastActivity: Date | null
+    createdAt: Date | null
+  }
+
+  export type AdminSessionCountAggregateOutputType = {
+    id: number
+    adminId: number
+    ipAddress: number
+    userAgent: number
+    permissions: number
+    expiresAt: number
+    lastActivity: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type AdminSessionMinAggregateInputType = {
+    id?: true
+    adminId?: true
+    ipAddress?: true
+    userAgent?: true
+    expiresAt?: true
+    lastActivity?: true
+    createdAt?: true
+  }
+
+  export type AdminSessionMaxAggregateInputType = {
+    id?: true
+    adminId?: true
+    ipAddress?: true
+    userAgent?: true
+    expiresAt?: true
+    lastActivity?: true
+    createdAt?: true
+  }
+
+  export type AdminSessionCountAggregateInputType = {
+    id?: true
+    adminId?: true
+    ipAddress?: true
+    userAgent?: true
+    permissions?: true
+    expiresAt?: true
+    lastActivity?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type AdminSessionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AdminSession to aggregate.
+     */
+    where?: AdminSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdminSessions to fetch.
+     */
+    orderBy?: AdminSessionOrderByWithRelationInput | AdminSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AdminSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdminSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdminSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AdminSessions
+    **/
+    _count?: true | AdminSessionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AdminSessionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AdminSessionMaxAggregateInputType
+  }
+
+  export type GetAdminSessionAggregateType<T extends AdminSessionAggregateArgs> = {
+        [P in keyof T & keyof AggregateAdminSession]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAdminSession[P]>
+      : GetScalarType<T[P], AggregateAdminSession[P]>
+  }
+
+
+
+
+  export type AdminSessionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminSessionWhereInput
+    orderBy?: AdminSessionOrderByWithAggregationInput | AdminSessionOrderByWithAggregationInput[]
+    by: AdminSessionScalarFieldEnum[] | AdminSessionScalarFieldEnum
+    having?: AdminSessionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AdminSessionCountAggregateInputType | true
+    _min?: AdminSessionMinAggregateInputType
+    _max?: AdminSessionMaxAggregateInputType
+  }
+
+  export type AdminSessionGroupByOutputType = {
+    id: string
+    adminId: string
+    ipAddress: string
+    userAgent: string
+    permissions: JsonValue
+    expiresAt: Date
+    lastActivity: Date
+    createdAt: Date
+    _count: AdminSessionCountAggregateOutputType | null
+    _min: AdminSessionMinAggregateOutputType | null
+    _max: AdminSessionMaxAggregateOutputType | null
+  }
+
+  type GetAdminSessionGroupByPayload<T extends AdminSessionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AdminSessionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AdminSessionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AdminSessionGroupByOutputType[P]>
+            : GetScalarType<T[P], AdminSessionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AdminSessionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    adminId?: boolean
+    ipAddress?: boolean
+    userAgent?: boolean
+    permissions?: boolean
+    expiresAt?: boolean
+    lastActivity?: boolean
+    createdAt?: boolean
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["adminSession"]>
+
+  export type AdminSessionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    adminId?: boolean
+    ipAddress?: boolean
+    userAgent?: boolean
+    permissions?: boolean
+    expiresAt?: boolean
+    lastActivity?: boolean
+    createdAt?: boolean
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["adminSession"]>
+
+  export type AdminSessionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    adminId?: boolean
+    ipAddress?: boolean
+    userAgent?: boolean
+    permissions?: boolean
+    expiresAt?: boolean
+    lastActivity?: boolean
+    createdAt?: boolean
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["adminSession"]>
+
+  export type AdminSessionSelectScalar = {
+    id?: boolean
+    adminId?: boolean
+    ipAddress?: boolean
+    userAgent?: boolean
+    permissions?: boolean
+    expiresAt?: boolean
+    lastActivity?: boolean
+    createdAt?: boolean
+  }
+
+  export type AdminSessionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "adminId" | "ipAddress" | "userAgent" | "permissions" | "expiresAt" | "lastActivity" | "createdAt", ExtArgs["result"]["adminSession"]>
+  export type AdminSessionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AdminSessionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AdminSessionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $AdminSessionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AdminSession"
+    objects: {
+      admin: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      adminId: string
+      ipAddress: string
+      userAgent: string
+      permissions: Prisma.JsonValue
+      expiresAt: Date
+      lastActivity: Date
+      createdAt: Date
+    }, ExtArgs["result"]["adminSession"]>
+    composites: {}
+  }
+
+  type AdminSessionGetPayload<S extends boolean | null | undefined | AdminSessionDefaultArgs> = $Result.GetResult<Prisma.$AdminSessionPayload, S>
+
+  type AdminSessionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AdminSessionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AdminSessionCountAggregateInputType | true
+    }
+
+  export interface AdminSessionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AdminSession'], meta: { name: 'AdminSession' } }
+    /**
+     * Find zero or one AdminSession that matches the filter.
+     * @param {AdminSessionFindUniqueArgs} args - Arguments to find a AdminSession
+     * @example
+     * // Get one AdminSession
+     * const adminSession = await prisma.adminSession.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AdminSessionFindUniqueArgs>(args: SelectSubset<T, AdminSessionFindUniqueArgs<ExtArgs>>): Prisma__AdminSessionClient<$Result.GetResult<Prisma.$AdminSessionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AdminSession that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AdminSessionFindUniqueOrThrowArgs} args - Arguments to find a AdminSession
+     * @example
+     * // Get one AdminSession
+     * const adminSession = await prisma.adminSession.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AdminSessionFindUniqueOrThrowArgs>(args: SelectSubset<T, AdminSessionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AdminSessionClient<$Result.GetResult<Prisma.$AdminSessionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AdminSession that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminSessionFindFirstArgs} args - Arguments to find a AdminSession
+     * @example
+     * // Get one AdminSession
+     * const adminSession = await prisma.adminSession.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AdminSessionFindFirstArgs>(args?: SelectSubset<T, AdminSessionFindFirstArgs<ExtArgs>>): Prisma__AdminSessionClient<$Result.GetResult<Prisma.$AdminSessionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AdminSession that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminSessionFindFirstOrThrowArgs} args - Arguments to find a AdminSession
+     * @example
+     * // Get one AdminSession
+     * const adminSession = await prisma.adminSession.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AdminSessionFindFirstOrThrowArgs>(args?: SelectSubset<T, AdminSessionFindFirstOrThrowArgs<ExtArgs>>): Prisma__AdminSessionClient<$Result.GetResult<Prisma.$AdminSessionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AdminSessions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminSessionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AdminSessions
+     * const adminSessions = await prisma.adminSession.findMany()
+     * 
+     * // Get first 10 AdminSessions
+     * const adminSessions = await prisma.adminSession.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const adminSessionWithIdOnly = await prisma.adminSession.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AdminSessionFindManyArgs>(args?: SelectSubset<T, AdminSessionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminSessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AdminSession.
+     * @param {AdminSessionCreateArgs} args - Arguments to create a AdminSession.
+     * @example
+     * // Create one AdminSession
+     * const AdminSession = await prisma.adminSession.create({
+     *   data: {
+     *     // ... data to create a AdminSession
+     *   }
+     * })
+     * 
+     */
+    create<T extends AdminSessionCreateArgs>(args: SelectSubset<T, AdminSessionCreateArgs<ExtArgs>>): Prisma__AdminSessionClient<$Result.GetResult<Prisma.$AdminSessionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AdminSessions.
+     * @param {AdminSessionCreateManyArgs} args - Arguments to create many AdminSessions.
+     * @example
+     * // Create many AdminSessions
+     * const adminSession = await prisma.adminSession.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AdminSessionCreateManyArgs>(args?: SelectSubset<T, AdminSessionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AdminSessions and returns the data saved in the database.
+     * @param {AdminSessionCreateManyAndReturnArgs} args - Arguments to create many AdminSessions.
+     * @example
+     * // Create many AdminSessions
+     * const adminSession = await prisma.adminSession.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AdminSessions and only return the `id`
+     * const adminSessionWithIdOnly = await prisma.adminSession.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AdminSessionCreateManyAndReturnArgs>(args?: SelectSubset<T, AdminSessionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminSessionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a AdminSession.
+     * @param {AdminSessionDeleteArgs} args - Arguments to delete one AdminSession.
+     * @example
+     * // Delete one AdminSession
+     * const AdminSession = await prisma.adminSession.delete({
+     *   where: {
+     *     // ... filter to delete one AdminSession
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AdminSessionDeleteArgs>(args: SelectSubset<T, AdminSessionDeleteArgs<ExtArgs>>): Prisma__AdminSessionClient<$Result.GetResult<Prisma.$AdminSessionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AdminSession.
+     * @param {AdminSessionUpdateArgs} args - Arguments to update one AdminSession.
+     * @example
+     * // Update one AdminSession
+     * const adminSession = await prisma.adminSession.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AdminSessionUpdateArgs>(args: SelectSubset<T, AdminSessionUpdateArgs<ExtArgs>>): Prisma__AdminSessionClient<$Result.GetResult<Prisma.$AdminSessionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AdminSessions.
+     * @param {AdminSessionDeleteManyArgs} args - Arguments to filter AdminSessions to delete.
+     * @example
+     * // Delete a few AdminSessions
+     * const { count } = await prisma.adminSession.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AdminSessionDeleteManyArgs>(args?: SelectSubset<T, AdminSessionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AdminSessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminSessionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AdminSessions
+     * const adminSession = await prisma.adminSession.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AdminSessionUpdateManyArgs>(args: SelectSubset<T, AdminSessionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AdminSessions and returns the data updated in the database.
+     * @param {AdminSessionUpdateManyAndReturnArgs} args - Arguments to update many AdminSessions.
+     * @example
+     * // Update many AdminSessions
+     * const adminSession = await prisma.adminSession.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AdminSessions and only return the `id`
+     * const adminSessionWithIdOnly = await prisma.adminSession.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AdminSessionUpdateManyAndReturnArgs>(args: SelectSubset<T, AdminSessionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminSessionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one AdminSession.
+     * @param {AdminSessionUpsertArgs} args - Arguments to update or create a AdminSession.
+     * @example
+     * // Update or create a AdminSession
+     * const adminSession = await prisma.adminSession.upsert({
+     *   create: {
+     *     // ... data to create a AdminSession
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AdminSession we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AdminSessionUpsertArgs>(args: SelectSubset<T, AdminSessionUpsertArgs<ExtArgs>>): Prisma__AdminSessionClient<$Result.GetResult<Prisma.$AdminSessionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AdminSessions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminSessionCountArgs} args - Arguments to filter AdminSessions to count.
+     * @example
+     * // Count the number of AdminSessions
+     * const count = await prisma.adminSession.count({
+     *   where: {
+     *     // ... the filter for the AdminSessions we want to count
+     *   }
+     * })
+    **/
+    count<T extends AdminSessionCountArgs>(
+      args?: Subset<T, AdminSessionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AdminSessionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AdminSession.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminSessionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AdminSessionAggregateArgs>(args: Subset<T, AdminSessionAggregateArgs>): Prisma.PrismaPromise<GetAdminSessionAggregateType<T>>
+
+    /**
+     * Group by AdminSession.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminSessionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AdminSessionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AdminSessionGroupByArgs['orderBy'] }
+        : { orderBy?: AdminSessionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AdminSessionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAdminSessionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AdminSession model
+   */
+  readonly fields: AdminSessionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AdminSession.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AdminSessionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    admin<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AdminSession model
+   */
+  interface AdminSessionFieldRefs {
+    readonly id: FieldRef<"AdminSession", 'String'>
+    readonly adminId: FieldRef<"AdminSession", 'String'>
+    readonly ipAddress: FieldRef<"AdminSession", 'String'>
+    readonly userAgent: FieldRef<"AdminSession", 'String'>
+    readonly permissions: FieldRef<"AdminSession", 'Json'>
+    readonly expiresAt: FieldRef<"AdminSession", 'DateTime'>
+    readonly lastActivity: FieldRef<"AdminSession", 'DateTime'>
+    readonly createdAt: FieldRef<"AdminSession", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AdminSession findUnique
+   */
+  export type AdminSessionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminSession
+     */
+    select?: AdminSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminSession
+     */
+    omit?: AdminSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which AdminSession to fetch.
+     */
+    where: AdminSessionWhereUniqueInput
+  }
+
+  /**
+   * AdminSession findUniqueOrThrow
+   */
+  export type AdminSessionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminSession
+     */
+    select?: AdminSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminSession
+     */
+    omit?: AdminSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which AdminSession to fetch.
+     */
+    where: AdminSessionWhereUniqueInput
+  }
+
+  /**
+   * AdminSession findFirst
+   */
+  export type AdminSessionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminSession
+     */
+    select?: AdminSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminSession
+     */
+    omit?: AdminSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which AdminSession to fetch.
+     */
+    where?: AdminSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdminSessions to fetch.
+     */
+    orderBy?: AdminSessionOrderByWithRelationInput | AdminSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AdminSessions.
+     */
+    cursor?: AdminSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdminSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdminSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AdminSessions.
+     */
+    distinct?: AdminSessionScalarFieldEnum | AdminSessionScalarFieldEnum[]
+  }
+
+  /**
+   * AdminSession findFirstOrThrow
+   */
+  export type AdminSessionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminSession
+     */
+    select?: AdminSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminSession
+     */
+    omit?: AdminSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which AdminSession to fetch.
+     */
+    where?: AdminSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdminSessions to fetch.
+     */
+    orderBy?: AdminSessionOrderByWithRelationInput | AdminSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AdminSessions.
+     */
+    cursor?: AdminSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdminSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdminSessions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AdminSessions.
+     */
+    distinct?: AdminSessionScalarFieldEnum | AdminSessionScalarFieldEnum[]
+  }
+
+  /**
+   * AdminSession findMany
+   */
+  export type AdminSessionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminSession
+     */
+    select?: AdminSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminSession
+     */
+    omit?: AdminSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminSessionInclude<ExtArgs> | null
+    /**
+     * Filter, which AdminSessions to fetch.
+     */
+    where?: AdminSessionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdminSessions to fetch.
+     */
+    orderBy?: AdminSessionOrderByWithRelationInput | AdminSessionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AdminSessions.
+     */
+    cursor?: AdminSessionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdminSessions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdminSessions.
+     */
+    skip?: number
+    distinct?: AdminSessionScalarFieldEnum | AdminSessionScalarFieldEnum[]
+  }
+
+  /**
+   * AdminSession create
+   */
+  export type AdminSessionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminSession
+     */
+    select?: AdminSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminSession
+     */
+    omit?: AdminSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminSessionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AdminSession.
+     */
+    data: XOR<AdminSessionCreateInput, AdminSessionUncheckedCreateInput>
+  }
+
+  /**
+   * AdminSession createMany
+   */
+  export type AdminSessionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AdminSessions.
+     */
+    data: AdminSessionCreateManyInput | AdminSessionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AdminSession createManyAndReturn
+   */
+  export type AdminSessionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminSession
+     */
+    select?: AdminSessionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminSession
+     */
+    omit?: AdminSessionOmit<ExtArgs> | null
+    /**
+     * The data used to create many AdminSessions.
+     */
+    data: AdminSessionCreateManyInput | AdminSessionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminSessionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AdminSession update
+   */
+  export type AdminSessionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminSession
+     */
+    select?: AdminSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminSession
+     */
+    omit?: AdminSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminSessionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AdminSession.
+     */
+    data: XOR<AdminSessionUpdateInput, AdminSessionUncheckedUpdateInput>
+    /**
+     * Choose, which AdminSession to update.
+     */
+    where: AdminSessionWhereUniqueInput
+  }
+
+  /**
+   * AdminSession updateMany
+   */
+  export type AdminSessionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AdminSessions.
+     */
+    data: XOR<AdminSessionUpdateManyMutationInput, AdminSessionUncheckedUpdateManyInput>
+    /**
+     * Filter which AdminSessions to update
+     */
+    where?: AdminSessionWhereInput
+    /**
+     * Limit how many AdminSessions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdminSession updateManyAndReturn
+   */
+  export type AdminSessionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminSession
+     */
+    select?: AdminSessionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminSession
+     */
+    omit?: AdminSessionOmit<ExtArgs> | null
+    /**
+     * The data used to update AdminSessions.
+     */
+    data: XOR<AdminSessionUpdateManyMutationInput, AdminSessionUncheckedUpdateManyInput>
+    /**
+     * Filter which AdminSessions to update
+     */
+    where?: AdminSessionWhereInput
+    /**
+     * Limit how many AdminSessions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminSessionIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AdminSession upsert
+   */
+  export type AdminSessionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminSession
+     */
+    select?: AdminSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminSession
+     */
+    omit?: AdminSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminSessionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AdminSession to update in case it exists.
+     */
+    where: AdminSessionWhereUniqueInput
+    /**
+     * In case the AdminSession found by the `where` argument doesn't exist, create a new AdminSession with this data.
+     */
+    create: XOR<AdminSessionCreateInput, AdminSessionUncheckedCreateInput>
+    /**
+     * In case the AdminSession was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AdminSessionUpdateInput, AdminSessionUncheckedUpdateInput>
+  }
+
+  /**
+   * AdminSession delete
+   */
+  export type AdminSessionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminSession
+     */
+    select?: AdminSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminSession
+     */
+    omit?: AdminSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminSessionInclude<ExtArgs> | null
+    /**
+     * Filter which AdminSession to delete.
+     */
+    where: AdminSessionWhereUniqueInput
+  }
+
+  /**
+   * AdminSession deleteMany
+   */
+  export type AdminSessionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AdminSessions to delete
+     */
+    where?: AdminSessionWhereInput
+    /**
+     * Limit how many AdminSessions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdminSession without action
+   */
+  export type AdminSessionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminSession
+     */
+    select?: AdminSessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminSession
+     */
+    omit?: AdminSessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminSessionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AdminAuditLog
+   */
+
+  export type AggregateAdminAuditLog = {
+    _count: AdminAuditLogCountAggregateOutputType | null
+    _min: AdminAuditLogMinAggregateOutputType | null
+    _max: AdminAuditLogMaxAggregateOutputType | null
+  }
+
+  export type AdminAuditLogMinAggregateOutputType = {
+    id: string | null
+    adminId: string | null
+    action: string | null
+    timestamp: Date | null
+    ipAddress: string | null
+  }
+
+  export type AdminAuditLogMaxAggregateOutputType = {
+    id: string | null
+    adminId: string | null
+    action: string | null
+    timestamp: Date | null
+    ipAddress: string | null
+  }
+
+  export type AdminAuditLogCountAggregateOutputType = {
+    id: number
+    adminId: number
+    action: number
+    metadata: number
+    timestamp: number
+    ipAddress: number
+    _all: number
+  }
+
+
+  export type AdminAuditLogMinAggregateInputType = {
+    id?: true
+    adminId?: true
+    action?: true
+    timestamp?: true
+    ipAddress?: true
+  }
+
+  export type AdminAuditLogMaxAggregateInputType = {
+    id?: true
+    adminId?: true
+    action?: true
+    timestamp?: true
+    ipAddress?: true
+  }
+
+  export type AdminAuditLogCountAggregateInputType = {
+    id?: true
+    adminId?: true
+    action?: true
+    metadata?: true
+    timestamp?: true
+    ipAddress?: true
+    _all?: true
+  }
+
+  export type AdminAuditLogAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AdminAuditLog to aggregate.
+     */
+    where?: AdminAuditLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdminAuditLogs to fetch.
+     */
+    orderBy?: AdminAuditLogOrderByWithRelationInput | AdminAuditLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AdminAuditLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdminAuditLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdminAuditLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AdminAuditLogs
+    **/
+    _count?: true | AdminAuditLogCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AdminAuditLogMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AdminAuditLogMaxAggregateInputType
+  }
+
+  export type GetAdminAuditLogAggregateType<T extends AdminAuditLogAggregateArgs> = {
+        [P in keyof T & keyof AggregateAdminAuditLog]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAdminAuditLog[P]>
+      : GetScalarType<T[P], AggregateAdminAuditLog[P]>
+  }
+
+
+
+
+  export type AdminAuditLogGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AdminAuditLogWhereInput
+    orderBy?: AdminAuditLogOrderByWithAggregationInput | AdminAuditLogOrderByWithAggregationInput[]
+    by: AdminAuditLogScalarFieldEnum[] | AdminAuditLogScalarFieldEnum
+    having?: AdminAuditLogScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AdminAuditLogCountAggregateInputType | true
+    _min?: AdminAuditLogMinAggregateInputType
+    _max?: AdminAuditLogMaxAggregateInputType
+  }
+
+  export type AdminAuditLogGroupByOutputType = {
+    id: string
+    adminId: string
+    action: string
+    metadata: JsonValue
+    timestamp: Date
+    ipAddress: string
+    _count: AdminAuditLogCountAggregateOutputType | null
+    _min: AdminAuditLogMinAggregateOutputType | null
+    _max: AdminAuditLogMaxAggregateOutputType | null
+  }
+
+  type GetAdminAuditLogGroupByPayload<T extends AdminAuditLogGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AdminAuditLogGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AdminAuditLogGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AdminAuditLogGroupByOutputType[P]>
+            : GetScalarType<T[P], AdminAuditLogGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AdminAuditLogSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    adminId?: boolean
+    action?: boolean
+    metadata?: boolean
+    timestamp?: boolean
+    ipAddress?: boolean
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["adminAuditLog"]>
+
+  export type AdminAuditLogSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    adminId?: boolean
+    action?: boolean
+    metadata?: boolean
+    timestamp?: boolean
+    ipAddress?: boolean
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["adminAuditLog"]>
+
+  export type AdminAuditLogSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    adminId?: boolean
+    action?: boolean
+    metadata?: boolean
+    timestamp?: boolean
+    ipAddress?: boolean
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["adminAuditLog"]>
+
+  export type AdminAuditLogSelectScalar = {
+    id?: boolean
+    adminId?: boolean
+    action?: boolean
+    metadata?: boolean
+    timestamp?: boolean
+    ipAddress?: boolean
+  }
+
+  export type AdminAuditLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "adminId" | "action" | "metadata" | "timestamp" | "ipAddress", ExtArgs["result"]["adminAuditLog"]>
+  export type AdminAuditLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AdminAuditLogIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AdminAuditLogIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $AdminAuditLogPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AdminAuditLog"
+    objects: {
+      admin: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      adminId: string
+      action: string
+      metadata: Prisma.JsonValue
+      timestamp: Date
+      ipAddress: string
+    }, ExtArgs["result"]["adminAuditLog"]>
+    composites: {}
+  }
+
+  type AdminAuditLogGetPayload<S extends boolean | null | undefined | AdminAuditLogDefaultArgs> = $Result.GetResult<Prisma.$AdminAuditLogPayload, S>
+
+  type AdminAuditLogCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AdminAuditLogFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AdminAuditLogCountAggregateInputType | true
+    }
+
+  export interface AdminAuditLogDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AdminAuditLog'], meta: { name: 'AdminAuditLog' } }
+    /**
+     * Find zero or one AdminAuditLog that matches the filter.
+     * @param {AdminAuditLogFindUniqueArgs} args - Arguments to find a AdminAuditLog
+     * @example
+     * // Get one AdminAuditLog
+     * const adminAuditLog = await prisma.adminAuditLog.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AdminAuditLogFindUniqueArgs>(args: SelectSubset<T, AdminAuditLogFindUniqueArgs<ExtArgs>>): Prisma__AdminAuditLogClient<$Result.GetResult<Prisma.$AdminAuditLogPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AdminAuditLog that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AdminAuditLogFindUniqueOrThrowArgs} args - Arguments to find a AdminAuditLog
+     * @example
+     * // Get one AdminAuditLog
+     * const adminAuditLog = await prisma.adminAuditLog.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AdminAuditLogFindUniqueOrThrowArgs>(args: SelectSubset<T, AdminAuditLogFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AdminAuditLogClient<$Result.GetResult<Prisma.$AdminAuditLogPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AdminAuditLog that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminAuditLogFindFirstArgs} args - Arguments to find a AdminAuditLog
+     * @example
+     * // Get one AdminAuditLog
+     * const adminAuditLog = await prisma.adminAuditLog.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AdminAuditLogFindFirstArgs>(args?: SelectSubset<T, AdminAuditLogFindFirstArgs<ExtArgs>>): Prisma__AdminAuditLogClient<$Result.GetResult<Prisma.$AdminAuditLogPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AdminAuditLog that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminAuditLogFindFirstOrThrowArgs} args - Arguments to find a AdminAuditLog
+     * @example
+     * // Get one AdminAuditLog
+     * const adminAuditLog = await prisma.adminAuditLog.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AdminAuditLogFindFirstOrThrowArgs>(args?: SelectSubset<T, AdminAuditLogFindFirstOrThrowArgs<ExtArgs>>): Prisma__AdminAuditLogClient<$Result.GetResult<Prisma.$AdminAuditLogPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AdminAuditLogs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminAuditLogFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AdminAuditLogs
+     * const adminAuditLogs = await prisma.adminAuditLog.findMany()
+     * 
+     * // Get first 10 AdminAuditLogs
+     * const adminAuditLogs = await prisma.adminAuditLog.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const adminAuditLogWithIdOnly = await prisma.adminAuditLog.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AdminAuditLogFindManyArgs>(args?: SelectSubset<T, AdminAuditLogFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AdminAuditLog.
+     * @param {AdminAuditLogCreateArgs} args - Arguments to create a AdminAuditLog.
+     * @example
+     * // Create one AdminAuditLog
+     * const AdminAuditLog = await prisma.adminAuditLog.create({
+     *   data: {
+     *     // ... data to create a AdminAuditLog
+     *   }
+     * })
+     * 
+     */
+    create<T extends AdminAuditLogCreateArgs>(args: SelectSubset<T, AdminAuditLogCreateArgs<ExtArgs>>): Prisma__AdminAuditLogClient<$Result.GetResult<Prisma.$AdminAuditLogPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AdminAuditLogs.
+     * @param {AdminAuditLogCreateManyArgs} args - Arguments to create many AdminAuditLogs.
+     * @example
+     * // Create many AdminAuditLogs
+     * const adminAuditLog = await prisma.adminAuditLog.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AdminAuditLogCreateManyArgs>(args?: SelectSubset<T, AdminAuditLogCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AdminAuditLogs and returns the data saved in the database.
+     * @param {AdminAuditLogCreateManyAndReturnArgs} args - Arguments to create many AdminAuditLogs.
+     * @example
+     * // Create many AdminAuditLogs
+     * const adminAuditLog = await prisma.adminAuditLog.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AdminAuditLogs and only return the `id`
+     * const adminAuditLogWithIdOnly = await prisma.adminAuditLog.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AdminAuditLogCreateManyAndReturnArgs>(args?: SelectSubset<T, AdminAuditLogCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuditLogPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a AdminAuditLog.
+     * @param {AdminAuditLogDeleteArgs} args - Arguments to delete one AdminAuditLog.
+     * @example
+     * // Delete one AdminAuditLog
+     * const AdminAuditLog = await prisma.adminAuditLog.delete({
+     *   where: {
+     *     // ... filter to delete one AdminAuditLog
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AdminAuditLogDeleteArgs>(args: SelectSubset<T, AdminAuditLogDeleteArgs<ExtArgs>>): Prisma__AdminAuditLogClient<$Result.GetResult<Prisma.$AdminAuditLogPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AdminAuditLog.
+     * @param {AdminAuditLogUpdateArgs} args - Arguments to update one AdminAuditLog.
+     * @example
+     * // Update one AdminAuditLog
+     * const adminAuditLog = await prisma.adminAuditLog.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AdminAuditLogUpdateArgs>(args: SelectSubset<T, AdminAuditLogUpdateArgs<ExtArgs>>): Prisma__AdminAuditLogClient<$Result.GetResult<Prisma.$AdminAuditLogPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AdminAuditLogs.
+     * @param {AdminAuditLogDeleteManyArgs} args - Arguments to filter AdminAuditLogs to delete.
+     * @example
+     * // Delete a few AdminAuditLogs
+     * const { count } = await prisma.adminAuditLog.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AdminAuditLogDeleteManyArgs>(args?: SelectSubset<T, AdminAuditLogDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AdminAuditLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminAuditLogUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AdminAuditLogs
+     * const adminAuditLog = await prisma.adminAuditLog.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AdminAuditLogUpdateManyArgs>(args: SelectSubset<T, AdminAuditLogUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AdminAuditLogs and returns the data updated in the database.
+     * @param {AdminAuditLogUpdateManyAndReturnArgs} args - Arguments to update many AdminAuditLogs.
+     * @example
+     * // Update many AdminAuditLogs
+     * const adminAuditLog = await prisma.adminAuditLog.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AdminAuditLogs and only return the `id`
+     * const adminAuditLogWithIdOnly = await prisma.adminAuditLog.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AdminAuditLogUpdateManyAndReturnArgs>(args: SelectSubset<T, AdminAuditLogUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuditLogPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one AdminAuditLog.
+     * @param {AdminAuditLogUpsertArgs} args - Arguments to update or create a AdminAuditLog.
+     * @example
+     * // Update or create a AdminAuditLog
+     * const adminAuditLog = await prisma.adminAuditLog.upsert({
+     *   create: {
+     *     // ... data to create a AdminAuditLog
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AdminAuditLog we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AdminAuditLogUpsertArgs>(args: SelectSubset<T, AdminAuditLogUpsertArgs<ExtArgs>>): Prisma__AdminAuditLogClient<$Result.GetResult<Prisma.$AdminAuditLogPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AdminAuditLogs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminAuditLogCountArgs} args - Arguments to filter AdminAuditLogs to count.
+     * @example
+     * // Count the number of AdminAuditLogs
+     * const count = await prisma.adminAuditLog.count({
+     *   where: {
+     *     // ... the filter for the AdminAuditLogs we want to count
+     *   }
+     * })
+    **/
+    count<T extends AdminAuditLogCountArgs>(
+      args?: Subset<T, AdminAuditLogCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AdminAuditLogCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AdminAuditLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminAuditLogAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AdminAuditLogAggregateArgs>(args: Subset<T, AdminAuditLogAggregateArgs>): Prisma.PrismaPromise<GetAdminAuditLogAggregateType<T>>
+
+    /**
+     * Group by AdminAuditLog.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AdminAuditLogGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AdminAuditLogGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AdminAuditLogGroupByArgs['orderBy'] }
+        : { orderBy?: AdminAuditLogGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AdminAuditLogGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAdminAuditLogGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AdminAuditLog model
+   */
+  readonly fields: AdminAuditLogFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AdminAuditLog.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AdminAuditLogClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    admin<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AdminAuditLog model
+   */
+  interface AdminAuditLogFieldRefs {
+    readonly id: FieldRef<"AdminAuditLog", 'String'>
+    readonly adminId: FieldRef<"AdminAuditLog", 'String'>
+    readonly action: FieldRef<"AdminAuditLog", 'String'>
+    readonly metadata: FieldRef<"AdminAuditLog", 'Json'>
+    readonly timestamp: FieldRef<"AdminAuditLog", 'DateTime'>
+    readonly ipAddress: FieldRef<"AdminAuditLog", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AdminAuditLog findUnique
+   */
+  export type AdminAuditLogFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminAuditLog
+     */
+    select?: AdminAuditLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminAuditLog
+     */
+    omit?: AdminAuditLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminAuditLogInclude<ExtArgs> | null
+    /**
+     * Filter, which AdminAuditLog to fetch.
+     */
+    where: AdminAuditLogWhereUniqueInput
+  }
+
+  /**
+   * AdminAuditLog findUniqueOrThrow
+   */
+  export type AdminAuditLogFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminAuditLog
+     */
+    select?: AdminAuditLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminAuditLog
+     */
+    omit?: AdminAuditLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminAuditLogInclude<ExtArgs> | null
+    /**
+     * Filter, which AdminAuditLog to fetch.
+     */
+    where: AdminAuditLogWhereUniqueInput
+  }
+
+  /**
+   * AdminAuditLog findFirst
+   */
+  export type AdminAuditLogFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminAuditLog
+     */
+    select?: AdminAuditLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminAuditLog
+     */
+    omit?: AdminAuditLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminAuditLogInclude<ExtArgs> | null
+    /**
+     * Filter, which AdminAuditLog to fetch.
+     */
+    where?: AdminAuditLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdminAuditLogs to fetch.
+     */
+    orderBy?: AdminAuditLogOrderByWithRelationInput | AdminAuditLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AdminAuditLogs.
+     */
+    cursor?: AdminAuditLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdminAuditLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdminAuditLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AdminAuditLogs.
+     */
+    distinct?: AdminAuditLogScalarFieldEnum | AdminAuditLogScalarFieldEnum[]
+  }
+
+  /**
+   * AdminAuditLog findFirstOrThrow
+   */
+  export type AdminAuditLogFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminAuditLog
+     */
+    select?: AdminAuditLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminAuditLog
+     */
+    omit?: AdminAuditLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminAuditLogInclude<ExtArgs> | null
+    /**
+     * Filter, which AdminAuditLog to fetch.
+     */
+    where?: AdminAuditLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdminAuditLogs to fetch.
+     */
+    orderBy?: AdminAuditLogOrderByWithRelationInput | AdminAuditLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AdminAuditLogs.
+     */
+    cursor?: AdminAuditLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdminAuditLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdminAuditLogs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AdminAuditLogs.
+     */
+    distinct?: AdminAuditLogScalarFieldEnum | AdminAuditLogScalarFieldEnum[]
+  }
+
+  /**
+   * AdminAuditLog findMany
+   */
+  export type AdminAuditLogFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminAuditLog
+     */
+    select?: AdminAuditLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminAuditLog
+     */
+    omit?: AdminAuditLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminAuditLogInclude<ExtArgs> | null
+    /**
+     * Filter, which AdminAuditLogs to fetch.
+     */
+    where?: AdminAuditLogWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AdminAuditLogs to fetch.
+     */
+    orderBy?: AdminAuditLogOrderByWithRelationInput | AdminAuditLogOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AdminAuditLogs.
+     */
+    cursor?: AdminAuditLogWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AdminAuditLogs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AdminAuditLogs.
+     */
+    skip?: number
+    distinct?: AdminAuditLogScalarFieldEnum | AdminAuditLogScalarFieldEnum[]
+  }
+
+  /**
+   * AdminAuditLog create
+   */
+  export type AdminAuditLogCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminAuditLog
+     */
+    select?: AdminAuditLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminAuditLog
+     */
+    omit?: AdminAuditLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminAuditLogInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AdminAuditLog.
+     */
+    data: XOR<AdminAuditLogCreateInput, AdminAuditLogUncheckedCreateInput>
+  }
+
+  /**
+   * AdminAuditLog createMany
+   */
+  export type AdminAuditLogCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AdminAuditLogs.
+     */
+    data: AdminAuditLogCreateManyInput | AdminAuditLogCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AdminAuditLog createManyAndReturn
+   */
+  export type AdminAuditLogCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminAuditLog
+     */
+    select?: AdminAuditLogSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminAuditLog
+     */
+    omit?: AdminAuditLogOmit<ExtArgs> | null
+    /**
+     * The data used to create many AdminAuditLogs.
+     */
+    data: AdminAuditLogCreateManyInput | AdminAuditLogCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminAuditLogIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AdminAuditLog update
+   */
+  export type AdminAuditLogUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminAuditLog
+     */
+    select?: AdminAuditLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminAuditLog
+     */
+    omit?: AdminAuditLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminAuditLogInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AdminAuditLog.
+     */
+    data: XOR<AdminAuditLogUpdateInput, AdminAuditLogUncheckedUpdateInput>
+    /**
+     * Choose, which AdminAuditLog to update.
+     */
+    where: AdminAuditLogWhereUniqueInput
+  }
+
+  /**
+   * AdminAuditLog updateMany
+   */
+  export type AdminAuditLogUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AdminAuditLogs.
+     */
+    data: XOR<AdminAuditLogUpdateManyMutationInput, AdminAuditLogUncheckedUpdateManyInput>
+    /**
+     * Filter which AdminAuditLogs to update
+     */
+    where?: AdminAuditLogWhereInput
+    /**
+     * Limit how many AdminAuditLogs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdminAuditLog updateManyAndReturn
+   */
+  export type AdminAuditLogUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminAuditLog
+     */
+    select?: AdminAuditLogSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminAuditLog
+     */
+    omit?: AdminAuditLogOmit<ExtArgs> | null
+    /**
+     * The data used to update AdminAuditLogs.
+     */
+    data: XOR<AdminAuditLogUpdateManyMutationInput, AdminAuditLogUncheckedUpdateManyInput>
+    /**
+     * Filter which AdminAuditLogs to update
+     */
+    where?: AdminAuditLogWhereInput
+    /**
+     * Limit how many AdminAuditLogs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminAuditLogIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AdminAuditLog upsert
+   */
+  export type AdminAuditLogUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminAuditLog
+     */
+    select?: AdminAuditLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminAuditLog
+     */
+    omit?: AdminAuditLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminAuditLogInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AdminAuditLog to update in case it exists.
+     */
+    where: AdminAuditLogWhereUniqueInput
+    /**
+     * In case the AdminAuditLog found by the `where` argument doesn't exist, create a new AdminAuditLog with this data.
+     */
+    create: XOR<AdminAuditLogCreateInput, AdminAuditLogUncheckedCreateInput>
+    /**
+     * In case the AdminAuditLog was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AdminAuditLogUpdateInput, AdminAuditLogUncheckedUpdateInput>
+  }
+
+  /**
+   * AdminAuditLog delete
+   */
+  export type AdminAuditLogDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminAuditLog
+     */
+    select?: AdminAuditLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminAuditLog
+     */
+    omit?: AdminAuditLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminAuditLogInclude<ExtArgs> | null
+    /**
+     * Filter which AdminAuditLog to delete.
+     */
+    where: AdminAuditLogWhereUniqueInput
+  }
+
+  /**
+   * AdminAuditLog deleteMany
+   */
+  export type AdminAuditLogDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AdminAuditLogs to delete
+     */
+    where?: AdminAuditLogWhereInput
+    /**
+     * Limit how many AdminAuditLogs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdminAuditLog without action
+   */
+  export type AdminAuditLogDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminAuditLog
+     */
+    select?: AdminAuditLogSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminAuditLog
+     */
+    omit?: AdminAuditLogOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminAuditLogInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model FraudAlert
+   */
+
+  export type AggregateFraudAlert = {
+    _count: FraudAlertCountAggregateOutputType | null
+    _avg: FraudAlertAvgAggregateOutputType | null
+    _sum: FraudAlertSumAggregateOutputType | null
+    _min: FraudAlertMinAggregateOutputType | null
+    _max: FraudAlertMaxAggregateOutputType | null
+  }
+
+  export type FraudAlertAvgAggregateOutputType = {
+    riskScore: number | null
+  }
+
+  export type FraudAlertSumAggregateOutputType = {
+    riskScore: number | null
+  }
+
+  export type FraudAlertMinAggregateOutputType = {
+    id: string | null
+    type: string | null
+    severity: string | null
+    userId: string | null
+    description: string | null
+    riskScore: number | null
+    status: string | null
+    createdAt: Date | null
+    investigatedBy: string | null
+    resolvedAt: Date | null
+  }
+
+  export type FraudAlertMaxAggregateOutputType = {
+    id: string | null
+    type: string | null
+    severity: string | null
+    userId: string | null
+    description: string | null
+    riskScore: number | null
+    status: string | null
+    createdAt: Date | null
+    investigatedBy: string | null
+    resolvedAt: Date | null
+  }
+
+  export type FraudAlertCountAggregateOutputType = {
+    id: number
+    type: number
+    severity: number
+    userId: number
+    description: number
+    evidence: number
+    riskScore: number
+    status: number
+    createdAt: number
+    investigatedBy: number
+    resolvedAt: number
+    _all: number
+  }
+
+
+  export type FraudAlertAvgAggregateInputType = {
+    riskScore?: true
+  }
+
+  export type FraudAlertSumAggregateInputType = {
+    riskScore?: true
+  }
+
+  export type FraudAlertMinAggregateInputType = {
+    id?: true
+    type?: true
+    severity?: true
+    userId?: true
+    description?: true
+    riskScore?: true
+    status?: true
+    createdAt?: true
+    investigatedBy?: true
+    resolvedAt?: true
+  }
+
+  export type FraudAlertMaxAggregateInputType = {
+    id?: true
+    type?: true
+    severity?: true
+    userId?: true
+    description?: true
+    riskScore?: true
+    status?: true
+    createdAt?: true
+    investigatedBy?: true
+    resolvedAt?: true
+  }
+
+  export type FraudAlertCountAggregateInputType = {
+    id?: true
+    type?: true
+    severity?: true
+    userId?: true
+    description?: true
+    evidence?: true
+    riskScore?: true
+    status?: true
+    createdAt?: true
+    investigatedBy?: true
+    resolvedAt?: true
+    _all?: true
+  }
+
+  export type FraudAlertAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FraudAlert to aggregate.
+     */
+    where?: FraudAlertWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FraudAlerts to fetch.
+     */
+    orderBy?: FraudAlertOrderByWithRelationInput | FraudAlertOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: FraudAlertWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FraudAlerts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FraudAlerts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned FraudAlerts
+    **/
+    _count?: true | FraudAlertCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: FraudAlertAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: FraudAlertSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: FraudAlertMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: FraudAlertMaxAggregateInputType
+  }
+
+  export type GetFraudAlertAggregateType<T extends FraudAlertAggregateArgs> = {
+        [P in keyof T & keyof AggregateFraudAlert]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateFraudAlert[P]>
+      : GetScalarType<T[P], AggregateFraudAlert[P]>
+  }
+
+
+
+
+  export type FraudAlertGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: FraudAlertWhereInput
+    orderBy?: FraudAlertOrderByWithAggregationInput | FraudAlertOrderByWithAggregationInput[]
+    by: FraudAlertScalarFieldEnum[] | FraudAlertScalarFieldEnum
+    having?: FraudAlertScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: FraudAlertCountAggregateInputType | true
+    _avg?: FraudAlertAvgAggregateInputType
+    _sum?: FraudAlertSumAggregateInputType
+    _min?: FraudAlertMinAggregateInputType
+    _max?: FraudAlertMaxAggregateInputType
+  }
+
+  export type FraudAlertGroupByOutputType = {
+    id: string
+    type: string
+    severity: string
+    userId: string
+    description: string
+    evidence: JsonValue
+    riskScore: number
+    status: string
+    createdAt: Date
+    investigatedBy: string | null
+    resolvedAt: Date | null
+    _count: FraudAlertCountAggregateOutputType | null
+    _avg: FraudAlertAvgAggregateOutputType | null
+    _sum: FraudAlertSumAggregateOutputType | null
+    _min: FraudAlertMinAggregateOutputType | null
+    _max: FraudAlertMaxAggregateOutputType | null
+  }
+
+  type GetFraudAlertGroupByPayload<T extends FraudAlertGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<FraudAlertGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof FraudAlertGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], FraudAlertGroupByOutputType[P]>
+            : GetScalarType<T[P], FraudAlertGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type FraudAlertSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    severity?: boolean
+    userId?: boolean
+    description?: boolean
+    evidence?: boolean
+    riskScore?: boolean
+    status?: boolean
+    createdAt?: boolean
+    investigatedBy?: boolean
+    resolvedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["fraudAlert"]>
+
+  export type FraudAlertSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    severity?: boolean
+    userId?: boolean
+    description?: boolean
+    evidence?: boolean
+    riskScore?: boolean
+    status?: boolean
+    createdAt?: boolean
+    investigatedBy?: boolean
+    resolvedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["fraudAlert"]>
+
+  export type FraudAlertSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    severity?: boolean
+    userId?: boolean
+    description?: boolean
+    evidence?: boolean
+    riskScore?: boolean
+    status?: boolean
+    createdAt?: boolean
+    investigatedBy?: boolean
+    resolvedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["fraudAlert"]>
+
+  export type FraudAlertSelectScalar = {
+    id?: boolean
+    type?: boolean
+    severity?: boolean
+    userId?: boolean
+    description?: boolean
+    evidence?: boolean
+    riskScore?: boolean
+    status?: boolean
+    createdAt?: boolean
+    investigatedBy?: boolean
+    resolvedAt?: boolean
+  }
+
+  export type FraudAlertOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "type" | "severity" | "userId" | "description" | "evidence" | "riskScore" | "status" | "createdAt" | "investigatedBy" | "resolvedAt", ExtArgs["result"]["fraudAlert"]>
+  export type FraudAlertInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type FraudAlertIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type FraudAlertIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $FraudAlertPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "FraudAlert"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      type: string
+      severity: string
+      userId: string
+      description: string
+      evidence: Prisma.JsonValue
+      riskScore: number
+      status: string
+      createdAt: Date
+      investigatedBy: string | null
+      resolvedAt: Date | null
+    }, ExtArgs["result"]["fraudAlert"]>
+    composites: {}
+  }
+
+  type FraudAlertGetPayload<S extends boolean | null | undefined | FraudAlertDefaultArgs> = $Result.GetResult<Prisma.$FraudAlertPayload, S>
+
+  type FraudAlertCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<FraudAlertFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: FraudAlertCountAggregateInputType | true
+    }
+
+  export interface FraudAlertDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FraudAlert'], meta: { name: 'FraudAlert' } }
+    /**
+     * Find zero or one FraudAlert that matches the filter.
+     * @param {FraudAlertFindUniqueArgs} args - Arguments to find a FraudAlert
+     * @example
+     * // Get one FraudAlert
+     * const fraudAlert = await prisma.fraudAlert.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends FraudAlertFindUniqueArgs>(args: SelectSubset<T, FraudAlertFindUniqueArgs<ExtArgs>>): Prisma__FraudAlertClient<$Result.GetResult<Prisma.$FraudAlertPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one FraudAlert that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {FraudAlertFindUniqueOrThrowArgs} args - Arguments to find a FraudAlert
+     * @example
+     * // Get one FraudAlert
+     * const fraudAlert = await prisma.fraudAlert.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends FraudAlertFindUniqueOrThrowArgs>(args: SelectSubset<T, FraudAlertFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FraudAlertClient<$Result.GetResult<Prisma.$FraudAlertPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FraudAlert that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FraudAlertFindFirstArgs} args - Arguments to find a FraudAlert
+     * @example
+     * // Get one FraudAlert
+     * const fraudAlert = await prisma.fraudAlert.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends FraudAlertFindFirstArgs>(args?: SelectSubset<T, FraudAlertFindFirstArgs<ExtArgs>>): Prisma__FraudAlertClient<$Result.GetResult<Prisma.$FraudAlertPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first FraudAlert that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FraudAlertFindFirstOrThrowArgs} args - Arguments to find a FraudAlert
+     * @example
+     * // Get one FraudAlert
+     * const fraudAlert = await prisma.fraudAlert.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends FraudAlertFindFirstOrThrowArgs>(args?: SelectSubset<T, FraudAlertFindFirstOrThrowArgs<ExtArgs>>): Prisma__FraudAlertClient<$Result.GetResult<Prisma.$FraudAlertPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more FraudAlerts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FraudAlertFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all FraudAlerts
+     * const fraudAlerts = await prisma.fraudAlert.findMany()
+     * 
+     * // Get first 10 FraudAlerts
+     * const fraudAlerts = await prisma.fraudAlert.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const fraudAlertWithIdOnly = await prisma.fraudAlert.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends FraudAlertFindManyArgs>(args?: SelectSubset<T, FraudAlertFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FraudAlertPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a FraudAlert.
+     * @param {FraudAlertCreateArgs} args - Arguments to create a FraudAlert.
+     * @example
+     * // Create one FraudAlert
+     * const FraudAlert = await prisma.fraudAlert.create({
+     *   data: {
+     *     // ... data to create a FraudAlert
+     *   }
+     * })
+     * 
+     */
+    create<T extends FraudAlertCreateArgs>(args: SelectSubset<T, FraudAlertCreateArgs<ExtArgs>>): Prisma__FraudAlertClient<$Result.GetResult<Prisma.$FraudAlertPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many FraudAlerts.
+     * @param {FraudAlertCreateManyArgs} args - Arguments to create many FraudAlerts.
+     * @example
+     * // Create many FraudAlerts
+     * const fraudAlert = await prisma.fraudAlert.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends FraudAlertCreateManyArgs>(args?: SelectSubset<T, FraudAlertCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many FraudAlerts and returns the data saved in the database.
+     * @param {FraudAlertCreateManyAndReturnArgs} args - Arguments to create many FraudAlerts.
+     * @example
+     * // Create many FraudAlerts
+     * const fraudAlert = await prisma.fraudAlert.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many FraudAlerts and only return the `id`
+     * const fraudAlertWithIdOnly = await prisma.fraudAlert.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends FraudAlertCreateManyAndReturnArgs>(args?: SelectSubset<T, FraudAlertCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FraudAlertPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a FraudAlert.
+     * @param {FraudAlertDeleteArgs} args - Arguments to delete one FraudAlert.
+     * @example
+     * // Delete one FraudAlert
+     * const FraudAlert = await prisma.fraudAlert.delete({
+     *   where: {
+     *     // ... filter to delete one FraudAlert
+     *   }
+     * })
+     * 
+     */
+    delete<T extends FraudAlertDeleteArgs>(args: SelectSubset<T, FraudAlertDeleteArgs<ExtArgs>>): Prisma__FraudAlertClient<$Result.GetResult<Prisma.$FraudAlertPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one FraudAlert.
+     * @param {FraudAlertUpdateArgs} args - Arguments to update one FraudAlert.
+     * @example
+     * // Update one FraudAlert
+     * const fraudAlert = await prisma.fraudAlert.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends FraudAlertUpdateArgs>(args: SelectSubset<T, FraudAlertUpdateArgs<ExtArgs>>): Prisma__FraudAlertClient<$Result.GetResult<Prisma.$FraudAlertPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more FraudAlerts.
+     * @param {FraudAlertDeleteManyArgs} args - Arguments to filter FraudAlerts to delete.
+     * @example
+     * // Delete a few FraudAlerts
+     * const { count } = await prisma.fraudAlert.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends FraudAlertDeleteManyArgs>(args?: SelectSubset<T, FraudAlertDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FraudAlerts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FraudAlertUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many FraudAlerts
+     * const fraudAlert = await prisma.fraudAlert.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends FraudAlertUpdateManyArgs>(args: SelectSubset<T, FraudAlertUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FraudAlerts and returns the data updated in the database.
+     * @param {FraudAlertUpdateManyAndReturnArgs} args - Arguments to update many FraudAlerts.
+     * @example
+     * // Update many FraudAlerts
+     * const fraudAlert = await prisma.fraudAlert.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more FraudAlerts and only return the `id`
+     * const fraudAlertWithIdOnly = await prisma.fraudAlert.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FraudAlertUpdateManyAndReturnArgs>(args: SelectSubset<T, FraudAlertUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FraudAlertPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one FraudAlert.
+     * @param {FraudAlertUpsertArgs} args - Arguments to update or create a FraudAlert.
+     * @example
+     * // Update or create a FraudAlert
+     * const fraudAlert = await prisma.fraudAlert.upsert({
+     *   create: {
+     *     // ... data to create a FraudAlert
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the FraudAlert we want to update
+     *   }
+     * })
+     */
+    upsert<T extends FraudAlertUpsertArgs>(args: SelectSubset<T, FraudAlertUpsertArgs<ExtArgs>>): Prisma__FraudAlertClient<$Result.GetResult<Prisma.$FraudAlertPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of FraudAlerts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FraudAlertCountArgs} args - Arguments to filter FraudAlerts to count.
+     * @example
+     * // Count the number of FraudAlerts
+     * const count = await prisma.fraudAlert.count({
+     *   where: {
+     *     // ... the filter for the FraudAlerts we want to count
+     *   }
+     * })
+    **/
+    count<T extends FraudAlertCountArgs>(
+      args?: Subset<T, FraudAlertCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], FraudAlertCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a FraudAlert.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FraudAlertAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends FraudAlertAggregateArgs>(args: Subset<T, FraudAlertAggregateArgs>): Prisma.PrismaPromise<GetFraudAlertAggregateType<T>>
+
+    /**
+     * Group by FraudAlert.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {FraudAlertGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends FraudAlertGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: FraudAlertGroupByArgs['orderBy'] }
+        : { orderBy?: FraudAlertGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, FraudAlertGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFraudAlertGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the FraudAlert model
+   */
+  readonly fields: FraudAlertFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for FraudAlert.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__FraudAlertClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the FraudAlert model
+   */
+  interface FraudAlertFieldRefs {
+    readonly id: FieldRef<"FraudAlert", 'String'>
+    readonly type: FieldRef<"FraudAlert", 'String'>
+    readonly severity: FieldRef<"FraudAlert", 'String'>
+    readonly userId: FieldRef<"FraudAlert", 'String'>
+    readonly description: FieldRef<"FraudAlert", 'String'>
+    readonly evidence: FieldRef<"FraudAlert", 'Json'>
+    readonly riskScore: FieldRef<"FraudAlert", 'Int'>
+    readonly status: FieldRef<"FraudAlert", 'String'>
+    readonly createdAt: FieldRef<"FraudAlert", 'DateTime'>
+    readonly investigatedBy: FieldRef<"FraudAlert", 'String'>
+    readonly resolvedAt: FieldRef<"FraudAlert", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * FraudAlert findUnique
+   */
+  export type FraudAlertFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FraudAlert
+     */
+    select?: FraudAlertSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FraudAlert
+     */
+    omit?: FraudAlertOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FraudAlertInclude<ExtArgs> | null
+    /**
+     * Filter, which FraudAlert to fetch.
+     */
+    where: FraudAlertWhereUniqueInput
+  }
+
+  /**
+   * FraudAlert findUniqueOrThrow
+   */
+  export type FraudAlertFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FraudAlert
+     */
+    select?: FraudAlertSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FraudAlert
+     */
+    omit?: FraudAlertOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FraudAlertInclude<ExtArgs> | null
+    /**
+     * Filter, which FraudAlert to fetch.
+     */
+    where: FraudAlertWhereUniqueInput
+  }
+
+  /**
+   * FraudAlert findFirst
+   */
+  export type FraudAlertFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FraudAlert
+     */
+    select?: FraudAlertSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FraudAlert
+     */
+    omit?: FraudAlertOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FraudAlertInclude<ExtArgs> | null
+    /**
+     * Filter, which FraudAlert to fetch.
+     */
+    where?: FraudAlertWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FraudAlerts to fetch.
+     */
+    orderBy?: FraudAlertOrderByWithRelationInput | FraudAlertOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FraudAlerts.
+     */
+    cursor?: FraudAlertWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FraudAlerts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FraudAlerts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FraudAlerts.
+     */
+    distinct?: FraudAlertScalarFieldEnum | FraudAlertScalarFieldEnum[]
+  }
+
+  /**
+   * FraudAlert findFirstOrThrow
+   */
+  export type FraudAlertFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FraudAlert
+     */
+    select?: FraudAlertSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FraudAlert
+     */
+    omit?: FraudAlertOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FraudAlertInclude<ExtArgs> | null
+    /**
+     * Filter, which FraudAlert to fetch.
+     */
+    where?: FraudAlertWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FraudAlerts to fetch.
+     */
+    orderBy?: FraudAlertOrderByWithRelationInput | FraudAlertOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for FraudAlerts.
+     */
+    cursor?: FraudAlertWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FraudAlerts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FraudAlerts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of FraudAlerts.
+     */
+    distinct?: FraudAlertScalarFieldEnum | FraudAlertScalarFieldEnum[]
+  }
+
+  /**
+   * FraudAlert findMany
+   */
+  export type FraudAlertFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FraudAlert
+     */
+    select?: FraudAlertSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FraudAlert
+     */
+    omit?: FraudAlertOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FraudAlertInclude<ExtArgs> | null
+    /**
+     * Filter, which FraudAlerts to fetch.
+     */
+    where?: FraudAlertWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of FraudAlerts to fetch.
+     */
+    orderBy?: FraudAlertOrderByWithRelationInput | FraudAlertOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing FraudAlerts.
+     */
+    cursor?: FraudAlertWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` FraudAlerts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` FraudAlerts.
+     */
+    skip?: number
+    distinct?: FraudAlertScalarFieldEnum | FraudAlertScalarFieldEnum[]
+  }
+
+  /**
+   * FraudAlert create
+   */
+  export type FraudAlertCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FraudAlert
+     */
+    select?: FraudAlertSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FraudAlert
+     */
+    omit?: FraudAlertOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FraudAlertInclude<ExtArgs> | null
+    /**
+     * The data needed to create a FraudAlert.
+     */
+    data: XOR<FraudAlertCreateInput, FraudAlertUncheckedCreateInput>
+  }
+
+  /**
+   * FraudAlert createMany
+   */
+  export type FraudAlertCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many FraudAlerts.
+     */
+    data: FraudAlertCreateManyInput | FraudAlertCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * FraudAlert createManyAndReturn
+   */
+  export type FraudAlertCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FraudAlert
+     */
+    select?: FraudAlertSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FraudAlert
+     */
+    omit?: FraudAlertOmit<ExtArgs> | null
+    /**
+     * The data used to create many FraudAlerts.
+     */
+    data: FraudAlertCreateManyInput | FraudAlertCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FraudAlertIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FraudAlert update
+   */
+  export type FraudAlertUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FraudAlert
+     */
+    select?: FraudAlertSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FraudAlert
+     */
+    omit?: FraudAlertOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FraudAlertInclude<ExtArgs> | null
+    /**
+     * The data needed to update a FraudAlert.
+     */
+    data: XOR<FraudAlertUpdateInput, FraudAlertUncheckedUpdateInput>
+    /**
+     * Choose, which FraudAlert to update.
+     */
+    where: FraudAlertWhereUniqueInput
+  }
+
+  /**
+   * FraudAlert updateMany
+   */
+  export type FraudAlertUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update FraudAlerts.
+     */
+    data: XOR<FraudAlertUpdateManyMutationInput, FraudAlertUncheckedUpdateManyInput>
+    /**
+     * Filter which FraudAlerts to update
+     */
+    where?: FraudAlertWhereInput
+    /**
+     * Limit how many FraudAlerts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FraudAlert updateManyAndReturn
+   */
+  export type FraudAlertUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FraudAlert
+     */
+    select?: FraudAlertSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FraudAlert
+     */
+    omit?: FraudAlertOmit<ExtArgs> | null
+    /**
+     * The data used to update FraudAlerts.
+     */
+    data: XOR<FraudAlertUpdateManyMutationInput, FraudAlertUncheckedUpdateManyInput>
+    /**
+     * Filter which FraudAlerts to update
+     */
+    where?: FraudAlertWhereInput
+    /**
+     * Limit how many FraudAlerts to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FraudAlertIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * FraudAlert upsert
+   */
+  export type FraudAlertUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FraudAlert
+     */
+    select?: FraudAlertSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FraudAlert
+     */
+    omit?: FraudAlertOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FraudAlertInclude<ExtArgs> | null
+    /**
+     * The filter to search for the FraudAlert to update in case it exists.
+     */
+    where: FraudAlertWhereUniqueInput
+    /**
+     * In case the FraudAlert found by the `where` argument doesn't exist, create a new FraudAlert with this data.
+     */
+    create: XOR<FraudAlertCreateInput, FraudAlertUncheckedCreateInput>
+    /**
+     * In case the FraudAlert was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<FraudAlertUpdateInput, FraudAlertUncheckedUpdateInput>
+  }
+
+  /**
+   * FraudAlert delete
+   */
+  export type FraudAlertDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FraudAlert
+     */
+    select?: FraudAlertSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FraudAlert
+     */
+    omit?: FraudAlertOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FraudAlertInclude<ExtArgs> | null
+    /**
+     * Filter which FraudAlert to delete.
+     */
+    where: FraudAlertWhereUniqueInput
+  }
+
+  /**
+   * FraudAlert deleteMany
+   */
+  export type FraudAlertDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which FraudAlerts to delete
+     */
+    where?: FraudAlertWhereInput
+    /**
+     * Limit how many FraudAlerts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * FraudAlert without action
+   */
+  export type FraudAlertDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FraudAlert
+     */
+    select?: FraudAlertSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the FraudAlert
+     */
+    omit?: FraudAlertOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FraudAlertInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CampaignConfig
+   */
+
+  export type AggregateCampaignConfig = {
+    _count: CampaignConfigCountAggregateOutputType | null
+    _avg: CampaignConfigAvgAggregateOutputType | null
+    _sum: CampaignConfigSumAggregateOutputType | null
+    _min: CampaignConfigMinAggregateOutputType | null
+    _max: CampaignConfigMaxAggregateOutputType | null
+  }
+
+  export type CampaignConfigAvgAggregateOutputType = {
+    totalAllocation: number | null
+  }
+
+  export type CampaignConfigSumAggregateOutputType = {
+    totalAllocation: bigint | null
+  }
+
+  export type CampaignConfigMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    tokenMint: string | null
+    totalAllocation: bigint | null
+    startDate: Date | null
+    endDate: Date | null
+    isActive: boolean | null
+    createdBy: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CampaignConfigMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    description: string | null
+    tokenMint: string | null
+    totalAllocation: bigint | null
+    startDate: Date | null
+    endDate: Date | null
+    isActive: boolean | null
+    createdBy: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type CampaignConfigCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    tokenMint: number
+    totalAllocation: number
+    startDate: number
+    endDate: number
+    eligibilityCriteria: number
+    distributionRules: number
+    isActive: number
+    createdBy: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type CampaignConfigAvgAggregateInputType = {
+    totalAllocation?: true
+  }
+
+  export type CampaignConfigSumAggregateInputType = {
+    totalAllocation?: true
+  }
+
+  export type CampaignConfigMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    tokenMint?: true
+    totalAllocation?: true
+    startDate?: true
+    endDate?: true
+    isActive?: true
+    createdBy?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CampaignConfigMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    tokenMint?: true
+    totalAllocation?: true
+    startDate?: true
+    endDate?: true
+    isActive?: true
+    createdBy?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type CampaignConfigCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    tokenMint?: true
+    totalAllocation?: true
+    startDate?: true
+    endDate?: true
+    eligibilityCriteria?: true
+    distributionRules?: true
+    isActive?: true
+    createdBy?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type CampaignConfigAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CampaignConfig to aggregate.
+     */
+    where?: CampaignConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CampaignConfigs to fetch.
+     */
+    orderBy?: CampaignConfigOrderByWithRelationInput | CampaignConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CampaignConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CampaignConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CampaignConfigs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CampaignConfigs
+    **/
+    _count?: true | CampaignConfigCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CampaignConfigAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CampaignConfigSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CampaignConfigMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CampaignConfigMaxAggregateInputType
+  }
+
+  export type GetCampaignConfigAggregateType<T extends CampaignConfigAggregateArgs> = {
+        [P in keyof T & keyof AggregateCampaignConfig]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCampaignConfig[P]>
+      : GetScalarType<T[P], AggregateCampaignConfig[P]>
+  }
+
+
+
+
+  export type CampaignConfigGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CampaignConfigWhereInput
+    orderBy?: CampaignConfigOrderByWithAggregationInput | CampaignConfigOrderByWithAggregationInput[]
+    by: CampaignConfigScalarFieldEnum[] | CampaignConfigScalarFieldEnum
+    having?: CampaignConfigScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CampaignConfigCountAggregateInputType | true
+    _avg?: CampaignConfigAvgAggregateInputType
+    _sum?: CampaignConfigSumAggregateInputType
+    _min?: CampaignConfigMinAggregateInputType
+    _max?: CampaignConfigMaxAggregateInputType
+  }
+
+  export type CampaignConfigGroupByOutputType = {
+    id: string
+    name: string
+    description: string | null
+    tokenMint: string
+    totalAllocation: bigint
+    startDate: Date
+    endDate: Date
+    eligibilityCriteria: JsonValue
+    distributionRules: JsonValue
+    isActive: boolean
+    createdBy: string
+    createdAt: Date
+    updatedAt: Date
+    _count: CampaignConfigCountAggregateOutputType | null
+    _avg: CampaignConfigAvgAggregateOutputType | null
+    _sum: CampaignConfigSumAggregateOutputType | null
+    _min: CampaignConfigMinAggregateOutputType | null
+    _max: CampaignConfigMaxAggregateOutputType | null
+  }
+
+  type GetCampaignConfigGroupByPayload<T extends CampaignConfigGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CampaignConfigGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CampaignConfigGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CampaignConfigGroupByOutputType[P]>
+            : GetScalarType<T[P], CampaignConfigGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CampaignConfigSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    tokenMint?: boolean
+    totalAllocation?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    eligibilityCriteria?: boolean
+    distributionRules?: boolean
+    isActive?: boolean
+    createdBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["campaignConfig"]>
+
+  export type CampaignConfigSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    tokenMint?: boolean
+    totalAllocation?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    eligibilityCriteria?: boolean
+    distributionRules?: boolean
+    isActive?: boolean
+    createdBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["campaignConfig"]>
+
+  export type CampaignConfigSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    tokenMint?: boolean
+    totalAllocation?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    eligibilityCriteria?: boolean
+    distributionRules?: boolean
+    isActive?: boolean
+    createdBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["campaignConfig"]>
+
+  export type CampaignConfigSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    tokenMint?: boolean
+    totalAllocation?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    eligibilityCriteria?: boolean
+    distributionRules?: boolean
+    isActive?: boolean
+    createdBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type CampaignConfigOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "tokenMint" | "totalAllocation" | "startDate" | "endDate" | "eligibilityCriteria" | "distributionRules" | "isActive" | "createdBy" | "createdAt" | "updatedAt", ExtArgs["result"]["campaignConfig"]>
+  export type CampaignConfigInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CampaignConfigIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CampaignConfigIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $CampaignConfigPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CampaignConfig"
+    objects: {
+      creator: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      description: string | null
+      tokenMint: string
+      totalAllocation: bigint
+      startDate: Date
+      endDate: Date
+      eligibilityCriteria: Prisma.JsonValue
+      distributionRules: Prisma.JsonValue
+      isActive: boolean
+      createdBy: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["campaignConfig"]>
+    composites: {}
+  }
+
+  type CampaignConfigGetPayload<S extends boolean | null | undefined | CampaignConfigDefaultArgs> = $Result.GetResult<Prisma.$CampaignConfigPayload, S>
+
+  type CampaignConfigCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CampaignConfigFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CampaignConfigCountAggregateInputType | true
+    }
+
+  export interface CampaignConfigDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CampaignConfig'], meta: { name: 'CampaignConfig' } }
+    /**
+     * Find zero or one CampaignConfig that matches the filter.
+     * @param {CampaignConfigFindUniqueArgs} args - Arguments to find a CampaignConfig
+     * @example
+     * // Get one CampaignConfig
+     * const campaignConfig = await prisma.campaignConfig.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CampaignConfigFindUniqueArgs>(args: SelectSubset<T, CampaignConfigFindUniqueArgs<ExtArgs>>): Prisma__CampaignConfigClient<$Result.GetResult<Prisma.$CampaignConfigPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CampaignConfig that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CampaignConfigFindUniqueOrThrowArgs} args - Arguments to find a CampaignConfig
+     * @example
+     * // Get one CampaignConfig
+     * const campaignConfig = await prisma.campaignConfig.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CampaignConfigFindUniqueOrThrowArgs>(args: SelectSubset<T, CampaignConfigFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CampaignConfigClient<$Result.GetResult<Prisma.$CampaignConfigPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CampaignConfig that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CampaignConfigFindFirstArgs} args - Arguments to find a CampaignConfig
+     * @example
+     * // Get one CampaignConfig
+     * const campaignConfig = await prisma.campaignConfig.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CampaignConfigFindFirstArgs>(args?: SelectSubset<T, CampaignConfigFindFirstArgs<ExtArgs>>): Prisma__CampaignConfigClient<$Result.GetResult<Prisma.$CampaignConfigPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CampaignConfig that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CampaignConfigFindFirstOrThrowArgs} args - Arguments to find a CampaignConfig
+     * @example
+     * // Get one CampaignConfig
+     * const campaignConfig = await prisma.campaignConfig.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CampaignConfigFindFirstOrThrowArgs>(args?: SelectSubset<T, CampaignConfigFindFirstOrThrowArgs<ExtArgs>>): Prisma__CampaignConfigClient<$Result.GetResult<Prisma.$CampaignConfigPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CampaignConfigs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CampaignConfigFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CampaignConfigs
+     * const campaignConfigs = await prisma.campaignConfig.findMany()
+     * 
+     * // Get first 10 CampaignConfigs
+     * const campaignConfigs = await prisma.campaignConfig.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const campaignConfigWithIdOnly = await prisma.campaignConfig.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CampaignConfigFindManyArgs>(args?: SelectSubset<T, CampaignConfigFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CampaignConfigPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CampaignConfig.
+     * @param {CampaignConfigCreateArgs} args - Arguments to create a CampaignConfig.
+     * @example
+     * // Create one CampaignConfig
+     * const CampaignConfig = await prisma.campaignConfig.create({
+     *   data: {
+     *     // ... data to create a CampaignConfig
+     *   }
+     * })
+     * 
+     */
+    create<T extends CampaignConfigCreateArgs>(args: SelectSubset<T, CampaignConfigCreateArgs<ExtArgs>>): Prisma__CampaignConfigClient<$Result.GetResult<Prisma.$CampaignConfigPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CampaignConfigs.
+     * @param {CampaignConfigCreateManyArgs} args - Arguments to create many CampaignConfigs.
+     * @example
+     * // Create many CampaignConfigs
+     * const campaignConfig = await prisma.campaignConfig.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CampaignConfigCreateManyArgs>(args?: SelectSubset<T, CampaignConfigCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many CampaignConfigs and returns the data saved in the database.
+     * @param {CampaignConfigCreateManyAndReturnArgs} args - Arguments to create many CampaignConfigs.
+     * @example
+     * // Create many CampaignConfigs
+     * const campaignConfig = await prisma.campaignConfig.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many CampaignConfigs and only return the `id`
+     * const campaignConfigWithIdOnly = await prisma.campaignConfig.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends CampaignConfigCreateManyAndReturnArgs>(args?: SelectSubset<T, CampaignConfigCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CampaignConfigPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a CampaignConfig.
+     * @param {CampaignConfigDeleteArgs} args - Arguments to delete one CampaignConfig.
+     * @example
+     * // Delete one CampaignConfig
+     * const CampaignConfig = await prisma.campaignConfig.delete({
+     *   where: {
+     *     // ... filter to delete one CampaignConfig
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CampaignConfigDeleteArgs>(args: SelectSubset<T, CampaignConfigDeleteArgs<ExtArgs>>): Prisma__CampaignConfigClient<$Result.GetResult<Prisma.$CampaignConfigPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CampaignConfig.
+     * @param {CampaignConfigUpdateArgs} args - Arguments to update one CampaignConfig.
+     * @example
+     * // Update one CampaignConfig
+     * const campaignConfig = await prisma.campaignConfig.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CampaignConfigUpdateArgs>(args: SelectSubset<T, CampaignConfigUpdateArgs<ExtArgs>>): Prisma__CampaignConfigClient<$Result.GetResult<Prisma.$CampaignConfigPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CampaignConfigs.
+     * @param {CampaignConfigDeleteManyArgs} args - Arguments to filter CampaignConfigs to delete.
+     * @example
+     * // Delete a few CampaignConfigs
+     * const { count } = await prisma.campaignConfig.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CampaignConfigDeleteManyArgs>(args?: SelectSubset<T, CampaignConfigDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CampaignConfigs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CampaignConfigUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CampaignConfigs
+     * const campaignConfig = await prisma.campaignConfig.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CampaignConfigUpdateManyArgs>(args: SelectSubset<T, CampaignConfigUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CampaignConfigs and returns the data updated in the database.
+     * @param {CampaignConfigUpdateManyAndReturnArgs} args - Arguments to update many CampaignConfigs.
+     * @example
+     * // Update many CampaignConfigs
+     * const campaignConfig = await prisma.campaignConfig.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CampaignConfigs and only return the `id`
+     * const campaignConfigWithIdOnly = await prisma.campaignConfig.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CampaignConfigUpdateManyAndReturnArgs>(args: SelectSubset<T, CampaignConfigUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CampaignConfigPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one CampaignConfig.
+     * @param {CampaignConfigUpsertArgs} args - Arguments to update or create a CampaignConfig.
+     * @example
+     * // Update or create a CampaignConfig
+     * const campaignConfig = await prisma.campaignConfig.upsert({
+     *   create: {
+     *     // ... data to create a CampaignConfig
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CampaignConfig we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CampaignConfigUpsertArgs>(args: SelectSubset<T, CampaignConfigUpsertArgs<ExtArgs>>): Prisma__CampaignConfigClient<$Result.GetResult<Prisma.$CampaignConfigPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CampaignConfigs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CampaignConfigCountArgs} args - Arguments to filter CampaignConfigs to count.
+     * @example
+     * // Count the number of CampaignConfigs
+     * const count = await prisma.campaignConfig.count({
+     *   where: {
+     *     // ... the filter for the CampaignConfigs we want to count
+     *   }
+     * })
+    **/
+    count<T extends CampaignConfigCountArgs>(
+      args?: Subset<T, CampaignConfigCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CampaignConfigCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CampaignConfig.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CampaignConfigAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CampaignConfigAggregateArgs>(args: Subset<T, CampaignConfigAggregateArgs>): Prisma.PrismaPromise<GetCampaignConfigAggregateType<T>>
+
+    /**
+     * Group by CampaignConfig.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CampaignConfigGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CampaignConfigGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CampaignConfigGroupByArgs['orderBy'] }
+        : { orderBy?: CampaignConfigGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CampaignConfigGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCampaignConfigGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CampaignConfig model
+   */
+  readonly fields: CampaignConfigFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CampaignConfig.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CampaignConfigClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    creator<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CampaignConfig model
+   */
+  interface CampaignConfigFieldRefs {
+    readonly id: FieldRef<"CampaignConfig", 'String'>
+    readonly name: FieldRef<"CampaignConfig", 'String'>
+    readonly description: FieldRef<"CampaignConfig", 'String'>
+    readonly tokenMint: FieldRef<"CampaignConfig", 'String'>
+    readonly totalAllocation: FieldRef<"CampaignConfig", 'BigInt'>
+    readonly startDate: FieldRef<"CampaignConfig", 'DateTime'>
+    readonly endDate: FieldRef<"CampaignConfig", 'DateTime'>
+    readonly eligibilityCriteria: FieldRef<"CampaignConfig", 'Json'>
+    readonly distributionRules: FieldRef<"CampaignConfig", 'Json'>
+    readonly isActive: FieldRef<"CampaignConfig", 'Boolean'>
+    readonly createdBy: FieldRef<"CampaignConfig", 'String'>
+    readonly createdAt: FieldRef<"CampaignConfig", 'DateTime'>
+    readonly updatedAt: FieldRef<"CampaignConfig", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CampaignConfig findUnique
+   */
+  export type CampaignConfigFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CampaignConfig
+     */
+    select?: CampaignConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CampaignConfig
+     */
+    omit?: CampaignConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CampaignConfigInclude<ExtArgs> | null
+    /**
+     * Filter, which CampaignConfig to fetch.
+     */
+    where: CampaignConfigWhereUniqueInput
+  }
+
+  /**
+   * CampaignConfig findUniqueOrThrow
+   */
+  export type CampaignConfigFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CampaignConfig
+     */
+    select?: CampaignConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CampaignConfig
+     */
+    omit?: CampaignConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CampaignConfigInclude<ExtArgs> | null
+    /**
+     * Filter, which CampaignConfig to fetch.
+     */
+    where: CampaignConfigWhereUniqueInput
+  }
+
+  /**
+   * CampaignConfig findFirst
+   */
+  export type CampaignConfigFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CampaignConfig
+     */
+    select?: CampaignConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CampaignConfig
+     */
+    omit?: CampaignConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CampaignConfigInclude<ExtArgs> | null
+    /**
+     * Filter, which CampaignConfig to fetch.
+     */
+    where?: CampaignConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CampaignConfigs to fetch.
+     */
+    orderBy?: CampaignConfigOrderByWithRelationInput | CampaignConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CampaignConfigs.
+     */
+    cursor?: CampaignConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CampaignConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CampaignConfigs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CampaignConfigs.
+     */
+    distinct?: CampaignConfigScalarFieldEnum | CampaignConfigScalarFieldEnum[]
+  }
+
+  /**
+   * CampaignConfig findFirstOrThrow
+   */
+  export type CampaignConfigFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CampaignConfig
+     */
+    select?: CampaignConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CampaignConfig
+     */
+    omit?: CampaignConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CampaignConfigInclude<ExtArgs> | null
+    /**
+     * Filter, which CampaignConfig to fetch.
+     */
+    where?: CampaignConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CampaignConfigs to fetch.
+     */
+    orderBy?: CampaignConfigOrderByWithRelationInput | CampaignConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CampaignConfigs.
+     */
+    cursor?: CampaignConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CampaignConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CampaignConfigs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CampaignConfigs.
+     */
+    distinct?: CampaignConfigScalarFieldEnum | CampaignConfigScalarFieldEnum[]
+  }
+
+  /**
+   * CampaignConfig findMany
+   */
+  export type CampaignConfigFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CampaignConfig
+     */
+    select?: CampaignConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CampaignConfig
+     */
+    omit?: CampaignConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CampaignConfigInclude<ExtArgs> | null
+    /**
+     * Filter, which CampaignConfigs to fetch.
+     */
+    where?: CampaignConfigWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CampaignConfigs to fetch.
+     */
+    orderBy?: CampaignConfigOrderByWithRelationInput | CampaignConfigOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CampaignConfigs.
+     */
+    cursor?: CampaignConfigWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CampaignConfigs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CampaignConfigs.
+     */
+    skip?: number
+    distinct?: CampaignConfigScalarFieldEnum | CampaignConfigScalarFieldEnum[]
+  }
+
+  /**
+   * CampaignConfig create
+   */
+  export type CampaignConfigCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CampaignConfig
+     */
+    select?: CampaignConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CampaignConfig
+     */
+    omit?: CampaignConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CampaignConfigInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CampaignConfig.
+     */
+    data: XOR<CampaignConfigCreateInput, CampaignConfigUncheckedCreateInput>
+  }
+
+  /**
+   * CampaignConfig createMany
+   */
+  export type CampaignConfigCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CampaignConfigs.
+     */
+    data: CampaignConfigCreateManyInput | CampaignConfigCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CampaignConfig createManyAndReturn
+   */
+  export type CampaignConfigCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CampaignConfig
+     */
+    select?: CampaignConfigSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CampaignConfig
+     */
+    omit?: CampaignConfigOmit<ExtArgs> | null
+    /**
+     * The data used to create many CampaignConfigs.
+     */
+    data: CampaignConfigCreateManyInput | CampaignConfigCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CampaignConfigIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CampaignConfig update
+   */
+  export type CampaignConfigUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CampaignConfig
+     */
+    select?: CampaignConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CampaignConfig
+     */
+    omit?: CampaignConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CampaignConfigInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CampaignConfig.
+     */
+    data: XOR<CampaignConfigUpdateInput, CampaignConfigUncheckedUpdateInput>
+    /**
+     * Choose, which CampaignConfig to update.
+     */
+    where: CampaignConfigWhereUniqueInput
+  }
+
+  /**
+   * CampaignConfig updateMany
+   */
+  export type CampaignConfigUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CampaignConfigs.
+     */
+    data: XOR<CampaignConfigUpdateManyMutationInput, CampaignConfigUncheckedUpdateManyInput>
+    /**
+     * Filter which CampaignConfigs to update
+     */
+    where?: CampaignConfigWhereInput
+    /**
+     * Limit how many CampaignConfigs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CampaignConfig updateManyAndReturn
+   */
+  export type CampaignConfigUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CampaignConfig
+     */
+    select?: CampaignConfigSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CampaignConfig
+     */
+    omit?: CampaignConfigOmit<ExtArgs> | null
+    /**
+     * The data used to update CampaignConfigs.
+     */
+    data: XOR<CampaignConfigUpdateManyMutationInput, CampaignConfigUncheckedUpdateManyInput>
+    /**
+     * Filter which CampaignConfigs to update
+     */
+    where?: CampaignConfigWhereInput
+    /**
+     * Limit how many CampaignConfigs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CampaignConfigIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * CampaignConfig upsert
+   */
+  export type CampaignConfigUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CampaignConfig
+     */
+    select?: CampaignConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CampaignConfig
+     */
+    omit?: CampaignConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CampaignConfigInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CampaignConfig to update in case it exists.
+     */
+    where: CampaignConfigWhereUniqueInput
+    /**
+     * In case the CampaignConfig found by the `where` argument doesn't exist, create a new CampaignConfig with this data.
+     */
+    create: XOR<CampaignConfigCreateInput, CampaignConfigUncheckedCreateInput>
+    /**
+     * In case the CampaignConfig was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CampaignConfigUpdateInput, CampaignConfigUncheckedUpdateInput>
+  }
+
+  /**
+   * CampaignConfig delete
+   */
+  export type CampaignConfigDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CampaignConfig
+     */
+    select?: CampaignConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CampaignConfig
+     */
+    omit?: CampaignConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CampaignConfigInclude<ExtArgs> | null
+    /**
+     * Filter which CampaignConfig to delete.
+     */
+    where: CampaignConfigWhereUniqueInput
+  }
+
+  /**
+   * CampaignConfig deleteMany
+   */
+  export type CampaignConfigDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CampaignConfigs to delete
+     */
+    where?: CampaignConfigWhereInput
+    /**
+     * Limit how many CampaignConfigs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CampaignConfig without action
+   */
+  export type CampaignConfigDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CampaignConfig
+     */
+    select?: CampaignConfigSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CampaignConfig
+     */
+    omit?: CampaignConfigOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CampaignConfigInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model TaskCompletion
    */
 
@@ -17039,7 +22139,13 @@ export namespace Prisma {
     isAdmin: 'isAdmin',
     isActive: 'isActive',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    permissions: 'permissions',
+    riskScore: 'riskScore',
+    suspiciousFlags: 'suspiciousFlags',
+    isBanned: 'isBanned',
+    bannedAt: 'bannedAt',
+    lastActivity: 'lastActivity'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -17126,6 +22232,68 @@ export namespace Prisma {
   };
 
   export type TaskScalarFieldEnum = (typeof TaskScalarFieldEnum)[keyof typeof TaskScalarFieldEnum]
+
+
+  export const AdminSessionScalarFieldEnum: {
+    id: 'id',
+    adminId: 'adminId',
+    ipAddress: 'ipAddress',
+    userAgent: 'userAgent',
+    permissions: 'permissions',
+    expiresAt: 'expiresAt',
+    lastActivity: 'lastActivity',
+    createdAt: 'createdAt'
+  };
+
+  export type AdminSessionScalarFieldEnum = (typeof AdminSessionScalarFieldEnum)[keyof typeof AdminSessionScalarFieldEnum]
+
+
+  export const AdminAuditLogScalarFieldEnum: {
+    id: 'id',
+    adminId: 'adminId',
+    action: 'action',
+    metadata: 'metadata',
+    timestamp: 'timestamp',
+    ipAddress: 'ipAddress'
+  };
+
+  export type AdminAuditLogScalarFieldEnum = (typeof AdminAuditLogScalarFieldEnum)[keyof typeof AdminAuditLogScalarFieldEnum]
+
+
+  export const FraudAlertScalarFieldEnum: {
+    id: 'id',
+    type: 'type',
+    severity: 'severity',
+    userId: 'userId',
+    description: 'description',
+    evidence: 'evidence',
+    riskScore: 'riskScore',
+    status: 'status',
+    createdAt: 'createdAt',
+    investigatedBy: 'investigatedBy',
+    resolvedAt: 'resolvedAt'
+  };
+
+  export type FraudAlertScalarFieldEnum = (typeof FraudAlertScalarFieldEnum)[keyof typeof FraudAlertScalarFieldEnum]
+
+
+  export const CampaignConfigScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    tokenMint: 'tokenMint',
+    totalAllocation: 'totalAllocation',
+    startDate: 'startDate',
+    endDate: 'endDate',
+    eligibilityCriteria: 'eligibilityCriteria',
+    distributionRules: 'distributionRules',
+    isActive: 'isActive',
+    createdBy: 'createdBy',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type CampaignConfigScalarFieldEnum = (typeof CampaignConfigScalarFieldEnum)[keyof typeof CampaignConfigScalarFieldEnum]
 
 
   export const TaskCompletionScalarFieldEnum: {
@@ -17217,19 +22385,19 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const JsonNullValueInput: {
-    JsonNull: typeof JsonNull
-  };
-
-  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
-
-
   export const NullableJsonNullValueInput: {
     DbNull: typeof DbNull,
     JsonNull: typeof JsonNull
   };
 
   export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
 
 
   export const QueryMode: {
@@ -17240,14 +22408,6 @@ export namespace Prisma {
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
 
 
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
   export const JsonNullValueFilter: {
     DbNull: typeof DbNull,
     JsonNull: typeof JsonNull,
@@ -17255,6 +22415,14 @@ export namespace Prisma {
   };
 
   export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -17396,6 +22564,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'BigInt'
+   */
+  export type BigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt'>
+    
+
+
+  /**
+   * Reference to a field of type 'BigInt[]'
+   */
+  export type ListBigIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BigInt[]'>
+    
+
+
+  /**
    * Reference to a field of type 'ClaimStatus'
    */
   export type EnumClaimStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ClaimStatus'>
@@ -17449,6 +22631,12 @@ export namespace Prisma {
     isActive?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    permissions?: JsonNullableFilter<"User">
+    riskScore?: IntFilter<"User"> | number
+    suspiciousFlags?: StringNullableListFilter<"User">
+    isBanned?: BoolFilter<"User"> | boolean
+    bannedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    lastActivity?: DateTimeNullableFilter<"User"> | Date | string | null
     engagements?: TwitterEngagementListRelationFilter
     tasks?: TaskCompletionListRelationFilter
     claims?: ClaimListRelationFilter
@@ -17457,6 +22645,10 @@ export namespace Prisma {
     referredBy?: XOR<ReferralNullableScalarRelationFilter, ReferralWhereInput> | null
     achievements?: UserAchievementListRelationFilter
     notifications?: NotificationListRelationFilter
+    adminSessions?: AdminSessionListRelationFilter
+    auditLogs?: AdminAuditLogListRelationFilter
+    fraudAlerts?: FraudAlertListRelationFilter
+    campaigns?: CampaignConfigListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -17479,6 +22671,12 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    permissions?: SortOrderInput | SortOrder
+    riskScore?: SortOrder
+    suspiciousFlags?: SortOrder
+    isBanned?: SortOrder
+    bannedAt?: SortOrderInput | SortOrder
+    lastActivity?: SortOrderInput | SortOrder
     engagements?: TwitterEngagementOrderByRelationAggregateInput
     tasks?: TaskCompletionOrderByRelationAggregateInput
     claims?: ClaimOrderByRelationAggregateInput
@@ -17487,6 +22685,10 @@ export namespace Prisma {
     referredBy?: ReferralOrderByWithRelationInput
     achievements?: UserAchievementOrderByRelationAggregateInput
     notifications?: NotificationOrderByRelationAggregateInput
+    adminSessions?: AdminSessionOrderByRelationAggregateInput
+    auditLogs?: AdminAuditLogOrderByRelationAggregateInput
+    fraudAlerts?: FraudAlertOrderByRelationAggregateInput
+    campaigns?: CampaignConfigOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -17512,6 +22714,12 @@ export namespace Prisma {
     isActive?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    permissions?: JsonNullableFilter<"User">
+    riskScore?: IntFilter<"User"> | number
+    suspiciousFlags?: StringNullableListFilter<"User">
+    isBanned?: BoolFilter<"User"> | boolean
+    bannedAt?: DateTimeNullableFilter<"User"> | Date | string | null
+    lastActivity?: DateTimeNullableFilter<"User"> | Date | string | null
     engagements?: TwitterEngagementListRelationFilter
     tasks?: TaskCompletionListRelationFilter
     claims?: ClaimListRelationFilter
@@ -17520,6 +22728,10 @@ export namespace Prisma {
     referredBy?: XOR<ReferralNullableScalarRelationFilter, ReferralWhereInput> | null
     achievements?: UserAchievementListRelationFilter
     notifications?: NotificationListRelationFilter
+    adminSessions?: AdminSessionListRelationFilter
+    auditLogs?: AdminAuditLogListRelationFilter
+    fraudAlerts?: FraudAlertListRelationFilter
+    campaigns?: CampaignConfigListRelationFilter
   }, "id" | "walletAddress" | "twitterId" | "referralCode" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -17542,6 +22754,12 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    permissions?: SortOrderInput | SortOrder
+    riskScore?: SortOrder
+    suspiciousFlags?: SortOrder
+    isBanned?: SortOrder
+    bannedAt?: SortOrderInput | SortOrder
+    lastActivity?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -17572,6 +22790,12 @@ export namespace Prisma {
     isActive?: BoolWithAggregatesFilter<"User"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    permissions?: JsonNullableWithAggregatesFilter<"User">
+    riskScore?: IntWithAggregatesFilter<"User"> | number
+    suspiciousFlags?: StringNullableListFilter<"User">
+    isBanned?: BoolWithAggregatesFilter<"User"> | boolean
+    bannedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    lastActivity?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   }
 
   export type AchievementWhereInput = {
@@ -17999,6 +23223,320 @@ export namespace Prisma {
     expiresAt?: DateTimeNullableWithAggregatesFilter<"Task"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Task"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Task"> | Date | string
+  }
+
+  export type AdminSessionWhereInput = {
+    AND?: AdminSessionWhereInput | AdminSessionWhereInput[]
+    OR?: AdminSessionWhereInput[]
+    NOT?: AdminSessionWhereInput | AdminSessionWhereInput[]
+    id?: StringFilter<"AdminSession"> | string
+    adminId?: StringFilter<"AdminSession"> | string
+    ipAddress?: StringFilter<"AdminSession"> | string
+    userAgent?: StringFilter<"AdminSession"> | string
+    permissions?: JsonFilter<"AdminSession">
+    expiresAt?: DateTimeFilter<"AdminSession"> | Date | string
+    lastActivity?: DateTimeFilter<"AdminSession"> | Date | string
+    createdAt?: DateTimeFilter<"AdminSession"> | Date | string
+    admin?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type AdminSessionOrderByWithRelationInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+    ipAddress?: SortOrder
+    userAgent?: SortOrder
+    permissions?: SortOrder
+    expiresAt?: SortOrder
+    lastActivity?: SortOrder
+    createdAt?: SortOrder
+    admin?: UserOrderByWithRelationInput
+  }
+
+  export type AdminSessionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AdminSessionWhereInput | AdminSessionWhereInput[]
+    OR?: AdminSessionWhereInput[]
+    NOT?: AdminSessionWhereInput | AdminSessionWhereInput[]
+    adminId?: StringFilter<"AdminSession"> | string
+    ipAddress?: StringFilter<"AdminSession"> | string
+    userAgent?: StringFilter<"AdminSession"> | string
+    permissions?: JsonFilter<"AdminSession">
+    expiresAt?: DateTimeFilter<"AdminSession"> | Date | string
+    lastActivity?: DateTimeFilter<"AdminSession"> | Date | string
+    createdAt?: DateTimeFilter<"AdminSession"> | Date | string
+    admin?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type AdminSessionOrderByWithAggregationInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+    ipAddress?: SortOrder
+    userAgent?: SortOrder
+    permissions?: SortOrder
+    expiresAt?: SortOrder
+    lastActivity?: SortOrder
+    createdAt?: SortOrder
+    _count?: AdminSessionCountOrderByAggregateInput
+    _max?: AdminSessionMaxOrderByAggregateInput
+    _min?: AdminSessionMinOrderByAggregateInput
+  }
+
+  export type AdminSessionScalarWhereWithAggregatesInput = {
+    AND?: AdminSessionScalarWhereWithAggregatesInput | AdminSessionScalarWhereWithAggregatesInput[]
+    OR?: AdminSessionScalarWhereWithAggregatesInput[]
+    NOT?: AdminSessionScalarWhereWithAggregatesInput | AdminSessionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AdminSession"> | string
+    adminId?: StringWithAggregatesFilter<"AdminSession"> | string
+    ipAddress?: StringWithAggregatesFilter<"AdminSession"> | string
+    userAgent?: StringWithAggregatesFilter<"AdminSession"> | string
+    permissions?: JsonWithAggregatesFilter<"AdminSession">
+    expiresAt?: DateTimeWithAggregatesFilter<"AdminSession"> | Date | string
+    lastActivity?: DateTimeWithAggregatesFilter<"AdminSession"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"AdminSession"> | Date | string
+  }
+
+  export type AdminAuditLogWhereInput = {
+    AND?: AdminAuditLogWhereInput | AdminAuditLogWhereInput[]
+    OR?: AdminAuditLogWhereInput[]
+    NOT?: AdminAuditLogWhereInput | AdminAuditLogWhereInput[]
+    id?: StringFilter<"AdminAuditLog"> | string
+    adminId?: StringFilter<"AdminAuditLog"> | string
+    action?: StringFilter<"AdminAuditLog"> | string
+    metadata?: JsonFilter<"AdminAuditLog">
+    timestamp?: DateTimeFilter<"AdminAuditLog"> | Date | string
+    ipAddress?: StringFilter<"AdminAuditLog"> | string
+    admin?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type AdminAuditLogOrderByWithRelationInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+    action?: SortOrder
+    metadata?: SortOrder
+    timestamp?: SortOrder
+    ipAddress?: SortOrder
+    admin?: UserOrderByWithRelationInput
+  }
+
+  export type AdminAuditLogWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AdminAuditLogWhereInput | AdminAuditLogWhereInput[]
+    OR?: AdminAuditLogWhereInput[]
+    NOT?: AdminAuditLogWhereInput | AdminAuditLogWhereInput[]
+    adminId?: StringFilter<"AdminAuditLog"> | string
+    action?: StringFilter<"AdminAuditLog"> | string
+    metadata?: JsonFilter<"AdminAuditLog">
+    timestamp?: DateTimeFilter<"AdminAuditLog"> | Date | string
+    ipAddress?: StringFilter<"AdminAuditLog"> | string
+    admin?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type AdminAuditLogOrderByWithAggregationInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+    action?: SortOrder
+    metadata?: SortOrder
+    timestamp?: SortOrder
+    ipAddress?: SortOrder
+    _count?: AdminAuditLogCountOrderByAggregateInput
+    _max?: AdminAuditLogMaxOrderByAggregateInput
+    _min?: AdminAuditLogMinOrderByAggregateInput
+  }
+
+  export type AdminAuditLogScalarWhereWithAggregatesInput = {
+    AND?: AdminAuditLogScalarWhereWithAggregatesInput | AdminAuditLogScalarWhereWithAggregatesInput[]
+    OR?: AdminAuditLogScalarWhereWithAggregatesInput[]
+    NOT?: AdminAuditLogScalarWhereWithAggregatesInput | AdminAuditLogScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AdminAuditLog"> | string
+    adminId?: StringWithAggregatesFilter<"AdminAuditLog"> | string
+    action?: StringWithAggregatesFilter<"AdminAuditLog"> | string
+    metadata?: JsonWithAggregatesFilter<"AdminAuditLog">
+    timestamp?: DateTimeWithAggregatesFilter<"AdminAuditLog"> | Date | string
+    ipAddress?: StringWithAggregatesFilter<"AdminAuditLog"> | string
+  }
+
+  export type FraudAlertWhereInput = {
+    AND?: FraudAlertWhereInput | FraudAlertWhereInput[]
+    OR?: FraudAlertWhereInput[]
+    NOT?: FraudAlertWhereInput | FraudAlertWhereInput[]
+    id?: StringFilter<"FraudAlert"> | string
+    type?: StringFilter<"FraudAlert"> | string
+    severity?: StringFilter<"FraudAlert"> | string
+    userId?: StringFilter<"FraudAlert"> | string
+    description?: StringFilter<"FraudAlert"> | string
+    evidence?: JsonFilter<"FraudAlert">
+    riskScore?: IntFilter<"FraudAlert"> | number
+    status?: StringFilter<"FraudAlert"> | string
+    createdAt?: DateTimeFilter<"FraudAlert"> | Date | string
+    investigatedBy?: StringNullableFilter<"FraudAlert"> | string | null
+    resolvedAt?: DateTimeNullableFilter<"FraudAlert"> | Date | string | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type FraudAlertOrderByWithRelationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    severity?: SortOrder
+    userId?: SortOrder
+    description?: SortOrder
+    evidence?: SortOrder
+    riskScore?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    investigatedBy?: SortOrderInput | SortOrder
+    resolvedAt?: SortOrderInput | SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type FraudAlertWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: FraudAlertWhereInput | FraudAlertWhereInput[]
+    OR?: FraudAlertWhereInput[]
+    NOT?: FraudAlertWhereInput | FraudAlertWhereInput[]
+    type?: StringFilter<"FraudAlert"> | string
+    severity?: StringFilter<"FraudAlert"> | string
+    userId?: StringFilter<"FraudAlert"> | string
+    description?: StringFilter<"FraudAlert"> | string
+    evidence?: JsonFilter<"FraudAlert">
+    riskScore?: IntFilter<"FraudAlert"> | number
+    status?: StringFilter<"FraudAlert"> | string
+    createdAt?: DateTimeFilter<"FraudAlert"> | Date | string
+    investigatedBy?: StringNullableFilter<"FraudAlert"> | string | null
+    resolvedAt?: DateTimeNullableFilter<"FraudAlert"> | Date | string | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type FraudAlertOrderByWithAggregationInput = {
+    id?: SortOrder
+    type?: SortOrder
+    severity?: SortOrder
+    userId?: SortOrder
+    description?: SortOrder
+    evidence?: SortOrder
+    riskScore?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    investigatedBy?: SortOrderInput | SortOrder
+    resolvedAt?: SortOrderInput | SortOrder
+    _count?: FraudAlertCountOrderByAggregateInput
+    _avg?: FraudAlertAvgOrderByAggregateInput
+    _max?: FraudAlertMaxOrderByAggregateInput
+    _min?: FraudAlertMinOrderByAggregateInput
+    _sum?: FraudAlertSumOrderByAggregateInput
+  }
+
+  export type FraudAlertScalarWhereWithAggregatesInput = {
+    AND?: FraudAlertScalarWhereWithAggregatesInput | FraudAlertScalarWhereWithAggregatesInput[]
+    OR?: FraudAlertScalarWhereWithAggregatesInput[]
+    NOT?: FraudAlertScalarWhereWithAggregatesInput | FraudAlertScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"FraudAlert"> | string
+    type?: StringWithAggregatesFilter<"FraudAlert"> | string
+    severity?: StringWithAggregatesFilter<"FraudAlert"> | string
+    userId?: StringWithAggregatesFilter<"FraudAlert"> | string
+    description?: StringWithAggregatesFilter<"FraudAlert"> | string
+    evidence?: JsonWithAggregatesFilter<"FraudAlert">
+    riskScore?: IntWithAggregatesFilter<"FraudAlert"> | number
+    status?: StringWithAggregatesFilter<"FraudAlert"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"FraudAlert"> | Date | string
+    investigatedBy?: StringNullableWithAggregatesFilter<"FraudAlert"> | string | null
+    resolvedAt?: DateTimeNullableWithAggregatesFilter<"FraudAlert"> | Date | string | null
+  }
+
+  export type CampaignConfigWhereInput = {
+    AND?: CampaignConfigWhereInput | CampaignConfigWhereInput[]
+    OR?: CampaignConfigWhereInput[]
+    NOT?: CampaignConfigWhereInput | CampaignConfigWhereInput[]
+    id?: StringFilter<"CampaignConfig"> | string
+    name?: StringFilter<"CampaignConfig"> | string
+    description?: StringNullableFilter<"CampaignConfig"> | string | null
+    tokenMint?: StringFilter<"CampaignConfig"> | string
+    totalAllocation?: BigIntFilter<"CampaignConfig"> | bigint | number
+    startDate?: DateTimeFilter<"CampaignConfig"> | Date | string
+    endDate?: DateTimeFilter<"CampaignConfig"> | Date | string
+    eligibilityCriteria?: JsonFilter<"CampaignConfig">
+    distributionRules?: JsonFilter<"CampaignConfig">
+    isActive?: BoolFilter<"CampaignConfig"> | boolean
+    createdBy?: StringFilter<"CampaignConfig"> | string
+    createdAt?: DateTimeFilter<"CampaignConfig"> | Date | string
+    updatedAt?: DateTimeFilter<"CampaignConfig"> | Date | string
+    creator?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type CampaignConfigOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    tokenMint?: SortOrder
+    totalAllocation?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    eligibilityCriteria?: SortOrder
+    distributionRules?: SortOrder
+    isActive?: SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    creator?: UserOrderByWithRelationInput
+  }
+
+  export type CampaignConfigWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: CampaignConfigWhereInput | CampaignConfigWhereInput[]
+    OR?: CampaignConfigWhereInput[]
+    NOT?: CampaignConfigWhereInput | CampaignConfigWhereInput[]
+    name?: StringFilter<"CampaignConfig"> | string
+    description?: StringNullableFilter<"CampaignConfig"> | string | null
+    tokenMint?: StringFilter<"CampaignConfig"> | string
+    totalAllocation?: BigIntFilter<"CampaignConfig"> | bigint | number
+    startDate?: DateTimeFilter<"CampaignConfig"> | Date | string
+    endDate?: DateTimeFilter<"CampaignConfig"> | Date | string
+    eligibilityCriteria?: JsonFilter<"CampaignConfig">
+    distributionRules?: JsonFilter<"CampaignConfig">
+    isActive?: BoolFilter<"CampaignConfig"> | boolean
+    createdBy?: StringFilter<"CampaignConfig"> | string
+    createdAt?: DateTimeFilter<"CampaignConfig"> | Date | string
+    updatedAt?: DateTimeFilter<"CampaignConfig"> | Date | string
+    creator?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type CampaignConfigOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrderInput | SortOrder
+    tokenMint?: SortOrder
+    totalAllocation?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    eligibilityCriteria?: SortOrder
+    distributionRules?: SortOrder
+    isActive?: SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: CampaignConfigCountOrderByAggregateInput
+    _avg?: CampaignConfigAvgOrderByAggregateInput
+    _max?: CampaignConfigMaxOrderByAggregateInput
+    _min?: CampaignConfigMinOrderByAggregateInput
+    _sum?: CampaignConfigSumOrderByAggregateInput
+  }
+
+  export type CampaignConfigScalarWhereWithAggregatesInput = {
+    AND?: CampaignConfigScalarWhereWithAggregatesInput | CampaignConfigScalarWhereWithAggregatesInput[]
+    OR?: CampaignConfigScalarWhereWithAggregatesInput[]
+    NOT?: CampaignConfigScalarWhereWithAggregatesInput | CampaignConfigScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"CampaignConfig"> | string
+    name?: StringWithAggregatesFilter<"CampaignConfig"> | string
+    description?: StringNullableWithAggregatesFilter<"CampaignConfig"> | string | null
+    tokenMint?: StringWithAggregatesFilter<"CampaignConfig"> | string
+    totalAllocation?: BigIntWithAggregatesFilter<"CampaignConfig"> | bigint | number
+    startDate?: DateTimeWithAggregatesFilter<"CampaignConfig"> | Date | string
+    endDate?: DateTimeWithAggregatesFilter<"CampaignConfig"> | Date | string
+    eligibilityCriteria?: JsonWithAggregatesFilter<"CampaignConfig">
+    distributionRules?: JsonWithAggregatesFilter<"CampaignConfig">
+    isActive?: BoolWithAggregatesFilter<"CampaignConfig"> | boolean
+    createdBy?: StringWithAggregatesFilter<"CampaignConfig"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"CampaignConfig"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"CampaignConfig"> | Date | string
   }
 
   export type TaskCompletionWhereInput = {
@@ -18437,6 +23975,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -18445,6 +23989,10 @@ export namespace Prisma {
     referredBy?: ReferralCreateNestedOneWithoutReferredInput
     achievements?: UserAchievementCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -18467,6 +24015,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -18475,6 +24029,10 @@ export namespace Prisma {
     referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
     achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUpdateInput = {
@@ -18497,6 +24055,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -18505,6 +24069,10 @@ export namespace Prisma {
     referredBy?: ReferralUpdateOneWithoutReferredNestedInput
     achievements?: UserAchievementUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -18527,6 +24095,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -18535,6 +24109,10 @@ export namespace Prisma {
     referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
     achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -18557,6 +24135,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -18579,6 +24163,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -18601,6 +24191,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AchievementCreateInput = {
@@ -19058,6 +24654,352 @@ export namespace Prisma {
     requirements?: JsonNullValueInput | InputJsonValue
     isActive?: BoolFieldUpdateOperationsInput | boolean
     expiresAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdminSessionCreateInput = {
+    id?: string
+    ipAddress: string
+    userAgent: string
+    permissions: JsonNullValueInput | InputJsonValue
+    expiresAt: Date | string
+    lastActivity: Date | string
+    createdAt?: Date | string
+    admin: UserCreateNestedOneWithoutAdminSessionsInput
+  }
+
+  export type AdminSessionUncheckedCreateInput = {
+    id?: string
+    adminId: string
+    ipAddress: string
+    userAgent: string
+    permissions: JsonNullValueInput | InputJsonValue
+    expiresAt: Date | string
+    lastActivity: Date | string
+    createdAt?: Date | string
+  }
+
+  export type AdminSessionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    userAgent?: StringFieldUpdateOperationsInput | string
+    permissions?: JsonNullValueInput | InputJsonValue
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastActivity?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admin?: UserUpdateOneRequiredWithoutAdminSessionsNestedInput
+  }
+
+  export type AdminSessionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    userAgent?: StringFieldUpdateOperationsInput | string
+    permissions?: JsonNullValueInput | InputJsonValue
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastActivity?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdminSessionCreateManyInput = {
+    id?: string
+    adminId: string
+    ipAddress: string
+    userAgent: string
+    permissions: JsonNullValueInput | InputJsonValue
+    expiresAt: Date | string
+    lastActivity: Date | string
+    createdAt?: Date | string
+  }
+
+  export type AdminSessionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    userAgent?: StringFieldUpdateOperationsInput | string
+    permissions?: JsonNullValueInput | InputJsonValue
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastActivity?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdminSessionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    userAgent?: StringFieldUpdateOperationsInput | string
+    permissions?: JsonNullValueInput | InputJsonValue
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastActivity?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdminAuditLogCreateInput = {
+    id?: string
+    action: string
+    metadata: JsonNullValueInput | InputJsonValue
+    timestamp?: Date | string
+    ipAddress: string
+    admin: UserCreateNestedOneWithoutAuditLogsInput
+  }
+
+  export type AdminAuditLogUncheckedCreateInput = {
+    id?: string
+    adminId: string
+    action: string
+    metadata: JsonNullValueInput | InputJsonValue
+    timestamp?: Date | string
+    ipAddress: string
+  }
+
+  export type AdminAuditLogUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    action?: StringFieldUpdateOperationsInput | string
+    metadata?: JsonNullValueInput | InputJsonValue
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    admin?: UserUpdateOneRequiredWithoutAuditLogsNestedInput
+  }
+
+  export type AdminAuditLogUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    action?: StringFieldUpdateOperationsInput | string
+    metadata?: JsonNullValueInput | InputJsonValue
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AdminAuditLogCreateManyInput = {
+    id?: string
+    adminId: string
+    action: string
+    metadata: JsonNullValueInput | InputJsonValue
+    timestamp?: Date | string
+    ipAddress: string
+  }
+
+  export type AdminAuditLogUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    action?: StringFieldUpdateOperationsInput | string
+    metadata?: JsonNullValueInput | InputJsonValue
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AdminAuditLogUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    adminId?: StringFieldUpdateOperationsInput | string
+    action?: StringFieldUpdateOperationsInput | string
+    metadata?: JsonNullValueInput | InputJsonValue
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FraudAlertCreateInput = {
+    id?: string
+    type: string
+    severity: string
+    description: string
+    evidence: JsonNullValueInput | InputJsonValue
+    riskScore: number
+    status?: string
+    createdAt?: Date | string
+    investigatedBy?: string | null
+    resolvedAt?: Date | string | null
+    user: UserCreateNestedOneWithoutFraudAlertsInput
+  }
+
+  export type FraudAlertUncheckedCreateInput = {
+    id?: string
+    type: string
+    severity: string
+    userId: string
+    description: string
+    evidence: JsonNullValueInput | InputJsonValue
+    riskScore: number
+    status?: string
+    createdAt?: Date | string
+    investigatedBy?: string | null
+    resolvedAt?: Date | string | null
+  }
+
+  export type FraudAlertUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    severity?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    evidence?: JsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    investigatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    user?: UserUpdateOneRequiredWithoutFraudAlertsNestedInput
+  }
+
+  export type FraudAlertUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    severity?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    evidence?: JsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    investigatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FraudAlertCreateManyInput = {
+    id?: string
+    type: string
+    severity: string
+    userId: string
+    description: string
+    evidence: JsonNullValueInput | InputJsonValue
+    riskScore: number
+    status?: string
+    createdAt?: Date | string
+    investigatedBy?: string | null
+    resolvedAt?: Date | string | null
+  }
+
+  export type FraudAlertUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    severity?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    evidence?: JsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    investigatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FraudAlertUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    severity?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    evidence?: JsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    investigatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CampaignConfigCreateInput = {
+    id?: string
+    name: string
+    description?: string | null
+    tokenMint: string
+    totalAllocation: bigint | number
+    startDate: Date | string
+    endDate: Date | string
+    eligibilityCriteria: JsonNullValueInput | InputJsonValue
+    distributionRules: JsonNullValueInput | InputJsonValue
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    creator: UserCreateNestedOneWithoutCampaignsInput
+  }
+
+  export type CampaignConfigUncheckedCreateInput = {
+    id?: string
+    name: string
+    description?: string | null
+    tokenMint: string
+    totalAllocation: bigint | number
+    startDate: Date | string
+    endDate: Date | string
+    eligibilityCriteria: JsonNullValueInput | InputJsonValue
+    distributionRules: JsonNullValueInput | InputJsonValue
+    isActive?: boolean
+    createdBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CampaignConfigUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenMint?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    eligibilityCriteria?: JsonNullValueInput | InputJsonValue
+    distributionRules?: JsonNullValueInput | InputJsonValue
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creator?: UserUpdateOneRequiredWithoutCampaignsNestedInput
+  }
+
+  export type CampaignConfigUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenMint?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    eligibilityCriteria?: JsonNullValueInput | InputJsonValue
+    distributionRules?: JsonNullValueInput | InputJsonValue
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdBy?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CampaignConfigCreateManyInput = {
+    id?: string
+    name: string
+    description?: string | null
+    tokenMint: string
+    totalAllocation: bigint | number
+    startDate: Date | string
+    endDate: Date | string
+    eligibilityCriteria: JsonNullValueInput | InputJsonValue
+    distributionRules: JsonNullValueInput | InputJsonValue
+    isActive?: boolean
+    createdBy: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CampaignConfigUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenMint?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    eligibilityCriteria?: JsonNullValueInput | InputJsonValue
+    distributionRules?: JsonNullValueInput | InputJsonValue
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CampaignConfigUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenMint?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    eligibilityCriteria?: JsonNullValueInput | InputJsonValue
+    distributionRules?: JsonNullValueInput | InputJsonValue
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdBy?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19582,6 +25524,37 @@ export namespace Prisma {
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
 
   export type TwitterEngagementListRelationFilter = {
     every?: TwitterEngagementWhereInput
@@ -19630,6 +25603,30 @@ export namespace Prisma {
     none?: NotificationWhereInput
   }
 
+  export type AdminSessionListRelationFilter = {
+    every?: AdminSessionWhereInput
+    some?: AdminSessionWhereInput
+    none?: AdminSessionWhereInput
+  }
+
+  export type AdminAuditLogListRelationFilter = {
+    every?: AdminAuditLogWhereInput
+    some?: AdminAuditLogWhereInput
+    none?: AdminAuditLogWhereInput
+  }
+
+  export type FraudAlertListRelationFilter = {
+    every?: FraudAlertWhereInput
+    some?: FraudAlertWhereInput
+    none?: FraudAlertWhereInput
+  }
+
+  export type CampaignConfigListRelationFilter = {
+    every?: CampaignConfigWhereInput
+    some?: CampaignConfigWhereInput
+    none?: CampaignConfigWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -19663,6 +25660,22 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type AdminSessionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AdminAuditLogOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type FraudAlertOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CampaignConfigOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     walletAddress?: SortOrder
@@ -19683,6 +25696,12 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    permissions?: SortOrder
+    riskScore?: SortOrder
+    suspiciousFlags?: SortOrder
+    isBanned?: SortOrder
+    bannedAt?: SortOrder
+    lastActivity?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -19691,6 +25710,7 @@ export namespace Prisma {
     streak?: SortOrder
     totalPoints?: SortOrder
     rank?: SortOrder
+    riskScore?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -19713,6 +25733,10 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    riskScore?: SortOrder
+    isBanned?: SortOrder
+    bannedAt?: SortOrder
+    lastActivity?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -19735,6 +25759,10 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    riskScore?: SortOrder
+    isBanned?: SortOrder
+    bannedAt?: SortOrder
+    lastActivity?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -19743,6 +25771,7 @@ export namespace Prisma {
     streak?: SortOrder
     totalPoints?: SortOrder
     rank?: SortOrder
+    riskScore?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -19857,6 +25886,32 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -20245,28 +26300,188 @@ export namespace Prisma {
     _min?: NestedEnumTaskTypeFilter<$PrismaModel>
     _max?: NestedEnumTaskTypeFilter<$PrismaModel>
   }
-  export type JsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  export type AdminSessionCountOrderByAggregateInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+    ipAddress?: SortOrder
+    userAgent?: SortOrder
+    permissions?: SortOrder
+    expiresAt?: SortOrder
+    lastActivity?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type AdminSessionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+    ipAddress?: SortOrder
+    userAgent?: SortOrder
+    expiresAt?: SortOrder
+    lastActivity?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type AdminSessionMinOrderByAggregateInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+    ipAddress?: SortOrder
+    userAgent?: SortOrder
+    expiresAt?: SortOrder
+    lastActivity?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type AdminAuditLogCountOrderByAggregateInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+    action?: SortOrder
+    metadata?: SortOrder
+    timestamp?: SortOrder
+    ipAddress?: SortOrder
+  }
+
+  export type AdminAuditLogMaxOrderByAggregateInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+    action?: SortOrder
+    timestamp?: SortOrder
+    ipAddress?: SortOrder
+  }
+
+  export type AdminAuditLogMinOrderByAggregateInput = {
+    id?: SortOrder
+    adminId?: SortOrder
+    action?: SortOrder
+    timestamp?: SortOrder
+    ipAddress?: SortOrder
+  }
+
+  export type FraudAlertCountOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    severity?: SortOrder
+    userId?: SortOrder
+    description?: SortOrder
+    evidence?: SortOrder
+    riskScore?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    investigatedBy?: SortOrder
+    resolvedAt?: SortOrder
+  }
+
+  export type FraudAlertAvgOrderByAggregateInput = {
+    riskScore?: SortOrder
+  }
+
+  export type FraudAlertMaxOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    severity?: SortOrder
+    userId?: SortOrder
+    description?: SortOrder
+    riskScore?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    investigatedBy?: SortOrder
+    resolvedAt?: SortOrder
+  }
+
+  export type FraudAlertMinOrderByAggregateInput = {
+    id?: SortOrder
+    type?: SortOrder
+    severity?: SortOrder
+    userId?: SortOrder
+    description?: SortOrder
+    riskScore?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    investigatedBy?: SortOrder
+    resolvedAt?: SortOrder
+  }
+
+  export type FraudAlertSumOrderByAggregateInput = {
+    riskScore?: SortOrder
+  }
+
+  export type BigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
+  export type CampaignConfigCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    tokenMint?: SortOrder
+    totalAllocation?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    eligibilityCriteria?: SortOrder
+    distributionRules?: SortOrder
+    isActive?: SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CampaignConfigAvgOrderByAggregateInput = {
+    totalAllocation?: SortOrder
+  }
+
+  export type CampaignConfigMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    tokenMint?: SortOrder
+    totalAllocation?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    isActive?: SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CampaignConfigMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    tokenMint?: SortOrder
+    totalAllocation?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    isActive?: SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type CampaignConfigSumOrderByAggregateInput = {
+    totalAllocation?: SortOrder
+  }
+
+  export type BigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type TaskScalarRelationFilter = {
@@ -20316,32 +26531,6 @@ export namespace Prisma {
 
   export type TaskCompletionSumOrderByAggregateInput = {
     points?: SortOrder
-  }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type EnumClaimStatusFilter<$PrismaModel = never> = {
@@ -20566,6 +26755,10 @@ export namespace Prisma {
     totalEngagements?: SortOrder
   }
 
+  export type UserCreatesuspiciousFlagsInput = {
+    set: string[]
+  }
+
   export type TwitterEngagementCreateNestedManyWithoutUserInput = {
     create?: XOR<TwitterEngagementCreateWithoutUserInput, TwitterEngagementUncheckedCreateWithoutUserInput> | TwitterEngagementCreateWithoutUserInput[] | TwitterEngagementUncheckedCreateWithoutUserInput[]
     connectOrCreate?: TwitterEngagementCreateOrConnectWithoutUserInput | TwitterEngagementCreateOrConnectWithoutUserInput[]
@@ -20619,6 +26812,34 @@ export namespace Prisma {
     connectOrCreate?: NotificationCreateOrConnectWithoutUserInput | NotificationCreateOrConnectWithoutUserInput[]
     createMany?: NotificationCreateManyUserInputEnvelope
     connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
+  }
+
+  export type AdminSessionCreateNestedManyWithoutAdminInput = {
+    create?: XOR<AdminSessionCreateWithoutAdminInput, AdminSessionUncheckedCreateWithoutAdminInput> | AdminSessionCreateWithoutAdminInput[] | AdminSessionUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminSessionCreateOrConnectWithoutAdminInput | AdminSessionCreateOrConnectWithoutAdminInput[]
+    createMany?: AdminSessionCreateManyAdminInputEnvelope
+    connect?: AdminSessionWhereUniqueInput | AdminSessionWhereUniqueInput[]
+  }
+
+  export type AdminAuditLogCreateNestedManyWithoutAdminInput = {
+    create?: XOR<AdminAuditLogCreateWithoutAdminInput, AdminAuditLogUncheckedCreateWithoutAdminInput> | AdminAuditLogCreateWithoutAdminInput[] | AdminAuditLogUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminAuditLogCreateOrConnectWithoutAdminInput | AdminAuditLogCreateOrConnectWithoutAdminInput[]
+    createMany?: AdminAuditLogCreateManyAdminInputEnvelope
+    connect?: AdminAuditLogWhereUniqueInput | AdminAuditLogWhereUniqueInput[]
+  }
+
+  export type FraudAlertCreateNestedManyWithoutUserInput = {
+    create?: XOR<FraudAlertCreateWithoutUserInput, FraudAlertUncheckedCreateWithoutUserInput> | FraudAlertCreateWithoutUserInput[] | FraudAlertUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FraudAlertCreateOrConnectWithoutUserInput | FraudAlertCreateOrConnectWithoutUserInput[]
+    createMany?: FraudAlertCreateManyUserInputEnvelope
+    connect?: FraudAlertWhereUniqueInput | FraudAlertWhereUniqueInput[]
+  }
+
+  export type CampaignConfigCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<CampaignConfigCreateWithoutCreatorInput, CampaignConfigUncheckedCreateWithoutCreatorInput> | CampaignConfigCreateWithoutCreatorInput[] | CampaignConfigUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: CampaignConfigCreateOrConnectWithoutCreatorInput | CampaignConfigCreateOrConnectWithoutCreatorInput[]
+    createMany?: CampaignConfigCreateManyCreatorInputEnvelope
+    connect?: CampaignConfigWhereUniqueInput | CampaignConfigWhereUniqueInput[]
   }
 
   export type TwitterEngagementUncheckedCreateNestedManyWithoutUserInput = {
@@ -20676,6 +26897,34 @@ export namespace Prisma {
     connect?: NotificationWhereUniqueInput | NotificationWhereUniqueInput[]
   }
 
+  export type AdminSessionUncheckedCreateNestedManyWithoutAdminInput = {
+    create?: XOR<AdminSessionCreateWithoutAdminInput, AdminSessionUncheckedCreateWithoutAdminInput> | AdminSessionCreateWithoutAdminInput[] | AdminSessionUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminSessionCreateOrConnectWithoutAdminInput | AdminSessionCreateOrConnectWithoutAdminInput[]
+    createMany?: AdminSessionCreateManyAdminInputEnvelope
+    connect?: AdminSessionWhereUniqueInput | AdminSessionWhereUniqueInput[]
+  }
+
+  export type AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput = {
+    create?: XOR<AdminAuditLogCreateWithoutAdminInput, AdminAuditLogUncheckedCreateWithoutAdminInput> | AdminAuditLogCreateWithoutAdminInput[] | AdminAuditLogUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminAuditLogCreateOrConnectWithoutAdminInput | AdminAuditLogCreateOrConnectWithoutAdminInput[]
+    createMany?: AdminAuditLogCreateManyAdminInputEnvelope
+    connect?: AdminAuditLogWhereUniqueInput | AdminAuditLogWhereUniqueInput[]
+  }
+
+  export type FraudAlertUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<FraudAlertCreateWithoutUserInput, FraudAlertUncheckedCreateWithoutUserInput> | FraudAlertCreateWithoutUserInput[] | FraudAlertUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FraudAlertCreateOrConnectWithoutUserInput | FraudAlertCreateOrConnectWithoutUserInput[]
+    createMany?: FraudAlertCreateManyUserInputEnvelope
+    connect?: FraudAlertWhereUniqueInput | FraudAlertWhereUniqueInput[]
+  }
+
+  export type CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<CampaignConfigCreateWithoutCreatorInput, CampaignConfigUncheckedCreateWithoutCreatorInput> | CampaignConfigCreateWithoutCreatorInput[] | CampaignConfigUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: CampaignConfigCreateOrConnectWithoutCreatorInput | CampaignConfigCreateOrConnectWithoutCreatorInput[]
+    createMany?: CampaignConfigCreateManyCreatorInputEnvelope
+    connect?: CampaignConfigWhereUniqueInput | CampaignConfigWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -20714,6 +26963,11 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type UserUpdatesuspiciousFlagsInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type TwitterEngagementUpdateManyWithoutUserNestedInput = {
@@ -20824,6 +27078,62 @@ export namespace Prisma {
     deleteMany?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
   }
 
+  export type AdminSessionUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<AdminSessionCreateWithoutAdminInput, AdminSessionUncheckedCreateWithoutAdminInput> | AdminSessionCreateWithoutAdminInput[] | AdminSessionUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminSessionCreateOrConnectWithoutAdminInput | AdminSessionCreateOrConnectWithoutAdminInput[]
+    upsert?: AdminSessionUpsertWithWhereUniqueWithoutAdminInput | AdminSessionUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: AdminSessionCreateManyAdminInputEnvelope
+    set?: AdminSessionWhereUniqueInput | AdminSessionWhereUniqueInput[]
+    disconnect?: AdminSessionWhereUniqueInput | AdminSessionWhereUniqueInput[]
+    delete?: AdminSessionWhereUniqueInput | AdminSessionWhereUniqueInput[]
+    connect?: AdminSessionWhereUniqueInput | AdminSessionWhereUniqueInput[]
+    update?: AdminSessionUpdateWithWhereUniqueWithoutAdminInput | AdminSessionUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: AdminSessionUpdateManyWithWhereWithoutAdminInput | AdminSessionUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: AdminSessionScalarWhereInput | AdminSessionScalarWhereInput[]
+  }
+
+  export type AdminAuditLogUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<AdminAuditLogCreateWithoutAdminInput, AdminAuditLogUncheckedCreateWithoutAdminInput> | AdminAuditLogCreateWithoutAdminInput[] | AdminAuditLogUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminAuditLogCreateOrConnectWithoutAdminInput | AdminAuditLogCreateOrConnectWithoutAdminInput[]
+    upsert?: AdminAuditLogUpsertWithWhereUniqueWithoutAdminInput | AdminAuditLogUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: AdminAuditLogCreateManyAdminInputEnvelope
+    set?: AdminAuditLogWhereUniqueInput | AdminAuditLogWhereUniqueInput[]
+    disconnect?: AdminAuditLogWhereUniqueInput | AdminAuditLogWhereUniqueInput[]
+    delete?: AdminAuditLogWhereUniqueInput | AdminAuditLogWhereUniqueInput[]
+    connect?: AdminAuditLogWhereUniqueInput | AdminAuditLogWhereUniqueInput[]
+    update?: AdminAuditLogUpdateWithWhereUniqueWithoutAdminInput | AdminAuditLogUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: AdminAuditLogUpdateManyWithWhereWithoutAdminInput | AdminAuditLogUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: AdminAuditLogScalarWhereInput | AdminAuditLogScalarWhereInput[]
+  }
+
+  export type FraudAlertUpdateManyWithoutUserNestedInput = {
+    create?: XOR<FraudAlertCreateWithoutUserInput, FraudAlertUncheckedCreateWithoutUserInput> | FraudAlertCreateWithoutUserInput[] | FraudAlertUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FraudAlertCreateOrConnectWithoutUserInput | FraudAlertCreateOrConnectWithoutUserInput[]
+    upsert?: FraudAlertUpsertWithWhereUniqueWithoutUserInput | FraudAlertUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: FraudAlertCreateManyUserInputEnvelope
+    set?: FraudAlertWhereUniqueInput | FraudAlertWhereUniqueInput[]
+    disconnect?: FraudAlertWhereUniqueInput | FraudAlertWhereUniqueInput[]
+    delete?: FraudAlertWhereUniqueInput | FraudAlertWhereUniqueInput[]
+    connect?: FraudAlertWhereUniqueInput | FraudAlertWhereUniqueInput[]
+    update?: FraudAlertUpdateWithWhereUniqueWithoutUserInput | FraudAlertUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: FraudAlertUpdateManyWithWhereWithoutUserInput | FraudAlertUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: FraudAlertScalarWhereInput | FraudAlertScalarWhereInput[]
+  }
+
+  export type CampaignConfigUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<CampaignConfigCreateWithoutCreatorInput, CampaignConfigUncheckedCreateWithoutCreatorInput> | CampaignConfigCreateWithoutCreatorInput[] | CampaignConfigUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: CampaignConfigCreateOrConnectWithoutCreatorInput | CampaignConfigCreateOrConnectWithoutCreatorInput[]
+    upsert?: CampaignConfigUpsertWithWhereUniqueWithoutCreatorInput | CampaignConfigUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: CampaignConfigCreateManyCreatorInputEnvelope
+    set?: CampaignConfigWhereUniqueInput | CampaignConfigWhereUniqueInput[]
+    disconnect?: CampaignConfigWhereUniqueInput | CampaignConfigWhereUniqueInput[]
+    delete?: CampaignConfigWhereUniqueInput | CampaignConfigWhereUniqueInput[]
+    connect?: CampaignConfigWhereUniqueInput | CampaignConfigWhereUniqueInput[]
+    update?: CampaignConfigUpdateWithWhereUniqueWithoutCreatorInput | CampaignConfigUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: CampaignConfigUpdateManyWithWhereWithoutCreatorInput | CampaignConfigUpdateManyWithWhereWithoutCreatorInput[]
+    deleteMany?: CampaignConfigScalarWhereInput | CampaignConfigScalarWhereInput[]
+  }
+
   export type TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<TwitterEngagementCreateWithoutUserInput, TwitterEngagementUncheckedCreateWithoutUserInput> | TwitterEngagementCreateWithoutUserInput[] | TwitterEngagementUncheckedCreateWithoutUserInput[]
     connectOrCreate?: TwitterEngagementCreateOrConnectWithoutUserInput | TwitterEngagementCreateOrConnectWithoutUserInput[]
@@ -20930,6 +27240,62 @@ export namespace Prisma {
     update?: NotificationUpdateWithWhereUniqueWithoutUserInput | NotificationUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: NotificationUpdateManyWithWhereWithoutUserInput | NotificationUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: NotificationScalarWhereInput | NotificationScalarWhereInput[]
+  }
+
+  export type AdminSessionUncheckedUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<AdminSessionCreateWithoutAdminInput, AdminSessionUncheckedCreateWithoutAdminInput> | AdminSessionCreateWithoutAdminInput[] | AdminSessionUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminSessionCreateOrConnectWithoutAdminInput | AdminSessionCreateOrConnectWithoutAdminInput[]
+    upsert?: AdminSessionUpsertWithWhereUniqueWithoutAdminInput | AdminSessionUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: AdminSessionCreateManyAdminInputEnvelope
+    set?: AdminSessionWhereUniqueInput | AdminSessionWhereUniqueInput[]
+    disconnect?: AdminSessionWhereUniqueInput | AdminSessionWhereUniqueInput[]
+    delete?: AdminSessionWhereUniqueInput | AdminSessionWhereUniqueInput[]
+    connect?: AdminSessionWhereUniqueInput | AdminSessionWhereUniqueInput[]
+    update?: AdminSessionUpdateWithWhereUniqueWithoutAdminInput | AdminSessionUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: AdminSessionUpdateManyWithWhereWithoutAdminInput | AdminSessionUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: AdminSessionScalarWhereInput | AdminSessionScalarWhereInput[]
+  }
+
+  export type AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput = {
+    create?: XOR<AdminAuditLogCreateWithoutAdminInput, AdminAuditLogUncheckedCreateWithoutAdminInput> | AdminAuditLogCreateWithoutAdminInput[] | AdminAuditLogUncheckedCreateWithoutAdminInput[]
+    connectOrCreate?: AdminAuditLogCreateOrConnectWithoutAdminInput | AdminAuditLogCreateOrConnectWithoutAdminInput[]
+    upsert?: AdminAuditLogUpsertWithWhereUniqueWithoutAdminInput | AdminAuditLogUpsertWithWhereUniqueWithoutAdminInput[]
+    createMany?: AdminAuditLogCreateManyAdminInputEnvelope
+    set?: AdminAuditLogWhereUniqueInput | AdminAuditLogWhereUniqueInput[]
+    disconnect?: AdminAuditLogWhereUniqueInput | AdminAuditLogWhereUniqueInput[]
+    delete?: AdminAuditLogWhereUniqueInput | AdminAuditLogWhereUniqueInput[]
+    connect?: AdminAuditLogWhereUniqueInput | AdminAuditLogWhereUniqueInput[]
+    update?: AdminAuditLogUpdateWithWhereUniqueWithoutAdminInput | AdminAuditLogUpdateWithWhereUniqueWithoutAdminInput[]
+    updateMany?: AdminAuditLogUpdateManyWithWhereWithoutAdminInput | AdminAuditLogUpdateManyWithWhereWithoutAdminInput[]
+    deleteMany?: AdminAuditLogScalarWhereInput | AdminAuditLogScalarWhereInput[]
+  }
+
+  export type FraudAlertUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<FraudAlertCreateWithoutUserInput, FraudAlertUncheckedCreateWithoutUserInput> | FraudAlertCreateWithoutUserInput[] | FraudAlertUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: FraudAlertCreateOrConnectWithoutUserInput | FraudAlertCreateOrConnectWithoutUserInput[]
+    upsert?: FraudAlertUpsertWithWhereUniqueWithoutUserInput | FraudAlertUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: FraudAlertCreateManyUserInputEnvelope
+    set?: FraudAlertWhereUniqueInput | FraudAlertWhereUniqueInput[]
+    disconnect?: FraudAlertWhereUniqueInput | FraudAlertWhereUniqueInput[]
+    delete?: FraudAlertWhereUniqueInput | FraudAlertWhereUniqueInput[]
+    connect?: FraudAlertWhereUniqueInput | FraudAlertWhereUniqueInput[]
+    update?: FraudAlertUpdateWithWhereUniqueWithoutUserInput | FraudAlertUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: FraudAlertUpdateManyWithWhereWithoutUserInput | FraudAlertUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: FraudAlertScalarWhereInput | FraudAlertScalarWhereInput[]
+  }
+
+  export type CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<CampaignConfigCreateWithoutCreatorInput, CampaignConfigUncheckedCreateWithoutCreatorInput> | CampaignConfigCreateWithoutCreatorInput[] | CampaignConfigUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: CampaignConfigCreateOrConnectWithoutCreatorInput | CampaignConfigCreateOrConnectWithoutCreatorInput[]
+    upsert?: CampaignConfigUpsertWithWhereUniqueWithoutCreatorInput | CampaignConfigUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: CampaignConfigCreateManyCreatorInputEnvelope
+    set?: CampaignConfigWhereUniqueInput | CampaignConfigWhereUniqueInput[]
+    disconnect?: CampaignConfigWhereUniqueInput | CampaignConfigWhereUniqueInput[]
+    delete?: CampaignConfigWhereUniqueInput | CampaignConfigWhereUniqueInput[]
+    connect?: CampaignConfigWhereUniqueInput | CampaignConfigWhereUniqueInput[]
+    update?: CampaignConfigUpdateWithWhereUniqueWithoutCreatorInput | CampaignConfigUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: CampaignConfigUpdateManyWithWhereWithoutCreatorInput | CampaignConfigUpdateManyWithWhereWithoutCreatorInput[]
+    deleteMany?: CampaignConfigScalarWhereInput | CampaignConfigScalarWhereInput[]
   }
 
   export type UserAchievementCreateNestedManyWithoutAchievementInput = {
@@ -21090,6 +27456,70 @@ export namespace Prisma {
     update?: TaskCompletionUpdateWithWhereUniqueWithoutTaskInput | TaskCompletionUpdateWithWhereUniqueWithoutTaskInput[]
     updateMany?: TaskCompletionUpdateManyWithWhereWithoutTaskInput | TaskCompletionUpdateManyWithWhereWithoutTaskInput[]
     deleteMany?: TaskCompletionScalarWhereInput | TaskCompletionScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutAdminSessionsInput = {
+    create?: XOR<UserCreateWithoutAdminSessionsInput, UserUncheckedCreateWithoutAdminSessionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAdminSessionsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutAdminSessionsNestedInput = {
+    create?: XOR<UserCreateWithoutAdminSessionsInput, UserUncheckedCreateWithoutAdminSessionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAdminSessionsInput
+    upsert?: UserUpsertWithoutAdminSessionsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAdminSessionsInput, UserUpdateWithoutAdminSessionsInput>, UserUncheckedUpdateWithoutAdminSessionsInput>
+  }
+
+  export type UserCreateNestedOneWithoutAuditLogsInput = {
+    create?: XOR<UserCreateWithoutAuditLogsInput, UserUncheckedCreateWithoutAuditLogsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAuditLogsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutAuditLogsNestedInput = {
+    create?: XOR<UserCreateWithoutAuditLogsInput, UserUncheckedCreateWithoutAuditLogsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAuditLogsInput
+    upsert?: UserUpsertWithoutAuditLogsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAuditLogsInput, UserUpdateWithoutAuditLogsInput>, UserUncheckedUpdateWithoutAuditLogsInput>
+  }
+
+  export type UserCreateNestedOneWithoutFraudAlertsInput = {
+    create?: XOR<UserCreateWithoutFraudAlertsInput, UserUncheckedCreateWithoutFraudAlertsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFraudAlertsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutFraudAlertsNestedInput = {
+    create?: XOR<UserCreateWithoutFraudAlertsInput, UserUncheckedCreateWithoutFraudAlertsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutFraudAlertsInput
+    upsert?: UserUpsertWithoutFraudAlertsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutFraudAlertsInput, UserUpdateWithoutFraudAlertsInput>, UserUncheckedUpdateWithoutFraudAlertsInput>
+  }
+
+  export type UserCreateNestedOneWithoutCampaignsInput = {
+    create?: XOR<UserCreateWithoutCampaignsInput, UserUncheckedCreateWithoutCampaignsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCampaignsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type BigIntFieldUpdateOperationsInput = {
+    set?: bigint | number
+    increment?: bigint | number
+    decrement?: bigint | number
+    multiply?: bigint | number
+    divide?: bigint | number
+  }
+
+  export type UserUpdateOneRequiredWithoutCampaignsNestedInput = {
+    create?: XOR<UserCreateWithoutCampaignsInput, UserUncheckedCreateWithoutCampaignsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutCampaignsInput
+    upsert?: UserUpsertWithoutCampaignsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutCampaignsInput, UserUpdateWithoutCampaignsInput>, UserUncheckedUpdateWithoutCampaignsInput>
   }
 
   export type UserCreateNestedOneWithoutTasksInput = {
@@ -21401,6 +27831,29 @@ export namespace Prisma {
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
         Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
@@ -21491,28 +27944,32 @@ export namespace Prisma {
     _min?: NestedEnumTaskTypeFilter<$PrismaModel>
     _max?: NestedEnumTaskTypeFilter<$PrismaModel>
   }
-  export type NestedJsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
-  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string[]
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  export type NestedBigIntFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntFilter<$PrismaModel> | bigint | number
+  }
+
+  export type NestedBigIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    in?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    notIn?: bigint[] | number[] | ListBigIntFieldRefInput<$PrismaModel>
+    lt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    lte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gt?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    gte?: bigint | number | BigIntFieldRefInput<$PrismaModel>
+    not?: NestedBigIntWithAggregatesFilter<$PrismaModel> | bigint | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedBigIntFilter<$PrismaModel>
+    _min?: NestedBigIntFilter<$PrismaModel>
+    _max?: NestedBigIntFilter<$PrismaModel>
   }
 
   export type NestedEnumClaimStatusFilter<$PrismaModel = never> = {
@@ -21770,6 +28227,138 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type AdminSessionCreateWithoutAdminInput = {
+    id?: string
+    ipAddress: string
+    userAgent: string
+    permissions: JsonNullValueInput | InputJsonValue
+    expiresAt: Date | string
+    lastActivity: Date | string
+    createdAt?: Date | string
+  }
+
+  export type AdminSessionUncheckedCreateWithoutAdminInput = {
+    id?: string
+    ipAddress: string
+    userAgent: string
+    permissions: JsonNullValueInput | InputJsonValue
+    expiresAt: Date | string
+    lastActivity: Date | string
+    createdAt?: Date | string
+  }
+
+  export type AdminSessionCreateOrConnectWithoutAdminInput = {
+    where: AdminSessionWhereUniqueInput
+    create: XOR<AdminSessionCreateWithoutAdminInput, AdminSessionUncheckedCreateWithoutAdminInput>
+  }
+
+  export type AdminSessionCreateManyAdminInputEnvelope = {
+    data: AdminSessionCreateManyAdminInput | AdminSessionCreateManyAdminInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AdminAuditLogCreateWithoutAdminInput = {
+    id?: string
+    action: string
+    metadata: JsonNullValueInput | InputJsonValue
+    timestamp?: Date | string
+    ipAddress: string
+  }
+
+  export type AdminAuditLogUncheckedCreateWithoutAdminInput = {
+    id?: string
+    action: string
+    metadata: JsonNullValueInput | InputJsonValue
+    timestamp?: Date | string
+    ipAddress: string
+  }
+
+  export type AdminAuditLogCreateOrConnectWithoutAdminInput = {
+    where: AdminAuditLogWhereUniqueInput
+    create: XOR<AdminAuditLogCreateWithoutAdminInput, AdminAuditLogUncheckedCreateWithoutAdminInput>
+  }
+
+  export type AdminAuditLogCreateManyAdminInputEnvelope = {
+    data: AdminAuditLogCreateManyAdminInput | AdminAuditLogCreateManyAdminInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type FraudAlertCreateWithoutUserInput = {
+    id?: string
+    type: string
+    severity: string
+    description: string
+    evidence: JsonNullValueInput | InputJsonValue
+    riskScore: number
+    status?: string
+    createdAt?: Date | string
+    investigatedBy?: string | null
+    resolvedAt?: Date | string | null
+  }
+
+  export type FraudAlertUncheckedCreateWithoutUserInput = {
+    id?: string
+    type: string
+    severity: string
+    description: string
+    evidence: JsonNullValueInput | InputJsonValue
+    riskScore: number
+    status?: string
+    createdAt?: Date | string
+    investigatedBy?: string | null
+    resolvedAt?: Date | string | null
+  }
+
+  export type FraudAlertCreateOrConnectWithoutUserInput = {
+    where: FraudAlertWhereUniqueInput
+    create: XOR<FraudAlertCreateWithoutUserInput, FraudAlertUncheckedCreateWithoutUserInput>
+  }
+
+  export type FraudAlertCreateManyUserInputEnvelope = {
+    data: FraudAlertCreateManyUserInput | FraudAlertCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type CampaignConfigCreateWithoutCreatorInput = {
+    id?: string
+    name: string
+    description?: string | null
+    tokenMint: string
+    totalAllocation: bigint | number
+    startDate: Date | string
+    endDate: Date | string
+    eligibilityCriteria: JsonNullValueInput | InputJsonValue
+    distributionRules: JsonNullValueInput | InputJsonValue
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CampaignConfigUncheckedCreateWithoutCreatorInput = {
+    id?: string
+    name: string
+    description?: string | null
+    tokenMint: string
+    totalAllocation: bigint | number
+    startDate: Date | string
+    endDate: Date | string
+    eligibilityCriteria: JsonNullValueInput | InputJsonValue
+    distributionRules: JsonNullValueInput | InputJsonValue
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type CampaignConfigCreateOrConnectWithoutCreatorInput = {
+    where: CampaignConfigWhereUniqueInput
+    create: XOR<CampaignConfigCreateWithoutCreatorInput, CampaignConfigUncheckedCreateWithoutCreatorInput>
+  }
+
+  export type CampaignConfigCreateManyCreatorInputEnvelope = {
+    data: CampaignConfigCreateManyCreatorInput | CampaignConfigCreateManyCreatorInput[]
+    skipDuplicates?: boolean
+  }
+
   export type TwitterEngagementUpsertWithWhereUniqueWithoutUserInput = {
     where: TwitterEngagementWhereUniqueInput
     update: XOR<TwitterEngagementUpdateWithoutUserInput, TwitterEngagementUncheckedUpdateWithoutUserInput>
@@ -22002,6 +28591,132 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Notification"> | Date | string
   }
 
+  export type AdminSessionUpsertWithWhereUniqueWithoutAdminInput = {
+    where: AdminSessionWhereUniqueInput
+    update: XOR<AdminSessionUpdateWithoutAdminInput, AdminSessionUncheckedUpdateWithoutAdminInput>
+    create: XOR<AdminSessionCreateWithoutAdminInput, AdminSessionUncheckedCreateWithoutAdminInput>
+  }
+
+  export type AdminSessionUpdateWithWhereUniqueWithoutAdminInput = {
+    where: AdminSessionWhereUniqueInput
+    data: XOR<AdminSessionUpdateWithoutAdminInput, AdminSessionUncheckedUpdateWithoutAdminInput>
+  }
+
+  export type AdminSessionUpdateManyWithWhereWithoutAdminInput = {
+    where: AdminSessionScalarWhereInput
+    data: XOR<AdminSessionUpdateManyMutationInput, AdminSessionUncheckedUpdateManyWithoutAdminInput>
+  }
+
+  export type AdminSessionScalarWhereInput = {
+    AND?: AdminSessionScalarWhereInput | AdminSessionScalarWhereInput[]
+    OR?: AdminSessionScalarWhereInput[]
+    NOT?: AdminSessionScalarWhereInput | AdminSessionScalarWhereInput[]
+    id?: StringFilter<"AdminSession"> | string
+    adminId?: StringFilter<"AdminSession"> | string
+    ipAddress?: StringFilter<"AdminSession"> | string
+    userAgent?: StringFilter<"AdminSession"> | string
+    permissions?: JsonFilter<"AdminSession">
+    expiresAt?: DateTimeFilter<"AdminSession"> | Date | string
+    lastActivity?: DateTimeFilter<"AdminSession"> | Date | string
+    createdAt?: DateTimeFilter<"AdminSession"> | Date | string
+  }
+
+  export type AdminAuditLogUpsertWithWhereUniqueWithoutAdminInput = {
+    where: AdminAuditLogWhereUniqueInput
+    update: XOR<AdminAuditLogUpdateWithoutAdminInput, AdminAuditLogUncheckedUpdateWithoutAdminInput>
+    create: XOR<AdminAuditLogCreateWithoutAdminInput, AdminAuditLogUncheckedCreateWithoutAdminInput>
+  }
+
+  export type AdminAuditLogUpdateWithWhereUniqueWithoutAdminInput = {
+    where: AdminAuditLogWhereUniqueInput
+    data: XOR<AdminAuditLogUpdateWithoutAdminInput, AdminAuditLogUncheckedUpdateWithoutAdminInput>
+  }
+
+  export type AdminAuditLogUpdateManyWithWhereWithoutAdminInput = {
+    where: AdminAuditLogScalarWhereInput
+    data: XOR<AdminAuditLogUpdateManyMutationInput, AdminAuditLogUncheckedUpdateManyWithoutAdminInput>
+  }
+
+  export type AdminAuditLogScalarWhereInput = {
+    AND?: AdminAuditLogScalarWhereInput | AdminAuditLogScalarWhereInput[]
+    OR?: AdminAuditLogScalarWhereInput[]
+    NOT?: AdminAuditLogScalarWhereInput | AdminAuditLogScalarWhereInput[]
+    id?: StringFilter<"AdminAuditLog"> | string
+    adminId?: StringFilter<"AdminAuditLog"> | string
+    action?: StringFilter<"AdminAuditLog"> | string
+    metadata?: JsonFilter<"AdminAuditLog">
+    timestamp?: DateTimeFilter<"AdminAuditLog"> | Date | string
+    ipAddress?: StringFilter<"AdminAuditLog"> | string
+  }
+
+  export type FraudAlertUpsertWithWhereUniqueWithoutUserInput = {
+    where: FraudAlertWhereUniqueInput
+    update: XOR<FraudAlertUpdateWithoutUserInput, FraudAlertUncheckedUpdateWithoutUserInput>
+    create: XOR<FraudAlertCreateWithoutUserInput, FraudAlertUncheckedCreateWithoutUserInput>
+  }
+
+  export type FraudAlertUpdateWithWhereUniqueWithoutUserInput = {
+    where: FraudAlertWhereUniqueInput
+    data: XOR<FraudAlertUpdateWithoutUserInput, FraudAlertUncheckedUpdateWithoutUserInput>
+  }
+
+  export type FraudAlertUpdateManyWithWhereWithoutUserInput = {
+    where: FraudAlertScalarWhereInput
+    data: XOR<FraudAlertUpdateManyMutationInput, FraudAlertUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type FraudAlertScalarWhereInput = {
+    AND?: FraudAlertScalarWhereInput | FraudAlertScalarWhereInput[]
+    OR?: FraudAlertScalarWhereInput[]
+    NOT?: FraudAlertScalarWhereInput | FraudAlertScalarWhereInput[]
+    id?: StringFilter<"FraudAlert"> | string
+    type?: StringFilter<"FraudAlert"> | string
+    severity?: StringFilter<"FraudAlert"> | string
+    userId?: StringFilter<"FraudAlert"> | string
+    description?: StringFilter<"FraudAlert"> | string
+    evidence?: JsonFilter<"FraudAlert">
+    riskScore?: IntFilter<"FraudAlert"> | number
+    status?: StringFilter<"FraudAlert"> | string
+    createdAt?: DateTimeFilter<"FraudAlert"> | Date | string
+    investigatedBy?: StringNullableFilter<"FraudAlert"> | string | null
+    resolvedAt?: DateTimeNullableFilter<"FraudAlert"> | Date | string | null
+  }
+
+  export type CampaignConfigUpsertWithWhereUniqueWithoutCreatorInput = {
+    where: CampaignConfigWhereUniqueInput
+    update: XOR<CampaignConfigUpdateWithoutCreatorInput, CampaignConfigUncheckedUpdateWithoutCreatorInput>
+    create: XOR<CampaignConfigCreateWithoutCreatorInput, CampaignConfigUncheckedCreateWithoutCreatorInput>
+  }
+
+  export type CampaignConfigUpdateWithWhereUniqueWithoutCreatorInput = {
+    where: CampaignConfigWhereUniqueInput
+    data: XOR<CampaignConfigUpdateWithoutCreatorInput, CampaignConfigUncheckedUpdateWithoutCreatorInput>
+  }
+
+  export type CampaignConfigUpdateManyWithWhereWithoutCreatorInput = {
+    where: CampaignConfigScalarWhereInput
+    data: XOR<CampaignConfigUpdateManyMutationInput, CampaignConfigUncheckedUpdateManyWithoutCreatorInput>
+  }
+
+  export type CampaignConfigScalarWhereInput = {
+    AND?: CampaignConfigScalarWhereInput | CampaignConfigScalarWhereInput[]
+    OR?: CampaignConfigScalarWhereInput[]
+    NOT?: CampaignConfigScalarWhereInput | CampaignConfigScalarWhereInput[]
+    id?: StringFilter<"CampaignConfig"> | string
+    name?: StringFilter<"CampaignConfig"> | string
+    description?: StringNullableFilter<"CampaignConfig"> | string | null
+    tokenMint?: StringFilter<"CampaignConfig"> | string
+    totalAllocation?: BigIntFilter<"CampaignConfig"> | bigint | number
+    startDate?: DateTimeFilter<"CampaignConfig"> | Date | string
+    endDate?: DateTimeFilter<"CampaignConfig"> | Date | string
+    eligibilityCriteria?: JsonFilter<"CampaignConfig">
+    distributionRules?: JsonFilter<"CampaignConfig">
+    isActive?: BoolFilter<"CampaignConfig"> | boolean
+    createdBy?: StringFilter<"CampaignConfig"> | string
+    createdAt?: DateTimeFilter<"CampaignConfig"> | Date | string
+    updatedAt?: DateTimeFilter<"CampaignConfig"> | Date | string
+  }
+
   export type UserAchievementCreateWithoutAchievementInput = {
     id?: string
     unlockedAt?: Date | string
@@ -22062,6 +28777,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -22069,6 +28790,10 @@ export namespace Prisma {
     referrals?: ReferralCreateNestedManyWithoutReferrerInput
     referredBy?: ReferralCreateNestedOneWithoutReferredInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutAchievementsInput = {
@@ -22091,6 +28816,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -22098,6 +28829,10 @@ export namespace Prisma {
     referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
     referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutAchievementsInput = {
@@ -22163,6 +28898,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -22170,6 +28911,10 @@ export namespace Prisma {
     referrals?: ReferralUpdateManyWithoutReferrerNestedInput
     referredBy?: ReferralUpdateOneWithoutReferredNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAchievementsInput = {
@@ -22192,6 +28937,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -22199,6 +28950,10 @@ export namespace Prisma {
     referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
     referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type AchievementUpsertWithoutUserAchievementsInput = {
@@ -22254,6 +29009,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -22261,6 +29022,10 @@ export namespace Prisma {
     referrals?: ReferralCreateNestedManyWithoutReferrerInput
     referredBy?: ReferralCreateNestedOneWithoutReferredInput
     achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -22283,6 +29048,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -22290,6 +29061,10 @@ export namespace Prisma {
     referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
     referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
     achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -22328,6 +29103,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -22335,6 +29116,10 @@ export namespace Prisma {
     referrals?: ReferralUpdateManyWithoutReferrerNestedInput
     referredBy?: ReferralUpdateOneWithoutReferredNestedInput
     achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -22357,6 +29142,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -22364,6 +29155,10 @@ export namespace Prisma {
     referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
     referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
     achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserCreateWithoutEngagementsInput = {
@@ -22386,6 +29181,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
     pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
@@ -22393,6 +29194,10 @@ export namespace Prisma {
     referredBy?: ReferralCreateNestedOneWithoutReferredInput
     achievements?: UserAchievementCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutEngagementsInput = {
@@ -22415,6 +29220,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
     pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
@@ -22422,6 +29233,10 @@ export namespace Prisma {
     referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
     achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutEngagementsInput = {
@@ -22460,6 +29275,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
     pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
@@ -22467,6 +29288,10 @@ export namespace Prisma {
     referredBy?: ReferralUpdateOneWithoutReferredNestedInput
     achievements?: UserAchievementUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutEngagementsInput = {
@@ -22489,6 +29314,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
     pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
@@ -22496,6 +29327,10 @@ export namespace Prisma {
     referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
     achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type TaskCompletionCreateWithoutTaskInput = {
@@ -22544,6 +29379,694 @@ export namespace Prisma {
     data: XOR<TaskCompletionUpdateManyMutationInput, TaskCompletionUncheckedUpdateManyWithoutTaskInput>
   }
 
+  export type UserCreateWithoutAdminSessionsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionCreateNestedManyWithoutUserInput
+    claims?: ClaimCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
+    referrals?: ReferralCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserUncheckedCreateWithoutAdminSessionsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+    claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
+    referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserCreateOrConnectWithoutAdminSessionsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAdminSessionsInput, UserUncheckedCreateWithoutAdminSessionsInput>
+  }
+
+  export type UserUpsertWithoutAdminSessionsInput = {
+    update: XOR<UserUpdateWithoutAdminSessionsInput, UserUncheckedUpdateWithoutAdminSessionsInput>
+    create: XOR<UserCreateWithoutAdminSessionsInput, UserUncheckedCreateWithoutAdminSessionsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAdminSessionsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAdminSessionsInput, UserUncheckedUpdateWithoutAdminSessionsInput>
+  }
+
+  export type UserUpdateWithoutAdminSessionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
+    claims?: ClaimUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAdminSessionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+    claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserCreateWithoutAuditLogsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionCreateNestedManyWithoutUserInput
+    claims?: ClaimCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
+    referrals?: ReferralCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserUncheckedCreateWithoutAuditLogsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+    claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
+    referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserCreateOrConnectWithoutAuditLogsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAuditLogsInput, UserUncheckedCreateWithoutAuditLogsInput>
+  }
+
+  export type UserUpsertWithoutAuditLogsInput = {
+    update: XOR<UserUpdateWithoutAuditLogsInput, UserUncheckedUpdateWithoutAuditLogsInput>
+    create: XOR<UserCreateWithoutAuditLogsInput, UserUncheckedCreateWithoutAuditLogsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAuditLogsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAuditLogsInput, UserUncheckedUpdateWithoutAuditLogsInput>
+  }
+
+  export type UserUpdateWithoutAuditLogsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
+    claims?: ClaimUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAuditLogsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+    claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserCreateWithoutFraudAlertsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionCreateNestedManyWithoutUserInput
+    claims?: ClaimCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
+    referrals?: ReferralCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserUncheckedCreateWithoutFraudAlertsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+    claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
+    referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserCreateOrConnectWithoutFraudAlertsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutFraudAlertsInput, UserUncheckedCreateWithoutFraudAlertsInput>
+  }
+
+  export type UserUpsertWithoutFraudAlertsInput = {
+    update: XOR<UserUpdateWithoutFraudAlertsInput, UserUncheckedUpdateWithoutFraudAlertsInput>
+    create: XOR<UserCreateWithoutFraudAlertsInput, UserUncheckedCreateWithoutFraudAlertsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutFraudAlertsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutFraudAlertsInput, UserUncheckedUpdateWithoutFraudAlertsInput>
+  }
+
+  export type UserUpdateWithoutFraudAlertsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
+    claims?: ClaimUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutFraudAlertsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+    claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserCreateWithoutCampaignsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionCreateNestedManyWithoutUserInput
+    claims?: ClaimCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
+    referrals?: ReferralCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutCampaignsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+    claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
+    referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutCampaignsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutCampaignsInput, UserUncheckedCreateWithoutCampaignsInput>
+  }
+
+  export type UserUpsertWithoutCampaignsInput = {
+    update: XOR<UserUpdateWithoutCampaignsInput, UserUncheckedUpdateWithoutCampaignsInput>
+    create: XOR<UserCreateWithoutCampaignsInput, UserUncheckedCreateWithoutCampaignsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutCampaignsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutCampaignsInput, UserUncheckedUpdateWithoutCampaignsInput>
+  }
+
+  export type UserUpdateWithoutCampaignsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
+    claims?: ClaimUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutCampaignsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+    claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+  }
+
   export type UserCreateWithoutTasksInput = {
     id?: string
     walletAddress: string
@@ -22564,6 +30087,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
     pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
@@ -22571,6 +30100,10 @@ export namespace Prisma {
     referredBy?: ReferralCreateNestedOneWithoutReferredInput
     achievements?: UserAchievementCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutTasksInput = {
@@ -22593,6 +30126,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
     pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
@@ -22600,6 +30139,10 @@ export namespace Prisma {
     referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
     achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutTasksInput = {
@@ -22669,6 +30212,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
     pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
@@ -22676,6 +30225,10 @@ export namespace Prisma {
     referredBy?: ReferralUpdateOneWithoutReferredNestedInput
     achievements?: UserAchievementUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTasksInput = {
@@ -22698,6 +30251,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
     pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
@@ -22705,6 +30264,10 @@ export namespace Prisma {
     referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
     achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type TaskUpsertWithoutCompletionsInput = {
@@ -22764,6 +30327,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
@@ -22771,6 +30340,10 @@ export namespace Prisma {
     referredBy?: ReferralCreateNestedOneWithoutReferredInput
     achievements?: UserAchievementCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutClaimsInput = {
@@ -22793,6 +30366,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
@@ -22800,6 +30379,10 @@ export namespace Prisma {
     referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
     achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutClaimsInput = {
@@ -22838,6 +30421,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
@@ -22845,6 +30434,10 @@ export namespace Prisma {
     referredBy?: ReferralUpdateOneWithoutReferredNestedInput
     achievements?: UserAchievementUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutClaimsInput = {
@@ -22867,6 +30460,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
@@ -22874,6 +30473,10 @@ export namespace Prisma {
     referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
     achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserCreateWithoutPointHistoryInput = {
@@ -22896,6 +30499,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -22903,6 +30512,10 @@ export namespace Prisma {
     referredBy?: ReferralCreateNestedOneWithoutReferredInput
     achievements?: UserAchievementCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutPointHistoryInput = {
@@ -22925,6 +30538,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -22932,6 +30551,10 @@ export namespace Prisma {
     referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
     achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutPointHistoryInput = {
@@ -22970,6 +30593,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -22977,6 +30606,10 @@ export namespace Prisma {
     referredBy?: ReferralUpdateOneWithoutReferredNestedInput
     achievements?: UserAchievementUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPointHistoryInput = {
@@ -22999,6 +30632,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -23006,6 +30645,10 @@ export namespace Prisma {
     referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
     achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserCreateWithoutReferralsInput = {
@@ -23028,6 +30671,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -23035,6 +30684,10 @@ export namespace Prisma {
     referredBy?: ReferralCreateNestedOneWithoutReferredInput
     achievements?: UserAchievementCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutReferralsInput = {
@@ -23057,6 +30710,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -23064,6 +30723,10 @@ export namespace Prisma {
     referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
     achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutReferralsInput = {
@@ -23091,6 +30754,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -23098,6 +30767,10 @@ export namespace Prisma {
     referrals?: ReferralCreateNestedManyWithoutReferrerInput
     achievements?: UserAchievementCreateNestedManyWithoutUserInput
     notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutReferredByInput = {
@@ -23120,6 +30793,12 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -23127,6 +30806,10 @@ export namespace Prisma {
     referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
     achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
     notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutReferredByInput = {
@@ -23165,6 +30848,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -23172,6 +30861,10 @@ export namespace Prisma {
     referredBy?: ReferralUpdateOneWithoutReferredNestedInput
     achievements?: UserAchievementUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReferralsInput = {
@@ -23194,6 +30887,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -23201,6 +30900,10 @@ export namespace Prisma {
     referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
     achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUpsertWithoutReferredByInput = {
@@ -23234,6 +30937,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -23241,6 +30950,10 @@ export namespace Prisma {
     referrals?: ReferralUpdateManyWithoutReferrerNestedInput
     achievements?: UserAchievementUpdateManyWithoutUserNestedInput
     notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReferredByInput = {
@@ -23263,6 +30976,12 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -23270,6 +30989,10 @@ export namespace Prisma {
     referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
     achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
     notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type TwitterEngagementCreateManyUserInput = {
@@ -23335,6 +31058,52 @@ export namespace Prisma {
     read?: boolean
     actionUrl?: string | null
     createdAt?: Date | string
+  }
+
+  export type AdminSessionCreateManyAdminInput = {
+    id?: string
+    ipAddress: string
+    userAgent: string
+    permissions: JsonNullValueInput | InputJsonValue
+    expiresAt: Date | string
+    lastActivity: Date | string
+    createdAt?: Date | string
+  }
+
+  export type AdminAuditLogCreateManyAdminInput = {
+    id?: string
+    action: string
+    metadata: JsonNullValueInput | InputJsonValue
+    timestamp?: Date | string
+    ipAddress: string
+  }
+
+  export type FraudAlertCreateManyUserInput = {
+    id?: string
+    type: string
+    severity: string
+    description: string
+    evidence: JsonNullValueInput | InputJsonValue
+    riskScore: number
+    status?: string
+    createdAt?: Date | string
+    investigatedBy?: string | null
+    resolvedAt?: Date | string | null
+  }
+
+  export type CampaignConfigCreateManyCreatorInput = {
+    id?: string
+    name: string
+    description?: string | null
+    tokenMint: string
+    totalAllocation: bigint | number
+    startDate: Date | string
+    endDate: Date | string
+    eligibilityCriteria: JsonNullValueInput | InputJsonValue
+    distributionRules: JsonNullValueInput | InputJsonValue
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type TwitterEngagementUpdateWithoutUserInput = {
@@ -23530,6 +31299,144 @@ export namespace Prisma {
     read?: BoolFieldUpdateOperationsInput | boolean
     actionUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdminSessionUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    userAgent?: StringFieldUpdateOperationsInput | string
+    permissions?: JsonNullValueInput | InputJsonValue
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastActivity?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdminSessionUncheckedUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    userAgent?: StringFieldUpdateOperationsInput | string
+    permissions?: JsonNullValueInput | InputJsonValue
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastActivity?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdminSessionUncheckedUpdateManyWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    userAgent?: StringFieldUpdateOperationsInput | string
+    permissions?: JsonNullValueInput | InputJsonValue
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    lastActivity?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AdminAuditLogUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    action?: StringFieldUpdateOperationsInput | string
+    metadata?: JsonNullValueInput | InputJsonValue
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AdminAuditLogUncheckedUpdateWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    action?: StringFieldUpdateOperationsInput | string
+    metadata?: JsonNullValueInput | InputJsonValue
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AdminAuditLogUncheckedUpdateManyWithoutAdminInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    action?: StringFieldUpdateOperationsInput | string
+    metadata?: JsonNullValueInput | InputJsonValue
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type FraudAlertUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    severity?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    evidence?: JsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    investigatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FraudAlertUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    severity?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    evidence?: JsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    investigatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type FraudAlertUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    type?: StringFieldUpdateOperationsInput | string
+    severity?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    evidence?: JsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    investigatedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    resolvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type CampaignConfigUpdateWithoutCreatorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenMint?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    eligibilityCriteria?: JsonNullValueInput | InputJsonValue
+    distributionRules?: JsonNullValueInput | InputJsonValue
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CampaignConfigUncheckedUpdateWithoutCreatorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenMint?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    eligibilityCriteria?: JsonNullValueInput | InputJsonValue
+    distributionRules?: JsonNullValueInput | InputJsonValue
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type CampaignConfigUncheckedUpdateManyWithoutCreatorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenMint?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    eligibilityCriteria?: JsonNullValueInput | InputJsonValue
+    distributionRules?: JsonNullValueInput | InputJsonValue
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserAchievementCreateManyAchievementInput = {
