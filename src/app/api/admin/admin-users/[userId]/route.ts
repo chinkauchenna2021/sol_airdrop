@@ -51,10 +51,11 @@ const requestUrl = new URL(req.url);
 }
 
 export async function PATCH(
-  req: NextRequest,
-  { params }: { params: { userId: string } }
+  req: NextRequest
 ) {
   try {
+    const requestUrl = new URL(req.url);
+  const userId = requestUrl.searchParams.get("userId");
     const session = await getSession(req)
     if (!session || !session.user.isAdmin) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
@@ -89,7 +90,7 @@ export async function PATCH(
     }
 
     const user = await prisma.user.update({
-      where: { id: params.userId },
+      where: { id: String(userId)  },
       data: updateData
     })
 
@@ -99,7 +100,7 @@ export async function PATCH(
         adminId: session.user.id,
         action: `USER_${action.toUpperCase()}`,
         metadata: {
-          targetUserId: params.userId,
+          targetUserId: userId,
           changes: updateData,
           timestamp: new Date().toISOString()
         },
