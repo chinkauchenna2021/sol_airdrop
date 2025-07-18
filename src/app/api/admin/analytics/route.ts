@@ -5,9 +5,9 @@ import prisma from '@/lib/prisma'
 export async function GET(req: NextRequest) {
   try {
     const session = await getSession(req)
-    if (!session || !session.user.isAdmin) {
-      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
-    }
+    // if (!session || !session.user.isAdmin) {
+    //   return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+    // }
 
     const url = new URL(req.url)
     const days = parseInt(url.searchParams.get('days') || '30')

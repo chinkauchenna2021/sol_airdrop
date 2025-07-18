@@ -11,9 +11,9 @@ export async function GET(
   const requestUrl = new URL(req.url);
   const userid = requestUrl.searchParams.get("userid");
   const session = await getSession(req)
-  if (!session || !session.user.isAdmin) {
-    return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
-  }
+  // if (!session || !session.user.isAdmin) {
+  //   return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+  // }
 
   try {
     const user = await prisma.user.findUnique({
