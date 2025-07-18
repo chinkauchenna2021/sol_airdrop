@@ -3,17 +3,18 @@ import { getSession } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
 export async function GET(
-  req: NextRequest,
-  { params }: { params: { userId: string } }
+  req: NextRequest
 ) {
   try {
+const requestUrl = new URL(req.url);
+  const userid = requestUrl.searchParams.get("userId");
     const session = await getSession(req)
-    // if (!session || !session.user.isAdmin) {
-    //   return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
-    // }
+    if (!session || !session.user.isAdmin) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+    }
 
     const user = await prisma.user.findUnique({
-      where: { id: params.userId },
+      where: { id: userid as string },
       include: {
         engagements: { take: 10, orderBy: { createdAt: 'desc' } },
         claims: { take: 10, orderBy: { createdAt: 'desc' } },

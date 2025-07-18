@@ -3,10 +3,11 @@ import { getSession } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
 export async function PATCH(
-  req: NextRequest,
-  { params }: { params: { alertId: string } }
+  req: NextRequest
 ) {
   try {
+    const requestUrl = new URL(req.url);
+    const alertId = requestUrl.searchParams.get("alertId");
     const session = await getSession(req)
     if (!session || !session.user.isAdmin) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
@@ -16,7 +17,7 @@ export async function PATCH(
     const { status } = body
 
     const alert = await prisma.fraudAlert.update({
-      where: { id: params.alertId },
+      where: { id: alertId  as string},
       data: {
         status,
         investigatedBy: session?.user.id,
@@ -30,7 +31,7 @@ export async function PATCH(
         adminId: session.user.id,
         action: 'FRAUD_ALERT_UPDATE',
         metadata: {
-          alertId: params.alertId,
+          alertId: alertId,
           newStatus: status,
           timestamp: new Date().toISOString()
         },
