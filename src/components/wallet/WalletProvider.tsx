@@ -30,8 +30,8 @@ export function WalletProvider({ children }: WalletProviderProps) {
     () => [
       new PhantomWalletAdapter(),
       new SolflareWalletAdapter(),
-      new TorusWalletAdapter(),
-      new LedgerWalletAdapter(),
+      // new TorusWalletAdapter(),
+      // new LedgerWalletAdapter(),
     ],
     [network]
   )
