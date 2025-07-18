@@ -40,7 +40,7 @@ export function WalletProvider({ children }: WalletProviderProps) {
     <ConnectionProvider endpoint={endpoint}>
       <SolanaWalletProvider 
         wallets={wallets} 
-        autoConnect={false} 
+        autoConnect={true} // IMPORTANT: Disable auto-connect to prevent reconnection
       >
         <WalletModalProvider>
           {children}

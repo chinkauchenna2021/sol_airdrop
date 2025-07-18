@@ -1,4 +1,3 @@
-
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
@@ -126,7 +125,7 @@ export function EnhancedLeaderboardTable({
 
   if (viewMode === 'cards') {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
         {entries.map((entry, index) => {
           const isCurrentUser = entry.user.walletAddress === currentUserAddress
           const isSelected = compareList.includes(entry.user.id)
@@ -138,7 +137,7 @@ export function EnhancedLeaderboardTable({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
-              className={`relative p-6 rounded-2xl backdrop-blur-xl border transition-all cursor-pointer ${
+              className={`relative p-4 sm:p-6 rounded-xl sm:rounded-2xl backdrop-blur-xl border transition-all cursor-pointer ${
                 isCurrentUser
                   ? 'bg-purple-500/10 border-purple-500/50 ring-2 ring-purple-500/50'
                   : isSelected
@@ -152,8 +151,8 @@ export function EnhancedLeaderboardTable({
               whileTap={{ scale: 0.98 }}
             >
               {/* Rank Badge */}
-              <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">{entry.rank}</span>
+              <div className="absolute -top-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                <span className="text-white font-bold text-xs sm:text-sm">{entry.rank}</span>
               </div>
 
               {/* Comparison Toggle */}
@@ -165,30 +164,30 @@ export function EnhancedLeaderboardTable({
                     e.stopPropagation()
                     onCompareToggle(entry.user.id)
                   }}
-                  className={`absolute top-4 right-4 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                  className={`absolute top-3 right-3 w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 flex items-center justify-center transition-all ${
                     isSelected
                       ? 'bg-yellow-400 border-yellow-400 text-black'
                       : 'border-gray-600 hover:border-yellow-400'
                   }`}
                 >
-                  {isSelected && <Target className="w-3 h-3" />}
+                  {isSelected && <Target className="w-2 h-2 sm:w-3 sm:h-3" />}
                 </motion.button>
               )}
 
               {/* User Info */}
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4">
                 <div className="relative">
                   {entry.user.twitterImage ? (
                     <Image
                       src={entry.user.twitterImage}
                       alt={entry.user.twitterUsername || 'User'}
-                      width={60}
-                      height={60}
-                      className="rounded-full ring-2 ring-purple-500/30"
+                      width={48}
+                      height={48}
+                      className="rounded-full ring-2 ring-purple-500/30 w-12 h-12 sm:w-15 sm:h-15"
                     />
                   ) : (
-                    <div className="w-15 h-15 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
-                      <span className="text-white font-bold text-lg">
+                    <div className="w-12 h-12 sm:w-15 sm:h-15 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
+                      <span className="text-white font-bold text-sm sm:text-lg">
                         {entry.user.twitterUsername?.[0]?.toUpperCase() || 
                          entry.user.walletAddress.slice(0, 2).toUpperCase()}
                       </span>
@@ -196,7 +195,7 @@ export function EnhancedLeaderboardTable({
                   )}
                   
                   {/* Activity Indicator */}
-                  <div className={`absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-gray-900 ${
+                  <div className={`absolute -bottom-1 -right-1 w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 border-gray-900 ${
                     entry.user.twitterActivity === 'HIGH' ? 'bg-green-400' :
                     entry.user.twitterActivity === 'MEDIUM' ? 'bg-yellow-400' :
                     'bg-orange-400'
@@ -204,40 +203,40 @@ export function EnhancedLeaderboardTable({
                 </div>
 
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-bold text-white truncate">
+                  <h3 className="font-bold text-white truncate text-sm sm:text-base">
                     {entry.user.twitterUsername || 'Anonymous'}
                   </h3>
-                  <p className="text-sm text-gray-400 font-mono">
+                  <p className="text-xs sm:text-sm text-gray-400 font-mono">
                     {formatWalletAddress(entry.user.walletAddress)}
                   </p>
                 </div>
               </div>
 
               {/* Stats */}
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-400">Points</span>
-                  <span className="text-lg font-bold text-white">
+                  <span className="text-xs sm:text-sm text-gray-400">Points</span>
+                  <span className="text-base sm:text-lg font-bold text-white">
                     {entry.user.totalPoints.toLocaleString()}
                   </span>
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-400">Level</span>
-                  <span className="text-sm font-bold text-purple-400">
+                  <span className="text-xs sm:text-sm text-gray-400">Level</span>
+                  <span className="text-xs sm:text-sm font-bold text-purple-400">
                     {entry.user.level || 1}
                   </span>
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-400">Streak</span>
-                  <span className={`text-sm font-bold ${getStreakColor(entry.user.streak)}`}>
+                  <span className="text-xs sm:text-sm text-gray-400">Streak</span>
+                  <span className={`text-xs sm:text-sm font-bold ${getStreakColor(entry.user.streak)}`}>
                     {entry.user.streak || 0} days
                   </span>
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-400">Activity</span>
+                  <span className="text-xs sm:text-sm text-gray-400">Activity</span>
                   <div className={`px-2 py-1 rounded-full text-xs font-semibold border ${
                     getActivityColor(entry.user.twitterActivity)
                   }`}>
@@ -247,9 +246,9 @@ export function EnhancedLeaderboardTable({
               </div>
 
               {/* Change Indicator */}
-              <div className="mt-4 pt-3 border-t border-gray-800">
+              <div className="mt-3 sm:mt-4 pt-2 sm:pt-3 border-t border-gray-800">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-400">Change</span>
+                  <span className="text-xs sm:text-sm text-gray-400">Change</span>
                   {getPositionChange(entry)}
                 </div>
               </div>
@@ -261,7 +260,7 @@ export function EnhancedLeaderboardTable({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/10 to-pink-500/10 pointer-events-none"
+                    className="absolute inset-0 rounded-xl sm:rounded-2xl bg-gradient-to-r from-purple-500/10 to-pink-500/10 pointer-events-none"
                   />
                 )}
               </AnimatePresence>
@@ -274,7 +273,7 @@ export function EnhancedLeaderboardTable({
 
   if (viewMode === 'compact') {
     return (
-      <div className="space-y-2">
+      <div className="space-y-1 sm:space-y-2">
         {entries.map((entry, index) => {
           const isCurrentUser = entry.user.walletAddress === currentUserAddress
           const isSelected = compareList.includes(entry.user.id)
@@ -286,7 +285,7 @@ export function EnhancedLeaderboardTable({
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.02 }}
-              className={`flex items-center gap-4 p-4 rounded-xl backdrop-blur-xl border transition-all cursor-pointer ${
+              className={`flex items-center gap-2 sm:gap-4 p-2 sm:p-4 rounded-lg sm:rounded-xl backdrop-blur-xl border transition-all cursor-pointer ${
                 isCurrentUser
                   ? 'bg-purple-500/10 border-purple-500/50'
                   : isSelected
@@ -298,8 +297,8 @@ export function EnhancedLeaderboardTable({
               whileTap={{ scale: 0.99 }}
             >
               {/* Rank */}
-              <div className="w-12 text-center">
-                <span className="text-lg font-bold text-white">{entry.rank}</span>
+              <div className="w-8 sm:w-12 text-center">
+                <span className="text-sm sm:text-lg font-bold text-white">{entry.rank}</span>
               </div>
 
               {/* Avatar */}
@@ -308,13 +307,13 @@ export function EnhancedLeaderboardTable({
                   <Image
                     src={entry.user.twitterImage}
                     alt={entry.user.twitterUsername || 'User'}
-                    width={40}
-                    height={40}
-                    className="rounded-full"
+                    width={32}
+                    height={32}
+                    className="rounded-full w-8 h-8 sm:w-10 sm:h-10"
                   />
                 ) : (
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
+                    <span className="text-white font-bold text-xs sm:text-sm">
                       {entry.user.twitterUsername?.[0]?.toUpperCase() || 
                        entry.user.walletAddress.slice(0, 2).toUpperCase()}
                     </span>
@@ -324,27 +323,27 @@ export function EnhancedLeaderboardTable({
 
               {/* User Info */}
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2">
-                  <h3 className="font-semibold text-white truncate">
+                <div className="flex items-center gap-1 sm:gap-2">
+                  <h3 className="font-semibold text-white truncate text-sm sm:text-base">
                     {entry.user.twitterUsername || 'Anonymous'}
                   </h3>
-                  <div className={`px-2 py-1 rounded-full text-xs font-semibold border ${
+                  <div className={`px-1 sm:px-2 py-1 rounded-full text-xs font-semibold border ${
                     getActivityColor(entry.user.twitterActivity)
                   }`}>
-                    {entry.user.twitterActivity || 'LOW'}
+                    {(entry.user.twitterActivity || 'LOW').charAt(0)}
                   </div>
                 </div>
               </div>
 
               {/* Points */}
               <div className="text-right">
-                <span className="text-lg font-bold text-white">
+                <span className="text-sm sm:text-lg font-bold text-white">
                   {entry.user.totalPoints.toLocaleString()}
                 </span>
               </div>
 
               {/* Change */}
-              <div className="w-16 text-center">
+              <div className="w-12 sm:w-16 text-center">
                 {getPositionChange(entry)}
               </div>
 
@@ -357,13 +356,13 @@ export function EnhancedLeaderboardTable({
                     e.stopPropagation()
                     onCompareToggle(entry.user.id)
                   }}
-                  className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                  className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 flex items-center justify-center transition-all ${
                     isSelected
                       ? 'bg-yellow-400 border-yellow-400 text-black'
                       : 'border-gray-600 hover:border-yellow-400'
                   }`}
                 >
-                  {isSelected && <Target className="w-3 h-3" />}
+                  {isSelected && <Target className="w-2 h-2 sm:w-3 sm:h-3" />}
                 </motion.button>
               )}
             </motion.div>
@@ -373,210 +372,252 @@ export function EnhancedLeaderboardTable({
     )
   }
 
-  // Table view (default)
+  // Table view (default) with horizontal scroll
   return (
-    <div className="overflow-x-auto">
-      <table className="w-full">
-        <thead>
-          <tr className="border-b border-white/10">
-            <th className="text-left py-4 px-4 text-gray-400 font-medium">Rank</th>
-            <th className="text-left py-4 px-4 text-gray-400 font-medium">User</th>
-            <th className="text-right py-4 px-4 text-gray-400 font-medium">Points</th>
-            <th className="text-center py-4 px-4 text-gray-400 font-medium">Level</th>
-            <th className="text-center py-4 px-4 text-gray-400 font-medium">Streak</th>
-            <th className="text-center py-4 px-4 text-gray-400 font-medium">Activity</th>
-            <th className="text-center py-4 px-4 text-gray-400 font-medium">Change</th>
-            <th className="text-center py-4 px-4 text-gray-400 font-medium">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {entries.map((entry, index) => {
-            const isCurrentUser = entry.user.walletAddress === currentUserAddress
-            const isSelected = compareList.includes(entry.user.id)
-            const rankDisplay = getRankDisplay(entry.rank)
-            const isExpanded = expandedUser === entry.user.id
+    <div className="w-full">
+      {/* Mobile/Small Screen: Horizontal Scrollable Table */}
+      <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
+        {/* Scroll indicator for mobile */}
+        <div className="block sm:hidden text-xs text-gray-400 mb-2 text-center">
+          ← Scroll horizontally to see all columns →
+        </div>
+        
+        <div className="min-w-[800px]"> {/* Minimum width to ensure proper spacing */}
+          <table className="w-full">
+            <thead>
+              <tr className="border-b border-white/10">
+                <th className="text-left py-3 sm:py-4 px-2 sm:px-4 text-gray-400 font-medium text-xs sm:text-sm sticky left-0 bg-gray-900/95 backdrop-blur-sm z-10">
+                  Rank
+                </th>
+                <th className="text-left py-3 sm:py-4 px-2 sm:px-4 text-gray-400 font-medium text-xs sm:text-sm sticky left-12 sm:left-16 bg-gray-900/95 backdrop-blur-sm z-10 min-w-[200px]">
+                  User
+                </th>
+                <th className="text-right py-3 sm:py-4 px-2 sm:px-4 text-gray-400 font-medium text-xs sm:text-sm min-w-[100px]">
+                  Points
+                </th>
+                <th className="text-center py-3 sm:py-4 px-2 sm:px-4 text-gray-400 font-medium text-xs sm:text-sm min-w-[80px]">
+                  Level
+                </th>
+                <th className="text-center py-3 sm:py-4 px-2 sm:px-4 text-gray-400 font-medium text-xs sm:text-sm min-w-[80px]">
+                  Streak
+                </th>
+                <th className="text-center py-3 sm:py-4 px-2 sm:px-4 text-gray-400 font-medium text-xs sm:text-sm min-w-[100px]">
+                  Activity
+                </th>
+                <th className="text-center py-3 sm:py-4 px-2 sm:px-4 text-gray-400 font-medium text-xs sm:text-sm min-w-[80px]">
+                  Change
+                </th>
+                <th className="text-center py-3 sm:py-4 px-2 sm:px-4 text-gray-400 font-medium text-xs sm:text-sm min-w-[120px]">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {entries.map((entry, index) => {
+                const isCurrentUser = entry.user.walletAddress === currentUserAddress
+                const isSelected = compareList.includes(entry.user.id)
+                const rankDisplay = getRankDisplay(entry.rank)
+                const isExpanded = expandedUser === entry.user.id
 
-            return (
-              <motion.tr
-                key={entry.user.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.03 }}
-                className={`border-b border-white/5 transition-all cursor-pointer ${
-                  isCurrentUser
-                    ? 'bg-purple-500/10 hover:bg-purple-500/20'
-                    : isSelected
-                    ? 'bg-yellow-500/10 hover:bg-yellow-500/20'
-                    : 'hover:bg-white/5'
-                }`}
-                onHoverStart={() => setHoveredUser(entry.user.id)}
-                onHoverEnd={() => setHoveredUser(null)}
-                onClick={() => onUserClick(entry)}
-                whileHover={{ scale: 1.005 }}
-              >
-                <td className="py-4 px-4">
-                  <div className="flex items-center gap-2">
-                    <span className="text-2xl font-bold text-white">{entry.rank}</span>
-                    {entry.rank <= 3 && rankDisplay.icon}
-                    {isCurrentUser && <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />}
-                  </div>
-                </td>
-                
-                <td className="py-4 px-4">
-                  <div className="flex items-center gap-3">
-                    <div className="relative">
-                      {entry.user.twitterImage ? (
-                        <Image
-                          src={entry.user.twitterImage}
-                          alt={entry.user.twitterUsername || 'User'}
-                          width={50}
-                          height={50}
-                          className="rounded-full ring-2 ring-purple-500/30"
-                        />
-                      ) : (
-                        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
-                          <span className="text-white font-bold">
-                            {entry.user.twitterUsername?.[0]?.toUpperCase() || 
-                             entry.user.walletAddress.slice(0, 2).toUpperCase()}
-                          </span>
-                        </div>
-                      )}
-                      
-                      {/* New User Badge */}
-                      {entry.isNew && (
-                        <div className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center">
-                          <Sparkles className="w-3 h-3 text-white" />
-                        </div>
-                      )}
-                    </div>
+                return (
+                  <motion.tr
+                    key={entry.user.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.03 }}
+                    className={`border-b border-white/5 transition-all cursor-pointer ${
+                      isCurrentUser
+                        ? 'bg-purple-500/10 hover:bg-purple-500/20'
+                        : isSelected
+                        ? 'bg-yellow-500/10 hover:bg-yellow-500/20'
+                        : 'hover:bg-white/5'
+                    }`}
+                    onHoverStart={() => setHoveredUser(entry.user.id)}
+                    onHoverEnd={() => setHoveredUser(null)}
+                    onClick={() => onUserClick(entry)}
+                    whileHover={{ scale: 1.005 }}
+                  >
+                    {/* Sticky Rank Column */}
+                    <td className="py-3 sm:py-4 px-2 sm:px-4 sticky left-0 bg-gray-900/95 backdrop-blur-sm z-10">
+                      <div className="flex items-center gap-1 sm:gap-2">
+                        <span className="text-lg sm:text-2xl font-bold text-white">{entry.rank}</span>
+                        {entry.rank <= 3 && (
+                          <div className="hidden sm:block">
+                            {rankDisplay.icon}
+                          </div>
+                        )}
+                        {isCurrentUser && <Star className="w-3 h-3 sm:w-4 sm:h-4 text-yellow-400 fill-yellow-400" />}
+                      </div>
+                    </td>
                     
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2">
-                        <p className="text-white font-semibold truncate">
-                          {entry.user.twitterUsername || 'Anonymous User'}
-                        </p>
-                        {entry.user.twitterUsername && (
-                          <Twitter className="w-4 h-4 text-blue-400" />
+                    {/* Sticky User Column */}
+                    <td className="py-3 sm:py-4 px-2 sm:px-4 sticky left-12 sm:left-16 bg-gray-900/95 backdrop-blur-sm z-10">
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <div className="relative">
+                          {entry.user.twitterImage ? (
+                            <Image
+                              src={entry.user.twitterImage}
+                              alt={entry.user.twitterUsername || 'User'}
+                              width={40}
+                              height={40}
+                              className="rounded-full ring-2 ring-purple-500/30 w-8 h-8 sm:w-12 sm:h-12"
+                            />
+                          ) : (
+                            <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
+                              <span className="text-white font-bold text-xs sm:text-base">
+                                {entry.user.twitterUsername?.[0]?.toUpperCase() || 
+                                 entry.user.walletAddress.slice(0, 2).toUpperCase()}
+                              </span>
+                            </div>
+                          )}
+                          
+                          {/* New User Badge */}
+                          {entry.isNew && (
+                            <div className="absolute -top-1 -right-1 w-3 h-3 sm:w-5 sm:h-5 rounded-full bg-blue-500 flex items-center justify-center">
+                              <Sparkles className="w-2 h-2 sm:w-3 sm:h-3 text-white" />
+                            </div>
+                          )}
+                        </div>
+                        
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1 sm:gap-2">
+                            <p className="text-white font-semibold truncate text-xs sm:text-base">
+                              {entry.user.twitterUsername || 'Anonymous User'}
+                            </p>
+                            {entry.user.twitterUsername && (
+                              <Twitter className="w-3 h-3 sm:w-4 sm:h-4 text-blue-400" />
+                            )}
+                          </div>
+                          <div className="flex items-center gap-1 sm:gap-2">
+                            <p className="text-gray-400 text-xs sm:text-sm font-mono">
+                              {formatWalletAddress(entry.user.walletAddress)}
+                            </p>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                copyToClipboard(entry.user.walletAddress, 'Wallet address')
+                              }}
+                              className="text-gray-400 hover:text-white transition-colors"
+                            >
+                              <Copy className="w-2 h-2 sm:w-3 sm:h-3" />
+                            </button>
+                          </div>
+                          {entry.user.twitterFollowers && (
+                            <p className="text-gray-500 text-xs hidden sm:block">
+                              {entry.user.twitterFollowers.toLocaleString()} followers
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </td>
+                    
+                    <td className="py-3 sm:py-4 px-2 sm:px-4 text-right">
+                      <div className="flex flex-col items-end">
+                        <span className="text-white font-bold text-sm sm:text-lg">
+                          {entry.user.totalPoints.toLocaleString()}
+                        </span>
+                        {entry.pointsChange && (
+                          <span className={`text-xs ${
+                            entry.pointsChange > 0 ? 'text-green-400' : 'text-red-400'
+                          }`}>
+                            {entry.pointsChange > 0 ? '+' : ''}{entry.pointsChange}
+                          </span>
                         )}
                       </div>
-                      <div className="flex items-center gap-2">
-                        <p className="text-gray-400 text-sm font-mono">
-                          {formatWalletAddress(entry.user.walletAddress)}
-                        </p>
-                        <button
+                    </td>
+                    
+                    <td className="py-3 sm:py-4 px-2 sm:px-4 text-center">
+                      <span className="text-purple-400 font-bold text-sm sm:text-base">
+                        {entry.user.level || 1}
+                      </span>
+                    </td>
+                    
+                    <td className="py-3 sm:py-4 px-2 sm:px-4 text-center">
+                      <div className="flex items-center justify-center gap-1">
+                        <Flame className={`w-3 h-3 sm:w-4 sm:h-4 ${getStreakColor(entry.user.streak)}`} />
+                        <span className={`font-semibold text-xs sm:text-sm ${getStreakColor(entry.user.streak)}`}>
+                          {entry.user.streak || 0}
+                        </span>
+                      </div>
+                    </td>
+                    
+                    <td className="py-3 sm:py-4 px-2 sm:px-4 text-center">
+                      <div className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold border ${
+                        getActivityColor(entry.user.twitterActivity)
+                      }`}>
+                        <Activity className="w-2 h-2 sm:w-3 sm:h-3" />
+                        <span className="hidden sm:inline">
+                          {entry.user.twitterActivity || 'LOW'}
+                        </span>
+                        <span className="sm:hidden">
+                          {(entry.user.twitterActivity || 'LOW').charAt(0)}
+                        </span>
+                      </div>
+                    </td>
+                    
+                    <td className="py-3 sm:py-4 px-2 sm:px-4 text-center">
+                      {getPositionChange(entry)}
+                    </td>
+                    
+                    <td className="py-3 sm:py-4 px-2 sm:px-4 text-center">
+                      <div className="flex items-center justify-center gap-1 sm:gap-2">
+                        <motion.button
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
                           onClick={(e) => {
                             e.stopPropagation()
-                            copyToClipboard(entry.user.walletAddress, 'Wallet address')
+                            onUserClick(entry)
                           }}
-                          className="text-gray-400 hover:text-white transition-colors"
+                          className="p-1 sm:p-2 rounded-full bg-purple-500/20 text-purple-400 hover:bg-purple-500/30 transition-all"
                         >
-                          <Copy className="w-3 h-3" />
-                        </button>
+                          <Eye className="w-3 h-3 sm:w-4 sm:h-4" />
+                        </motion.button>
+                        
+                        {comparisonMode && (
+                          <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              onCompareToggle(entry.user.id)
+                            }}
+                            className={`p-1 sm:p-2 rounded-full transition-all ${
+                              isSelected
+                                ? 'bg-yellow-400 text-black'
+                                : 'bg-gray-500/20 text-gray-400 hover:bg-yellow-500/30 hover:text-yellow-400'
+                            }`}
+                          >
+                            <Target className="w-3 h-3 sm:w-4 sm:h-4" />
+                          </motion.button>
+                        )}
+                        
+                        {entry.user.twitterUsername && (
+                          <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              window.open(`https://twitter.com/${entry.user.twitterUsername}`, '_blank')
+                            }}
+                            className="p-1 sm:p-2 rounded-full bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 transition-all"
+                          >
+                            <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4" />
+                          </motion.button>
+                        )}
                       </div>
-                      {entry.user.twitterFollowers && (
-                        <p className="text-gray-500 text-xs">
-                          {entry.user.twitterFollowers.toLocaleString()} followers
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                </td>
-                
-                <td className="py-4 px-4 text-right">
-                  <div className="flex flex-col items-end">
-                    <span className="text-white font-bold text-lg">
-                      {entry.user.totalPoints.toLocaleString()}
-                    </span>
-                    {entry.pointsChange && (
-                      <span className={`text-xs ${
-                        entry.pointsChange > 0 ? 'text-green-400' : 'text-red-400'
-                      }`}>
-                        {entry.pointsChange > 0 ? '+' : ''}{entry.pointsChange}
-                      </span>
-                    )}
-                  </div>
-                </td>
-                
-                <td className="py-4 px-4 text-center">
-                  <span className="text-purple-400 font-bold">
-                    {entry.user.level || 1}
-                  </span>
-                </td>
-                
-                <td className="py-4 px-4 text-center">
-                  <div className="flex items-center justify-center gap-1">
-                    <Flame className={`w-4 h-4 ${getStreakColor(entry.user.streak)}`} />
-                    <span className={`font-semibold ${getStreakColor(entry.user.streak)}`}>
-                      {entry.user.streak || 0}
-                    </span>
-                  </div>
-                </td>
-                
-                <td className="py-4 px-4 text-center">
-                  <div className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold border ${
-                    getActivityColor(entry.user.twitterActivity)
-                  }`}>
-                    <Activity className="w-3 h-3" />
-                    {entry.user.twitterActivity || 'LOW'}
-                  </div>
-                </td>
-                
-                <td className="py-4 px-4 text-center">
-                  {getPositionChange(entry)}
-                </td>
-                
-                <td className="py-4 px-4 text-center">
-                  <div className="flex items-center justify-center gap-2">
-                    <motion.button
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        onUserClick(entry)
-                      }}
-                      className="p-2 rounded-full bg-purple-500/20 text-purple-400 hover:bg-purple-500/30 transition-all"
-                    >
-                      <Eye className="w-4 h-4" />
-                    </motion.button>
-                    
-                    {comparisonMode && (
-                      <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          onCompareToggle(entry.user.id)
-                        }}
-                        className={`p-2 rounded-full transition-all ${
-                          isSelected
-                            ? 'bg-yellow-400 text-black'
-                            : 'bg-gray-500/20 text-gray-400 hover:bg-yellow-500/30 hover:text-yellow-400'
-                        }`}
-                      >
-                        <Target className="w-4 h-4" />
-                      </motion.button>
-                    )}
-                    
-                    {entry.user.twitterUsername && (
-                      <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          window.open(`https://twitter.com/${entry.user.twitterUsername}`, '_blank')
-                        }}
-                        className="p-2 rounded-full bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 transition-all"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </motion.button>
-                    )}
-                  </div>
-                </td>
-              </motion.tr>
-            )
-          })}
-        </tbody>
-      </table>
+                    </td>
+                  </motion.tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      {/* Scroll hint for small screens */}
+      <div className="block sm:hidden mt-2 text-xs text-gray-500 text-center">
+        Swipe left/right to scroll • Tap row for details
+      </div>
     </div>
   )
 }
