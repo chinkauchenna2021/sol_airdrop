@@ -31,13 +31,14 @@ const navItems = [
     href: '/tokenomics', 
     icon: Coins,
     description: 'Token distribution and economics'
-  },
-  { 
-    name: 'Tasks', 
-    href: '/tasks', 
-    icon: Zap,
-    description: 'Complete tasks and earn rewards'
   }
+  // ,
+  // { 
+  //   name: 'Tasks', 
+  //   href: '/tasks', 
+  //   icon: Zap,
+  //   description: 'Complete tasks and earn rewards'
+  // }
 ]
 
 const resources = [
@@ -190,13 +191,13 @@ export default function CryptoNavbar() {
             {/* Right Side */}
             <div className="flex items-center space-x-4">
               {/* Search */}
-              <motion.button
+              {/* <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="hidden md:flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 transition-all duration-300"
               >
                 <Search className="w-5 h-5 text-gray-400" />
-              </motion.button>
+              </motion.button> */}
 
               {/* Notifications */}
               {/* {connected && (
