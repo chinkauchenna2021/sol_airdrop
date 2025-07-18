@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import { LeaderboardEntry } from './types'
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -135,4 +136,83 @@ export function groupBy<T, K extends keyof any>(
     groups[key].push(item)
     return groups
   }, {} as Record<K, T[]>)
+}
+
+
+
+
+export const leaderboardUtils = {
+  formatPoints: (points: number): string => {
+    if (points >= 1000000) {
+      return `${(points / 1000000).toFixed(1)}M`
+    } else if (points >= 1000) {
+      return `${(points / 1000).toFixed(1)}K`
+    }
+    return points.toLocaleString()
+  },
+
+  formatWalletAddress: (address: string): string => {
+    return `${address.slice(0, 6)}...${address.slice(-4)}`
+  },
+
+  getActivityColor: (activity?: string): string => {
+    switch (activity) {
+      case 'HIGH': return 'text-green-400'
+      case 'MEDIUM': return 'text-yellow-400'
+      case 'LOW': return 'text-orange-400'
+      default: return 'text-gray-400'
+    }
+  },
+
+  getActivityBadgeColor: (activity?: string): string => {
+    switch (activity) {
+      case 'HIGH': return 'bg-green-500/20 text-green-400 border-green-500/50'
+      case 'MEDIUM': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50'
+      case 'LOW': return 'bg-orange-500/20 text-orange-400 border-orange-500/50'
+      default: return 'bg-gray-500/20 text-gray-400 border-gray-500/50'
+    }
+  },
+
+  getStreakColor: (streak?: number): string => {
+    if (!streak) return 'text-gray-400'
+    if (streak >= 30) return 'text-red-400'
+    if (streak >= 14) return 'text-orange-400'
+    if (streak >= 7) return 'text-yellow-400'
+    return 'text-green-400'
+  },
+
+  getRankBadgeColor: (rank: number): string => {
+    if (rank === 1) return 'gold'
+    if (rank === 2) return 'silver'
+    if (rank === 3) return 'bronze'
+    return 'default'
+  },
+
+  calculatePercentile: (rank: number, total: number): number => {
+    return Math.round(((total - rank) / total) * 100)
+  },
+
+  getChangeDescription: (change: number): string => {
+    if (change === 0) return 'No change'
+    if (change > 0) return `Up ${change} position${change > 1 ? 's' : ''}`
+    return `Down ${Math.abs(change)} position${Math.abs(change) > 1 ? 's' : ''}`
+  },
+
+  exportToCSV: (data: LeaderboardEntry[]): string => {
+    const headers = ['Rank', 'Username', 'Wallet Address', 'Points', 'Level', 'Streak', 'Activity', 'Change']
+    const rows = data.map(entry => [
+      entry.rank,
+      entry.user.twitterUsername || 'Anonymous',
+      entry.user.walletAddress,
+      entry.user.totalPoints,
+      // entry.user. || 1,
+      // entry.user.streak || 0,
+      // entry.user.twitterActivity || 'LOW',
+      entry.change
+    ])
+    
+    return [headers, ...rows]
+      .map(row => row.map(field => `"${field}"`).join(','))
+      .join('\n')
+  }
 }

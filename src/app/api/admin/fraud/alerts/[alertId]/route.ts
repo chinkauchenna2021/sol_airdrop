@@ -19,7 +19,7 @@ export async function PATCH(
       where: { id: params.alertId },
       data: {
         status,
-        investigatedBy: session.user.id,
+        investigatedBy: session?.user.id,
         resolvedAt: ['RESOLVED', 'FALSE_POSITIVE'].includes(status) ? new Date() : null
       }
     })

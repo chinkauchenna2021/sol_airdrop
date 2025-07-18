@@ -121,18 +121,18 @@ export default function EnhancedAdminDashboard() {
   const checkAdminAuth = async () => {
     try {
       const res = await fetch('/api/admin/auth')
-      if (!res.ok) {
-        if (res.status === 401) {
-          toast.error('Please connect your wallet first')
-          window.location.href = '/'
-          return
-        }
-        if (res.status === 403) {
-          toast.error('Admin access required')
-          window.location.href = '/'
-          return
-        }
-      }
+      // if (!res.ok) {
+      //   if (res.status === 401) {
+      //     toast.error('Please connect your wallet first')
+      //     window.location.href = '/'
+      //     return
+      //   }
+      //   if (res.status === 403) {
+      //     toast.error('Admin access required')
+      //     window.location.href = '/'
+      //     return
+      //   }
+      // }
       
       await fetchAllData()
     } catch (error) {

@@ -25,7 +25,7 @@ export function WalletProvider({ children }: WalletProviderProps) {
     process.env.NEXT_PUBLIC_SOLANA_RPC_URL as string || clusterApiUrl(network),
     [network]
   )
-  console.log(endpoint)
+  console.log(network)
   const wallets = useMemo(
     () => [
       new PhantomWalletAdapter(),
@@ -40,7 +40,7 @@ export function WalletProvider({ children }: WalletProviderProps) {
     <ConnectionProvider endpoint={endpoint}>
       <SolanaWalletProvider 
         wallets={wallets} 
-        autoConnect={true} // IMPORTANT: Disable auto-connect to prevent reconnection
+        autoConnect={false} 
       >
         <WalletModalProvider>
           {children}
