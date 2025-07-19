@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { authenticateWallet } from '@/lib/auth'
 import { validateSolanaAddress } from '@/lib/solana'
+import { getCookie, getCookies, hasCookie, setCookie } from 'cookies-next/server';
+import { cookies } from 'next/headers';
 import prisma from '@/lib/prisma'
 
 
 export async function POST(req: NextRequest) {
   console.log('🚀 Wallet auth endpoint called')
+
   
   try {
     let body;
@@ -90,13 +93,14 @@ export async function POST(req: NextRequest) {
     })
 
     // Set auth cookie
-    response.cookies.set('auth-token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 60 * 60 * 24, // 24 hours
-      path: '/',
-    })
+      await setCookie('auth-token',token, { cookies });
+    // response.cookies.set('auth-token', token, {
+    //   httpOnly: true,
+    //   secure: process.env.NODE_ENV === 'production',
+    //   sameSite: 'lax',
+    //   maxAge: 60 * 60 * 24, // 24 hours
+    //   path: '/',
+    // })
 
     return response
 

@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image  from 'next/image'
 import { 
   Menu, X, ChevronDown, Wallet, Trophy, BarChart3, 
   Coins, Users, Settings, Bell, Search, Zap, Shield,
@@ -26,12 +27,12 @@ const navItems = [
     icon: Trophy,
     description: 'Global rankings and competitions'
   },
-  { 
-    name: 'Tokenomics', 
-    href: '/tokenomics', 
-    icon: Coins,
-    description: 'Token distribution and economics'
-  }
+  // { 
+  //   name: 'Tokenomics', 
+  //   href: '/tokenomics', 
+  //   icon: Coins,
+  //   description: 'Token distribution and economics'
+  // }
   // ,
   // { 
   //   name: 'Tasks', 
@@ -93,18 +94,7 @@ export default function CryptoNavbar() {
               transition={{ duration: 0.2 }}
             >
               <Link href="/" className="flex items-center space-x-3">
-                <div className="relative">
-                  <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center shadow-lg">
-                    <Coins className="w-6 h-6 text-white" />
-                  </div>
-                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-400 rounded-full animate-pulse" />
-                </div>
-                <div className="hidden sm:block">
-                  <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    SolDrop
-                  </h1>
-                  <p className="text-xs text-gray-400 -mt-1">Airdrop Platform</p>
-                </div>
+                   <Image src="/images/logo/sol_logo.jpg"   height={40} width={40} alt="sol_logo"   />
               </Link>
             </motion.div>
 

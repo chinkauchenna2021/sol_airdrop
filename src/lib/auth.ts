@@ -1,8 +1,11 @@
+'use server'
 import { SignJWT, jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
 import prisma from './prisma'
+import { setCookie, deleteCookie, getCookie, getCookies, hasCookie } from 'cookies-next/server';
+
 
 const secret = new TextEncoder().encode(
   process.env.NEXTAUTH_SECRET || 'default-secret-key'
@@ -119,7 +122,8 @@ export async function setAuthCookie(token: string, response?: NextResponse): Pro
 
   if (response) {
     // When called from API routes with NextResponse
-    response.cookies.set('auth-token', token, cookieOptions)
+    // response.cookies.set('auth-token', token, cookieOptions)
+    await setCookie('auth-token', token, { cookies });
     return response
   } else {
     // When called from server actions/components
@@ -143,12 +147,13 @@ export async function clearAuthCookie(response?: NextResponse): Promise<NextResp
       maxAge: 0, // Expire immediately
       path: '/',
     })
+    await deleteCookie('auth-token',{ cookies });
+   
     return response
   } else {
     // When called from server actions/components
     try {
-      const cookieStore = await cookies()
-      await cookieStore.delete('auth-token')
+    await deleteCookie('auth-token',{ cookies });
     } catch (error) {
       console.error('Error clearing cookie:', error)
     }
