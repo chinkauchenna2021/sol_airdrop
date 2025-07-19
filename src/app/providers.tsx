@@ -3,7 +3,7 @@
 import { ReactNode } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Toaster } from 'react-hot-toast'
-import { WalletProvider } from '@/components/wallet/WalletProvider'
+import  WalletContextProvider  from '@/components/wallet/WalletProvider'
 import { ErrorBoundary } from '@/components/ErrorBoundry'
 
 const queryClient = new QueryClient({
@@ -17,8 +17,8 @@ const queryClient = new QueryClient({
 
 export function Providers({ children }: { children: ReactNode }) {
   return (
+      <WalletContextProvider>
     <ErrorBoundary>
-      <WalletProvider>
       <QueryClientProvider client={queryClient}>
           <Toaster
             position="top-right"
@@ -45,7 +45,7 @@ export function Providers({ children }: { children: ReactNode }) {
           />
           {children}
       </QueryClientProvider>
-        </WalletProvider>
     </ErrorBoundary>
+     </WalletContextProvider>
   )
 }

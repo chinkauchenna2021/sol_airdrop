@@ -6,6 +6,7 @@ import { X } from 'lucide-react'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
 import { useWalletStore } from '@/store/useWalletStore'
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 interface WalletModalProps {
   open: boolean
@@ -132,90 +133,10 @@ export function WalletModal({ open, onClose }: WalletModalProps) {
         </button>
 
         <h2 className="text-2xl font-bold text-white mb-6">Connect Wallet</h2>
-
-        {/* Connection Status */}
-        {connecting && (
-          <div className="mb-4 p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
-            <p className="text-blue-300 text-sm">
-              Connecting to {connecting}... Please approve the connection in your wallet.
-            </p>
+           <div className="my-8">
+            <WalletMultiButton 
+            />
           </div>
-        )}
-
-        {/* Installed Wallets */}
-        {installedWallets.length > 0 && (
-          <>
-            <p className="text-gray-400 text-sm mb-4">Installed wallets</p>
-            <div className="space-y-2 mb-6">
-              {installedWallets.map(wallet => {
-                const isConnecting = connecting === wallet.adapter.name
-                const isConnected = connected && currentWallet?.adapter.name === wallet.adapter.name
-                
-                return (
-                  <button
-                    key={wallet.adapter.name}
-                    onClick={() => handleWalletSelect(wallet.adapter.name)}
-                    disabled={connecting !== null}
-                    className={`w-full p-4 rounded-lg transition-all flex items-center gap-4 ${
-                      isConnected 
-                        ? 'bg-green-500/20 border border-green-500/30'
-                        : isConnecting
-                        ? 'bg-blue-500/20 border border-blue-500/30'
-                        : 'bg-white/5 hover:bg-white/10 border border-transparent'
-                    } ${connecting !== null ? 'opacity-50 cursor-not-allowed' : ''}`}
-                  >
-                    <Image
-                      src={wallet.adapter.icon}
-                      alt={wallet.adapter.name}
-                      width={32}
-                      height={32}
-                      className="rounded-lg"
-                    />
-                    <span className="text-white font-medium flex-1 text-left">
-                      {wallet.adapter.name}
-                    </span>
-                    
-                    {isConnected && (
-                      <span className="text-green-400 text-sm">Connected</span>
-                    )}
-                    
-                    {isConnecting && (
-                      <div className="loading-spinner w-5 h-5" />
-                    )}
-                  </button>
-                )
-              })}
-            </div>
-          </>
-        )}
-
-        {/* Other Wallets */}
-        {otherWallets.length > 0 && (
-          <>
-            <p className="text-gray-400 text-sm mb-4">Other wallets</p>
-            <div className="space-y-2">
-              {otherWallets.map(wallet => (
-                <a
-                  key={wallet.adapter.name}
-                  href={wallet.adapter.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full p-4 bg-white/5 hover:bg-white/10 rounded-lg transition-all flex items-center gap-4"
-                >
-                  <Image
-                    src={wallet.adapter.icon}
-                    alt={wallet.adapter.name}
-                    width={32}
-                    height={32}
-                    className="rounded-lg"
-                  />
-                  <span className="text-white font-medium">{wallet.adapter.name}</span>
-                  <span className="ml-auto text-gray-400 text-sm">Install</span>
-                </a>
-              ))}
-            </div>
-          </>
-        )}
 
         {/* Help Text */}
         <div className="mt-6 p-3 bg-gray-800/50 rounded-lg">

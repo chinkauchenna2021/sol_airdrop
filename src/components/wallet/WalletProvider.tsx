@@ -1,51 +1,55 @@
-'use client'
+"use client";
 
-import { ReactNode, useMemo } from 'react'
-import { ConnectionProvider, WalletProvider as SolanaWalletProvider } from '@solana/wallet-adapter-react'
-import { WalletAdapterNetwork } from '@solana/wallet-adapter-base'
+import { FC, ReactNode, useMemo } from "react";
+import {
+  ConnectionProvider,
+  WalletProvider,
+} from "@solana/wallet-adapter-react";
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
+import { clusterApiUrl } from "@solana/web3.js";
 import {
   PhantomWalletAdapter,
   SolflareWalletAdapter,
+  CoinbaseWalletAdapter,
   TorusWalletAdapter,
   LedgerWalletAdapter,
-} from '@solana/wallet-adapter-wallets'
-import { WalletModalProvider } from '@solana/wallet-adapter-react-ui'
-import { clusterApiUrl } from '@solana/web3.js'
+} from "@solana/wallet-adapter-wallets";
+import { WalletAdapterNetwork } from "@solana/wallet-adapter-base";
 
-// Import wallet adapter CSS
-import '@solana/wallet-adapter-react-ui/styles.css';
+// Import the styles
+import "@solana/wallet-adapter-react-ui/styles.css";
 
-interface WalletProviderProps {
-  children: ReactNode
+interface WalletContextProviderProps {
+  children: ReactNode;
 }
 
-export function WalletProvider({ children }: WalletProviderProps) {
-  const network = (process.env.NEXT_PUBLIC_SOLANA_NETWORK || 'devnet') as WalletAdapterNetwork
-  const endpoint = useMemo(() => 
-    process.env.NEXT_PUBLIC_SOLANA_RPC_URL as string || clusterApiUrl(network),
-    [network]
-  )
-  console.log(network)
+const WalletContextProvider: FC<WalletContextProviderProps> = ({ children }) => {
+  // The network can be set to 'devnet', 'testnet', or 'mainnet-beta'
+  const network = WalletAdapterNetwork.Devnet;
+
+  // You can also provide a custom RPC endpoint
+  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+
+  // @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking
+  // and lazy loading. Instead of including the full list, you can also just include specific adapters
   const wallets = useMemo(
     () => [
       new PhantomWalletAdapter(),
       new SolflareWalletAdapter(),
-      // new TorusWalletAdapter(),
-      // new LedgerWalletAdapter(),
+      new CoinbaseWalletAdapter(),
+      new TorusWalletAdapter(),
+      new LedgerWalletAdapter(),
     ],
     [network]
-  )
+  );
 
   return (
     <ConnectionProvider endpoint={endpoint}>
-      <SolanaWalletProvider 
-        wallets={wallets} 
-        autoConnect={true} // IMPORTANT: Disable auto-connect to prevent reconnection
-      >
-        <WalletModalProvider>
-          {children}
-        </WalletModalProvider>
-      </SolanaWalletProvider>
+      <WalletProvider wallets={wallets} autoConnect>
+        <WalletModalProvider>{children}</WalletModalProvider>
+      </WalletProvider>
     </ConnectionProvider>
-  )
-}
+  );
+};
+
+export default WalletContextProvider; 

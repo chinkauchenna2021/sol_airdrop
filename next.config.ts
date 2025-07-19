@@ -13,15 +13,16 @@ const nextConfig = {
       'avatars.githubusercontent.com',
     ],
   },
-  webpack: (config: { resolve: { fallback: any } }) => {
+  webpack: (config: { resolve: { fallback: any; }; externals: string[]; }) => {
     config.resolve.fallback = {
       ...config.resolve.fallback,
       fs: false,
       net: false,
       tls: false,
     }
-    return config
+    config.externals.push("pino-pretty", "lokijs", "encoding");
+    return config;
   },
-}
+};
 
-module.exports = nextConfig
+export default nextConfig;
