@@ -1,4 +1,3 @@
-'use server'
 import { SignJWT, jwtVerify } from 'jose'
 import { cookies } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
@@ -112,13 +111,13 @@ export async function getSession(req?: NextRequest) {
 }
 // FIXED: Response-based cookie setting for API routes
 export async function setAuthCookie(token: string, response?: NextResponse): Promise<NextResponse | void> {
-  const cookieOptions = {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax' as const,
-    maxAge: 60 * 60 * 24, // 24 hours
-    path: '/',
-  }
+  // const cookieOptions = {
+  //   httpOnly: true,
+  //   secure: process.env.NODE_ENV === 'production',
+  //   sameSite: 'lax' as const,
+  //   maxAge: 60 * 60 * 24, // 24 hours
+  //   path: '/',
+  // }
 
   if (response) {
     // When called from API routes with NextResponse
@@ -129,7 +128,7 @@ export async function setAuthCookie(token: string, response?: NextResponse): Pro
     // When called from server actions/components
     try {
       const cookieStore = await cookies()
-      await cookieStore.set('auth-token', token, cookieOptions)
+    await setCookie('auth-token', token, { cookies });
     } catch (error) {
       console.error('Error setting cookie:', error)
     }
@@ -140,20 +139,20 @@ export async function setAuthCookie(token: string, response?: NextResponse): Pro
 export async function clearAuthCookie(response?: NextResponse): Promise<NextResponse | void> {
   if (response) {
     // When called from API routes - properly clear the cookie
-    response.cookies.set('auth-token', '', {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-      maxAge: 0, // Expire immediately
-      path: '/',
-    })
-    await deleteCookie('auth-token',{ cookies });
+    // response.cookies.set('auth-token', '', {
+    //   httpOnly: true,
+    //   secure: process.env.NODE_ENV === 'production',
+    //   sameSite: 'lax',
+    //   maxAge: 0, // Expire immediately
+    //   path: '/',
+    // })
+    await deleteCookie('auth-token', { cookies });
    
     return response
   } else {
     // When called from server actions/components
     try {
-    await deleteCookie('auth-token',{ cookies });
+    await deleteCookie('auth-token', { cookies });
     } catch (error) {
       console.error('Error clearing cookie:', error)
     }
