@@ -94,7 +94,7 @@ export default function CryptoNavbar() {
               transition={{ duration: 0.2 }}
             >
               <Link href="/" className="flex items-center space-x-3">
-                   <Image src="/images/logo/sol_logo.jpg"   height={40} width={50} alt="sol_logo"   />
+                   <Image src="/images/logo/sol_logo.jpg"   height={45} width={60} alt="sol_logo"   />
               </Link>
             </motion.div>
 
