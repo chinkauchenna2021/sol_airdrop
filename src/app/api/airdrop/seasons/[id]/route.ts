@@ -3,14 +3,17 @@ import { requireAdmin } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
 export async function PATCH(
-  req: NextRequest,
-  { params }: { params: { id: string } }
+  req: NextRequest
 ) {
+
+
+  const requestUrl = new URL(req.url);
+  const id = requestUrl.searchParams.get("id");
   await requireAdmin(req)
 
   try {
     const { action } = await req.json()
-    const seasonId = params.id
+    const seasonId = id
 
     let updateData: any = {}
 
@@ -35,7 +38,7 @@ export async function PATCH(
     }
 
     const season = await prisma.airdropSeason.update({
-      where: { id: seasonId },
+      where: { id: String(seasonId)},
       data: updateData
     })
 
