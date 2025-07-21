@@ -1,7 +1,7 @@
 // app/api/user/refresh-activity/route.ts - CREATE this new file
 import { NextRequest, NextResponse } from 'next/server'
 import { getSession } from '@/lib/auth'
-import { updateUserActivityLevel, updateTwitterFollowerCount } from '@/lib/twitter-enhanced'
+import { updateUserActivityLevel } from '@/lib/twitter-enhanced'
 import prisma from '@/lib/prisma'
 
 export async function POST(req: NextRequest) {
@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
 
   try {
     // Update Twitter follower count from API
-    await updateTwitterFollowerCount(session.user.id)
+    // await updateTwitterFollowerCount(session.user.id)
     
     // Update activity level based on new data
     await updateUserActivityLevel(session.user.id)
