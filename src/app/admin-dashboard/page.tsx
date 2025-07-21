@@ -1,27 +1,915 @@
 'use client'
 
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   Users, Activity, DollarSign, TrendingUp, Shield, AlertTriangle,
   Settings, Bell, Search, Filter, Download, RefreshCw, Eye,
   Ban, Check, X, ChevronDown, Menu, Moon, Sun, Zap, Database,
   BarChart3, PieChart, LineChart, UserCheck, Clock, Award,
-  Wallet, Twitter, Globe, Lock, Unlock, Star,
-  // Add these new icons
-  Copy, Coins, RotateCcw
+  Wallet, Twitter, Globe, Lock, Unlock, Star, Copy, Coins, 
+  RotateCcw, Gift, Flame, Calendar, Target, Crown, Medal
 } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { LineChart as RechartsLineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart as RechartsPieChart, Cell, BarChart, Bar } from 'recharts'
 import toast from 'react-hot-toast'
+import { UserManagement } from '@/components/admin/UserManagement'
 
-// Types
+// Enhanced Daily Earning Manager Component
+const DailyEarningManager = () => {
+  const [stats, setStats] = useState<{
+    totalDistributed: number
+    claimsToday: number
+    activeUsers: number
+    averageStreak: number
+    longestStreak: number
+    totalUsers: number
+    claimRate: number
+    streakDistribution: Array<{ days: string, users: number }>
+    dailyClaimHistory: Array<{ date: string, claims: number, tokens: number }>
+  } | null>(null)
+  
+  const [config, setConfig] = useState({
+    loginReward: 5,
+    referralReward: 3,
+    streakBonus7: 5,
+    streakBonus30: 15,
+    enabled: true
+  })
+  
+  const [loading, setLoading] = useState(true)
+  const [updating, setUpdating] = useState(false)
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchData = async () => {
+    try {
+      const [statsRes, configRes] = await Promise.all([
+        fetch('/api/admin/earning/stats'),
+        fetch('/api/admin/earning/config')
+      ])
+
+      if (statsRes.ok) {
+        const statsData = await statsRes.json()
+        setStats(statsData)
+      }
+
+      if (configRes.ok) {
+        const configData = await configRes.json()
+        setConfig(configData)
+      }
+    } catch (error) {
+      console.error('Failed to fetch earning data:', error)
+      toast.error('Failed to load earning data')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleConfigUpdate = async () => {
+    setUpdating(true)
+    try {
+      const res = await fetch('/api/admin/earning/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(config)
+      })
+
+      if (res.ok) {
+        toast.success('Earning configuration updated successfully!')
+        fetchData() // Refresh data
+      } else {
+        toast.error('Failed to update configuration')
+      }
+    } catch (error) {
+      console.error('Config update failed:', error)
+      toast.error('Update failed')
+    } finally {
+      setUpdating(false)
+    }
+  }
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Stats Overview */}
+      {stats && (
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="bg-white/5 rounded-xl p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-400 text-sm">Total Distributed</p>
+                <p className="text-2xl font-bold text-green-400">
+                  {stats.totalDistributed.toLocaleString()}
+                </p>
+                <p className="text-gray-400 text-sm">CONNECT tokens</p>
+              </div>
+              <Gift className="w-8 h-8 text-green-400" />
+            </div>
+          </div>
+
+          <div className="bg-white/5 rounded-xl p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-400 text-sm">Claims Today</p>
+                <p className="text-2xl font-bold text-blue-400">{stats.claimsToday}</p>
+                <p className="text-gray-400 text-sm">{(stats.claimsToday * config.loginReward).toLocaleString()} tokens</p>
+              </div>
+              <Calendar className="w-8 h-8 text-blue-400" />
+            </div>
+          </div>
+
+          <div className="bg-white/5 rounded-xl p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-400 text-sm">Active Streaks</p>
+                <p className="text-2xl font-bold text-orange-400">{stats.activeUsers}</p>
+                <p className="text-gray-400 text-sm">Avg: {stats.averageStreak} days</p>
+              </div>
+              <Flame className="w-8 h-8 text-orange-400" />
+            </div>
+          </div>
+
+          <div className="bg-white/5 rounded-xl p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-400 text-sm">Claim Rate</p>
+                <p className="text-2xl font-bold text-purple-400">{stats.claimRate.toFixed(1)}%</p>
+                <p className="text-gray-400 text-sm">of active users</p>
+              </div>
+              <TrendingUp className="w-8 h-8 text-purple-400" />
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Configuration Panel */}
+        <div className="bg-white/5 rounded-2xl p-6">
+          <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <Settings className="w-5 h-5" />
+            Earning Configuration
+          </h3>
+          <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="text-white text-sm font-medium">Daily Login Reward</label>
+                <input
+                  type="number"
+                  value={config.loginReward}
+                  onChange={(e) => setConfig(prev => ({ ...prev, loginReward: parseInt(e.target.value) || 0 }))}
+                  className="w-full mt-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+                />
+                <p className="text-gray-400 text-xs mt-1">CONNECT tokens per day</p>
+              </div>
+
+              <div>
+                <label className="text-white text-sm font-medium">Referral Reward</label>
+                <input
+                  type="number"
+                  value={config.referralReward}
+                  onChange={(e) => setConfig(prev => ({ ...prev, referralReward: parseInt(e.target.value) || 0 }))}
+                  className="w-full mt-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+                />
+                <p className="text-gray-400 text-xs mt-1">CONNECT tokens per referral</p>
+              </div>
+
+              <div>
+                <label className="text-white text-sm font-medium">7-Day Streak Bonus</label>
+                <input
+                  type="number"
+                  value={config.streakBonus7}
+                  onChange={(e) => setConfig(prev => ({ ...prev, streakBonus7: parseInt(e.target.value) || 0 }))}
+                  className="w-full mt-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+                />
+                <p className="text-gray-400 text-xs mt-1">Extra tokens for 7+ days</p>
+              </div>
+
+              <div>
+                <label className="text-white text-sm font-medium">30-Day Streak Bonus</label>
+                <input
+                  type="number"
+                  value={config.streakBonus30}
+                  onChange={(e) => setConfig(prev => ({ ...prev, streakBonus30: parseInt(e.target.value) || 0 }))}
+                  className="w-full mt-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+                />
+                <p className="text-gray-400 text-xs mt-1">Extra tokens for 30+ days</p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <input
+                type="checkbox"
+                checked={config.enabled}
+                onChange={(e) => setConfig(prev => ({ ...prev, enabled: e.target.checked }))}
+                className="rounded"
+              />
+              <label className="text-white text-sm">Enable Daily Earning System</label>
+            </div>
+
+            <button
+              onClick={handleConfigUpdate}
+              disabled={updating}
+              className="w-full py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors"
+            >
+              {updating ? 'Updating...' : 'Update Configuration'}
+            </button>
+          </div>
+        </div>
+
+        {/* Daily Claims Chart */}
+        {stats && (
+          <div className="bg-white/5 rounded-2xl p-6">
+            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <BarChart3 className="w-5 h-5" />
+              Daily Claims Trend
+            </h3>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <RechartsLineChart data={stats.dailyClaimHistory}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
+                  <XAxis 
+                    dataKey="date" 
+                    stroke="#9CA3AF"
+                    tick={{ fontSize: 12 }}
+                  />
+                  <YAxis stroke="#9CA3AF" tick={{ fontSize: 12 }} />
+                  <Tooltip 
+                    contentStyle={{ 
+                      backgroundColor: '#1F2937', 
+                      border: '1px solid #374151',
+                      borderRadius: '8px'
+                    }}
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="claims" 
+                    stroke="#3B82F6" 
+                    strokeWidth={2}
+                    name="Claims"
+                  />
+                  <Line 
+                    type="monotone" 
+                    dataKey="tokens" 
+                    stroke="#10B981" 
+                    strokeWidth={2}
+                    name="Tokens"
+                  />
+                </RechartsLineChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// Enhanced Airdrop Management Component
+const AirdropManager = () => {
+  const [airdropStats, setAirdropStats] = useState<{
+    currentSeason: {
+      id: string
+      name: string
+      status: string
+      totalAllocation: number
+      claimed: number
+      claimedPercentage: number
+    } | null
+    tierDistribution: Array<{ tier: string, users: number, tokens: number }>
+    recentClaims: Array<{
+      id: string
+      user: { walletAddress: string, twitterUsername?: string }
+      tier: string
+      tokens: number
+      claimedAt: string
+    }>
+  } | null>(null)
+
+  const [seasonConfig, setSeasonConfig] = useState({
+    name: '',
+    totalAllocation: 400000000,
+    claimingEnabled: false,
+    highTierTokens: 4500,
+    mediumTierTokens: 4000,
+    lowTierTokens: 3000
+  })
+
+  const [loading, setLoading] = useState(true)
+  const [updating, setUpdating] = useState(false)
+
+  useEffect(() => {
+    fetchAirdropData()
+  }, [])
+
+  const fetchAirdropData = async () => {
+    try {
+      const [statsRes, configRes] = await Promise.all([
+        fetch('/api/admin/airdrop/stats'),
+        fetch('/api/admin/airdrop/config')
+      ])
+
+      if (statsRes.ok) {
+        const statsData = await statsRes.json()
+        setAirdropStats(statsData)
+      }
+
+      if (configRes.ok) {
+        const configData = await configRes.json()
+        setSeasonConfig(configData)
+      }
+    } catch (error) {
+      console.error('Failed to fetch airdrop data:', error)
+      toast.error('Failed to load airdrop data')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleSeasonUpdate = async () => {
+    setUpdating(true)
+    try {
+      const res = await fetch('/api/admin/airdrop/season', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(seasonConfig)
+      })
+
+      if (res.ok) {
+        toast.success('Airdrop season updated successfully!')
+        fetchAirdropData()
+      } else {
+        toast.error('Failed to update airdrop season')
+      }
+    } catch (error) {
+      console.error('Season update failed:', error)
+      toast.error('Update failed')
+    } finally {
+      setUpdating(false)
+    }
+  }
+
+  const toggleClaimingStatus = async () => {
+    setUpdating(true)
+    try {
+      const res = await fetch('/api/admin/airdrop/toggle-claiming', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ enabled: !seasonConfig.claimingEnabled })
+      })
+
+      if (res.ok) {
+        setSeasonConfig(prev => ({ ...prev, claimingEnabled: !prev.claimingEnabled }))
+        toast.success(`Claiming ${!seasonConfig.claimingEnabled ? 'enabled' : 'disabled'} successfully!`)
+      } else {
+        toast.error('Failed to toggle claiming status')
+      }
+    } catch (error) {
+      console.error('Toggle claiming failed:', error)
+      toast.error('Update failed')
+    } finally {
+      setUpdating(false)
+    }
+  }
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Current Season Overview */}
+      {airdropStats?.currentSeason && (
+        <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-2xl p-6">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h3 className="text-2xl font-bold text-white">{airdropStats.currentSeason.name}</h3>
+              <p className="text-gray-300">Current Airdrop Season</p>
+            </div>
+            <div className="text-right">
+              <span className={`px-4 py-2 rounded-full text-sm font-semibold ${
+                airdropStats.currentSeason.status === 'CLAIMING' 
+                  ? 'bg-green-500/20 text-green-400' 
+                  : 'bg-blue-500/20 text-blue-400'
+              }`}>
+                {airdropStats.currentSeason.status}
+              </span>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <p className="text-gray-400 text-sm">Total Allocation</p>
+              <p className="text-2xl font-bold text-purple-400">
+                {airdropStats.currentSeason.totalAllocation.toLocaleString()}
+              </p>
+            </div>
+            <div>
+              <p className="text-gray-400 text-sm">Claimed</p>
+              <p className="text-2xl font-bold text-green-400">
+                {airdropStats.currentSeason.claimed.toLocaleString()}
+              </p>
+            </div>
+            <div>
+              <p className="text-gray-400 text-sm">Progress</p>
+              <p className="text-2xl font-bold text-blue-400">
+                {airdropStats.currentSeason.claimedPercentage.toFixed(1)}%
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-4">
+            <div className="w-full bg-gray-700 rounded-full h-3">
+              <div 
+                className="bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full transition-all duration-500"
+                style={{ width: `${airdropStats.currentSeason.claimedPercentage}%` }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Season Configuration */}
+        <div className="bg-white/5 rounded-2xl p-6">
+          <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <Settings className="w-5 h-5" />
+            Season Configuration
+          </h3>
+          
+          <div className="space-y-4">
+            <div>
+              <label className="text-white text-sm font-medium">Season Name</label>
+              <input
+                type="text"
+                value={seasonConfig.name}
+                onChange={(e) => setSeasonConfig(prev => ({ ...prev, name: e.target.value }))}
+                className="w-full mt-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+                placeholder="e.g. Season 1"
+              />
+            </div>
+
+            <div>
+              <label className="text-white text-sm font-medium">Total Allocation</label>
+              <input
+                type="number"
+                value={seasonConfig.totalAllocation}
+                onChange={(e) => setSeasonConfig(prev => ({ ...prev, totalAllocation: parseInt(e.target.value) || 0 }))}
+                className="w-full mt-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+              />
+              <p className="text-gray-400 text-xs mt-1">Total CONNECT tokens for this season</p>
+            </div>
+
+            <div className="grid grid-cols-3 gap-3">
+              <div>
+                <label className="text-white text-sm font-medium">HIGH Tier</label>
+                <input
+                  type="number"
+                  value={seasonConfig.highTierTokens}
+                  onChange={(e) => setSeasonConfig(prev => ({ ...prev, highTierTokens: parseInt(e.target.value) || 0 }))}
+                  className="w-full mt-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+                />
+                <p className="text-gray-400 text-xs mt-1">Tokens per user</p>
+              </div>
+              
+              <div>
+                <label className="text-white text-sm font-medium">MEDIUM Tier</label>
+                <input
+                  type="number"
+                  value={seasonConfig.mediumTierTokens}
+                  onChange={(e) => setSeasonConfig(prev => ({ ...prev, mediumTierTokens: parseInt(e.target.value) || 0 }))}
+                  className="w-full mt-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+                />
+                <p className="text-gray-400 text-xs mt-1">Tokens per user</p>
+              </div>
+              
+              <div>
+                <label className="text-white text-sm font-medium">LOW Tier</label>
+                <input
+                  type="number"
+                  value={seasonConfig.lowTierTokens}
+                  onChange={(e) => setSeasonConfig(prev => ({ ...prev, lowTierTokens: parseInt(e.target.value) || 0 }))}
+                  className="w-full mt-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+                />
+                <p className="text-gray-400 text-xs mt-1">Tokens per user</p>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+              <div>
+                <h4 className="text-white font-semibold">Claiming Status</h4>
+                <p className="text-gray-400 text-sm">
+                  {seasonConfig.claimingEnabled ? 'Users can claim airdrops' : 'Claiming is disabled'}
+                </p>
+              </div>
+              <button
+                onClick={toggleClaimingStatus}
+                disabled={updating}
+                className={`px-6 py-2 rounded-lg font-semibold transition-colors ${
+                  seasonConfig.claimingEnabled
+                    ? 'bg-red-600 hover:bg-red-700 text-white'
+                    : 'bg-green-600 hover:bg-green-700 text-white'
+                }`}
+              >
+                {updating ? 'Updating...' : seasonConfig.claimingEnabled ? 'Disable Claiming' : 'Enable Claiming'}
+              </button>
+            </div>
+
+            <button
+              onClick={handleSeasonUpdate}
+              disabled={updating}
+              className="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transition-colors"
+            >
+              {updating ? 'Updating...' : 'Update Season Configuration'}
+            </button>
+          </div>
+        </div>
+
+        {/* Tier Distribution */}
+        {airdropStats && (
+          <div className="bg-white/5 rounded-2xl p-6">
+            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <PieChart className="w-5 h-5" />
+              Tier Distribution
+            </h3>
+            
+            <div className="space-y-4">
+              {airdropStats.tierDistribution.map((tier, index) => {
+                const colors = ['text-yellow-400', 'text-blue-400', 'text-purple-400']
+                const bgColors = ['bg-yellow-400/20', 'bg-blue-400/20', 'bg-purple-400/20']
+                const icons = [Crown, Star, Medal]
+                const Icon = icons[index]
+                
+                return (
+                  <div key={tier.tier} className={`${bgColors[index]} rounded-xl p-4`}>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <Icon className={`w-6 h-6 ${colors[index]}`} />
+                        <div>
+                          <h4 className={`font-semibold ${colors[index]}`}>{tier.tier} Tier</h4>
+                          <p className="text-gray-300 text-sm">{tier.users} users</p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <p className={`text-lg font-bold ${colors[index]}`}>
+                          {tier.tokens.toLocaleString()}
+                        </p>
+                        <p className="text-gray-400 text-sm">tokens each</p>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* Recent Claims */}
+      {airdropStats?.recentClaims && (
+        <div className="bg-white/5 rounded-2xl p-6">
+          <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <Activity className="w-5 h-5" />
+            Recent Claims
+          </h3>
+          
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="border-b border-white/10">
+                  <th className="text-left text-gray-400 py-3">User</th>
+                  <th className="text-left text-gray-400 py-3">Tier</th>
+                  <th className="text-left text-gray-400 py-3">Tokens</th>
+                  <th className="text-left text-gray-400 py-3">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {airdropStats.recentClaims.map((claim) => (
+                  <tr key={claim.id} className="border-b border-white/5">
+                    <td className="py-3">
+                      <div>
+                        <p className="text-white font-medium">
+                          {claim.user.twitterUsername || `${claim.user.walletAddress.slice(0, 6)}...${claim.user.walletAddress.slice(-4)}`}
+                        </p>
+                        <p className="text-gray-400 text-sm">{claim.user.walletAddress.slice(0, 16)}...</p>
+                      </div>
+                    </td>
+                    <td className="py-3">
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                        claim.tier === 'HIGH' ? 'bg-yellow-500/20 text-yellow-400' :
+                        claim.tier === 'MEDIUM' ? 'bg-blue-500/20 text-blue-400' :
+                        'bg-purple-500/20 text-purple-400'
+                      }`}>
+                        {claim.tier}
+                      </span>
+                    </td>
+                    <td className="py-3">
+                      <span className="text-green-400 font-semibold">{claim.tokens.toLocaleString()}</span>
+                    </td>
+                    <td className="py-3">
+                      <span className="text-gray-300">{new Date(claim.claimedAt).toLocaleDateString()}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
+// Twitter Monitoring Component
+const TwitterMonitoring = () => {
+  const [twitterStats, setTwitterStats] = useState<{
+    totalTracked: number
+    highEngagement: number
+    mediumEngagement: number
+    lowEngagement: number
+    recentActivity: Array<{
+      id: string
+      user: { walletAddress: string, twitterUsername?: string }
+      engagementType: string
+      points: number
+      createdAt: string
+    }>
+  } | null>(null)
+
+  const [monitoringConfig, setMonitoringConfig] = useState({
+    enabled: true,
+    trackingInterval: 60,
+    highEngagementThreshold: 1000,
+    mediumEngagementThreshold: 500
+  })
+
+  const [loading, setLoading] = useState(true)
+  const [updating, setUpdating] = useState(false)
+
+  useEffect(() => {
+    fetchTwitterData()
+  }, [])
+
+  const fetchTwitterData = async () => {
+    try {
+      const [statsRes, configRes] = await Promise.all([
+        fetch('/api/admin/twitter/stats'),
+        fetch('/api/admin/twitter/config')
+      ])
+
+      if (statsRes.ok) {
+        const statsData = await statsRes.json()
+        setTwitterStats(statsData)
+      }
+
+      if (configRes.ok) {
+        const configData = await configRes.json()
+        setMonitoringConfig(configData)
+      }
+    } catch (error) {
+      console.error('Failed to fetch Twitter data:', error)
+      toast.error('Failed to load Twitter monitoring data')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleConfigUpdate = async () => {
+    setUpdating(true)
+    try {
+      const res = await fetch('/api/admin/twitter/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(monitoringConfig)
+      })
+
+      if (res.ok) {
+        toast.success('Twitter monitoring configuration updated!')
+        fetchTwitterData()
+      } else {
+        toast.error('Failed to update configuration')
+      }
+    } catch (error) {
+      console.error('Config update failed:', error)
+      toast.error('Update failed')
+    } finally {
+      setUpdating(false)
+    }
+  }
+
+  const runManualSync = async () => {
+    setUpdating(true)
+    try {
+      const res = await fetch('/api/admin/twitter/sync', { method: 'POST' })
+      
+      if (res.ok) {
+        toast.success('Manual Twitter sync completed!')
+        fetchTwitterData()
+      } else {
+        toast.error('Sync failed')
+      }
+    } catch (error) {
+      console.error('Manual sync failed:', error)
+      toast.error('Sync failed')
+    } finally {
+      setUpdating(false)
+    }
+  }
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-64">
+        <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Twitter Stats Overview */}
+      {twitterStats && (
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="bg-white/5 rounded-xl p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-400 text-sm">Total Tracked</p>
+                <p className="text-2xl font-bold text-blue-400">{twitterStats.totalTracked}</p>
+                <p className="text-gray-400 text-sm">Connected accounts</p>
+              </div>
+              <Twitter className="w-8 h-8 text-blue-400" />
+            </div>
+          </div>
+
+          <div className="bg-white/5 rounded-xl p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-400 text-sm">High Engagement</p>
+                <p className="text-2xl font-bold text-yellow-400">{twitterStats.highEngagement}</p>
+                <p className="text-gray-400 text-sm">4,500 tokens each</p>
+              </div>
+              <Crown className="w-8 h-8 text-yellow-400" />
+            </div>
+          </div>
+
+          <div className="bg-white/5 rounded-xl p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-400 text-sm">Medium Engagement</p>
+                <p className="text-2xl font-bold text-blue-400">{twitterStats.mediumEngagement}</p>
+                <p className="text-gray-400 text-sm">4,000 tokens each</p>
+              </div>
+              <Star className="w-8 h-8 text-blue-400" />
+            </div>
+          </div>
+
+          <div className="bg-white/5 rounded-xl p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-gray-400 text-sm">Low Engagement</p>
+                <p className="text-2xl font-bold text-purple-400">{twitterStats.lowEngagement}</p>
+                <p className="text-gray-400 text-sm">3,000 tokens each</p>
+              </div>
+              <Medal className="w-8 h-8 text-purple-400" />
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Monitoring Configuration */}
+        <div className="bg-white/5 rounded-2xl p-6">
+          <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+            <Settings className="w-5 h-5" />
+            Monitoring Configuration
+          </h3>
+          
+          <div className="space-y-4">
+            <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+              <div>
+                <h4 className="text-white font-semibold">Twitter Monitoring</h4>
+                <p className="text-gray-400 text-sm">
+                  {monitoringConfig.enabled ? 'Actively tracking engagements' : 'Monitoring disabled'}
+                </p>
+              </div>
+              <button
+                onClick={() => setMonitoringConfig(prev => ({ ...prev, enabled: !prev.enabled }))}
+                className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
+                  monitoringConfig.enabled
+                    ? 'bg-green-600 hover:bg-green-700 text-white'
+                    : 'bg-red-600 hover:bg-red-700 text-white'
+                }`}
+              >
+                {monitoringConfig.enabled ? 'Enabled' : 'Disabled'}
+              </button>
+            </div>
+
+            <div>
+              <label className="text-white text-sm font-medium">Tracking Interval (minutes)</label>
+              <input
+                type="number"
+                value={monitoringConfig.trackingInterval}
+                onChange={(e) => setMonitoringConfig(prev => ({ ...prev, trackingInterval: parseInt(e.target.value) || 60 }))}
+                className="w-full mt-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+              />
+              <p className="text-gray-400 text-xs mt-1">How often to check for new engagements</p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="text-white text-sm font-medium">High Engagement Threshold</label>
+                <input
+                  type="number"
+                  value={monitoringConfig.highEngagementThreshold}
+                  onChange={(e) => setMonitoringConfig(prev => ({ ...prev, highEngagementThreshold: parseInt(e.target.value) || 1000 }))}
+                  className="w-full mt-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+                />
+                <p className="text-gray-400 text-xs mt-1">Minimum followers for HIGH tier</p>
+              </div>
+
+              <div>
+                <label className="text-white text-sm font-medium">Medium Engagement Threshold</label>
+                <input
+                  type="number"
+                  value={monitoringConfig.mediumEngagementThreshold}
+                  onChange={(e) => setMonitoringConfig(prev => ({ ...prev, mediumEngagementThreshold: parseInt(e.target.value) || 500 }))}
+                  className="w-full mt-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white"
+                />
+                <p className="text-gray-400 text-xs mt-1">Minimum followers for MEDIUM tier</p>
+              </div>
+            </div>
+
+            <div className="flex gap-3">
+              <button
+                onClick={handleConfigUpdate}
+                disabled={updating}
+                className="flex-1 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
+              >
+                {updating ? 'Updating...' : 'Update Config'}
+              </button>
+              
+              <button
+                onClick={runManualSync}
+                disabled={updating}
+                className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-semibold transition-colors flex items-center gap-2"
+              >
+                <RefreshCw className="w-4 h-4" />
+                Sync Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Recent Activity */}
+        {twitterStats?.recentActivity && (
+          <div className="bg-white/5 rounded-2xl p-6">
+            <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-2">
+              <Activity className="w-5 h-5" />
+              Recent Twitter Activity
+            </h3>
+            
+            <div className="space-y-3">
+              {twitterStats.recentActivity.slice(0, 8).map((activity) => (
+                <div key={activity.id} className="flex items-center justify-between py-2 border-b border-white/5 last:border-b-0">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center">
+                      <Twitter className="w-4 h-4 text-blue-400" />
+                    </div>
+                    <div>
+                      <p className="text-white text-sm font-medium">
+                        {activity.user.twitterUsername || `${activity.user.walletAddress.slice(0, 6)}...`}
+                      </p>
+                      <p className="text-gray-400 text-xs">{activity.engagementType}</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-green-400 text-sm font-semibold">+{activity.points}</span>
+                    <p className="text-gray-400 text-xs">
+                      {new Date(activity.createdAt).toLocaleDateString()}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+// Main Enhanced Admin Dashboard
 interface AdminStats {
   totalUsers: number
   activeUsers: number
@@ -31,320 +919,39 @@ interface AdminStats {
   totalDistributed: number
   totalEngagements: number
   newUsersToday: number
-  activityDistribution: Record<string, {
-    userCount: number
-    tokensPerUser: number
-    totalTokens: number
-  }>
-  claimStats: Array<{
-    status: string
-    count: number
-    totalAmount: number
-  }>
-}
-
-interface User {
-  id: string
-  walletAddress: string
-  twitterUsername?: string
-  twitterName?: string
-  twitterFollowers?: number
-  twitterActivity?: 'HIGH' | 'MEDIUM' | 'LOW'
-  totalPoints: number
-  level: number
-  streak: number
-  rank: number
-  tokenAllocation: number
-  isActive: boolean
-  isAdmin: boolean
-  isBanned: boolean
-  riskScore: number
-  createdAt: string
-  lastActivity?: string
-}
-
-interface FraudAlert {
-  id: string
-  type: string
-  severity: 'LOW' | 'MEDIUM' | 'HIGH' | 'CRITICAL'
-  userId: string
-  description: string
-  riskScore: number
-  status: 'PENDING' | 'INVESTIGATING' | 'RESOLVED' | 'FALSE_POSITIVE'
-  createdAt: string
-}
-
-interface SystemConfig {
-  claimsEnabled: boolean
-  minClaimAmount: number
-  pointsPerLike: number
-  pointsPerRetweet: number
-  pointsPerComment: number
-  pointsPerFollow: number
-  highActivityTokens: number
-  mediumActivityTokens: number
-  lowActivityTokens: number
 }
 
 export default function EnhancedAdminDashboard() {
-  // State management
   const [activeTab, setActiveTab] = useState('overview')
-  const [sidebarOpen, setSidebarOpen] = useState(true)
-  const [darkMode, setDarkMode] = useState(true)
+  const [stats, setStats] = useState<AdminStats | null>(null)
   const [loading, setLoading] = useState(true)
   const [refreshing, setRefreshing] = useState(false)
-  
-  // Data states
-  const [stats, setStats] = useState<AdminStats | null>(null)
-  const [users, setUsers] = useState<User[]>([])
-  const [fraudAlerts, setFraudAlerts] = useState<FraudAlert[]>([])
-  const [systemConfig, setSystemConfig] = useState<SystemConfig | null>(null)
-  const [analytics, setAnalytics] = useState<any[]>([])
-  
-  // UI states
-  const [selectedUser, setSelectedUser] = useState<User | null>(null)
-  const [selectedAlert, setSelectedAlert] = useState<FraudAlert | null>(null)
-  const [showUserModal, setShowUserModal] = useState(false)
-  const [showAlertModal, setShowAlertModal] = useState(false)
-  const [showConfigModal, setShowConfigModal] = useState(false)
-  
-  // Filter states
-  const [userSearch, setUserSearch] = useState('')
-  const [userFilter, setUserFilter] = useState('all')
-  const [pagination, setPagination] = useState({ page: 1, limit: 50, total: 0 })
 
-  // Auth check and initial data load
   useEffect(() => {
-    checkAdminAuth()
+    fetchAdminStats()
   }, [])
 
-  const checkAdminAuth = async () => {
+  const fetchAdminStats = async () => {
     try {
-      const res = await fetch('/api/admin/auth')
-      // if (!res.ok) {
-      //   if (res.status === 401) {
-      //     toast.error('Please connect your wallet first')
-      //     window.location.href = '/'
-      //     return
-      //   }
-      //   if (res.status === 403) {
-      //     toast.error('Admin access required')
-      //     window.location.href = '/'
-      //     return
-      //   }
-      // }
-      
-      await fetchAllData()
-    } catch (error) {
-      console.error('Auth check failed:', error)
-      toast.error('Authentication failed')
-      window.location.href = '/'
-    }
-  }
-
-  const fetchAllData = async () => {
-    setLoading(true)
-    try {
-      await Promise.all([
-        fetchStats(),
-        fetchUsers(),
-        fetchFraudAlerts(),
-        fetchSystemConfig(),
-        fetchAnalytics()
-      ])
-    } catch (error) {
-      console.error('Failed to fetch data:', error)
-      toast.error('Failed to load dashboard data')
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const fetchStats = async () => {
-    try {
-      const res = await fetch('/api/admin/admin-stats')
+      const res = await fetch('/api/admin/stats')
       if (res.ok) {
         const data = await res.json()
         setStats(data)
       }
     } catch (error) {
-      console.error('Failed to fetch stats:', error)
+      console.error('Failed to load admin stats:', error)
+      toast.error('Failed to load admin stats')
+    } finally {
+      setLoading(false)
     }
   }
 
-  const fetchUsers = async () => {
-    try {
-      const params = new URLSearchParams({
-        page: pagination.page.toString(),
-        limit: pagination.limit.toString(),
-        ...(userSearch && { search: userSearch }),
-        ...(userFilter !== 'all' && { filter: userFilter })
-      })
-      
-      const res = await fetch(`/api/admin/admin-users?${params}`)
-      if (res.ok) {
-        const data = await res.json()
-        setUsers(data.users)
-        setPagination(prev => ({
-          ...prev,
-          total: data.pagination.total
-        }))
-      }
-    } catch (error) {
-      console.error('Failed to fetch users:', error)
-    }
-  }
-
-  const fetchFraudAlerts = async () => {
-    try {
-      const res = await fetch('/api/admin/fraud/alerts')
-      if (res.ok) {
-        const data = await res.json()
-        setFraudAlerts(data.alerts || [])
-      }
-    } catch (error) {
-      console.error('Failed to fetch fraud alerts:', error)
-    }
-  }
-
-  const fetchSystemConfig = async () => {
-    try {
-      const res = await fetch('/api/admin/config')
-      if (res.ok) {
-        const data = await res.json()
-        setSystemConfig(data)
-      }
-    } catch (error) {
-      console.error('Failed to fetch system config:', error)
-    }
-  }
-
-  const fetchAnalytics = async () => {
-    try {
-      const res = await fetch('/api/admin/analytics')
-      if (res.ok) {
-        const data = await res.json()
-        setAnalytics(data.analytics || [])
-      }
-    } catch (error) {
-      console.error('Failed to fetch analytics:', error)
-    }
-  }
-
-  const handleRefresh = async () => {
+  const refreshData = async () => {
     setRefreshing(true)
-    await fetchAllData()
+    await fetchAdminStats()
     setRefreshing(false)
-    toast.success('Dashboard refreshed')
+    toast.success('Data refreshed successfully!')
   }
-
-  const handleUserAction = async (userId: string, action: string) => {
-    try {
-      const res = await fetch(`/api/admin/users/${userId}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action })
-      })
-      
-      if (res.ok) {
-        await fetchUsers()
-        toast.success(`User ${action} successfully`)
-        setShowUserModal(false)
-      }
-    } catch (error) {
-      console.error('User action failed:', error)
-      toast.error('Action failed')
-    }
-  }
-
-  const handleAlertAction = async (alertId: string, action: string) => {
-    try {
-      const res = await fetch(`/api/admin/fraud/alerts/${alertId}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status: action })
-      })
-      
-      if (res.ok) {
-        await fetchFraudAlerts()
-        toast.success(`Alert ${action} successfully`)
-        setShowAlertModal(false)
-      }
-    } catch (error) {
-      console.error('Alert action failed:', error)
-      toast.error('Action failed')
-    }
-  }
-
-  const handleConfigUpdate = async (config: Partial<SystemConfig>) => {
-    try {
-      const res = await fetch('/api/admin/config', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(config)
-      })
-      
-      if (res.ok) {
-        await fetchSystemConfig()
-        toast.success('Configuration updated')
-        setShowConfigModal(false)
-      }
-    } catch (error) {
-      console.error('Config update failed:', error)
-      toast.error('Update failed')
-    }
-  }
-
-  // Computed values
-  const filteredUsers = useMemo(() => {
-    let filtered = users
-    
-    if (userSearch) {
-      const search = userSearch.toLowerCase()
-      filtered = filtered.filter(user => 
-        user.walletAddress.toLowerCase().includes(search) ||
-        user.twitterUsername?.toLowerCase().includes(search) ||
-        user.id.toLowerCase().includes(search)
-      )
-    }
-    
-    if (userFilter !== 'all') {
-      filtered = filtered.filter(user => {
-        switch (userFilter) {
-          case 'active': return user.isActive
-          case 'inactive': return !user.isActive
-          case 'admin': return user.isAdmin
-          case 'banned': return user.isBanned
-          case 'high-risk': return user.riskScore >= 70
-          default: return true
-        }
-      })
-    }
-    
-    return filtered
-  }, [users, userSearch, userFilter])
-
-  const chartData = useMemo(() => {
-    if (!analytics.length) return []
-    
-    return analytics.slice(-30).map(item => ({
-      date: new Date(item.date).toLocaleDateString(),
-      users: item.totalUsers,
-      active: item.activeUsers,
-      engagements: item.totalEngagements,
-      claims: item.totalClaims
-    }))
-  }, [analytics])
-
-  const pieData = useMemo(() => {
-    if (!stats?.activityDistribution) return []
-    
-    return Object.entries(stats.activityDistribution).map(([activity, data]) => ({
-      name: activity.charAt(0) + activity.slice(1).toLowerCase(),
-      value: data.userCount,
-      tokens: data.tokensPerUser
-    }))
-  }, [stats])
 
   if (loading) {
     return (
@@ -357,980 +964,336 @@ export default function EnhancedAdminDashboard() {
     )
   }
 
+  const tabs = [
+    { id: 'overview', label: 'Overview', icon: BarChart3 },
+    { id: 'daily-earning', label: 'Daily Earning', icon: Coins },
+    { id: 'airdrop', label: 'Airdrop Management', icon: Gift },
+    { id: 'twitter', label: 'Twitter Monitoring', icon: Twitter },
+    { id: 'users', label: 'User Management', icon: Users },
+    { id: 'analytics', label: 'Analytics', icon: TrendingUp },
+    { id: 'settings', label: 'Settings', icon: Settings },
+  ]
+
   return (
-    <div className={`min-h-screen ${darkMode ? 'dark bg-gray-900' : 'bg-gray-50'}`}>
+    <div className="min-h-screen bg-gray-900">
       {/* Header */}
-      <header className="bg-gray-800 border-b border-gray-700 px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-              className="text-white hover:bg-gray-700"
-            >
-              <Menu className="w-5 h-5" />
-            </Button>
-            <h1 className="text-2xl font-bold text-white">Admin Dashboard</h1>
-          </div>
-          
-          <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleRefresh}
-              disabled={refreshing}
-              className="text-white hover:bg-gray-700"
-            >
-              <RefreshCw className={`w-5 h-5 ${refreshing ? 'animate-spin' : ''}`} />
-            </Button>
-            
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => setDarkMode(!darkMode)}
-              className="text-white hover:bg-gray-700"
-            >
-              {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-            </Button>
-            
-            <Badge variant="secondary" className="bg-blue-600 text-white">
-              Admin
-            </Badge>
+      <header className="bg-gray-900/80 backdrop-blur-sm border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-500 rounded-xl flex items-center justify-center">
+                <Shield className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-white">Admin Dashboard</h1>
+                <p className="text-gray-400">Platform Management & Analytics</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-4">
+              <button
+                onClick={refreshData}
+                disabled={refreshing}
+                className="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+              >
+                <RefreshCw className={`w-5 h-5 ${refreshing ? 'animate-spin' : ''}`} />
+              </button>
+              {stats && (
+                <div className="text-right">
+                  <p className="text-2xl font-bold text-green-400">{stats.totalUsers.toLocaleString()}</p>
+                  <p className="text-gray-400 text-sm">Total Users</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </header>
 
-      <div className="flex">
-        {/* Sidebar */}
-        <AnimatePresence>
-          {sidebarOpen && (
-            <motion.aside
-              initial={{ x: -300 }}
-              animate={{ x: 0 }}
-              exit={{ x: -300 }}
-              className="w-64 bg-gray-800 border-r border-gray-700 h-screen sticky top-0"
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Tab Navigation */}
+        <div className="flex space-x-1 mb-8 bg-white/5 p-2 rounded-2xl overflow-x-auto">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all whitespace-nowrap ${
+                activeTab === tab.id
+                  ? 'bg-red-600 text-white shadow-lg'
+                  : 'text-gray-400 hover:text-white hover:bg-white/10'
+              }`}
             >
-              <nav className="p-4 space-y-2">
-                {[
-                  { id: 'overview', label: 'Overview', icon: BarChart3 },
-                  { id: 'users', label: 'User Management', icon: Users },
-                  { id: 'fraud', label: 'Fraud Detection', icon: Shield },
-                  { id: 'analytics', label: 'Analytics', icon: TrendingUp },
-                  { id: 'settings', label: 'Settings', icon: Settings }
-                ].map(item => (
-                  <Button
-                    key={item.id}
-                    variant={activeTab === item.id ? 'default' : 'ghost'}
-                    className={`w-full justify-start ${
-                      activeTab === item.id 
-                        ? 'bg-blue-600 text-white' 
-                        : 'text-gray-300 hover:bg-gray-700'
-                    }`}
-                    onClick={() => setActiveTab(item.id)}
-                  >
-                    <item.icon className="w-5 h-5 mr-3" />
-                    {item.label}
-                  </Button>
-                ))}
-              </nav>
-            </motion.aside>
-          )}
-        </AnimatePresence>
+              <tab.icon className="w-5 h-5" />
+              <span>{tab.label}</span>
+            </button>
+          ))}
+        </div>
 
-        {/* Main Content */}
-        <main className="flex-1 p-6 space-y-6">
-          {/* Overview Tab */}
+        {/* Tab Content */}
+        <AnimatePresence mode="wait">
           {activeTab === 'overview' && stats && (
             <motion.div
+              key="overview"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="space-y-6"
+              exit={{ opacity: 0, y: -20 }}
+              className="space-y-8"
             >
-              {/* Stats Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                  {
-                    title: 'Total Users',
-                    value: stats.totalUsers.toLocaleString(),
-                    icon: Users,
-                    color: 'from-blue-500 to-blue-600',
-                    change: '+12%'
-                  },
-                  {
-                    title: 'Active Users',
-                    value: stats.activeUsers.toLocaleString(),
-                    icon: Activity,
-                    color: 'from-green-500 to-green-600',
-                    change: '+8%'
-                  },
-                  {
-                    title: 'Total Claims',
-                    value: stats.totalClaims.toLocaleString(),
-                    icon: DollarSign,
-                    color: 'from-purple-500 to-purple-600',
-                    change: '+23%'
-                  },
-                  {
-                    title: 'Pending Claims',
-                    value: stats.pendingClaims.toLocaleString(),
-                    icon: Clock,
-                    color: 'from-orange-500 to-orange-600',
-                    change: '-5%'
-                  }
-                ].map((stat, index) => (
-                  <Card key={index} className="bg-gray-800 border-gray-700 overflow-hidden">
-                    <CardContent className="p-6">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-sm text-gray-400">{stat.title}</p>
-                          <p className="text-3xl font-bold text-white">{stat.value}</p>
-                          <p className="text-sm text-green-400">{stat.change}</p>
-                        </div>
-                        <div className={`p-3 rounded-lg bg-gradient-to-r ${stat.color}`}>
-                          <stat.icon className="w-6 h-6 text-white" />
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              {/* Charts */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                {/* User Growth Chart */}
-                <Card className="bg-gray-800 border-gray-700">
-                  <CardHeader>
-                    <CardTitle className="text-white">User Growth</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ResponsiveContainer width="100%" height={300}>
-                      <RechartsLineChart data={chartData}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                        <XAxis dataKey="date" stroke="#9CA3AF" />
-                        <YAxis stroke="#9CA3AF" />
-                        <Tooltip
-                          contentStyle={{
-                            backgroundColor: '#1F2937',
-                            border: '1px solid #374151',
-                            borderRadius: '8px'
-                          }}
-                        />
-                        <Line 
-                          type="monotone" 
-                          dataKey="users" 
-                          stroke="#3B82F6" 
-                          strokeWidth={2}
-                        />
-                        <Line 
-                          type="monotone" 
-                          dataKey="active" 
-                          stroke="#10B981" 
-                          strokeWidth={2}
-                        />
-                      </RechartsLineChart>
-                    </ResponsiveContainer>
-                  </CardContent>
-                </Card>
-
-                {/* Activity Distribution */}
-                <Card className="bg-gray-800 border-gray-700">
-                  <CardHeader>
-                    <CardTitle className="text-white">Activity Distribution</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <ResponsiveContainer width="100%" height={300}>
-                      <RechartsPieChart>
-                        <Tooltip
-                          contentStyle={{
-                            backgroundColor: '#1F2937',
-                            border: '1px solid #374151',
-                            borderRadius: '8px'
-                          }}
-                        />
-                        <RechartsPieChart data={pieData}>
-                          {pieData.map((entry, index) => (
-                            <Cell 
-                              key={`cell-${index}`} 
-                              fill={['#3B82F6', '#10B981', '#F59E0B'][index % 3]} 
-                            />
-                          ))}
-                        </RechartsPieChart>
-                      </RechartsPieChart>
-                    </ResponsiveContainer>
-                  </CardContent>
-                </Card>
-              </div>
-
-              {/* Recent Activity */}
-              <Card className="bg-gray-800 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-white">Recent Activity</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {fraudAlerts.slice(0, 5).map((alert) => (
-                      <div key={alert.id} className="flex items-center justify-between p-4 bg-gray-700 rounded-lg">
-                        <div className="flex items-center space-x-3">
-                          <AlertTriangle className={`w-5 h-5 ${
-                            alert.severity === 'CRITICAL' ? 'text-red-400' :
-                            alert.severity === 'HIGH' ? 'text-orange-400' :
-                            alert.severity === 'MEDIUM' ? 'text-yellow-400' :
-                            'text-blue-400'
-                          }`} />
-                          <div>
-                            <p className="text-white font-medium">{alert.type}</p>
-                            <p className="text-sm text-gray-400">{alert.description}</p>
-                          </div>
-                        </div>
-                        <Badge variant={
-                          alert.severity === 'CRITICAL' ? 'destructive' :
-                          alert.severity === 'HIGH' ? 'destructive' :
-                          alert.severity === 'MEDIUM' ? 'default' :
-                          'secondary'
-                        }>
-                          {alert.severity}
-                        </Badge>
-                      </div>
-                    ))}
+              {/* Overview Stats */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-xl p-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-gray-400 text-sm">Total Users</p>
+                      <p className="text-2xl font-bold text-blue-400">{stats.totalUsers.toLocaleString()}</p>
+                      <p className="text-gray-400 text-sm">+{stats.newUsersToday} today</p>
+                    </div>
+                    <Users className="w-8 h-8 text-blue-400" />
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+
+                <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-xl p-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-gray-400 text-sm">Active Users</p>
+                      <p className="text-2xl font-bold text-green-400">{stats.activeUsers.toLocaleString()}</p>
+                      <p className="text-gray-400 text-sm">{((stats.activeUsers / stats.totalUsers) * 100).toFixed(1)}% active</p>
+                    </div>
+                    <Activity className="w-8 h-8 text-green-400" />
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl p-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-gray-400 text-sm">Total Distributed</p>
+                      <p className="text-2xl font-bold text-purple-400">{stats.totalDistributed.toLocaleString()}</p>
+                      <p className="text-gray-400 text-sm">CONNECT tokens</p>
+                    </div>
+                    <Coins className="w-8 h-8 text-purple-400" />
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border border-yellow-500/20 rounded-xl p-6">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-gray-400 text-sm">Total Engagements</p>
+                      <p className="text-2xl font-bold text-yellow-400">{stats.totalEngagements.toLocaleString()}</p>
+                      <p className="text-gray-400 text-sm">Twitter interactions</p>
+                    </div>
+                    <Twitter className="w-8 h-8 text-yellow-400" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Quick Actions */}
+              <div className="bg-white/5 rounded-2xl p-6">
+                <h3 className="text-xl font-bold text-white mb-4">Quick Actions</h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <button
+                    onClick={() => setActiveTab('airdrop')}
+                    className="flex items-center gap-3 p-4 bg-purple-600/20 border border-purple-500/30 rounded-xl hover:bg-purple-600/30 transition-colors"
+                  >
+                    <Gift className="w-6 h-6 text-purple-400" />
+                    <div className="text-left">
+                      <p className="text-white font-semibold">Manage Airdrop</p>
+                      <p className="text-gray-400 text-sm">Configure seasons & claims</p>
+                    </div>
+                  </button>
+
+                  <button
+                    onClick={() => setActiveTab('daily-earning')}
+                    className="flex items-center gap-3 p-4 bg-green-600/20 border border-green-500/30 rounded-xl hover:bg-green-600/30 transition-colors"
+                  >
+                    <Coins className="w-6 h-6 text-green-400" />
+                    <div className="text-left">
+                      <p className="text-white font-semibold">Daily Earning</p>
+                      <p className="text-gray-400 text-sm">Configure rewards & streaks</p>
+                    </div>
+                  </button>
+
+                  <button
+                    onClick={() => setActiveTab('twitter')}
+                    className="flex items-center gap-3 p-4 bg-blue-600/20 border border-blue-500/30 rounded-xl hover:bg-blue-600/30 transition-colors"
+                  >
+                    <Twitter className="w-6 h-6 text-blue-400" />
+                    <div className="text-left">
+                      <p className="text-white font-semibold">Twitter Monitor</p>
+                      <p className="text-gray-400 text-sm">Track engagement tiers</p>
+                    </div>
+                  </button>
+                </div>
+              </div>
             </motion.div>
           )}
 
-          {/* Users Tab */}
+          {activeTab === 'daily-earning' && (
+            <motion.div
+              key="daily-earning"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+            >
+              <DailyEarningManager />
+            </motion.div>
+          )}
+
+          {activeTab === 'airdrop' && (
+            <motion.div
+              key="airdrop"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+            >
+              <AirdropManager />
+            </motion.div>
+          )}
+
+          {activeTab === 'twitter' && (
+            <motion.div
+              key="twitter"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+            >
+              <TwitterMonitoring />
+            </motion.div>
+          )}
+
           {activeTab === 'users' && (
             <motion.div
+              key="users"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
               className="space-y-6"
             >
-              {/* User Filters */}
-              <Card className="bg-gray-800 border-gray-700">
-                <CardContent className="p-6">
-                  <div className="flex flex-col md:flex-row gap-4">
-                    <div className="flex-1">
-                      <Input
-                        placeholder="Search users..."
-                        value={userSearch}
-                        onChange={(e) => setUserSearch(e.target.value)}
-                        className="bg-gray-700 border-gray-600 text-white"
-                      />
-                    </div>
-                    <Select value={userFilter} onValueChange={setUserFilter}>
-                      <SelectTrigger className="w-48 bg-gray-700 border-gray-600 text-white">
-                        <SelectValue />
-                      </SelectTrigger>
-                      <SelectContent className="bg-gray-700 border-gray-600">
-                        <SelectItem value="all">All Users</SelectItem>
-                        <SelectItem value="active">Active</SelectItem>
-                        <SelectItem value="inactive">Inactive</SelectItem>
-                        <SelectItem value="admin">Admins</SelectItem>
-                        <SelectItem value="banned">Banned</SelectItem>
-                        <SelectItem value="high-risk">High Risk</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Users Table */}
-              <Card className="bg-gray-800 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-white">Users ({filteredUsers.length})</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="overflow-x-auto">
-                    <table className="w-full">
-                      <thead>
-                        <tr className="border-b border-gray-600">
-                          <th className="text-left p-3 text-gray-300">User</th>
-                          <th className="text-left p-3 text-gray-300">Activity</th>
-                          <th className="text-left p-3 text-gray-300">Points</th>
-                          <th className="text-left p-3 text-gray-300">Tokens</th>
-                          <th className="text-left p-3 text-gray-300">Risk</th>
-                          <th className="text-left p-3 text-gray-300">Status</th>
-                          <th className="text-left p-3 text-gray-300">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {filteredUsers.slice(0, 20).map((user) => (
-                          <tr key={user.id} className="border-b border-gray-700 hover:bg-gray-700">
-                            <td className="p-3">
-                              <div>
-                                <p className="text-white font-medium">
-                                  {user.twitterUsername || `${user.walletAddress.slice(0, 8)}...`}
-                                </p>
-                                <p className="text-sm text-gray-400">
-                                  {user.walletAddress.slice(0, 12)}...
-                                </p>
-                              </div>
-                            </td>
-                            <td className="p-3">
-                              <Badge variant={
-                                user.twitterActivity === 'HIGH' ? 'default' :
-                                user.twitterActivity === 'MEDIUM' ? 'secondary' :
-                                'outline'
-                              }>
-                                {user.twitterActivity || 'LOW'}
-                              </Badge>
-                            </td>
-                            <td className="p-3 text-white">{user.totalPoints.toLocaleString()}</td>
-                            <td className="p-3 text-white">{user.tokenAllocation.toLocaleString()}</td>
-                            <td className="p-3">
-                              <span className={`${
-                                user.riskScore >= 70 ? 'text-red-400' :
-                                user.riskScore >= 40 ? 'text-yellow-400' :
-                                'text-green-400'
-                              }`}>
-                                {user.riskScore}
-                              </span>
-                            </td>
-                            <td className="p-3">
-                              <div className="flex space-x-1">
-                                {user.isAdmin && <Badge variant="default">Admin</Badge>}
-                                {user.isBanned && <Badge variant="destructive">Banned</Badge>}
-                                {!user.isActive && <Badge variant="outline">Inactive</Badge>}
-                              </div>
-                            </td>
-                            <td className="p-3">
-                              <Button
-                                size="sm"
-                                variant="ghost"
-                                onClick={() => {
-                                  setSelectedUser(user)
-                                  setShowUserModal(true)
-                                }}
-                                className="text-blue-400 hover:bg-gray-600"
-                              >
-                                <Eye className="w-4 h-4" />
-                              </Button>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </CardContent>
-              </Card>
+              <UserManagement />
+              {/* <div className="bg-white/5 rounded-2xl p-6">
+                <h3 className="text-xl font-bold text-white mb-4">User Management</h3>
+                <p className="text-gray-400">
+                  User management functionality will be implemented here. This will include user search, 
+                  filtering, activity tracking, and moderation tools.
+                </p>
+              </div> */}
             </motion.div>
           )}
 
-          {/* Fraud Detection Tab */}
-          {activeTab === 'fraud' && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="space-y-6"
-            >
-              <Card className="bg-gray-800 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-white flex items-center">
-                    <Shield className="w-6 h-6 mr-2" />
-                    Fraud Alerts ({fraudAlerts.length})
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {fraudAlerts.map((alert) => (
-                      <div key={alert.id} className="p-4 bg-gray-700 rounded-lg">
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-3">
-                            <AlertTriangle className={`w-6 h-6 ${
-                              alert.severity === 'CRITICAL' ? 'text-red-400' :
-                              alert.severity === 'HIGH' ? 'text-orange-400' :
-                              alert.severity === 'MEDIUM' ? 'text-yellow-400' :
-                              'text-blue-400'
-                            }`} />
-                            <div>
-                              <h3 className="text-white font-medium">{alert.type}</h3>
-                              <p className="text-gray-400">{alert.description}</p>
-                              <p className="text-sm text-gray-500">
-                                Risk Score: {alert.riskScore} | {new Date(alert.createdAt).toLocaleDateString()}
-                              </p>
-                            </div>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <Badge variant={
-                              alert.severity === 'CRITICAL' ? 'destructive' :
-                              alert.severity === 'HIGH' ? 'destructive' :
-                              alert.severity === 'MEDIUM' ? 'default' :
-                              'secondary'
-                            }>
-                              {alert.severity}
-                            </Badge>
-                            <Button
-                              size="sm"
-                              variant="ghost"
-                              onClick={() => {
-                                setSelectedAlert(alert)
-                                setShowAlertModal(true)
-                              }}
-                              className="text-blue-400 hover:bg-gray-600"
-                            >
-                              View
-                            </Button>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          )}
-
-          {/* Analytics Tab */}
           {activeTab === 'analytics' && (
             <motion.div
+              key="analytics"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
               className="space-y-6"
             >
-              <Card className="bg-gray-800 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-white">Platform Analytics</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ResponsiveContainer width="100%" height={400}>
-                    <BarChart data={chartData}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                      <XAxis dataKey="date" stroke="#9CA3AF" />
-                      <YAxis stroke="#9CA3AF" />
-                      <Tooltip
-                        contentStyle={{
-                          backgroundColor: '#1F2937',
-                          border: '1px solid #374151',
-                          borderRadius: '8px'
-                        }}
-                      />
-                      <Bar dataKey="engagements" fill="#3B82F6" />
-                      <Bar dataKey="claims" fill="#10B981" />
-                    </BarChart>
-                  </ResponsiveContainer>
-                </CardContent>
-              </Card>
+              <div className="bg-white/5 rounded-2xl p-6">
+                <h3 className="text-xl font-bold text-white mb-4">Advanced Analytics</h3>
+                <p className="text-gray-400">
+                  Advanced analytics dashboard will be implemented here. This will include detailed charts,
+                  user behavior analysis, and platform performance metrics.
+                </p>
+              </div>
             </motion.div>
           )}
 
-          {/* Settings Tab */}
-          {activeTab === 'settings' && systemConfig && (
+          {activeTab === 'settings' && (
             <motion.div
+              key="settings"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
               className="space-y-6"
             >
-              <Card className="bg-gray-800 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-white">System Configuration</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-medium text-white">Claim Settings</h3>
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between">
-                          <label className="text-gray-300">Claims Enabled</label>
-                          <Badge variant={systemConfig.claimsEnabled ? "default" : "secondary"}>
-                            {systemConfig.claimsEnabled ? "Enabled" : "Disabled"}
-                          </Badge>
+              <div className="bg-white/5 rounded-2xl p-6">
+                <h3 className="text-xl font-bold text-white mb-4">Platform Settings</h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* General Settings */}
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-semibold text-white">General Settings</h4>
+                    
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                        <div>
+                          <h5 className="text-white font-medium">Platform Maintenance</h5>
+                          <p className="text-gray-400 text-sm">Enable maintenance mode</p>
                         </div>
-                        <div className="flex items-center justify-between">
-                          <label className="text-gray-300">Min Claim Amount</label>
-                          <span className="text-white">{systemConfig.minClaimAmount}</span>
+                        <button className="px-4 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg text-sm transition-colors">
+                          Disabled
+                        </button>
+                      </div>
+
+                      <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                        <div>
+                          <h5 className="text-white font-medium">New User Registration</h5>
+                          <p className="text-gray-400 text-sm">Allow new users to join</p>
                         </div>
+                        <button className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm transition-colors">
+                          Enabled
+                        </button>
+                      </div>
+
+                      <div className="flex items-center justify-between p-4 bg-white/5 rounded-lg">
+                        <div>
+                          <h5 className="text-white font-medium">Token Claims</h5>
+                          <p className="text-gray-400 text-sm">Allow users to claim tokens</p>
+                        </div>
+                        <button className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm transition-colors">
+                          Enabled
+                        </button>
                       </div>
                     </div>
+                  </div>
+
+                  {/* Security Settings */}
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-semibold text-white">Security Settings</h4>
                     
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-medium text-white">Point Values</h3>
-                      <div className="space-y-3">
-                        <div className="flex items-center justify-between">
-                          <label className="text-gray-300">Points per Like</label>
-                          <span className="text-white">{systemConfig.pointsPerLike}</span>
+                    <div className="space-y-3">
+                      <div className="p-4 bg-white/5 rounded-lg">
+                        <h5 className="text-white font-medium mb-2">Rate Limiting</h5>
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <label className="text-gray-400 text-sm">API Requests/min</label>
+                            <input
+                              type="number"
+                              defaultValue={100}
+                              className="w-full mt-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white text-sm"
+                            />
+                          </div>
+                          <div>
+                            <label className="text-gray-400 text-sm">Claims/hour</label>
+                            <input
+                              type="number"
+                              defaultValue={24}
+                              className="w-full mt-1 px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white text-sm"
+                            />
+                          </div>
                         </div>
+                      </div>
+
+                      <div className="p-4 bg-white/5 rounded-lg">
+                        <h5 className="text-white font-medium mb-2">Fraud Detection</h5>
                         <div className="flex items-center justify-between">
-                          <label className="text-gray-300">Points per Retweet</label>
-                          <span className="text-white">{systemConfig.pointsPerRetweet}</span>
-                        </div>
-                        <div className="flex items-center justify-between">
-                          <label className="text-gray-300">Points per Comment</label>
-                          <span className="text-white">{systemConfig.pointsPerComment}</span>
+                          <span className="text-gray-400 text-sm">Auto-ban suspicious activity</span>
+                          <button className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded text-sm transition-colors">
+                            Enabled
+                          </button>
                         </div>
                       </div>
                     </div>
                   </div>
-                  
-                  <Button 
-                    onClick={() => setShowConfigModal(true)}
-                    className="bg-blue-600 hover:bg-blue-700"
-                  >
-                    <Settings className="w-4 h-4 mr-2" />
-                    Update Configuration
-                  </Button>
-                </CardContent>
-              </Card>
+                </div>
+
+                <div className="mt-6 pt-6 border-t border-white/10">
+                  <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors">
+                    Save All Settings
+                  </button>
+                </div>
+              </div>
             </motion.div>
           )}
-        </main>
+        </AnimatePresence>
       </div>
-
-      {/* User Detail Modal */}
-     {/* Enhanced User Detail Modal */}
-<Dialog open={showUserModal} onOpenChange={setShowUserModal}>
-  <DialogContent className="bg-gray-800 border-gray-700 text-white max-w-4xl max-h-[90vh] overflow-y-auto">
-    <DialogHeader className="border-b border-gray-700 pb-4">
-      <DialogTitle className="text-2xl font-bold flex items-center gap-2">
-        <Users className="w-6 h-6 text-blue-400" />
-        User Details
-      </DialogTitle>
-    </DialogHeader>
-    
-    {selectedUser && (
-      <div className="space-y-6 p-1">
-        {/* User Header with Avatar/Icon */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 p-4 bg-gray-700/50 rounded-lg">
-          <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-            <span className="text-2xl font-bold text-white">
-              {selectedUser.twitterUsername 
-                ? selectedUser.twitterUsername[0].toUpperCase() 
-                : selectedUser.walletAddress.slice(0, 2).toUpperCase()}
-            </span>
-          </div>
-          
-          <div className="flex-1 min-w-0">
-            <h3 className="text-xl font-bold text-white truncate">
-              {selectedUser.twitterName || selectedUser.twitterUsername || 'Anonymous User'}
-            </h3>
-            <p className="text-sm text-gray-400 mb-2">
-              @{selectedUser.twitterUsername || 'No Twitter'}
-            </p>
-            
-            {/* Wallet Address with Copy Button */}
-            <div className="flex items-center gap-2 bg-gray-800 rounded-lg p-2 mt-2">
-              <label className="text-xs text-gray-400 whitespace-nowrap">Wallet:</label>
-              <code className="text-sm text-green-400 font-mono truncate flex-1 min-w-0">
-                {selectedUser.walletAddress}
-              </code>
-              <Button
-                size="sm"
-                variant="ghost"
-                onClick={() => {
-                  navigator.clipboard.writeText(selectedUser.walletAddress)
-                  toast.success('Wallet address copied!')
-                }}
-                className="h-6 w-6 p-0 text-gray-400 hover:text-white"
-              >
-                <Copy className="w-3 h-3" />
-              </Button>
-            </div>
-          </div>
-          
-          {/* Status Badges */}
-          <div className="flex flex-wrap gap-2">
-            {selectedUser.isAdmin && (
-              <Badge variant="default" className="bg-purple-600">
-                <Shield className="w-3 h-3 mr-1" />
-                Admin
-              </Badge>
-            )}
-            {selectedUser.isBanned && (
-              <Badge variant="destructive">
-                <Ban className="w-3 h-3 mr-1" />
-                Banned
-              </Badge>
-            )}
-            {!selectedUser.isActive && (
-              <Badge variant="outline" className="border-gray-500">
-                Inactive
-              </Badge>
-            )}
-            <Badge 
-              variant={
-                selectedUser.twitterActivity === 'HIGH' ? 'default' :
-                selectedUser.twitterActivity === 'MEDIUM' ? 'secondary' :
-                'outline'
-              }
-              className={
-                selectedUser.twitterActivity === 'HIGH' ? 'bg-green-600' :
-                selectedUser.twitterActivity === 'MEDIUM' ? 'bg-yellow-600' :
-                'border-gray-500'
-              }
-            >
-              {selectedUser.twitterActivity || 'LOW'} Activity
-            </Badge>
-          </div>
-        </div>
-
-        {/* Stats Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div className="bg-gradient-to-br from-blue-500/10 to-blue-600/10 border border-blue-500/20 rounded-lg p-4">
-            <div className="flex items-center gap-2 mb-2">
-              <Star className="w-4 h-4 text-blue-400" />
-              <label className="text-sm text-gray-400">Total Points</label>
-            </div>
-            <p className="text-2xl font-bold text-white">
-              {selectedUser.totalPoints.toLocaleString()}
-            </p>
-          </div>
-          
-          <div className="bg-gradient-to-br from-green-500/10 to-green-600/10 border border-green-500/20 rounded-lg p-4">
-            <div className="flex items-center gap-2 mb-2">
-              <Coins className="w-4 h-4 text-green-400" />
-              <label className="text-sm text-gray-400">Token Allocation</label>
-            </div>
-            <p className="text-2xl font-bold text-white">
-              {selectedUser.tokenAllocation.toLocaleString()}
-            </p>
-          </div>
-          
-          <div className="bg-gradient-to-br from-purple-500/10 to-purple-600/10 border border-purple-500/20 rounded-lg p-4">
-            <div className="flex items-center gap-2 mb-2">
-              <TrendingUp className="w-4 h-4 text-purple-400" />
-              <label className="text-sm text-gray-400">Level</label>
-            </div>
-            <p className="text-2xl font-bold text-white">
-              {selectedUser.level || Math.floor(selectedUser.totalPoints / 1000) + 1}
-            </p>
-          </div>
-          
-          <div className="bg-gradient-to-br from-orange-500/10 to-red-600/10 border border-orange-500/20 rounded-lg p-4">
-            <div className="flex items-center gap-2 mb-2">
-              <AlertTriangle className="w-4 h-4 text-orange-400" />
-              <label className="text-sm text-gray-400">Risk Score</label>
-            </div>
-            <p className={`text-2xl font-bold ${
-              selectedUser.riskScore >= 70 ? 'text-red-400' :
-              selectedUser.riskScore >= 40 ? 'text-yellow-400' :
-              'text-green-400'
-            }`}>
-              {selectedUser.riskScore}
-            </p>
-          </div>
-        </div>
-
-        {/* Additional Information */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Account Information */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white border-b border-gray-600 pb-2">
-              Account Information
-            </h4>
-            
-            <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-400">Rank</span>
-                <span className="text-white font-medium">#{selectedUser.rank}</span>
-              </div>
-              
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-400">Streak</span>
-                <span className="text-white font-medium">{selectedUser.streak || 0} days</span>
-              </div>
-              
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-400">Twitter Followers</span>
-                <span className="text-white font-medium">
-                  {selectedUser.twitterFollowers?.toLocaleString() || 'N/A'}
-                </span>
-              </div>
-              
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-400">Joined</span>
-                <span className="text-white font-medium">
-                  {new Date(selectedUser.createdAt).toLocaleDateString()}
-                </span>
-              </div>
-              
-              {selectedUser.lastActivity && (
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-400">Last Activity</span>
-                  <span className="text-white font-medium">
-                    {new Date(selectedUser.lastActivity).toLocaleDateString()}
-                  </span>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Quick Stats */}
-          <div className="space-y-4">
-            <h4 className="text-lg font-semibold text-white border-b border-gray-600 pb-2">
-              Quick Stats
-            </h4>
-            
-            <div className="space-y-3">
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-400">Account Status</span>
-                <Badge variant={selectedUser.isActive ? "default" : "outline"}>
-                  {selectedUser.isActive ? 'Active' : 'Inactive'}
-                </Badge>
-              </div>
-              
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-400">Admin Status</span>
-                <Badge variant={selectedUser.isAdmin ? "default" : "outline"}>
-                  {selectedUser.isAdmin ? 'Admin' : 'User'}
-                </Badge>
-              </div>
-              
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-400">Ban Status</span>
-                <Badge variant={selectedUser.isBanned ? "destructive" : "outline"}>
-                  {selectedUser.isBanned ? 'Banned' : 'Good Standing'}
-                </Badge>
-              </div>
-              
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-gray-400">Risk Level</span>
-                <Badge variant={
-                  selectedUser.riskScore >= 70 ? "destructive" :
-                  selectedUser.riskScore >= 40 ? "default" :
-                  "outline"
-                }>
-                  {selectedUser.riskScore >= 70 ? 'High Risk' :
-                   selectedUser.riskScore >= 40 ? 'Medium Risk' :
-                   'Low Risk'}
-                </Badge>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Action Buttons */}
-        <div className="border-t border-gray-700 pt-6">
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Button 
-              variant="destructive"
-              onClick={() => handleUserAction(selectedUser.id, selectedUser.isBanned ? 'unban' : 'ban')}
-              className="flex-1 sm:flex-none"
-            >
-              {selectedUser.isBanned ? (
-                <>
-                  <Unlock className="w-4 h-4 mr-2" />
-                  Unban User
-                </>
-              ) : (
-                <>
-                  <Ban className="w-4 h-4 mr-2" />
-                  Ban User
-                </>
-              )}
-            </Button>
-            
-            <Button 
-              variant="outline"
-              onClick={() => handleUserAction(selectedUser.id, selectedUser.isActive ? 'deactivate' : 'activate')}
-              className="border-gray-600 text-white hover:bg-gray-700 flex-1 sm:flex-none"
-            >
-              <Activity className="w-4 h-4 mr-2" />
-              {selectedUser.isActive ? 'Deactivate' : 'Activate'}
-            </Button>
-            
-            <Button 
-              variant="outline"
-              onClick={() => handleUserAction(selectedUser.id, selectedUser.isAdmin ? 'remove_admin' : 'make_admin')}
-              className="border-gray-600 text-white hover:bg-gray-700 flex-1 sm:flex-none"
-            >
-              <Shield className="w-4 h-4 mr-2" />
-              {selectedUser.isAdmin ? 'Remove Admin' : 'Make Admin'}
-            </Button>
-            
-            <Button 
-              variant="outline"
-              onClick={() => {
-                // Add functionality to view user's transaction history
-                toast('Transaction history view coming soon!')
-              }}
-              className="border-gray-600 text-white hover:bg-gray-700 flex-1 sm:flex-none"
-            >
-              <Eye className="w-4 h-4 mr-2" />
-              View History
-            </Button>
-          </div>
-          
-          {/* Secondary Actions */}
-          <div className="flex flex-col sm:flex-row gap-2 mt-3">
-            <Button 
-              variant="ghost"
-              size="sm"
-              onClick={() => {
-                // Reset user points
-                if (confirm('Are you sure you want to reset this user\'s points to 0?')) {
-                  handleUserAction(selectedUser.id, 'reset_points')
-                }
-              }}
-              className="text-yellow-400 hover:bg-yellow-400/10 flex-1 sm:flex-none"
-            >
-              <RotateCcw className="w-4 h-4 mr-2" />
-              Reset Points
-            </Button>
-            
-            <Button 
-              variant="ghost"
-              size="sm"
-              onClick={() => {
-                // Send notification to user
-                toast('Notification feature coming soon!')
-              }}
-              className="text-blue-400 hover:bg-blue-400/10 flex-1 sm:flex-none"
-            >
-              <Bell className="w-4 h-4 mr-2" />
-              Send Notification
-            </Button>
-            
-            <Button 
-              variant="ghost"
-              size="sm"
-              onClick={() => {
-                // Export user data
-                const userData = {
-                  ...selectedUser,
-                  exportedAt: new Date().toISOString()
-                }
-                const blob = new Blob([JSON.stringify(userData, null, 2)], { type: 'application/json' })
-                const url = URL.createObjectURL(blob)
-                const a = document.createElement('a')
-                a.href = url
-                a.download = `user-${selectedUser.id}-data.json`
-                a.click()
-                URL.revokeObjectURL(url)
-                toast.success('User data exported!')
-              }}
-              className="text-green-400 hover:bg-green-400/10 flex-1 sm:flex-none"
-            >
-              <Download className="w-4 h-4 mr-2" />
-              Export Data
-            </Button>
-          </div>
-        </div>
-      </div>
-    )}
-  </DialogContent>
-</Dialog>
-      {/* Alert Detail Modal */}
-      <Dialog open={showAlertModal} onOpenChange={setShowAlertModal}>
-        <DialogContent className="bg-gray-800 border-gray-700 text-white">
-          <DialogHeader>
-            <DialogTitle>Fraud Alert Details</DialogTitle>
-          </DialogHeader>
-          {selectedAlert && (
-            <div className="space-y-4">
-              <div>
-                <label className="text-sm text-gray-400">Alert Type</label>
-                <p className="text-white font-medium">{selectedAlert.type}</p>
-              </div>
-              <div>
-                <label className="text-sm text-gray-400">Description</label>
-                <p className="text-white">{selectedAlert.description}</p>
-              </div>
-              <div>
-                <label className="text-sm text-gray-400">Risk Score</label>
-                <p className="text-white text-xl font-bold">{selectedAlert.riskScore}</p>
-              </div>
-              <div>
-                <label className="text-sm text-gray-400">Status</label>
-                <Badge variant="outline">{selectedAlert.status}</Badge>
-              </div>
-              
-              <div className="flex space-x-3">
-                <Button 
-                  variant="default"
-                  onClick={() => handleAlertAction(selectedAlert.id, 'RESOLVED')}
-                  className="bg-green-600 hover:bg-green-700"
-                >
-                  <Check className="w-4 h-4 mr-2" />
-                  Resolve
-                </Button>
-                
-                <Button 
-                  variant="outline"
-                  onClick={() => handleAlertAction(selectedAlert.id, 'FALSE_POSITIVE')}
-                  className="border-gray-600 text-white hover:bg-gray-700"
-                >
-                  <X className="w-4 h-4 mr-2" />
-                  False Positive
-                </Button>
-                
-                <Button 
-                  variant="secondary"
-                  onClick={() => handleAlertAction(selectedAlert.id, 'INVESTIGATING')}
-                >
-                  <Eye className="w-4 h-4 mr-2" />
-                  Investigate
-                </Button>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
-
-      {/* Config Modal */}
-      <Dialog open={showConfigModal} onOpenChange={setShowConfigModal}>
-        <DialogContent className="bg-gray-800 border-gray-700 text-white max-w-2xl">
-          <DialogHeader>
-            <DialogTitle>Update System Configuration</DialogTitle>
-          </DialogHeader>
-          {systemConfig && (
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="text-sm text-gray-400">High Activity Tokens</label>
-                  <Input 
-                    type="number"
-                    defaultValue={systemConfig.highActivityTokens}
-                    className="bg-gray-700 border-gray-600 text-white"
-                  />
-                </div>
-                <div>
-                  <label className="text-sm text-gray-400">Medium Activity Tokens</label>
-                  <Input 
-                    type="number"
-                    defaultValue={systemConfig.mediumActivityTokens}
-                    className="bg-gray-700 border-gray-600 text-white"
-                  />
-                </div>
-                <div>
-                  <label className="text-sm text-gray-400">Low Activity Tokens</label>
-                  <Input 
-                    type="number"
-                    defaultValue={systemConfig.lowActivityTokens}
-                    className="bg-gray-700 border-gray-600 text-white"
-                  />
-                </div>
-                <div>
-                  <label className="text-sm text-gray-400">Points per Like</label>
-                  <Input 
-                    type="number"
-                    defaultValue={systemConfig.pointsPerLike}
-                    className="bg-gray-700 border-gray-600 text-white"
-                  />
-                </div>
-              </div>
-              
-              <div className="flex justify-end space-x-3">
-                <Button 
-                  variant="outline"
-                  onClick={() => setShowConfigModal(false)}
-                  className="border-gray-600 text-white hover:bg-gray-700"
-                >
-                  Cancel
-                </Button>
-                <Button 
-                  onClick={() => {
-                    // Handle config update here
-                    handleConfigUpdate({})
-                  }}
-                  className="bg-blue-600 hover:bg-blue-700"
-                >
-                  Update Configuration
-                </Button>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
     </div>
   )
 }

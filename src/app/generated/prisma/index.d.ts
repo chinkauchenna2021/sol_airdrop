@@ -98,6 +98,21 @@ export type SystemConfig = $Result.DefaultSelection<Prisma.$SystemConfigPayload>
  * 
  */
 export type Analytics = $Result.DefaultSelection<Prisma.$AnalyticsPayload>
+/**
+ * Model DailyEarning
+ * 
+ */
+export type DailyEarning = $Result.DefaultSelection<Prisma.$DailyEarningPayload>
+/**
+ * Model AirdropSeason
+ * 
+ */
+export type AirdropSeason = $Result.DefaultSelection<Prisma.$AirdropSeasonPayload>
+/**
+ * Model AirdropClaim
+ * 
+ */
+export type AirdropClaim = $Result.DefaultSelection<Prisma.$AirdropClaimPayload>
 
 /**
  * Enums
@@ -484,6 +499,36 @@ export class PrismaClient<
     * ```
     */
   get analytics(): Prisma.AnalyticsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.dailyEarning`: Exposes CRUD operations for the **DailyEarning** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DailyEarnings
+    * const dailyEarnings = await prisma.dailyEarning.findMany()
+    * ```
+    */
+  get dailyEarning(): Prisma.DailyEarningDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.airdropSeason`: Exposes CRUD operations for the **AirdropSeason** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AirdropSeasons
+    * const airdropSeasons = await prisma.airdropSeason.findMany()
+    * ```
+    */
+  get airdropSeason(): Prisma.AirdropSeasonDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.airdropClaim`: Exposes CRUD operations for the **AirdropClaim** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more AirdropClaims
+    * const airdropClaims = await prisma.airdropClaim.findMany()
+    * ```
+    */
+  get airdropClaim(): Prisma.AirdropClaimDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -940,7 +985,10 @@ export namespace Prisma {
     PointHistory: 'PointHistory',
     Referral: 'Referral',
     SystemConfig: 'SystemConfig',
-    Analytics: 'Analytics'
+    Analytics: 'Analytics',
+    DailyEarning: 'DailyEarning',
+    AirdropSeason: 'AirdropSeason',
+    AirdropClaim: 'AirdropClaim'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -959,7 +1007,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "achievement" | "userAchievement" | "notification" | "twitterAnalytics" | "twitterEngagement" | "task" | "adminSession" | "adminAuditLog" | "fraudAlert" | "campaignConfig" | "taskCompletion" | "claim" | "pointHistory" | "referral" | "systemConfig" | "analytics"
+      modelProps: "user" | "achievement" | "userAchievement" | "notification" | "twitterAnalytics" | "twitterEngagement" | "task" | "adminSession" | "adminAuditLog" | "fraudAlert" | "campaignConfig" | "taskCompletion" | "claim" | "pointHistory" | "referral" | "systemConfig" | "analytics" | "dailyEarning" | "airdropSeason" | "airdropClaim"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2221,6 +2269,228 @@ export namespace Prisma {
           }
         }
       }
+      DailyEarning: {
+        payload: Prisma.$DailyEarningPayload<ExtArgs>
+        fields: Prisma.DailyEarningFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DailyEarningFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyEarningPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DailyEarningFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyEarningPayload>
+          }
+          findFirst: {
+            args: Prisma.DailyEarningFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyEarningPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DailyEarningFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyEarningPayload>
+          }
+          findMany: {
+            args: Prisma.DailyEarningFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyEarningPayload>[]
+          }
+          create: {
+            args: Prisma.DailyEarningCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyEarningPayload>
+          }
+          createMany: {
+            args: Prisma.DailyEarningCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DailyEarningCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyEarningPayload>[]
+          }
+          delete: {
+            args: Prisma.DailyEarningDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyEarningPayload>
+          }
+          update: {
+            args: Prisma.DailyEarningUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyEarningPayload>
+          }
+          deleteMany: {
+            args: Prisma.DailyEarningDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DailyEarningUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DailyEarningUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyEarningPayload>[]
+          }
+          upsert: {
+            args: Prisma.DailyEarningUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyEarningPayload>
+          }
+          aggregate: {
+            args: Prisma.DailyEarningAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDailyEarning>
+          }
+          groupBy: {
+            args: Prisma.DailyEarningGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DailyEarningGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DailyEarningCountArgs<ExtArgs>
+            result: $Utils.Optional<DailyEarningCountAggregateOutputType> | number
+          }
+        }
+      }
+      AirdropSeason: {
+        payload: Prisma.$AirdropSeasonPayload<ExtArgs>
+        fields: Prisma.AirdropSeasonFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AirdropSeasonFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropSeasonPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AirdropSeasonFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropSeasonPayload>
+          }
+          findFirst: {
+            args: Prisma.AirdropSeasonFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropSeasonPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AirdropSeasonFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropSeasonPayload>
+          }
+          findMany: {
+            args: Prisma.AirdropSeasonFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropSeasonPayload>[]
+          }
+          create: {
+            args: Prisma.AirdropSeasonCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropSeasonPayload>
+          }
+          createMany: {
+            args: Prisma.AirdropSeasonCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AirdropSeasonCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropSeasonPayload>[]
+          }
+          delete: {
+            args: Prisma.AirdropSeasonDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropSeasonPayload>
+          }
+          update: {
+            args: Prisma.AirdropSeasonUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropSeasonPayload>
+          }
+          deleteMany: {
+            args: Prisma.AirdropSeasonDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AirdropSeasonUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AirdropSeasonUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropSeasonPayload>[]
+          }
+          upsert: {
+            args: Prisma.AirdropSeasonUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropSeasonPayload>
+          }
+          aggregate: {
+            args: Prisma.AirdropSeasonAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAirdropSeason>
+          }
+          groupBy: {
+            args: Prisma.AirdropSeasonGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AirdropSeasonGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AirdropSeasonCountArgs<ExtArgs>
+            result: $Utils.Optional<AirdropSeasonCountAggregateOutputType> | number
+          }
+        }
+      }
+      AirdropClaim: {
+        payload: Prisma.$AirdropClaimPayload<ExtArgs>
+        fields: Prisma.AirdropClaimFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AirdropClaimFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropClaimPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AirdropClaimFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropClaimPayload>
+          }
+          findFirst: {
+            args: Prisma.AirdropClaimFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropClaimPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AirdropClaimFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropClaimPayload>
+          }
+          findMany: {
+            args: Prisma.AirdropClaimFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropClaimPayload>[]
+          }
+          create: {
+            args: Prisma.AirdropClaimCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropClaimPayload>
+          }
+          createMany: {
+            args: Prisma.AirdropClaimCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AirdropClaimCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropClaimPayload>[]
+          }
+          delete: {
+            args: Prisma.AirdropClaimDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropClaimPayload>
+          }
+          update: {
+            args: Prisma.AirdropClaimUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropClaimPayload>
+          }
+          deleteMany: {
+            args: Prisma.AirdropClaimDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AirdropClaimUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AirdropClaimUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropClaimPayload>[]
+          }
+          upsert: {
+            args: Prisma.AirdropClaimUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropClaimPayload>
+          }
+          aggregate: {
+            args: Prisma.AirdropClaimAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAirdropClaim>
+          }
+          groupBy: {
+            args: Prisma.AirdropClaimGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AirdropClaimGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AirdropClaimCountArgs<ExtArgs>
+            result: $Utils.Optional<AirdropClaimCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2322,6 +2592,9 @@ export namespace Prisma {
     referral?: ReferralOmit
     systemConfig?: SystemConfigOmit
     analytics?: AnalyticsOmit
+    dailyEarning?: DailyEarningOmit
+    airdropSeason?: AirdropSeasonOmit
+    airdropClaim?: AirdropClaimOmit
   }
 
   /* Types for Logging */
@@ -2416,6 +2689,8 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
+    dailyEarnings: number
+    airdropClaims: number
     engagements: number
     tasks: number
     claims: number
@@ -2430,6 +2705,8 @@ export namespace Prisma {
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    dailyEarnings?: boolean | UserCountOutputTypeCountDailyEarningsArgs
+    airdropClaims?: boolean | UserCountOutputTypeCountAirdropClaimsArgs
     engagements?: boolean | UserCountOutputTypeCountEngagementsArgs
     tasks?: boolean | UserCountOutputTypeCountTasksArgs
     claims?: boolean | UserCountOutputTypeCountClaimsArgs
@@ -2452,6 +2729,20 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserCountOutputType
      */
     select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountDailyEarningsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DailyEarningWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAirdropClaimsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AirdropClaimWhereInput
   }
 
   /**
@@ -2595,6 +2886,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type AirdropSeasonCountOutputType
+   */
+
+  export type AirdropSeasonCountOutputType = {
+    claims: number
+  }
+
+  export type AirdropSeasonCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    claims?: boolean | AirdropSeasonCountOutputTypeCountClaimsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AirdropSeasonCountOutputType without action
+   */
+  export type AirdropSeasonCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropSeasonCountOutputType
+     */
+    select?: AirdropSeasonCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AirdropSeasonCountOutputType without action
+   */
+  export type AirdropSeasonCountOutputTypeCountClaimsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AirdropClaimWhereInput
+  }
+
+
+  /**
    * Models
    */
 
@@ -2616,6 +2938,7 @@ export namespace Prisma {
     streak: number | null
     totalPoints: number | null
     rank: number | null
+    totalEarnedTokens: number | null
     riskScore: number | null
   }
 
@@ -2625,6 +2948,7 @@ export namespace Prisma {
     streak: number | null
     totalPoints: number | null
     rank: number | null
+    totalEarnedTokens: number | null
     riskScore: number | null
   }
 
@@ -2646,6 +2970,8 @@ export namespace Prisma {
     rank: number | null
     isAdmin: boolean | null
     isActive: boolean | null
+    totalEarnedTokens: number | null
+    lastLoginReward: Date | null
     createdAt: Date | null
     updatedAt: Date | null
     riskScore: number | null
@@ -2672,6 +2998,8 @@ export namespace Prisma {
     rank: number | null
     isAdmin: boolean | null
     isActive: boolean | null
+    totalEarnedTokens: number | null
+    lastLoginReward: Date | null
     createdAt: Date | null
     updatedAt: Date | null
     riskScore: number | null
@@ -2698,6 +3026,8 @@ export namespace Prisma {
     rank: number
     isAdmin: number
     isActive: number
+    totalEarnedTokens: number
+    lastLoginReward: number
     createdAt: number
     updatedAt: number
     permissions: number
@@ -2716,6 +3046,7 @@ export namespace Prisma {
     streak?: true
     totalPoints?: true
     rank?: true
+    totalEarnedTokens?: true
     riskScore?: true
   }
 
@@ -2725,6 +3056,7 @@ export namespace Prisma {
     streak?: true
     totalPoints?: true
     rank?: true
+    totalEarnedTokens?: true
     riskScore?: true
   }
 
@@ -2746,6 +3078,8 @@ export namespace Prisma {
     rank?: true
     isAdmin?: true
     isActive?: true
+    totalEarnedTokens?: true
+    lastLoginReward?: true
     createdAt?: true
     updatedAt?: true
     riskScore?: true
@@ -2772,6 +3106,8 @@ export namespace Prisma {
     rank?: true
     isAdmin?: true
     isActive?: true
+    totalEarnedTokens?: true
+    lastLoginReward?: true
     createdAt?: true
     updatedAt?: true
     riskScore?: true
@@ -2798,6 +3134,8 @@ export namespace Prisma {
     rank?: true
     isAdmin?: true
     isActive?: true
+    totalEarnedTokens?: true
+    lastLoginReward?: true
     createdAt?: true
     updatedAt?: true
     permissions?: true
@@ -2913,6 +3251,8 @@ export namespace Prisma {
     rank: number
     isAdmin: boolean
     isActive: boolean
+    totalEarnedTokens: number
+    lastLoginReward: Date | null
     createdAt: Date
     updatedAt: Date
     permissions: JsonValue | null
@@ -2960,6 +3300,8 @@ export namespace Prisma {
     rank?: boolean
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: boolean
+    lastLoginReward?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     permissions?: boolean
@@ -2968,6 +3310,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: boolean
     lastActivity?: boolean
+    dailyEarnings?: boolean | User$dailyEarningsArgs<ExtArgs>
+    airdropClaims?: boolean | User$airdropClaimsArgs<ExtArgs>
     engagements?: boolean | User$engagementsArgs<ExtArgs>
     tasks?: boolean | User$tasksArgs<ExtArgs>
     claims?: boolean | User$claimsArgs<ExtArgs>
@@ -3001,6 +3345,8 @@ export namespace Prisma {
     rank?: boolean
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: boolean
+    lastLoginReward?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     permissions?: boolean
@@ -3029,6 +3375,8 @@ export namespace Prisma {
     rank?: boolean
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: boolean
+    lastLoginReward?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     permissions?: boolean
@@ -3057,6 +3405,8 @@ export namespace Prisma {
     rank?: boolean
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: boolean
+    lastLoginReward?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     permissions?: boolean
@@ -3067,8 +3417,10 @@ export namespace Prisma {
     lastActivity?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walletAddress" | "twitterId" | "twitterUsername" | "twitterName" | "twitterImage" | "twitterFollowers" | "twitterActivity" | "level" | "streak" | "lastCheckIn" | "referralCode" | "email" | "totalPoints" | "rank" | "isAdmin" | "isActive" | "createdAt" | "updatedAt" | "permissions" | "riskScore" | "suspiciousFlags" | "isBanned" | "bannedAt" | "lastActivity", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walletAddress" | "twitterId" | "twitterUsername" | "twitterName" | "twitterImage" | "twitterFollowers" | "twitterActivity" | "level" | "streak" | "lastCheckIn" | "referralCode" | "email" | "totalPoints" | "rank" | "isAdmin" | "isActive" | "totalEarnedTokens" | "lastLoginReward" | "createdAt" | "updatedAt" | "permissions" | "riskScore" | "suspiciousFlags" | "isBanned" | "bannedAt" | "lastActivity", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    dailyEarnings?: boolean | User$dailyEarningsArgs<ExtArgs>
+    airdropClaims?: boolean | User$airdropClaimsArgs<ExtArgs>
     engagements?: boolean | User$engagementsArgs<ExtArgs>
     tasks?: boolean | User$tasksArgs<ExtArgs>
     claims?: boolean | User$claimsArgs<ExtArgs>
@@ -3089,6 +3441,8 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
+      dailyEarnings: Prisma.$DailyEarningPayload<ExtArgs>[]
+      airdropClaims: Prisma.$AirdropClaimPayload<ExtArgs>[]
       engagements: Prisma.$TwitterEngagementPayload<ExtArgs>[]
       tasks: Prisma.$TaskCompletionPayload<ExtArgs>[]
       claims: Prisma.$ClaimPayload<ExtArgs>[]
@@ -3120,6 +3474,8 @@ export namespace Prisma {
       rank: number
       isAdmin: boolean
       isActive: boolean
+      totalEarnedTokens: number
+      lastLoginReward: Date | null
       createdAt: Date
       updatedAt: Date
       permissions: Prisma.JsonValue | null
@@ -3522,6 +3878,8 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    dailyEarnings<T extends User$dailyEarningsArgs<ExtArgs> = {}>(args?: Subset<T, User$dailyEarningsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyEarningPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    airdropClaims<T extends User$airdropClaimsArgs<ExtArgs> = {}>(args?: Subset<T, User$airdropClaimsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AirdropClaimPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     engagements<T extends User$engagementsArgs<ExtArgs> = {}>(args?: Subset<T, User$engagementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TwitterEngagementPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     tasks<T extends User$tasksArgs<ExtArgs> = {}>(args?: Subset<T, User$tasksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TaskCompletionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     claims<T extends User$claimsArgs<ExtArgs> = {}>(args?: Subset<T, User$claimsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClaimPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3580,6 +3938,8 @@ export namespace Prisma {
     readonly rank: FieldRef<"User", 'Int'>
     readonly isAdmin: FieldRef<"User", 'Boolean'>
     readonly isActive: FieldRef<"User", 'Boolean'>
+    readonly totalEarnedTokens: FieldRef<"User", 'Float'>
+    readonly lastLoginReward: FieldRef<"User", 'DateTime'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
     readonly permissions: FieldRef<"User", 'Json'>
@@ -3973,6 +4333,54 @@ export namespace Prisma {
      * Limit how many Users to delete.
      */
     limit?: number
+  }
+
+  /**
+   * User.dailyEarnings
+   */
+  export type User$dailyEarningsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyEarning
+     */
+    select?: DailyEarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DailyEarning
+     */
+    omit?: DailyEarningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyEarningInclude<ExtArgs> | null
+    where?: DailyEarningWhereInput
+    orderBy?: DailyEarningOrderByWithRelationInput | DailyEarningOrderByWithRelationInput[]
+    cursor?: DailyEarningWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DailyEarningScalarFieldEnum | DailyEarningScalarFieldEnum[]
+  }
+
+  /**
+   * User.airdropClaims
+   */
+  export type User$airdropClaimsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropClaim
+     */
+    select?: AirdropClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropClaim
+     */
+    omit?: AirdropClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropClaimInclude<ExtArgs> | null
+    where?: AirdropClaimWhereInput
+    orderBy?: AirdropClaimOrderByWithRelationInput | AirdropClaimOrderByWithRelationInput[]
+    cursor?: AirdropClaimWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AirdropClaimScalarFieldEnum | AirdropClaimScalarFieldEnum[]
   }
 
   /**
@@ -18936,6 +19344,7 @@ export namespace Prisma {
     points: number | null
     completed: boolean | null
     createdAt: Date | null
+    isActive: boolean | null
   }
 
   export type ReferralMaxAggregateOutputType = {
@@ -18945,6 +19354,7 @@ export namespace Prisma {
     points: number | null
     completed: boolean | null
     createdAt: Date | null
+    isActive: boolean | null
   }
 
   export type ReferralCountAggregateOutputType = {
@@ -18954,6 +19364,7 @@ export namespace Prisma {
     points: number
     completed: number
     createdAt: number
+    isActive: number
     _all: number
   }
 
@@ -18973,6 +19384,7 @@ export namespace Prisma {
     points?: true
     completed?: true
     createdAt?: true
+    isActive?: true
   }
 
   export type ReferralMaxAggregateInputType = {
@@ -18982,6 +19394,7 @@ export namespace Prisma {
     points?: true
     completed?: true
     createdAt?: true
+    isActive?: true
   }
 
   export type ReferralCountAggregateInputType = {
@@ -18991,6 +19404,7 @@ export namespace Prisma {
     points?: true
     completed?: true
     createdAt?: true
+    isActive?: true
     _all?: true
   }
 
@@ -19087,6 +19501,7 @@ export namespace Prisma {
     points: number
     completed: boolean
     createdAt: Date
+    isActive: boolean
     _count: ReferralCountAggregateOutputType | null
     _avg: ReferralAvgAggregateOutputType | null
     _sum: ReferralSumAggregateOutputType | null
@@ -19115,6 +19530,7 @@ export namespace Prisma {
     points?: boolean
     completed?: boolean
     createdAt?: boolean
+    isActive?: boolean
     referrer?: boolean | UserDefaultArgs<ExtArgs>
     referred?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["referral"]>
@@ -19126,6 +19542,7 @@ export namespace Prisma {
     points?: boolean
     completed?: boolean
     createdAt?: boolean
+    isActive?: boolean
     referrer?: boolean | UserDefaultArgs<ExtArgs>
     referred?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["referral"]>
@@ -19137,6 +19554,7 @@ export namespace Prisma {
     points?: boolean
     completed?: boolean
     createdAt?: boolean
+    isActive?: boolean
     referrer?: boolean | UserDefaultArgs<ExtArgs>
     referred?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["referral"]>
@@ -19148,9 +19566,10 @@ export namespace Prisma {
     points?: boolean
     completed?: boolean
     createdAt?: boolean
+    isActive?: boolean
   }
 
-  export type ReferralOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "referrerId" | "referredId" | "points" | "completed" | "createdAt", ExtArgs["result"]["referral"]>
+  export type ReferralOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "referrerId" | "referredId" | "points" | "completed" | "createdAt" | "isActive", ExtArgs["result"]["referral"]>
   export type ReferralInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     referrer?: boolean | UserDefaultArgs<ExtArgs>
     referred?: boolean | UserDefaultArgs<ExtArgs>
@@ -19177,6 +19596,7 @@ export namespace Prisma {
       points: number
       completed: boolean
       createdAt: Date
+      isActive: boolean
     }, ExtArgs["result"]["referral"]>
     composites: {}
   }
@@ -19608,6 +20028,7 @@ export namespace Prisma {
     readonly points: FieldRef<"Referral", 'Int'>
     readonly completed: FieldRef<"Referral", 'Boolean'>
     readonly createdAt: FieldRef<"Referral", 'DateTime'>
+    readonly isActive: FieldRef<"Referral", 'Boolean'>
   }
     
 
@@ -22107,6 +22528,3393 @@ export namespace Prisma {
 
 
   /**
+   * Model DailyEarning
+   */
+
+  export type AggregateDailyEarning = {
+    _count: DailyEarningCountAggregateOutputType | null
+    _avg: DailyEarningAvgAggregateOutputType | null
+    _sum: DailyEarningSumAggregateOutputType | null
+    _min: DailyEarningMinAggregateOutputType | null
+    _max: DailyEarningMaxAggregateOutputType | null
+  }
+
+  export type DailyEarningAvgAggregateOutputType = {
+    tokens: number | null
+  }
+
+  export type DailyEarningSumAggregateOutputType = {
+    tokens: number | null
+  }
+
+  export type DailyEarningMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    tokens: number | null
+    type: string | null
+    claimedAt: Date | null
+  }
+
+  export type DailyEarningMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    tokens: number | null
+    type: string | null
+    claimedAt: Date | null
+  }
+
+  export type DailyEarningCountAggregateOutputType = {
+    id: number
+    userId: number
+    tokens: number
+    type: number
+    claimedAt: number
+    _all: number
+  }
+
+
+  export type DailyEarningAvgAggregateInputType = {
+    tokens?: true
+  }
+
+  export type DailyEarningSumAggregateInputType = {
+    tokens?: true
+  }
+
+  export type DailyEarningMinAggregateInputType = {
+    id?: true
+    userId?: true
+    tokens?: true
+    type?: true
+    claimedAt?: true
+  }
+
+  export type DailyEarningMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    tokens?: true
+    type?: true
+    claimedAt?: true
+  }
+
+  export type DailyEarningCountAggregateInputType = {
+    id?: true
+    userId?: true
+    tokens?: true
+    type?: true
+    claimedAt?: true
+    _all?: true
+  }
+
+  export type DailyEarningAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DailyEarning to aggregate.
+     */
+    where?: DailyEarningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DailyEarnings to fetch.
+     */
+    orderBy?: DailyEarningOrderByWithRelationInput | DailyEarningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DailyEarningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DailyEarnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DailyEarnings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DailyEarnings
+    **/
+    _count?: true | DailyEarningCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DailyEarningAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DailyEarningSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DailyEarningMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DailyEarningMaxAggregateInputType
+  }
+
+  export type GetDailyEarningAggregateType<T extends DailyEarningAggregateArgs> = {
+        [P in keyof T & keyof AggregateDailyEarning]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDailyEarning[P]>
+      : GetScalarType<T[P], AggregateDailyEarning[P]>
+  }
+
+
+
+
+  export type DailyEarningGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DailyEarningWhereInput
+    orderBy?: DailyEarningOrderByWithAggregationInput | DailyEarningOrderByWithAggregationInput[]
+    by: DailyEarningScalarFieldEnum[] | DailyEarningScalarFieldEnum
+    having?: DailyEarningScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DailyEarningCountAggregateInputType | true
+    _avg?: DailyEarningAvgAggregateInputType
+    _sum?: DailyEarningSumAggregateInputType
+    _min?: DailyEarningMinAggregateInputType
+    _max?: DailyEarningMaxAggregateInputType
+  }
+
+  export type DailyEarningGroupByOutputType = {
+    id: string
+    userId: string
+    tokens: number
+    type: string
+    claimedAt: Date
+    _count: DailyEarningCountAggregateOutputType | null
+    _avg: DailyEarningAvgAggregateOutputType | null
+    _sum: DailyEarningSumAggregateOutputType | null
+    _min: DailyEarningMinAggregateOutputType | null
+    _max: DailyEarningMaxAggregateOutputType | null
+  }
+
+  type GetDailyEarningGroupByPayload<T extends DailyEarningGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DailyEarningGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DailyEarningGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DailyEarningGroupByOutputType[P]>
+            : GetScalarType<T[P], DailyEarningGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DailyEarningSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    tokens?: boolean
+    type?: boolean
+    claimedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dailyEarning"]>
+
+  export type DailyEarningSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    tokens?: boolean
+    type?: boolean
+    claimedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dailyEarning"]>
+
+  export type DailyEarningSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    tokens?: boolean
+    type?: boolean
+    claimedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dailyEarning"]>
+
+  export type DailyEarningSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    tokens?: boolean
+    type?: boolean
+    claimedAt?: boolean
+  }
+
+  export type DailyEarningOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "tokens" | "type" | "claimedAt", ExtArgs["result"]["dailyEarning"]>
+  export type DailyEarningInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type DailyEarningIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type DailyEarningIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $DailyEarningPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DailyEarning"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      tokens: number
+      type: string
+      claimedAt: Date
+    }, ExtArgs["result"]["dailyEarning"]>
+    composites: {}
+  }
+
+  type DailyEarningGetPayload<S extends boolean | null | undefined | DailyEarningDefaultArgs> = $Result.GetResult<Prisma.$DailyEarningPayload, S>
+
+  type DailyEarningCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DailyEarningFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DailyEarningCountAggregateInputType | true
+    }
+
+  export interface DailyEarningDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DailyEarning'], meta: { name: 'DailyEarning' } }
+    /**
+     * Find zero or one DailyEarning that matches the filter.
+     * @param {DailyEarningFindUniqueArgs} args - Arguments to find a DailyEarning
+     * @example
+     * // Get one DailyEarning
+     * const dailyEarning = await prisma.dailyEarning.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DailyEarningFindUniqueArgs>(args: SelectSubset<T, DailyEarningFindUniqueArgs<ExtArgs>>): Prisma__DailyEarningClient<$Result.GetResult<Prisma.$DailyEarningPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DailyEarning that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DailyEarningFindUniqueOrThrowArgs} args - Arguments to find a DailyEarning
+     * @example
+     * // Get one DailyEarning
+     * const dailyEarning = await prisma.dailyEarning.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DailyEarningFindUniqueOrThrowArgs>(args: SelectSubset<T, DailyEarningFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DailyEarningClient<$Result.GetResult<Prisma.$DailyEarningPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DailyEarning that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DailyEarningFindFirstArgs} args - Arguments to find a DailyEarning
+     * @example
+     * // Get one DailyEarning
+     * const dailyEarning = await prisma.dailyEarning.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DailyEarningFindFirstArgs>(args?: SelectSubset<T, DailyEarningFindFirstArgs<ExtArgs>>): Prisma__DailyEarningClient<$Result.GetResult<Prisma.$DailyEarningPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DailyEarning that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DailyEarningFindFirstOrThrowArgs} args - Arguments to find a DailyEarning
+     * @example
+     * // Get one DailyEarning
+     * const dailyEarning = await prisma.dailyEarning.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DailyEarningFindFirstOrThrowArgs>(args?: SelectSubset<T, DailyEarningFindFirstOrThrowArgs<ExtArgs>>): Prisma__DailyEarningClient<$Result.GetResult<Prisma.$DailyEarningPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DailyEarnings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DailyEarningFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DailyEarnings
+     * const dailyEarnings = await prisma.dailyEarning.findMany()
+     * 
+     * // Get first 10 DailyEarnings
+     * const dailyEarnings = await prisma.dailyEarning.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const dailyEarningWithIdOnly = await prisma.dailyEarning.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DailyEarningFindManyArgs>(args?: SelectSubset<T, DailyEarningFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyEarningPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DailyEarning.
+     * @param {DailyEarningCreateArgs} args - Arguments to create a DailyEarning.
+     * @example
+     * // Create one DailyEarning
+     * const DailyEarning = await prisma.dailyEarning.create({
+     *   data: {
+     *     // ... data to create a DailyEarning
+     *   }
+     * })
+     * 
+     */
+    create<T extends DailyEarningCreateArgs>(args: SelectSubset<T, DailyEarningCreateArgs<ExtArgs>>): Prisma__DailyEarningClient<$Result.GetResult<Prisma.$DailyEarningPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DailyEarnings.
+     * @param {DailyEarningCreateManyArgs} args - Arguments to create many DailyEarnings.
+     * @example
+     * // Create many DailyEarnings
+     * const dailyEarning = await prisma.dailyEarning.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DailyEarningCreateManyArgs>(args?: SelectSubset<T, DailyEarningCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DailyEarnings and returns the data saved in the database.
+     * @param {DailyEarningCreateManyAndReturnArgs} args - Arguments to create many DailyEarnings.
+     * @example
+     * // Create many DailyEarnings
+     * const dailyEarning = await prisma.dailyEarning.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DailyEarnings and only return the `id`
+     * const dailyEarningWithIdOnly = await prisma.dailyEarning.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DailyEarningCreateManyAndReturnArgs>(args?: SelectSubset<T, DailyEarningCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyEarningPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DailyEarning.
+     * @param {DailyEarningDeleteArgs} args - Arguments to delete one DailyEarning.
+     * @example
+     * // Delete one DailyEarning
+     * const DailyEarning = await prisma.dailyEarning.delete({
+     *   where: {
+     *     // ... filter to delete one DailyEarning
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DailyEarningDeleteArgs>(args: SelectSubset<T, DailyEarningDeleteArgs<ExtArgs>>): Prisma__DailyEarningClient<$Result.GetResult<Prisma.$DailyEarningPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DailyEarning.
+     * @param {DailyEarningUpdateArgs} args - Arguments to update one DailyEarning.
+     * @example
+     * // Update one DailyEarning
+     * const dailyEarning = await prisma.dailyEarning.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DailyEarningUpdateArgs>(args: SelectSubset<T, DailyEarningUpdateArgs<ExtArgs>>): Prisma__DailyEarningClient<$Result.GetResult<Prisma.$DailyEarningPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DailyEarnings.
+     * @param {DailyEarningDeleteManyArgs} args - Arguments to filter DailyEarnings to delete.
+     * @example
+     * // Delete a few DailyEarnings
+     * const { count } = await prisma.dailyEarning.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DailyEarningDeleteManyArgs>(args?: SelectSubset<T, DailyEarningDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DailyEarnings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DailyEarningUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DailyEarnings
+     * const dailyEarning = await prisma.dailyEarning.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DailyEarningUpdateManyArgs>(args: SelectSubset<T, DailyEarningUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DailyEarnings and returns the data updated in the database.
+     * @param {DailyEarningUpdateManyAndReturnArgs} args - Arguments to update many DailyEarnings.
+     * @example
+     * // Update many DailyEarnings
+     * const dailyEarning = await prisma.dailyEarning.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DailyEarnings and only return the `id`
+     * const dailyEarningWithIdOnly = await prisma.dailyEarning.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DailyEarningUpdateManyAndReturnArgs>(args: SelectSubset<T, DailyEarningUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyEarningPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DailyEarning.
+     * @param {DailyEarningUpsertArgs} args - Arguments to update or create a DailyEarning.
+     * @example
+     * // Update or create a DailyEarning
+     * const dailyEarning = await prisma.dailyEarning.upsert({
+     *   create: {
+     *     // ... data to create a DailyEarning
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DailyEarning we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DailyEarningUpsertArgs>(args: SelectSubset<T, DailyEarningUpsertArgs<ExtArgs>>): Prisma__DailyEarningClient<$Result.GetResult<Prisma.$DailyEarningPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DailyEarnings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DailyEarningCountArgs} args - Arguments to filter DailyEarnings to count.
+     * @example
+     * // Count the number of DailyEarnings
+     * const count = await prisma.dailyEarning.count({
+     *   where: {
+     *     // ... the filter for the DailyEarnings we want to count
+     *   }
+     * })
+    **/
+    count<T extends DailyEarningCountArgs>(
+      args?: Subset<T, DailyEarningCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DailyEarningCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DailyEarning.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DailyEarningAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DailyEarningAggregateArgs>(args: Subset<T, DailyEarningAggregateArgs>): Prisma.PrismaPromise<GetDailyEarningAggregateType<T>>
+
+    /**
+     * Group by DailyEarning.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DailyEarningGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DailyEarningGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DailyEarningGroupByArgs['orderBy'] }
+        : { orderBy?: DailyEarningGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DailyEarningGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDailyEarningGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DailyEarning model
+   */
+  readonly fields: DailyEarningFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DailyEarning.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DailyEarningClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DailyEarning model
+   */
+  interface DailyEarningFieldRefs {
+    readonly id: FieldRef<"DailyEarning", 'String'>
+    readonly userId: FieldRef<"DailyEarning", 'String'>
+    readonly tokens: FieldRef<"DailyEarning", 'Float'>
+    readonly type: FieldRef<"DailyEarning", 'String'>
+    readonly claimedAt: FieldRef<"DailyEarning", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DailyEarning findUnique
+   */
+  export type DailyEarningFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyEarning
+     */
+    select?: DailyEarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DailyEarning
+     */
+    omit?: DailyEarningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyEarningInclude<ExtArgs> | null
+    /**
+     * Filter, which DailyEarning to fetch.
+     */
+    where: DailyEarningWhereUniqueInput
+  }
+
+  /**
+   * DailyEarning findUniqueOrThrow
+   */
+  export type DailyEarningFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyEarning
+     */
+    select?: DailyEarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DailyEarning
+     */
+    omit?: DailyEarningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyEarningInclude<ExtArgs> | null
+    /**
+     * Filter, which DailyEarning to fetch.
+     */
+    where: DailyEarningWhereUniqueInput
+  }
+
+  /**
+   * DailyEarning findFirst
+   */
+  export type DailyEarningFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyEarning
+     */
+    select?: DailyEarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DailyEarning
+     */
+    omit?: DailyEarningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyEarningInclude<ExtArgs> | null
+    /**
+     * Filter, which DailyEarning to fetch.
+     */
+    where?: DailyEarningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DailyEarnings to fetch.
+     */
+    orderBy?: DailyEarningOrderByWithRelationInput | DailyEarningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DailyEarnings.
+     */
+    cursor?: DailyEarningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DailyEarnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DailyEarnings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DailyEarnings.
+     */
+    distinct?: DailyEarningScalarFieldEnum | DailyEarningScalarFieldEnum[]
+  }
+
+  /**
+   * DailyEarning findFirstOrThrow
+   */
+  export type DailyEarningFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyEarning
+     */
+    select?: DailyEarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DailyEarning
+     */
+    omit?: DailyEarningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyEarningInclude<ExtArgs> | null
+    /**
+     * Filter, which DailyEarning to fetch.
+     */
+    where?: DailyEarningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DailyEarnings to fetch.
+     */
+    orderBy?: DailyEarningOrderByWithRelationInput | DailyEarningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DailyEarnings.
+     */
+    cursor?: DailyEarningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DailyEarnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DailyEarnings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DailyEarnings.
+     */
+    distinct?: DailyEarningScalarFieldEnum | DailyEarningScalarFieldEnum[]
+  }
+
+  /**
+   * DailyEarning findMany
+   */
+  export type DailyEarningFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyEarning
+     */
+    select?: DailyEarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DailyEarning
+     */
+    omit?: DailyEarningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyEarningInclude<ExtArgs> | null
+    /**
+     * Filter, which DailyEarnings to fetch.
+     */
+    where?: DailyEarningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DailyEarnings to fetch.
+     */
+    orderBy?: DailyEarningOrderByWithRelationInput | DailyEarningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DailyEarnings.
+     */
+    cursor?: DailyEarningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DailyEarnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DailyEarnings.
+     */
+    skip?: number
+    distinct?: DailyEarningScalarFieldEnum | DailyEarningScalarFieldEnum[]
+  }
+
+  /**
+   * DailyEarning create
+   */
+  export type DailyEarningCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyEarning
+     */
+    select?: DailyEarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DailyEarning
+     */
+    omit?: DailyEarningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyEarningInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DailyEarning.
+     */
+    data: XOR<DailyEarningCreateInput, DailyEarningUncheckedCreateInput>
+  }
+
+  /**
+   * DailyEarning createMany
+   */
+  export type DailyEarningCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DailyEarnings.
+     */
+    data: DailyEarningCreateManyInput | DailyEarningCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DailyEarning createManyAndReturn
+   */
+  export type DailyEarningCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyEarning
+     */
+    select?: DailyEarningSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DailyEarning
+     */
+    omit?: DailyEarningOmit<ExtArgs> | null
+    /**
+     * The data used to create many DailyEarnings.
+     */
+    data: DailyEarningCreateManyInput | DailyEarningCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyEarningIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DailyEarning update
+   */
+  export type DailyEarningUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyEarning
+     */
+    select?: DailyEarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DailyEarning
+     */
+    omit?: DailyEarningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyEarningInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DailyEarning.
+     */
+    data: XOR<DailyEarningUpdateInput, DailyEarningUncheckedUpdateInput>
+    /**
+     * Choose, which DailyEarning to update.
+     */
+    where: DailyEarningWhereUniqueInput
+  }
+
+  /**
+   * DailyEarning updateMany
+   */
+  export type DailyEarningUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DailyEarnings.
+     */
+    data: XOR<DailyEarningUpdateManyMutationInput, DailyEarningUncheckedUpdateManyInput>
+    /**
+     * Filter which DailyEarnings to update
+     */
+    where?: DailyEarningWhereInput
+    /**
+     * Limit how many DailyEarnings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DailyEarning updateManyAndReturn
+   */
+  export type DailyEarningUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyEarning
+     */
+    select?: DailyEarningSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DailyEarning
+     */
+    omit?: DailyEarningOmit<ExtArgs> | null
+    /**
+     * The data used to update DailyEarnings.
+     */
+    data: XOR<DailyEarningUpdateManyMutationInput, DailyEarningUncheckedUpdateManyInput>
+    /**
+     * Filter which DailyEarnings to update
+     */
+    where?: DailyEarningWhereInput
+    /**
+     * Limit how many DailyEarnings to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyEarningIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DailyEarning upsert
+   */
+  export type DailyEarningUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyEarning
+     */
+    select?: DailyEarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DailyEarning
+     */
+    omit?: DailyEarningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyEarningInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DailyEarning to update in case it exists.
+     */
+    where: DailyEarningWhereUniqueInput
+    /**
+     * In case the DailyEarning found by the `where` argument doesn't exist, create a new DailyEarning with this data.
+     */
+    create: XOR<DailyEarningCreateInput, DailyEarningUncheckedCreateInput>
+    /**
+     * In case the DailyEarning was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DailyEarningUpdateInput, DailyEarningUncheckedUpdateInput>
+  }
+
+  /**
+   * DailyEarning delete
+   */
+  export type DailyEarningDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyEarning
+     */
+    select?: DailyEarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DailyEarning
+     */
+    omit?: DailyEarningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyEarningInclude<ExtArgs> | null
+    /**
+     * Filter which DailyEarning to delete.
+     */
+    where: DailyEarningWhereUniqueInput
+  }
+
+  /**
+   * DailyEarning deleteMany
+   */
+  export type DailyEarningDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DailyEarnings to delete
+     */
+    where?: DailyEarningWhereInput
+    /**
+     * Limit how many DailyEarnings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DailyEarning without action
+   */
+  export type DailyEarningDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyEarning
+     */
+    select?: DailyEarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DailyEarning
+     */
+    omit?: DailyEarningOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyEarningInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AirdropSeason
+   */
+
+  export type AggregateAirdropSeason = {
+    _count: AirdropSeasonCountAggregateOutputType | null
+    _avg: AirdropSeasonAvgAggregateOutputType | null
+    _sum: AirdropSeasonSumAggregateOutputType | null
+    _min: AirdropSeasonMinAggregateOutputType | null
+    _max: AirdropSeasonMaxAggregateOutputType | null
+  }
+
+  export type AirdropSeasonAvgAggregateOutputType = {
+    totalAllocation: number | null
+  }
+
+  export type AirdropSeasonSumAggregateOutputType = {
+    totalAllocation: bigint | null
+  }
+
+  export type AirdropSeasonMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    status: string | null
+    totalAllocation: bigint | null
+    startDate: Date | null
+    endDate: Date | null
+    claimingStartedAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type AirdropSeasonMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    status: string | null
+    totalAllocation: bigint | null
+    startDate: Date | null
+    endDate: Date | null
+    claimingStartedAt: Date | null
+    createdAt: Date | null
+  }
+
+  export type AirdropSeasonCountAggregateOutputType = {
+    id: number
+    name: number
+    status: number
+    totalAllocation: number
+    startDate: number
+    endDate: number
+    claimingStartedAt: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type AirdropSeasonAvgAggregateInputType = {
+    totalAllocation?: true
+  }
+
+  export type AirdropSeasonSumAggregateInputType = {
+    totalAllocation?: true
+  }
+
+  export type AirdropSeasonMinAggregateInputType = {
+    id?: true
+    name?: true
+    status?: true
+    totalAllocation?: true
+    startDate?: true
+    endDate?: true
+    claimingStartedAt?: true
+    createdAt?: true
+  }
+
+  export type AirdropSeasonMaxAggregateInputType = {
+    id?: true
+    name?: true
+    status?: true
+    totalAllocation?: true
+    startDate?: true
+    endDate?: true
+    claimingStartedAt?: true
+    createdAt?: true
+  }
+
+  export type AirdropSeasonCountAggregateInputType = {
+    id?: true
+    name?: true
+    status?: true
+    totalAllocation?: true
+    startDate?: true
+    endDate?: true
+    claimingStartedAt?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type AirdropSeasonAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AirdropSeason to aggregate.
+     */
+    where?: AirdropSeasonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AirdropSeasons to fetch.
+     */
+    orderBy?: AirdropSeasonOrderByWithRelationInput | AirdropSeasonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AirdropSeasonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AirdropSeasons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AirdropSeasons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AirdropSeasons
+    **/
+    _count?: true | AirdropSeasonCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AirdropSeasonAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AirdropSeasonSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AirdropSeasonMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AirdropSeasonMaxAggregateInputType
+  }
+
+  export type GetAirdropSeasonAggregateType<T extends AirdropSeasonAggregateArgs> = {
+        [P in keyof T & keyof AggregateAirdropSeason]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAirdropSeason[P]>
+      : GetScalarType<T[P], AggregateAirdropSeason[P]>
+  }
+
+
+
+
+  export type AirdropSeasonGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AirdropSeasonWhereInput
+    orderBy?: AirdropSeasonOrderByWithAggregationInput | AirdropSeasonOrderByWithAggregationInput[]
+    by: AirdropSeasonScalarFieldEnum[] | AirdropSeasonScalarFieldEnum
+    having?: AirdropSeasonScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AirdropSeasonCountAggregateInputType | true
+    _avg?: AirdropSeasonAvgAggregateInputType
+    _sum?: AirdropSeasonSumAggregateInputType
+    _min?: AirdropSeasonMinAggregateInputType
+    _max?: AirdropSeasonMaxAggregateInputType
+  }
+
+  export type AirdropSeasonGroupByOutputType = {
+    id: string
+    name: string
+    status: string
+    totalAllocation: bigint
+    startDate: Date
+    endDate: Date | null
+    claimingStartedAt: Date | null
+    createdAt: Date
+    _count: AirdropSeasonCountAggregateOutputType | null
+    _avg: AirdropSeasonAvgAggregateOutputType | null
+    _sum: AirdropSeasonSumAggregateOutputType | null
+    _min: AirdropSeasonMinAggregateOutputType | null
+    _max: AirdropSeasonMaxAggregateOutputType | null
+  }
+
+  type GetAirdropSeasonGroupByPayload<T extends AirdropSeasonGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AirdropSeasonGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AirdropSeasonGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AirdropSeasonGroupByOutputType[P]>
+            : GetScalarType<T[P], AirdropSeasonGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AirdropSeasonSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    status?: boolean
+    totalAllocation?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    claimingStartedAt?: boolean
+    createdAt?: boolean
+    claims?: boolean | AirdropSeason$claimsArgs<ExtArgs>
+    _count?: boolean | AirdropSeasonCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["airdropSeason"]>
+
+  export type AirdropSeasonSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    status?: boolean
+    totalAllocation?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    claimingStartedAt?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["airdropSeason"]>
+
+  export type AirdropSeasonSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    status?: boolean
+    totalAllocation?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    claimingStartedAt?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["airdropSeason"]>
+
+  export type AirdropSeasonSelectScalar = {
+    id?: boolean
+    name?: boolean
+    status?: boolean
+    totalAllocation?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    claimingStartedAt?: boolean
+    createdAt?: boolean
+  }
+
+  export type AirdropSeasonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "status" | "totalAllocation" | "startDate" | "endDate" | "claimingStartedAt" | "createdAt", ExtArgs["result"]["airdropSeason"]>
+  export type AirdropSeasonInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    claims?: boolean | AirdropSeason$claimsArgs<ExtArgs>
+    _count?: boolean | AirdropSeasonCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type AirdropSeasonIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type AirdropSeasonIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $AirdropSeasonPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AirdropSeason"
+    objects: {
+      claims: Prisma.$AirdropClaimPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      status: string
+      totalAllocation: bigint
+      startDate: Date
+      endDate: Date | null
+      claimingStartedAt: Date | null
+      createdAt: Date
+    }, ExtArgs["result"]["airdropSeason"]>
+    composites: {}
+  }
+
+  type AirdropSeasonGetPayload<S extends boolean | null | undefined | AirdropSeasonDefaultArgs> = $Result.GetResult<Prisma.$AirdropSeasonPayload, S>
+
+  type AirdropSeasonCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AirdropSeasonFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AirdropSeasonCountAggregateInputType | true
+    }
+
+  export interface AirdropSeasonDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AirdropSeason'], meta: { name: 'AirdropSeason' } }
+    /**
+     * Find zero or one AirdropSeason that matches the filter.
+     * @param {AirdropSeasonFindUniqueArgs} args - Arguments to find a AirdropSeason
+     * @example
+     * // Get one AirdropSeason
+     * const airdropSeason = await prisma.airdropSeason.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AirdropSeasonFindUniqueArgs>(args: SelectSubset<T, AirdropSeasonFindUniqueArgs<ExtArgs>>): Prisma__AirdropSeasonClient<$Result.GetResult<Prisma.$AirdropSeasonPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AirdropSeason that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AirdropSeasonFindUniqueOrThrowArgs} args - Arguments to find a AirdropSeason
+     * @example
+     * // Get one AirdropSeason
+     * const airdropSeason = await prisma.airdropSeason.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AirdropSeasonFindUniqueOrThrowArgs>(args: SelectSubset<T, AirdropSeasonFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AirdropSeasonClient<$Result.GetResult<Prisma.$AirdropSeasonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AirdropSeason that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AirdropSeasonFindFirstArgs} args - Arguments to find a AirdropSeason
+     * @example
+     * // Get one AirdropSeason
+     * const airdropSeason = await prisma.airdropSeason.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AirdropSeasonFindFirstArgs>(args?: SelectSubset<T, AirdropSeasonFindFirstArgs<ExtArgs>>): Prisma__AirdropSeasonClient<$Result.GetResult<Prisma.$AirdropSeasonPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AirdropSeason that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AirdropSeasonFindFirstOrThrowArgs} args - Arguments to find a AirdropSeason
+     * @example
+     * // Get one AirdropSeason
+     * const airdropSeason = await prisma.airdropSeason.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AirdropSeasonFindFirstOrThrowArgs>(args?: SelectSubset<T, AirdropSeasonFindFirstOrThrowArgs<ExtArgs>>): Prisma__AirdropSeasonClient<$Result.GetResult<Prisma.$AirdropSeasonPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AirdropSeasons that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AirdropSeasonFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AirdropSeasons
+     * const airdropSeasons = await prisma.airdropSeason.findMany()
+     * 
+     * // Get first 10 AirdropSeasons
+     * const airdropSeasons = await prisma.airdropSeason.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const airdropSeasonWithIdOnly = await prisma.airdropSeason.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AirdropSeasonFindManyArgs>(args?: SelectSubset<T, AirdropSeasonFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AirdropSeasonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AirdropSeason.
+     * @param {AirdropSeasonCreateArgs} args - Arguments to create a AirdropSeason.
+     * @example
+     * // Create one AirdropSeason
+     * const AirdropSeason = await prisma.airdropSeason.create({
+     *   data: {
+     *     // ... data to create a AirdropSeason
+     *   }
+     * })
+     * 
+     */
+    create<T extends AirdropSeasonCreateArgs>(args: SelectSubset<T, AirdropSeasonCreateArgs<ExtArgs>>): Prisma__AirdropSeasonClient<$Result.GetResult<Prisma.$AirdropSeasonPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AirdropSeasons.
+     * @param {AirdropSeasonCreateManyArgs} args - Arguments to create many AirdropSeasons.
+     * @example
+     * // Create many AirdropSeasons
+     * const airdropSeason = await prisma.airdropSeason.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AirdropSeasonCreateManyArgs>(args?: SelectSubset<T, AirdropSeasonCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AirdropSeasons and returns the data saved in the database.
+     * @param {AirdropSeasonCreateManyAndReturnArgs} args - Arguments to create many AirdropSeasons.
+     * @example
+     * // Create many AirdropSeasons
+     * const airdropSeason = await prisma.airdropSeason.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AirdropSeasons and only return the `id`
+     * const airdropSeasonWithIdOnly = await prisma.airdropSeason.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AirdropSeasonCreateManyAndReturnArgs>(args?: SelectSubset<T, AirdropSeasonCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AirdropSeasonPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a AirdropSeason.
+     * @param {AirdropSeasonDeleteArgs} args - Arguments to delete one AirdropSeason.
+     * @example
+     * // Delete one AirdropSeason
+     * const AirdropSeason = await prisma.airdropSeason.delete({
+     *   where: {
+     *     // ... filter to delete one AirdropSeason
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AirdropSeasonDeleteArgs>(args: SelectSubset<T, AirdropSeasonDeleteArgs<ExtArgs>>): Prisma__AirdropSeasonClient<$Result.GetResult<Prisma.$AirdropSeasonPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AirdropSeason.
+     * @param {AirdropSeasonUpdateArgs} args - Arguments to update one AirdropSeason.
+     * @example
+     * // Update one AirdropSeason
+     * const airdropSeason = await prisma.airdropSeason.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AirdropSeasonUpdateArgs>(args: SelectSubset<T, AirdropSeasonUpdateArgs<ExtArgs>>): Prisma__AirdropSeasonClient<$Result.GetResult<Prisma.$AirdropSeasonPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AirdropSeasons.
+     * @param {AirdropSeasonDeleteManyArgs} args - Arguments to filter AirdropSeasons to delete.
+     * @example
+     * // Delete a few AirdropSeasons
+     * const { count } = await prisma.airdropSeason.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AirdropSeasonDeleteManyArgs>(args?: SelectSubset<T, AirdropSeasonDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AirdropSeasons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AirdropSeasonUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AirdropSeasons
+     * const airdropSeason = await prisma.airdropSeason.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AirdropSeasonUpdateManyArgs>(args: SelectSubset<T, AirdropSeasonUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AirdropSeasons and returns the data updated in the database.
+     * @param {AirdropSeasonUpdateManyAndReturnArgs} args - Arguments to update many AirdropSeasons.
+     * @example
+     * // Update many AirdropSeasons
+     * const airdropSeason = await prisma.airdropSeason.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AirdropSeasons and only return the `id`
+     * const airdropSeasonWithIdOnly = await prisma.airdropSeason.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AirdropSeasonUpdateManyAndReturnArgs>(args: SelectSubset<T, AirdropSeasonUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AirdropSeasonPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one AirdropSeason.
+     * @param {AirdropSeasonUpsertArgs} args - Arguments to update or create a AirdropSeason.
+     * @example
+     * // Update or create a AirdropSeason
+     * const airdropSeason = await prisma.airdropSeason.upsert({
+     *   create: {
+     *     // ... data to create a AirdropSeason
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AirdropSeason we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AirdropSeasonUpsertArgs>(args: SelectSubset<T, AirdropSeasonUpsertArgs<ExtArgs>>): Prisma__AirdropSeasonClient<$Result.GetResult<Prisma.$AirdropSeasonPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AirdropSeasons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AirdropSeasonCountArgs} args - Arguments to filter AirdropSeasons to count.
+     * @example
+     * // Count the number of AirdropSeasons
+     * const count = await prisma.airdropSeason.count({
+     *   where: {
+     *     // ... the filter for the AirdropSeasons we want to count
+     *   }
+     * })
+    **/
+    count<T extends AirdropSeasonCountArgs>(
+      args?: Subset<T, AirdropSeasonCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AirdropSeasonCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AirdropSeason.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AirdropSeasonAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AirdropSeasonAggregateArgs>(args: Subset<T, AirdropSeasonAggregateArgs>): Prisma.PrismaPromise<GetAirdropSeasonAggregateType<T>>
+
+    /**
+     * Group by AirdropSeason.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AirdropSeasonGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AirdropSeasonGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AirdropSeasonGroupByArgs['orderBy'] }
+        : { orderBy?: AirdropSeasonGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AirdropSeasonGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAirdropSeasonGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AirdropSeason model
+   */
+  readonly fields: AirdropSeasonFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AirdropSeason.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AirdropSeasonClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    claims<T extends AirdropSeason$claimsArgs<ExtArgs> = {}>(args?: Subset<T, AirdropSeason$claimsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AirdropClaimPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AirdropSeason model
+   */
+  interface AirdropSeasonFieldRefs {
+    readonly id: FieldRef<"AirdropSeason", 'String'>
+    readonly name: FieldRef<"AirdropSeason", 'String'>
+    readonly status: FieldRef<"AirdropSeason", 'String'>
+    readonly totalAllocation: FieldRef<"AirdropSeason", 'BigInt'>
+    readonly startDate: FieldRef<"AirdropSeason", 'DateTime'>
+    readonly endDate: FieldRef<"AirdropSeason", 'DateTime'>
+    readonly claimingStartedAt: FieldRef<"AirdropSeason", 'DateTime'>
+    readonly createdAt: FieldRef<"AirdropSeason", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AirdropSeason findUnique
+   */
+  export type AirdropSeasonFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropSeason
+     */
+    select?: AirdropSeasonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropSeason
+     */
+    omit?: AirdropSeasonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropSeasonInclude<ExtArgs> | null
+    /**
+     * Filter, which AirdropSeason to fetch.
+     */
+    where: AirdropSeasonWhereUniqueInput
+  }
+
+  /**
+   * AirdropSeason findUniqueOrThrow
+   */
+  export type AirdropSeasonFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropSeason
+     */
+    select?: AirdropSeasonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropSeason
+     */
+    omit?: AirdropSeasonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropSeasonInclude<ExtArgs> | null
+    /**
+     * Filter, which AirdropSeason to fetch.
+     */
+    where: AirdropSeasonWhereUniqueInput
+  }
+
+  /**
+   * AirdropSeason findFirst
+   */
+  export type AirdropSeasonFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropSeason
+     */
+    select?: AirdropSeasonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropSeason
+     */
+    omit?: AirdropSeasonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropSeasonInclude<ExtArgs> | null
+    /**
+     * Filter, which AirdropSeason to fetch.
+     */
+    where?: AirdropSeasonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AirdropSeasons to fetch.
+     */
+    orderBy?: AirdropSeasonOrderByWithRelationInput | AirdropSeasonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AirdropSeasons.
+     */
+    cursor?: AirdropSeasonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AirdropSeasons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AirdropSeasons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AirdropSeasons.
+     */
+    distinct?: AirdropSeasonScalarFieldEnum | AirdropSeasonScalarFieldEnum[]
+  }
+
+  /**
+   * AirdropSeason findFirstOrThrow
+   */
+  export type AirdropSeasonFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropSeason
+     */
+    select?: AirdropSeasonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropSeason
+     */
+    omit?: AirdropSeasonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropSeasonInclude<ExtArgs> | null
+    /**
+     * Filter, which AirdropSeason to fetch.
+     */
+    where?: AirdropSeasonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AirdropSeasons to fetch.
+     */
+    orderBy?: AirdropSeasonOrderByWithRelationInput | AirdropSeasonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AirdropSeasons.
+     */
+    cursor?: AirdropSeasonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AirdropSeasons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AirdropSeasons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AirdropSeasons.
+     */
+    distinct?: AirdropSeasonScalarFieldEnum | AirdropSeasonScalarFieldEnum[]
+  }
+
+  /**
+   * AirdropSeason findMany
+   */
+  export type AirdropSeasonFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropSeason
+     */
+    select?: AirdropSeasonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropSeason
+     */
+    omit?: AirdropSeasonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropSeasonInclude<ExtArgs> | null
+    /**
+     * Filter, which AirdropSeasons to fetch.
+     */
+    where?: AirdropSeasonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AirdropSeasons to fetch.
+     */
+    orderBy?: AirdropSeasonOrderByWithRelationInput | AirdropSeasonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AirdropSeasons.
+     */
+    cursor?: AirdropSeasonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AirdropSeasons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AirdropSeasons.
+     */
+    skip?: number
+    distinct?: AirdropSeasonScalarFieldEnum | AirdropSeasonScalarFieldEnum[]
+  }
+
+  /**
+   * AirdropSeason create
+   */
+  export type AirdropSeasonCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropSeason
+     */
+    select?: AirdropSeasonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropSeason
+     */
+    omit?: AirdropSeasonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropSeasonInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AirdropSeason.
+     */
+    data: XOR<AirdropSeasonCreateInput, AirdropSeasonUncheckedCreateInput>
+  }
+
+  /**
+   * AirdropSeason createMany
+   */
+  export type AirdropSeasonCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AirdropSeasons.
+     */
+    data: AirdropSeasonCreateManyInput | AirdropSeasonCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AirdropSeason createManyAndReturn
+   */
+  export type AirdropSeasonCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropSeason
+     */
+    select?: AirdropSeasonSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropSeason
+     */
+    omit?: AirdropSeasonOmit<ExtArgs> | null
+    /**
+     * The data used to create many AirdropSeasons.
+     */
+    data: AirdropSeasonCreateManyInput | AirdropSeasonCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AirdropSeason update
+   */
+  export type AirdropSeasonUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropSeason
+     */
+    select?: AirdropSeasonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropSeason
+     */
+    omit?: AirdropSeasonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropSeasonInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AirdropSeason.
+     */
+    data: XOR<AirdropSeasonUpdateInput, AirdropSeasonUncheckedUpdateInput>
+    /**
+     * Choose, which AirdropSeason to update.
+     */
+    where: AirdropSeasonWhereUniqueInput
+  }
+
+  /**
+   * AirdropSeason updateMany
+   */
+  export type AirdropSeasonUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AirdropSeasons.
+     */
+    data: XOR<AirdropSeasonUpdateManyMutationInput, AirdropSeasonUncheckedUpdateManyInput>
+    /**
+     * Filter which AirdropSeasons to update
+     */
+    where?: AirdropSeasonWhereInput
+    /**
+     * Limit how many AirdropSeasons to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AirdropSeason updateManyAndReturn
+   */
+  export type AirdropSeasonUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropSeason
+     */
+    select?: AirdropSeasonSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropSeason
+     */
+    omit?: AirdropSeasonOmit<ExtArgs> | null
+    /**
+     * The data used to update AirdropSeasons.
+     */
+    data: XOR<AirdropSeasonUpdateManyMutationInput, AirdropSeasonUncheckedUpdateManyInput>
+    /**
+     * Filter which AirdropSeasons to update
+     */
+    where?: AirdropSeasonWhereInput
+    /**
+     * Limit how many AirdropSeasons to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AirdropSeason upsert
+   */
+  export type AirdropSeasonUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropSeason
+     */
+    select?: AirdropSeasonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropSeason
+     */
+    omit?: AirdropSeasonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropSeasonInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AirdropSeason to update in case it exists.
+     */
+    where: AirdropSeasonWhereUniqueInput
+    /**
+     * In case the AirdropSeason found by the `where` argument doesn't exist, create a new AirdropSeason with this data.
+     */
+    create: XOR<AirdropSeasonCreateInput, AirdropSeasonUncheckedCreateInput>
+    /**
+     * In case the AirdropSeason was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AirdropSeasonUpdateInput, AirdropSeasonUncheckedUpdateInput>
+  }
+
+  /**
+   * AirdropSeason delete
+   */
+  export type AirdropSeasonDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropSeason
+     */
+    select?: AirdropSeasonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropSeason
+     */
+    omit?: AirdropSeasonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropSeasonInclude<ExtArgs> | null
+    /**
+     * Filter which AirdropSeason to delete.
+     */
+    where: AirdropSeasonWhereUniqueInput
+  }
+
+  /**
+   * AirdropSeason deleteMany
+   */
+  export type AirdropSeasonDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AirdropSeasons to delete
+     */
+    where?: AirdropSeasonWhereInput
+    /**
+     * Limit how many AirdropSeasons to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AirdropSeason.claims
+   */
+  export type AirdropSeason$claimsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropClaim
+     */
+    select?: AirdropClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropClaim
+     */
+    omit?: AirdropClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropClaimInclude<ExtArgs> | null
+    where?: AirdropClaimWhereInput
+    orderBy?: AirdropClaimOrderByWithRelationInput | AirdropClaimOrderByWithRelationInput[]
+    cursor?: AirdropClaimWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AirdropClaimScalarFieldEnum | AirdropClaimScalarFieldEnum[]
+  }
+
+  /**
+   * AirdropSeason without action
+   */
+  export type AirdropSeasonDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropSeason
+     */
+    select?: AirdropSeasonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropSeason
+     */
+    omit?: AirdropSeasonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropSeasonInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model AirdropClaim
+   */
+
+  export type AggregateAirdropClaim = {
+    _count: AirdropClaimCountAggregateOutputType | null
+    _avg: AirdropClaimAvgAggregateOutputType | null
+    _sum: AirdropClaimSumAggregateOutputType | null
+    _min: AirdropClaimMinAggregateOutputType | null
+    _max: AirdropClaimMaxAggregateOutputType | null
+  }
+
+  export type AirdropClaimAvgAggregateOutputType = {
+    tokens: number | null
+  }
+
+  export type AirdropClaimSumAggregateOutputType = {
+    tokens: number | null
+  }
+
+  export type AirdropClaimMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    seasonId: string | null
+    tokens: number | null
+    tier: string | null
+    paymentSignature: string | null
+    transactionSignature: string | null
+    status: string | null
+    claimedAt: Date | null
+  }
+
+  export type AirdropClaimMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    seasonId: string | null
+    tokens: number | null
+    tier: string | null
+    paymentSignature: string | null
+    transactionSignature: string | null
+    status: string | null
+    claimedAt: Date | null
+  }
+
+  export type AirdropClaimCountAggregateOutputType = {
+    id: number
+    userId: number
+    seasonId: number
+    tokens: number
+    tier: number
+    paymentSignature: number
+    transactionSignature: number
+    status: number
+    claimedAt: number
+    _all: number
+  }
+
+
+  export type AirdropClaimAvgAggregateInputType = {
+    tokens?: true
+  }
+
+  export type AirdropClaimSumAggregateInputType = {
+    tokens?: true
+  }
+
+  export type AirdropClaimMinAggregateInputType = {
+    id?: true
+    userId?: true
+    seasonId?: true
+    tokens?: true
+    tier?: true
+    paymentSignature?: true
+    transactionSignature?: true
+    status?: true
+    claimedAt?: true
+  }
+
+  export type AirdropClaimMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    seasonId?: true
+    tokens?: true
+    tier?: true
+    paymentSignature?: true
+    transactionSignature?: true
+    status?: true
+    claimedAt?: true
+  }
+
+  export type AirdropClaimCountAggregateInputType = {
+    id?: true
+    userId?: true
+    seasonId?: true
+    tokens?: true
+    tier?: true
+    paymentSignature?: true
+    transactionSignature?: true
+    status?: true
+    claimedAt?: true
+    _all?: true
+  }
+
+  export type AirdropClaimAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AirdropClaim to aggregate.
+     */
+    where?: AirdropClaimWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AirdropClaims to fetch.
+     */
+    orderBy?: AirdropClaimOrderByWithRelationInput | AirdropClaimOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AirdropClaimWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AirdropClaims from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AirdropClaims.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned AirdropClaims
+    **/
+    _count?: true | AirdropClaimCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: AirdropClaimAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: AirdropClaimSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AirdropClaimMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AirdropClaimMaxAggregateInputType
+  }
+
+  export type GetAirdropClaimAggregateType<T extends AirdropClaimAggregateArgs> = {
+        [P in keyof T & keyof AggregateAirdropClaim]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAirdropClaim[P]>
+      : GetScalarType<T[P], AggregateAirdropClaim[P]>
+  }
+
+
+
+
+  export type AirdropClaimGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AirdropClaimWhereInput
+    orderBy?: AirdropClaimOrderByWithAggregationInput | AirdropClaimOrderByWithAggregationInput[]
+    by: AirdropClaimScalarFieldEnum[] | AirdropClaimScalarFieldEnum
+    having?: AirdropClaimScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AirdropClaimCountAggregateInputType | true
+    _avg?: AirdropClaimAvgAggregateInputType
+    _sum?: AirdropClaimSumAggregateInputType
+    _min?: AirdropClaimMinAggregateInputType
+    _max?: AirdropClaimMaxAggregateInputType
+  }
+
+  export type AirdropClaimGroupByOutputType = {
+    id: string
+    userId: string
+    seasonId: string
+    tokens: number
+    tier: string
+    paymentSignature: string
+    transactionSignature: string | null
+    status: string
+    claimedAt: Date
+    _count: AirdropClaimCountAggregateOutputType | null
+    _avg: AirdropClaimAvgAggregateOutputType | null
+    _sum: AirdropClaimSumAggregateOutputType | null
+    _min: AirdropClaimMinAggregateOutputType | null
+    _max: AirdropClaimMaxAggregateOutputType | null
+  }
+
+  type GetAirdropClaimGroupByPayload<T extends AirdropClaimGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AirdropClaimGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AirdropClaimGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AirdropClaimGroupByOutputType[P]>
+            : GetScalarType<T[P], AirdropClaimGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AirdropClaimSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    seasonId?: boolean
+    tokens?: boolean
+    tier?: boolean
+    paymentSignature?: boolean
+    transactionSignature?: boolean
+    status?: boolean
+    claimedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    season?: boolean | AirdropSeasonDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["airdropClaim"]>
+
+  export type AirdropClaimSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    seasonId?: boolean
+    tokens?: boolean
+    tier?: boolean
+    paymentSignature?: boolean
+    transactionSignature?: boolean
+    status?: boolean
+    claimedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    season?: boolean | AirdropSeasonDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["airdropClaim"]>
+
+  export type AirdropClaimSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    seasonId?: boolean
+    tokens?: boolean
+    tier?: boolean
+    paymentSignature?: boolean
+    transactionSignature?: boolean
+    status?: boolean
+    claimedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    season?: boolean | AirdropSeasonDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["airdropClaim"]>
+
+  export type AirdropClaimSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    seasonId?: boolean
+    tokens?: boolean
+    tier?: boolean
+    paymentSignature?: boolean
+    transactionSignature?: boolean
+    status?: boolean
+    claimedAt?: boolean
+  }
+
+  export type AirdropClaimOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "seasonId" | "tokens" | "tier" | "paymentSignature" | "transactionSignature" | "status" | "claimedAt", ExtArgs["result"]["airdropClaim"]>
+  export type AirdropClaimInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    season?: boolean | AirdropSeasonDefaultArgs<ExtArgs>
+  }
+  export type AirdropClaimIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    season?: boolean | AirdropSeasonDefaultArgs<ExtArgs>
+  }
+  export type AirdropClaimIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    season?: boolean | AirdropSeasonDefaultArgs<ExtArgs>
+  }
+
+  export type $AirdropClaimPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "AirdropClaim"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      season: Prisma.$AirdropSeasonPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      seasonId: string
+      tokens: number
+      tier: string
+      paymentSignature: string
+      transactionSignature: string | null
+      status: string
+      claimedAt: Date
+    }, ExtArgs["result"]["airdropClaim"]>
+    composites: {}
+  }
+
+  type AirdropClaimGetPayload<S extends boolean | null | undefined | AirdropClaimDefaultArgs> = $Result.GetResult<Prisma.$AirdropClaimPayload, S>
+
+  type AirdropClaimCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AirdropClaimFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AirdropClaimCountAggregateInputType | true
+    }
+
+  export interface AirdropClaimDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['AirdropClaim'], meta: { name: 'AirdropClaim' } }
+    /**
+     * Find zero or one AirdropClaim that matches the filter.
+     * @param {AirdropClaimFindUniqueArgs} args - Arguments to find a AirdropClaim
+     * @example
+     * // Get one AirdropClaim
+     * const airdropClaim = await prisma.airdropClaim.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AirdropClaimFindUniqueArgs>(args: SelectSubset<T, AirdropClaimFindUniqueArgs<ExtArgs>>): Prisma__AirdropClaimClient<$Result.GetResult<Prisma.$AirdropClaimPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one AirdropClaim that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AirdropClaimFindUniqueOrThrowArgs} args - Arguments to find a AirdropClaim
+     * @example
+     * // Get one AirdropClaim
+     * const airdropClaim = await prisma.airdropClaim.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AirdropClaimFindUniqueOrThrowArgs>(args: SelectSubset<T, AirdropClaimFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AirdropClaimClient<$Result.GetResult<Prisma.$AirdropClaimPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AirdropClaim that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AirdropClaimFindFirstArgs} args - Arguments to find a AirdropClaim
+     * @example
+     * // Get one AirdropClaim
+     * const airdropClaim = await prisma.airdropClaim.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AirdropClaimFindFirstArgs>(args?: SelectSubset<T, AirdropClaimFindFirstArgs<ExtArgs>>): Prisma__AirdropClaimClient<$Result.GetResult<Prisma.$AirdropClaimPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first AirdropClaim that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AirdropClaimFindFirstOrThrowArgs} args - Arguments to find a AirdropClaim
+     * @example
+     * // Get one AirdropClaim
+     * const airdropClaim = await prisma.airdropClaim.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AirdropClaimFindFirstOrThrowArgs>(args?: SelectSubset<T, AirdropClaimFindFirstOrThrowArgs<ExtArgs>>): Prisma__AirdropClaimClient<$Result.GetResult<Prisma.$AirdropClaimPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more AirdropClaims that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AirdropClaimFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all AirdropClaims
+     * const airdropClaims = await prisma.airdropClaim.findMany()
+     * 
+     * // Get first 10 AirdropClaims
+     * const airdropClaims = await prisma.airdropClaim.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const airdropClaimWithIdOnly = await prisma.airdropClaim.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AirdropClaimFindManyArgs>(args?: SelectSubset<T, AirdropClaimFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AirdropClaimPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a AirdropClaim.
+     * @param {AirdropClaimCreateArgs} args - Arguments to create a AirdropClaim.
+     * @example
+     * // Create one AirdropClaim
+     * const AirdropClaim = await prisma.airdropClaim.create({
+     *   data: {
+     *     // ... data to create a AirdropClaim
+     *   }
+     * })
+     * 
+     */
+    create<T extends AirdropClaimCreateArgs>(args: SelectSubset<T, AirdropClaimCreateArgs<ExtArgs>>): Prisma__AirdropClaimClient<$Result.GetResult<Prisma.$AirdropClaimPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many AirdropClaims.
+     * @param {AirdropClaimCreateManyArgs} args - Arguments to create many AirdropClaims.
+     * @example
+     * // Create many AirdropClaims
+     * const airdropClaim = await prisma.airdropClaim.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AirdropClaimCreateManyArgs>(args?: SelectSubset<T, AirdropClaimCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many AirdropClaims and returns the data saved in the database.
+     * @param {AirdropClaimCreateManyAndReturnArgs} args - Arguments to create many AirdropClaims.
+     * @example
+     * // Create many AirdropClaims
+     * const airdropClaim = await prisma.airdropClaim.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many AirdropClaims and only return the `id`
+     * const airdropClaimWithIdOnly = await prisma.airdropClaim.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AirdropClaimCreateManyAndReturnArgs>(args?: SelectSubset<T, AirdropClaimCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AirdropClaimPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a AirdropClaim.
+     * @param {AirdropClaimDeleteArgs} args - Arguments to delete one AirdropClaim.
+     * @example
+     * // Delete one AirdropClaim
+     * const AirdropClaim = await prisma.airdropClaim.delete({
+     *   where: {
+     *     // ... filter to delete one AirdropClaim
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AirdropClaimDeleteArgs>(args: SelectSubset<T, AirdropClaimDeleteArgs<ExtArgs>>): Prisma__AirdropClaimClient<$Result.GetResult<Prisma.$AirdropClaimPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one AirdropClaim.
+     * @param {AirdropClaimUpdateArgs} args - Arguments to update one AirdropClaim.
+     * @example
+     * // Update one AirdropClaim
+     * const airdropClaim = await prisma.airdropClaim.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AirdropClaimUpdateArgs>(args: SelectSubset<T, AirdropClaimUpdateArgs<ExtArgs>>): Prisma__AirdropClaimClient<$Result.GetResult<Prisma.$AirdropClaimPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more AirdropClaims.
+     * @param {AirdropClaimDeleteManyArgs} args - Arguments to filter AirdropClaims to delete.
+     * @example
+     * // Delete a few AirdropClaims
+     * const { count } = await prisma.airdropClaim.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AirdropClaimDeleteManyArgs>(args?: SelectSubset<T, AirdropClaimDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AirdropClaims.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AirdropClaimUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many AirdropClaims
+     * const airdropClaim = await prisma.airdropClaim.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AirdropClaimUpdateManyArgs>(args: SelectSubset<T, AirdropClaimUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AirdropClaims and returns the data updated in the database.
+     * @param {AirdropClaimUpdateManyAndReturnArgs} args - Arguments to update many AirdropClaims.
+     * @example
+     * // Update many AirdropClaims
+     * const airdropClaim = await prisma.airdropClaim.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AirdropClaims and only return the `id`
+     * const airdropClaimWithIdOnly = await prisma.airdropClaim.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AirdropClaimUpdateManyAndReturnArgs>(args: SelectSubset<T, AirdropClaimUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AirdropClaimPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one AirdropClaim.
+     * @param {AirdropClaimUpsertArgs} args - Arguments to update or create a AirdropClaim.
+     * @example
+     * // Update or create a AirdropClaim
+     * const airdropClaim = await prisma.airdropClaim.upsert({
+     *   create: {
+     *     // ... data to create a AirdropClaim
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the AirdropClaim we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AirdropClaimUpsertArgs>(args: SelectSubset<T, AirdropClaimUpsertArgs<ExtArgs>>): Prisma__AirdropClaimClient<$Result.GetResult<Prisma.$AirdropClaimPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of AirdropClaims.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AirdropClaimCountArgs} args - Arguments to filter AirdropClaims to count.
+     * @example
+     * // Count the number of AirdropClaims
+     * const count = await prisma.airdropClaim.count({
+     *   where: {
+     *     // ... the filter for the AirdropClaims we want to count
+     *   }
+     * })
+    **/
+    count<T extends AirdropClaimCountArgs>(
+      args?: Subset<T, AirdropClaimCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AirdropClaimCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a AirdropClaim.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AirdropClaimAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AirdropClaimAggregateArgs>(args: Subset<T, AirdropClaimAggregateArgs>): Prisma.PrismaPromise<GetAirdropClaimAggregateType<T>>
+
+    /**
+     * Group by AirdropClaim.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AirdropClaimGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AirdropClaimGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AirdropClaimGroupByArgs['orderBy'] }
+        : { orderBy?: AirdropClaimGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AirdropClaimGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAirdropClaimGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the AirdropClaim model
+   */
+  readonly fields: AirdropClaimFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for AirdropClaim.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AirdropClaimClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    season<T extends AirdropSeasonDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AirdropSeasonDefaultArgs<ExtArgs>>): Prisma__AirdropSeasonClient<$Result.GetResult<Prisma.$AirdropSeasonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the AirdropClaim model
+   */
+  interface AirdropClaimFieldRefs {
+    readonly id: FieldRef<"AirdropClaim", 'String'>
+    readonly userId: FieldRef<"AirdropClaim", 'String'>
+    readonly seasonId: FieldRef<"AirdropClaim", 'String'>
+    readonly tokens: FieldRef<"AirdropClaim", 'Float'>
+    readonly tier: FieldRef<"AirdropClaim", 'String'>
+    readonly paymentSignature: FieldRef<"AirdropClaim", 'String'>
+    readonly transactionSignature: FieldRef<"AirdropClaim", 'String'>
+    readonly status: FieldRef<"AirdropClaim", 'String'>
+    readonly claimedAt: FieldRef<"AirdropClaim", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * AirdropClaim findUnique
+   */
+  export type AirdropClaimFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropClaim
+     */
+    select?: AirdropClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropClaim
+     */
+    omit?: AirdropClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropClaimInclude<ExtArgs> | null
+    /**
+     * Filter, which AirdropClaim to fetch.
+     */
+    where: AirdropClaimWhereUniqueInput
+  }
+
+  /**
+   * AirdropClaim findUniqueOrThrow
+   */
+  export type AirdropClaimFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropClaim
+     */
+    select?: AirdropClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropClaim
+     */
+    omit?: AirdropClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropClaimInclude<ExtArgs> | null
+    /**
+     * Filter, which AirdropClaim to fetch.
+     */
+    where: AirdropClaimWhereUniqueInput
+  }
+
+  /**
+   * AirdropClaim findFirst
+   */
+  export type AirdropClaimFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropClaim
+     */
+    select?: AirdropClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropClaim
+     */
+    omit?: AirdropClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropClaimInclude<ExtArgs> | null
+    /**
+     * Filter, which AirdropClaim to fetch.
+     */
+    where?: AirdropClaimWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AirdropClaims to fetch.
+     */
+    orderBy?: AirdropClaimOrderByWithRelationInput | AirdropClaimOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AirdropClaims.
+     */
+    cursor?: AirdropClaimWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AirdropClaims from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AirdropClaims.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AirdropClaims.
+     */
+    distinct?: AirdropClaimScalarFieldEnum | AirdropClaimScalarFieldEnum[]
+  }
+
+  /**
+   * AirdropClaim findFirstOrThrow
+   */
+  export type AirdropClaimFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropClaim
+     */
+    select?: AirdropClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropClaim
+     */
+    omit?: AirdropClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropClaimInclude<ExtArgs> | null
+    /**
+     * Filter, which AirdropClaim to fetch.
+     */
+    where?: AirdropClaimWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AirdropClaims to fetch.
+     */
+    orderBy?: AirdropClaimOrderByWithRelationInput | AirdropClaimOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for AirdropClaims.
+     */
+    cursor?: AirdropClaimWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AirdropClaims from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AirdropClaims.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of AirdropClaims.
+     */
+    distinct?: AirdropClaimScalarFieldEnum | AirdropClaimScalarFieldEnum[]
+  }
+
+  /**
+   * AirdropClaim findMany
+   */
+  export type AirdropClaimFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropClaim
+     */
+    select?: AirdropClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropClaim
+     */
+    omit?: AirdropClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropClaimInclude<ExtArgs> | null
+    /**
+     * Filter, which AirdropClaims to fetch.
+     */
+    where?: AirdropClaimWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of AirdropClaims to fetch.
+     */
+    orderBy?: AirdropClaimOrderByWithRelationInput | AirdropClaimOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing AirdropClaims.
+     */
+    cursor?: AirdropClaimWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` AirdropClaims from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` AirdropClaims.
+     */
+    skip?: number
+    distinct?: AirdropClaimScalarFieldEnum | AirdropClaimScalarFieldEnum[]
+  }
+
+  /**
+   * AirdropClaim create
+   */
+  export type AirdropClaimCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropClaim
+     */
+    select?: AirdropClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropClaim
+     */
+    omit?: AirdropClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropClaimInclude<ExtArgs> | null
+    /**
+     * The data needed to create a AirdropClaim.
+     */
+    data: XOR<AirdropClaimCreateInput, AirdropClaimUncheckedCreateInput>
+  }
+
+  /**
+   * AirdropClaim createMany
+   */
+  export type AirdropClaimCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many AirdropClaims.
+     */
+    data: AirdropClaimCreateManyInput | AirdropClaimCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * AirdropClaim createManyAndReturn
+   */
+  export type AirdropClaimCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropClaim
+     */
+    select?: AirdropClaimSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropClaim
+     */
+    omit?: AirdropClaimOmit<ExtArgs> | null
+    /**
+     * The data used to create many AirdropClaims.
+     */
+    data: AirdropClaimCreateManyInput | AirdropClaimCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropClaimIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AirdropClaim update
+   */
+  export type AirdropClaimUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropClaim
+     */
+    select?: AirdropClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropClaim
+     */
+    omit?: AirdropClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropClaimInclude<ExtArgs> | null
+    /**
+     * The data needed to update a AirdropClaim.
+     */
+    data: XOR<AirdropClaimUpdateInput, AirdropClaimUncheckedUpdateInput>
+    /**
+     * Choose, which AirdropClaim to update.
+     */
+    where: AirdropClaimWhereUniqueInput
+  }
+
+  /**
+   * AirdropClaim updateMany
+   */
+  export type AirdropClaimUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update AirdropClaims.
+     */
+    data: XOR<AirdropClaimUpdateManyMutationInput, AirdropClaimUncheckedUpdateManyInput>
+    /**
+     * Filter which AirdropClaims to update
+     */
+    where?: AirdropClaimWhereInput
+    /**
+     * Limit how many AirdropClaims to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AirdropClaim updateManyAndReturn
+   */
+  export type AirdropClaimUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropClaim
+     */
+    select?: AirdropClaimSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropClaim
+     */
+    omit?: AirdropClaimOmit<ExtArgs> | null
+    /**
+     * The data used to update AirdropClaims.
+     */
+    data: XOR<AirdropClaimUpdateManyMutationInput, AirdropClaimUncheckedUpdateManyInput>
+    /**
+     * Filter which AirdropClaims to update
+     */
+    where?: AirdropClaimWhereInput
+    /**
+     * Limit how many AirdropClaims to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropClaimIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * AirdropClaim upsert
+   */
+  export type AirdropClaimUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropClaim
+     */
+    select?: AirdropClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropClaim
+     */
+    omit?: AirdropClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropClaimInclude<ExtArgs> | null
+    /**
+     * The filter to search for the AirdropClaim to update in case it exists.
+     */
+    where: AirdropClaimWhereUniqueInput
+    /**
+     * In case the AirdropClaim found by the `where` argument doesn't exist, create a new AirdropClaim with this data.
+     */
+    create: XOR<AirdropClaimCreateInput, AirdropClaimUncheckedCreateInput>
+    /**
+     * In case the AirdropClaim was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AirdropClaimUpdateInput, AirdropClaimUncheckedUpdateInput>
+  }
+
+  /**
+   * AirdropClaim delete
+   */
+  export type AirdropClaimDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropClaim
+     */
+    select?: AirdropClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropClaim
+     */
+    omit?: AirdropClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropClaimInclude<ExtArgs> | null
+    /**
+     * Filter which AirdropClaim to delete.
+     */
+    where: AirdropClaimWhereUniqueInput
+  }
+
+  /**
+   * AirdropClaim deleteMany
+   */
+  export type AirdropClaimDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which AirdropClaims to delete
+     */
+    where?: AirdropClaimWhereInput
+    /**
+     * Limit how many AirdropClaims to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * AirdropClaim without action
+   */
+  export type AirdropClaimDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropClaim
+     */
+    select?: AirdropClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropClaim
+     */
+    omit?: AirdropClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropClaimInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -22138,6 +25946,8 @@ export namespace Prisma {
     rank: 'rank',
     isAdmin: 'isAdmin',
     isActive: 'isActive',
+    totalEarnedTokens: 'totalEarnedTokens',
+    lastLoginReward: 'lastLoginReward',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     permissions: 'permissions',
@@ -22345,7 +26155,8 @@ export namespace Prisma {
     referredId: 'referredId',
     points: 'points',
     completed: 'completed',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    isActive: 'isActive'
   };
 
   export type ReferralScalarFieldEnum = (typeof ReferralScalarFieldEnum)[keyof typeof ReferralScalarFieldEnum]
@@ -22375,6 +26186,46 @@ export namespace Prisma {
   };
 
   export type AnalyticsScalarFieldEnum = (typeof AnalyticsScalarFieldEnum)[keyof typeof AnalyticsScalarFieldEnum]
+
+
+  export const DailyEarningScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    tokens: 'tokens',
+    type: 'type',
+    claimedAt: 'claimedAt'
+  };
+
+  export type DailyEarningScalarFieldEnum = (typeof DailyEarningScalarFieldEnum)[keyof typeof DailyEarningScalarFieldEnum]
+
+
+  export const AirdropSeasonScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    status: 'status',
+    totalAllocation: 'totalAllocation',
+    startDate: 'startDate',
+    endDate: 'endDate',
+    claimingStartedAt: 'claimingStartedAt',
+    createdAt: 'createdAt'
+  };
+
+  export type AirdropSeasonScalarFieldEnum = (typeof AirdropSeasonScalarFieldEnum)[keyof typeof AirdropSeasonScalarFieldEnum]
+
+
+  export const AirdropClaimScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    seasonId: 'seasonId',
+    tokens: 'tokens',
+    tier: 'tier',
+    paymentSignature: 'paymentSignature',
+    transactionSignature: 'transactionSignature',
+    status: 'status',
+    claimedAt: 'claimedAt'
+  };
+
+  export type AirdropClaimScalarFieldEnum = (typeof AirdropClaimScalarFieldEnum)[keyof typeof AirdropClaimScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -22494,6 +26345,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Json'
    */
   export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
@@ -22518,20 +26383,6 @@ export namespace Prisma {
    * Reference to a field of type 'NotificationType[]'
    */
   export type ListEnumNotificationTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'NotificationType[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 
@@ -22629,6 +26480,8 @@ export namespace Prisma {
     rank?: IntFilter<"User"> | number
     isAdmin?: BoolFilter<"User"> | boolean
     isActive?: BoolFilter<"User"> | boolean
+    totalEarnedTokens?: FloatFilter<"User"> | number
+    lastLoginReward?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     permissions?: JsonNullableFilter<"User">
@@ -22637,6 +26490,8 @@ export namespace Prisma {
     isBanned?: BoolFilter<"User"> | boolean
     bannedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     lastActivity?: DateTimeNullableFilter<"User"> | Date | string | null
+    dailyEarnings?: DailyEarningListRelationFilter
+    airdropClaims?: AirdropClaimListRelationFilter
     engagements?: TwitterEngagementListRelationFilter
     tasks?: TaskCompletionListRelationFilter
     claims?: ClaimListRelationFilter
@@ -22669,6 +26524,8 @@ export namespace Prisma {
     rank?: SortOrder
     isAdmin?: SortOrder
     isActive?: SortOrder
+    totalEarnedTokens?: SortOrder
+    lastLoginReward?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     permissions?: SortOrderInput | SortOrder
@@ -22677,6 +26534,8 @@ export namespace Prisma {
     isBanned?: SortOrder
     bannedAt?: SortOrderInput | SortOrder
     lastActivity?: SortOrderInput | SortOrder
+    dailyEarnings?: DailyEarningOrderByRelationAggregateInput
+    airdropClaims?: AirdropClaimOrderByRelationAggregateInput
     engagements?: TwitterEngagementOrderByRelationAggregateInput
     tasks?: TaskCompletionOrderByRelationAggregateInput
     claims?: ClaimOrderByRelationAggregateInput
@@ -22712,6 +26571,8 @@ export namespace Prisma {
     rank?: IntFilter<"User"> | number
     isAdmin?: BoolFilter<"User"> | boolean
     isActive?: BoolFilter<"User"> | boolean
+    totalEarnedTokens?: FloatFilter<"User"> | number
+    lastLoginReward?: DateTimeNullableFilter<"User"> | Date | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     permissions?: JsonNullableFilter<"User">
@@ -22720,6 +26581,8 @@ export namespace Prisma {
     isBanned?: BoolFilter<"User"> | boolean
     bannedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     lastActivity?: DateTimeNullableFilter<"User"> | Date | string | null
+    dailyEarnings?: DailyEarningListRelationFilter
+    airdropClaims?: AirdropClaimListRelationFilter
     engagements?: TwitterEngagementListRelationFilter
     tasks?: TaskCompletionListRelationFilter
     claims?: ClaimListRelationFilter
@@ -22752,6 +26615,8 @@ export namespace Prisma {
     rank?: SortOrder
     isAdmin?: SortOrder
     isActive?: SortOrder
+    totalEarnedTokens?: SortOrder
+    lastLoginReward?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     permissions?: SortOrderInput | SortOrder
@@ -22788,6 +26653,8 @@ export namespace Prisma {
     rank?: IntWithAggregatesFilter<"User"> | number
     isAdmin?: BoolWithAggregatesFilter<"User"> | boolean
     isActive?: BoolWithAggregatesFilter<"User"> | boolean
+    totalEarnedTokens?: FloatWithAggregatesFilter<"User"> | number
+    lastLoginReward?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     permissions?: JsonNullableWithAggregatesFilter<"User">
@@ -23774,6 +27641,7 @@ export namespace Prisma {
     points?: IntFilter<"Referral"> | number
     completed?: BoolFilter<"Referral"> | boolean
     createdAt?: DateTimeFilter<"Referral"> | Date | string
+    isActive?: BoolFilter<"Referral"> | boolean
     referrer?: XOR<UserScalarRelationFilter, UserWhereInput>
     referred?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
@@ -23785,6 +27653,7 @@ export namespace Prisma {
     points?: SortOrder
     completed?: SortOrder
     createdAt?: SortOrder
+    isActive?: SortOrder
     referrer?: UserOrderByWithRelationInput
     referred?: UserOrderByWithRelationInput
   }
@@ -23799,6 +27668,7 @@ export namespace Prisma {
     points?: IntFilter<"Referral"> | number
     completed?: BoolFilter<"Referral"> | boolean
     createdAt?: DateTimeFilter<"Referral"> | Date | string
+    isActive?: BoolFilter<"Referral"> | boolean
     referrer?: XOR<UserScalarRelationFilter, UserWhereInput>
     referred?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "referredId">
@@ -23810,6 +27680,7 @@ export namespace Prisma {
     points?: SortOrder
     completed?: SortOrder
     createdAt?: SortOrder
+    isActive?: SortOrder
     _count?: ReferralCountOrderByAggregateInput
     _avg?: ReferralAvgOrderByAggregateInput
     _max?: ReferralMaxOrderByAggregateInput
@@ -23827,6 +27698,7 @@ export namespace Prisma {
     points?: IntWithAggregatesFilter<"Referral"> | number
     completed?: BoolWithAggregatesFilter<"Referral"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Referral"> | Date | string
+    isActive?: BoolWithAggregatesFilter<"Referral"> | boolean
   }
 
   export type SystemConfigWhereInput = {
@@ -23955,6 +27827,216 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Analytics"> | Date | string
   }
 
+  export type DailyEarningWhereInput = {
+    AND?: DailyEarningWhereInput | DailyEarningWhereInput[]
+    OR?: DailyEarningWhereInput[]
+    NOT?: DailyEarningWhereInput | DailyEarningWhereInput[]
+    id?: StringFilter<"DailyEarning"> | string
+    userId?: StringFilter<"DailyEarning"> | string
+    tokens?: FloatFilter<"DailyEarning"> | number
+    type?: StringFilter<"DailyEarning"> | string
+    claimedAt?: DateTimeFilter<"DailyEarning"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type DailyEarningOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    tokens?: SortOrder
+    type?: SortOrder
+    claimedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type DailyEarningWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DailyEarningWhereInput | DailyEarningWhereInput[]
+    OR?: DailyEarningWhereInput[]
+    NOT?: DailyEarningWhereInput | DailyEarningWhereInput[]
+    userId?: StringFilter<"DailyEarning"> | string
+    tokens?: FloatFilter<"DailyEarning"> | number
+    type?: StringFilter<"DailyEarning"> | string
+    claimedAt?: DateTimeFilter<"DailyEarning"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type DailyEarningOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    tokens?: SortOrder
+    type?: SortOrder
+    claimedAt?: SortOrder
+    _count?: DailyEarningCountOrderByAggregateInput
+    _avg?: DailyEarningAvgOrderByAggregateInput
+    _max?: DailyEarningMaxOrderByAggregateInput
+    _min?: DailyEarningMinOrderByAggregateInput
+    _sum?: DailyEarningSumOrderByAggregateInput
+  }
+
+  export type DailyEarningScalarWhereWithAggregatesInput = {
+    AND?: DailyEarningScalarWhereWithAggregatesInput | DailyEarningScalarWhereWithAggregatesInput[]
+    OR?: DailyEarningScalarWhereWithAggregatesInput[]
+    NOT?: DailyEarningScalarWhereWithAggregatesInput | DailyEarningScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DailyEarning"> | string
+    userId?: StringWithAggregatesFilter<"DailyEarning"> | string
+    tokens?: FloatWithAggregatesFilter<"DailyEarning"> | number
+    type?: StringWithAggregatesFilter<"DailyEarning"> | string
+    claimedAt?: DateTimeWithAggregatesFilter<"DailyEarning"> | Date | string
+  }
+
+  export type AirdropSeasonWhereInput = {
+    AND?: AirdropSeasonWhereInput | AirdropSeasonWhereInput[]
+    OR?: AirdropSeasonWhereInput[]
+    NOT?: AirdropSeasonWhereInput | AirdropSeasonWhereInput[]
+    id?: StringFilter<"AirdropSeason"> | string
+    name?: StringFilter<"AirdropSeason"> | string
+    status?: StringFilter<"AirdropSeason"> | string
+    totalAllocation?: BigIntFilter<"AirdropSeason"> | bigint | number
+    startDate?: DateTimeFilter<"AirdropSeason"> | Date | string
+    endDate?: DateTimeNullableFilter<"AirdropSeason"> | Date | string | null
+    claimingStartedAt?: DateTimeNullableFilter<"AirdropSeason"> | Date | string | null
+    createdAt?: DateTimeFilter<"AirdropSeason"> | Date | string
+    claims?: AirdropClaimListRelationFilter
+  }
+
+  export type AirdropSeasonOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    totalAllocation?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrderInput | SortOrder
+    claimingStartedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    claims?: AirdropClaimOrderByRelationAggregateInput
+  }
+
+  export type AirdropSeasonWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AirdropSeasonWhereInput | AirdropSeasonWhereInput[]
+    OR?: AirdropSeasonWhereInput[]
+    NOT?: AirdropSeasonWhereInput | AirdropSeasonWhereInput[]
+    name?: StringFilter<"AirdropSeason"> | string
+    status?: StringFilter<"AirdropSeason"> | string
+    totalAllocation?: BigIntFilter<"AirdropSeason"> | bigint | number
+    startDate?: DateTimeFilter<"AirdropSeason"> | Date | string
+    endDate?: DateTimeNullableFilter<"AirdropSeason"> | Date | string | null
+    claimingStartedAt?: DateTimeNullableFilter<"AirdropSeason"> | Date | string | null
+    createdAt?: DateTimeFilter<"AirdropSeason"> | Date | string
+    claims?: AirdropClaimListRelationFilter
+  }, "id">
+
+  export type AirdropSeasonOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    totalAllocation?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrderInput | SortOrder
+    claimingStartedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: AirdropSeasonCountOrderByAggregateInput
+    _avg?: AirdropSeasonAvgOrderByAggregateInput
+    _max?: AirdropSeasonMaxOrderByAggregateInput
+    _min?: AirdropSeasonMinOrderByAggregateInput
+    _sum?: AirdropSeasonSumOrderByAggregateInput
+  }
+
+  export type AirdropSeasonScalarWhereWithAggregatesInput = {
+    AND?: AirdropSeasonScalarWhereWithAggregatesInput | AirdropSeasonScalarWhereWithAggregatesInput[]
+    OR?: AirdropSeasonScalarWhereWithAggregatesInput[]
+    NOT?: AirdropSeasonScalarWhereWithAggregatesInput | AirdropSeasonScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AirdropSeason"> | string
+    name?: StringWithAggregatesFilter<"AirdropSeason"> | string
+    status?: StringWithAggregatesFilter<"AirdropSeason"> | string
+    totalAllocation?: BigIntWithAggregatesFilter<"AirdropSeason"> | bigint | number
+    startDate?: DateTimeWithAggregatesFilter<"AirdropSeason"> | Date | string
+    endDate?: DateTimeNullableWithAggregatesFilter<"AirdropSeason"> | Date | string | null
+    claimingStartedAt?: DateTimeNullableWithAggregatesFilter<"AirdropSeason"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"AirdropSeason"> | Date | string
+  }
+
+  export type AirdropClaimWhereInput = {
+    AND?: AirdropClaimWhereInput | AirdropClaimWhereInput[]
+    OR?: AirdropClaimWhereInput[]
+    NOT?: AirdropClaimWhereInput | AirdropClaimWhereInput[]
+    id?: StringFilter<"AirdropClaim"> | string
+    userId?: StringFilter<"AirdropClaim"> | string
+    seasonId?: StringFilter<"AirdropClaim"> | string
+    tokens?: FloatFilter<"AirdropClaim"> | number
+    tier?: StringFilter<"AirdropClaim"> | string
+    paymentSignature?: StringFilter<"AirdropClaim"> | string
+    transactionSignature?: StringNullableFilter<"AirdropClaim"> | string | null
+    status?: StringFilter<"AirdropClaim"> | string
+    claimedAt?: DateTimeFilter<"AirdropClaim"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    season?: XOR<AirdropSeasonScalarRelationFilter, AirdropSeasonWhereInput>
+  }
+
+  export type AirdropClaimOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    seasonId?: SortOrder
+    tokens?: SortOrder
+    tier?: SortOrder
+    paymentSignature?: SortOrder
+    transactionSignature?: SortOrderInput | SortOrder
+    status?: SortOrder
+    claimedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    season?: AirdropSeasonOrderByWithRelationInput
+  }
+
+  export type AirdropClaimWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_seasonId?: AirdropClaimUserIdSeasonIdCompoundUniqueInput
+    AND?: AirdropClaimWhereInput | AirdropClaimWhereInput[]
+    OR?: AirdropClaimWhereInput[]
+    NOT?: AirdropClaimWhereInput | AirdropClaimWhereInput[]
+    userId?: StringFilter<"AirdropClaim"> | string
+    seasonId?: StringFilter<"AirdropClaim"> | string
+    tokens?: FloatFilter<"AirdropClaim"> | number
+    tier?: StringFilter<"AirdropClaim"> | string
+    paymentSignature?: StringFilter<"AirdropClaim"> | string
+    transactionSignature?: StringNullableFilter<"AirdropClaim"> | string | null
+    status?: StringFilter<"AirdropClaim"> | string
+    claimedAt?: DateTimeFilter<"AirdropClaim"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    season?: XOR<AirdropSeasonScalarRelationFilter, AirdropSeasonWhereInput>
+  }, "id" | "userId_seasonId">
+
+  export type AirdropClaimOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    seasonId?: SortOrder
+    tokens?: SortOrder
+    tier?: SortOrder
+    paymentSignature?: SortOrder
+    transactionSignature?: SortOrderInput | SortOrder
+    status?: SortOrder
+    claimedAt?: SortOrder
+    _count?: AirdropClaimCountOrderByAggregateInput
+    _avg?: AirdropClaimAvgOrderByAggregateInput
+    _max?: AirdropClaimMaxOrderByAggregateInput
+    _min?: AirdropClaimMinOrderByAggregateInput
+    _sum?: AirdropClaimSumOrderByAggregateInput
+  }
+
+  export type AirdropClaimScalarWhereWithAggregatesInput = {
+    AND?: AirdropClaimScalarWhereWithAggregatesInput | AirdropClaimScalarWhereWithAggregatesInput[]
+    OR?: AirdropClaimScalarWhereWithAggregatesInput[]
+    NOT?: AirdropClaimScalarWhereWithAggregatesInput | AirdropClaimScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"AirdropClaim"> | string
+    userId?: StringWithAggregatesFilter<"AirdropClaim"> | string
+    seasonId?: StringWithAggregatesFilter<"AirdropClaim"> | string
+    tokens?: FloatWithAggregatesFilter<"AirdropClaim"> | number
+    tier?: StringWithAggregatesFilter<"AirdropClaim"> | string
+    paymentSignature?: StringWithAggregatesFilter<"AirdropClaim"> | string
+    transactionSignature?: StringNullableWithAggregatesFilter<"AirdropClaim"> | string | null
+    status?: StringWithAggregatesFilter<"AirdropClaim"> | string
+    claimedAt?: DateTimeWithAggregatesFilter<"AirdropClaim"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     walletAddress: string
@@ -23973,6 +28055,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -23981,6 +28065,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -24013,6 +28099,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -24021,6 +28109,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -24053,6 +28143,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -24061,6 +28153,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -24093,6 +28187,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -24101,6 +28197,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -24133,6 +28231,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -24161,6 +28261,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -24189,6 +28291,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -25243,6 +29347,7 @@ export namespace Prisma {
     points?: number
     completed?: boolean
     createdAt?: Date | string
+    isActive?: boolean
     referrer: UserCreateNestedOneWithoutReferralsInput
     referred: UserCreateNestedOneWithoutReferredByInput
   }
@@ -25254,6 +29359,7 @@ export namespace Prisma {
     points?: number
     completed?: boolean
     createdAt?: Date | string
+    isActive?: boolean
   }
 
   export type ReferralUpdateInput = {
@@ -25261,6 +29367,7 @@ export namespace Prisma {
     points?: IntFieldUpdateOperationsInput | number
     completed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     referrer?: UserUpdateOneRequiredWithoutReferralsNestedInput
     referred?: UserUpdateOneRequiredWithoutReferredByNestedInput
   }
@@ -25272,6 +29379,7 @@ export namespace Prisma {
     points?: IntFieldUpdateOperationsInput | number
     completed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ReferralCreateManyInput = {
@@ -25281,6 +29389,7 @@ export namespace Prisma {
     points?: number
     completed?: boolean
     createdAt?: Date | string
+    isActive?: boolean
   }
 
   export type ReferralUpdateManyMutationInput = {
@@ -25288,6 +29397,7 @@ export namespace Prisma {
     points?: IntFieldUpdateOperationsInput | number
     completed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ReferralUncheckedUpdateManyInput = {
@@ -25297,6 +29407,7 @@ export namespace Prisma {
     points?: IntFieldUpdateOperationsInput | number
     completed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type SystemConfigCreateInput = {
@@ -25439,6 +29550,224 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type DailyEarningCreateInput = {
+    id?: string
+    tokens: number
+    type: string
+    claimedAt?: Date | string
+    user: UserCreateNestedOneWithoutDailyEarningsInput
+  }
+
+  export type DailyEarningUncheckedCreateInput = {
+    id?: string
+    userId: string
+    tokens: number
+    type: string
+    claimedAt?: Date | string
+  }
+
+  export type DailyEarningUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutDailyEarningsNestedInput
+  }
+
+  export type DailyEarningUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DailyEarningCreateManyInput = {
+    id?: string
+    userId: string
+    tokens: number
+    type: string
+    claimedAt?: Date | string
+  }
+
+  export type DailyEarningUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DailyEarningUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AirdropSeasonCreateInput = {
+    id?: string
+    name: string
+    status: string
+    totalAllocation: bigint | number
+    startDate: Date | string
+    endDate?: Date | string | null
+    claimingStartedAt?: Date | string | null
+    createdAt?: Date | string
+    claims?: AirdropClaimCreateNestedManyWithoutSeasonInput
+  }
+
+  export type AirdropSeasonUncheckedCreateInput = {
+    id?: string
+    name: string
+    status: string
+    totalAllocation: bigint | number
+    startDate: Date | string
+    endDate?: Date | string | null
+    claimingStartedAt?: Date | string | null
+    createdAt?: Date | string
+    claims?: AirdropClaimUncheckedCreateNestedManyWithoutSeasonInput
+  }
+
+  export type AirdropSeasonUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    claims?: AirdropClaimUpdateManyWithoutSeasonNestedInput
+  }
+
+  export type AirdropSeasonUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    claims?: AirdropClaimUncheckedUpdateManyWithoutSeasonNestedInput
+  }
+
+  export type AirdropSeasonCreateManyInput = {
+    id?: string
+    name: string
+    status: string
+    totalAllocation: bigint | number
+    startDate: Date | string
+    endDate?: Date | string | null
+    claimingStartedAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type AirdropSeasonUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AirdropSeasonUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AirdropClaimCreateInput = {
+    id?: string
+    tokens: number
+    tier: string
+    paymentSignature: string
+    transactionSignature?: string | null
+    status: string
+    claimedAt?: Date | string
+    user: UserCreateNestedOneWithoutAirdropClaimsInput
+    season: AirdropSeasonCreateNestedOneWithoutClaimsInput
+  }
+
+  export type AirdropClaimUncheckedCreateInput = {
+    id?: string
+    userId: string
+    seasonId: string
+    tokens: number
+    tier: string
+    paymentSignature: string
+    transactionSignature?: string | null
+    status: string
+    claimedAt?: Date | string
+  }
+
+  export type AirdropClaimUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    tier?: StringFieldUpdateOperationsInput | string
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutAirdropClaimsNestedInput
+    season?: AirdropSeasonUpdateOneRequiredWithoutClaimsNestedInput
+  }
+
+  export type AirdropClaimUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    seasonId?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    tier?: StringFieldUpdateOperationsInput | string
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AirdropClaimCreateManyInput = {
+    id?: string
+    userId: string
+    seasonId: string
+    tokens: number
+    tier: string
+    paymentSignature: string
+    transactionSignature?: string | null
+    status: string
+    claimedAt?: Date | string
+  }
+
+  export type AirdropClaimUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    tier?: StringFieldUpdateOperationsInput | string
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AirdropClaimUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    seasonId?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    tier?: StringFieldUpdateOperationsInput | string
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -25514,6 +29843,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -25554,6 +29894,18 @@ export namespace Prisma {
     hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
     hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
     isEmpty?: boolean
+  }
+
+  export type DailyEarningListRelationFilter = {
+    every?: DailyEarningWhereInput
+    some?: DailyEarningWhereInput
+    none?: DailyEarningWhereInput
+  }
+
+  export type AirdropClaimListRelationFilter = {
+    every?: AirdropClaimWhereInput
+    some?: AirdropClaimWhereInput
+    none?: AirdropClaimWhereInput
   }
 
   export type TwitterEngagementListRelationFilter = {
@@ -25632,6 +29984,14 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
+  export type DailyEarningOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AirdropClaimOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type TwitterEngagementOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -25694,6 +30054,8 @@ export namespace Prisma {
     rank?: SortOrder
     isAdmin?: SortOrder
     isActive?: SortOrder
+    totalEarnedTokens?: SortOrder
+    lastLoginReward?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     permissions?: SortOrder
@@ -25710,6 +30072,7 @@ export namespace Prisma {
     streak?: SortOrder
     totalPoints?: SortOrder
     rank?: SortOrder
+    totalEarnedTokens?: SortOrder
     riskScore?: SortOrder
   }
 
@@ -25731,6 +30094,8 @@ export namespace Prisma {
     rank?: SortOrder
     isAdmin?: SortOrder
     isActive?: SortOrder
+    totalEarnedTokens?: SortOrder
+    lastLoginReward?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     riskScore?: SortOrder
@@ -25757,6 +30122,8 @@ export namespace Prisma {
     rank?: SortOrder
     isAdmin?: SortOrder
     isActive?: SortOrder
+    totalEarnedTokens?: SortOrder
+    lastLoginReward?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     riskScore?: SortOrder
@@ -25771,6 +30138,7 @@ export namespace Prisma {
     streak?: SortOrder
     totalPoints?: SortOrder
     rank?: SortOrder
+    totalEarnedTokens?: SortOrder
     riskScore?: SortOrder
   }
 
@@ -25872,6 +30240,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -26099,17 +30483,6 @@ export namespace Prisma {
     _max?: NestedEnumNotificationTypeFilter<$PrismaModel>
   }
 
-  export type FloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type TwitterAnalyticsCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
@@ -26160,22 +30533,6 @@ export namespace Prisma {
     comments?: SortOrder
     impressions?: SortOrder
     engagement_rate?: SortOrder
-  }
-
-  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type EnumEngagementTypeFilter<$PrismaModel = never> = {
@@ -26655,6 +31012,7 @@ export namespace Prisma {
     points?: SortOrder
     completed?: SortOrder
     createdAt?: SortOrder
+    isActive?: SortOrder
   }
 
   export type ReferralAvgOrderByAggregateInput = {
@@ -26668,6 +31026,7 @@ export namespace Prisma {
     points?: SortOrder
     completed?: SortOrder
     createdAt?: SortOrder
+    isActive?: SortOrder
   }
 
   export type ReferralMinOrderByAggregateInput = {
@@ -26677,6 +31036,7 @@ export namespace Prisma {
     points?: SortOrder
     completed?: SortOrder
     createdAt?: SortOrder
+    isActive?: SortOrder
   }
 
   export type ReferralSumOrderByAggregateInput = {
@@ -26755,8 +31115,149 @@ export namespace Prisma {
     totalEngagements?: SortOrder
   }
 
+  export type DailyEarningCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    tokens?: SortOrder
+    type?: SortOrder
+    claimedAt?: SortOrder
+  }
+
+  export type DailyEarningAvgOrderByAggregateInput = {
+    tokens?: SortOrder
+  }
+
+  export type DailyEarningMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    tokens?: SortOrder
+    type?: SortOrder
+    claimedAt?: SortOrder
+  }
+
+  export type DailyEarningMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    tokens?: SortOrder
+    type?: SortOrder
+    claimedAt?: SortOrder
+  }
+
+  export type DailyEarningSumOrderByAggregateInput = {
+    tokens?: SortOrder
+  }
+
+  export type AirdropSeasonCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    totalAllocation?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    claimingStartedAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type AirdropSeasonAvgOrderByAggregateInput = {
+    totalAllocation?: SortOrder
+  }
+
+  export type AirdropSeasonMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    totalAllocation?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    claimingStartedAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type AirdropSeasonMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    status?: SortOrder
+    totalAllocation?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    claimingStartedAt?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type AirdropSeasonSumOrderByAggregateInput = {
+    totalAllocation?: SortOrder
+  }
+
+  export type AirdropSeasonScalarRelationFilter = {
+    is?: AirdropSeasonWhereInput
+    isNot?: AirdropSeasonWhereInput
+  }
+
+  export type AirdropClaimUserIdSeasonIdCompoundUniqueInput = {
+    userId: string
+    seasonId: string
+  }
+
+  export type AirdropClaimCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    seasonId?: SortOrder
+    tokens?: SortOrder
+    tier?: SortOrder
+    paymentSignature?: SortOrder
+    transactionSignature?: SortOrder
+    status?: SortOrder
+    claimedAt?: SortOrder
+  }
+
+  export type AirdropClaimAvgOrderByAggregateInput = {
+    tokens?: SortOrder
+  }
+
+  export type AirdropClaimMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    seasonId?: SortOrder
+    tokens?: SortOrder
+    tier?: SortOrder
+    paymentSignature?: SortOrder
+    transactionSignature?: SortOrder
+    status?: SortOrder
+    claimedAt?: SortOrder
+  }
+
+  export type AirdropClaimMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    seasonId?: SortOrder
+    tokens?: SortOrder
+    tier?: SortOrder
+    paymentSignature?: SortOrder
+    transactionSignature?: SortOrder
+    status?: SortOrder
+    claimedAt?: SortOrder
+  }
+
+  export type AirdropClaimSumOrderByAggregateInput = {
+    tokens?: SortOrder
+  }
+
   export type UserCreatesuspiciousFlagsInput = {
     set: string[]
+  }
+
+  export type DailyEarningCreateNestedManyWithoutUserInput = {
+    create?: XOR<DailyEarningCreateWithoutUserInput, DailyEarningUncheckedCreateWithoutUserInput> | DailyEarningCreateWithoutUserInput[] | DailyEarningUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DailyEarningCreateOrConnectWithoutUserInput | DailyEarningCreateOrConnectWithoutUserInput[]
+    createMany?: DailyEarningCreateManyUserInputEnvelope
+    connect?: DailyEarningWhereUniqueInput | DailyEarningWhereUniqueInput[]
+  }
+
+  export type AirdropClaimCreateNestedManyWithoutUserInput = {
+    create?: XOR<AirdropClaimCreateWithoutUserInput, AirdropClaimUncheckedCreateWithoutUserInput> | AirdropClaimCreateWithoutUserInput[] | AirdropClaimUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AirdropClaimCreateOrConnectWithoutUserInput | AirdropClaimCreateOrConnectWithoutUserInput[]
+    createMany?: AirdropClaimCreateManyUserInputEnvelope
+    connect?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
   }
 
   export type TwitterEngagementCreateNestedManyWithoutUserInput = {
@@ -26840,6 +31341,20 @@ export namespace Prisma {
     connectOrCreate?: CampaignConfigCreateOrConnectWithoutCreatorInput | CampaignConfigCreateOrConnectWithoutCreatorInput[]
     createMany?: CampaignConfigCreateManyCreatorInputEnvelope
     connect?: CampaignConfigWhereUniqueInput | CampaignConfigWhereUniqueInput[]
+  }
+
+  export type DailyEarningUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<DailyEarningCreateWithoutUserInput, DailyEarningUncheckedCreateWithoutUserInput> | DailyEarningCreateWithoutUserInput[] | DailyEarningUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DailyEarningCreateOrConnectWithoutUserInput | DailyEarningCreateOrConnectWithoutUserInput[]
+    createMany?: DailyEarningCreateManyUserInputEnvelope
+    connect?: DailyEarningWhereUniqueInput | DailyEarningWhereUniqueInput[]
+  }
+
+  export type AirdropClaimUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<AirdropClaimCreateWithoutUserInput, AirdropClaimUncheckedCreateWithoutUserInput> | AirdropClaimCreateWithoutUserInput[] | AirdropClaimUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AirdropClaimCreateOrConnectWithoutUserInput | AirdropClaimCreateOrConnectWithoutUserInput[]
+    createMany?: AirdropClaimCreateManyUserInputEnvelope
+    connect?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
   }
 
   export type TwitterEngagementUncheckedCreateNestedManyWithoutUserInput = {
@@ -26961,6 +31476,14 @@ export namespace Prisma {
     set?: boolean
   }
 
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -26968,6 +31491,34 @@ export namespace Prisma {
   export type UserUpdatesuspiciousFlagsInput = {
     set?: string[]
     push?: string | string[]
+  }
+
+  export type DailyEarningUpdateManyWithoutUserNestedInput = {
+    create?: XOR<DailyEarningCreateWithoutUserInput, DailyEarningUncheckedCreateWithoutUserInput> | DailyEarningCreateWithoutUserInput[] | DailyEarningUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DailyEarningCreateOrConnectWithoutUserInput | DailyEarningCreateOrConnectWithoutUserInput[]
+    upsert?: DailyEarningUpsertWithWhereUniqueWithoutUserInput | DailyEarningUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: DailyEarningCreateManyUserInputEnvelope
+    set?: DailyEarningWhereUniqueInput | DailyEarningWhereUniqueInput[]
+    disconnect?: DailyEarningWhereUniqueInput | DailyEarningWhereUniqueInput[]
+    delete?: DailyEarningWhereUniqueInput | DailyEarningWhereUniqueInput[]
+    connect?: DailyEarningWhereUniqueInput | DailyEarningWhereUniqueInput[]
+    update?: DailyEarningUpdateWithWhereUniqueWithoutUserInput | DailyEarningUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: DailyEarningUpdateManyWithWhereWithoutUserInput | DailyEarningUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: DailyEarningScalarWhereInput | DailyEarningScalarWhereInput[]
+  }
+
+  export type AirdropClaimUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AirdropClaimCreateWithoutUserInput, AirdropClaimUncheckedCreateWithoutUserInput> | AirdropClaimCreateWithoutUserInput[] | AirdropClaimUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AirdropClaimCreateOrConnectWithoutUserInput | AirdropClaimCreateOrConnectWithoutUserInput[]
+    upsert?: AirdropClaimUpsertWithWhereUniqueWithoutUserInput | AirdropClaimUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AirdropClaimCreateManyUserInputEnvelope
+    set?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    disconnect?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    delete?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    connect?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    update?: AirdropClaimUpdateWithWhereUniqueWithoutUserInput | AirdropClaimUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AirdropClaimUpdateManyWithWhereWithoutUserInput | AirdropClaimUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AirdropClaimScalarWhereInput | AirdropClaimScalarWhereInput[]
   }
 
   export type TwitterEngagementUpdateManyWithoutUserNestedInput = {
@@ -27132,6 +31683,34 @@ export namespace Prisma {
     update?: CampaignConfigUpdateWithWhereUniqueWithoutCreatorInput | CampaignConfigUpdateWithWhereUniqueWithoutCreatorInput[]
     updateMany?: CampaignConfigUpdateManyWithWhereWithoutCreatorInput | CampaignConfigUpdateManyWithWhereWithoutCreatorInput[]
     deleteMany?: CampaignConfigScalarWhereInput | CampaignConfigScalarWhereInput[]
+  }
+
+  export type DailyEarningUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<DailyEarningCreateWithoutUserInput, DailyEarningUncheckedCreateWithoutUserInput> | DailyEarningCreateWithoutUserInput[] | DailyEarningUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: DailyEarningCreateOrConnectWithoutUserInput | DailyEarningCreateOrConnectWithoutUserInput[]
+    upsert?: DailyEarningUpsertWithWhereUniqueWithoutUserInput | DailyEarningUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: DailyEarningCreateManyUserInputEnvelope
+    set?: DailyEarningWhereUniqueInput | DailyEarningWhereUniqueInput[]
+    disconnect?: DailyEarningWhereUniqueInput | DailyEarningWhereUniqueInput[]
+    delete?: DailyEarningWhereUniqueInput | DailyEarningWhereUniqueInput[]
+    connect?: DailyEarningWhereUniqueInput | DailyEarningWhereUniqueInput[]
+    update?: DailyEarningUpdateWithWhereUniqueWithoutUserInput | DailyEarningUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: DailyEarningUpdateManyWithWhereWithoutUserInput | DailyEarningUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: DailyEarningScalarWhereInput | DailyEarningScalarWhereInput[]
+  }
+
+  export type AirdropClaimUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AirdropClaimCreateWithoutUserInput, AirdropClaimUncheckedCreateWithoutUserInput> | AirdropClaimCreateWithoutUserInput[] | AirdropClaimUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AirdropClaimCreateOrConnectWithoutUserInput | AirdropClaimCreateOrConnectWithoutUserInput[]
+    upsert?: AirdropClaimUpsertWithWhereUniqueWithoutUserInput | AirdropClaimUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AirdropClaimCreateManyUserInputEnvelope
+    set?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    disconnect?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    delete?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    connect?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    update?: AirdropClaimUpdateWithWhereUniqueWithoutUserInput | AirdropClaimUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AirdropClaimUpdateManyWithWhereWithoutUserInput | AirdropClaimUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AirdropClaimScalarWhereInput | AirdropClaimScalarWhereInput[]
   }
 
   export type TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput = {
@@ -27386,14 +31965,6 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNotificationsInput, UserUpdateWithoutNotificationsInput>, UserUncheckedUpdateWithoutNotificationsInput>
   }
 
-  export type FloatFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type UserCreateNestedOneWithoutEngagementsInput = {
     create?: XOR<UserCreateWithoutEngagementsInput, UserUncheckedCreateWithoutEngagementsInput>
     connectOrCreate?: UserCreateOrConnectWithoutEngagementsInput
@@ -27614,6 +32185,90 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutReferredByInput, UserUpdateWithoutReferredByInput>, UserUncheckedUpdateWithoutReferredByInput>
   }
 
+  export type UserCreateNestedOneWithoutDailyEarningsInput = {
+    create?: XOR<UserCreateWithoutDailyEarningsInput, UserUncheckedCreateWithoutDailyEarningsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDailyEarningsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutDailyEarningsNestedInput = {
+    create?: XOR<UserCreateWithoutDailyEarningsInput, UserUncheckedCreateWithoutDailyEarningsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutDailyEarningsInput
+    upsert?: UserUpsertWithoutDailyEarningsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDailyEarningsInput, UserUpdateWithoutDailyEarningsInput>, UserUncheckedUpdateWithoutDailyEarningsInput>
+  }
+
+  export type AirdropClaimCreateNestedManyWithoutSeasonInput = {
+    create?: XOR<AirdropClaimCreateWithoutSeasonInput, AirdropClaimUncheckedCreateWithoutSeasonInput> | AirdropClaimCreateWithoutSeasonInput[] | AirdropClaimUncheckedCreateWithoutSeasonInput[]
+    connectOrCreate?: AirdropClaimCreateOrConnectWithoutSeasonInput | AirdropClaimCreateOrConnectWithoutSeasonInput[]
+    createMany?: AirdropClaimCreateManySeasonInputEnvelope
+    connect?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+  }
+
+  export type AirdropClaimUncheckedCreateNestedManyWithoutSeasonInput = {
+    create?: XOR<AirdropClaimCreateWithoutSeasonInput, AirdropClaimUncheckedCreateWithoutSeasonInput> | AirdropClaimCreateWithoutSeasonInput[] | AirdropClaimUncheckedCreateWithoutSeasonInput[]
+    connectOrCreate?: AirdropClaimCreateOrConnectWithoutSeasonInput | AirdropClaimCreateOrConnectWithoutSeasonInput[]
+    createMany?: AirdropClaimCreateManySeasonInputEnvelope
+    connect?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+  }
+
+  export type AirdropClaimUpdateManyWithoutSeasonNestedInput = {
+    create?: XOR<AirdropClaimCreateWithoutSeasonInput, AirdropClaimUncheckedCreateWithoutSeasonInput> | AirdropClaimCreateWithoutSeasonInput[] | AirdropClaimUncheckedCreateWithoutSeasonInput[]
+    connectOrCreate?: AirdropClaimCreateOrConnectWithoutSeasonInput | AirdropClaimCreateOrConnectWithoutSeasonInput[]
+    upsert?: AirdropClaimUpsertWithWhereUniqueWithoutSeasonInput | AirdropClaimUpsertWithWhereUniqueWithoutSeasonInput[]
+    createMany?: AirdropClaimCreateManySeasonInputEnvelope
+    set?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    disconnect?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    delete?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    connect?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    update?: AirdropClaimUpdateWithWhereUniqueWithoutSeasonInput | AirdropClaimUpdateWithWhereUniqueWithoutSeasonInput[]
+    updateMany?: AirdropClaimUpdateManyWithWhereWithoutSeasonInput | AirdropClaimUpdateManyWithWhereWithoutSeasonInput[]
+    deleteMany?: AirdropClaimScalarWhereInput | AirdropClaimScalarWhereInput[]
+  }
+
+  export type AirdropClaimUncheckedUpdateManyWithoutSeasonNestedInput = {
+    create?: XOR<AirdropClaimCreateWithoutSeasonInput, AirdropClaimUncheckedCreateWithoutSeasonInput> | AirdropClaimCreateWithoutSeasonInput[] | AirdropClaimUncheckedCreateWithoutSeasonInput[]
+    connectOrCreate?: AirdropClaimCreateOrConnectWithoutSeasonInput | AirdropClaimCreateOrConnectWithoutSeasonInput[]
+    upsert?: AirdropClaimUpsertWithWhereUniqueWithoutSeasonInput | AirdropClaimUpsertWithWhereUniqueWithoutSeasonInput[]
+    createMany?: AirdropClaimCreateManySeasonInputEnvelope
+    set?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    disconnect?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    delete?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    connect?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+    update?: AirdropClaimUpdateWithWhereUniqueWithoutSeasonInput | AirdropClaimUpdateWithWhereUniqueWithoutSeasonInput[]
+    updateMany?: AirdropClaimUpdateManyWithWhereWithoutSeasonInput | AirdropClaimUpdateManyWithWhereWithoutSeasonInput[]
+    deleteMany?: AirdropClaimScalarWhereInput | AirdropClaimScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutAirdropClaimsInput = {
+    create?: XOR<UserCreateWithoutAirdropClaimsInput, UserUncheckedCreateWithoutAirdropClaimsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAirdropClaimsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type AirdropSeasonCreateNestedOneWithoutClaimsInput = {
+    create?: XOR<AirdropSeasonCreateWithoutClaimsInput, AirdropSeasonUncheckedCreateWithoutClaimsInput>
+    connectOrCreate?: AirdropSeasonCreateOrConnectWithoutClaimsInput
+    connect?: AirdropSeasonWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutAirdropClaimsNestedInput = {
+    create?: XOR<UserCreateWithoutAirdropClaimsInput, UserUncheckedCreateWithoutAirdropClaimsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAirdropClaimsInput
+    upsert?: UserUpsertWithoutAirdropClaimsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAirdropClaimsInput, UserUpdateWithoutAirdropClaimsInput>, UserUncheckedUpdateWithoutAirdropClaimsInput>
+  }
+
+  export type AirdropSeasonUpdateOneRequiredWithoutClaimsNestedInput = {
+    create?: XOR<AirdropSeasonCreateWithoutClaimsInput, AirdropSeasonUncheckedCreateWithoutClaimsInput>
+    connectOrCreate?: AirdropSeasonCreateOrConnectWithoutClaimsInput
+    upsert?: AirdropSeasonUpsertWithoutClaimsInput
+    connect?: AirdropSeasonWhereUniqueInput
+    update?: XOR<XOR<AirdropSeasonUpdateToOneWithWhereWithoutClaimsInput, AirdropSeasonUpdateWithoutClaimsInput>, AirdropSeasonUncheckedUpdateWithoutClaimsInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -27685,6 +32340,17 @@ export namespace Prisma {
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -27785,17 +32451,6 @@ export namespace Prisma {
     _max?: NestedIntFilter<$PrismaModel>
   }
 
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -27816,6 +32471,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -27893,22 +32564,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumNotificationTypeFilter<$PrismaModel>
     _max?: NestedEnumNotificationTypeFilter<$PrismaModel>
-  }
-
-  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedFloatFilter<$PrismaModel>
-    _min?: NestedFloatFilter<$PrismaModel>
-    _max?: NestedFloatFilter<$PrismaModel>
   }
 
   export type NestedEnumEngagementTypeFilter<$PrismaModel = never> = {
@@ -28004,6 +32659,62 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumPaymentMethodFilter<$PrismaModel>
     _max?: NestedEnumPaymentMethodFilter<$PrismaModel>
+  }
+
+  export type DailyEarningCreateWithoutUserInput = {
+    id?: string
+    tokens: number
+    type: string
+    claimedAt?: Date | string
+  }
+
+  export type DailyEarningUncheckedCreateWithoutUserInput = {
+    id?: string
+    tokens: number
+    type: string
+    claimedAt?: Date | string
+  }
+
+  export type DailyEarningCreateOrConnectWithoutUserInput = {
+    where: DailyEarningWhereUniqueInput
+    create: XOR<DailyEarningCreateWithoutUserInput, DailyEarningUncheckedCreateWithoutUserInput>
+  }
+
+  export type DailyEarningCreateManyUserInputEnvelope = {
+    data: DailyEarningCreateManyUserInput | DailyEarningCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AirdropClaimCreateWithoutUserInput = {
+    id?: string
+    tokens: number
+    tier: string
+    paymentSignature: string
+    transactionSignature?: string | null
+    status: string
+    claimedAt?: Date | string
+    season: AirdropSeasonCreateNestedOneWithoutClaimsInput
+  }
+
+  export type AirdropClaimUncheckedCreateWithoutUserInput = {
+    id?: string
+    seasonId: string
+    tokens: number
+    tier: string
+    paymentSignature: string
+    transactionSignature?: string | null
+    status: string
+    claimedAt?: Date | string
+  }
+
+  export type AirdropClaimCreateOrConnectWithoutUserInput = {
+    where: AirdropClaimWhereUniqueInput
+    create: XOR<AirdropClaimCreateWithoutUserInput, AirdropClaimUncheckedCreateWithoutUserInput>
+  }
+
+  export type AirdropClaimCreateManyUserInputEnvelope = {
+    data: AirdropClaimCreateManyUserInput | AirdropClaimCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type TwitterEngagementCreateWithoutUserInput = {
@@ -28131,6 +32842,7 @@ export namespace Prisma {
     points?: number
     completed?: boolean
     createdAt?: Date | string
+    isActive?: boolean
     referred: UserCreateNestedOneWithoutReferredByInput
   }
 
@@ -28140,6 +32852,7 @@ export namespace Prisma {
     points?: number
     completed?: boolean
     createdAt?: Date | string
+    isActive?: boolean
   }
 
   export type ReferralCreateOrConnectWithoutReferrerInput = {
@@ -28157,6 +32870,7 @@ export namespace Prisma {
     points?: number
     completed?: boolean
     createdAt?: Date | string
+    isActive?: boolean
     referrer: UserCreateNestedOneWithoutReferralsInput
   }
 
@@ -28166,6 +32880,7 @@ export namespace Prisma {
     points?: number
     completed?: boolean
     createdAt?: Date | string
+    isActive?: boolean
   }
 
   export type ReferralCreateOrConnectWithoutReferredInput = {
@@ -28359,6 +33074,64 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type DailyEarningUpsertWithWhereUniqueWithoutUserInput = {
+    where: DailyEarningWhereUniqueInput
+    update: XOR<DailyEarningUpdateWithoutUserInput, DailyEarningUncheckedUpdateWithoutUserInput>
+    create: XOR<DailyEarningCreateWithoutUserInput, DailyEarningUncheckedCreateWithoutUserInput>
+  }
+
+  export type DailyEarningUpdateWithWhereUniqueWithoutUserInput = {
+    where: DailyEarningWhereUniqueInput
+    data: XOR<DailyEarningUpdateWithoutUserInput, DailyEarningUncheckedUpdateWithoutUserInput>
+  }
+
+  export type DailyEarningUpdateManyWithWhereWithoutUserInput = {
+    where: DailyEarningScalarWhereInput
+    data: XOR<DailyEarningUpdateManyMutationInput, DailyEarningUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type DailyEarningScalarWhereInput = {
+    AND?: DailyEarningScalarWhereInput | DailyEarningScalarWhereInput[]
+    OR?: DailyEarningScalarWhereInput[]
+    NOT?: DailyEarningScalarWhereInput | DailyEarningScalarWhereInput[]
+    id?: StringFilter<"DailyEarning"> | string
+    userId?: StringFilter<"DailyEarning"> | string
+    tokens?: FloatFilter<"DailyEarning"> | number
+    type?: StringFilter<"DailyEarning"> | string
+    claimedAt?: DateTimeFilter<"DailyEarning"> | Date | string
+  }
+
+  export type AirdropClaimUpsertWithWhereUniqueWithoutUserInput = {
+    where: AirdropClaimWhereUniqueInput
+    update: XOR<AirdropClaimUpdateWithoutUserInput, AirdropClaimUncheckedUpdateWithoutUserInput>
+    create: XOR<AirdropClaimCreateWithoutUserInput, AirdropClaimUncheckedCreateWithoutUserInput>
+  }
+
+  export type AirdropClaimUpdateWithWhereUniqueWithoutUserInput = {
+    where: AirdropClaimWhereUniqueInput
+    data: XOR<AirdropClaimUpdateWithoutUserInput, AirdropClaimUncheckedUpdateWithoutUserInput>
+  }
+
+  export type AirdropClaimUpdateManyWithWhereWithoutUserInput = {
+    where: AirdropClaimScalarWhereInput
+    data: XOR<AirdropClaimUpdateManyMutationInput, AirdropClaimUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type AirdropClaimScalarWhereInput = {
+    AND?: AirdropClaimScalarWhereInput | AirdropClaimScalarWhereInput[]
+    OR?: AirdropClaimScalarWhereInput[]
+    NOT?: AirdropClaimScalarWhereInput | AirdropClaimScalarWhereInput[]
+    id?: StringFilter<"AirdropClaim"> | string
+    userId?: StringFilter<"AirdropClaim"> | string
+    seasonId?: StringFilter<"AirdropClaim"> | string
+    tokens?: FloatFilter<"AirdropClaim"> | number
+    tier?: StringFilter<"AirdropClaim"> | string
+    paymentSignature?: StringFilter<"AirdropClaim"> | string
+    transactionSignature?: StringNullableFilter<"AirdropClaim"> | string | null
+    status?: StringFilter<"AirdropClaim"> | string
+    claimedAt?: DateTimeFilter<"AirdropClaim"> | Date | string
+  }
+
   export type TwitterEngagementUpsertWithWhereUniqueWithoutUserInput = {
     where: TwitterEngagementWhereUniqueInput
     update: XOR<TwitterEngagementUpdateWithoutUserInput, TwitterEngagementUncheckedUpdateWithoutUserInput>
@@ -28505,6 +33278,7 @@ export namespace Prisma {
     points?: IntFilter<"Referral"> | number
     completed?: BoolFilter<"Referral"> | boolean
     createdAt?: DateTimeFilter<"Referral"> | Date | string
+    isActive?: BoolFilter<"Referral"> | boolean
   }
 
   export type ReferralUpsertWithoutReferredInput = {
@@ -28523,6 +33297,7 @@ export namespace Prisma {
     points?: IntFieldUpdateOperationsInput | number
     completed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     referrer?: UserUpdateOneRequiredWithoutReferralsNestedInput
   }
 
@@ -28532,6 +33307,7 @@ export namespace Prisma {
     points?: IntFieldUpdateOperationsInput | number
     completed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserAchievementUpsertWithWhereUniqueWithoutUserInput = {
@@ -28775,6 +33551,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -28783,6 +33561,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -28814,6 +33594,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -28822,6 +33604,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -28896,6 +33680,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -28904,6 +33690,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -28935,6 +33723,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -28943,6 +33733,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -29007,6 +33799,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29015,6 +33809,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -29046,6 +33842,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29054,6 +33852,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -29101,6 +33901,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29109,6 +33911,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -29140,6 +33944,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29148,6 +33954,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -29179,6 +33987,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29187,6 +33997,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
     pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
@@ -29218,6 +34030,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29226,6 +34040,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
     pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
@@ -29273,6 +34089,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29281,6 +34099,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
     pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
@@ -29312,6 +34132,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29320,6 +34142,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
     pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
@@ -29397,6 +34221,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29405,6 +34231,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -29436,6 +34264,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29444,6 +34274,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -29491,6 +34323,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29499,6 +34333,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -29530,6 +34366,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29538,6 +34376,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -29569,6 +34409,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29577,6 +34419,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -29608,6 +34452,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29616,6 +34462,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -29663,6 +34511,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29671,6 +34521,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -29702,6 +34554,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29710,6 +34564,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -29741,6 +34597,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29749,6 +34607,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -29780,6 +34640,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29788,6 +34650,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -29835,6 +34699,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29843,6 +34709,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -29874,6 +34742,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29882,6 +34752,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -29913,6 +34785,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29921,6 +34795,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -29952,6 +34828,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -29960,6 +34838,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -30007,6 +34887,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30015,6 +34897,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -30046,6 +34930,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30054,6 +34940,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -30085,6 +34973,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30093,6 +34983,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
     pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
@@ -30124,6 +35016,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30132,6 +35026,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
     pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
@@ -30210,6 +35106,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30218,6 +35116,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
     pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
@@ -30249,6 +35149,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30257,6 +35159,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
     pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
@@ -30325,6 +35229,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30333,6 +35239,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
@@ -30364,6 +35272,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30372,6 +35282,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
@@ -30419,6 +35331,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30427,6 +35341,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
@@ -30458,6 +35374,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30466,6 +35384,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
@@ -30497,6 +35417,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30505,6 +35427,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -30536,6 +35460,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30544,6 +35470,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -30591,6 +35519,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30599,6 +35529,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -30630,6 +35562,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30638,6 +35572,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -30669,6 +35605,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30677,6 +35615,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -30708,6 +35648,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30716,6 +35658,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -30752,6 +35696,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30760,6 +35706,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
     claims?: ClaimCreateNestedManyWithoutUserInput
@@ -30791,6 +35739,8 @@ export namespace Prisma {
     rank?: number
     isAdmin?: boolean
     isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30799,6 +35749,8 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
     claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
@@ -30846,6 +35798,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30854,6 +35808,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -30885,6 +35841,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30893,6 +35851,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -30935,6 +35895,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30943,6 +35905,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
     claims?: ClaimUpdateManyWithoutUserNestedInput
@@ -30974,6 +35938,8 @@ export namespace Prisma {
     rank?: IntFieldUpdateOperationsInput | number
     isAdmin?: BoolFieldUpdateOperationsInput | boolean
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -30982,6 +35948,8 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
     claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
@@ -30993,6 +35961,508 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserCreateWithoutDailyEarningsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionCreateNestedManyWithoutUserInput
+    claims?: ClaimCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
+    referrals?: ReferralCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserUncheckedCreateWithoutDailyEarningsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+    claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
+    referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserCreateOrConnectWithoutDailyEarningsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutDailyEarningsInput, UserUncheckedCreateWithoutDailyEarningsInput>
+  }
+
+  export type UserUpsertWithoutDailyEarningsInput = {
+    update: XOR<UserUpdateWithoutDailyEarningsInput, UserUncheckedUpdateWithoutDailyEarningsInput>
+    create: XOR<UserCreateWithoutDailyEarningsInput, UserUncheckedCreateWithoutDailyEarningsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutDailyEarningsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutDailyEarningsInput, UserUncheckedUpdateWithoutDailyEarningsInput>
+  }
+
+  export type UserUpdateWithoutDailyEarningsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
+    claims?: ClaimUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutDailyEarningsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+    claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type AirdropClaimCreateWithoutSeasonInput = {
+    id?: string
+    tokens: number
+    tier: string
+    paymentSignature: string
+    transactionSignature?: string | null
+    status: string
+    claimedAt?: Date | string
+    user: UserCreateNestedOneWithoutAirdropClaimsInput
+  }
+
+  export type AirdropClaimUncheckedCreateWithoutSeasonInput = {
+    id?: string
+    userId: string
+    tokens: number
+    tier: string
+    paymentSignature: string
+    transactionSignature?: string | null
+    status: string
+    claimedAt?: Date | string
+  }
+
+  export type AirdropClaimCreateOrConnectWithoutSeasonInput = {
+    where: AirdropClaimWhereUniqueInput
+    create: XOR<AirdropClaimCreateWithoutSeasonInput, AirdropClaimUncheckedCreateWithoutSeasonInput>
+  }
+
+  export type AirdropClaimCreateManySeasonInputEnvelope = {
+    data: AirdropClaimCreateManySeasonInput | AirdropClaimCreateManySeasonInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AirdropClaimUpsertWithWhereUniqueWithoutSeasonInput = {
+    where: AirdropClaimWhereUniqueInput
+    update: XOR<AirdropClaimUpdateWithoutSeasonInput, AirdropClaimUncheckedUpdateWithoutSeasonInput>
+    create: XOR<AirdropClaimCreateWithoutSeasonInput, AirdropClaimUncheckedCreateWithoutSeasonInput>
+  }
+
+  export type AirdropClaimUpdateWithWhereUniqueWithoutSeasonInput = {
+    where: AirdropClaimWhereUniqueInput
+    data: XOR<AirdropClaimUpdateWithoutSeasonInput, AirdropClaimUncheckedUpdateWithoutSeasonInput>
+  }
+
+  export type AirdropClaimUpdateManyWithWhereWithoutSeasonInput = {
+    where: AirdropClaimScalarWhereInput
+    data: XOR<AirdropClaimUpdateManyMutationInput, AirdropClaimUncheckedUpdateManyWithoutSeasonInput>
+  }
+
+  export type UserCreateWithoutAirdropClaimsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionCreateNestedManyWithoutUserInput
+    claims?: ClaimCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
+    referrals?: ReferralCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserUncheckedCreateWithoutAirdropClaimsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+    claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
+    referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserCreateOrConnectWithoutAirdropClaimsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAirdropClaimsInput, UserUncheckedCreateWithoutAirdropClaimsInput>
+  }
+
+  export type AirdropSeasonCreateWithoutClaimsInput = {
+    id?: string
+    name: string
+    status: string
+    totalAllocation: bigint | number
+    startDate: Date | string
+    endDate?: Date | string | null
+    claimingStartedAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type AirdropSeasonUncheckedCreateWithoutClaimsInput = {
+    id?: string
+    name: string
+    status: string
+    totalAllocation: bigint | number
+    startDate: Date | string
+    endDate?: Date | string | null
+    claimingStartedAt?: Date | string | null
+    createdAt?: Date | string
+  }
+
+  export type AirdropSeasonCreateOrConnectWithoutClaimsInput = {
+    where: AirdropSeasonWhereUniqueInput
+    create: XOR<AirdropSeasonCreateWithoutClaimsInput, AirdropSeasonUncheckedCreateWithoutClaimsInput>
+  }
+
+  export type UserUpsertWithoutAirdropClaimsInput = {
+    update: XOR<UserUpdateWithoutAirdropClaimsInput, UserUncheckedUpdateWithoutAirdropClaimsInput>
+    create: XOR<UserCreateWithoutAirdropClaimsInput, UserUncheckedCreateWithoutAirdropClaimsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAirdropClaimsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAirdropClaimsInput, UserUncheckedUpdateWithoutAirdropClaimsInput>
+  }
+
+  export type UserUpdateWithoutAirdropClaimsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
+    claims?: ClaimUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAirdropClaimsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+    claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type AirdropSeasonUpsertWithoutClaimsInput = {
+    update: XOR<AirdropSeasonUpdateWithoutClaimsInput, AirdropSeasonUncheckedUpdateWithoutClaimsInput>
+    create: XOR<AirdropSeasonCreateWithoutClaimsInput, AirdropSeasonUncheckedCreateWithoutClaimsInput>
+    where?: AirdropSeasonWhereInput
+  }
+
+  export type AirdropSeasonUpdateToOneWithWhereWithoutClaimsInput = {
+    where?: AirdropSeasonWhereInput
+    data: XOR<AirdropSeasonUpdateWithoutClaimsInput, AirdropSeasonUncheckedUpdateWithoutClaimsInput>
+  }
+
+  export type AirdropSeasonUpdateWithoutClaimsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AirdropSeasonUncheckedUpdateWithoutClaimsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DailyEarningCreateManyUserInput = {
+    id?: string
+    tokens: number
+    type: string
+    claimedAt?: Date | string
+  }
+
+  export type AirdropClaimCreateManyUserInput = {
+    id?: string
+    seasonId: string
+    tokens: number
+    tier: string
+    paymentSignature: string
+    transactionSignature?: string | null
+    status: string
+    claimedAt?: Date | string
   }
 
   export type TwitterEngagementCreateManyUserInput = {
@@ -31041,6 +36511,7 @@ export namespace Prisma {
     points?: number
     completed?: boolean
     createdAt?: Date | string
+    isActive?: boolean
   }
 
   export type UserAchievementCreateManyUserInput = {
@@ -31104,6 +36575,60 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type DailyEarningUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DailyEarningUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DailyEarningUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    type?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AirdropClaimUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    tier?: StringFieldUpdateOperationsInput | string
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    season?: AirdropSeasonUpdateOneRequiredWithoutClaimsNestedInput
+  }
+
+  export type AirdropClaimUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    seasonId?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    tier?: StringFieldUpdateOperationsInput | string
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AirdropClaimUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    seasonId?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    tier?: StringFieldUpdateOperationsInput | string
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TwitterEngagementUpdateWithoutUserInput = {
@@ -31231,6 +36756,7 @@ export namespace Prisma {
     points?: IntFieldUpdateOperationsInput | number
     completed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     referred?: UserUpdateOneRequiredWithoutReferredByNestedInput
   }
 
@@ -31240,6 +36766,7 @@ export namespace Prisma {
     points?: IntFieldUpdateOperationsInput | number
     completed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ReferralUncheckedUpdateManyWithoutReferrerInput = {
@@ -31248,6 +36775,7 @@ export namespace Prisma {
     points?: IntFieldUpdateOperationsInput | number
     completed?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type UserAchievementUpdateWithoutUserInput = {
@@ -31505,6 +37033,50 @@ export namespace Prisma {
     metadata?: NullableJsonNullValueInput | InputJsonValue
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AirdropClaimCreateManySeasonInput = {
+    id?: string
+    userId: string
+    tokens: number
+    tier: string
+    paymentSignature: string
+    transactionSignature?: string | null
+    status: string
+    claimedAt?: Date | string
+  }
+
+  export type AirdropClaimUpdateWithoutSeasonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    tier?: StringFieldUpdateOperationsInput | string
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutAirdropClaimsNestedInput
+  }
+
+  export type AirdropClaimUncheckedUpdateWithoutSeasonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    tier?: StringFieldUpdateOperationsInput | string
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AirdropClaimUncheckedUpdateManyWithoutSeasonInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    tokens?: FloatFieldUpdateOperationsInput | number
+    tier?: StringFieldUpdateOperationsInput | string
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

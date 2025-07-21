@@ -32,6 +32,22 @@ export async function GET(req: NextRequest) {
     if (!user) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 })
     }
+    
+
+
+ const userAchievements = await prisma.userAchievement.findMany({
+  where: { userId: user.id },
+  include: {
+    achievement: {
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        icon: true
+      }
+    }
+  }
+})
 
     // Calculate stats - enhanced calculations
     const [todayPoints, weeklyPoints, recentActivity, referralData, totalEarned] = await Promise.all([
@@ -139,7 +155,7 @@ export async function GET(req: NextRequest) {
         createdAt: activity.createdAt.toISOString(),
         metadata: activity.metadata
       })),
-      achievements: [], // Placeholder for achievements
+      userAchievements, // Placeholder for achievements
       referrals: {
         totalReferrals: referralData.length,
         activeReferrals: referralData.filter(r => r.completed && r.referred.isActive).length,

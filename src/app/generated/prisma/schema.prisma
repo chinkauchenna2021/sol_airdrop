@@ -24,13 +24,18 @@ model User {
   lastCheckIn      DateTime?
   referralCode     String           @unique @default(cuid())
 
-  email       String?  @unique
-  totalPoints Int      @default(0)
-  rank        Int      @default(0)
-  isAdmin     Boolean  @default(false)
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  email             String?   @unique
+  totalPoints       Int       @default(0)
+  rank              Int       @default(0)
+  isAdmin           Boolean   @default(false)
+  isActive          Boolean   @default(true)
+  totalEarnedTokens Float     @default(0)
+  lastLoginReward   DateTime?
+
+  dailyEarnings DailyEarning[]
+  airdropClaims AirdropClaim[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
 
   engagements   TwitterEngagement[]
   tasks         TaskCompletion[]
@@ -300,9 +305,9 @@ model Referral {
   points     Int      @default(0)
   completed  Boolean  @default(false)
   createdAt  DateTime @default(now())
-
-  referrer User @relation("ReferrerUser", fields: [referrerId], references: [id], onDelete: Cascade)
-  referred User @relation("ReferredUser", fields: [referredId], references: [id], onDelete: Cascade)
+  isActive   Boolean  @default(false)
+  referrer   User     @relation("ReferrerUser", fields: [referrerId], references: [id], onDelete: Cascade)
+  referred   User     @relation("ReferredUser", fields: [referredId], references: [id], onDelete: Cascade)
 
   @@index([referrerId])
   @@index([referredId])
@@ -360,4 +365,46 @@ enum ClaimStatus {
 enum PaymentMethod {
   SOLANA
   USDC
+}
+
+model DailyEarning {
+  id        String   @id @default(cuid())
+  userId    String
+  tokens    Float
+  type      String // LOGIN_BONUS, REFERRAL_BONUS, STREAK_BONUS
+  claimedAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+
+  @@index([userId, claimedAt])
+}
+
+model AirdropSeason {
+  id                String    @id @default(cuid())
+  name              String
+  status            String // ACTIVE, CLAIMING, ENDED
+  totalAllocation   BigInt
+  startDate         DateTime
+  endDate           DateTime?
+  claimingStartedAt DateTime?
+  createdAt         DateTime  @default(now())
+
+  claims AirdropClaim[]
+}
+
+model AirdropClaim {
+  id                   String   @id @default(cuid())
+  userId               String
+  seasonId             String
+  tokens               Float
+  tier                 String // HIGH, MEDIUM, LOW
+  paymentSignature     String
+  transactionSignature String?
+  status               String // PENDING, COMPLETED, FAILED
+  claimedAt            DateTime @default(now())
+
+  user   User          @relation(fields: [userId], references: [id])
+  season AirdropSeason @relation(fields: [seasonId], references: [id])
+
+  @@unique([userId, seasonId])
+  @@index([seasonId, status])
 }

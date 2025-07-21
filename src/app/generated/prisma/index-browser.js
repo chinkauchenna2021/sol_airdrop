@@ -138,6 +138,8 @@ exports.Prisma.UserScalarFieldEnum = {
   rank: 'rank',
   isAdmin: 'isAdmin',
   isActive: 'isActive',
+  totalEarnedTokens: 'totalEarnedTokens',
+  lastLoginReward: 'lastLoginReward',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   permissions: 'permissions',
@@ -303,7 +305,8 @@ exports.Prisma.ReferralScalarFieldEnum = {
   referredId: 'referredId',
   points: 'points',
   completed: 'completed',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  isActive: 'isActive'
 };
 
 exports.Prisma.SystemConfigScalarFieldEnum = {
@@ -324,6 +327,37 @@ exports.Prisma.AnalyticsScalarFieldEnum = {
   totalEngagements: 'totalEngagements',
   metadata: 'metadata',
   createdAt: 'createdAt'
+};
+
+exports.Prisma.DailyEarningScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  tokens: 'tokens',
+  type: 'type',
+  claimedAt: 'claimedAt'
+};
+
+exports.Prisma.AirdropSeasonScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  status: 'status',
+  totalAllocation: 'totalAllocation',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  claimingStartedAt: 'claimingStartedAt',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AirdropClaimScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  seasonId: 'seasonId',
+  tokens: 'tokens',
+  tier: 'tier',
+  paymentSignature: 'paymentSignature',
+  transactionSignature: 'transactionSignature',
+  status: 'status',
+  claimedAt: 'claimedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -416,7 +450,10 @@ exports.Prisma.ModelName = {
   PointHistory: 'PointHistory',
   Referral: 'Referral',
   SystemConfig: 'SystemConfig',
-  Analytics: 'Analytics'
+  Analytics: 'Analytics',
+  DailyEarning: 'DailyEarning',
+  AirdropSeason: 'AirdropSeason',
+  AirdropClaim: 'AirdropClaim'
 };
 
 /**

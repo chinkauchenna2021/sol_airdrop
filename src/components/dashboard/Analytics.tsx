@@ -5,7 +5,8 @@ import {
   Users, Heart, MessageCircle, Repeat, Eye, Target,
   Zap, Star, ArrowUpRight, ArrowDownRight, Minus,
   Clock, Award, Coins, Twitter, RefreshCw, Download,
-  Filter, ChevronDown, ChevronUp, Sparkles
+  Filter, ChevronDown, ChevronUp, Sparkles,
+  Trophy
 } from 'lucide-react'
 import {
   LineChart, Line, AreaChart, Area, BarChart, Bar,
@@ -14,7 +15,6 @@ import {
   PolarAngleAxis, PolarRadiusAxis, Radar, ComposedChart,
   Pie
 } from 'recharts'
-// Using native Date methods instead of date-fns
 
 interface AnalyticsData {
   pointsOverTime: Array<{
@@ -57,11 +57,37 @@ interface AnalyticsData {
   }
 }
 
-interface AnalyticsProps {
+interface AnalyticsComponentProps {
   userId: string
+  userStats: {
+    todayPoints: number
+    weeklyPoints: number
+    totalEngagements: number
+    referralCount: number
+    tokenAllocation: number
+  }
+  recentActivity: Array<{
+    id: string
+    action: string
+    points: number
+    createdAt: string
+  }>
+  achievements: Array<{
+    id: string
+    title: string
+    description: string
+    icon: string
+    unlocked: boolean
+    progress: number
+  }>
 }
 
-export function AnalyticsComponent({ userId }: AnalyticsProps) {
+export const AnalyticsComponent = ({ 
+  userId, 
+  userStats, 
+  recentActivity, 
+  achievements 
+}: AnalyticsComponentProps) => {
   const [data, setData] = useState<AnalyticsData | null>(null)
   const [loading, setLoading] = useState(true)
   const [timeRange, setTimeRange] = useState<'7d' | '30d' | '90d'>('30d')
@@ -70,23 +96,24 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
   const containerRef = useRef(null)
   const isInView = useInView(containerRef, { once: true })
 
+  // Generate mock data from props instead of API calls
   useEffect(() => {
-    fetchAnalytics()
-  }, [userId, timeRange])
+    generateAnalyticsFromProps()
+  }, [userStats, recentActivity, achievements, timeRange])
 
   useEffect(() => {
     if (data && isInView) {
-      // Animate numbers
+      // Use actual data from props for animations
       const values = {
-        totalEngagements: data.twitterMetrics.totalEngagements,
-        avgEngagements: data.twitterMetrics.avgEngagementsPerDay,
-        growthRate: data.twitterMetrics.growthRate,
-        leaderboardPosition: data.leaderboardPosition.current
+        totalEngagements: userStats.totalEngagements,
+        avgEngagements: Math.floor(userStats.totalEngagements / 30), // Approximate daily average
+        growthRate: userStats.weeklyPoints > userStats.todayPoints * 7 ? 15.5 : -2.3, // Calculate growth
+        leaderboardPosition: Math.floor(Math.random() * 100) + 1 // This would come from API
       }
       
       Object.entries(values).forEach(([key, targetValue]) => {
         let currentValue = 0
-        const increment = targetValue / 60 // 60 frames for 1 second
+        const increment = targetValue / 60
         const timer = setInterval(() => {
           currentValue += increment
           if (currentValue >= targetValue) {
@@ -94,24 +121,124 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
             clearInterval(timer)
           }
           setAnimatedValues(prev => ({ ...prev, [key]: currentValue }))
-        }, 16) // ~60fps
+        }, 16)
       })
     }
-  }, [data, isInView])
+  }, [data, isInView, userStats])
 
-  const fetchAnalytics = async () => {
-    try {
-      setLoading(true)
-      const res = await fetch(`/api/analytics/user?timeRange=${timeRange}`)
-      if (res.ok) {
-        const analyticsData = await res.json()
-        setData(analyticsData)
+  const generateAnalyticsFromProps = () => {
+    // Generate points over time from recent activity
+    const pointsOverTime = recentActivity
+      .slice(-30) // Last 30 entries
+      .map((activity, index) => ({
+        date: new Date(activity.createdAt).toLocaleDateString(),
+        points: activity.points,
+        cumulative: recentActivity.slice(0, index + 1).reduce((sum, a) => sum + a.points, 0)
+      }))
+      .reverse()
+
+    // Generate engagement breakdown from activity types
+    const engagementTypes: Record<string, {count: number, points: number, color: string}> = {}
+    recentActivity.forEach(activity => {
+      const type = activity.action.includes('Twitter') ? 'Twitter' :
+                   activity.action.includes('Referral') ? 'Referral' :
+                   activity.action.includes('Task') ? 'Task' :
+                   activity.action.includes('Achievement') ? 'Achievement' : 'Other'
+      
+      if (!engagementTypes[type]) {
+        engagementTypes[type] = { 
+          count: 0, 
+          points: 0, 
+          color: type === 'Twitter' ? '#1DA1F2' :
+                 type === 'Referral' ? '#10B981' :
+                 type === 'Task' ? '#8B5CF6' :
+                 type === 'Achievement' ? '#F59E0B' : '#6B7280'
+        }
       }
-    } catch (error) {
-      console.error('Failed to fetch analytics:', error)
-    } finally {
-      setLoading(false)
+      engagementTypes[type].count++
+      engagementTypes[type].points += activity.points
+    })
+
+    const engagementBreakdown = Object.entries(engagementTypes).map(([type, data]) => ({
+      type,
+      count: data.count,
+      points: data.points,
+      color: data.color
+    }))
+
+    // Generate weekly activity pattern
+    const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    const weeklyActivity = weekDays.map(day => {
+      const dayActivities = recentActivity.filter(activity => {
+        const activityDay = new Date(activity.createdAt).toLocaleDateString('en-US', { weekday: 'short' })
+        return activityDay === day
+      })
+      
+      return {
+        day,
+        engagements: dayActivities.length,
+        points: dayActivities.reduce((sum, a) => sum + a.points, 0)
+      }
+    })
+
+    // Convert achievements to analytics format
+    const achievementAnalytics = achievements
+      .filter(a => a.unlocked)
+      .map(achievement => ({
+        date: new Date().toLocaleDateString(), // Would be actual unlock date in real data
+        name: achievement.title,
+        points: 50 // Default points, would be from achievement data
+      }))
+
+    // Calculate metrics from props
+    const avgEngagementsPerDay = Math.floor(userStats.totalEngagements / 30)
+    const bestDay = weeklyActivity.reduce((max, current) => 
+      current.engagements > max.engagements ? current : max
+    ).day
+
+    const topEngagementType = engagementBreakdown.length > 0 
+      ? engagementBreakdown.reduce((max, current) => 
+          current.count > max.count ? current : max
+        ).type
+      : 'Twitter'
+
+    // Calculate growth rate from weekly vs daily points
+    const growthRate = userStats.weeklyPoints > 0 
+      ? ((userStats.todayPoints * 7 / userStats.weeklyPoints) - 1) * 100
+      : 0
+
+    // Generate predictions based on current data
+    const nextLevelDays = Math.ceil((1000 - (userStats.todayPoints % 1000)) / (userStats.todayPoints / 30))
+    const projectedMonthlyPoints = userStats.todayPoints * 30
+    const trendDirection: 'up' | 'down' | 'stable' = 
+      growthRate > 5 ? 'up' : growthRate < -5 ? 'down' : 'stable'
+
+    const analyticsData: AnalyticsData = {
+      pointsOverTime,
+      engagementBreakdown,
+      weeklyActivity,
+      achievements: achievementAnalytics,
+      twitterMetrics: {
+        totalEngagements: userStats.totalEngagements,
+        avgEngagementsPerDay,
+        bestDay,
+        topEngagementType,
+        growthRate
+      },
+      leaderboardPosition: {
+        current: Math.floor(Math.random() * 100) + 1, // Would come from API
+        previous: Math.floor(Math.random() * 100) + 1,
+        percentile: Math.floor(Math.random() * 20) + 5
+      },
+      predictions: {
+        nextLevelDays,
+        projectedMonthlyPoints,
+        trendDirection
+      }
     }
+
+    setData(analyticsData)
+    setLoading(false)
   }
 
   const CustomTooltip = ({ active, payload, label }: any) => {
@@ -218,7 +345,7 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={fetchAnalytics}
+            onClick={generateAnalyticsFromProps}
             className="p-3 bg-white/10 hover:bg-white/20 rounded-xl transition-colors"
           >
             <RefreshCw className="w-5 h-5 text-white" />
@@ -226,7 +353,7 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
         </div>
       </div>
 
-      {/* Key Metrics Cards */}
+      {/* Key Metrics Cards - Using Props Data */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -251,7 +378,7 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
             </div>
             <div className="flex items-end justify-between">
               <div className="text-3xl font-bold text-blue-400">
-                {Math.floor(animatedValues.totalEngagements || 0).toLocaleString()}
+                {Math.floor(animatedValues.totalEngagements || userStats.totalEngagements).toLocaleString()}
               </div>
               <div className="flex items-center gap-1">
                 {getGrowthIcon(data.twitterMetrics.growthRate)}
@@ -281,12 +408,12 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
                 <TrendingUp className="w-6 h-6 text-green-400" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white">Daily Average</h3>
-                <p className="text-green-400 text-sm">Engagements</p>
+                <h3 className="text-lg font-bold text-white">Today's Points</h3>
+                <p className="text-green-400 text-sm">Current</p>
               </div>
             </div>
             <div className="text-3xl font-bold text-green-400">
-              {Math.floor(animatedValues.avgEngagements || 0)}
+              {userStats.todayPoints.toLocaleString()}
             </div>
           </div>
         </motion.div>
@@ -306,19 +433,16 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
           <div className="relative">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-3 rounded-xl bg-purple-500/20">
-                <Award className="w-6 h-6 text-purple-400" />
+                <Users className="w-6 h-6 text-purple-400" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white">Rank</h3>
-                <p className="text-purple-400 text-sm">Leaderboard</p>
+                <h3 className="text-lg font-bold text-white">Referrals</h3>
+                <p className="text-purple-400 text-sm">Total</p>
               </div>
             </div>
             <div className="flex items-end justify-between">
               <div className="text-3xl font-bold text-purple-400">
-                #{Math.floor(animatedValues.leaderboardPosition || 0)}
-              </div>
-              <div className="text-right">
-                <div className="text-sm text-gray-400">Top {data.leaderboardPosition.percentile}%</div>
+                {userStats.referralCount}
               </div>
             </div>
           </div>
@@ -339,15 +463,15 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
           <div className="relative">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-3 rounded-xl bg-yellow-500/20">
-                <Target className="w-6 h-6 text-yellow-400" />
+                <Coins className="w-6 h-6 text-yellow-400" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white">Next Level</h3>
-                <p className="text-yellow-400 text-sm">Projection</p>
+                <h3 className="text-lg font-bold text-white">Weekly Points</h3>
+                <p className="text-yellow-400 text-sm">This week</p>
               </div>
             </div>
             <div className="text-3xl font-bold text-yellow-400">
-              {data.predictions.nextLevelDays} days
+              {userStats.weeklyPoints.toLocaleString()}
             </div>
           </div>
         </motion.div>
@@ -359,7 +483,7 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
           { id: 'points', name: 'Points Over Time', icon: Coins },
           { id: 'engagement', name: 'Engagement Types', icon: Heart },
           { id: 'activity', name: 'Weekly Activity', icon: Calendar },
-          { id: 'radar', name: 'Performance Radar', icon: Target }
+          { id: 'achievements', name: 'Achievement Progress', icon: Award }
         ].map((chart) => {
           const Icon = chart.icon
           return (
@@ -390,7 +514,7 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
           className="lg:col-span-2 p-8 rounded-3xl bg-black/20 backdrop-blur-xl border border-white/10"
         >
           <AnimatePresence mode="wait">
-            {activeChart === 'points' && (
+            {activeChart === 'points' && data.pointsOverTime.length > 0 && (
               <motion.div
                 key="points"
                 initial={{ opacity: 0, y: 20 }}
@@ -409,17 +533,12 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
                           <stop offset="5%" stopColor="#9945FF" stopOpacity={0.8}/>
                           <stop offset="95%" stopColor="#9945FF" stopOpacity={0.1}/>
                         </linearGradient>
-                        <linearGradient id="cumulativeGradient" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#14F195" stopOpacity={0.8}/>
-                          <stop offset="95%" stopColor="#14F195" stopOpacity={0.1}/>
-                        </linearGradient>
                       </defs>
                       <CartesianGrid strokeDasharray="3 3" stroke="#374151" opacity={0.3} />
                       <XAxis 
                         dataKey="date" 
                         stroke="#9CA3AF"
                         tick={{ fontSize: 12 }}
-                        tickFormatter={(date) => new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                       />
                       <YAxis stroke="#9CA3AF" tick={{ fontSize: 12 }} />
                       <Tooltip content={<CustomTooltip />} />
@@ -445,7 +564,7 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
               </motion.div>
             )}
 
-            {activeChart === 'engagement' && (
+            {activeChart === 'engagement' && data.engagementBreakdown.length > 0 && (
               <motion.div
                 key="engagement"
                 initial={{ opacity: 0, y: 20 }}
@@ -535,48 +654,59 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
               </motion.div>
             )}
 
-            {activeChart === 'radar' && (
+            {activeChart === 'achievements' && (
               <motion.div
-                key="radar"
+                key="achievements"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
               >
                 <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                  <Target className="w-6 h-6 text-purple-400" />
-                  Performance Radar
+                  <Award className="w-6 h-6 text-yellow-400" />
+                  Achievement Progress
                 </h3>
-                <div className="h-80">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <RadarChart data={[
-                      { metric: 'Consistency', value: 85, fullMark: 100 },
-                      { metric: 'Engagement', value: 75, fullMark: 100 },
-                      { metric: 'Growth', value: 90, fullMark: 100 },
-                      { metric: 'Activity', value: 80, fullMark: 100 },
-                      { metric: 'Social', value: 70, fullMark: 100 },
-                      { metric: 'Achievements', value: 60, fullMark: 100 }
-                    ]}>
-                      <PolarGrid stroke="#374151" />
-                      <PolarAngleAxis dataKey="metric" tick={{ fill: '#9CA3AF', fontSize: 12 }} />
-                      <PolarRadiusAxis angle={90} domain={[0, 100]} tick={false} />
-                      <Radar
-                        name="Performance"
-                        dataKey="value"
-                        stroke="#9945FF"
-                        fill="#9945FF"
-                        fillOpacity={0.3}
-                        strokeWidth={2}
-                        dot={{ fill: '#9945FF', r: 4 }}
-                      />
-                    </RadarChart>
-                  </ResponsiveContainer>
+                <div className="space-y-4">
+                  {achievements.slice(0, 6).map((achievement, index) => (
+                    <motion.div
+                      key={achievement.id}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="flex items-center justify-between p-4 bg-white/5 rounded-lg"
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className={`w-12 h-12 rounded-full ${achievement.unlocked ? 'bg-yellow-500/20' : 'bg-gray-500/20'} flex items-center justify-center`}>
+                          {achievement.unlocked ? (
+                            <Trophy className="w-6 h-6 text-yellow-400" />
+                          ) : (
+                            <Clock className="w-6 h-6 text-gray-400" />
+                          )}
+                        </div>
+                        <div>
+                          <div className="text-white font-medium">{achievement.title}</div>
+                          <div className="text-gray-400 text-sm">{achievement.description}</div>
+                        </div>
+                      </div>
+                      {!achievement.unlocked && (
+                        <div className="text-right">
+                          <div className="text-sm text-gray-400">{achievement.progress}%</div>
+                          <div className="w-20 bg-gray-700 rounded-full h-2 mt-1">
+                            <div 
+                              className="h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+                              style={{ width: `${achievement.progress}%` }}
+                            />
+                          </div>
+                        </div>
+                      )}
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
         </motion.div>
 
-        {/* Side Stats */}
+        {/* Side Stats - Using Props Data */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
@@ -597,7 +727,7 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
             <p className="text-gray-400 text-sm">Most active engagement day</p>
           </motion.div>
 
-          {/* Top Engagement Type */}
+          {/* Top Activity Type */}
           <motion.div
             whileHover={{ scale: 1.02 }}
             className="p-6 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border border-blue-500/30"
@@ -612,21 +742,21 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
             <p className="text-gray-400 text-sm">Most frequent engagement</p>
           </motion.div>
 
-          {/* Predictions */}
+          {/* Token Allocation */}
           <motion.div
             whileHover={{ scale: 1.02 }}
             className="p-6 rounded-2xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/30"
           >
             <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-purple-400" />
-              Predictions
+              <Coins className="w-5 h-5 text-purple-400" />
+              Token Allocation
             </h4>
             <div className="space-y-3">
               <div>
                 <div className="text-lg font-bold text-purple-400">
-                  {data.predictions.projectedMonthlyPoints.toLocaleString()} points
+                  {userStats.tokenAllocation.toLocaleString()} CONNECT
                 </div>
-                <div className="text-gray-400 text-sm">Projected this month</div>
+                <div className="text-gray-400 text-sm">Your allocation</div>
               </div>
               <div className="flex items-center gap-2">
                 <div className={`text-sm font-medium ${getGrowthColor(data.predictions.trendDirection === 'up' ? 1 : data.predictions.trendDirection === 'down' ? -1 : 0)}`}>
@@ -637,19 +767,19 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
             </div>
           </motion.div>
 
-          {/* Recent Achievements */}
+          {/* Recent Activity */}
           <motion.div
             whileHover={{ scale: 1.02 }}
             className="p-6 rounded-2xl bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border border-yellow-500/30"
           >
             <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-              <Award className="w-5 h-5 text-yellow-400" />
-              Recent Achievements
+              <Activity className="w-5 h-5 text-yellow-400" />
+              Recent Activity
             </h4>
             <div className="space-y-3">
-              {data.achievements.slice(0, 3).map((achievement, index) => (
+              {recentActivity.slice(0, 3).map((activity, index) => (
                 <motion.div
-                  key={achievement.name}
+                  key={activity.id}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.1 }}
@@ -657,14 +787,14 @@ export function AnalyticsComponent({ userId }: AnalyticsProps) {
                 >
                   <div>
                     <div className="text-white text-sm font-medium truncate">
-                      {achievement.name}
+                      {activity.action}
                     </div>
                     <div className="text-gray-400 text-xs">
-                      {new Date(achievement.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                      {new Date(activity.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                     </div>
                   </div>
                   <div className="text-yellow-400 text-sm font-bold">
-                    +{achievement.points}
+                    +{activity.points}
                   </div>
                 </motion.div>
               ))}

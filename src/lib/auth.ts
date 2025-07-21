@@ -306,7 +306,7 @@ export async function requireAuth(handler: Function) {
   }
 }
 
-export async function requireAdmin(handler: Function) {
+export async function requireAdmin(handler: Function | any) {
   return async (req: NextRequest, ...args: any[]) => {
     try {
       const session = await getSession(req)

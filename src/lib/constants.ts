@@ -113,3 +113,157 @@ export const REGEX = {
   EMAIL: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
   URL: /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/,
 } as const
+
+
+
+export const TOKEN_CONFIG = {
+  NAME: 'CONNECT',
+  SYMBOL: 'CONNECT', 
+  DECIMALS: 9,
+  TOTAL_SUPPLY: 1000000000, // 1 billion tokens
+  AIRDROP_ALLOCATION: 400000000, // 40% for airdrops
+} as const
+
+export const AIRDROP_CONFIG = {
+  CLAIM_FEE_SOL: 4, // $4 worth of SOL required
+  TIERS: {
+    HIGH_ENGAGEMENT: {
+      tokens: 4500,
+      requirements: 'High Twitter engagement + followers',
+    },
+    MEDIUM_ENGAGEMENT: {
+      tokens: 4000,
+      requirements: 'Medium Twitter engagement + followers',
+    },
+    LOW_ENGAGEMENT: {
+      tokens: 3000,
+      requirements: 'Low Twitter engagement + followers',
+    }
+  },
+  SEASON_STATUS: {
+    ACTIVE: 'ACTIVE',
+    CLAIMING: 'CLAIMING',
+    ENDED: 'ENDED',
+  }
+} as const
+
+// export const DAILY_EARNING_CONFIG = {
+//   LOGIN_REWARD: 5, // 5 CONNECT tokens per day
+//   REFERRAL_REWARD: 3, // 3 CONNECT tokens per referral
+//   COOLDOWN_HOURS: 24, // Can only claim once per 24 hours
+// } as const
+
+
+
+
+
+
+export const ENHANCED_CONFIG = {
+  // Daily Earning Configuration
+  DAILY_EARNING: {
+    LOGIN_REWARD: 5,
+    REFERRAL_REWARD: 3,
+    STREAK_BONUS_7_DAYS: 5,
+    STREAK_BONUS_30_DAYS: 15,
+    TWITTER_CONNECT_BONUS: 50,
+    COOLDOWN_HOURS: 24
+  },
+
+  // Airdrop Configuration
+  AIRDROP: {
+    CLAIM_FEE_SOL: 4, // $4 worth of SOL
+    TIERS: {
+      HIGH_ENGAGEMENT: {
+        tokens: 4500,
+        requirements: 'High Twitter engagement (1000+ followers OR 2+ engagements/day)',
+        minFollowers: 1000,
+        minEngagementRate: 2.0
+      },
+      MEDIUM_ENGAGEMENT: {
+        tokens: 4000,
+        requirements: 'Medium Twitter engagement (500+ followers OR 1+ engagements/day)',
+        minFollowers: 500,
+        minEngagementRate: 1.0
+      },
+      LOW_ENGAGEMENT: {
+        tokens: 3000,
+        requirements: 'Basic Twitter engagement (connected account with activity)',
+        minFollowers: 0,
+        minEngagementRate: 0.1
+      }
+    }
+  },
+
+  // Twitter Points Configuration
+  TWITTER_POINTS: {
+    LIKE: 10,
+    RETWEET: 20,
+    COMMENT: 15,
+    QUOTE: 25,
+    FOLLOW: 50
+  },
+
+  // System Thresholds
+  THRESHOLDS: {
+    HIGH_ACTIVITY_FOLLOWERS: 1000,
+    MEDIUM_ACTIVITY_FOLLOWERS: 500,
+    HIGH_ENGAGEMENT_RATE: 2.0, // per day
+    MEDIUM_ENGAGEMENT_RATE: 1.0, // per day
+    MIN_ACCOUNT_AGE_DAYS: 7,
+    MIN_ENGAGEMENTS_FOR_AIRDROP: 5
+  }
+} as const
+
+
+
+// Default achievements configuration
+export const DEFAULT_ACHIEVEMENTS = [
+  {
+    id: 'first-steps',
+    name: 'First Steps',
+    description: 'Complete your first task',
+    icon: '🚀',
+    points: 25,
+    requirements: { totalPoints: { gte: 1 } }
+  },
+  {
+    id: 'social-butterfly',
+    name: 'Social Butterfly',
+    description: 'Connect your Twitter account',
+    icon: '🐦',
+    points: 50,
+    requirements: { twitterConnected: true }
+  },
+  {
+    id: 'point-collector',
+    name: 'Point Collector',
+    description: 'Reach 100 points',
+    icon: '💰',
+    points: 0,
+    requirements: { totalPoints: { gte: 100 } }
+  },
+  {
+    id: 'engagement-master',
+    name: 'Engagement Master',
+    description: 'Complete 10 tasks',
+    icon: '💪',
+    points: 100,
+    requirements: { completedTasks: { gte: 10 } }
+  },
+  {
+    id: 'referral-champion',
+    name: 'Referral Champion',
+    description: 'Refer 5 users successfully',
+    icon: '🏆',
+    points: 200,
+    requirements: { referralCount: { gte: 5 } }
+  },
+  {
+    id: 'streak-master',
+    name: 'Streak Master',
+    description: 'Maintain a 7-day login streak',
+    icon: '🔥',
+    points: 150,
+    requirements: { streak: { gte: 7 } }
+  }
+] as const

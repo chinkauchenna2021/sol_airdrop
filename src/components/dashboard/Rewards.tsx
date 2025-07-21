@@ -23,58 +23,196 @@ interface Achievement {
   rarity: 'common' | 'rare' | 'epic' | 'legendary'
 }
 
-interface UserStats {
-  totalAchievements: number
-  unlockedAchievements: number
-  totalPoints: number
-  achievementPoints: number
-  streak: number
-  level: number
-  nextLevelProgress: number
-}
-
-interface RewardsProps {
+interface RewardsComponentProps {
   userId: string
+  userPoints: number
+  userRank: number
+  tokenAllocation: number
+  walletAddress: string
+  twitterActivity: 'HIGH' | 'MEDIUM' | 'LOW'
 }
 
-export function RewardsComponent({ userId }: RewardsProps) {
+export const RewardsComponent = ({ 
+  userId, 
+  userPoints, 
+  userRank, 
+  tokenAllocation, 
+  walletAddress, 
+  twitterActivity 
+}: RewardsComponentProps) => {
   const [achievements, setAchievements] = useState<Achievement[]>([])
-  const [userStats, setUserStats] = useState<UserStats | null>(null)
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState<'all' | 'unlocked' | 'locked' | 'secret'>('all')
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [showUnlockAnimation, setShowUnlockAnimation] = useState<string | null>(null)
 
-  useEffect(() => {
-    fetchAchievements()
-    fetchUserStats()
-  }, [userId])
-
-  const fetchAchievements = async () => {
-    try {
-      const res = await fetch('/api/achievements')
-      if (res.ok) {
-        const data = await res.json()
-        setAchievements(data.achievements || [])
-      }
-    } catch (error) {
-      console.error('Failed to fetch achievements:', error)
-      toast.error('Failed to load achievements')
-    }
+  // Generate user stats from props instead of separate API call
+  const userStats = {
+    totalAchievements: achievements.length,
+    unlockedAchievements: achievements.filter(a => a.unlocked).length,
+    totalPoints: userPoints,
+    achievementPoints: achievements.filter(a => a.unlocked).reduce((sum, a) => sum + a.points, 0),
+    streak: Math.floor(userPoints / 100), // Approximate streak from points
+    level: Math.floor(userPoints / 1000) + 1, // Calculate level from points
+    nextLevelProgress: ((userPoints % 1000) / 1000) * 100 // Progress to next level
   }
 
-  const fetchUserStats = async () => {
-    try {
-      const res = await fetch('/api/user/achievements/stats')
-      if (res.ok) {
-        const data = await res.json()
-        setUserStats(data)
+  useEffect(() => {
+    generateAchievementsFromProps()
+  }, [userId, userPoints, userRank, twitterActivity])
+
+  const generateAchievementsFromProps = () => {
+    // Generate achievements based on user data
+    const generatedAchievements: Achievement[] = [
+      // Social Achievements
+      {
+        id: '1',
+        name: 'First Steps',
+        description: 'Connect your wallet to get started',
+        icon: '👋',
+        requirements: { walletConnected: true },
+        points: 50,
+        isSecret: false,
+        progress: walletAddress ? 100 : 0,
+        unlocked: !!walletAddress,
+        category: 'social',
+        rarity: 'common',
+        unlockedAt: walletAddress ? new Date().toISOString() : undefined
+      },
+      {
+        id: '2',
+        name: 'Social Butterfly',
+        description: 'High Twitter activity level achieved',
+        icon: '🐦',
+        requirements: { twitterActivity: 'HIGH' },
+        points: 200,
+        isSecret: false,
+        progress: twitterActivity === 'HIGH' ? 100 : twitterActivity === 'MEDIUM' ? 60 : 20,
+        unlocked: twitterActivity === 'HIGH',
+        category: 'social',
+        rarity: 'rare',
+        unlockedAt: twitterActivity === 'HIGH' ? new Date().toISOString() : undefined
+      },
+      // Progression Achievements
+      {
+        id: '3',
+        name: 'Point Collector',
+        description: 'Earn your first 100 points',
+        icon: '💰',
+        requirements: { points: 100 },
+        points: 25,
+        isSecret: false,
+        progress: Math.min((userPoints / 100) * 100, 100),
+        unlocked: userPoints >= 100,
+        category: 'progression',
+        rarity: 'common',
+        unlockedAt: userPoints >= 100 ? new Date().toISOString() : undefined
+      },
+      {
+        id: '4',
+        name: 'Rising Star',
+        description: 'Reach 1000 points',
+        icon: '⭐',
+        requirements: { points: 1000 },
+        points: 100,
+        isSecret: false,
+        progress: Math.min((userPoints / 1000) * 100, 100),
+        unlocked: userPoints >= 1000,
+        category: 'progression',
+        rarity: 'rare',
+        unlockedAt: userPoints >= 1000 ? new Date().toISOString() : undefined
+      },
+      {
+        id: '5',
+        name: 'Elite Member',
+        description: 'Accumulate 5000 points',
+        icon: '💎',
+        requirements: { points: 5000 },
+        points: 500,
+        isSecret: false,
+        progress: Math.min((userPoints / 5000) * 100, 100),
+        unlocked: userPoints >= 5000,
+        category: 'progression',
+        rarity: 'epic',
+        unlockedAt: userPoints >= 5000 ? new Date().toISOString() : undefined
+      },
+      // Milestone Achievements
+      {
+        id: '6',
+        name: 'Top Performer',
+        description: 'Rank in the top 10 users',
+        icon: '👑',
+        requirements: { rank: 10 },
+        points: 1000,
+        isSecret: false,
+        progress: userRank <= 10 ? 100 : Math.max(100 - userRank, 0),
+        unlocked: userRank <= 10,
+        category: 'milestone',
+        rarity: 'legendary',
+        unlockedAt: userRank <= 10 ? new Date().toISOString() : undefined
+      },
+      {
+        id: '7',
+        name: 'Token Holder',
+        description: 'Qualify for significant token allocation',
+        icon: '💸',
+        requirements: { tokenAllocation: 1000 },
+        points: 300,
+        isSecret: false,
+        progress: Math.min((tokenAllocation / 1000) * 100, 100),
+        unlocked: tokenAllocation >= 1000,
+        category: 'milestone',
+        rarity: 'epic',
+        unlockedAt: tokenAllocation >= 1000 ? new Date().toISOString() : undefined
+      },
+      // Secret Achievements
+      {
+        id: '8',
+        name: 'Mystery Achievement',
+        description: 'A secret reward for dedicated users',
+        icon: '🌟',
+        requirements: { points: 10000, rank: 5 },
+        points: 2000,
+        isSecret: true,
+        progress: userPoints >= 10000 && userRank <= 5 ? 100 : 0,
+        unlocked: userPoints >= 10000 && userRank <= 5,
+        category: 'special',
+        rarity: 'legendary',
+        unlockedAt: userPoints >= 10000 && userRank <= 5 ? new Date().toISOString() : undefined
+      },
+      // Engagement Achievements
+      {
+        id: '9',
+        name: 'Engagement Pro',
+        description: 'Maintain consistent platform engagement',
+        icon: '🔥',
+        requirements: { twitterActivity: 'MEDIUM' },
+        points: 150,
+        isSecret: false,
+        progress: twitterActivity !== 'LOW' ? 100 : 30,
+        unlocked: twitterActivity !== 'LOW',
+        category: 'engagement',
+        rarity: 'rare',
+        unlockedAt: twitterActivity !== 'LOW' ? new Date().toISOString() : undefined
+      },
+      {
+        id: '10',
+        name: 'Community Champion',
+        description: 'Show exceptional community involvement',
+        icon: '🏅',
+        requirements: { points: 2000, twitterActivity: 'HIGH' },
+        points: 400,
+        isSecret: false,
+        progress: userPoints >= 2000 && twitterActivity === 'HIGH' ? 100 : Math.min((userPoints / 2000) * 50 + (twitterActivity === 'HIGH' ? 50 : twitterActivity === 'MEDIUM' ? 25 : 0), 100),
+        unlocked: userPoints >= 2000 && twitterActivity === 'HIGH',
+        category: 'engagement',
+        rarity: 'epic',
+        unlockedAt: userPoints >= 2000 && twitterActivity === 'HIGH' ? new Date().toISOString() : undefined
       }
-    } catch (error) {
-      console.error('Failed to fetch user stats:', error)
-    } finally {
-      setLoading(false)
-    }
+    ]
+
+    setAchievements(generatedAchievements)
+    setLoading(false)
   }
 
   const getAchievementIcon = (iconName: string) => {
@@ -149,7 +287,7 @@ export function RewardsComponent({ userId }: RewardsProps) {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
+      {/* Header - Using Props Data */}
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-bold text-white flex items-center gap-3">
@@ -157,14 +295,17 @@ export function RewardsComponent({ userId }: RewardsProps) {
             Rewards & Achievements
           </h2>
           <p className="text-gray-400 mt-2">Unlock achievements and earn exclusive rewards</p>
+          <p className="text-gray-300 text-sm mt-1">
+            Rank #{userRank} • {tokenAllocation.toLocaleString()} CONNECT Tokens • {twitterActivity} Activity
+          </p>
         </div>
         <div className="text-right">
-          <div className="text-2xl font-bold text-yellow-400">{userStats?.unlockedAchievements || 0}/{userStats?.totalAchievements || 0}</div>
+          <div className="text-2xl font-bold text-yellow-400">{userStats.unlockedAchievements}/{userStats.totalAchievements}</div>
           <div className="text-sm text-gray-400">Unlocked</div>
         </div>
       </div>
 
-      {/* Stats Overview */}
+      {/* Stats Overview - Using Props Data */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -180,7 +321,7 @@ export function RewardsComponent({ userId }: RewardsProps) {
               <p className="text-yellow-400 text-sm">Unlocked</p>
             </div>
           </div>
-          <div className="text-3xl font-bold text-yellow-400">{userStats?.unlockedAchievements || 0}</div>
+          <div className="text-3xl font-bold text-yellow-400">{userStats.unlockedAchievements}</div>
         </motion.div>
 
         <motion.div
@@ -198,7 +339,7 @@ export function RewardsComponent({ userId }: RewardsProps) {
               <p className="text-purple-400 text-sm">Current</p>
             </div>
           </div>
-          <div className="text-3xl font-bold text-purple-400">{userStats?.level || 1}</div>
+          <div className="text-3xl font-bold text-purple-400">{userStats.level}</div>
         </motion.div>
 
         <motion.div
@@ -213,10 +354,10 @@ export function RewardsComponent({ userId }: RewardsProps) {
             </div>
             <div>
               <h3 className="text-lg font-bold text-white">Streak</h3>
-              <p className="text-red-400 text-sm">Days</p>
+              <p className="text-red-400 text-sm">Points/100</p>
             </div>
           </div>
-          <div className="text-3xl font-bold text-red-400">{userStats?.streak || 0}</div>
+          <div className="text-3xl font-bold text-red-400">{userStats.streak}</div>
         </motion.div>
 
         <motion.div
@@ -234,46 +375,67 @@ export function RewardsComponent({ userId }: RewardsProps) {
               <p className="text-green-400 text-sm">From achievements</p>
             </div>
           </div>
-          <div className="text-3xl font-bold text-green-400">{userStats?.achievementPoints || 0}</div>
+          <div className="text-3xl font-bold text-green-400">{userStats.achievementPoints}</div>
         </motion.div>
       </div>
 
-      {/* Level Progress */}
-      {userStats && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="p-8 rounded-3xl bg-black/20 backdrop-blur-xl border border-white/10"
-        >
-          <div className="flex items-center justify-between mb-6">
-            <h3 className="text-2xl font-bold text-white flex items-center gap-3">
-              <TrendingUp className="w-6 h-6 text-purple-400" />
-              Level Progress
-            </h3>
-            <div className="text-right">
-              <div className="text-lg font-bold text-white">Level {userStats.level}</div>
-              <div className="text-sm text-gray-400">{userStats.nextLevelProgress}% to next level</div>
-            </div>
+      {/* Level Progress - Using Calculated Data */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="p-8 rounded-3xl bg-black/20 backdrop-blur-xl border border-white/10"
+      >
+        <div className="flex items-center justify-between mb-6">
+          <h3 className="text-2xl font-bold text-white flex items-center gap-3">
+            <TrendingUp className="w-6 h-6 text-purple-400" />
+            Level Progress
+          </h3>
+          <div className="text-right">
+            <div className="text-lg font-bold text-white">Level {userStats.level}</div>
+            <div className="text-sm text-gray-400">{userStats.nextLevelProgress.toFixed(1)}% to next level</div>
           </div>
-          
-          <div className="relative">
-            <div className="w-full bg-gray-700 rounded-full h-4">
+        </div>
+        
+        <div className="relative">
+          <div className="w-full bg-gray-700 rounded-full h-4">
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: `${userStats.nextLevelProgress}%` }}
+              transition={{ duration: 2, ease: "easeOut" }}
+              className="h-4 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 rounded-full relative overflow-hidden"
+            >
               <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: `${userStats.nextLevelProgress}%` }}
-                transition={{ duration: 2, ease: "easeOut" }}
-                className="h-4 bg-gradient-to-r from-purple-500 via-pink-500 to-purple-600 rounded-full relative overflow-hidden"
-              >
-                <motion.div
-                  animate={{ x: ['-100%', '100%'] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-                />
-              </motion.div>
+                animate={{ x: ['-100%', '100%'] }}
+                transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Token Allocation Display */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="p-6 rounded-2xl bg-gradient-to-br from-emerald-500/10 to-teal-500/10 border border-emerald-500/20"
+      >
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="p-3 rounded-xl bg-emerald-500/20">
+              <Coins className="w-6 h-6 text-emerald-400" />
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-white">Your Token Allocation</h3>
+              <p className="text-emerald-400 text-sm">Based on your performance</p>
             </div>
           </div>
-        </motion.div>
-      )}
+          <div className="text-right">
+            <div className="text-3xl font-bold text-emerald-400">{tokenAllocation.toLocaleString()}</div>
+            <div className="text-sm text-gray-400">CONNECT Tokens</div>
+          </div>
+        </div>
+      </motion.div>
 
       {/* Category Filters */}
       <div className="flex flex-wrap gap-2">
@@ -382,7 +544,7 @@ export function RewardsComponent({ userId }: RewardsProps) {
                     </div>
                     
                     <div className="flex flex-col items-end gap-2">
-                      <div className={`px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r ${getRarityColor(achievement.rarity)}`}>
+                      <div className={`px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r ${getRarityColor(achievement.rarity)} text-white`}>
                         {achievement.rarity.toUpperCase()}
                       </div>
                       {isUnlocked && (
@@ -412,7 +574,7 @@ export function RewardsComponent({ userId }: RewardsProps) {
                     <div className="mb-4">
                       <div className="flex justify-between text-sm mb-2">
                         <span className="text-gray-400">Progress</span>
-                        <span className="text-white">{achievement.progress}%</span>
+                        <span className="text-white">{achievement.progress.toFixed(0)}%</span>
                       </div>
                       <div className="w-full bg-gray-700 rounded-full h-2">
                         <motion.div
@@ -475,7 +637,33 @@ export function RewardsComponent({ userId }: RewardsProps) {
         </motion.div>
       )}
 
-      {/* Quick Actions */}
+      {/* User Performance Summary */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="p-6 rounded-2xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20"
+      >
+        <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
+          <BarChart3 className="w-6 h-6 text-blue-400" />
+          Your Performance Summary
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="text-center">
+            <div className="text-3xl font-bold text-blue-400 mb-2">{userPoints.toLocaleString()}</div>
+            <div className="text-gray-400 text-sm">Total Points Earned</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-purple-400 mb-2">#{userRank}</div>
+            <div className="text-gray-400 text-sm">Current Rank</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-green-400 mb-2">{twitterActivity}</div>
+            <div className="text-gray-400 text-sm">Twitter Activity Level</div>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Quick Tips */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -488,15 +676,15 @@ export function RewardsComponent({ userId }: RewardsProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
             <Heart className="w-5 h-5 text-pink-400" />
-            <span className="text-gray-300 text-sm">Engage on Twitter to unlock social achievements</span>
+            <span className="text-gray-300 text-sm">Increase Twitter activity to unlock social achievements</span>
           </div>
           <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
-            <Calendar className="w-5 h-5 text-blue-400" />
-            <span className="text-gray-300 text-sm">Check in daily to build your streak</span>
+            <TrendingUp className="w-5 h-5 text-green-400" />
+            <span className="text-gray-300 text-sm">Earn more points to unlock progression achievements</span>
           </div>
           <div className="flex items-center gap-3 p-3 bg-white/5 rounded-lg">
-            <Users className="w-5 h-5 text-green-400" />
-            <span className="text-gray-300 text-sm">Refer friends to unlock referral achievements</span>
+            <Trophy className="w-5 h-5 text-yellow-400" />
+            <span className="text-gray-300 text-sm">Improve your rank to access milestone rewards</span>
           </div>
         </div>
       </motion.div>
