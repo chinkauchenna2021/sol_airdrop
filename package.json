@@ -7,9 +7,10 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
+    "postinstall": "prisma generate",
     "seed:prod": "ts-node prisma/seed.ts",
     "seed:reset": "NODE_ENV=development ts-node prisma/seed.ts",
     "db:seed": "tsx prisma/seed.ts",
