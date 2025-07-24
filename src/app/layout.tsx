@@ -21,22 +21,7 @@ export const viewport: Viewport = {
 
 
 const inter = Inter({ subsets: ['latin'] })
-
-export const metadata: Metadata = {
-  title: 'Solana Airdrop Platform',
-  description: 'Earn rewards by engaging with our community',
-  keywords: 'solana, airdrop, crypto, tokens, rewards',
-  openGraph: {
-    title: 'Solana Airdrop Platform',
-    description: 'Earn rewards by engaging with our community',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Solana Airdrop Platform',
-    description: 'Earn rewards by engaging with our community',
-  },
-}
+export const metadata: Metadata = generateMetadata({})
 
 export default function RootLayout({
   children,

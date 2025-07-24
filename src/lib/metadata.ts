@@ -1,7 +1,10 @@
+// lib/metadata.ts
+import { Metadata } from 'next'
+
 export const siteConfig = {
   name: "TweetXConnect",
   description: "Official platform for the Connect token airdrop. Earn CONNECT tokens by engaging on Twitter, connecting your Solana wallet, and completing social tasks.",
-  url: "https://tweetxconnect.app", // Replace with your actual domain
+  url: "https://tweetxconnect.com", // Replace with your actual domain
   ogImage: "https://tweetxconnect.com/images/logo/sol_logo.jpg", // Replace with your OG image
   creator: "@TweetXConnect", // Replace with your Twitter handle
   keywords: [
@@ -37,7 +40,7 @@ export function generateMetadata({
   image?: string
   noIndex?: boolean
   [key: string]: any
-}) {
+}): Metadata {
   const metadata = {
     title: title ? `${title} | ${siteConfig.name}` : siteConfig.name,
     description: description || siteConfig.description,
@@ -81,7 +84,7 @@ export function generateMetadata({
         index: !noIndex,
         follow: !noIndex,
         "max-video-preview": -1,
-        "max-image-preview": "large",
+        "max-image-preview": "large" as const,
         "max-snippet": -1,
       },
     },
