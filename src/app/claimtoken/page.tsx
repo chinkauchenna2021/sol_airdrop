@@ -135,6 +135,7 @@ export default function AdvancedTokenClaimPage() {
       fetchClaimRequirements()
       fetchSolPrice()
       fetchClaimHistory()
+      handleDailyClaim()
     }
   }, [connected, publicKey])
 
@@ -341,24 +342,24 @@ export default function AdvancedTokenClaimPage() {
     return `${sol.toFixed(4)} SOL (~$${usdValue.toFixed(2)})`
   }
 
-  if (!connected) {
-    return (
-      <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        <Card className="w-full max-w-md border-white/10 bg-white/5">
-          <CardContent className="p-8 text-center">
-            <Wallet className="w-16 h-16 text-blue-400 mx-auto mb-4" />
-            <h2 className="text-2xl font-bold text-white mb-4">Connect Wallet</h2>
-            <p className="text-gray-400 mb-6">
-              Connect your Solana wallet to view and claim your CONNECT tokens
-            </p>
-            <Button className="w-full bg-blue-600 hover:bg-blue-700">
-              Connect Wallet
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    )
-  }
+//   if (!connected) {
+//     return (
+//       <div className="min-h-screen bg-gray-900 flex items-center justify-center">
+//         <Card className="w-full max-w-md border-white/10 bg-white/5">
+//           <CardContent className="p-8 text-center">
+//             <Wallet className="w-16 h-16 text-blue-400 mx-auto mb-4" />
+//             <h2 className="text-2xl font-bold text-white mb-4">Connect Wallet</h2>
+//             <p className="text-gray-400 mb-6">
+//               Connect your Solana wallet to view and claim your CONNECT tokens
+//             </p>
+//             <Button className="w-full bg-blue-600 hover:bg-blue-700">
+//               Connect Wallet
+//             </Button>
+//           </CardContent>
+//         </Card>
+//       </div>
+//     )
+//   }
 
   if (loading) {
     return (
@@ -738,9 +739,9 @@ export default function AdvancedTokenClaimPage() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <TrendingUp className="w-4 h-4 text-green-400" />
-                    <span className="text-gray-400 text-sm">Today's Earnings</span>
+                    <span className="text-gray-400 text-sm">Total Earnings</span>
                   </div>
-                  <span className="text-white font-semibold">+250 pts</span>
+                  <span className="text-white font-semibold">{user?.totalPoints} pts</span>
                 </div>
                 
                 <div className="flex items-center justify-between">

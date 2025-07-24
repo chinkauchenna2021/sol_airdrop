@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { 
   Twitter, Github, Send, MessageCircle, Mail, MapPin, Phone, 
   Coins, Shield, Globe, Users, BookOpen, TrendingUp, 
@@ -12,16 +13,16 @@ const footerLinks = {
   platform: [
     { name: 'Dashboard', href: '/dashboard' },
     { name: 'Leaderboard', href: '/leaderboard' },
-    { name: 'Tokenomics', href: '/tokenomics' },
-    { name: 'Tasks', href: '/tasks' },
-    { name: 'Referrals', href: '/referrals' }
+    { name: 'Tokenomics', href: '/' },
+    { name: 'Tasks', href: '/' },
+    { name: 'Referrals', href: '/' }
   ],
   resources: [
-    { name: 'Whitepaper', href: '/whitepaper' },
-    { name: 'Documentation', href: '/docs' },
-    { name: 'API Reference', href: '/api-docs' },
-    { name: 'Smart Contracts', href: '/contracts' },
-    { name: 'Security Audit', href: '/audit' }
+    { name: 'Whitepaper', href: '/' },
+    { name: 'Documentation', href: '/' },
+    { name: 'API Reference', href: '/' },
+    { name: 'Smart Contracts', href: '/' },
+    { name: 'Security Audit', href: '/' }
   ],
   community: [
     { name: 'Discord Server', href: 'https://discord.gg/soldrop' },
@@ -126,18 +127,18 @@ export default function CryptoFooter() {
                 viewport={{ once: true }}
               >
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-                    <Coins className="w-7 h-7 text-white" />
+                  <div className=" bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                     <Image src={'/images/logo/sol_logo.jpg'} alt={"logo"}  height={50} width={50} />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                      SolDrop
+                      Connect
                     </h3>
-                    <p className="text-gray-400 text-sm">Airdrop Platform</p>
+                    <p className="text-gray-400 text-sm">Tweetxconnect</p>
                   </div>
                 </div>
                 <p className="text-gray-400 leading-relaxed">
-                  The ultimate Solana airdrop platform where community engagement meets decentralized rewards. 
+                  The ultimate Solana Tweetxconnect where community engagement meets decentralized rewards. 
                   Join thousands of users earning tokens through social interactions.
                 </p>
               </motion.div>
@@ -308,7 +309,7 @@ export default function CryptoFooter() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div className="flex items-center space-x-4 text-gray-400">
-                <p>&copy; 2024 SolDrop. All rights reserved.</p>
+                <p>&copy; 2025 Tweetxconnect. All rights reserved.</p>
                 <div className="flex items-center space-x-4">
                   <Link href={"/privacy" as any} className="hover:text-white transition-colors">
                     Privacy Policy

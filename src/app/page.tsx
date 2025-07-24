@@ -103,25 +103,25 @@ export default function EnhancedHomepage() {
 
   const roadmapItems = [
     {
-      quarter: "Q1 2024",
+      quarter: "Q1 2025",
       title: "Platform Launch",
       description: "Core features, wallet integration, and initial token distribution",
       status: "completed"
     },
     {
-      quarter: "Q2 2024",
+      quarter: "Q2 2025",
       title: "Social Integration",
       description: "Twitter integration, engagement tracking, and referral system",
       status: "completed"
     },
     {
-      quarter: "Q3 2024",
+      quarter: "Q3 2025",
       title: "Advanced Features",
       description: "Multi-chain support, NFT rewards, and governance features",
       status: "in-progress"
     },
     {
-      quarter: "Q4 2024",
+      quarter: "Q4 2025",
       title: "Ecosystem Expansion",
       description: "Mobile app, API access, and enterprise partnerships",
       status: "upcoming"
@@ -150,7 +150,7 @@ export default function EnhancedHomepage() {
           >
             <div className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full mb-6">
               <Sparkles className="w-4 h-4 text-purple-400" />
-              <span className="text-purple-400 font-medium">Welcome to the Future of Airdrops</span>
+              <span className="text-purple-400 font-medium">Connect token airdrop</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-tight">
@@ -165,7 +165,7 @@ export default function EnhancedHomepage() {
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              The ultimate Solana airdrop platform where your social media engagement 
+              The ultimate Connect Solana Airdrop where your social media engagement 
               translates to real cryptocurrency rewards. Join thousands earning daily!
             </p>
           </motion.div>
