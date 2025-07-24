@@ -1243,7 +1243,7 @@ import {
 import toast from 'react-hot-toast'
 
 // Keep your existing DashboardData interface (no changes needed)
-interface DashboardData {
+export interface DashboardData {
   user: {
     id: string
     walletAddress: string

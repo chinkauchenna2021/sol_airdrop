@@ -22,8 +22,10 @@ export async function GET(req: NextRequest) {
       page: searchParams.get('page'),
       limit: searchParams.get('limit'),
       sortBy: searchParams.get('sortBy') || 'createdAt',
-      sortOrder: searchParams.get('sortOrder'),
+      sortOrder: searchParams.get('sortOrder') || 'desc',
     })
+
+    console.log(page,limit,sortBy,sortOrder, "filter:", filter, "search:", search, "activityFilter:", activityFilter)
 
     // Build where clause
     let where: any = {}

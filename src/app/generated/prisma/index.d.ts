@@ -2978,6 +2978,7 @@ export namespace Prisma {
     isBanned: boolean | null
     bannedAt: Date | null
     lastActivity: Date | null
+    claimsEnabled: boolean | null
   }
 
   export type UserMaxAggregateOutputType = {
@@ -3006,6 +3007,7 @@ export namespace Prisma {
     isBanned: boolean | null
     bannedAt: Date | null
     lastActivity: Date | null
+    claimsEnabled: boolean | null
   }
 
   export type UserCountAggregateOutputType = {
@@ -3036,6 +3038,7 @@ export namespace Prisma {
     isBanned: number
     bannedAt: number
     lastActivity: number
+    claimsEnabled: number
     _all: number
   }
 
@@ -3086,6 +3089,7 @@ export namespace Prisma {
     isBanned?: true
     bannedAt?: true
     lastActivity?: true
+    claimsEnabled?: true
   }
 
   export type UserMaxAggregateInputType = {
@@ -3114,6 +3118,7 @@ export namespace Prisma {
     isBanned?: true
     bannedAt?: true
     lastActivity?: true
+    claimsEnabled?: true
   }
 
   export type UserCountAggregateInputType = {
@@ -3144,6 +3149,7 @@ export namespace Prisma {
     isBanned?: true
     bannedAt?: true
     lastActivity?: true
+    claimsEnabled?: true
     _all?: true
   }
 
@@ -3261,6 +3267,7 @@ export namespace Prisma {
     isBanned: boolean
     bannedAt: Date | null
     lastActivity: Date | null
+    claimsEnabled: boolean | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -3310,6 +3317,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: boolean
     lastActivity?: boolean
+    claimsEnabled?: boolean
     dailyEarnings?: boolean | User$dailyEarningsArgs<ExtArgs>
     airdropClaims?: boolean | User$airdropClaimsArgs<ExtArgs>
     engagements?: boolean | User$engagementsArgs<ExtArgs>
@@ -3355,6 +3363,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: boolean
     lastActivity?: boolean
+    claimsEnabled?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3385,6 +3394,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: boolean
     lastActivity?: boolean
+    claimsEnabled?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
@@ -3415,9 +3425,10 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: boolean
     lastActivity?: boolean
+    claimsEnabled?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walletAddress" | "twitterId" | "twitterUsername" | "twitterName" | "twitterImage" | "twitterFollowers" | "twitterActivity" | "level" | "streak" | "lastCheckIn" | "referralCode" | "email" | "totalPoints" | "rank" | "isAdmin" | "isActive" | "totalEarnedTokens" | "lastLoginReward" | "createdAt" | "updatedAt" | "permissions" | "riskScore" | "suspiciousFlags" | "isBanned" | "bannedAt" | "lastActivity", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walletAddress" | "twitterId" | "twitterUsername" | "twitterName" | "twitterImage" | "twitterFollowers" | "twitterActivity" | "level" | "streak" | "lastCheckIn" | "referralCode" | "email" | "totalPoints" | "rank" | "isAdmin" | "isActive" | "totalEarnedTokens" | "lastLoginReward" | "createdAt" | "updatedAt" | "permissions" | "riskScore" | "suspiciousFlags" | "isBanned" | "bannedAt" | "lastActivity" | "claimsEnabled", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     dailyEarnings?: boolean | User$dailyEarningsArgs<ExtArgs>
     airdropClaims?: boolean | User$airdropClaimsArgs<ExtArgs>
@@ -3484,6 +3495,7 @@ export namespace Prisma {
       isBanned: boolean
       bannedAt: Date | null
       lastActivity: Date | null
+      claimsEnabled: boolean | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -3948,6 +3960,7 @@ export namespace Prisma {
     readonly isBanned: FieldRef<"User", 'Boolean'>
     readonly bannedAt: FieldRef<"User", 'DateTime'>
     readonly lastActivity: FieldRef<"User", 'DateTime'>
+    readonly claimsEnabled: FieldRef<"User", 'Boolean'>
   }
     
 
@@ -25955,7 +25968,8 @@ export namespace Prisma {
     suspiciousFlags: 'suspiciousFlags',
     isBanned: 'isBanned',
     bannedAt: 'bannedAt',
-    lastActivity: 'lastActivity'
+    lastActivity: 'lastActivity',
+    claimsEnabled: 'claimsEnabled'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -26490,6 +26504,7 @@ export namespace Prisma {
     isBanned?: BoolFilter<"User"> | boolean
     bannedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     lastActivity?: DateTimeNullableFilter<"User"> | Date | string | null
+    claimsEnabled?: BoolNullableFilter<"User"> | boolean | null
     dailyEarnings?: DailyEarningListRelationFilter
     airdropClaims?: AirdropClaimListRelationFilter
     engagements?: TwitterEngagementListRelationFilter
@@ -26534,6 +26549,7 @@ export namespace Prisma {
     isBanned?: SortOrder
     bannedAt?: SortOrderInput | SortOrder
     lastActivity?: SortOrderInput | SortOrder
+    claimsEnabled?: SortOrderInput | SortOrder
     dailyEarnings?: DailyEarningOrderByRelationAggregateInput
     airdropClaims?: AirdropClaimOrderByRelationAggregateInput
     engagements?: TwitterEngagementOrderByRelationAggregateInput
@@ -26581,6 +26597,7 @@ export namespace Prisma {
     isBanned?: BoolFilter<"User"> | boolean
     bannedAt?: DateTimeNullableFilter<"User"> | Date | string | null
     lastActivity?: DateTimeNullableFilter<"User"> | Date | string | null
+    claimsEnabled?: BoolNullableFilter<"User"> | boolean | null
     dailyEarnings?: DailyEarningListRelationFilter
     airdropClaims?: AirdropClaimListRelationFilter
     engagements?: TwitterEngagementListRelationFilter
@@ -26625,6 +26642,7 @@ export namespace Prisma {
     isBanned?: SortOrder
     bannedAt?: SortOrderInput | SortOrder
     lastActivity?: SortOrderInput | SortOrder
+    claimsEnabled?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -26663,6 +26681,7 @@ export namespace Prisma {
     isBanned?: BoolWithAggregatesFilter<"User"> | boolean
     bannedAt?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     lastActivity?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    claimsEnabled?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
   }
 
   export type AchievementWhereInput = {
@@ -28065,6 +28084,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
@@ -28109,6 +28129,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
@@ -28153,6 +28174,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
@@ -28197,6 +28219,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
@@ -28241,6 +28264,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
   }
 
   export type UserUpdateManyMutationInput = {
@@ -28271,6 +28295,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type UserUncheckedUpdateManyInput = {
@@ -28301,6 +28326,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type AchievementCreateInput = {
@@ -29896,6 +29922,11 @@ export namespace Prisma {
     isEmpty?: boolean
   }
 
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type DailyEarningListRelationFilter = {
     every?: DailyEarningWhereInput
     some?: DailyEarningWhereInput
@@ -30064,6 +30095,7 @@ export namespace Prisma {
     isBanned?: SortOrder
     bannedAt?: SortOrder
     lastActivity?: SortOrder
+    claimsEnabled?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -30102,6 +30134,7 @@ export namespace Prisma {
     isBanned?: SortOrder
     bannedAt?: SortOrder
     lastActivity?: SortOrder
+    claimsEnabled?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
@@ -30130,6 +30163,7 @@ export namespace Prisma {
     isBanned?: SortOrder
     bannedAt?: SortOrder
     lastActivity?: SortOrder
+    claimsEnabled?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -30296,6 +30330,14 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedJsonNullableFilter<$PrismaModel>
     _max?: NestedJsonNullableFilter<$PrismaModel>
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
   export type JsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -31493,6 +31535,10 @@ export namespace Prisma {
     push?: string | string[]
   }
 
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
+  }
+
   export type DailyEarningUpdateManyWithoutUserNestedInput = {
     create?: XOR<DailyEarningCreateWithoutUserInput, DailyEarningUncheckedCreateWithoutUserInput> | DailyEarningCreateWithoutUserInput[] | DailyEarningUncheckedCreateWithoutUserInput[]
     connectOrCreate?: DailyEarningCreateOrConnectWithoutUserInput | DailyEarningCreateOrConnectWithoutUserInput[]
@@ -32364,6 +32410,11 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -32524,6 +32575,14 @@ export namespace Prisma {
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
   }
   export type NestedJsonFilter<$PrismaModel = never> =
     | PatchUndefined<
@@ -33561,6 +33620,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
@@ -33604,6 +33664,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
@@ -33690,6 +33751,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
@@ -33733,6 +33795,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
@@ -33809,6 +33872,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
@@ -33852,6 +33916,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
@@ -33911,6 +33976,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
@@ -33954,6 +34020,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
@@ -33997,6 +34064,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
@@ -34040,6 +34108,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
@@ -34099,6 +34168,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
@@ -34142,6 +34212,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
@@ -34231,6 +34302,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
@@ -34274,6 +34346,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
@@ -34333,6 +34406,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
@@ -34376,6 +34450,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
@@ -34419,6 +34494,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
@@ -34462,6 +34538,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
@@ -34521,6 +34598,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
@@ -34564,6 +34642,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
@@ -34607,6 +34686,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
@@ -34650,6 +34730,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
@@ -34709,6 +34790,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
@@ -34752,6 +34834,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
@@ -34795,6 +34878,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
@@ -34838,6 +34922,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
@@ -34897,6 +34982,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
@@ -34940,6 +35026,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
@@ -34983,6 +35070,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
@@ -35026,6 +35114,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
@@ -35116,6 +35205,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
@@ -35159,6 +35249,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
@@ -35239,6 +35330,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
@@ -35282,6 +35374,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
@@ -35341,6 +35434,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
@@ -35384,6 +35478,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
@@ -35427,6 +35522,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
@@ -35470,6 +35566,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
@@ -35529,6 +35626,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
@@ -35572,6 +35670,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
@@ -35615,6 +35714,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
@@ -35658,6 +35758,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
@@ -35706,6 +35807,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
@@ -35749,6 +35851,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
     airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
@@ -35808,6 +35911,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
@@ -35851,6 +35955,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
@@ -35905,6 +36010,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
@@ -35948,6 +36054,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
     airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
@@ -35991,6 +36098,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
@@ -36034,6 +36142,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
@@ -36093,6 +36202,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
@@ -36136,6 +36246,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
@@ -36227,6 +36338,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionCreateNestedManyWithoutUserInput
@@ -36270,6 +36382,7 @@ export namespace Prisma {
     isBanned?: boolean
     bannedAt?: Date | string | null
     lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
     dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
     engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
     tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
@@ -36356,6 +36469,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
@@ -36399,6 +36513,7 @@ export namespace Prisma {
     isBanned?: BoolFieldUpdateOperationsInput | boolean
     bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
     dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
     engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
     tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput

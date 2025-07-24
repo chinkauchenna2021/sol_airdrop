@@ -12,7 +12,8 @@ import {
 } from 'lucide-react'
 import { LineChart as RechartsLineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart as RechartsPieChart, Cell, BarChart, Bar } from 'recharts'
 import toast from 'react-hot-toast'
-import { UserManagement } from '@/components/admin/UserManagement'
+import { UserManagementSection } from '@/components/admin/UserManagement'
+import { AdminSettings } from '@/components/admin/AdvanceSettings'
 
 // Enhanced Daily Earning Manager Component
 const DailyEarningManager = () => {
@@ -1166,7 +1167,7 @@ export default function EnhancedAdminDashboard() {
               exit={{ opacity: 0, y: -20 }}
               className="space-y-6"
             >
-              <UserManagement />
+              <UserManagementSection />
               {/* <div className="bg-white/5 rounded-2xl p-6">
                 <h3 className="text-xl font-bold text-white mb-4">User Management</h3>
                 <p className="text-gray-400">
@@ -1203,11 +1204,10 @@ export default function EnhancedAdminDashboard() {
               exit={{ opacity: 0, y: -20 }}
               className="space-y-6"
             >
-              <div className="bg-white/5 rounded-2xl p-6">
+              {/* <div className="bg-white/5 rounded-2xl p-6">
                 <h3 className="text-xl font-bold text-white mb-4">Platform Settings</h3>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* General Settings */}
                   <div className="space-y-4">
                     <h4 className="text-lg font-semibold text-white">General Settings</h4>
                     
@@ -1244,7 +1244,6 @@ export default function EnhancedAdminDashboard() {
                     </div>
                   </div>
 
-                  {/* Security Settings */}
                   <div className="space-y-4">
                     <h4 className="text-lg font-semibold text-white">Security Settings</h4>
                     
@@ -1289,7 +1288,8 @@ export default function EnhancedAdminDashboard() {
                     Save All Settings
                   </button>
                 </div>
-              </div>
+              </div> */}
+              <AdminSettings  />
             </motion.div>
           )}
         </AnimatePresence>

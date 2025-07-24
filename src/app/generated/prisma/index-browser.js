@@ -147,7 +147,8 @@ exports.Prisma.UserScalarFieldEnum = {
   suspiciousFlags: 'suspiciousFlags',
   isBanned: 'isBanned',
   bannedAt: 'bannedAt',
-  lastActivity: 'lastActivity'
+  lastActivity: 'lastActivity',
+  claimsEnabled: 'claimsEnabled'
 };
 
 exports.Prisma.AchievementScalarFieldEnum = {

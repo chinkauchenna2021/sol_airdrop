@@ -1,6 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
-  output   = "../src/app/generated/prisma"
+  provider      = "prisma-client-js"
+  output        = "../src/app/generated/prisma"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 datasource db {
@@ -53,6 +54,7 @@ model User {
   isBanned        Boolean   @default(false)
   bannedAt        DateTime?
   lastActivity    DateTime?
+  claimsEnabled   Boolean?  @default(false) // New field to control claim eligibility
 
   // Relations
   adminSessions AdminSession[]
