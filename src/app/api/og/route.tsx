@@ -107,22 +107,3 @@ export async function GET(req: NextRequest) {
     })
   }
 }
-
-// Component for dynamic OG image URLs
-export function getOGImageUrl(params: {
-  title?: string
-  description?: string
-  type?: 'default' | 'leaderboard' | 'profile' | 'tasks'
-  points?: string
-  rank?: string
-}) {
-  const searchParams = new URLSearchParams()
-  
-  if (params.title) searchParams.set('title', params.title)
-  if (params.description) searchParams.set('description', params.description)
-  if (params.type) searchParams.set('type', params.type)
-  if (params.points) searchParams.set('points', params.points)
-  if (params.rank) searchParams.set('rank', params.rank)
-  
-  return `${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/og?${searchParams.toString()}`
-}
