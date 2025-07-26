@@ -25,11 +25,11 @@ const footerLinks = {
     { name: 'Security Audit', href: '/' }
   ],
   community: [
-    { name: 'Discord Server', href: 'https://discord.gg/soldrop' },
+    // { name: 'Discord Server', href: 'https://discord.gg/soldrop' },
     { name: 'Twitter', href: 'https://twitter.com/soldrop' },
     { name: 'Telegram', href: 'https://t.me/soldrop' },
-    { name: 'Medium Blog', href: 'https://medium.com/@soldrop' },
-    { name: 'Reddit', href: 'https://reddit.com/r/soldrop' }
+    // { name: 'Medium Blog', href: 'https://medium.com/@soldrop' },
+    // { name: 'Reddit', href: 'https://reddit.com/r/soldrop' }
   ],
   support: [
     { name: 'Help Center', href: '/help' },
@@ -276,7 +276,7 @@ export default function CryptoFooter() {
             </motion.div>
 
             {/* Support Links */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -300,7 +300,7 @@ export default function CryptoFooter() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </motion.div> */}
           </div>
         </div>
 

@@ -165,7 +165,7 @@ export default function EnhancedHomepage() {
             </h1>
             
             <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              The ultimate Connect Solana Airdrop where your social media engagement 
+              The ultimate $Connect Solana Airdrop where your social media engagement 
               translates to real cryptocurrency rewards. Join thousands earning daily!
             </p>
           </motion.div>
@@ -291,7 +291,7 @@ export default function EnhancedHomepage() {
               How It <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Works</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Start earning cryptocurrency rewards in four simple steps. No complex setups, no hidden fees.
+              Start earning $Connect rewards in four simple steps. No complex setups, no hidden fees.
             </p>
           </motion.div>
 
@@ -329,7 +329,7 @@ export default function EnhancedHomepage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="relative py-32 px-4 bg-gradient-to-r from-purple-900/20 to-pink-900/20">
+      {/* <section className="relative py-32 px-4 bg-gradient-to-r from-purple-900/20 to-pink-900/20">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -382,7 +382,7 @@ export default function EnhancedHomepage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Roadmap Section */}
       <section className="relative py-32 px-4">
