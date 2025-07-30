@@ -10,6 +10,12 @@
 !.yarn/releases
 !.yarn/versions
 
+# DOC MATERIALS
+MINT_CODE
+MINT_CODE/
+/MINT_CODE/
+
+
 # testing
 /coverage
 
