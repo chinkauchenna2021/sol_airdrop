@@ -286,8 +286,12 @@ exports.Prisma.ClaimScalarFieldEnum = {
   paymentMethod: 'paymentMethod',
   metadata: 'metadata',
   processedAt: 'processedAt',
+  feesPaid: 'feesPaid',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  type: 'type',
+  nftPasses: 'nftPasses',
+  userTier: 'userTier'
 };
 
 exports.Prisma.PointHistoryScalarFieldEnum = {
@@ -341,12 +345,19 @@ exports.Prisma.DailyEarningScalarFieldEnum = {
 exports.Prisma.AirdropSeasonScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  description: 'description',
   status: 'status',
   totalAllocation: 'totalAllocation',
+  claimedAmount: 'claimedAmount',
   startDate: 'startDate',
   endDate: 'endDate',
-  claimingStartedAt: 'claimingStartedAt',
-  createdAt: 'createdAt'
+  nftPassRequired: 'nftPassRequired',
+  requireApproval: 'requireApproval',
+  feeAmount: 'feeAmount',
+  createdBy: 'createdBy',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.AirdropClaimScalarFieldEnum = {
@@ -358,7 +369,57 @@ exports.Prisma.AirdropClaimScalarFieldEnum = {
   paymentSignature: 'paymentSignature',
   transactionSignature: 'transactionSignature',
   status: 'status',
-  claimedAt: 'claimedAt'
+  claimedAt: 'claimedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.NftCollectionScalarFieldEnum = {
+  id: 'id',
+  mintAddress: 'mintAddress',
+  name: 'name',
+  symbol: 'symbol',
+  description: 'description',
+  uri: 'uri',
+  supply: 'supply',
+  createdBy: 'createdBy',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.NftDistributionScalarFieldEnum = {
+  id: 'id',
+  mintAddress: 'mintAddress',
+  distributedBy: 'distributedBy',
+  recipientCount: 'recipientCount',
+  nftsPerUser: 'nftsPerUser',
+  results: 'results',
+  success: 'success',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.NftClaimApprovalScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  approved: 'approved',
+  approvedBy: 'approvedBy',
+  approvedAt: 'approvedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.UserNftHoldingScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  mintAddress: 'mintAddress',
+  tokenAccount: 'tokenAccount',
+  amount: 'amount',
+  metadata: 'metadata',
+  acquiredAt: 'acquiredAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -454,7 +515,11 @@ exports.Prisma.ModelName = {
   Analytics: 'Analytics',
   DailyEarning: 'DailyEarning',
   AirdropSeason: 'AirdropSeason',
-  AirdropClaim: 'AirdropClaim'
+  AirdropClaim: 'AirdropClaim',
+  NftCollection: 'NftCollection',
+  NftDistribution: 'NftDistribution',
+  NftClaimApproval: 'NftClaimApproval',
+  UserNftHolding: 'UserNftHolding'
 };
 
 /**

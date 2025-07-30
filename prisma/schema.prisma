@@ -64,6 +64,14 @@ model User {
   auditLogs       AdminAuditLog[]
   fraudAlerts     FraudAlert[]
   campaigns       CampaignConfig[]
+
+
+  nftCollections    NftCollection[]
+  nftDistributions  NftDistribution[]
+  nftHoldings       UserNftHolding[]
+  nftClaimApproval  NftClaimApproval?
+  approvedClaims    NftClaimApproval[] @relation("ApprovedBy")
+  airdropSeasons    AirdropSeason[]
   
   @@index([walletAddress])
   @@index([twitterId])
@@ -282,11 +290,14 @@ model Claim {
   paymentMethod     PaymentMethod    @default(SOLANA)
   metadata          Json?
   processedAt       DateTime?
+  feesPaid          Decimal  @default(0) @db.Decimal(20, 10)
   createdAt         DateTime         @default(now())
   updatedAt         DateTime         @updatedAt
+  type      String? @default("TOKEN")
+  nftPasses Json?   @map("nft_passes")
+  userTier  String? @map("user_tier")
   
   user              User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  
   @@index([userId])
   @@index([status])
   @@index([createdAt])
@@ -346,6 +357,128 @@ model Analytics {
   @@index([date])
 }
 
+
+model DailyEarning {
+  id        String   @id @default(cuid())
+  userId    String
+  tokens    Float
+  type      String   // LOGIN_BONUS, REFERRAL_BONUS, STREAK_BONUS
+  claimedAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  
+  @@index([userId, claimedAt])
+}
+
+model AirdropSeason {
+  id              String    @id @default(cuid())
+  name            String
+  description     String?
+  status          String    @default("ACTIVE")
+  totalAllocation BigInt    @map("total_allocation")
+  claimedAmount   BigInt    @default(0) @map("claimed_amount")
+  startDate       DateTime  @default(now()) @map("start_date")
+  endDate         DateTime? @map("end_date")
+  nftPassRequired Boolean   @default(true) @map("nft_pass_required")
+  requireApproval Boolean   @default(false) @map("require_approval")
+  feeAmount       Decimal   @default(4.00) @map("fee_amount")
+  createdBy       String    @map("created_by")
+  metadata        Json?
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+
+  creator User @relation(fields: [createdBy], references: [id])
+   claims AirdropClaim[]
+
+  // @@map("airdrop_seasons")
+}
+
+model AirdropClaim {
+  id                   String   @id @default(cuid())
+  userId               String
+  seasonId             String
+  tokens               Float
+  tier                 String   // HIGH, MEDIUM, LOW
+  paymentSignature     String
+  transactionSignature String?
+  status               String   // PENDING, COMPLETED, FAILED
+  claimedAt            DateTime @default(now())
+  
+  user   User          @relation(fields: [userId], references: [id])
+  season AirdropSeason @relation(fields: [seasonId], references: [id])
+  createdAt       DateTime  @default(now()) @map("created_at")
+  updatedAt       DateTime  @updatedAt @map("updated_at")
+  
+  @@unique([userId, seasonId])
+  @@index([seasonId, status])
+}
+
+model NftCollection {
+  id          String   @id @default(cuid())
+  mintAddress String   @unique @map("mint_address")
+  name        String
+  symbol      String
+  description String?
+  uri         String
+  supply      Int      @default(0)
+  createdBy   String   @map("created_by")
+  metadata    Json?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  creator       User               @relation(fields: [createdBy], references: [id])
+  distributions NftDistribution[]
+
+  @@map("nft_collections")
+}
+
+model NftDistribution {
+  id            String   @id @default(cuid())
+  mintAddress   String   @map("mint_address")
+  distributedBy String   @map("distributed_by")
+  recipientCount Int     @map("recipient_count")
+  nftsPerUser   Int      @map("nfts_per_user")
+  results       Json
+  success       Boolean  @default(true)
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  collection    NftCollection @relation(fields: [mintAddress], references: [mintAddress])
+  distributor   User          @relation(fields: [distributedBy], references: [id])
+
+  @@map("nft_distributions")
+}
+
+model NftClaimApproval {
+  id         String    @id @default(cuid())
+  userId     String    @unique @map("user_id")
+  approved   Boolean   @default(false)
+  approvedBy String?   @map("approved_by")
+  approvedAt DateTime? @map("approved_at")
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+
+  user     User  @relation(fields: [userId], references: [id])
+  approver User? @relation("ApprovedBy", fields: [approvedBy], references: [id])
+
+  @@map("nft_claim_approvals")
+}
+model UserNftHolding {
+  id           String   @id @default(cuid())
+  userId       String   @map("user_id")
+  mintAddress  String   @map("mint_address")
+  tokenAccount String   @map("token_account")
+  amount       Int      @default(1)
+  metadata     Json?
+  acquiredAt   DateTime @default(now()) @map("acquired_at")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([userId, mintAddress, tokenAccount])
+  @@map("user_nft_holdings")
+}
+
 enum EngagementType {
   LIKE
   RETWEET
@@ -376,45 +509,36 @@ enum PaymentMethod {
   USDC
 }
 
-model DailyEarning {
-  id        String   @id @default(cuid())
-  userId    String
-  tokens    Float
-  type      String   // LOGIN_BONUS, REFERRAL_BONUS, STREAK_BONUS
-  claimedAt DateTime @default(now())
-  user      User     @relation(fields: [userId], references: [id])
-  
-  @@index([userId, claimedAt])
-}
 
-model AirdropSeason {
-  id               String   @id @default(cuid())
-  name             String
-  status           String   // ACTIVE, CLAIMING, ENDED
-  totalAllocation  BigInt
-  startDate        DateTime
-  endDate          DateTime?
-  claimingStartedAt DateTime?
-  createdAt        DateTime @default(now())
-  
-  claims AirdropClaim[]
-}
 
-model AirdropClaim {
-  id                   String   @id @default(cuid())
-  userId               String
-  seasonId             String
-  tokens               Float
-  tier                 String   // HIGH, MEDIUM, LOW
-  paymentSignature     String
-  transactionSignature String?
-  status               String   // PENDING, COMPLETED, FAILED
-  claimedAt            DateTime @default(now())
-  
-  user   User          @relation(fields: [userId], references: [id])
-  season AirdropSeason @relation(fields: [seasonId], references: [id])
-  
-  @@unique([userId, seasonId])
-  @@index([seasonId, status])
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -113,6 +113,26 @@ export type AirdropSeason = $Result.DefaultSelection<Prisma.$AirdropSeasonPayloa
  * 
  */
 export type AirdropClaim = $Result.DefaultSelection<Prisma.$AirdropClaimPayload>
+/**
+ * Model NftCollection
+ * 
+ */
+export type NftCollection = $Result.DefaultSelection<Prisma.$NftCollectionPayload>
+/**
+ * Model NftDistribution
+ * 
+ */
+export type NftDistribution = $Result.DefaultSelection<Prisma.$NftDistributionPayload>
+/**
+ * Model NftClaimApproval
+ * 
+ */
+export type NftClaimApproval = $Result.DefaultSelection<Prisma.$NftClaimApprovalPayload>
+/**
+ * Model UserNftHolding
+ * 
+ */
+export type UserNftHolding = $Result.DefaultSelection<Prisma.$UserNftHoldingPayload>
 
 /**
  * Enums
@@ -529,6 +549,46 @@ export class PrismaClient<
     * ```
     */
   get airdropClaim(): Prisma.AirdropClaimDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.nftCollection`: Exposes CRUD operations for the **NftCollection** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more NftCollections
+    * const nftCollections = await prisma.nftCollection.findMany()
+    * ```
+    */
+  get nftCollection(): Prisma.NftCollectionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.nftDistribution`: Exposes CRUD operations for the **NftDistribution** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more NftDistributions
+    * const nftDistributions = await prisma.nftDistribution.findMany()
+    * ```
+    */
+  get nftDistribution(): Prisma.NftDistributionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.nftClaimApproval`: Exposes CRUD operations for the **NftClaimApproval** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more NftClaimApprovals
+    * const nftClaimApprovals = await prisma.nftClaimApproval.findMany()
+    * ```
+    */
+  get nftClaimApproval(): Prisma.NftClaimApprovalDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.userNftHolding`: Exposes CRUD operations for the **UserNftHolding** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UserNftHoldings
+    * const userNftHoldings = await prisma.userNftHolding.findMany()
+    * ```
+    */
+  get userNftHolding(): Prisma.UserNftHoldingDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -988,7 +1048,11 @@ export namespace Prisma {
     Analytics: 'Analytics',
     DailyEarning: 'DailyEarning',
     AirdropSeason: 'AirdropSeason',
-    AirdropClaim: 'AirdropClaim'
+    AirdropClaim: 'AirdropClaim',
+    NftCollection: 'NftCollection',
+    NftDistribution: 'NftDistribution',
+    NftClaimApproval: 'NftClaimApproval',
+    UserNftHolding: 'UserNftHolding'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1007,7 +1071,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "achievement" | "userAchievement" | "notification" | "twitterAnalytics" | "twitterEngagement" | "task" | "adminSession" | "adminAuditLog" | "fraudAlert" | "campaignConfig" | "taskCompletion" | "claim" | "pointHistory" | "referral" | "systemConfig" | "analytics" | "dailyEarning" | "airdropSeason" | "airdropClaim"
+      modelProps: "user" | "achievement" | "userAchievement" | "notification" | "twitterAnalytics" | "twitterEngagement" | "task" | "adminSession" | "adminAuditLog" | "fraudAlert" | "campaignConfig" | "taskCompletion" | "claim" | "pointHistory" | "referral" | "systemConfig" | "analytics" | "dailyEarning" | "airdropSeason" | "airdropClaim" | "nftCollection" | "nftDistribution" | "nftClaimApproval" | "userNftHolding"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2491,6 +2555,302 @@ export namespace Prisma {
           }
         }
       }
+      NftCollection: {
+        payload: Prisma.$NftCollectionPayload<ExtArgs>
+        fields: Prisma.NftCollectionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NftCollectionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftCollectionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NftCollectionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftCollectionPayload>
+          }
+          findFirst: {
+            args: Prisma.NftCollectionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftCollectionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NftCollectionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftCollectionPayload>
+          }
+          findMany: {
+            args: Prisma.NftCollectionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftCollectionPayload>[]
+          }
+          create: {
+            args: Prisma.NftCollectionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftCollectionPayload>
+          }
+          createMany: {
+            args: Prisma.NftCollectionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NftCollectionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftCollectionPayload>[]
+          }
+          delete: {
+            args: Prisma.NftCollectionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftCollectionPayload>
+          }
+          update: {
+            args: Prisma.NftCollectionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftCollectionPayload>
+          }
+          deleteMany: {
+            args: Prisma.NftCollectionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NftCollectionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NftCollectionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftCollectionPayload>[]
+          }
+          upsert: {
+            args: Prisma.NftCollectionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftCollectionPayload>
+          }
+          aggregate: {
+            args: Prisma.NftCollectionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNftCollection>
+          }
+          groupBy: {
+            args: Prisma.NftCollectionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NftCollectionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NftCollectionCountArgs<ExtArgs>
+            result: $Utils.Optional<NftCollectionCountAggregateOutputType> | number
+          }
+        }
+      }
+      NftDistribution: {
+        payload: Prisma.$NftDistributionPayload<ExtArgs>
+        fields: Prisma.NftDistributionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NftDistributionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftDistributionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NftDistributionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftDistributionPayload>
+          }
+          findFirst: {
+            args: Prisma.NftDistributionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftDistributionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NftDistributionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftDistributionPayload>
+          }
+          findMany: {
+            args: Prisma.NftDistributionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftDistributionPayload>[]
+          }
+          create: {
+            args: Prisma.NftDistributionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftDistributionPayload>
+          }
+          createMany: {
+            args: Prisma.NftDistributionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NftDistributionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftDistributionPayload>[]
+          }
+          delete: {
+            args: Prisma.NftDistributionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftDistributionPayload>
+          }
+          update: {
+            args: Prisma.NftDistributionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftDistributionPayload>
+          }
+          deleteMany: {
+            args: Prisma.NftDistributionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NftDistributionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NftDistributionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftDistributionPayload>[]
+          }
+          upsert: {
+            args: Prisma.NftDistributionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftDistributionPayload>
+          }
+          aggregate: {
+            args: Prisma.NftDistributionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNftDistribution>
+          }
+          groupBy: {
+            args: Prisma.NftDistributionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NftDistributionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NftDistributionCountArgs<ExtArgs>
+            result: $Utils.Optional<NftDistributionCountAggregateOutputType> | number
+          }
+        }
+      }
+      NftClaimApproval: {
+        payload: Prisma.$NftClaimApprovalPayload<ExtArgs>
+        fields: Prisma.NftClaimApprovalFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NftClaimApprovalFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimApprovalPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NftClaimApprovalFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimApprovalPayload>
+          }
+          findFirst: {
+            args: Prisma.NftClaimApprovalFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimApprovalPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NftClaimApprovalFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimApprovalPayload>
+          }
+          findMany: {
+            args: Prisma.NftClaimApprovalFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimApprovalPayload>[]
+          }
+          create: {
+            args: Prisma.NftClaimApprovalCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimApprovalPayload>
+          }
+          createMany: {
+            args: Prisma.NftClaimApprovalCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NftClaimApprovalCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimApprovalPayload>[]
+          }
+          delete: {
+            args: Prisma.NftClaimApprovalDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimApprovalPayload>
+          }
+          update: {
+            args: Prisma.NftClaimApprovalUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimApprovalPayload>
+          }
+          deleteMany: {
+            args: Prisma.NftClaimApprovalDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NftClaimApprovalUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NftClaimApprovalUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimApprovalPayload>[]
+          }
+          upsert: {
+            args: Prisma.NftClaimApprovalUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimApprovalPayload>
+          }
+          aggregate: {
+            args: Prisma.NftClaimApprovalAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNftClaimApproval>
+          }
+          groupBy: {
+            args: Prisma.NftClaimApprovalGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NftClaimApprovalGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NftClaimApprovalCountArgs<ExtArgs>
+            result: $Utils.Optional<NftClaimApprovalCountAggregateOutputType> | number
+          }
+        }
+      }
+      UserNftHolding: {
+        payload: Prisma.$UserNftHoldingPayload<ExtArgs>
+        fields: Prisma.UserNftHoldingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UserNftHoldingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserNftHoldingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UserNftHoldingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserNftHoldingPayload>
+          }
+          findFirst: {
+            args: Prisma.UserNftHoldingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserNftHoldingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UserNftHoldingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserNftHoldingPayload>
+          }
+          findMany: {
+            args: Prisma.UserNftHoldingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserNftHoldingPayload>[]
+          }
+          create: {
+            args: Prisma.UserNftHoldingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserNftHoldingPayload>
+          }
+          createMany: {
+            args: Prisma.UserNftHoldingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.UserNftHoldingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserNftHoldingPayload>[]
+          }
+          delete: {
+            args: Prisma.UserNftHoldingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserNftHoldingPayload>
+          }
+          update: {
+            args: Prisma.UserNftHoldingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserNftHoldingPayload>
+          }
+          deleteMany: {
+            args: Prisma.UserNftHoldingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UserNftHoldingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.UserNftHoldingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserNftHoldingPayload>[]
+          }
+          upsert: {
+            args: Prisma.UserNftHoldingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserNftHoldingPayload>
+          }
+          aggregate: {
+            args: Prisma.UserNftHoldingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUserNftHolding>
+          }
+          groupBy: {
+            args: Prisma.UserNftHoldingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UserNftHoldingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UserNftHoldingCountArgs<ExtArgs>
+            result: $Utils.Optional<UserNftHoldingCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2595,6 +2955,10 @@ export namespace Prisma {
     dailyEarning?: DailyEarningOmit
     airdropSeason?: AirdropSeasonOmit
     airdropClaim?: AirdropClaimOmit
+    nftCollection?: NftCollectionOmit
+    nftDistribution?: NftDistributionOmit
+    nftClaimApproval?: NftClaimApprovalOmit
+    userNftHolding?: UserNftHoldingOmit
   }
 
   /* Types for Logging */
@@ -2702,6 +3066,11 @@ export namespace Prisma {
     auditLogs: number
     fraudAlerts: number
     campaigns: number
+    nftCollections: number
+    nftDistributions: number
+    nftHoldings: number
+    approvedClaims: number
+    airdropSeasons: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2718,6 +3087,11 @@ export namespace Prisma {
     auditLogs?: boolean | UserCountOutputTypeCountAuditLogsArgs
     fraudAlerts?: boolean | UserCountOutputTypeCountFraudAlertsArgs
     campaigns?: boolean | UserCountOutputTypeCountCampaignsArgs
+    nftCollections?: boolean | UserCountOutputTypeCountNftCollectionsArgs
+    nftDistributions?: boolean | UserCountOutputTypeCountNftDistributionsArgs
+    nftHoldings?: boolean | UserCountOutputTypeCountNftHoldingsArgs
+    approvedClaims?: boolean | UserCountOutputTypeCountApprovedClaimsArgs
+    airdropSeasons?: boolean | UserCountOutputTypeCountAirdropSeasonsArgs
   }
 
   // Custom InputTypes
@@ -2822,6 +3196,41 @@ export namespace Prisma {
     where?: CampaignConfigWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountNftCollectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NftCollectionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountNftDistributionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NftDistributionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountNftHoldingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserNftHoldingWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountApprovedClaimsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NftClaimApprovalWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAirdropSeasonsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AirdropSeasonWhereInput
+  }
+
 
   /**
    * Count Type AchievementCountOutputType
@@ -2913,6 +3322,37 @@ export namespace Prisma {
    */
   export type AirdropSeasonCountOutputTypeCountClaimsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: AirdropClaimWhereInput
+  }
+
+
+  /**
+   * Count Type NftCollectionCountOutputType
+   */
+
+  export type NftCollectionCountOutputType = {
+    distributions: number
+  }
+
+  export type NftCollectionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    distributions?: boolean | NftCollectionCountOutputTypeCountDistributionsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * NftCollectionCountOutputType without action
+   */
+  export type NftCollectionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftCollectionCountOutputType
+     */
+    select?: NftCollectionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * NftCollectionCountOutputType without action
+   */
+  export type NftCollectionCountOutputTypeCountDistributionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NftDistributionWhereInput
   }
 
 
@@ -3332,6 +3772,12 @@ export namespace Prisma {
     auditLogs?: boolean | User$auditLogsArgs<ExtArgs>
     fraudAlerts?: boolean | User$fraudAlertsArgs<ExtArgs>
     campaigns?: boolean | User$campaignsArgs<ExtArgs>
+    nftCollections?: boolean | User$nftCollectionsArgs<ExtArgs>
+    nftDistributions?: boolean | User$nftDistributionsArgs<ExtArgs>
+    nftHoldings?: boolean | User$nftHoldingsArgs<ExtArgs>
+    nftClaimApproval?: boolean | User$nftClaimApprovalArgs<ExtArgs>
+    approvedClaims?: boolean | User$approvedClaimsArgs<ExtArgs>
+    airdropSeasons?: boolean | User$airdropSeasonsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -3444,6 +3890,12 @@ export namespace Prisma {
     auditLogs?: boolean | User$auditLogsArgs<ExtArgs>
     fraudAlerts?: boolean | User$fraudAlertsArgs<ExtArgs>
     campaigns?: boolean | User$campaignsArgs<ExtArgs>
+    nftCollections?: boolean | User$nftCollectionsArgs<ExtArgs>
+    nftDistributions?: boolean | User$nftDistributionsArgs<ExtArgs>
+    nftHoldings?: boolean | User$nftHoldingsArgs<ExtArgs>
+    nftClaimApproval?: boolean | User$nftClaimApprovalArgs<ExtArgs>
+    approvedClaims?: boolean | User$approvedClaimsArgs<ExtArgs>
+    airdropSeasons?: boolean | User$airdropSeasonsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3466,6 +3918,12 @@ export namespace Prisma {
       auditLogs: Prisma.$AdminAuditLogPayload<ExtArgs>[]
       fraudAlerts: Prisma.$FraudAlertPayload<ExtArgs>[]
       campaigns: Prisma.$CampaignConfigPayload<ExtArgs>[]
+      nftCollections: Prisma.$NftCollectionPayload<ExtArgs>[]
+      nftDistributions: Prisma.$NftDistributionPayload<ExtArgs>[]
+      nftHoldings: Prisma.$UserNftHoldingPayload<ExtArgs>[]
+      nftClaimApproval: Prisma.$NftClaimApprovalPayload<ExtArgs> | null
+      approvedClaims: Prisma.$NftClaimApprovalPayload<ExtArgs>[]
+      airdropSeasons: Prisma.$AirdropSeasonPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3904,6 +4362,12 @@ export namespace Prisma {
     auditLogs<T extends User$auditLogsArgs<ExtArgs> = {}>(args?: Subset<T, User$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     fraudAlerts<T extends User$fraudAlertsArgs<ExtArgs> = {}>(args?: Subset<T, User$fraudAlertsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FraudAlertPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     campaigns<T extends User$campaignsArgs<ExtArgs> = {}>(args?: Subset<T, User$campaignsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CampaignConfigPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    nftCollections<T extends User$nftCollectionsArgs<ExtArgs> = {}>(args?: Subset<T, User$nftCollectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftCollectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    nftDistributions<T extends User$nftDistributionsArgs<ExtArgs> = {}>(args?: Subset<T, User$nftDistributionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftDistributionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    nftHoldings<T extends User$nftHoldingsArgs<ExtArgs> = {}>(args?: Subset<T, User$nftHoldingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserNftHoldingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    nftClaimApproval<T extends User$nftClaimApprovalArgs<ExtArgs> = {}>(args?: Subset<T, User$nftClaimApprovalArgs<ExtArgs>>): Prisma__NftClaimApprovalClient<$Result.GetResult<Prisma.$NftClaimApprovalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    approvedClaims<T extends User$approvedClaimsArgs<ExtArgs> = {}>(args?: Subset<T, User$approvedClaimsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftClaimApprovalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    airdropSeasons<T extends User$airdropSeasonsArgs<ExtArgs> = {}>(args?: Subset<T, User$airdropSeasonsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AirdropSeasonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4677,6 +5141,145 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CampaignConfigScalarFieldEnum | CampaignConfigScalarFieldEnum[]
+  }
+
+  /**
+   * User.nftCollections
+   */
+  export type User$nftCollectionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftCollection
+     */
+    select?: NftCollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftCollection
+     */
+    omit?: NftCollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftCollectionInclude<ExtArgs> | null
+    where?: NftCollectionWhereInput
+    orderBy?: NftCollectionOrderByWithRelationInput | NftCollectionOrderByWithRelationInput[]
+    cursor?: NftCollectionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: NftCollectionScalarFieldEnum | NftCollectionScalarFieldEnum[]
+  }
+
+  /**
+   * User.nftDistributions
+   */
+  export type User$nftDistributionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftDistribution
+     */
+    select?: NftDistributionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftDistribution
+     */
+    omit?: NftDistributionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftDistributionInclude<ExtArgs> | null
+    where?: NftDistributionWhereInput
+    orderBy?: NftDistributionOrderByWithRelationInput | NftDistributionOrderByWithRelationInput[]
+    cursor?: NftDistributionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: NftDistributionScalarFieldEnum | NftDistributionScalarFieldEnum[]
+  }
+
+  /**
+   * User.nftHoldings
+   */
+  export type User$nftHoldingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserNftHolding
+     */
+    select?: UserNftHoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserNftHolding
+     */
+    omit?: UserNftHoldingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserNftHoldingInclude<ExtArgs> | null
+    where?: UserNftHoldingWhereInput
+    orderBy?: UserNftHoldingOrderByWithRelationInput | UserNftHoldingOrderByWithRelationInput[]
+    cursor?: UserNftHoldingWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UserNftHoldingScalarFieldEnum | UserNftHoldingScalarFieldEnum[]
+  }
+
+  /**
+   * User.nftClaimApproval
+   */
+  export type User$nftClaimApprovalArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaimApproval
+     */
+    select?: NftClaimApprovalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaimApproval
+     */
+    omit?: NftClaimApprovalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimApprovalInclude<ExtArgs> | null
+    where?: NftClaimApprovalWhereInput
+  }
+
+  /**
+   * User.approvedClaims
+   */
+  export type User$approvedClaimsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaimApproval
+     */
+    select?: NftClaimApprovalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaimApproval
+     */
+    omit?: NftClaimApprovalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimApprovalInclude<ExtArgs> | null
+    where?: NftClaimApprovalWhereInput
+    orderBy?: NftClaimApprovalOrderByWithRelationInput | NftClaimApprovalOrderByWithRelationInput[]
+    cursor?: NftClaimApprovalWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: NftClaimApprovalScalarFieldEnum | NftClaimApprovalScalarFieldEnum[]
+  }
+
+  /**
+   * User.airdropSeasons
+   */
+  export type User$airdropSeasonsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropSeason
+     */
+    select?: AirdropSeasonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropSeason
+     */
+    omit?: AirdropSeasonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropSeasonInclude<ExtArgs> | null
+    where?: AirdropSeasonWhereInput
+    orderBy?: AirdropSeasonOrderByWithRelationInput | AirdropSeasonOrderByWithRelationInput[]
+    cursor?: AirdropSeasonWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AirdropSeasonScalarFieldEnum | AirdropSeasonScalarFieldEnum[]
   }
 
   /**
@@ -17077,10 +17680,12 @@ export namespace Prisma {
 
   export type ClaimAvgAggregateOutputType = {
     amount: number | null
+    feesPaid: Decimal | null
   }
 
   export type ClaimSumAggregateOutputType = {
     amount: number | null
+    feesPaid: Decimal | null
   }
 
   export type ClaimMinAggregateOutputType = {
@@ -17091,8 +17696,11 @@ export namespace Prisma {
     status: $Enums.ClaimStatus | null
     paymentMethod: $Enums.PaymentMethod | null
     processedAt: Date | null
+    feesPaid: Decimal | null
     createdAt: Date | null
     updatedAt: Date | null
+    type: string | null
+    userTier: string | null
   }
 
   export type ClaimMaxAggregateOutputType = {
@@ -17103,8 +17711,11 @@ export namespace Prisma {
     status: $Enums.ClaimStatus | null
     paymentMethod: $Enums.PaymentMethod | null
     processedAt: Date | null
+    feesPaid: Decimal | null
     createdAt: Date | null
     updatedAt: Date | null
+    type: string | null
+    userTier: string | null
   }
 
   export type ClaimCountAggregateOutputType = {
@@ -17116,18 +17727,24 @@ export namespace Prisma {
     paymentMethod: number
     metadata: number
     processedAt: number
+    feesPaid: number
     createdAt: number
     updatedAt: number
+    type: number
+    nftPasses: number
+    userTier: number
     _all: number
   }
 
 
   export type ClaimAvgAggregateInputType = {
     amount?: true
+    feesPaid?: true
   }
 
   export type ClaimSumAggregateInputType = {
     amount?: true
+    feesPaid?: true
   }
 
   export type ClaimMinAggregateInputType = {
@@ -17138,8 +17755,11 @@ export namespace Prisma {
     status?: true
     paymentMethod?: true
     processedAt?: true
+    feesPaid?: true
     createdAt?: true
     updatedAt?: true
+    type?: true
+    userTier?: true
   }
 
   export type ClaimMaxAggregateInputType = {
@@ -17150,8 +17770,11 @@ export namespace Prisma {
     status?: true
     paymentMethod?: true
     processedAt?: true
+    feesPaid?: true
     createdAt?: true
     updatedAt?: true
+    type?: true
+    userTier?: true
   }
 
   export type ClaimCountAggregateInputType = {
@@ -17163,8 +17786,12 @@ export namespace Prisma {
     paymentMethod?: true
     metadata?: true
     processedAt?: true
+    feesPaid?: true
     createdAt?: true
     updatedAt?: true
+    type?: true
+    nftPasses?: true
+    userTier?: true
     _all?: true
   }
 
@@ -17263,8 +17890,12 @@ export namespace Prisma {
     paymentMethod: $Enums.PaymentMethod
     metadata: JsonValue | null
     processedAt: Date | null
+    feesPaid: Decimal
     createdAt: Date
     updatedAt: Date
+    type: string | null
+    nftPasses: JsonValue | null
+    userTier: string | null
     _count: ClaimCountAggregateOutputType | null
     _avg: ClaimAvgAggregateOutputType | null
     _sum: ClaimSumAggregateOutputType | null
@@ -17295,8 +17926,12 @@ export namespace Prisma {
     paymentMethod?: boolean
     metadata?: boolean
     processedAt?: boolean
+    feesPaid?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    type?: boolean
+    nftPasses?: boolean
+    userTier?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["claim"]>
 
@@ -17309,8 +17944,12 @@ export namespace Prisma {
     paymentMethod?: boolean
     metadata?: boolean
     processedAt?: boolean
+    feesPaid?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    type?: boolean
+    nftPasses?: boolean
+    userTier?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["claim"]>
 
@@ -17323,8 +17962,12 @@ export namespace Prisma {
     paymentMethod?: boolean
     metadata?: boolean
     processedAt?: boolean
+    feesPaid?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    type?: boolean
+    nftPasses?: boolean
+    userTier?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["claim"]>
 
@@ -17337,11 +17980,15 @@ export namespace Prisma {
     paymentMethod?: boolean
     metadata?: boolean
     processedAt?: boolean
+    feesPaid?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    type?: boolean
+    nftPasses?: boolean
+    userTier?: boolean
   }
 
-  export type ClaimOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "amount" | "transactionHash" | "status" | "paymentMethod" | "metadata" | "processedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["claim"]>
+  export type ClaimOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "amount" | "transactionHash" | "status" | "paymentMethod" | "metadata" | "processedAt" | "feesPaid" | "createdAt" | "updatedAt" | "type" | "nftPasses" | "userTier", ExtArgs["result"]["claim"]>
   export type ClaimInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -17366,8 +18013,12 @@ export namespace Prisma {
       paymentMethod: $Enums.PaymentMethod
       metadata: Prisma.JsonValue | null
       processedAt: Date | null
+      feesPaid: Prisma.Decimal
       createdAt: Date
       updatedAt: Date
+      type: string | null
+      nftPasses: Prisma.JsonValue | null
+      userTier: string | null
     }, ExtArgs["result"]["claim"]>
     composites: {}
   }
@@ -17800,8 +18451,12 @@ export namespace Prisma {
     readonly paymentMethod: FieldRef<"Claim", 'PaymentMethod'>
     readonly metadata: FieldRef<"Claim", 'Json'>
     readonly processedAt: FieldRef<"Claim", 'DateTime'>
+    readonly feesPaid: FieldRef<"Claim", 'Decimal'>
     readonly createdAt: FieldRef<"Claim", 'DateTime'>
     readonly updatedAt: FieldRef<"Claim", 'DateTime'>
+    readonly type: FieldRef<"Claim", 'String'>
+    readonly nftPasses: FieldRef<"Claim", 'Json'>
+    readonly userTier: FieldRef<"Claim", 'String'>
   }
     
 
@@ -23646,86 +24301,132 @@ export namespace Prisma {
 
   export type AirdropSeasonAvgAggregateOutputType = {
     totalAllocation: number | null
+    claimedAmount: number | null
+    feeAmount: Decimal | null
   }
 
   export type AirdropSeasonSumAggregateOutputType = {
     totalAllocation: bigint | null
+    claimedAmount: bigint | null
+    feeAmount: Decimal | null
   }
 
   export type AirdropSeasonMinAggregateOutputType = {
     id: string | null
     name: string | null
+    description: string | null
     status: string | null
     totalAllocation: bigint | null
+    claimedAmount: bigint | null
     startDate: Date | null
     endDate: Date | null
-    claimingStartedAt: Date | null
+    nftPassRequired: boolean | null
+    requireApproval: boolean | null
+    feeAmount: Decimal | null
+    createdBy: string | null
     createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type AirdropSeasonMaxAggregateOutputType = {
     id: string | null
     name: string | null
+    description: string | null
     status: string | null
     totalAllocation: bigint | null
+    claimedAmount: bigint | null
     startDate: Date | null
     endDate: Date | null
-    claimingStartedAt: Date | null
+    nftPassRequired: boolean | null
+    requireApproval: boolean | null
+    feeAmount: Decimal | null
+    createdBy: string | null
     createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type AirdropSeasonCountAggregateOutputType = {
     id: number
     name: number
+    description: number
     status: number
     totalAllocation: number
+    claimedAmount: number
     startDate: number
     endDate: number
-    claimingStartedAt: number
+    nftPassRequired: number
+    requireApproval: number
+    feeAmount: number
+    createdBy: number
+    metadata: number
     createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
   export type AirdropSeasonAvgAggregateInputType = {
     totalAllocation?: true
+    claimedAmount?: true
+    feeAmount?: true
   }
 
   export type AirdropSeasonSumAggregateInputType = {
     totalAllocation?: true
+    claimedAmount?: true
+    feeAmount?: true
   }
 
   export type AirdropSeasonMinAggregateInputType = {
     id?: true
     name?: true
+    description?: true
     status?: true
     totalAllocation?: true
+    claimedAmount?: true
     startDate?: true
     endDate?: true
-    claimingStartedAt?: true
+    nftPassRequired?: true
+    requireApproval?: true
+    feeAmount?: true
+    createdBy?: true
     createdAt?: true
+    updatedAt?: true
   }
 
   export type AirdropSeasonMaxAggregateInputType = {
     id?: true
     name?: true
+    description?: true
     status?: true
     totalAllocation?: true
+    claimedAmount?: true
     startDate?: true
     endDate?: true
-    claimingStartedAt?: true
+    nftPassRequired?: true
+    requireApproval?: true
+    feeAmount?: true
+    createdBy?: true
     createdAt?: true
+    updatedAt?: true
   }
 
   export type AirdropSeasonCountAggregateInputType = {
     id?: true
     name?: true
+    description?: true
     status?: true
     totalAllocation?: true
+    claimedAmount?: true
     startDate?: true
     endDate?: true
-    claimingStartedAt?: true
+    nftPassRequired?: true
+    requireApproval?: true
+    feeAmount?: true
+    createdBy?: true
+    metadata?: true
     createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -23818,12 +24519,19 @@ export namespace Prisma {
   export type AirdropSeasonGroupByOutputType = {
     id: string
     name: string
+    description: string | null
     status: string
     totalAllocation: bigint
+    claimedAmount: bigint
     startDate: Date
     endDate: Date | null
-    claimingStartedAt: Date | null
+    nftPassRequired: boolean
+    requireApproval: boolean
+    feeAmount: Decimal
+    createdBy: string
+    metadata: JsonValue | null
     createdAt: Date
+    updatedAt: Date
     _count: AirdropSeasonCountAggregateOutputType | null
     _avg: AirdropSeasonAvgAggregateOutputType | null
     _sum: AirdropSeasonSumAggregateOutputType | null
@@ -23848,12 +24556,20 @@ export namespace Prisma {
   export type AirdropSeasonSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    description?: boolean
     status?: boolean
     totalAllocation?: boolean
+    claimedAmount?: boolean
     startDate?: boolean
     endDate?: boolean
-    claimingStartedAt?: boolean
+    nftPassRequired?: boolean
+    requireApproval?: boolean
+    feeAmount?: boolean
+    createdBy?: boolean
+    metadata?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
+    creator?: boolean | UserDefaultArgs<ExtArgs>
     claims?: boolean | AirdropSeason$claimsArgs<ExtArgs>
     _count?: boolean | AirdropSeasonCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["airdropSeason"]>
@@ -23861,58 +24577,94 @@ export namespace Prisma {
   export type AirdropSeasonSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    description?: boolean
     status?: boolean
     totalAllocation?: boolean
+    claimedAmount?: boolean
     startDate?: boolean
     endDate?: boolean
-    claimingStartedAt?: boolean
+    nftPassRequired?: boolean
+    requireApproval?: boolean
+    feeAmount?: boolean
+    createdBy?: boolean
+    metadata?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
+    creator?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["airdropSeason"]>
 
   export type AirdropSeasonSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    description?: boolean
     status?: boolean
     totalAllocation?: boolean
+    claimedAmount?: boolean
     startDate?: boolean
     endDate?: boolean
-    claimingStartedAt?: boolean
+    nftPassRequired?: boolean
+    requireApproval?: boolean
+    feeAmount?: boolean
+    createdBy?: boolean
+    metadata?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
+    creator?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["airdropSeason"]>
 
   export type AirdropSeasonSelectScalar = {
     id?: boolean
     name?: boolean
+    description?: boolean
     status?: boolean
     totalAllocation?: boolean
+    claimedAmount?: boolean
     startDate?: boolean
     endDate?: boolean
-    claimingStartedAt?: boolean
+    nftPassRequired?: boolean
+    requireApproval?: boolean
+    feeAmount?: boolean
+    createdBy?: boolean
+    metadata?: boolean
     createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type AirdropSeasonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "status" | "totalAllocation" | "startDate" | "endDate" | "claimingStartedAt" | "createdAt", ExtArgs["result"]["airdropSeason"]>
+  export type AirdropSeasonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "status" | "totalAllocation" | "claimedAmount" | "startDate" | "endDate" | "nftPassRequired" | "requireApproval" | "feeAmount" | "createdBy" | "metadata" | "createdAt" | "updatedAt", ExtArgs["result"]["airdropSeason"]>
   export type AirdropSeasonInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | UserDefaultArgs<ExtArgs>
     claims?: boolean | AirdropSeason$claimsArgs<ExtArgs>
     _count?: boolean | AirdropSeasonCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type AirdropSeasonIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type AirdropSeasonIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type AirdropSeasonIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AirdropSeasonIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }
 
   export type $AirdropSeasonPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "AirdropSeason"
     objects: {
+      creator: Prisma.$UserPayload<ExtArgs>
       claims: Prisma.$AirdropClaimPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
+      description: string | null
       status: string
       totalAllocation: bigint
+      claimedAmount: bigint
       startDate: Date
       endDate: Date | null
-      claimingStartedAt: Date | null
+      nftPassRequired: boolean
+      requireApproval: boolean
+      feeAmount: Prisma.Decimal
+      createdBy: string
+      metadata: Prisma.JsonValue | null
       createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["airdropSeason"]>
     composites: {}
   }
@@ -24307,6 +25059,7 @@ export namespace Prisma {
    */
   export interface Prisma__AirdropSeasonClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    creator<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     claims<T extends AirdropSeason$claimsArgs<ExtArgs> = {}>(args?: Subset<T, AirdropSeason$claimsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AirdropClaimPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -24339,12 +25092,19 @@ export namespace Prisma {
   interface AirdropSeasonFieldRefs {
     readonly id: FieldRef<"AirdropSeason", 'String'>
     readonly name: FieldRef<"AirdropSeason", 'String'>
+    readonly description: FieldRef<"AirdropSeason", 'String'>
     readonly status: FieldRef<"AirdropSeason", 'String'>
     readonly totalAllocation: FieldRef<"AirdropSeason", 'BigInt'>
+    readonly claimedAmount: FieldRef<"AirdropSeason", 'BigInt'>
     readonly startDate: FieldRef<"AirdropSeason", 'DateTime'>
     readonly endDate: FieldRef<"AirdropSeason", 'DateTime'>
-    readonly claimingStartedAt: FieldRef<"AirdropSeason", 'DateTime'>
+    readonly nftPassRequired: FieldRef<"AirdropSeason", 'Boolean'>
+    readonly requireApproval: FieldRef<"AirdropSeason", 'Boolean'>
+    readonly feeAmount: FieldRef<"AirdropSeason", 'Decimal'>
+    readonly createdBy: FieldRef<"AirdropSeason", 'String'>
+    readonly metadata: FieldRef<"AirdropSeason", 'Json'>
     readonly createdAt: FieldRef<"AirdropSeason", 'DateTime'>
+    readonly updatedAt: FieldRef<"AirdropSeason", 'DateTime'>
   }
     
 
@@ -24594,6 +25354,10 @@ export namespace Prisma {
      */
     data: AirdropSeasonCreateManyInput | AirdropSeasonCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropSeasonIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -24664,6 +25428,10 @@ export namespace Prisma {
      * Limit how many AirdropSeasons to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropSeasonIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -24805,6 +25573,8 @@ export namespace Prisma {
     transactionSignature: string | null
     status: string | null
     claimedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type AirdropClaimMaxAggregateOutputType = {
@@ -24817,6 +25587,8 @@ export namespace Prisma {
     transactionSignature: string | null
     status: string | null
     claimedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type AirdropClaimCountAggregateOutputType = {
@@ -24829,6 +25601,8 @@ export namespace Prisma {
     transactionSignature: number
     status: number
     claimedAt: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -24851,6 +25625,8 @@ export namespace Prisma {
     transactionSignature?: true
     status?: true
     claimedAt?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type AirdropClaimMaxAggregateInputType = {
@@ -24863,6 +25639,8 @@ export namespace Prisma {
     transactionSignature?: true
     status?: true
     claimedAt?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type AirdropClaimCountAggregateInputType = {
@@ -24875,6 +25653,8 @@ export namespace Prisma {
     transactionSignature?: true
     status?: true
     claimedAt?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -24974,6 +25754,8 @@ export namespace Prisma {
     transactionSignature: string | null
     status: string
     claimedAt: Date
+    createdAt: Date
+    updatedAt: Date
     _count: AirdropClaimCountAggregateOutputType | null
     _avg: AirdropClaimAvgAggregateOutputType | null
     _sum: AirdropClaimSumAggregateOutputType | null
@@ -25005,6 +25787,8 @@ export namespace Prisma {
     transactionSignature?: boolean
     status?: boolean
     claimedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     season?: boolean | AirdropSeasonDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["airdropClaim"]>
@@ -25019,6 +25803,8 @@ export namespace Prisma {
     transactionSignature?: boolean
     status?: boolean
     claimedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     season?: boolean | AirdropSeasonDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["airdropClaim"]>
@@ -25033,6 +25819,8 @@ export namespace Prisma {
     transactionSignature?: boolean
     status?: boolean
     claimedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     season?: boolean | AirdropSeasonDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["airdropClaim"]>
@@ -25047,9 +25835,11 @@ export namespace Prisma {
     transactionSignature?: boolean
     status?: boolean
     claimedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type AirdropClaimOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "seasonId" | "tokens" | "tier" | "paymentSignature" | "transactionSignature" | "status" | "claimedAt", ExtArgs["result"]["airdropClaim"]>
+  export type AirdropClaimOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "seasonId" | "tokens" | "tier" | "paymentSignature" | "transactionSignature" | "status" | "claimedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["airdropClaim"]>
   export type AirdropClaimInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     season?: boolean | AirdropSeasonDefaultArgs<ExtArgs>
@@ -25079,6 +25869,8 @@ export namespace Prisma {
       transactionSignature: string | null
       status: string
       claimedAt: Date
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["airdropClaim"]>
     composites: {}
   }
@@ -25513,6 +26305,8 @@ export namespace Prisma {
     readonly transactionSignature: FieldRef<"AirdropClaim", 'String'>
     readonly status: FieldRef<"AirdropClaim", 'String'>
     readonly claimedAt: FieldRef<"AirdropClaim", 'DateTime'>
+    readonly createdAt: FieldRef<"AirdropClaim", 'DateTime'>
+    readonly updatedAt: FieldRef<"AirdropClaim", 'DateTime'>
   }
     
 
@@ -25928,6 +26722,4605 @@ export namespace Prisma {
 
 
   /**
+   * Model NftCollection
+   */
+
+  export type AggregateNftCollection = {
+    _count: NftCollectionCountAggregateOutputType | null
+    _avg: NftCollectionAvgAggregateOutputType | null
+    _sum: NftCollectionSumAggregateOutputType | null
+    _min: NftCollectionMinAggregateOutputType | null
+    _max: NftCollectionMaxAggregateOutputType | null
+  }
+
+  export type NftCollectionAvgAggregateOutputType = {
+    supply: number | null
+  }
+
+  export type NftCollectionSumAggregateOutputType = {
+    supply: number | null
+  }
+
+  export type NftCollectionMinAggregateOutputType = {
+    id: string | null
+    mintAddress: string | null
+    name: string | null
+    symbol: string | null
+    description: string | null
+    uri: string | null
+    supply: number | null
+    createdBy: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NftCollectionMaxAggregateOutputType = {
+    id: string | null
+    mintAddress: string | null
+    name: string | null
+    symbol: string | null
+    description: string | null
+    uri: string | null
+    supply: number | null
+    createdBy: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NftCollectionCountAggregateOutputType = {
+    id: number
+    mintAddress: number
+    name: number
+    symbol: number
+    description: number
+    uri: number
+    supply: number
+    createdBy: number
+    metadata: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type NftCollectionAvgAggregateInputType = {
+    supply?: true
+  }
+
+  export type NftCollectionSumAggregateInputType = {
+    supply?: true
+  }
+
+  export type NftCollectionMinAggregateInputType = {
+    id?: true
+    mintAddress?: true
+    name?: true
+    symbol?: true
+    description?: true
+    uri?: true
+    supply?: true
+    createdBy?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NftCollectionMaxAggregateInputType = {
+    id?: true
+    mintAddress?: true
+    name?: true
+    symbol?: true
+    description?: true
+    uri?: true
+    supply?: true
+    createdBy?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NftCollectionCountAggregateInputType = {
+    id?: true
+    mintAddress?: true
+    name?: true
+    symbol?: true
+    description?: true
+    uri?: true
+    supply?: true
+    createdBy?: true
+    metadata?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type NftCollectionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which NftCollection to aggregate.
+     */
+    where?: NftCollectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftCollections to fetch.
+     */
+    orderBy?: NftCollectionOrderByWithRelationInput | NftCollectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NftCollectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftCollections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftCollections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned NftCollections
+    **/
+    _count?: true | NftCollectionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: NftCollectionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: NftCollectionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NftCollectionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NftCollectionMaxAggregateInputType
+  }
+
+  export type GetNftCollectionAggregateType<T extends NftCollectionAggregateArgs> = {
+        [P in keyof T & keyof AggregateNftCollection]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNftCollection[P]>
+      : GetScalarType<T[P], AggregateNftCollection[P]>
+  }
+
+
+
+
+  export type NftCollectionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NftCollectionWhereInput
+    orderBy?: NftCollectionOrderByWithAggregationInput | NftCollectionOrderByWithAggregationInput[]
+    by: NftCollectionScalarFieldEnum[] | NftCollectionScalarFieldEnum
+    having?: NftCollectionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NftCollectionCountAggregateInputType | true
+    _avg?: NftCollectionAvgAggregateInputType
+    _sum?: NftCollectionSumAggregateInputType
+    _min?: NftCollectionMinAggregateInputType
+    _max?: NftCollectionMaxAggregateInputType
+  }
+
+  export type NftCollectionGroupByOutputType = {
+    id: string
+    mintAddress: string
+    name: string
+    symbol: string
+    description: string | null
+    uri: string
+    supply: number
+    createdBy: string
+    metadata: JsonValue | null
+    createdAt: Date
+    updatedAt: Date
+    _count: NftCollectionCountAggregateOutputType | null
+    _avg: NftCollectionAvgAggregateOutputType | null
+    _sum: NftCollectionSumAggregateOutputType | null
+    _min: NftCollectionMinAggregateOutputType | null
+    _max: NftCollectionMaxAggregateOutputType | null
+  }
+
+  type GetNftCollectionGroupByPayload<T extends NftCollectionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NftCollectionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NftCollectionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NftCollectionGroupByOutputType[P]>
+            : GetScalarType<T[P], NftCollectionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NftCollectionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mintAddress?: boolean
+    name?: boolean
+    symbol?: boolean
+    description?: boolean
+    uri?: boolean
+    supply?: boolean
+    createdBy?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+    distributions?: boolean | NftCollection$distributionsArgs<ExtArgs>
+    _count?: boolean | NftCollectionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["nftCollection"]>
+
+  export type NftCollectionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mintAddress?: boolean
+    name?: boolean
+    symbol?: boolean
+    description?: boolean
+    uri?: boolean
+    supply?: boolean
+    createdBy?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["nftCollection"]>
+
+  export type NftCollectionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mintAddress?: boolean
+    name?: boolean
+    symbol?: boolean
+    description?: boolean
+    uri?: boolean
+    supply?: boolean
+    createdBy?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["nftCollection"]>
+
+  export type NftCollectionSelectScalar = {
+    id?: boolean
+    mintAddress?: boolean
+    name?: boolean
+    symbol?: boolean
+    description?: boolean
+    uri?: boolean
+    supply?: boolean
+    createdBy?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type NftCollectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mintAddress" | "name" | "symbol" | "description" | "uri" | "supply" | "createdBy" | "metadata" | "createdAt" | "updatedAt", ExtArgs["result"]["nftCollection"]>
+  export type NftCollectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+    distributions?: boolean | NftCollection$distributionsArgs<ExtArgs>
+    _count?: boolean | NftCollectionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type NftCollectionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type NftCollectionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $NftCollectionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "NftCollection"
+    objects: {
+      creator: Prisma.$UserPayload<ExtArgs>
+      distributions: Prisma.$NftDistributionPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      mintAddress: string
+      name: string
+      symbol: string
+      description: string | null
+      uri: string
+      supply: number
+      createdBy: string
+      metadata: Prisma.JsonValue | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["nftCollection"]>
+    composites: {}
+  }
+
+  type NftCollectionGetPayload<S extends boolean | null | undefined | NftCollectionDefaultArgs> = $Result.GetResult<Prisma.$NftCollectionPayload, S>
+
+  type NftCollectionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<NftCollectionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: NftCollectionCountAggregateInputType | true
+    }
+
+  export interface NftCollectionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['NftCollection'], meta: { name: 'NftCollection' } }
+    /**
+     * Find zero or one NftCollection that matches the filter.
+     * @param {NftCollectionFindUniqueArgs} args - Arguments to find a NftCollection
+     * @example
+     * // Get one NftCollection
+     * const nftCollection = await prisma.nftCollection.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NftCollectionFindUniqueArgs>(args: SelectSubset<T, NftCollectionFindUniqueArgs<ExtArgs>>): Prisma__NftCollectionClient<$Result.GetResult<Prisma.$NftCollectionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one NftCollection that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {NftCollectionFindUniqueOrThrowArgs} args - Arguments to find a NftCollection
+     * @example
+     * // Get one NftCollection
+     * const nftCollection = await prisma.nftCollection.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NftCollectionFindUniqueOrThrowArgs>(args: SelectSubset<T, NftCollectionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NftCollectionClient<$Result.GetResult<Prisma.$NftCollectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first NftCollection that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftCollectionFindFirstArgs} args - Arguments to find a NftCollection
+     * @example
+     * // Get one NftCollection
+     * const nftCollection = await prisma.nftCollection.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NftCollectionFindFirstArgs>(args?: SelectSubset<T, NftCollectionFindFirstArgs<ExtArgs>>): Prisma__NftCollectionClient<$Result.GetResult<Prisma.$NftCollectionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first NftCollection that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftCollectionFindFirstOrThrowArgs} args - Arguments to find a NftCollection
+     * @example
+     * // Get one NftCollection
+     * const nftCollection = await prisma.nftCollection.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NftCollectionFindFirstOrThrowArgs>(args?: SelectSubset<T, NftCollectionFindFirstOrThrowArgs<ExtArgs>>): Prisma__NftCollectionClient<$Result.GetResult<Prisma.$NftCollectionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more NftCollections that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftCollectionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all NftCollections
+     * const nftCollections = await prisma.nftCollection.findMany()
+     * 
+     * // Get first 10 NftCollections
+     * const nftCollections = await prisma.nftCollection.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const nftCollectionWithIdOnly = await prisma.nftCollection.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NftCollectionFindManyArgs>(args?: SelectSubset<T, NftCollectionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftCollectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a NftCollection.
+     * @param {NftCollectionCreateArgs} args - Arguments to create a NftCollection.
+     * @example
+     * // Create one NftCollection
+     * const NftCollection = await prisma.nftCollection.create({
+     *   data: {
+     *     // ... data to create a NftCollection
+     *   }
+     * })
+     * 
+     */
+    create<T extends NftCollectionCreateArgs>(args: SelectSubset<T, NftCollectionCreateArgs<ExtArgs>>): Prisma__NftCollectionClient<$Result.GetResult<Prisma.$NftCollectionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many NftCollections.
+     * @param {NftCollectionCreateManyArgs} args - Arguments to create many NftCollections.
+     * @example
+     * // Create many NftCollections
+     * const nftCollection = await prisma.nftCollection.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NftCollectionCreateManyArgs>(args?: SelectSubset<T, NftCollectionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many NftCollections and returns the data saved in the database.
+     * @param {NftCollectionCreateManyAndReturnArgs} args - Arguments to create many NftCollections.
+     * @example
+     * // Create many NftCollections
+     * const nftCollection = await prisma.nftCollection.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many NftCollections and only return the `id`
+     * const nftCollectionWithIdOnly = await prisma.nftCollection.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NftCollectionCreateManyAndReturnArgs>(args?: SelectSubset<T, NftCollectionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftCollectionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a NftCollection.
+     * @param {NftCollectionDeleteArgs} args - Arguments to delete one NftCollection.
+     * @example
+     * // Delete one NftCollection
+     * const NftCollection = await prisma.nftCollection.delete({
+     *   where: {
+     *     // ... filter to delete one NftCollection
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NftCollectionDeleteArgs>(args: SelectSubset<T, NftCollectionDeleteArgs<ExtArgs>>): Prisma__NftCollectionClient<$Result.GetResult<Prisma.$NftCollectionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one NftCollection.
+     * @param {NftCollectionUpdateArgs} args - Arguments to update one NftCollection.
+     * @example
+     * // Update one NftCollection
+     * const nftCollection = await prisma.nftCollection.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NftCollectionUpdateArgs>(args: SelectSubset<T, NftCollectionUpdateArgs<ExtArgs>>): Prisma__NftCollectionClient<$Result.GetResult<Prisma.$NftCollectionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more NftCollections.
+     * @param {NftCollectionDeleteManyArgs} args - Arguments to filter NftCollections to delete.
+     * @example
+     * // Delete a few NftCollections
+     * const { count } = await prisma.nftCollection.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NftCollectionDeleteManyArgs>(args?: SelectSubset<T, NftCollectionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NftCollections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftCollectionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many NftCollections
+     * const nftCollection = await prisma.nftCollection.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NftCollectionUpdateManyArgs>(args: SelectSubset<T, NftCollectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NftCollections and returns the data updated in the database.
+     * @param {NftCollectionUpdateManyAndReturnArgs} args - Arguments to update many NftCollections.
+     * @example
+     * // Update many NftCollections
+     * const nftCollection = await prisma.nftCollection.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more NftCollections and only return the `id`
+     * const nftCollectionWithIdOnly = await prisma.nftCollection.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NftCollectionUpdateManyAndReturnArgs>(args: SelectSubset<T, NftCollectionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftCollectionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one NftCollection.
+     * @param {NftCollectionUpsertArgs} args - Arguments to update or create a NftCollection.
+     * @example
+     * // Update or create a NftCollection
+     * const nftCollection = await prisma.nftCollection.upsert({
+     *   create: {
+     *     // ... data to create a NftCollection
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the NftCollection we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NftCollectionUpsertArgs>(args: SelectSubset<T, NftCollectionUpsertArgs<ExtArgs>>): Prisma__NftCollectionClient<$Result.GetResult<Prisma.$NftCollectionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of NftCollections.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftCollectionCountArgs} args - Arguments to filter NftCollections to count.
+     * @example
+     * // Count the number of NftCollections
+     * const count = await prisma.nftCollection.count({
+     *   where: {
+     *     // ... the filter for the NftCollections we want to count
+     *   }
+     * })
+    **/
+    count<T extends NftCollectionCountArgs>(
+      args?: Subset<T, NftCollectionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NftCollectionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a NftCollection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftCollectionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NftCollectionAggregateArgs>(args: Subset<T, NftCollectionAggregateArgs>): Prisma.PrismaPromise<GetNftCollectionAggregateType<T>>
+
+    /**
+     * Group by NftCollection.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftCollectionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NftCollectionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NftCollectionGroupByArgs['orderBy'] }
+        : { orderBy?: NftCollectionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NftCollectionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNftCollectionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the NftCollection model
+   */
+  readonly fields: NftCollectionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for NftCollection.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NftCollectionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    creator<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    distributions<T extends NftCollection$distributionsArgs<ExtArgs> = {}>(args?: Subset<T, NftCollection$distributionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftDistributionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the NftCollection model
+   */
+  interface NftCollectionFieldRefs {
+    readonly id: FieldRef<"NftCollection", 'String'>
+    readonly mintAddress: FieldRef<"NftCollection", 'String'>
+    readonly name: FieldRef<"NftCollection", 'String'>
+    readonly symbol: FieldRef<"NftCollection", 'String'>
+    readonly description: FieldRef<"NftCollection", 'String'>
+    readonly uri: FieldRef<"NftCollection", 'String'>
+    readonly supply: FieldRef<"NftCollection", 'Int'>
+    readonly createdBy: FieldRef<"NftCollection", 'String'>
+    readonly metadata: FieldRef<"NftCollection", 'Json'>
+    readonly createdAt: FieldRef<"NftCollection", 'DateTime'>
+    readonly updatedAt: FieldRef<"NftCollection", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * NftCollection findUnique
+   */
+  export type NftCollectionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftCollection
+     */
+    select?: NftCollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftCollection
+     */
+    omit?: NftCollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftCollectionInclude<ExtArgs> | null
+    /**
+     * Filter, which NftCollection to fetch.
+     */
+    where: NftCollectionWhereUniqueInput
+  }
+
+  /**
+   * NftCollection findUniqueOrThrow
+   */
+  export type NftCollectionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftCollection
+     */
+    select?: NftCollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftCollection
+     */
+    omit?: NftCollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftCollectionInclude<ExtArgs> | null
+    /**
+     * Filter, which NftCollection to fetch.
+     */
+    where: NftCollectionWhereUniqueInput
+  }
+
+  /**
+   * NftCollection findFirst
+   */
+  export type NftCollectionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftCollection
+     */
+    select?: NftCollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftCollection
+     */
+    omit?: NftCollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftCollectionInclude<ExtArgs> | null
+    /**
+     * Filter, which NftCollection to fetch.
+     */
+    where?: NftCollectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftCollections to fetch.
+     */
+    orderBy?: NftCollectionOrderByWithRelationInput | NftCollectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NftCollections.
+     */
+    cursor?: NftCollectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftCollections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftCollections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NftCollections.
+     */
+    distinct?: NftCollectionScalarFieldEnum | NftCollectionScalarFieldEnum[]
+  }
+
+  /**
+   * NftCollection findFirstOrThrow
+   */
+  export type NftCollectionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftCollection
+     */
+    select?: NftCollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftCollection
+     */
+    omit?: NftCollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftCollectionInclude<ExtArgs> | null
+    /**
+     * Filter, which NftCollection to fetch.
+     */
+    where?: NftCollectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftCollections to fetch.
+     */
+    orderBy?: NftCollectionOrderByWithRelationInput | NftCollectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NftCollections.
+     */
+    cursor?: NftCollectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftCollections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftCollections.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NftCollections.
+     */
+    distinct?: NftCollectionScalarFieldEnum | NftCollectionScalarFieldEnum[]
+  }
+
+  /**
+   * NftCollection findMany
+   */
+  export type NftCollectionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftCollection
+     */
+    select?: NftCollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftCollection
+     */
+    omit?: NftCollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftCollectionInclude<ExtArgs> | null
+    /**
+     * Filter, which NftCollections to fetch.
+     */
+    where?: NftCollectionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftCollections to fetch.
+     */
+    orderBy?: NftCollectionOrderByWithRelationInput | NftCollectionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing NftCollections.
+     */
+    cursor?: NftCollectionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftCollections from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftCollections.
+     */
+    skip?: number
+    distinct?: NftCollectionScalarFieldEnum | NftCollectionScalarFieldEnum[]
+  }
+
+  /**
+   * NftCollection create
+   */
+  export type NftCollectionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftCollection
+     */
+    select?: NftCollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftCollection
+     */
+    omit?: NftCollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftCollectionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a NftCollection.
+     */
+    data: XOR<NftCollectionCreateInput, NftCollectionUncheckedCreateInput>
+  }
+
+  /**
+   * NftCollection createMany
+   */
+  export type NftCollectionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many NftCollections.
+     */
+    data: NftCollectionCreateManyInput | NftCollectionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * NftCollection createManyAndReturn
+   */
+  export type NftCollectionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftCollection
+     */
+    select?: NftCollectionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftCollection
+     */
+    omit?: NftCollectionOmit<ExtArgs> | null
+    /**
+     * The data used to create many NftCollections.
+     */
+    data: NftCollectionCreateManyInput | NftCollectionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftCollectionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * NftCollection update
+   */
+  export type NftCollectionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftCollection
+     */
+    select?: NftCollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftCollection
+     */
+    omit?: NftCollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftCollectionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a NftCollection.
+     */
+    data: XOR<NftCollectionUpdateInput, NftCollectionUncheckedUpdateInput>
+    /**
+     * Choose, which NftCollection to update.
+     */
+    where: NftCollectionWhereUniqueInput
+  }
+
+  /**
+   * NftCollection updateMany
+   */
+  export type NftCollectionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update NftCollections.
+     */
+    data: XOR<NftCollectionUpdateManyMutationInput, NftCollectionUncheckedUpdateManyInput>
+    /**
+     * Filter which NftCollections to update
+     */
+    where?: NftCollectionWhereInput
+    /**
+     * Limit how many NftCollections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * NftCollection updateManyAndReturn
+   */
+  export type NftCollectionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftCollection
+     */
+    select?: NftCollectionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftCollection
+     */
+    omit?: NftCollectionOmit<ExtArgs> | null
+    /**
+     * The data used to update NftCollections.
+     */
+    data: XOR<NftCollectionUpdateManyMutationInput, NftCollectionUncheckedUpdateManyInput>
+    /**
+     * Filter which NftCollections to update
+     */
+    where?: NftCollectionWhereInput
+    /**
+     * Limit how many NftCollections to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftCollectionIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * NftCollection upsert
+   */
+  export type NftCollectionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftCollection
+     */
+    select?: NftCollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftCollection
+     */
+    omit?: NftCollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftCollectionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the NftCollection to update in case it exists.
+     */
+    where: NftCollectionWhereUniqueInput
+    /**
+     * In case the NftCollection found by the `where` argument doesn't exist, create a new NftCollection with this data.
+     */
+    create: XOR<NftCollectionCreateInput, NftCollectionUncheckedCreateInput>
+    /**
+     * In case the NftCollection was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NftCollectionUpdateInput, NftCollectionUncheckedUpdateInput>
+  }
+
+  /**
+   * NftCollection delete
+   */
+  export type NftCollectionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftCollection
+     */
+    select?: NftCollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftCollection
+     */
+    omit?: NftCollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftCollectionInclude<ExtArgs> | null
+    /**
+     * Filter which NftCollection to delete.
+     */
+    where: NftCollectionWhereUniqueInput
+  }
+
+  /**
+   * NftCollection deleteMany
+   */
+  export type NftCollectionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which NftCollections to delete
+     */
+    where?: NftCollectionWhereInput
+    /**
+     * Limit how many NftCollections to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * NftCollection.distributions
+   */
+  export type NftCollection$distributionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftDistribution
+     */
+    select?: NftDistributionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftDistribution
+     */
+    omit?: NftDistributionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftDistributionInclude<ExtArgs> | null
+    where?: NftDistributionWhereInput
+    orderBy?: NftDistributionOrderByWithRelationInput | NftDistributionOrderByWithRelationInput[]
+    cursor?: NftDistributionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: NftDistributionScalarFieldEnum | NftDistributionScalarFieldEnum[]
+  }
+
+  /**
+   * NftCollection without action
+   */
+  export type NftCollectionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftCollection
+     */
+    select?: NftCollectionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftCollection
+     */
+    omit?: NftCollectionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftCollectionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model NftDistribution
+   */
+
+  export type AggregateNftDistribution = {
+    _count: NftDistributionCountAggregateOutputType | null
+    _avg: NftDistributionAvgAggregateOutputType | null
+    _sum: NftDistributionSumAggregateOutputType | null
+    _min: NftDistributionMinAggregateOutputType | null
+    _max: NftDistributionMaxAggregateOutputType | null
+  }
+
+  export type NftDistributionAvgAggregateOutputType = {
+    recipientCount: number | null
+    nftsPerUser: number | null
+  }
+
+  export type NftDistributionSumAggregateOutputType = {
+    recipientCount: number | null
+    nftsPerUser: number | null
+  }
+
+  export type NftDistributionMinAggregateOutputType = {
+    id: string | null
+    mintAddress: string | null
+    distributedBy: string | null
+    recipientCount: number | null
+    nftsPerUser: number | null
+    success: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NftDistributionMaxAggregateOutputType = {
+    id: string | null
+    mintAddress: string | null
+    distributedBy: string | null
+    recipientCount: number | null
+    nftsPerUser: number | null
+    success: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NftDistributionCountAggregateOutputType = {
+    id: number
+    mintAddress: number
+    distributedBy: number
+    recipientCount: number
+    nftsPerUser: number
+    results: number
+    success: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type NftDistributionAvgAggregateInputType = {
+    recipientCount?: true
+    nftsPerUser?: true
+  }
+
+  export type NftDistributionSumAggregateInputType = {
+    recipientCount?: true
+    nftsPerUser?: true
+  }
+
+  export type NftDistributionMinAggregateInputType = {
+    id?: true
+    mintAddress?: true
+    distributedBy?: true
+    recipientCount?: true
+    nftsPerUser?: true
+    success?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NftDistributionMaxAggregateInputType = {
+    id?: true
+    mintAddress?: true
+    distributedBy?: true
+    recipientCount?: true
+    nftsPerUser?: true
+    success?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NftDistributionCountAggregateInputType = {
+    id?: true
+    mintAddress?: true
+    distributedBy?: true
+    recipientCount?: true
+    nftsPerUser?: true
+    results?: true
+    success?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type NftDistributionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which NftDistribution to aggregate.
+     */
+    where?: NftDistributionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftDistributions to fetch.
+     */
+    orderBy?: NftDistributionOrderByWithRelationInput | NftDistributionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NftDistributionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftDistributions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftDistributions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned NftDistributions
+    **/
+    _count?: true | NftDistributionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: NftDistributionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: NftDistributionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NftDistributionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NftDistributionMaxAggregateInputType
+  }
+
+  export type GetNftDistributionAggregateType<T extends NftDistributionAggregateArgs> = {
+        [P in keyof T & keyof AggregateNftDistribution]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNftDistribution[P]>
+      : GetScalarType<T[P], AggregateNftDistribution[P]>
+  }
+
+
+
+
+  export type NftDistributionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NftDistributionWhereInput
+    orderBy?: NftDistributionOrderByWithAggregationInput | NftDistributionOrderByWithAggregationInput[]
+    by: NftDistributionScalarFieldEnum[] | NftDistributionScalarFieldEnum
+    having?: NftDistributionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NftDistributionCountAggregateInputType | true
+    _avg?: NftDistributionAvgAggregateInputType
+    _sum?: NftDistributionSumAggregateInputType
+    _min?: NftDistributionMinAggregateInputType
+    _max?: NftDistributionMaxAggregateInputType
+  }
+
+  export type NftDistributionGroupByOutputType = {
+    id: string
+    mintAddress: string
+    distributedBy: string
+    recipientCount: number
+    nftsPerUser: number
+    results: JsonValue
+    success: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: NftDistributionCountAggregateOutputType | null
+    _avg: NftDistributionAvgAggregateOutputType | null
+    _sum: NftDistributionSumAggregateOutputType | null
+    _min: NftDistributionMinAggregateOutputType | null
+    _max: NftDistributionMaxAggregateOutputType | null
+  }
+
+  type GetNftDistributionGroupByPayload<T extends NftDistributionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NftDistributionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NftDistributionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NftDistributionGroupByOutputType[P]>
+            : GetScalarType<T[P], NftDistributionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NftDistributionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mintAddress?: boolean
+    distributedBy?: boolean
+    recipientCount?: boolean
+    nftsPerUser?: boolean
+    results?: boolean
+    success?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    collection?: boolean | NftCollectionDefaultArgs<ExtArgs>
+    distributor?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["nftDistribution"]>
+
+  export type NftDistributionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mintAddress?: boolean
+    distributedBy?: boolean
+    recipientCount?: boolean
+    nftsPerUser?: boolean
+    results?: boolean
+    success?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    collection?: boolean | NftCollectionDefaultArgs<ExtArgs>
+    distributor?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["nftDistribution"]>
+
+  export type NftDistributionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mintAddress?: boolean
+    distributedBy?: boolean
+    recipientCount?: boolean
+    nftsPerUser?: boolean
+    results?: boolean
+    success?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    collection?: boolean | NftCollectionDefaultArgs<ExtArgs>
+    distributor?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["nftDistribution"]>
+
+  export type NftDistributionSelectScalar = {
+    id?: boolean
+    mintAddress?: boolean
+    distributedBy?: boolean
+    recipientCount?: boolean
+    nftsPerUser?: boolean
+    results?: boolean
+    success?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type NftDistributionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mintAddress" | "distributedBy" | "recipientCount" | "nftsPerUser" | "results" | "success" | "createdAt" | "updatedAt", ExtArgs["result"]["nftDistribution"]>
+  export type NftDistributionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    collection?: boolean | NftCollectionDefaultArgs<ExtArgs>
+    distributor?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type NftDistributionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    collection?: boolean | NftCollectionDefaultArgs<ExtArgs>
+    distributor?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type NftDistributionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    collection?: boolean | NftCollectionDefaultArgs<ExtArgs>
+    distributor?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $NftDistributionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "NftDistribution"
+    objects: {
+      collection: Prisma.$NftCollectionPayload<ExtArgs>
+      distributor: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      mintAddress: string
+      distributedBy: string
+      recipientCount: number
+      nftsPerUser: number
+      results: Prisma.JsonValue
+      success: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["nftDistribution"]>
+    composites: {}
+  }
+
+  type NftDistributionGetPayload<S extends boolean | null | undefined | NftDistributionDefaultArgs> = $Result.GetResult<Prisma.$NftDistributionPayload, S>
+
+  type NftDistributionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<NftDistributionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: NftDistributionCountAggregateInputType | true
+    }
+
+  export interface NftDistributionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['NftDistribution'], meta: { name: 'NftDistribution' } }
+    /**
+     * Find zero or one NftDistribution that matches the filter.
+     * @param {NftDistributionFindUniqueArgs} args - Arguments to find a NftDistribution
+     * @example
+     * // Get one NftDistribution
+     * const nftDistribution = await prisma.nftDistribution.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NftDistributionFindUniqueArgs>(args: SelectSubset<T, NftDistributionFindUniqueArgs<ExtArgs>>): Prisma__NftDistributionClient<$Result.GetResult<Prisma.$NftDistributionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one NftDistribution that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {NftDistributionFindUniqueOrThrowArgs} args - Arguments to find a NftDistribution
+     * @example
+     * // Get one NftDistribution
+     * const nftDistribution = await prisma.nftDistribution.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NftDistributionFindUniqueOrThrowArgs>(args: SelectSubset<T, NftDistributionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NftDistributionClient<$Result.GetResult<Prisma.$NftDistributionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first NftDistribution that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftDistributionFindFirstArgs} args - Arguments to find a NftDistribution
+     * @example
+     * // Get one NftDistribution
+     * const nftDistribution = await prisma.nftDistribution.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NftDistributionFindFirstArgs>(args?: SelectSubset<T, NftDistributionFindFirstArgs<ExtArgs>>): Prisma__NftDistributionClient<$Result.GetResult<Prisma.$NftDistributionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first NftDistribution that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftDistributionFindFirstOrThrowArgs} args - Arguments to find a NftDistribution
+     * @example
+     * // Get one NftDistribution
+     * const nftDistribution = await prisma.nftDistribution.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NftDistributionFindFirstOrThrowArgs>(args?: SelectSubset<T, NftDistributionFindFirstOrThrowArgs<ExtArgs>>): Prisma__NftDistributionClient<$Result.GetResult<Prisma.$NftDistributionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more NftDistributions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftDistributionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all NftDistributions
+     * const nftDistributions = await prisma.nftDistribution.findMany()
+     * 
+     * // Get first 10 NftDistributions
+     * const nftDistributions = await prisma.nftDistribution.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const nftDistributionWithIdOnly = await prisma.nftDistribution.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NftDistributionFindManyArgs>(args?: SelectSubset<T, NftDistributionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftDistributionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a NftDistribution.
+     * @param {NftDistributionCreateArgs} args - Arguments to create a NftDistribution.
+     * @example
+     * // Create one NftDistribution
+     * const NftDistribution = await prisma.nftDistribution.create({
+     *   data: {
+     *     // ... data to create a NftDistribution
+     *   }
+     * })
+     * 
+     */
+    create<T extends NftDistributionCreateArgs>(args: SelectSubset<T, NftDistributionCreateArgs<ExtArgs>>): Prisma__NftDistributionClient<$Result.GetResult<Prisma.$NftDistributionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many NftDistributions.
+     * @param {NftDistributionCreateManyArgs} args - Arguments to create many NftDistributions.
+     * @example
+     * // Create many NftDistributions
+     * const nftDistribution = await prisma.nftDistribution.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NftDistributionCreateManyArgs>(args?: SelectSubset<T, NftDistributionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many NftDistributions and returns the data saved in the database.
+     * @param {NftDistributionCreateManyAndReturnArgs} args - Arguments to create many NftDistributions.
+     * @example
+     * // Create many NftDistributions
+     * const nftDistribution = await prisma.nftDistribution.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many NftDistributions and only return the `id`
+     * const nftDistributionWithIdOnly = await prisma.nftDistribution.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NftDistributionCreateManyAndReturnArgs>(args?: SelectSubset<T, NftDistributionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftDistributionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a NftDistribution.
+     * @param {NftDistributionDeleteArgs} args - Arguments to delete one NftDistribution.
+     * @example
+     * // Delete one NftDistribution
+     * const NftDistribution = await prisma.nftDistribution.delete({
+     *   where: {
+     *     // ... filter to delete one NftDistribution
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NftDistributionDeleteArgs>(args: SelectSubset<T, NftDistributionDeleteArgs<ExtArgs>>): Prisma__NftDistributionClient<$Result.GetResult<Prisma.$NftDistributionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one NftDistribution.
+     * @param {NftDistributionUpdateArgs} args - Arguments to update one NftDistribution.
+     * @example
+     * // Update one NftDistribution
+     * const nftDistribution = await prisma.nftDistribution.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NftDistributionUpdateArgs>(args: SelectSubset<T, NftDistributionUpdateArgs<ExtArgs>>): Prisma__NftDistributionClient<$Result.GetResult<Prisma.$NftDistributionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more NftDistributions.
+     * @param {NftDistributionDeleteManyArgs} args - Arguments to filter NftDistributions to delete.
+     * @example
+     * // Delete a few NftDistributions
+     * const { count } = await prisma.nftDistribution.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NftDistributionDeleteManyArgs>(args?: SelectSubset<T, NftDistributionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NftDistributions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftDistributionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many NftDistributions
+     * const nftDistribution = await prisma.nftDistribution.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NftDistributionUpdateManyArgs>(args: SelectSubset<T, NftDistributionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NftDistributions and returns the data updated in the database.
+     * @param {NftDistributionUpdateManyAndReturnArgs} args - Arguments to update many NftDistributions.
+     * @example
+     * // Update many NftDistributions
+     * const nftDistribution = await prisma.nftDistribution.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more NftDistributions and only return the `id`
+     * const nftDistributionWithIdOnly = await prisma.nftDistribution.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NftDistributionUpdateManyAndReturnArgs>(args: SelectSubset<T, NftDistributionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftDistributionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one NftDistribution.
+     * @param {NftDistributionUpsertArgs} args - Arguments to update or create a NftDistribution.
+     * @example
+     * // Update or create a NftDistribution
+     * const nftDistribution = await prisma.nftDistribution.upsert({
+     *   create: {
+     *     // ... data to create a NftDistribution
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the NftDistribution we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NftDistributionUpsertArgs>(args: SelectSubset<T, NftDistributionUpsertArgs<ExtArgs>>): Prisma__NftDistributionClient<$Result.GetResult<Prisma.$NftDistributionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of NftDistributions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftDistributionCountArgs} args - Arguments to filter NftDistributions to count.
+     * @example
+     * // Count the number of NftDistributions
+     * const count = await prisma.nftDistribution.count({
+     *   where: {
+     *     // ... the filter for the NftDistributions we want to count
+     *   }
+     * })
+    **/
+    count<T extends NftDistributionCountArgs>(
+      args?: Subset<T, NftDistributionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NftDistributionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a NftDistribution.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftDistributionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NftDistributionAggregateArgs>(args: Subset<T, NftDistributionAggregateArgs>): Prisma.PrismaPromise<GetNftDistributionAggregateType<T>>
+
+    /**
+     * Group by NftDistribution.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftDistributionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NftDistributionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NftDistributionGroupByArgs['orderBy'] }
+        : { orderBy?: NftDistributionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NftDistributionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNftDistributionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the NftDistribution model
+   */
+  readonly fields: NftDistributionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for NftDistribution.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NftDistributionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    collection<T extends NftCollectionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, NftCollectionDefaultArgs<ExtArgs>>): Prisma__NftCollectionClient<$Result.GetResult<Prisma.$NftCollectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    distributor<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the NftDistribution model
+   */
+  interface NftDistributionFieldRefs {
+    readonly id: FieldRef<"NftDistribution", 'String'>
+    readonly mintAddress: FieldRef<"NftDistribution", 'String'>
+    readonly distributedBy: FieldRef<"NftDistribution", 'String'>
+    readonly recipientCount: FieldRef<"NftDistribution", 'Int'>
+    readonly nftsPerUser: FieldRef<"NftDistribution", 'Int'>
+    readonly results: FieldRef<"NftDistribution", 'Json'>
+    readonly success: FieldRef<"NftDistribution", 'Boolean'>
+    readonly createdAt: FieldRef<"NftDistribution", 'DateTime'>
+    readonly updatedAt: FieldRef<"NftDistribution", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * NftDistribution findUnique
+   */
+  export type NftDistributionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftDistribution
+     */
+    select?: NftDistributionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftDistribution
+     */
+    omit?: NftDistributionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftDistributionInclude<ExtArgs> | null
+    /**
+     * Filter, which NftDistribution to fetch.
+     */
+    where: NftDistributionWhereUniqueInput
+  }
+
+  /**
+   * NftDistribution findUniqueOrThrow
+   */
+  export type NftDistributionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftDistribution
+     */
+    select?: NftDistributionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftDistribution
+     */
+    omit?: NftDistributionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftDistributionInclude<ExtArgs> | null
+    /**
+     * Filter, which NftDistribution to fetch.
+     */
+    where: NftDistributionWhereUniqueInput
+  }
+
+  /**
+   * NftDistribution findFirst
+   */
+  export type NftDistributionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftDistribution
+     */
+    select?: NftDistributionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftDistribution
+     */
+    omit?: NftDistributionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftDistributionInclude<ExtArgs> | null
+    /**
+     * Filter, which NftDistribution to fetch.
+     */
+    where?: NftDistributionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftDistributions to fetch.
+     */
+    orderBy?: NftDistributionOrderByWithRelationInput | NftDistributionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NftDistributions.
+     */
+    cursor?: NftDistributionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftDistributions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftDistributions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NftDistributions.
+     */
+    distinct?: NftDistributionScalarFieldEnum | NftDistributionScalarFieldEnum[]
+  }
+
+  /**
+   * NftDistribution findFirstOrThrow
+   */
+  export type NftDistributionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftDistribution
+     */
+    select?: NftDistributionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftDistribution
+     */
+    omit?: NftDistributionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftDistributionInclude<ExtArgs> | null
+    /**
+     * Filter, which NftDistribution to fetch.
+     */
+    where?: NftDistributionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftDistributions to fetch.
+     */
+    orderBy?: NftDistributionOrderByWithRelationInput | NftDistributionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NftDistributions.
+     */
+    cursor?: NftDistributionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftDistributions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftDistributions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NftDistributions.
+     */
+    distinct?: NftDistributionScalarFieldEnum | NftDistributionScalarFieldEnum[]
+  }
+
+  /**
+   * NftDistribution findMany
+   */
+  export type NftDistributionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftDistribution
+     */
+    select?: NftDistributionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftDistribution
+     */
+    omit?: NftDistributionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftDistributionInclude<ExtArgs> | null
+    /**
+     * Filter, which NftDistributions to fetch.
+     */
+    where?: NftDistributionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftDistributions to fetch.
+     */
+    orderBy?: NftDistributionOrderByWithRelationInput | NftDistributionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing NftDistributions.
+     */
+    cursor?: NftDistributionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftDistributions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftDistributions.
+     */
+    skip?: number
+    distinct?: NftDistributionScalarFieldEnum | NftDistributionScalarFieldEnum[]
+  }
+
+  /**
+   * NftDistribution create
+   */
+  export type NftDistributionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftDistribution
+     */
+    select?: NftDistributionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftDistribution
+     */
+    omit?: NftDistributionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftDistributionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a NftDistribution.
+     */
+    data: XOR<NftDistributionCreateInput, NftDistributionUncheckedCreateInput>
+  }
+
+  /**
+   * NftDistribution createMany
+   */
+  export type NftDistributionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many NftDistributions.
+     */
+    data: NftDistributionCreateManyInput | NftDistributionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * NftDistribution createManyAndReturn
+   */
+  export type NftDistributionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftDistribution
+     */
+    select?: NftDistributionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftDistribution
+     */
+    omit?: NftDistributionOmit<ExtArgs> | null
+    /**
+     * The data used to create many NftDistributions.
+     */
+    data: NftDistributionCreateManyInput | NftDistributionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftDistributionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * NftDistribution update
+   */
+  export type NftDistributionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftDistribution
+     */
+    select?: NftDistributionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftDistribution
+     */
+    omit?: NftDistributionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftDistributionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a NftDistribution.
+     */
+    data: XOR<NftDistributionUpdateInput, NftDistributionUncheckedUpdateInput>
+    /**
+     * Choose, which NftDistribution to update.
+     */
+    where: NftDistributionWhereUniqueInput
+  }
+
+  /**
+   * NftDistribution updateMany
+   */
+  export type NftDistributionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update NftDistributions.
+     */
+    data: XOR<NftDistributionUpdateManyMutationInput, NftDistributionUncheckedUpdateManyInput>
+    /**
+     * Filter which NftDistributions to update
+     */
+    where?: NftDistributionWhereInput
+    /**
+     * Limit how many NftDistributions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * NftDistribution updateManyAndReturn
+   */
+  export type NftDistributionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftDistribution
+     */
+    select?: NftDistributionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftDistribution
+     */
+    omit?: NftDistributionOmit<ExtArgs> | null
+    /**
+     * The data used to update NftDistributions.
+     */
+    data: XOR<NftDistributionUpdateManyMutationInput, NftDistributionUncheckedUpdateManyInput>
+    /**
+     * Filter which NftDistributions to update
+     */
+    where?: NftDistributionWhereInput
+    /**
+     * Limit how many NftDistributions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftDistributionIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * NftDistribution upsert
+   */
+  export type NftDistributionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftDistribution
+     */
+    select?: NftDistributionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftDistribution
+     */
+    omit?: NftDistributionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftDistributionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the NftDistribution to update in case it exists.
+     */
+    where: NftDistributionWhereUniqueInput
+    /**
+     * In case the NftDistribution found by the `where` argument doesn't exist, create a new NftDistribution with this data.
+     */
+    create: XOR<NftDistributionCreateInput, NftDistributionUncheckedCreateInput>
+    /**
+     * In case the NftDistribution was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NftDistributionUpdateInput, NftDistributionUncheckedUpdateInput>
+  }
+
+  /**
+   * NftDistribution delete
+   */
+  export type NftDistributionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftDistribution
+     */
+    select?: NftDistributionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftDistribution
+     */
+    omit?: NftDistributionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftDistributionInclude<ExtArgs> | null
+    /**
+     * Filter which NftDistribution to delete.
+     */
+    where: NftDistributionWhereUniqueInput
+  }
+
+  /**
+   * NftDistribution deleteMany
+   */
+  export type NftDistributionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which NftDistributions to delete
+     */
+    where?: NftDistributionWhereInput
+    /**
+     * Limit how many NftDistributions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * NftDistribution without action
+   */
+  export type NftDistributionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftDistribution
+     */
+    select?: NftDistributionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftDistribution
+     */
+    omit?: NftDistributionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftDistributionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model NftClaimApproval
+   */
+
+  export type AggregateNftClaimApproval = {
+    _count: NftClaimApprovalCountAggregateOutputType | null
+    _min: NftClaimApprovalMinAggregateOutputType | null
+    _max: NftClaimApprovalMaxAggregateOutputType | null
+  }
+
+  export type NftClaimApprovalMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    approved: boolean | null
+    approvedBy: string | null
+    approvedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NftClaimApprovalMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    approved: boolean | null
+    approvedBy: string | null
+    approvedAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NftClaimApprovalCountAggregateOutputType = {
+    id: number
+    userId: number
+    approved: number
+    approvedBy: number
+    approvedAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type NftClaimApprovalMinAggregateInputType = {
+    id?: true
+    userId?: true
+    approved?: true
+    approvedBy?: true
+    approvedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NftClaimApprovalMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    approved?: true
+    approvedBy?: true
+    approvedAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NftClaimApprovalCountAggregateInputType = {
+    id?: true
+    userId?: true
+    approved?: true
+    approvedBy?: true
+    approvedAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type NftClaimApprovalAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which NftClaimApproval to aggregate.
+     */
+    where?: NftClaimApprovalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftClaimApprovals to fetch.
+     */
+    orderBy?: NftClaimApprovalOrderByWithRelationInput | NftClaimApprovalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NftClaimApprovalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftClaimApprovals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftClaimApprovals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned NftClaimApprovals
+    **/
+    _count?: true | NftClaimApprovalCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NftClaimApprovalMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NftClaimApprovalMaxAggregateInputType
+  }
+
+  export type GetNftClaimApprovalAggregateType<T extends NftClaimApprovalAggregateArgs> = {
+        [P in keyof T & keyof AggregateNftClaimApproval]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNftClaimApproval[P]>
+      : GetScalarType<T[P], AggregateNftClaimApproval[P]>
+  }
+
+
+
+
+  export type NftClaimApprovalGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NftClaimApprovalWhereInput
+    orderBy?: NftClaimApprovalOrderByWithAggregationInput | NftClaimApprovalOrderByWithAggregationInput[]
+    by: NftClaimApprovalScalarFieldEnum[] | NftClaimApprovalScalarFieldEnum
+    having?: NftClaimApprovalScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NftClaimApprovalCountAggregateInputType | true
+    _min?: NftClaimApprovalMinAggregateInputType
+    _max?: NftClaimApprovalMaxAggregateInputType
+  }
+
+  export type NftClaimApprovalGroupByOutputType = {
+    id: string
+    userId: string
+    approved: boolean
+    approvedBy: string | null
+    approvedAt: Date | null
+    createdAt: Date
+    updatedAt: Date
+    _count: NftClaimApprovalCountAggregateOutputType | null
+    _min: NftClaimApprovalMinAggregateOutputType | null
+    _max: NftClaimApprovalMaxAggregateOutputType | null
+  }
+
+  type GetNftClaimApprovalGroupByPayload<T extends NftClaimApprovalGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NftClaimApprovalGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NftClaimApprovalGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NftClaimApprovalGroupByOutputType[P]>
+            : GetScalarType<T[P], NftClaimApprovalGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NftClaimApprovalSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    approved?: boolean
+    approvedBy?: boolean
+    approvedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    approver?: boolean | NftClaimApproval$approverArgs<ExtArgs>
+  }, ExtArgs["result"]["nftClaimApproval"]>
+
+  export type NftClaimApprovalSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    approved?: boolean
+    approvedBy?: boolean
+    approvedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    approver?: boolean | NftClaimApproval$approverArgs<ExtArgs>
+  }, ExtArgs["result"]["nftClaimApproval"]>
+
+  export type NftClaimApprovalSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    approved?: boolean
+    approvedBy?: boolean
+    approvedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    approver?: boolean | NftClaimApproval$approverArgs<ExtArgs>
+  }, ExtArgs["result"]["nftClaimApproval"]>
+
+  export type NftClaimApprovalSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    approved?: boolean
+    approvedBy?: boolean
+    approvedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type NftClaimApprovalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "approved" | "approvedBy" | "approvedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["nftClaimApproval"]>
+  export type NftClaimApprovalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    approver?: boolean | NftClaimApproval$approverArgs<ExtArgs>
+  }
+  export type NftClaimApprovalIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    approver?: boolean | NftClaimApproval$approverArgs<ExtArgs>
+  }
+  export type NftClaimApprovalIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    approver?: boolean | NftClaimApproval$approverArgs<ExtArgs>
+  }
+
+  export type $NftClaimApprovalPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "NftClaimApproval"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      approver: Prisma.$UserPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      approved: boolean
+      approvedBy: string | null
+      approvedAt: Date | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["nftClaimApproval"]>
+    composites: {}
+  }
+
+  type NftClaimApprovalGetPayload<S extends boolean | null | undefined | NftClaimApprovalDefaultArgs> = $Result.GetResult<Prisma.$NftClaimApprovalPayload, S>
+
+  type NftClaimApprovalCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<NftClaimApprovalFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: NftClaimApprovalCountAggregateInputType | true
+    }
+
+  export interface NftClaimApprovalDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['NftClaimApproval'], meta: { name: 'NftClaimApproval' } }
+    /**
+     * Find zero or one NftClaimApproval that matches the filter.
+     * @param {NftClaimApprovalFindUniqueArgs} args - Arguments to find a NftClaimApproval
+     * @example
+     * // Get one NftClaimApproval
+     * const nftClaimApproval = await prisma.nftClaimApproval.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NftClaimApprovalFindUniqueArgs>(args: SelectSubset<T, NftClaimApprovalFindUniqueArgs<ExtArgs>>): Prisma__NftClaimApprovalClient<$Result.GetResult<Prisma.$NftClaimApprovalPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one NftClaimApproval that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {NftClaimApprovalFindUniqueOrThrowArgs} args - Arguments to find a NftClaimApproval
+     * @example
+     * // Get one NftClaimApproval
+     * const nftClaimApproval = await prisma.nftClaimApproval.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NftClaimApprovalFindUniqueOrThrowArgs>(args: SelectSubset<T, NftClaimApprovalFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NftClaimApprovalClient<$Result.GetResult<Prisma.$NftClaimApprovalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first NftClaimApproval that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftClaimApprovalFindFirstArgs} args - Arguments to find a NftClaimApproval
+     * @example
+     * // Get one NftClaimApproval
+     * const nftClaimApproval = await prisma.nftClaimApproval.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NftClaimApprovalFindFirstArgs>(args?: SelectSubset<T, NftClaimApprovalFindFirstArgs<ExtArgs>>): Prisma__NftClaimApprovalClient<$Result.GetResult<Prisma.$NftClaimApprovalPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first NftClaimApproval that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftClaimApprovalFindFirstOrThrowArgs} args - Arguments to find a NftClaimApproval
+     * @example
+     * // Get one NftClaimApproval
+     * const nftClaimApproval = await prisma.nftClaimApproval.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NftClaimApprovalFindFirstOrThrowArgs>(args?: SelectSubset<T, NftClaimApprovalFindFirstOrThrowArgs<ExtArgs>>): Prisma__NftClaimApprovalClient<$Result.GetResult<Prisma.$NftClaimApprovalPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more NftClaimApprovals that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftClaimApprovalFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all NftClaimApprovals
+     * const nftClaimApprovals = await prisma.nftClaimApproval.findMany()
+     * 
+     * // Get first 10 NftClaimApprovals
+     * const nftClaimApprovals = await prisma.nftClaimApproval.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const nftClaimApprovalWithIdOnly = await prisma.nftClaimApproval.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NftClaimApprovalFindManyArgs>(args?: SelectSubset<T, NftClaimApprovalFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftClaimApprovalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a NftClaimApproval.
+     * @param {NftClaimApprovalCreateArgs} args - Arguments to create a NftClaimApproval.
+     * @example
+     * // Create one NftClaimApproval
+     * const NftClaimApproval = await prisma.nftClaimApproval.create({
+     *   data: {
+     *     // ... data to create a NftClaimApproval
+     *   }
+     * })
+     * 
+     */
+    create<T extends NftClaimApprovalCreateArgs>(args: SelectSubset<T, NftClaimApprovalCreateArgs<ExtArgs>>): Prisma__NftClaimApprovalClient<$Result.GetResult<Prisma.$NftClaimApprovalPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many NftClaimApprovals.
+     * @param {NftClaimApprovalCreateManyArgs} args - Arguments to create many NftClaimApprovals.
+     * @example
+     * // Create many NftClaimApprovals
+     * const nftClaimApproval = await prisma.nftClaimApproval.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NftClaimApprovalCreateManyArgs>(args?: SelectSubset<T, NftClaimApprovalCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many NftClaimApprovals and returns the data saved in the database.
+     * @param {NftClaimApprovalCreateManyAndReturnArgs} args - Arguments to create many NftClaimApprovals.
+     * @example
+     * // Create many NftClaimApprovals
+     * const nftClaimApproval = await prisma.nftClaimApproval.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many NftClaimApprovals and only return the `id`
+     * const nftClaimApprovalWithIdOnly = await prisma.nftClaimApproval.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NftClaimApprovalCreateManyAndReturnArgs>(args?: SelectSubset<T, NftClaimApprovalCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftClaimApprovalPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a NftClaimApproval.
+     * @param {NftClaimApprovalDeleteArgs} args - Arguments to delete one NftClaimApproval.
+     * @example
+     * // Delete one NftClaimApproval
+     * const NftClaimApproval = await prisma.nftClaimApproval.delete({
+     *   where: {
+     *     // ... filter to delete one NftClaimApproval
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NftClaimApprovalDeleteArgs>(args: SelectSubset<T, NftClaimApprovalDeleteArgs<ExtArgs>>): Prisma__NftClaimApprovalClient<$Result.GetResult<Prisma.$NftClaimApprovalPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one NftClaimApproval.
+     * @param {NftClaimApprovalUpdateArgs} args - Arguments to update one NftClaimApproval.
+     * @example
+     * // Update one NftClaimApproval
+     * const nftClaimApproval = await prisma.nftClaimApproval.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NftClaimApprovalUpdateArgs>(args: SelectSubset<T, NftClaimApprovalUpdateArgs<ExtArgs>>): Prisma__NftClaimApprovalClient<$Result.GetResult<Prisma.$NftClaimApprovalPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more NftClaimApprovals.
+     * @param {NftClaimApprovalDeleteManyArgs} args - Arguments to filter NftClaimApprovals to delete.
+     * @example
+     * // Delete a few NftClaimApprovals
+     * const { count } = await prisma.nftClaimApproval.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NftClaimApprovalDeleteManyArgs>(args?: SelectSubset<T, NftClaimApprovalDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NftClaimApprovals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftClaimApprovalUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many NftClaimApprovals
+     * const nftClaimApproval = await prisma.nftClaimApproval.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NftClaimApprovalUpdateManyArgs>(args: SelectSubset<T, NftClaimApprovalUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NftClaimApprovals and returns the data updated in the database.
+     * @param {NftClaimApprovalUpdateManyAndReturnArgs} args - Arguments to update many NftClaimApprovals.
+     * @example
+     * // Update many NftClaimApprovals
+     * const nftClaimApproval = await prisma.nftClaimApproval.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more NftClaimApprovals and only return the `id`
+     * const nftClaimApprovalWithIdOnly = await prisma.nftClaimApproval.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NftClaimApprovalUpdateManyAndReturnArgs>(args: SelectSubset<T, NftClaimApprovalUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftClaimApprovalPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one NftClaimApproval.
+     * @param {NftClaimApprovalUpsertArgs} args - Arguments to update or create a NftClaimApproval.
+     * @example
+     * // Update or create a NftClaimApproval
+     * const nftClaimApproval = await prisma.nftClaimApproval.upsert({
+     *   create: {
+     *     // ... data to create a NftClaimApproval
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the NftClaimApproval we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NftClaimApprovalUpsertArgs>(args: SelectSubset<T, NftClaimApprovalUpsertArgs<ExtArgs>>): Prisma__NftClaimApprovalClient<$Result.GetResult<Prisma.$NftClaimApprovalPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of NftClaimApprovals.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftClaimApprovalCountArgs} args - Arguments to filter NftClaimApprovals to count.
+     * @example
+     * // Count the number of NftClaimApprovals
+     * const count = await prisma.nftClaimApproval.count({
+     *   where: {
+     *     // ... the filter for the NftClaimApprovals we want to count
+     *   }
+     * })
+    **/
+    count<T extends NftClaimApprovalCountArgs>(
+      args?: Subset<T, NftClaimApprovalCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NftClaimApprovalCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a NftClaimApproval.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftClaimApprovalAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NftClaimApprovalAggregateArgs>(args: Subset<T, NftClaimApprovalAggregateArgs>): Prisma.PrismaPromise<GetNftClaimApprovalAggregateType<T>>
+
+    /**
+     * Group by NftClaimApproval.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftClaimApprovalGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NftClaimApprovalGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NftClaimApprovalGroupByArgs['orderBy'] }
+        : { orderBy?: NftClaimApprovalGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NftClaimApprovalGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNftClaimApprovalGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the NftClaimApproval model
+   */
+  readonly fields: NftClaimApprovalFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for NftClaimApproval.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NftClaimApprovalClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    approver<T extends NftClaimApproval$approverArgs<ExtArgs> = {}>(args?: Subset<T, NftClaimApproval$approverArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the NftClaimApproval model
+   */
+  interface NftClaimApprovalFieldRefs {
+    readonly id: FieldRef<"NftClaimApproval", 'String'>
+    readonly userId: FieldRef<"NftClaimApproval", 'String'>
+    readonly approved: FieldRef<"NftClaimApproval", 'Boolean'>
+    readonly approvedBy: FieldRef<"NftClaimApproval", 'String'>
+    readonly approvedAt: FieldRef<"NftClaimApproval", 'DateTime'>
+    readonly createdAt: FieldRef<"NftClaimApproval", 'DateTime'>
+    readonly updatedAt: FieldRef<"NftClaimApproval", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * NftClaimApproval findUnique
+   */
+  export type NftClaimApprovalFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaimApproval
+     */
+    select?: NftClaimApprovalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaimApproval
+     */
+    omit?: NftClaimApprovalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimApprovalInclude<ExtArgs> | null
+    /**
+     * Filter, which NftClaimApproval to fetch.
+     */
+    where: NftClaimApprovalWhereUniqueInput
+  }
+
+  /**
+   * NftClaimApproval findUniqueOrThrow
+   */
+  export type NftClaimApprovalFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaimApproval
+     */
+    select?: NftClaimApprovalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaimApproval
+     */
+    omit?: NftClaimApprovalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimApprovalInclude<ExtArgs> | null
+    /**
+     * Filter, which NftClaimApproval to fetch.
+     */
+    where: NftClaimApprovalWhereUniqueInput
+  }
+
+  /**
+   * NftClaimApproval findFirst
+   */
+  export type NftClaimApprovalFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaimApproval
+     */
+    select?: NftClaimApprovalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaimApproval
+     */
+    omit?: NftClaimApprovalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimApprovalInclude<ExtArgs> | null
+    /**
+     * Filter, which NftClaimApproval to fetch.
+     */
+    where?: NftClaimApprovalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftClaimApprovals to fetch.
+     */
+    orderBy?: NftClaimApprovalOrderByWithRelationInput | NftClaimApprovalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NftClaimApprovals.
+     */
+    cursor?: NftClaimApprovalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftClaimApprovals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftClaimApprovals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NftClaimApprovals.
+     */
+    distinct?: NftClaimApprovalScalarFieldEnum | NftClaimApprovalScalarFieldEnum[]
+  }
+
+  /**
+   * NftClaimApproval findFirstOrThrow
+   */
+  export type NftClaimApprovalFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaimApproval
+     */
+    select?: NftClaimApprovalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaimApproval
+     */
+    omit?: NftClaimApprovalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimApprovalInclude<ExtArgs> | null
+    /**
+     * Filter, which NftClaimApproval to fetch.
+     */
+    where?: NftClaimApprovalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftClaimApprovals to fetch.
+     */
+    orderBy?: NftClaimApprovalOrderByWithRelationInput | NftClaimApprovalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NftClaimApprovals.
+     */
+    cursor?: NftClaimApprovalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftClaimApprovals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftClaimApprovals.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NftClaimApprovals.
+     */
+    distinct?: NftClaimApprovalScalarFieldEnum | NftClaimApprovalScalarFieldEnum[]
+  }
+
+  /**
+   * NftClaimApproval findMany
+   */
+  export type NftClaimApprovalFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaimApproval
+     */
+    select?: NftClaimApprovalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaimApproval
+     */
+    omit?: NftClaimApprovalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimApprovalInclude<ExtArgs> | null
+    /**
+     * Filter, which NftClaimApprovals to fetch.
+     */
+    where?: NftClaimApprovalWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftClaimApprovals to fetch.
+     */
+    orderBy?: NftClaimApprovalOrderByWithRelationInput | NftClaimApprovalOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing NftClaimApprovals.
+     */
+    cursor?: NftClaimApprovalWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftClaimApprovals from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftClaimApprovals.
+     */
+    skip?: number
+    distinct?: NftClaimApprovalScalarFieldEnum | NftClaimApprovalScalarFieldEnum[]
+  }
+
+  /**
+   * NftClaimApproval create
+   */
+  export type NftClaimApprovalCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaimApproval
+     */
+    select?: NftClaimApprovalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaimApproval
+     */
+    omit?: NftClaimApprovalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimApprovalInclude<ExtArgs> | null
+    /**
+     * The data needed to create a NftClaimApproval.
+     */
+    data: XOR<NftClaimApprovalCreateInput, NftClaimApprovalUncheckedCreateInput>
+  }
+
+  /**
+   * NftClaimApproval createMany
+   */
+  export type NftClaimApprovalCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many NftClaimApprovals.
+     */
+    data: NftClaimApprovalCreateManyInput | NftClaimApprovalCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * NftClaimApproval createManyAndReturn
+   */
+  export type NftClaimApprovalCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaimApproval
+     */
+    select?: NftClaimApprovalSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaimApproval
+     */
+    omit?: NftClaimApprovalOmit<ExtArgs> | null
+    /**
+     * The data used to create many NftClaimApprovals.
+     */
+    data: NftClaimApprovalCreateManyInput | NftClaimApprovalCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimApprovalIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * NftClaimApproval update
+   */
+  export type NftClaimApprovalUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaimApproval
+     */
+    select?: NftClaimApprovalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaimApproval
+     */
+    omit?: NftClaimApprovalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimApprovalInclude<ExtArgs> | null
+    /**
+     * The data needed to update a NftClaimApproval.
+     */
+    data: XOR<NftClaimApprovalUpdateInput, NftClaimApprovalUncheckedUpdateInput>
+    /**
+     * Choose, which NftClaimApproval to update.
+     */
+    where: NftClaimApprovalWhereUniqueInput
+  }
+
+  /**
+   * NftClaimApproval updateMany
+   */
+  export type NftClaimApprovalUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update NftClaimApprovals.
+     */
+    data: XOR<NftClaimApprovalUpdateManyMutationInput, NftClaimApprovalUncheckedUpdateManyInput>
+    /**
+     * Filter which NftClaimApprovals to update
+     */
+    where?: NftClaimApprovalWhereInput
+    /**
+     * Limit how many NftClaimApprovals to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * NftClaimApproval updateManyAndReturn
+   */
+  export type NftClaimApprovalUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaimApproval
+     */
+    select?: NftClaimApprovalSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaimApproval
+     */
+    omit?: NftClaimApprovalOmit<ExtArgs> | null
+    /**
+     * The data used to update NftClaimApprovals.
+     */
+    data: XOR<NftClaimApprovalUpdateManyMutationInput, NftClaimApprovalUncheckedUpdateManyInput>
+    /**
+     * Filter which NftClaimApprovals to update
+     */
+    where?: NftClaimApprovalWhereInput
+    /**
+     * Limit how many NftClaimApprovals to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimApprovalIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * NftClaimApproval upsert
+   */
+  export type NftClaimApprovalUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaimApproval
+     */
+    select?: NftClaimApprovalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaimApproval
+     */
+    omit?: NftClaimApprovalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimApprovalInclude<ExtArgs> | null
+    /**
+     * The filter to search for the NftClaimApproval to update in case it exists.
+     */
+    where: NftClaimApprovalWhereUniqueInput
+    /**
+     * In case the NftClaimApproval found by the `where` argument doesn't exist, create a new NftClaimApproval with this data.
+     */
+    create: XOR<NftClaimApprovalCreateInput, NftClaimApprovalUncheckedCreateInput>
+    /**
+     * In case the NftClaimApproval was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NftClaimApprovalUpdateInput, NftClaimApprovalUncheckedUpdateInput>
+  }
+
+  /**
+   * NftClaimApproval delete
+   */
+  export type NftClaimApprovalDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaimApproval
+     */
+    select?: NftClaimApprovalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaimApproval
+     */
+    omit?: NftClaimApprovalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimApprovalInclude<ExtArgs> | null
+    /**
+     * Filter which NftClaimApproval to delete.
+     */
+    where: NftClaimApprovalWhereUniqueInput
+  }
+
+  /**
+   * NftClaimApproval deleteMany
+   */
+  export type NftClaimApprovalDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which NftClaimApprovals to delete
+     */
+    where?: NftClaimApprovalWhereInput
+    /**
+     * Limit how many NftClaimApprovals to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * NftClaimApproval.approver
+   */
+  export type NftClaimApproval$approverArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
+   * NftClaimApproval without action
+   */
+  export type NftClaimApprovalDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaimApproval
+     */
+    select?: NftClaimApprovalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaimApproval
+     */
+    omit?: NftClaimApprovalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimApprovalInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model UserNftHolding
+   */
+
+  export type AggregateUserNftHolding = {
+    _count: UserNftHoldingCountAggregateOutputType | null
+    _avg: UserNftHoldingAvgAggregateOutputType | null
+    _sum: UserNftHoldingSumAggregateOutputType | null
+    _min: UserNftHoldingMinAggregateOutputType | null
+    _max: UserNftHoldingMaxAggregateOutputType | null
+  }
+
+  export type UserNftHoldingAvgAggregateOutputType = {
+    amount: number | null
+  }
+
+  export type UserNftHoldingSumAggregateOutputType = {
+    amount: number | null
+  }
+
+  export type UserNftHoldingMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    mintAddress: string | null
+    tokenAccount: string | null
+    amount: number | null
+    acquiredAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserNftHoldingMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    mintAddress: string | null
+    tokenAccount: string | null
+    amount: number | null
+    acquiredAt: Date | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type UserNftHoldingCountAggregateOutputType = {
+    id: number
+    userId: number
+    mintAddress: number
+    tokenAccount: number
+    amount: number
+    metadata: number
+    acquiredAt: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type UserNftHoldingAvgAggregateInputType = {
+    amount?: true
+  }
+
+  export type UserNftHoldingSumAggregateInputType = {
+    amount?: true
+  }
+
+  export type UserNftHoldingMinAggregateInputType = {
+    id?: true
+    userId?: true
+    mintAddress?: true
+    tokenAccount?: true
+    amount?: true
+    acquiredAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserNftHoldingMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    mintAddress?: true
+    tokenAccount?: true
+    amount?: true
+    acquiredAt?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type UserNftHoldingCountAggregateInputType = {
+    id?: true
+    userId?: true
+    mintAddress?: true
+    tokenAccount?: true
+    amount?: true
+    metadata?: true
+    acquiredAt?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type UserNftHoldingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserNftHolding to aggregate.
+     */
+    where?: UserNftHoldingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserNftHoldings to fetch.
+     */
+    orderBy?: UserNftHoldingOrderByWithRelationInput | UserNftHoldingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UserNftHoldingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserNftHoldings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserNftHoldings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UserNftHoldings
+    **/
+    _count?: true | UserNftHoldingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UserNftHoldingAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserNftHoldingSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UserNftHoldingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UserNftHoldingMaxAggregateInputType
+  }
+
+  export type GetUserNftHoldingAggregateType<T extends UserNftHoldingAggregateArgs> = {
+        [P in keyof T & keyof AggregateUserNftHolding]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUserNftHolding[P]>
+      : GetScalarType<T[P], AggregateUserNftHolding[P]>
+  }
+
+
+
+
+  export type UserNftHoldingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UserNftHoldingWhereInput
+    orderBy?: UserNftHoldingOrderByWithAggregationInput | UserNftHoldingOrderByWithAggregationInput[]
+    by: UserNftHoldingScalarFieldEnum[] | UserNftHoldingScalarFieldEnum
+    having?: UserNftHoldingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UserNftHoldingCountAggregateInputType | true
+    _avg?: UserNftHoldingAvgAggregateInputType
+    _sum?: UserNftHoldingSumAggregateInputType
+    _min?: UserNftHoldingMinAggregateInputType
+    _max?: UserNftHoldingMaxAggregateInputType
+  }
+
+  export type UserNftHoldingGroupByOutputType = {
+    id: string
+    userId: string
+    mintAddress: string
+    tokenAccount: string
+    amount: number
+    metadata: JsonValue | null
+    acquiredAt: Date
+    createdAt: Date
+    updatedAt: Date
+    _count: UserNftHoldingCountAggregateOutputType | null
+    _avg: UserNftHoldingAvgAggregateOutputType | null
+    _sum: UserNftHoldingSumAggregateOutputType | null
+    _min: UserNftHoldingMinAggregateOutputType | null
+    _max: UserNftHoldingMaxAggregateOutputType | null
+  }
+
+  type GetUserNftHoldingGroupByPayload<T extends UserNftHoldingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UserNftHoldingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UserNftHoldingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UserNftHoldingGroupByOutputType[P]>
+            : GetScalarType<T[P], UserNftHoldingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UserNftHoldingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    mintAddress?: boolean
+    tokenAccount?: boolean
+    amount?: boolean
+    metadata?: boolean
+    acquiredAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userNftHolding"]>
+
+  export type UserNftHoldingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    mintAddress?: boolean
+    tokenAccount?: boolean
+    amount?: boolean
+    metadata?: boolean
+    acquiredAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userNftHolding"]>
+
+  export type UserNftHoldingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    mintAddress?: boolean
+    tokenAccount?: boolean
+    amount?: boolean
+    metadata?: boolean
+    acquiredAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userNftHolding"]>
+
+  export type UserNftHoldingSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    mintAddress?: boolean
+    tokenAccount?: boolean
+    amount?: boolean
+    metadata?: boolean
+    acquiredAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type UserNftHoldingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "mintAddress" | "tokenAccount" | "amount" | "metadata" | "acquiredAt" | "createdAt" | "updatedAt", ExtArgs["result"]["userNftHolding"]>
+  export type UserNftHoldingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UserNftHoldingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UserNftHoldingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $UserNftHoldingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UserNftHolding"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      mintAddress: string
+      tokenAccount: string
+      amount: number
+      metadata: Prisma.JsonValue | null
+      acquiredAt: Date
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["userNftHolding"]>
+    composites: {}
+  }
+
+  type UserNftHoldingGetPayload<S extends boolean | null | undefined | UserNftHoldingDefaultArgs> = $Result.GetResult<Prisma.$UserNftHoldingPayload, S>
+
+  type UserNftHoldingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UserNftHoldingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UserNftHoldingCountAggregateInputType | true
+    }
+
+  export interface UserNftHoldingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UserNftHolding'], meta: { name: 'UserNftHolding' } }
+    /**
+     * Find zero or one UserNftHolding that matches the filter.
+     * @param {UserNftHoldingFindUniqueArgs} args - Arguments to find a UserNftHolding
+     * @example
+     * // Get one UserNftHolding
+     * const userNftHolding = await prisma.userNftHolding.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UserNftHoldingFindUniqueArgs>(args: SelectSubset<T, UserNftHoldingFindUniqueArgs<ExtArgs>>): Prisma__UserNftHoldingClient<$Result.GetResult<Prisma.$UserNftHoldingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UserNftHolding that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UserNftHoldingFindUniqueOrThrowArgs} args - Arguments to find a UserNftHolding
+     * @example
+     * // Get one UserNftHolding
+     * const userNftHolding = await prisma.userNftHolding.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UserNftHoldingFindUniqueOrThrowArgs>(args: SelectSubset<T, UserNftHoldingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UserNftHoldingClient<$Result.GetResult<Prisma.$UserNftHoldingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserNftHolding that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserNftHoldingFindFirstArgs} args - Arguments to find a UserNftHolding
+     * @example
+     * // Get one UserNftHolding
+     * const userNftHolding = await prisma.userNftHolding.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UserNftHoldingFindFirstArgs>(args?: SelectSubset<T, UserNftHoldingFindFirstArgs<ExtArgs>>): Prisma__UserNftHoldingClient<$Result.GetResult<Prisma.$UserNftHoldingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UserNftHolding that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserNftHoldingFindFirstOrThrowArgs} args - Arguments to find a UserNftHolding
+     * @example
+     * // Get one UserNftHolding
+     * const userNftHolding = await prisma.userNftHolding.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UserNftHoldingFindFirstOrThrowArgs>(args?: SelectSubset<T, UserNftHoldingFindFirstOrThrowArgs<ExtArgs>>): Prisma__UserNftHoldingClient<$Result.GetResult<Prisma.$UserNftHoldingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UserNftHoldings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserNftHoldingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UserNftHoldings
+     * const userNftHoldings = await prisma.userNftHolding.findMany()
+     * 
+     * // Get first 10 UserNftHoldings
+     * const userNftHoldings = await prisma.userNftHolding.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const userNftHoldingWithIdOnly = await prisma.userNftHolding.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UserNftHoldingFindManyArgs>(args?: SelectSubset<T, UserNftHoldingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserNftHoldingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UserNftHolding.
+     * @param {UserNftHoldingCreateArgs} args - Arguments to create a UserNftHolding.
+     * @example
+     * // Create one UserNftHolding
+     * const UserNftHolding = await prisma.userNftHolding.create({
+     *   data: {
+     *     // ... data to create a UserNftHolding
+     *   }
+     * })
+     * 
+     */
+    create<T extends UserNftHoldingCreateArgs>(args: SelectSubset<T, UserNftHoldingCreateArgs<ExtArgs>>): Prisma__UserNftHoldingClient<$Result.GetResult<Prisma.$UserNftHoldingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UserNftHoldings.
+     * @param {UserNftHoldingCreateManyArgs} args - Arguments to create many UserNftHoldings.
+     * @example
+     * // Create many UserNftHoldings
+     * const userNftHolding = await prisma.userNftHolding.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UserNftHoldingCreateManyArgs>(args?: SelectSubset<T, UserNftHoldingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many UserNftHoldings and returns the data saved in the database.
+     * @param {UserNftHoldingCreateManyAndReturnArgs} args - Arguments to create many UserNftHoldings.
+     * @example
+     * // Create many UserNftHoldings
+     * const userNftHolding = await prisma.userNftHolding.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many UserNftHoldings and only return the `id`
+     * const userNftHoldingWithIdOnly = await prisma.userNftHolding.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends UserNftHoldingCreateManyAndReturnArgs>(args?: SelectSubset<T, UserNftHoldingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserNftHoldingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a UserNftHolding.
+     * @param {UserNftHoldingDeleteArgs} args - Arguments to delete one UserNftHolding.
+     * @example
+     * // Delete one UserNftHolding
+     * const UserNftHolding = await prisma.userNftHolding.delete({
+     *   where: {
+     *     // ... filter to delete one UserNftHolding
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UserNftHoldingDeleteArgs>(args: SelectSubset<T, UserNftHoldingDeleteArgs<ExtArgs>>): Prisma__UserNftHoldingClient<$Result.GetResult<Prisma.$UserNftHoldingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UserNftHolding.
+     * @param {UserNftHoldingUpdateArgs} args - Arguments to update one UserNftHolding.
+     * @example
+     * // Update one UserNftHolding
+     * const userNftHolding = await prisma.userNftHolding.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UserNftHoldingUpdateArgs>(args: SelectSubset<T, UserNftHoldingUpdateArgs<ExtArgs>>): Prisma__UserNftHoldingClient<$Result.GetResult<Prisma.$UserNftHoldingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UserNftHoldings.
+     * @param {UserNftHoldingDeleteManyArgs} args - Arguments to filter UserNftHoldings to delete.
+     * @example
+     * // Delete a few UserNftHoldings
+     * const { count } = await prisma.userNftHolding.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UserNftHoldingDeleteManyArgs>(args?: SelectSubset<T, UserNftHoldingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserNftHoldings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserNftHoldingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UserNftHoldings
+     * const userNftHolding = await prisma.userNftHolding.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UserNftHoldingUpdateManyArgs>(args: SelectSubset<T, UserNftHoldingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserNftHoldings and returns the data updated in the database.
+     * @param {UserNftHoldingUpdateManyAndReturnArgs} args - Arguments to update many UserNftHoldings.
+     * @example
+     * // Update many UserNftHoldings
+     * const userNftHolding = await prisma.userNftHolding.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserNftHoldings and only return the `id`
+     * const userNftHoldingWithIdOnly = await prisma.userNftHolding.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserNftHoldingUpdateManyAndReturnArgs>(args: SelectSubset<T, UserNftHoldingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserNftHoldingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one UserNftHolding.
+     * @param {UserNftHoldingUpsertArgs} args - Arguments to update or create a UserNftHolding.
+     * @example
+     * // Update or create a UserNftHolding
+     * const userNftHolding = await prisma.userNftHolding.upsert({
+     *   create: {
+     *     // ... data to create a UserNftHolding
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UserNftHolding we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UserNftHoldingUpsertArgs>(args: SelectSubset<T, UserNftHoldingUpsertArgs<ExtArgs>>): Prisma__UserNftHoldingClient<$Result.GetResult<Prisma.$UserNftHoldingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UserNftHoldings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserNftHoldingCountArgs} args - Arguments to filter UserNftHoldings to count.
+     * @example
+     * // Count the number of UserNftHoldings
+     * const count = await prisma.userNftHolding.count({
+     *   where: {
+     *     // ... the filter for the UserNftHoldings we want to count
+     *   }
+     * })
+    **/
+    count<T extends UserNftHoldingCountArgs>(
+      args?: Subset<T, UserNftHoldingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UserNftHoldingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UserNftHolding.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserNftHoldingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UserNftHoldingAggregateArgs>(args: Subset<T, UserNftHoldingAggregateArgs>): Prisma.PrismaPromise<GetUserNftHoldingAggregateType<T>>
+
+    /**
+     * Group by UserNftHolding.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UserNftHoldingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UserNftHoldingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UserNftHoldingGroupByArgs['orderBy'] }
+        : { orderBy?: UserNftHoldingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UserNftHoldingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUserNftHoldingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UserNftHolding model
+   */
+  readonly fields: UserNftHoldingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UserNftHolding.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UserNftHoldingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UserNftHolding model
+   */
+  interface UserNftHoldingFieldRefs {
+    readonly id: FieldRef<"UserNftHolding", 'String'>
+    readonly userId: FieldRef<"UserNftHolding", 'String'>
+    readonly mintAddress: FieldRef<"UserNftHolding", 'String'>
+    readonly tokenAccount: FieldRef<"UserNftHolding", 'String'>
+    readonly amount: FieldRef<"UserNftHolding", 'Int'>
+    readonly metadata: FieldRef<"UserNftHolding", 'Json'>
+    readonly acquiredAt: FieldRef<"UserNftHolding", 'DateTime'>
+    readonly createdAt: FieldRef<"UserNftHolding", 'DateTime'>
+    readonly updatedAt: FieldRef<"UserNftHolding", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UserNftHolding findUnique
+   */
+  export type UserNftHoldingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserNftHolding
+     */
+    select?: UserNftHoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserNftHolding
+     */
+    omit?: UserNftHoldingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserNftHoldingInclude<ExtArgs> | null
+    /**
+     * Filter, which UserNftHolding to fetch.
+     */
+    where: UserNftHoldingWhereUniqueInput
+  }
+
+  /**
+   * UserNftHolding findUniqueOrThrow
+   */
+  export type UserNftHoldingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserNftHolding
+     */
+    select?: UserNftHoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserNftHolding
+     */
+    omit?: UserNftHoldingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserNftHoldingInclude<ExtArgs> | null
+    /**
+     * Filter, which UserNftHolding to fetch.
+     */
+    where: UserNftHoldingWhereUniqueInput
+  }
+
+  /**
+   * UserNftHolding findFirst
+   */
+  export type UserNftHoldingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserNftHolding
+     */
+    select?: UserNftHoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserNftHolding
+     */
+    omit?: UserNftHoldingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserNftHoldingInclude<ExtArgs> | null
+    /**
+     * Filter, which UserNftHolding to fetch.
+     */
+    where?: UserNftHoldingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserNftHoldings to fetch.
+     */
+    orderBy?: UserNftHoldingOrderByWithRelationInput | UserNftHoldingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserNftHoldings.
+     */
+    cursor?: UserNftHoldingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserNftHoldings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserNftHoldings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserNftHoldings.
+     */
+    distinct?: UserNftHoldingScalarFieldEnum | UserNftHoldingScalarFieldEnum[]
+  }
+
+  /**
+   * UserNftHolding findFirstOrThrow
+   */
+  export type UserNftHoldingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserNftHolding
+     */
+    select?: UserNftHoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserNftHolding
+     */
+    omit?: UserNftHoldingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserNftHoldingInclude<ExtArgs> | null
+    /**
+     * Filter, which UserNftHolding to fetch.
+     */
+    where?: UserNftHoldingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserNftHoldings to fetch.
+     */
+    orderBy?: UserNftHoldingOrderByWithRelationInput | UserNftHoldingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UserNftHoldings.
+     */
+    cursor?: UserNftHoldingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserNftHoldings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserNftHoldings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UserNftHoldings.
+     */
+    distinct?: UserNftHoldingScalarFieldEnum | UserNftHoldingScalarFieldEnum[]
+  }
+
+  /**
+   * UserNftHolding findMany
+   */
+  export type UserNftHoldingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserNftHolding
+     */
+    select?: UserNftHoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserNftHolding
+     */
+    omit?: UserNftHoldingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserNftHoldingInclude<ExtArgs> | null
+    /**
+     * Filter, which UserNftHoldings to fetch.
+     */
+    where?: UserNftHoldingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UserNftHoldings to fetch.
+     */
+    orderBy?: UserNftHoldingOrderByWithRelationInput | UserNftHoldingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UserNftHoldings.
+     */
+    cursor?: UserNftHoldingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UserNftHoldings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UserNftHoldings.
+     */
+    skip?: number
+    distinct?: UserNftHoldingScalarFieldEnum | UserNftHoldingScalarFieldEnum[]
+  }
+
+  /**
+   * UserNftHolding create
+   */
+  export type UserNftHoldingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserNftHolding
+     */
+    select?: UserNftHoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserNftHolding
+     */
+    omit?: UserNftHoldingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserNftHoldingInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UserNftHolding.
+     */
+    data: XOR<UserNftHoldingCreateInput, UserNftHoldingUncheckedCreateInput>
+  }
+
+  /**
+   * UserNftHolding createMany
+   */
+  export type UserNftHoldingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UserNftHoldings.
+     */
+    data: UserNftHoldingCreateManyInput | UserNftHoldingCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UserNftHolding createManyAndReturn
+   */
+  export type UserNftHoldingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserNftHolding
+     */
+    select?: UserNftHoldingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserNftHolding
+     */
+    omit?: UserNftHoldingOmit<ExtArgs> | null
+    /**
+     * The data used to create many UserNftHoldings.
+     */
+    data: UserNftHoldingCreateManyInput | UserNftHoldingCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserNftHoldingIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserNftHolding update
+   */
+  export type UserNftHoldingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserNftHolding
+     */
+    select?: UserNftHoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserNftHolding
+     */
+    omit?: UserNftHoldingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserNftHoldingInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UserNftHolding.
+     */
+    data: XOR<UserNftHoldingUpdateInput, UserNftHoldingUncheckedUpdateInput>
+    /**
+     * Choose, which UserNftHolding to update.
+     */
+    where: UserNftHoldingWhereUniqueInput
+  }
+
+  /**
+   * UserNftHolding updateMany
+   */
+  export type UserNftHoldingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UserNftHoldings.
+     */
+    data: XOR<UserNftHoldingUpdateManyMutationInput, UserNftHoldingUncheckedUpdateManyInput>
+    /**
+     * Filter which UserNftHoldings to update
+     */
+    where?: UserNftHoldingWhereInput
+    /**
+     * Limit how many UserNftHoldings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserNftHolding updateManyAndReturn
+   */
+  export type UserNftHoldingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserNftHolding
+     */
+    select?: UserNftHoldingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserNftHolding
+     */
+    omit?: UserNftHoldingOmit<ExtArgs> | null
+    /**
+     * The data used to update UserNftHoldings.
+     */
+    data: XOR<UserNftHoldingUpdateManyMutationInput, UserNftHoldingUncheckedUpdateManyInput>
+    /**
+     * Filter which UserNftHoldings to update
+     */
+    where?: UserNftHoldingWhereInput
+    /**
+     * Limit how many UserNftHoldings to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserNftHoldingIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * UserNftHolding upsert
+   */
+  export type UserNftHoldingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserNftHolding
+     */
+    select?: UserNftHoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserNftHolding
+     */
+    omit?: UserNftHoldingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserNftHoldingInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UserNftHolding to update in case it exists.
+     */
+    where: UserNftHoldingWhereUniqueInput
+    /**
+     * In case the UserNftHolding found by the `where` argument doesn't exist, create a new UserNftHolding with this data.
+     */
+    create: XOR<UserNftHoldingCreateInput, UserNftHoldingUncheckedCreateInput>
+    /**
+     * In case the UserNftHolding was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UserNftHoldingUpdateInput, UserNftHoldingUncheckedUpdateInput>
+  }
+
+  /**
+   * UserNftHolding delete
+   */
+  export type UserNftHoldingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserNftHolding
+     */
+    select?: UserNftHoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserNftHolding
+     */
+    omit?: UserNftHoldingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserNftHoldingInclude<ExtArgs> | null
+    /**
+     * Filter which UserNftHolding to delete.
+     */
+    where: UserNftHoldingWhereUniqueInput
+  }
+
+  /**
+   * UserNftHolding deleteMany
+   */
+  export type UserNftHoldingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UserNftHoldings to delete
+     */
+    where?: UserNftHoldingWhereInput
+    /**
+     * Limit how many UserNftHoldings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserNftHolding without action
+   */
+  export type UserNftHoldingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserNftHolding
+     */
+    select?: UserNftHoldingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserNftHolding
+     */
+    omit?: UserNftHoldingOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserNftHoldingInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -26143,8 +31536,12 @@ export namespace Prisma {
     paymentMethod: 'paymentMethod',
     metadata: 'metadata',
     processedAt: 'processedAt',
+    feesPaid: 'feesPaid',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    type: 'type',
+    nftPasses: 'nftPasses',
+    userTier: 'userTier'
   };
 
   export type ClaimScalarFieldEnum = (typeof ClaimScalarFieldEnum)[keyof typeof ClaimScalarFieldEnum]
@@ -26216,12 +31613,19 @@ export namespace Prisma {
   export const AirdropSeasonScalarFieldEnum: {
     id: 'id',
     name: 'name',
+    description: 'description',
     status: 'status',
     totalAllocation: 'totalAllocation',
+    claimedAmount: 'claimedAmount',
     startDate: 'startDate',
     endDate: 'endDate',
-    claimingStartedAt: 'claimingStartedAt',
-    createdAt: 'createdAt'
+    nftPassRequired: 'nftPassRequired',
+    requireApproval: 'requireApproval',
+    feeAmount: 'feeAmount',
+    createdBy: 'createdBy',
+    metadata: 'metadata',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type AirdropSeasonScalarFieldEnum = (typeof AirdropSeasonScalarFieldEnum)[keyof typeof AirdropSeasonScalarFieldEnum]
@@ -26236,10 +31640,72 @@ export namespace Prisma {
     paymentSignature: 'paymentSignature',
     transactionSignature: 'transactionSignature',
     status: 'status',
-    claimedAt: 'claimedAt'
+    claimedAt: 'claimedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type AirdropClaimScalarFieldEnum = (typeof AirdropClaimScalarFieldEnum)[keyof typeof AirdropClaimScalarFieldEnum]
+
+
+  export const NftCollectionScalarFieldEnum: {
+    id: 'id',
+    mintAddress: 'mintAddress',
+    name: 'name',
+    symbol: 'symbol',
+    description: 'description',
+    uri: 'uri',
+    supply: 'supply',
+    createdBy: 'createdBy',
+    metadata: 'metadata',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type NftCollectionScalarFieldEnum = (typeof NftCollectionScalarFieldEnum)[keyof typeof NftCollectionScalarFieldEnum]
+
+
+  export const NftDistributionScalarFieldEnum: {
+    id: 'id',
+    mintAddress: 'mintAddress',
+    distributedBy: 'distributedBy',
+    recipientCount: 'recipientCount',
+    nftsPerUser: 'nftsPerUser',
+    results: 'results',
+    success: 'success',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type NftDistributionScalarFieldEnum = (typeof NftDistributionScalarFieldEnum)[keyof typeof NftDistributionScalarFieldEnum]
+
+
+  export const NftClaimApprovalScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    approved: 'approved',
+    approvedBy: 'approvedBy',
+    approvedAt: 'approvedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type NftClaimApprovalScalarFieldEnum = (typeof NftClaimApprovalScalarFieldEnum)[keyof typeof NftClaimApprovalScalarFieldEnum]
+
+
+  export const UserNftHoldingScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    mintAddress: 'mintAddress',
+    tokenAccount: 'tokenAccount',
+    amount: 'amount',
+    metadata: 'metadata',
+    acquiredAt: 'acquiredAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type UserNftHoldingScalarFieldEnum = (typeof UserNftHoldingScalarFieldEnum)[keyof typeof UserNftHoldingScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -26468,6 +31934,20 @@ export namespace Prisma {
    */
   export type ListEnumPaymentMethodFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentMethod[]'>
     
+
+
+  /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
+    
   /**
    * Deep Input Types
    */
@@ -26519,6 +31999,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogListRelationFilter
     fraudAlerts?: FraudAlertListRelationFilter
     campaigns?: CampaignConfigListRelationFilter
+    nftCollections?: NftCollectionListRelationFilter
+    nftDistributions?: NftDistributionListRelationFilter
+    nftHoldings?: UserNftHoldingListRelationFilter
+    nftClaimApproval?: XOR<NftClaimApprovalNullableScalarRelationFilter, NftClaimApprovalWhereInput> | null
+    approvedClaims?: NftClaimApprovalListRelationFilter
+    airdropSeasons?: AirdropSeasonListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -26564,6 +32050,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogOrderByRelationAggregateInput
     fraudAlerts?: FraudAlertOrderByRelationAggregateInput
     campaigns?: CampaignConfigOrderByRelationAggregateInput
+    nftCollections?: NftCollectionOrderByRelationAggregateInput
+    nftDistributions?: NftDistributionOrderByRelationAggregateInput
+    nftHoldings?: UserNftHoldingOrderByRelationAggregateInput
+    nftClaimApproval?: NftClaimApprovalOrderByWithRelationInput
+    approvedClaims?: NftClaimApprovalOrderByRelationAggregateInput
+    airdropSeasons?: AirdropSeasonOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -26612,6 +32104,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogListRelationFilter
     fraudAlerts?: FraudAlertListRelationFilter
     campaigns?: CampaignConfigListRelationFilter
+    nftCollections?: NftCollectionListRelationFilter
+    nftDistributions?: NftDistributionListRelationFilter
+    nftHoldings?: UserNftHoldingListRelationFilter
+    nftClaimApproval?: XOR<NftClaimApprovalNullableScalarRelationFilter, NftClaimApprovalWhereInput> | null
+    approvedClaims?: NftClaimApprovalListRelationFilter
+    airdropSeasons?: AirdropSeasonListRelationFilter
   }, "id" | "walletAddress" | "twitterId" | "referralCode" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -27513,8 +33011,12 @@ export namespace Prisma {
     paymentMethod?: EnumPaymentMethodFilter<"Claim"> | $Enums.PaymentMethod
     metadata?: JsonNullableFilter<"Claim">
     processedAt?: DateTimeNullableFilter<"Claim"> | Date | string | null
+    feesPaid?: DecimalFilter<"Claim"> | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFilter<"Claim"> | Date | string
     updatedAt?: DateTimeFilter<"Claim"> | Date | string
+    type?: StringNullableFilter<"Claim"> | string | null
+    nftPasses?: JsonNullableFilter<"Claim">
+    userTier?: StringNullableFilter<"Claim"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
@@ -27527,8 +33029,12 @@ export namespace Prisma {
     paymentMethod?: SortOrder
     metadata?: SortOrderInput | SortOrder
     processedAt?: SortOrderInput | SortOrder
+    feesPaid?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    type?: SortOrderInput | SortOrder
+    nftPasses?: SortOrderInput | SortOrder
+    userTier?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -27544,8 +33050,12 @@ export namespace Prisma {
     paymentMethod?: EnumPaymentMethodFilter<"Claim"> | $Enums.PaymentMethod
     metadata?: JsonNullableFilter<"Claim">
     processedAt?: DateTimeNullableFilter<"Claim"> | Date | string | null
+    feesPaid?: DecimalFilter<"Claim"> | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFilter<"Claim"> | Date | string
     updatedAt?: DateTimeFilter<"Claim"> | Date | string
+    type?: StringNullableFilter<"Claim"> | string | null
+    nftPasses?: JsonNullableFilter<"Claim">
+    userTier?: StringNullableFilter<"Claim"> | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
@@ -27558,8 +33068,12 @@ export namespace Prisma {
     paymentMethod?: SortOrder
     metadata?: SortOrderInput | SortOrder
     processedAt?: SortOrderInput | SortOrder
+    feesPaid?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    type?: SortOrderInput | SortOrder
+    nftPasses?: SortOrderInput | SortOrder
+    userTier?: SortOrderInput | SortOrder
     _count?: ClaimCountOrderByAggregateInput
     _avg?: ClaimAvgOrderByAggregateInput
     _max?: ClaimMaxOrderByAggregateInput
@@ -27579,8 +33093,12 @@ export namespace Prisma {
     paymentMethod?: EnumPaymentMethodWithAggregatesFilter<"Claim"> | $Enums.PaymentMethod
     metadata?: JsonNullableWithAggregatesFilter<"Claim">
     processedAt?: DateTimeNullableWithAggregatesFilter<"Claim"> | Date | string | null
+    feesPaid?: DecimalWithAggregatesFilter<"Claim"> | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeWithAggregatesFilter<"Claim"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Claim"> | Date | string
+    type?: StringNullableWithAggregatesFilter<"Claim"> | string | null
+    nftPasses?: JsonNullableWithAggregatesFilter<"Claim">
+    userTier?: StringNullableWithAggregatesFilter<"Claim"> | string | null
   }
 
   export type PointHistoryWhereInput = {
@@ -27909,24 +33427,40 @@ export namespace Prisma {
     NOT?: AirdropSeasonWhereInput | AirdropSeasonWhereInput[]
     id?: StringFilter<"AirdropSeason"> | string
     name?: StringFilter<"AirdropSeason"> | string
+    description?: StringNullableFilter<"AirdropSeason"> | string | null
     status?: StringFilter<"AirdropSeason"> | string
     totalAllocation?: BigIntFilter<"AirdropSeason"> | bigint | number
+    claimedAmount?: BigIntFilter<"AirdropSeason"> | bigint | number
     startDate?: DateTimeFilter<"AirdropSeason"> | Date | string
     endDate?: DateTimeNullableFilter<"AirdropSeason"> | Date | string | null
-    claimingStartedAt?: DateTimeNullableFilter<"AirdropSeason"> | Date | string | null
+    nftPassRequired?: BoolFilter<"AirdropSeason"> | boolean
+    requireApproval?: BoolFilter<"AirdropSeason"> | boolean
+    feeAmount?: DecimalFilter<"AirdropSeason"> | Decimal | DecimalJsLike | number | string
+    createdBy?: StringFilter<"AirdropSeason"> | string
+    metadata?: JsonNullableFilter<"AirdropSeason">
     createdAt?: DateTimeFilter<"AirdropSeason"> | Date | string
+    updatedAt?: DateTimeFilter<"AirdropSeason"> | Date | string
+    creator?: XOR<UserScalarRelationFilter, UserWhereInput>
     claims?: AirdropClaimListRelationFilter
   }
 
   export type AirdropSeasonOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrderInput | SortOrder
     status?: SortOrder
     totalAllocation?: SortOrder
+    claimedAmount?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrderInput | SortOrder
-    claimingStartedAt?: SortOrderInput | SortOrder
+    nftPassRequired?: SortOrder
+    requireApproval?: SortOrder
+    feeAmount?: SortOrder
+    createdBy?: SortOrder
+    metadata?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
+    creator?: UserOrderByWithRelationInput
     claims?: AirdropClaimOrderByRelationAggregateInput
   }
 
@@ -27936,24 +33470,39 @@ export namespace Prisma {
     OR?: AirdropSeasonWhereInput[]
     NOT?: AirdropSeasonWhereInput | AirdropSeasonWhereInput[]
     name?: StringFilter<"AirdropSeason"> | string
+    description?: StringNullableFilter<"AirdropSeason"> | string | null
     status?: StringFilter<"AirdropSeason"> | string
     totalAllocation?: BigIntFilter<"AirdropSeason"> | bigint | number
+    claimedAmount?: BigIntFilter<"AirdropSeason"> | bigint | number
     startDate?: DateTimeFilter<"AirdropSeason"> | Date | string
     endDate?: DateTimeNullableFilter<"AirdropSeason"> | Date | string | null
-    claimingStartedAt?: DateTimeNullableFilter<"AirdropSeason"> | Date | string | null
+    nftPassRequired?: BoolFilter<"AirdropSeason"> | boolean
+    requireApproval?: BoolFilter<"AirdropSeason"> | boolean
+    feeAmount?: DecimalFilter<"AirdropSeason"> | Decimal | DecimalJsLike | number | string
+    createdBy?: StringFilter<"AirdropSeason"> | string
+    metadata?: JsonNullableFilter<"AirdropSeason">
     createdAt?: DateTimeFilter<"AirdropSeason"> | Date | string
+    updatedAt?: DateTimeFilter<"AirdropSeason"> | Date | string
+    creator?: XOR<UserScalarRelationFilter, UserWhereInput>
     claims?: AirdropClaimListRelationFilter
   }, "id">
 
   export type AirdropSeasonOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrderInput | SortOrder
     status?: SortOrder
     totalAllocation?: SortOrder
+    claimedAmount?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrderInput | SortOrder
-    claimingStartedAt?: SortOrderInput | SortOrder
+    nftPassRequired?: SortOrder
+    requireApproval?: SortOrder
+    feeAmount?: SortOrder
+    createdBy?: SortOrder
+    metadata?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: AirdropSeasonCountOrderByAggregateInput
     _avg?: AirdropSeasonAvgOrderByAggregateInput
     _max?: AirdropSeasonMaxOrderByAggregateInput
@@ -27967,12 +33516,19 @@ export namespace Prisma {
     NOT?: AirdropSeasonScalarWhereWithAggregatesInput | AirdropSeasonScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"AirdropSeason"> | string
     name?: StringWithAggregatesFilter<"AirdropSeason"> | string
+    description?: StringNullableWithAggregatesFilter<"AirdropSeason"> | string | null
     status?: StringWithAggregatesFilter<"AirdropSeason"> | string
     totalAllocation?: BigIntWithAggregatesFilter<"AirdropSeason"> | bigint | number
+    claimedAmount?: BigIntWithAggregatesFilter<"AirdropSeason"> | bigint | number
     startDate?: DateTimeWithAggregatesFilter<"AirdropSeason"> | Date | string
     endDate?: DateTimeNullableWithAggregatesFilter<"AirdropSeason"> | Date | string | null
-    claimingStartedAt?: DateTimeNullableWithAggregatesFilter<"AirdropSeason"> | Date | string | null
+    nftPassRequired?: BoolWithAggregatesFilter<"AirdropSeason"> | boolean
+    requireApproval?: BoolWithAggregatesFilter<"AirdropSeason"> | boolean
+    feeAmount?: DecimalWithAggregatesFilter<"AirdropSeason"> | Decimal | DecimalJsLike | number | string
+    createdBy?: StringWithAggregatesFilter<"AirdropSeason"> | string
+    metadata?: JsonNullableWithAggregatesFilter<"AirdropSeason">
     createdAt?: DateTimeWithAggregatesFilter<"AirdropSeason"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AirdropSeason"> | Date | string
   }
 
   export type AirdropClaimWhereInput = {
@@ -27988,6 +33544,8 @@ export namespace Prisma {
     transactionSignature?: StringNullableFilter<"AirdropClaim"> | string | null
     status?: StringFilter<"AirdropClaim"> | string
     claimedAt?: DateTimeFilter<"AirdropClaim"> | Date | string
+    createdAt?: DateTimeFilter<"AirdropClaim"> | Date | string
+    updatedAt?: DateTimeFilter<"AirdropClaim"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     season?: XOR<AirdropSeasonScalarRelationFilter, AirdropSeasonWhereInput>
   }
@@ -28002,6 +33560,8 @@ export namespace Prisma {
     transactionSignature?: SortOrderInput | SortOrder
     status?: SortOrder
     claimedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
     season?: AirdropSeasonOrderByWithRelationInput
   }
@@ -28020,6 +33580,8 @@ export namespace Prisma {
     transactionSignature?: StringNullableFilter<"AirdropClaim"> | string | null
     status?: StringFilter<"AirdropClaim"> | string
     claimedAt?: DateTimeFilter<"AirdropClaim"> | Date | string
+    createdAt?: DateTimeFilter<"AirdropClaim"> | Date | string
+    updatedAt?: DateTimeFilter<"AirdropClaim"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     season?: XOR<AirdropSeasonScalarRelationFilter, AirdropSeasonWhereInput>
   }, "id" | "userId_seasonId">
@@ -28034,6 +33596,8 @@ export namespace Prisma {
     transactionSignature?: SortOrderInput | SortOrder
     status?: SortOrder
     claimedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: AirdropClaimCountOrderByAggregateInput
     _avg?: AirdropClaimAvgOrderByAggregateInput
     _max?: AirdropClaimMaxOrderByAggregateInput
@@ -28054,6 +33618,324 @@ export namespace Prisma {
     transactionSignature?: StringNullableWithAggregatesFilter<"AirdropClaim"> | string | null
     status?: StringWithAggregatesFilter<"AirdropClaim"> | string
     claimedAt?: DateTimeWithAggregatesFilter<"AirdropClaim"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"AirdropClaim"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"AirdropClaim"> | Date | string
+  }
+
+  export type NftCollectionWhereInput = {
+    AND?: NftCollectionWhereInput | NftCollectionWhereInput[]
+    OR?: NftCollectionWhereInput[]
+    NOT?: NftCollectionWhereInput | NftCollectionWhereInput[]
+    id?: StringFilter<"NftCollection"> | string
+    mintAddress?: StringFilter<"NftCollection"> | string
+    name?: StringFilter<"NftCollection"> | string
+    symbol?: StringFilter<"NftCollection"> | string
+    description?: StringNullableFilter<"NftCollection"> | string | null
+    uri?: StringFilter<"NftCollection"> | string
+    supply?: IntFilter<"NftCollection"> | number
+    createdBy?: StringFilter<"NftCollection"> | string
+    metadata?: JsonNullableFilter<"NftCollection">
+    createdAt?: DateTimeFilter<"NftCollection"> | Date | string
+    updatedAt?: DateTimeFilter<"NftCollection"> | Date | string
+    creator?: XOR<UserScalarRelationFilter, UserWhereInput>
+    distributions?: NftDistributionListRelationFilter
+  }
+
+  export type NftCollectionOrderByWithRelationInput = {
+    id?: SortOrder
+    mintAddress?: SortOrder
+    name?: SortOrder
+    symbol?: SortOrder
+    description?: SortOrderInput | SortOrder
+    uri?: SortOrder
+    supply?: SortOrder
+    createdBy?: SortOrder
+    metadata?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    creator?: UserOrderByWithRelationInput
+    distributions?: NftDistributionOrderByRelationAggregateInput
+  }
+
+  export type NftCollectionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    mintAddress?: string
+    AND?: NftCollectionWhereInput | NftCollectionWhereInput[]
+    OR?: NftCollectionWhereInput[]
+    NOT?: NftCollectionWhereInput | NftCollectionWhereInput[]
+    name?: StringFilter<"NftCollection"> | string
+    symbol?: StringFilter<"NftCollection"> | string
+    description?: StringNullableFilter<"NftCollection"> | string | null
+    uri?: StringFilter<"NftCollection"> | string
+    supply?: IntFilter<"NftCollection"> | number
+    createdBy?: StringFilter<"NftCollection"> | string
+    metadata?: JsonNullableFilter<"NftCollection">
+    createdAt?: DateTimeFilter<"NftCollection"> | Date | string
+    updatedAt?: DateTimeFilter<"NftCollection"> | Date | string
+    creator?: XOR<UserScalarRelationFilter, UserWhereInput>
+    distributions?: NftDistributionListRelationFilter
+  }, "id" | "mintAddress">
+
+  export type NftCollectionOrderByWithAggregationInput = {
+    id?: SortOrder
+    mintAddress?: SortOrder
+    name?: SortOrder
+    symbol?: SortOrder
+    description?: SortOrderInput | SortOrder
+    uri?: SortOrder
+    supply?: SortOrder
+    createdBy?: SortOrder
+    metadata?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: NftCollectionCountOrderByAggregateInput
+    _avg?: NftCollectionAvgOrderByAggregateInput
+    _max?: NftCollectionMaxOrderByAggregateInput
+    _min?: NftCollectionMinOrderByAggregateInput
+    _sum?: NftCollectionSumOrderByAggregateInput
+  }
+
+  export type NftCollectionScalarWhereWithAggregatesInput = {
+    AND?: NftCollectionScalarWhereWithAggregatesInput | NftCollectionScalarWhereWithAggregatesInput[]
+    OR?: NftCollectionScalarWhereWithAggregatesInput[]
+    NOT?: NftCollectionScalarWhereWithAggregatesInput | NftCollectionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"NftCollection"> | string
+    mintAddress?: StringWithAggregatesFilter<"NftCollection"> | string
+    name?: StringWithAggregatesFilter<"NftCollection"> | string
+    symbol?: StringWithAggregatesFilter<"NftCollection"> | string
+    description?: StringNullableWithAggregatesFilter<"NftCollection"> | string | null
+    uri?: StringWithAggregatesFilter<"NftCollection"> | string
+    supply?: IntWithAggregatesFilter<"NftCollection"> | number
+    createdBy?: StringWithAggregatesFilter<"NftCollection"> | string
+    metadata?: JsonNullableWithAggregatesFilter<"NftCollection">
+    createdAt?: DateTimeWithAggregatesFilter<"NftCollection"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"NftCollection"> | Date | string
+  }
+
+  export type NftDistributionWhereInput = {
+    AND?: NftDistributionWhereInput | NftDistributionWhereInput[]
+    OR?: NftDistributionWhereInput[]
+    NOT?: NftDistributionWhereInput | NftDistributionWhereInput[]
+    id?: StringFilter<"NftDistribution"> | string
+    mintAddress?: StringFilter<"NftDistribution"> | string
+    distributedBy?: StringFilter<"NftDistribution"> | string
+    recipientCount?: IntFilter<"NftDistribution"> | number
+    nftsPerUser?: IntFilter<"NftDistribution"> | number
+    results?: JsonFilter<"NftDistribution">
+    success?: BoolFilter<"NftDistribution"> | boolean
+    createdAt?: DateTimeFilter<"NftDistribution"> | Date | string
+    updatedAt?: DateTimeFilter<"NftDistribution"> | Date | string
+    collection?: XOR<NftCollectionScalarRelationFilter, NftCollectionWhereInput>
+    distributor?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type NftDistributionOrderByWithRelationInput = {
+    id?: SortOrder
+    mintAddress?: SortOrder
+    distributedBy?: SortOrder
+    recipientCount?: SortOrder
+    nftsPerUser?: SortOrder
+    results?: SortOrder
+    success?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    collection?: NftCollectionOrderByWithRelationInput
+    distributor?: UserOrderByWithRelationInput
+  }
+
+  export type NftDistributionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: NftDistributionWhereInput | NftDistributionWhereInput[]
+    OR?: NftDistributionWhereInput[]
+    NOT?: NftDistributionWhereInput | NftDistributionWhereInput[]
+    mintAddress?: StringFilter<"NftDistribution"> | string
+    distributedBy?: StringFilter<"NftDistribution"> | string
+    recipientCount?: IntFilter<"NftDistribution"> | number
+    nftsPerUser?: IntFilter<"NftDistribution"> | number
+    results?: JsonFilter<"NftDistribution">
+    success?: BoolFilter<"NftDistribution"> | boolean
+    createdAt?: DateTimeFilter<"NftDistribution"> | Date | string
+    updatedAt?: DateTimeFilter<"NftDistribution"> | Date | string
+    collection?: XOR<NftCollectionScalarRelationFilter, NftCollectionWhereInput>
+    distributor?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type NftDistributionOrderByWithAggregationInput = {
+    id?: SortOrder
+    mintAddress?: SortOrder
+    distributedBy?: SortOrder
+    recipientCount?: SortOrder
+    nftsPerUser?: SortOrder
+    results?: SortOrder
+    success?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: NftDistributionCountOrderByAggregateInput
+    _avg?: NftDistributionAvgOrderByAggregateInput
+    _max?: NftDistributionMaxOrderByAggregateInput
+    _min?: NftDistributionMinOrderByAggregateInput
+    _sum?: NftDistributionSumOrderByAggregateInput
+  }
+
+  export type NftDistributionScalarWhereWithAggregatesInput = {
+    AND?: NftDistributionScalarWhereWithAggregatesInput | NftDistributionScalarWhereWithAggregatesInput[]
+    OR?: NftDistributionScalarWhereWithAggregatesInput[]
+    NOT?: NftDistributionScalarWhereWithAggregatesInput | NftDistributionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"NftDistribution"> | string
+    mintAddress?: StringWithAggregatesFilter<"NftDistribution"> | string
+    distributedBy?: StringWithAggregatesFilter<"NftDistribution"> | string
+    recipientCount?: IntWithAggregatesFilter<"NftDistribution"> | number
+    nftsPerUser?: IntWithAggregatesFilter<"NftDistribution"> | number
+    results?: JsonWithAggregatesFilter<"NftDistribution">
+    success?: BoolWithAggregatesFilter<"NftDistribution"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"NftDistribution"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"NftDistribution"> | Date | string
+  }
+
+  export type NftClaimApprovalWhereInput = {
+    AND?: NftClaimApprovalWhereInput | NftClaimApprovalWhereInput[]
+    OR?: NftClaimApprovalWhereInput[]
+    NOT?: NftClaimApprovalWhereInput | NftClaimApprovalWhereInput[]
+    id?: StringFilter<"NftClaimApproval"> | string
+    userId?: StringFilter<"NftClaimApproval"> | string
+    approved?: BoolFilter<"NftClaimApproval"> | boolean
+    approvedBy?: StringNullableFilter<"NftClaimApproval"> | string | null
+    approvedAt?: DateTimeNullableFilter<"NftClaimApproval"> | Date | string | null
+    createdAt?: DateTimeFilter<"NftClaimApproval"> | Date | string
+    updatedAt?: DateTimeFilter<"NftClaimApproval"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    approver?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }
+
+  export type NftClaimApprovalOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    approved?: SortOrder
+    approvedBy?: SortOrderInput | SortOrder
+    approvedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    approver?: UserOrderByWithRelationInput
+  }
+
+  export type NftClaimApprovalWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId?: string
+    AND?: NftClaimApprovalWhereInput | NftClaimApprovalWhereInput[]
+    OR?: NftClaimApprovalWhereInput[]
+    NOT?: NftClaimApprovalWhereInput | NftClaimApprovalWhereInput[]
+    approved?: BoolFilter<"NftClaimApproval"> | boolean
+    approvedBy?: StringNullableFilter<"NftClaimApproval"> | string | null
+    approvedAt?: DateTimeNullableFilter<"NftClaimApproval"> | Date | string | null
+    createdAt?: DateTimeFilter<"NftClaimApproval"> | Date | string
+    updatedAt?: DateTimeFilter<"NftClaimApproval"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    approver?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
+  }, "id" | "userId">
+
+  export type NftClaimApprovalOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    approved?: SortOrder
+    approvedBy?: SortOrderInput | SortOrder
+    approvedAt?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: NftClaimApprovalCountOrderByAggregateInput
+    _max?: NftClaimApprovalMaxOrderByAggregateInput
+    _min?: NftClaimApprovalMinOrderByAggregateInput
+  }
+
+  export type NftClaimApprovalScalarWhereWithAggregatesInput = {
+    AND?: NftClaimApprovalScalarWhereWithAggregatesInput | NftClaimApprovalScalarWhereWithAggregatesInput[]
+    OR?: NftClaimApprovalScalarWhereWithAggregatesInput[]
+    NOT?: NftClaimApprovalScalarWhereWithAggregatesInput | NftClaimApprovalScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"NftClaimApproval"> | string
+    userId?: StringWithAggregatesFilter<"NftClaimApproval"> | string
+    approved?: BoolWithAggregatesFilter<"NftClaimApproval"> | boolean
+    approvedBy?: StringNullableWithAggregatesFilter<"NftClaimApproval"> | string | null
+    approvedAt?: DateTimeNullableWithAggregatesFilter<"NftClaimApproval"> | Date | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"NftClaimApproval"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"NftClaimApproval"> | Date | string
+  }
+
+  export type UserNftHoldingWhereInput = {
+    AND?: UserNftHoldingWhereInput | UserNftHoldingWhereInput[]
+    OR?: UserNftHoldingWhereInput[]
+    NOT?: UserNftHoldingWhereInput | UserNftHoldingWhereInput[]
+    id?: StringFilter<"UserNftHolding"> | string
+    userId?: StringFilter<"UserNftHolding"> | string
+    mintAddress?: StringFilter<"UserNftHolding"> | string
+    tokenAccount?: StringFilter<"UserNftHolding"> | string
+    amount?: IntFilter<"UserNftHolding"> | number
+    metadata?: JsonNullableFilter<"UserNftHolding">
+    acquiredAt?: DateTimeFilter<"UserNftHolding"> | Date | string
+    createdAt?: DateTimeFilter<"UserNftHolding"> | Date | string
+    updatedAt?: DateTimeFilter<"UserNftHolding"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type UserNftHoldingOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    mintAddress?: SortOrder
+    tokenAccount?: SortOrder
+    amount?: SortOrder
+    metadata?: SortOrderInput | SortOrder
+    acquiredAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type UserNftHoldingWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    userId_mintAddress_tokenAccount?: UserNftHoldingUserIdMintAddressTokenAccountCompoundUniqueInput
+    AND?: UserNftHoldingWhereInput | UserNftHoldingWhereInput[]
+    OR?: UserNftHoldingWhereInput[]
+    NOT?: UserNftHoldingWhereInput | UserNftHoldingWhereInput[]
+    userId?: StringFilter<"UserNftHolding"> | string
+    mintAddress?: StringFilter<"UserNftHolding"> | string
+    tokenAccount?: StringFilter<"UserNftHolding"> | string
+    amount?: IntFilter<"UserNftHolding"> | number
+    metadata?: JsonNullableFilter<"UserNftHolding">
+    acquiredAt?: DateTimeFilter<"UserNftHolding"> | Date | string
+    createdAt?: DateTimeFilter<"UserNftHolding"> | Date | string
+    updatedAt?: DateTimeFilter<"UserNftHolding"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "userId_mintAddress_tokenAccount">
+
+  export type UserNftHoldingOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    mintAddress?: SortOrder
+    tokenAccount?: SortOrder
+    amount?: SortOrder
+    metadata?: SortOrderInput | SortOrder
+    acquiredAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: UserNftHoldingCountOrderByAggregateInput
+    _avg?: UserNftHoldingAvgOrderByAggregateInput
+    _max?: UserNftHoldingMaxOrderByAggregateInput
+    _min?: UserNftHoldingMinOrderByAggregateInput
+    _sum?: UserNftHoldingSumOrderByAggregateInput
+  }
+
+  export type UserNftHoldingScalarWhereWithAggregatesInput = {
+    AND?: UserNftHoldingScalarWhereWithAggregatesInput | UserNftHoldingScalarWhereWithAggregatesInput[]
+    OR?: UserNftHoldingScalarWhereWithAggregatesInput[]
+    NOT?: UserNftHoldingScalarWhereWithAggregatesInput | UserNftHoldingScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"UserNftHolding"> | string
+    userId?: StringWithAggregatesFilter<"UserNftHolding"> | string
+    mintAddress?: StringWithAggregatesFilter<"UserNftHolding"> | string
+    tokenAccount?: StringWithAggregatesFilter<"UserNftHolding"> | string
+    amount?: IntWithAggregatesFilter<"UserNftHolding"> | number
+    metadata?: JsonNullableWithAggregatesFilter<"UserNftHolding">
+    acquiredAt?: DateTimeWithAggregatesFilter<"UserNftHolding"> | Date | string
+    createdAt?: DateTimeWithAggregatesFilter<"UserNftHolding"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"UserNftHolding"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -28099,6 +33981,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -28144,6 +34032,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUpdateInput = {
@@ -28189,6 +34083,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -28234,6 +34134,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -29217,8 +35123,12 @@ export namespace Prisma {
     paymentMethod?: $Enums.PaymentMethod
     metadata?: NullableJsonNullValueInput | InputJsonValue
     processedAt?: Date | string | null
+    feesPaid?: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    type?: string | null
+    nftPasses?: NullableJsonNullValueInput | InputJsonValue
+    userTier?: string | null
     user: UserCreateNestedOneWithoutClaimsInput
   }
 
@@ -29231,8 +35141,12 @@ export namespace Prisma {
     paymentMethod?: $Enums.PaymentMethod
     metadata?: NullableJsonNullValueInput | InputJsonValue
     processedAt?: Date | string | null
+    feesPaid?: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    type?: string | null
+    nftPasses?: NullableJsonNullValueInput | InputJsonValue
+    userTier?: string | null
   }
 
   export type ClaimUpdateInput = {
@@ -29243,8 +35157,12 @@ export namespace Prisma {
     paymentMethod?: EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
     metadata?: NullableJsonNullValueInput | InputJsonValue
     processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    feesPaid?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    nftPasses?: NullableJsonNullValueInput | InputJsonValue
+    userTier?: NullableStringFieldUpdateOperationsInput | string | null
     user?: UserUpdateOneRequiredWithoutClaimsNestedInput
   }
 
@@ -29257,8 +35175,12 @@ export namespace Prisma {
     paymentMethod?: EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
     metadata?: NullableJsonNullValueInput | InputJsonValue
     processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    feesPaid?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    nftPasses?: NullableJsonNullValueInput | InputJsonValue
+    userTier?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ClaimCreateManyInput = {
@@ -29270,8 +35192,12 @@ export namespace Prisma {
     paymentMethod?: $Enums.PaymentMethod
     metadata?: NullableJsonNullValueInput | InputJsonValue
     processedAt?: Date | string | null
+    feesPaid?: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    type?: string | null
+    nftPasses?: NullableJsonNullValueInput | InputJsonValue
+    userTier?: string | null
   }
 
   export type ClaimUpdateManyMutationInput = {
@@ -29282,8 +35208,12 @@ export namespace Prisma {
     paymentMethod?: EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
     metadata?: NullableJsonNullValueInput | InputJsonValue
     processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    feesPaid?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    nftPasses?: NullableJsonNullValueInput | InputJsonValue
+    userTier?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ClaimUncheckedUpdateManyInput = {
@@ -29295,8 +35225,12 @@ export namespace Prisma {
     paymentMethod?: EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
     metadata?: NullableJsonNullValueInput | InputJsonValue
     processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    feesPaid?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    nftPasses?: NullableJsonNullValueInput | InputJsonValue
+    userTier?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PointHistoryCreateInput = {
@@ -29634,82 +35568,130 @@ export namespace Prisma {
   export type AirdropSeasonCreateInput = {
     id?: string
     name: string
-    status: string
+    description?: string | null
+    status?: string
     totalAllocation: bigint | number
-    startDate: Date | string
+    claimedAmount?: bigint | number
+    startDate?: Date | string
     endDate?: Date | string | null
-    claimingStartedAt?: Date | string | null
+    nftPassRequired?: boolean
+    requireApproval?: boolean
+    feeAmount?: Decimal | DecimalJsLike | number | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
+    updatedAt?: Date | string
+    creator: UserCreateNestedOneWithoutAirdropSeasonsInput
     claims?: AirdropClaimCreateNestedManyWithoutSeasonInput
   }
 
   export type AirdropSeasonUncheckedCreateInput = {
     id?: string
     name: string
-    status: string
+    description?: string | null
+    status?: string
     totalAllocation: bigint | number
-    startDate: Date | string
+    claimedAmount?: bigint | number
+    startDate?: Date | string
     endDate?: Date | string | null
-    claimingStartedAt?: Date | string | null
+    nftPassRequired?: boolean
+    requireApproval?: boolean
+    feeAmount?: Decimal | DecimalJsLike | number | string
+    createdBy: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
+    updatedAt?: Date | string
     claims?: AirdropClaimUncheckedCreateNestedManyWithoutSeasonInput
   }
 
   export type AirdropSeasonUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    claimedAmount?: BigIntFieldUpdateOperationsInput | bigint | number
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    claimingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nftPassRequired?: BoolFieldUpdateOperationsInput | boolean
+    requireApproval?: BoolFieldUpdateOperationsInput | boolean
+    feeAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creator?: UserUpdateOneRequiredWithoutAirdropSeasonsNestedInput
     claims?: AirdropClaimUpdateManyWithoutSeasonNestedInput
   }
 
   export type AirdropSeasonUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    claimedAmount?: BigIntFieldUpdateOperationsInput | bigint | number
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    claimingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nftPassRequired?: BoolFieldUpdateOperationsInput | boolean
+    requireApproval?: BoolFieldUpdateOperationsInput | boolean
+    feeAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdBy?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     claims?: AirdropClaimUncheckedUpdateManyWithoutSeasonNestedInput
   }
 
   export type AirdropSeasonCreateManyInput = {
     id?: string
     name: string
-    status: string
+    description?: string | null
+    status?: string
     totalAllocation: bigint | number
-    startDate: Date | string
+    claimedAmount?: bigint | number
+    startDate?: Date | string
     endDate?: Date | string | null
-    claimingStartedAt?: Date | string | null
+    nftPassRequired?: boolean
+    requireApproval?: boolean
+    feeAmount?: Decimal | DecimalJsLike | number | string
+    createdBy: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type AirdropSeasonUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    claimedAmount?: BigIntFieldUpdateOperationsInput | bigint | number
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    claimingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nftPassRequired?: BoolFieldUpdateOperationsInput | boolean
+    requireApproval?: BoolFieldUpdateOperationsInput | boolean
+    feeAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AirdropSeasonUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    claimedAmount?: BigIntFieldUpdateOperationsInput | bigint | number
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    claimingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nftPassRequired?: BoolFieldUpdateOperationsInput | boolean
+    requireApproval?: BoolFieldUpdateOperationsInput | boolean
+    feeAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdBy?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AirdropClaimCreateInput = {
@@ -29720,6 +35702,8 @@ export namespace Prisma {
     transactionSignature?: string | null
     status: string
     claimedAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     user: UserCreateNestedOneWithoutAirdropClaimsInput
     season: AirdropSeasonCreateNestedOneWithoutClaimsInput
   }
@@ -29734,6 +35718,8 @@ export namespace Prisma {
     transactionSignature?: string | null
     status: string
     claimedAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type AirdropClaimUpdateInput = {
@@ -29744,6 +35730,8 @@ export namespace Prisma {
     transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutAirdropClaimsNestedInput
     season?: AirdropSeasonUpdateOneRequiredWithoutClaimsNestedInput
   }
@@ -29758,6 +35746,8 @@ export namespace Prisma {
     transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AirdropClaimCreateManyInput = {
@@ -29770,6 +35760,8 @@ export namespace Prisma {
     transactionSignature?: string | null
     status: string
     claimedAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type AirdropClaimUpdateManyMutationInput = {
@@ -29780,6 +35772,8 @@ export namespace Prisma {
     transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AirdropClaimUncheckedUpdateManyInput = {
@@ -29792,6 +35786,342 @@ export namespace Prisma {
     transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftCollectionCreateInput = {
+    id?: string
+    mintAddress: string
+    name: string
+    symbol: string
+    description?: string | null
+    uri: string
+    supply?: number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    creator: UserCreateNestedOneWithoutNftCollectionsInput
+    distributions?: NftDistributionCreateNestedManyWithoutCollectionInput
+  }
+
+  export type NftCollectionUncheckedCreateInput = {
+    id?: string
+    mintAddress: string
+    name: string
+    symbol: string
+    description?: string | null
+    uri: string
+    supply?: number
+    createdBy: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    distributions?: NftDistributionUncheckedCreateNestedManyWithoutCollectionInput
+  }
+
+  export type NftCollectionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    uri?: StringFieldUpdateOperationsInput | string
+    supply?: IntFieldUpdateOperationsInput | number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creator?: UserUpdateOneRequiredWithoutNftCollectionsNestedInput
+    distributions?: NftDistributionUpdateManyWithoutCollectionNestedInput
+  }
+
+  export type NftCollectionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    uri?: StringFieldUpdateOperationsInput | string
+    supply?: IntFieldUpdateOperationsInput | number
+    createdBy?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    distributions?: NftDistributionUncheckedUpdateManyWithoutCollectionNestedInput
+  }
+
+  export type NftCollectionCreateManyInput = {
+    id?: string
+    mintAddress: string
+    name: string
+    symbol: string
+    description?: string | null
+    uri: string
+    supply?: number
+    createdBy: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftCollectionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    uri?: StringFieldUpdateOperationsInput | string
+    supply?: IntFieldUpdateOperationsInput | number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftCollectionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    uri?: StringFieldUpdateOperationsInput | string
+    supply?: IntFieldUpdateOperationsInput | number
+    createdBy?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftDistributionCreateInput = {
+    id?: string
+    recipientCount: number
+    nftsPerUser: number
+    results: JsonNullValueInput | InputJsonValue
+    success?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    collection: NftCollectionCreateNestedOneWithoutDistributionsInput
+    distributor: UserCreateNestedOneWithoutNftDistributionsInput
+  }
+
+  export type NftDistributionUncheckedCreateInput = {
+    id?: string
+    mintAddress: string
+    distributedBy: string
+    recipientCount: number
+    nftsPerUser: number
+    results: JsonNullValueInput | InputJsonValue
+    success?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftDistributionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    recipientCount?: IntFieldUpdateOperationsInput | number
+    nftsPerUser?: IntFieldUpdateOperationsInput | number
+    results?: JsonNullValueInput | InputJsonValue
+    success?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    collection?: NftCollectionUpdateOneRequiredWithoutDistributionsNestedInput
+    distributor?: UserUpdateOneRequiredWithoutNftDistributionsNestedInput
+  }
+
+  export type NftDistributionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    distributedBy?: StringFieldUpdateOperationsInput | string
+    recipientCount?: IntFieldUpdateOperationsInput | number
+    nftsPerUser?: IntFieldUpdateOperationsInput | number
+    results?: JsonNullValueInput | InputJsonValue
+    success?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftDistributionCreateManyInput = {
+    id?: string
+    mintAddress: string
+    distributedBy: string
+    recipientCount: number
+    nftsPerUser: number
+    results: JsonNullValueInput | InputJsonValue
+    success?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftDistributionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    recipientCount?: IntFieldUpdateOperationsInput | number
+    nftsPerUser?: IntFieldUpdateOperationsInput | number
+    results?: JsonNullValueInput | InputJsonValue
+    success?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftDistributionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    distributedBy?: StringFieldUpdateOperationsInput | string
+    recipientCount?: IntFieldUpdateOperationsInput | number
+    nftsPerUser?: IntFieldUpdateOperationsInput | number
+    results?: JsonNullValueInput | InputJsonValue
+    success?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftClaimApprovalCreateInput = {
+    id?: string
+    approved?: boolean
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutNftClaimApprovalInput
+    approver?: UserCreateNestedOneWithoutApprovedClaimsInput
+  }
+
+  export type NftClaimApprovalUncheckedCreateInput = {
+    id?: string
+    userId: string
+    approved?: boolean
+    approvedBy?: string | null
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftClaimApprovalUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    approved?: BoolFieldUpdateOperationsInput | boolean
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutNftClaimApprovalNestedInput
+    approver?: UserUpdateOneWithoutApprovedClaimsNestedInput
+  }
+
+  export type NftClaimApprovalUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    approved?: BoolFieldUpdateOperationsInput | boolean
+    approvedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftClaimApprovalCreateManyInput = {
+    id?: string
+    userId: string
+    approved?: boolean
+    approvedBy?: string | null
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftClaimApprovalUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    approved?: BoolFieldUpdateOperationsInput | boolean
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftClaimApprovalUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    approved?: BoolFieldUpdateOperationsInput | boolean
+    approvedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserNftHoldingCreateInput = {
+    id?: string
+    mintAddress: string
+    tokenAccount: string
+    amount?: number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    acquiredAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutNftHoldingsInput
+  }
+
+  export type UserNftHoldingUncheckedCreateInput = {
+    id?: string
+    userId: string
+    mintAddress: string
+    tokenAccount: string
+    amount?: number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    acquiredAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserNftHoldingUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    tokenAccount?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    acquiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutNftHoldingsNestedInput
+  }
+
+  export type UserNftHoldingUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    tokenAccount?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    acquiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserNftHoldingCreateManyInput = {
+    id?: string
+    userId: string
+    mintAddress: string
+    tokenAccount: string
+    amount?: number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    acquiredAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserNftHoldingUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    tokenAccount?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    acquiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserNftHoldingUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    tokenAccount?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    acquiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -30010,6 +36340,41 @@ export namespace Prisma {
     none?: CampaignConfigWhereInput
   }
 
+  export type NftCollectionListRelationFilter = {
+    every?: NftCollectionWhereInput
+    some?: NftCollectionWhereInput
+    none?: NftCollectionWhereInput
+  }
+
+  export type NftDistributionListRelationFilter = {
+    every?: NftDistributionWhereInput
+    some?: NftDistributionWhereInput
+    none?: NftDistributionWhereInput
+  }
+
+  export type UserNftHoldingListRelationFilter = {
+    every?: UserNftHoldingWhereInput
+    some?: UserNftHoldingWhereInput
+    none?: UserNftHoldingWhereInput
+  }
+
+  export type NftClaimApprovalNullableScalarRelationFilter = {
+    is?: NftClaimApprovalWhereInput | null
+    isNot?: NftClaimApprovalWhereInput | null
+  }
+
+  export type NftClaimApprovalListRelationFilter = {
+    every?: NftClaimApprovalWhereInput
+    some?: NftClaimApprovalWhereInput
+    none?: NftClaimApprovalWhereInput
+  }
+
+  export type AirdropSeasonListRelationFilter = {
+    every?: AirdropSeasonWhereInput
+    some?: AirdropSeasonWhereInput
+    none?: AirdropSeasonWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -30064,6 +36429,26 @@ export namespace Prisma {
   }
 
   export type CampaignConfigOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type NftCollectionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type NftDistributionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UserNftHoldingOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type NftClaimApprovalOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AirdropSeasonOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -30946,6 +37331,17 @@ export namespace Prisma {
     not?: NestedEnumPaymentMethodFilter<$PrismaModel> | $Enums.PaymentMethod
   }
 
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
   export type ClaimCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
@@ -30955,12 +37351,17 @@ export namespace Prisma {
     paymentMethod?: SortOrder
     metadata?: SortOrder
     processedAt?: SortOrder
+    feesPaid?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    type?: SortOrder
+    nftPasses?: SortOrder
+    userTier?: SortOrder
   }
 
   export type ClaimAvgOrderByAggregateInput = {
     amount?: SortOrder
+    feesPaid?: SortOrder
   }
 
   export type ClaimMaxOrderByAggregateInput = {
@@ -30971,8 +37372,11 @@ export namespace Prisma {
     status?: SortOrder
     paymentMethod?: SortOrder
     processedAt?: SortOrder
+    feesPaid?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    type?: SortOrder
+    userTier?: SortOrder
   }
 
   export type ClaimMinOrderByAggregateInput = {
@@ -30983,12 +37387,16 @@ export namespace Prisma {
     status?: SortOrder
     paymentMethod?: SortOrder
     processedAt?: SortOrder
+    feesPaid?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    type?: SortOrder
+    userTier?: SortOrder
   }
 
   export type ClaimSumOrderByAggregateInput = {
     amount?: SortOrder
+    feesPaid?: SortOrder
   }
 
   export type EnumClaimStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -31009,6 +37417,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumPaymentMethodFilter<$PrismaModel>
     _max?: NestedEnumPaymentMethodFilter<$PrismaModel>
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type PointHistoryCountOrderByAggregateInput = {
@@ -31192,42 +37616,65 @@ export namespace Prisma {
   export type AirdropSeasonCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     status?: SortOrder
     totalAllocation?: SortOrder
+    claimedAmount?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    claimingStartedAt?: SortOrder
+    nftPassRequired?: SortOrder
+    requireApproval?: SortOrder
+    feeAmount?: SortOrder
+    createdBy?: SortOrder
+    metadata?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type AirdropSeasonAvgOrderByAggregateInput = {
     totalAllocation?: SortOrder
+    claimedAmount?: SortOrder
+    feeAmount?: SortOrder
   }
 
   export type AirdropSeasonMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     status?: SortOrder
     totalAllocation?: SortOrder
+    claimedAmount?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    claimingStartedAt?: SortOrder
+    nftPassRequired?: SortOrder
+    requireApproval?: SortOrder
+    feeAmount?: SortOrder
+    createdBy?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type AirdropSeasonMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     status?: SortOrder
     totalAllocation?: SortOrder
+    claimedAmount?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    claimingStartedAt?: SortOrder
+    nftPassRequired?: SortOrder
+    requireApproval?: SortOrder
+    feeAmount?: SortOrder
+    createdBy?: SortOrder
     createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type AirdropSeasonSumOrderByAggregateInput = {
     totalAllocation?: SortOrder
+    claimedAmount?: SortOrder
+    feeAmount?: SortOrder
   }
 
   export type AirdropSeasonScalarRelationFilter = {
@@ -31250,6 +37697,8 @@ export namespace Prisma {
     transactionSignature?: SortOrder
     status?: SortOrder
     claimedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type AirdropClaimAvgOrderByAggregateInput = {
@@ -31266,6 +37715,8 @@ export namespace Prisma {
     transactionSignature?: SortOrder
     status?: SortOrder
     claimedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type AirdropClaimMinOrderByAggregateInput = {
@@ -31278,10 +37729,192 @@ export namespace Prisma {
     transactionSignature?: SortOrder
     status?: SortOrder
     claimedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type AirdropClaimSumOrderByAggregateInput = {
     tokens?: SortOrder
+  }
+
+  export type NftCollectionCountOrderByAggregateInput = {
+    id?: SortOrder
+    mintAddress?: SortOrder
+    name?: SortOrder
+    symbol?: SortOrder
+    description?: SortOrder
+    uri?: SortOrder
+    supply?: SortOrder
+    createdBy?: SortOrder
+    metadata?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NftCollectionAvgOrderByAggregateInput = {
+    supply?: SortOrder
+  }
+
+  export type NftCollectionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    mintAddress?: SortOrder
+    name?: SortOrder
+    symbol?: SortOrder
+    description?: SortOrder
+    uri?: SortOrder
+    supply?: SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NftCollectionMinOrderByAggregateInput = {
+    id?: SortOrder
+    mintAddress?: SortOrder
+    name?: SortOrder
+    symbol?: SortOrder
+    description?: SortOrder
+    uri?: SortOrder
+    supply?: SortOrder
+    createdBy?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NftCollectionSumOrderByAggregateInput = {
+    supply?: SortOrder
+  }
+
+  export type NftCollectionScalarRelationFilter = {
+    is?: NftCollectionWhereInput
+    isNot?: NftCollectionWhereInput
+  }
+
+  export type NftDistributionCountOrderByAggregateInput = {
+    id?: SortOrder
+    mintAddress?: SortOrder
+    distributedBy?: SortOrder
+    recipientCount?: SortOrder
+    nftsPerUser?: SortOrder
+    results?: SortOrder
+    success?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NftDistributionAvgOrderByAggregateInput = {
+    recipientCount?: SortOrder
+    nftsPerUser?: SortOrder
+  }
+
+  export type NftDistributionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    mintAddress?: SortOrder
+    distributedBy?: SortOrder
+    recipientCount?: SortOrder
+    nftsPerUser?: SortOrder
+    success?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NftDistributionMinOrderByAggregateInput = {
+    id?: SortOrder
+    mintAddress?: SortOrder
+    distributedBy?: SortOrder
+    recipientCount?: SortOrder
+    nftsPerUser?: SortOrder
+    success?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NftDistributionSumOrderByAggregateInput = {
+    recipientCount?: SortOrder
+    nftsPerUser?: SortOrder
+  }
+
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
+  export type NftClaimApprovalCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    approved?: SortOrder
+    approvedBy?: SortOrder
+    approvedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NftClaimApprovalMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    approved?: SortOrder
+    approvedBy?: SortOrder
+    approvedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NftClaimApprovalMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    approved?: SortOrder
+    approvedBy?: SortOrder
+    approvedAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserNftHoldingUserIdMintAddressTokenAccountCompoundUniqueInput = {
+    userId: string
+    mintAddress: string
+    tokenAccount: string
+  }
+
+  export type UserNftHoldingCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    mintAddress?: SortOrder
+    tokenAccount?: SortOrder
+    amount?: SortOrder
+    metadata?: SortOrder
+    acquiredAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserNftHoldingAvgOrderByAggregateInput = {
+    amount?: SortOrder
+  }
+
+  export type UserNftHoldingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    mintAddress?: SortOrder
+    tokenAccount?: SortOrder
+    amount?: SortOrder
+    acquiredAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserNftHoldingMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    mintAddress?: SortOrder
+    tokenAccount?: SortOrder
+    amount?: SortOrder
+    acquiredAt?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type UserNftHoldingSumOrderByAggregateInput = {
+    amount?: SortOrder
   }
 
   export type UserCreatesuspiciousFlagsInput = {
@@ -31385,6 +38018,47 @@ export namespace Prisma {
     connect?: CampaignConfigWhereUniqueInput | CampaignConfigWhereUniqueInput[]
   }
 
+  export type NftCollectionCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<NftCollectionCreateWithoutCreatorInput, NftCollectionUncheckedCreateWithoutCreatorInput> | NftCollectionCreateWithoutCreatorInput[] | NftCollectionUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: NftCollectionCreateOrConnectWithoutCreatorInput | NftCollectionCreateOrConnectWithoutCreatorInput[]
+    createMany?: NftCollectionCreateManyCreatorInputEnvelope
+    connect?: NftCollectionWhereUniqueInput | NftCollectionWhereUniqueInput[]
+  }
+
+  export type NftDistributionCreateNestedManyWithoutDistributorInput = {
+    create?: XOR<NftDistributionCreateWithoutDistributorInput, NftDistributionUncheckedCreateWithoutDistributorInput> | NftDistributionCreateWithoutDistributorInput[] | NftDistributionUncheckedCreateWithoutDistributorInput[]
+    connectOrCreate?: NftDistributionCreateOrConnectWithoutDistributorInput | NftDistributionCreateOrConnectWithoutDistributorInput[]
+    createMany?: NftDistributionCreateManyDistributorInputEnvelope
+    connect?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+  }
+
+  export type UserNftHoldingCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserNftHoldingCreateWithoutUserInput, UserNftHoldingUncheckedCreateWithoutUserInput> | UserNftHoldingCreateWithoutUserInput[] | UserNftHoldingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserNftHoldingCreateOrConnectWithoutUserInput | UserNftHoldingCreateOrConnectWithoutUserInput[]
+    createMany?: UserNftHoldingCreateManyUserInputEnvelope
+    connect?: UserNftHoldingWhereUniqueInput | UserNftHoldingWhereUniqueInput[]
+  }
+
+  export type NftClaimApprovalCreateNestedOneWithoutUserInput = {
+    create?: XOR<NftClaimApprovalCreateWithoutUserInput, NftClaimApprovalUncheckedCreateWithoutUserInput>
+    connectOrCreate?: NftClaimApprovalCreateOrConnectWithoutUserInput
+    connect?: NftClaimApprovalWhereUniqueInput
+  }
+
+  export type NftClaimApprovalCreateNestedManyWithoutApproverInput = {
+    create?: XOR<NftClaimApprovalCreateWithoutApproverInput, NftClaimApprovalUncheckedCreateWithoutApproverInput> | NftClaimApprovalCreateWithoutApproverInput[] | NftClaimApprovalUncheckedCreateWithoutApproverInput[]
+    connectOrCreate?: NftClaimApprovalCreateOrConnectWithoutApproverInput | NftClaimApprovalCreateOrConnectWithoutApproverInput[]
+    createMany?: NftClaimApprovalCreateManyApproverInputEnvelope
+    connect?: NftClaimApprovalWhereUniqueInput | NftClaimApprovalWhereUniqueInput[]
+  }
+
+  export type AirdropSeasonCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<AirdropSeasonCreateWithoutCreatorInput, AirdropSeasonUncheckedCreateWithoutCreatorInput> | AirdropSeasonCreateWithoutCreatorInput[] | AirdropSeasonUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: AirdropSeasonCreateOrConnectWithoutCreatorInput | AirdropSeasonCreateOrConnectWithoutCreatorInput[]
+    createMany?: AirdropSeasonCreateManyCreatorInputEnvelope
+    connect?: AirdropSeasonWhereUniqueInput | AirdropSeasonWhereUniqueInput[]
+  }
+
   export type DailyEarningUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<DailyEarningCreateWithoutUserInput, DailyEarningUncheckedCreateWithoutUserInput> | DailyEarningCreateWithoutUserInput[] | DailyEarningUncheckedCreateWithoutUserInput[]
     connectOrCreate?: DailyEarningCreateOrConnectWithoutUserInput | DailyEarningCreateOrConnectWithoutUserInput[]
@@ -31480,6 +38154,47 @@ export namespace Prisma {
     connectOrCreate?: CampaignConfigCreateOrConnectWithoutCreatorInput | CampaignConfigCreateOrConnectWithoutCreatorInput[]
     createMany?: CampaignConfigCreateManyCreatorInputEnvelope
     connect?: CampaignConfigWhereUniqueInput | CampaignConfigWhereUniqueInput[]
+  }
+
+  export type NftCollectionUncheckedCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<NftCollectionCreateWithoutCreatorInput, NftCollectionUncheckedCreateWithoutCreatorInput> | NftCollectionCreateWithoutCreatorInput[] | NftCollectionUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: NftCollectionCreateOrConnectWithoutCreatorInput | NftCollectionCreateOrConnectWithoutCreatorInput[]
+    createMany?: NftCollectionCreateManyCreatorInputEnvelope
+    connect?: NftCollectionWhereUniqueInput | NftCollectionWhereUniqueInput[]
+  }
+
+  export type NftDistributionUncheckedCreateNestedManyWithoutDistributorInput = {
+    create?: XOR<NftDistributionCreateWithoutDistributorInput, NftDistributionUncheckedCreateWithoutDistributorInput> | NftDistributionCreateWithoutDistributorInput[] | NftDistributionUncheckedCreateWithoutDistributorInput[]
+    connectOrCreate?: NftDistributionCreateOrConnectWithoutDistributorInput | NftDistributionCreateOrConnectWithoutDistributorInput[]
+    createMany?: NftDistributionCreateManyDistributorInputEnvelope
+    connect?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+  }
+
+  export type UserNftHoldingUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<UserNftHoldingCreateWithoutUserInput, UserNftHoldingUncheckedCreateWithoutUserInput> | UserNftHoldingCreateWithoutUserInput[] | UserNftHoldingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserNftHoldingCreateOrConnectWithoutUserInput | UserNftHoldingCreateOrConnectWithoutUserInput[]
+    createMany?: UserNftHoldingCreateManyUserInputEnvelope
+    connect?: UserNftHoldingWhereUniqueInput | UserNftHoldingWhereUniqueInput[]
+  }
+
+  export type NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput = {
+    create?: XOR<NftClaimApprovalCreateWithoutUserInput, NftClaimApprovalUncheckedCreateWithoutUserInput>
+    connectOrCreate?: NftClaimApprovalCreateOrConnectWithoutUserInput
+    connect?: NftClaimApprovalWhereUniqueInput
+  }
+
+  export type NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput = {
+    create?: XOR<NftClaimApprovalCreateWithoutApproverInput, NftClaimApprovalUncheckedCreateWithoutApproverInput> | NftClaimApprovalCreateWithoutApproverInput[] | NftClaimApprovalUncheckedCreateWithoutApproverInput[]
+    connectOrCreate?: NftClaimApprovalCreateOrConnectWithoutApproverInput | NftClaimApprovalCreateOrConnectWithoutApproverInput[]
+    createMany?: NftClaimApprovalCreateManyApproverInputEnvelope
+    connect?: NftClaimApprovalWhereUniqueInput | NftClaimApprovalWhereUniqueInput[]
+  }
+
+  export type AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<AirdropSeasonCreateWithoutCreatorInput, AirdropSeasonUncheckedCreateWithoutCreatorInput> | AirdropSeasonCreateWithoutCreatorInput[] | AirdropSeasonUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: AirdropSeasonCreateOrConnectWithoutCreatorInput | AirdropSeasonCreateOrConnectWithoutCreatorInput[]
+    createMany?: AirdropSeasonCreateManyCreatorInputEnvelope
+    connect?: AirdropSeasonWhereUniqueInput | AirdropSeasonWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -31731,6 +38446,86 @@ export namespace Prisma {
     deleteMany?: CampaignConfigScalarWhereInput | CampaignConfigScalarWhereInput[]
   }
 
+  export type NftCollectionUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<NftCollectionCreateWithoutCreatorInput, NftCollectionUncheckedCreateWithoutCreatorInput> | NftCollectionCreateWithoutCreatorInput[] | NftCollectionUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: NftCollectionCreateOrConnectWithoutCreatorInput | NftCollectionCreateOrConnectWithoutCreatorInput[]
+    upsert?: NftCollectionUpsertWithWhereUniqueWithoutCreatorInput | NftCollectionUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: NftCollectionCreateManyCreatorInputEnvelope
+    set?: NftCollectionWhereUniqueInput | NftCollectionWhereUniqueInput[]
+    disconnect?: NftCollectionWhereUniqueInput | NftCollectionWhereUniqueInput[]
+    delete?: NftCollectionWhereUniqueInput | NftCollectionWhereUniqueInput[]
+    connect?: NftCollectionWhereUniqueInput | NftCollectionWhereUniqueInput[]
+    update?: NftCollectionUpdateWithWhereUniqueWithoutCreatorInput | NftCollectionUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: NftCollectionUpdateManyWithWhereWithoutCreatorInput | NftCollectionUpdateManyWithWhereWithoutCreatorInput[]
+    deleteMany?: NftCollectionScalarWhereInput | NftCollectionScalarWhereInput[]
+  }
+
+  export type NftDistributionUpdateManyWithoutDistributorNestedInput = {
+    create?: XOR<NftDistributionCreateWithoutDistributorInput, NftDistributionUncheckedCreateWithoutDistributorInput> | NftDistributionCreateWithoutDistributorInput[] | NftDistributionUncheckedCreateWithoutDistributorInput[]
+    connectOrCreate?: NftDistributionCreateOrConnectWithoutDistributorInput | NftDistributionCreateOrConnectWithoutDistributorInput[]
+    upsert?: NftDistributionUpsertWithWhereUniqueWithoutDistributorInput | NftDistributionUpsertWithWhereUniqueWithoutDistributorInput[]
+    createMany?: NftDistributionCreateManyDistributorInputEnvelope
+    set?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    disconnect?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    delete?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    connect?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    update?: NftDistributionUpdateWithWhereUniqueWithoutDistributorInput | NftDistributionUpdateWithWhereUniqueWithoutDistributorInput[]
+    updateMany?: NftDistributionUpdateManyWithWhereWithoutDistributorInput | NftDistributionUpdateManyWithWhereWithoutDistributorInput[]
+    deleteMany?: NftDistributionScalarWhereInput | NftDistributionScalarWhereInput[]
+  }
+
+  export type UserNftHoldingUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserNftHoldingCreateWithoutUserInput, UserNftHoldingUncheckedCreateWithoutUserInput> | UserNftHoldingCreateWithoutUserInput[] | UserNftHoldingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserNftHoldingCreateOrConnectWithoutUserInput | UserNftHoldingCreateOrConnectWithoutUserInput[]
+    upsert?: UserNftHoldingUpsertWithWhereUniqueWithoutUserInput | UserNftHoldingUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserNftHoldingCreateManyUserInputEnvelope
+    set?: UserNftHoldingWhereUniqueInput | UserNftHoldingWhereUniqueInput[]
+    disconnect?: UserNftHoldingWhereUniqueInput | UserNftHoldingWhereUniqueInput[]
+    delete?: UserNftHoldingWhereUniqueInput | UserNftHoldingWhereUniqueInput[]
+    connect?: UserNftHoldingWhereUniqueInput | UserNftHoldingWhereUniqueInput[]
+    update?: UserNftHoldingUpdateWithWhereUniqueWithoutUserInput | UserNftHoldingUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserNftHoldingUpdateManyWithWhereWithoutUserInput | UserNftHoldingUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserNftHoldingScalarWhereInput | UserNftHoldingScalarWhereInput[]
+  }
+
+  export type NftClaimApprovalUpdateOneWithoutUserNestedInput = {
+    create?: XOR<NftClaimApprovalCreateWithoutUserInput, NftClaimApprovalUncheckedCreateWithoutUserInput>
+    connectOrCreate?: NftClaimApprovalCreateOrConnectWithoutUserInput
+    upsert?: NftClaimApprovalUpsertWithoutUserInput
+    disconnect?: NftClaimApprovalWhereInput | boolean
+    delete?: NftClaimApprovalWhereInput | boolean
+    connect?: NftClaimApprovalWhereUniqueInput
+    update?: XOR<XOR<NftClaimApprovalUpdateToOneWithWhereWithoutUserInput, NftClaimApprovalUpdateWithoutUserInput>, NftClaimApprovalUncheckedUpdateWithoutUserInput>
+  }
+
+  export type NftClaimApprovalUpdateManyWithoutApproverNestedInput = {
+    create?: XOR<NftClaimApprovalCreateWithoutApproverInput, NftClaimApprovalUncheckedCreateWithoutApproverInput> | NftClaimApprovalCreateWithoutApproverInput[] | NftClaimApprovalUncheckedCreateWithoutApproverInput[]
+    connectOrCreate?: NftClaimApprovalCreateOrConnectWithoutApproverInput | NftClaimApprovalCreateOrConnectWithoutApproverInput[]
+    upsert?: NftClaimApprovalUpsertWithWhereUniqueWithoutApproverInput | NftClaimApprovalUpsertWithWhereUniqueWithoutApproverInput[]
+    createMany?: NftClaimApprovalCreateManyApproverInputEnvelope
+    set?: NftClaimApprovalWhereUniqueInput | NftClaimApprovalWhereUniqueInput[]
+    disconnect?: NftClaimApprovalWhereUniqueInput | NftClaimApprovalWhereUniqueInput[]
+    delete?: NftClaimApprovalWhereUniqueInput | NftClaimApprovalWhereUniqueInput[]
+    connect?: NftClaimApprovalWhereUniqueInput | NftClaimApprovalWhereUniqueInput[]
+    update?: NftClaimApprovalUpdateWithWhereUniqueWithoutApproverInput | NftClaimApprovalUpdateWithWhereUniqueWithoutApproverInput[]
+    updateMany?: NftClaimApprovalUpdateManyWithWhereWithoutApproverInput | NftClaimApprovalUpdateManyWithWhereWithoutApproverInput[]
+    deleteMany?: NftClaimApprovalScalarWhereInput | NftClaimApprovalScalarWhereInput[]
+  }
+
+  export type AirdropSeasonUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<AirdropSeasonCreateWithoutCreatorInput, AirdropSeasonUncheckedCreateWithoutCreatorInput> | AirdropSeasonCreateWithoutCreatorInput[] | AirdropSeasonUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: AirdropSeasonCreateOrConnectWithoutCreatorInput | AirdropSeasonCreateOrConnectWithoutCreatorInput[]
+    upsert?: AirdropSeasonUpsertWithWhereUniqueWithoutCreatorInput | AirdropSeasonUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: AirdropSeasonCreateManyCreatorInputEnvelope
+    set?: AirdropSeasonWhereUniqueInput | AirdropSeasonWhereUniqueInput[]
+    disconnect?: AirdropSeasonWhereUniqueInput | AirdropSeasonWhereUniqueInput[]
+    delete?: AirdropSeasonWhereUniqueInput | AirdropSeasonWhereUniqueInput[]
+    connect?: AirdropSeasonWhereUniqueInput | AirdropSeasonWhereUniqueInput[]
+    update?: AirdropSeasonUpdateWithWhereUniqueWithoutCreatorInput | AirdropSeasonUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: AirdropSeasonUpdateManyWithWhereWithoutCreatorInput | AirdropSeasonUpdateManyWithWhereWithoutCreatorInput[]
+    deleteMany?: AirdropSeasonScalarWhereInput | AirdropSeasonScalarWhereInput[]
+  }
+
   export type DailyEarningUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<DailyEarningCreateWithoutUserInput, DailyEarningUncheckedCreateWithoutUserInput> | DailyEarningCreateWithoutUserInput[] | DailyEarningUncheckedCreateWithoutUserInput[]
     connectOrCreate?: DailyEarningCreateOrConnectWithoutUserInput | DailyEarningCreateOrConnectWithoutUserInput[]
@@ -31921,6 +38716,86 @@ export namespace Prisma {
     update?: CampaignConfigUpdateWithWhereUniqueWithoutCreatorInput | CampaignConfigUpdateWithWhereUniqueWithoutCreatorInput[]
     updateMany?: CampaignConfigUpdateManyWithWhereWithoutCreatorInput | CampaignConfigUpdateManyWithWhereWithoutCreatorInput[]
     deleteMany?: CampaignConfigScalarWhereInput | CampaignConfigScalarWhereInput[]
+  }
+
+  export type NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<NftCollectionCreateWithoutCreatorInput, NftCollectionUncheckedCreateWithoutCreatorInput> | NftCollectionCreateWithoutCreatorInput[] | NftCollectionUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: NftCollectionCreateOrConnectWithoutCreatorInput | NftCollectionCreateOrConnectWithoutCreatorInput[]
+    upsert?: NftCollectionUpsertWithWhereUniqueWithoutCreatorInput | NftCollectionUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: NftCollectionCreateManyCreatorInputEnvelope
+    set?: NftCollectionWhereUniqueInput | NftCollectionWhereUniqueInput[]
+    disconnect?: NftCollectionWhereUniqueInput | NftCollectionWhereUniqueInput[]
+    delete?: NftCollectionWhereUniqueInput | NftCollectionWhereUniqueInput[]
+    connect?: NftCollectionWhereUniqueInput | NftCollectionWhereUniqueInput[]
+    update?: NftCollectionUpdateWithWhereUniqueWithoutCreatorInput | NftCollectionUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: NftCollectionUpdateManyWithWhereWithoutCreatorInput | NftCollectionUpdateManyWithWhereWithoutCreatorInput[]
+    deleteMany?: NftCollectionScalarWhereInput | NftCollectionScalarWhereInput[]
+  }
+
+  export type NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput = {
+    create?: XOR<NftDistributionCreateWithoutDistributorInput, NftDistributionUncheckedCreateWithoutDistributorInput> | NftDistributionCreateWithoutDistributorInput[] | NftDistributionUncheckedCreateWithoutDistributorInput[]
+    connectOrCreate?: NftDistributionCreateOrConnectWithoutDistributorInput | NftDistributionCreateOrConnectWithoutDistributorInput[]
+    upsert?: NftDistributionUpsertWithWhereUniqueWithoutDistributorInput | NftDistributionUpsertWithWhereUniqueWithoutDistributorInput[]
+    createMany?: NftDistributionCreateManyDistributorInputEnvelope
+    set?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    disconnect?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    delete?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    connect?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    update?: NftDistributionUpdateWithWhereUniqueWithoutDistributorInput | NftDistributionUpdateWithWhereUniqueWithoutDistributorInput[]
+    updateMany?: NftDistributionUpdateManyWithWhereWithoutDistributorInput | NftDistributionUpdateManyWithWhereWithoutDistributorInput[]
+    deleteMany?: NftDistributionScalarWhereInput | NftDistributionScalarWhereInput[]
+  }
+
+  export type UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<UserNftHoldingCreateWithoutUserInput, UserNftHoldingUncheckedCreateWithoutUserInput> | UserNftHoldingCreateWithoutUserInput[] | UserNftHoldingUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: UserNftHoldingCreateOrConnectWithoutUserInput | UserNftHoldingCreateOrConnectWithoutUserInput[]
+    upsert?: UserNftHoldingUpsertWithWhereUniqueWithoutUserInput | UserNftHoldingUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: UserNftHoldingCreateManyUserInputEnvelope
+    set?: UserNftHoldingWhereUniqueInput | UserNftHoldingWhereUniqueInput[]
+    disconnect?: UserNftHoldingWhereUniqueInput | UserNftHoldingWhereUniqueInput[]
+    delete?: UserNftHoldingWhereUniqueInput | UserNftHoldingWhereUniqueInput[]
+    connect?: UserNftHoldingWhereUniqueInput | UserNftHoldingWhereUniqueInput[]
+    update?: UserNftHoldingUpdateWithWhereUniqueWithoutUserInput | UserNftHoldingUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: UserNftHoldingUpdateManyWithWhereWithoutUserInput | UserNftHoldingUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: UserNftHoldingScalarWhereInput | UserNftHoldingScalarWhereInput[]
+  }
+
+  export type NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput = {
+    create?: XOR<NftClaimApprovalCreateWithoutUserInput, NftClaimApprovalUncheckedCreateWithoutUserInput>
+    connectOrCreate?: NftClaimApprovalCreateOrConnectWithoutUserInput
+    upsert?: NftClaimApprovalUpsertWithoutUserInput
+    disconnect?: NftClaimApprovalWhereInput | boolean
+    delete?: NftClaimApprovalWhereInput | boolean
+    connect?: NftClaimApprovalWhereUniqueInput
+    update?: XOR<XOR<NftClaimApprovalUpdateToOneWithWhereWithoutUserInput, NftClaimApprovalUpdateWithoutUserInput>, NftClaimApprovalUncheckedUpdateWithoutUserInput>
+  }
+
+  export type NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput = {
+    create?: XOR<NftClaimApprovalCreateWithoutApproverInput, NftClaimApprovalUncheckedCreateWithoutApproverInput> | NftClaimApprovalCreateWithoutApproverInput[] | NftClaimApprovalUncheckedCreateWithoutApproverInput[]
+    connectOrCreate?: NftClaimApprovalCreateOrConnectWithoutApproverInput | NftClaimApprovalCreateOrConnectWithoutApproverInput[]
+    upsert?: NftClaimApprovalUpsertWithWhereUniqueWithoutApproverInput | NftClaimApprovalUpsertWithWhereUniqueWithoutApproverInput[]
+    createMany?: NftClaimApprovalCreateManyApproverInputEnvelope
+    set?: NftClaimApprovalWhereUniqueInput | NftClaimApprovalWhereUniqueInput[]
+    disconnect?: NftClaimApprovalWhereUniqueInput | NftClaimApprovalWhereUniqueInput[]
+    delete?: NftClaimApprovalWhereUniqueInput | NftClaimApprovalWhereUniqueInput[]
+    connect?: NftClaimApprovalWhereUniqueInput | NftClaimApprovalWhereUniqueInput[]
+    update?: NftClaimApprovalUpdateWithWhereUniqueWithoutApproverInput | NftClaimApprovalUpdateWithWhereUniqueWithoutApproverInput[]
+    updateMany?: NftClaimApprovalUpdateManyWithWhereWithoutApproverInput | NftClaimApprovalUpdateManyWithWhereWithoutApproverInput[]
+    deleteMany?: NftClaimApprovalScalarWhereInput | NftClaimApprovalScalarWhereInput[]
+  }
+
+  export type AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<AirdropSeasonCreateWithoutCreatorInput, AirdropSeasonUncheckedCreateWithoutCreatorInput> | AirdropSeasonCreateWithoutCreatorInput[] | AirdropSeasonUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: AirdropSeasonCreateOrConnectWithoutCreatorInput | AirdropSeasonCreateOrConnectWithoutCreatorInput[]
+    upsert?: AirdropSeasonUpsertWithWhereUniqueWithoutCreatorInput | AirdropSeasonUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: AirdropSeasonCreateManyCreatorInputEnvelope
+    set?: AirdropSeasonWhereUniqueInput | AirdropSeasonWhereUniqueInput[]
+    disconnect?: AirdropSeasonWhereUniqueInput | AirdropSeasonWhereUniqueInput[]
+    delete?: AirdropSeasonWhereUniqueInput | AirdropSeasonWhereUniqueInput[]
+    connect?: AirdropSeasonWhereUniqueInput | AirdropSeasonWhereUniqueInput[]
+    update?: AirdropSeasonUpdateWithWhereUniqueWithoutCreatorInput | AirdropSeasonUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: AirdropSeasonUpdateManyWithWhereWithoutCreatorInput | AirdropSeasonUpdateManyWithWhereWithoutCreatorInput[]
+    deleteMany?: AirdropSeasonScalarWhereInput | AirdropSeasonScalarWhereInput[]
   }
 
   export type UserAchievementCreateNestedManyWithoutAchievementInput = {
@@ -32181,6 +39056,14 @@ export namespace Prisma {
     set?: $Enums.PaymentMethod
   }
 
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
   export type UserUpdateOneRequiredWithoutClaimsNestedInput = {
     create?: XOR<UserCreateWithoutClaimsInput, UserUncheckedCreateWithoutClaimsInput>
     connectOrCreate?: UserCreateOrConnectWithoutClaimsInput
@@ -32245,6 +39128,12 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutDailyEarningsInput, UserUpdateWithoutDailyEarningsInput>, UserUncheckedUpdateWithoutDailyEarningsInput>
   }
 
+  export type UserCreateNestedOneWithoutAirdropSeasonsInput = {
+    create?: XOR<UserCreateWithoutAirdropSeasonsInput, UserUncheckedCreateWithoutAirdropSeasonsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAirdropSeasonsInput
+    connect?: UserWhereUniqueInput
+  }
+
   export type AirdropClaimCreateNestedManyWithoutSeasonInput = {
     create?: XOR<AirdropClaimCreateWithoutSeasonInput, AirdropClaimUncheckedCreateWithoutSeasonInput> | AirdropClaimCreateWithoutSeasonInput[] | AirdropClaimUncheckedCreateWithoutSeasonInput[]
     connectOrCreate?: AirdropClaimCreateOrConnectWithoutSeasonInput | AirdropClaimCreateOrConnectWithoutSeasonInput[]
@@ -32257,6 +39146,14 @@ export namespace Prisma {
     connectOrCreate?: AirdropClaimCreateOrConnectWithoutSeasonInput | AirdropClaimCreateOrConnectWithoutSeasonInput[]
     createMany?: AirdropClaimCreateManySeasonInputEnvelope
     connect?: AirdropClaimWhereUniqueInput | AirdropClaimWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutAirdropSeasonsNestedInput = {
+    create?: XOR<UserCreateWithoutAirdropSeasonsInput, UserUncheckedCreateWithoutAirdropSeasonsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAirdropSeasonsInput
+    upsert?: UserUpsertWithoutAirdropSeasonsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAirdropSeasonsInput, UserUpdateWithoutAirdropSeasonsInput>, UserUncheckedUpdateWithoutAirdropSeasonsInput>
   }
 
   export type AirdropClaimUpdateManyWithoutSeasonNestedInput = {
@@ -32313,6 +39210,134 @@ export namespace Prisma {
     upsert?: AirdropSeasonUpsertWithoutClaimsInput
     connect?: AirdropSeasonWhereUniqueInput
     update?: XOR<XOR<AirdropSeasonUpdateToOneWithWhereWithoutClaimsInput, AirdropSeasonUpdateWithoutClaimsInput>, AirdropSeasonUncheckedUpdateWithoutClaimsInput>
+  }
+
+  export type UserCreateNestedOneWithoutNftCollectionsInput = {
+    create?: XOR<UserCreateWithoutNftCollectionsInput, UserUncheckedCreateWithoutNftCollectionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNftCollectionsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type NftDistributionCreateNestedManyWithoutCollectionInput = {
+    create?: XOR<NftDistributionCreateWithoutCollectionInput, NftDistributionUncheckedCreateWithoutCollectionInput> | NftDistributionCreateWithoutCollectionInput[] | NftDistributionUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: NftDistributionCreateOrConnectWithoutCollectionInput | NftDistributionCreateOrConnectWithoutCollectionInput[]
+    createMany?: NftDistributionCreateManyCollectionInputEnvelope
+    connect?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+  }
+
+  export type NftDistributionUncheckedCreateNestedManyWithoutCollectionInput = {
+    create?: XOR<NftDistributionCreateWithoutCollectionInput, NftDistributionUncheckedCreateWithoutCollectionInput> | NftDistributionCreateWithoutCollectionInput[] | NftDistributionUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: NftDistributionCreateOrConnectWithoutCollectionInput | NftDistributionCreateOrConnectWithoutCollectionInput[]
+    createMany?: NftDistributionCreateManyCollectionInputEnvelope
+    connect?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+  }
+
+  export type UserUpdateOneRequiredWithoutNftCollectionsNestedInput = {
+    create?: XOR<UserCreateWithoutNftCollectionsInput, UserUncheckedCreateWithoutNftCollectionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNftCollectionsInput
+    upsert?: UserUpsertWithoutNftCollectionsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNftCollectionsInput, UserUpdateWithoutNftCollectionsInput>, UserUncheckedUpdateWithoutNftCollectionsInput>
+  }
+
+  export type NftDistributionUpdateManyWithoutCollectionNestedInput = {
+    create?: XOR<NftDistributionCreateWithoutCollectionInput, NftDistributionUncheckedCreateWithoutCollectionInput> | NftDistributionCreateWithoutCollectionInput[] | NftDistributionUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: NftDistributionCreateOrConnectWithoutCollectionInput | NftDistributionCreateOrConnectWithoutCollectionInput[]
+    upsert?: NftDistributionUpsertWithWhereUniqueWithoutCollectionInput | NftDistributionUpsertWithWhereUniqueWithoutCollectionInput[]
+    createMany?: NftDistributionCreateManyCollectionInputEnvelope
+    set?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    disconnect?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    delete?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    connect?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    update?: NftDistributionUpdateWithWhereUniqueWithoutCollectionInput | NftDistributionUpdateWithWhereUniqueWithoutCollectionInput[]
+    updateMany?: NftDistributionUpdateManyWithWhereWithoutCollectionInput | NftDistributionUpdateManyWithWhereWithoutCollectionInput[]
+    deleteMany?: NftDistributionScalarWhereInput | NftDistributionScalarWhereInput[]
+  }
+
+  export type NftDistributionUncheckedUpdateManyWithoutCollectionNestedInput = {
+    create?: XOR<NftDistributionCreateWithoutCollectionInput, NftDistributionUncheckedCreateWithoutCollectionInput> | NftDistributionCreateWithoutCollectionInput[] | NftDistributionUncheckedCreateWithoutCollectionInput[]
+    connectOrCreate?: NftDistributionCreateOrConnectWithoutCollectionInput | NftDistributionCreateOrConnectWithoutCollectionInput[]
+    upsert?: NftDistributionUpsertWithWhereUniqueWithoutCollectionInput | NftDistributionUpsertWithWhereUniqueWithoutCollectionInput[]
+    createMany?: NftDistributionCreateManyCollectionInputEnvelope
+    set?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    disconnect?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    delete?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    connect?: NftDistributionWhereUniqueInput | NftDistributionWhereUniqueInput[]
+    update?: NftDistributionUpdateWithWhereUniqueWithoutCollectionInput | NftDistributionUpdateWithWhereUniqueWithoutCollectionInput[]
+    updateMany?: NftDistributionUpdateManyWithWhereWithoutCollectionInput | NftDistributionUpdateManyWithWhereWithoutCollectionInput[]
+    deleteMany?: NftDistributionScalarWhereInput | NftDistributionScalarWhereInput[]
+  }
+
+  export type NftCollectionCreateNestedOneWithoutDistributionsInput = {
+    create?: XOR<NftCollectionCreateWithoutDistributionsInput, NftCollectionUncheckedCreateWithoutDistributionsInput>
+    connectOrCreate?: NftCollectionCreateOrConnectWithoutDistributionsInput
+    connect?: NftCollectionWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutNftDistributionsInput = {
+    create?: XOR<UserCreateWithoutNftDistributionsInput, UserUncheckedCreateWithoutNftDistributionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNftDistributionsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type NftCollectionUpdateOneRequiredWithoutDistributionsNestedInput = {
+    create?: XOR<NftCollectionCreateWithoutDistributionsInput, NftCollectionUncheckedCreateWithoutDistributionsInput>
+    connectOrCreate?: NftCollectionCreateOrConnectWithoutDistributionsInput
+    upsert?: NftCollectionUpsertWithoutDistributionsInput
+    connect?: NftCollectionWhereUniqueInput
+    update?: XOR<XOR<NftCollectionUpdateToOneWithWhereWithoutDistributionsInput, NftCollectionUpdateWithoutDistributionsInput>, NftCollectionUncheckedUpdateWithoutDistributionsInput>
+  }
+
+  export type UserUpdateOneRequiredWithoutNftDistributionsNestedInput = {
+    create?: XOR<UserCreateWithoutNftDistributionsInput, UserUncheckedCreateWithoutNftDistributionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNftDistributionsInput
+    upsert?: UserUpsertWithoutNftDistributionsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNftDistributionsInput, UserUpdateWithoutNftDistributionsInput>, UserUncheckedUpdateWithoutNftDistributionsInput>
+  }
+
+  export type UserCreateNestedOneWithoutNftClaimApprovalInput = {
+    create?: XOR<UserCreateWithoutNftClaimApprovalInput, UserUncheckedCreateWithoutNftClaimApprovalInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNftClaimApprovalInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserCreateNestedOneWithoutApprovedClaimsInput = {
+    create?: XOR<UserCreateWithoutApprovedClaimsInput, UserUncheckedCreateWithoutApprovedClaimsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutApprovedClaimsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutNftClaimApprovalNestedInput = {
+    create?: XOR<UserCreateWithoutNftClaimApprovalInput, UserUncheckedCreateWithoutNftClaimApprovalInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNftClaimApprovalInput
+    upsert?: UserUpsertWithoutNftClaimApprovalInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNftClaimApprovalInput, UserUpdateWithoutNftClaimApprovalInput>, UserUncheckedUpdateWithoutNftClaimApprovalInput>
+  }
+
+  export type UserUpdateOneWithoutApprovedClaimsNestedInput = {
+    create?: XOR<UserCreateWithoutApprovedClaimsInput, UserUncheckedCreateWithoutApprovedClaimsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutApprovedClaimsInput
+    upsert?: UserUpsertWithoutApprovedClaimsInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutApprovedClaimsInput, UserUpdateWithoutApprovedClaimsInput>, UserUncheckedUpdateWithoutApprovedClaimsInput>
+  }
+
+  export type UserCreateNestedOneWithoutNftHoldingsInput = {
+    create?: XOR<UserCreateWithoutNftHoldingsInput, UserUncheckedCreateWithoutNftHoldingsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNftHoldingsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutNftHoldingsNestedInput = {
+    create?: XOR<UserCreateWithoutNftHoldingsInput, UserUncheckedCreateWithoutNftHoldingsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNftHoldingsInput
+    upsert?: UserUpsertWithoutNftHoldingsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNftHoldingsInput, UserUpdateWithoutNftHoldingsInput>, UserUncheckedUpdateWithoutNftHoldingsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -32700,6 +39725,17 @@ export namespace Prisma {
     not?: NestedEnumPaymentMethodFilter<$PrismaModel> | $Enums.PaymentMethod
   }
 
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
   export type NestedEnumClaimStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.ClaimStatus | EnumClaimStatusFieldRefInput<$PrismaModel>
     in?: $Enums.ClaimStatus[] | ListEnumClaimStatusFieldRefInput<$PrismaModel>
@@ -32718,6 +39754,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumPaymentMethodFilter<$PrismaModel>
     _max?: NestedEnumPaymentMethodFilter<$PrismaModel>
+  }
+
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type DailyEarningCreateWithoutUserInput = {
@@ -32752,6 +39804,8 @@ export namespace Prisma {
     transactionSignature?: string | null
     status: string
     claimedAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     season: AirdropSeasonCreateNestedOneWithoutClaimsInput
   }
 
@@ -32764,6 +39818,8 @@ export namespace Prisma {
     transactionSignature?: string | null
     status: string
     claimedAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type AirdropClaimCreateOrConnectWithoutUserInput = {
@@ -32842,8 +39898,12 @@ export namespace Prisma {
     paymentMethod?: $Enums.PaymentMethod
     metadata?: NullableJsonNullValueInput | InputJsonValue
     processedAt?: Date | string | null
+    feesPaid?: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    type?: string | null
+    nftPasses?: NullableJsonNullValueInput | InputJsonValue
+    userTier?: string | null
   }
 
   export type ClaimUncheckedCreateWithoutUserInput = {
@@ -32854,8 +39914,12 @@ export namespace Prisma {
     paymentMethod?: $Enums.PaymentMethod
     metadata?: NullableJsonNullValueInput | InputJsonValue
     processedAt?: Date | string | null
+    feesPaid?: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    type?: string | null
+    nftPasses?: NullableJsonNullValueInput | InputJsonValue
+    userTier?: string | null
   }
 
   export type ClaimCreateOrConnectWithoutUserInput = {
@@ -33133,6 +40197,205 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type NftCollectionCreateWithoutCreatorInput = {
+    id?: string
+    mintAddress: string
+    name: string
+    symbol: string
+    description?: string | null
+    uri: string
+    supply?: number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    distributions?: NftDistributionCreateNestedManyWithoutCollectionInput
+  }
+
+  export type NftCollectionUncheckedCreateWithoutCreatorInput = {
+    id?: string
+    mintAddress: string
+    name: string
+    symbol: string
+    description?: string | null
+    uri: string
+    supply?: number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    distributions?: NftDistributionUncheckedCreateNestedManyWithoutCollectionInput
+  }
+
+  export type NftCollectionCreateOrConnectWithoutCreatorInput = {
+    where: NftCollectionWhereUniqueInput
+    create: XOR<NftCollectionCreateWithoutCreatorInput, NftCollectionUncheckedCreateWithoutCreatorInput>
+  }
+
+  export type NftCollectionCreateManyCreatorInputEnvelope = {
+    data: NftCollectionCreateManyCreatorInput | NftCollectionCreateManyCreatorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type NftDistributionCreateWithoutDistributorInput = {
+    id?: string
+    recipientCount: number
+    nftsPerUser: number
+    results: JsonNullValueInput | InputJsonValue
+    success?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    collection: NftCollectionCreateNestedOneWithoutDistributionsInput
+  }
+
+  export type NftDistributionUncheckedCreateWithoutDistributorInput = {
+    id?: string
+    mintAddress: string
+    recipientCount: number
+    nftsPerUser: number
+    results: JsonNullValueInput | InputJsonValue
+    success?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftDistributionCreateOrConnectWithoutDistributorInput = {
+    where: NftDistributionWhereUniqueInput
+    create: XOR<NftDistributionCreateWithoutDistributorInput, NftDistributionUncheckedCreateWithoutDistributorInput>
+  }
+
+  export type NftDistributionCreateManyDistributorInputEnvelope = {
+    data: NftDistributionCreateManyDistributorInput | NftDistributionCreateManyDistributorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserNftHoldingCreateWithoutUserInput = {
+    id?: string
+    mintAddress: string
+    tokenAccount: string
+    amount?: number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    acquiredAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserNftHoldingUncheckedCreateWithoutUserInput = {
+    id?: string
+    mintAddress: string
+    tokenAccount: string
+    amount?: number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    acquiredAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserNftHoldingCreateOrConnectWithoutUserInput = {
+    where: UserNftHoldingWhereUniqueInput
+    create: XOR<UserNftHoldingCreateWithoutUserInput, UserNftHoldingUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserNftHoldingCreateManyUserInputEnvelope = {
+    data: UserNftHoldingCreateManyUserInput | UserNftHoldingCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type NftClaimApprovalCreateWithoutUserInput = {
+    id?: string
+    approved?: boolean
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    approver?: UserCreateNestedOneWithoutApprovedClaimsInput
+  }
+
+  export type NftClaimApprovalUncheckedCreateWithoutUserInput = {
+    id?: string
+    approved?: boolean
+    approvedBy?: string | null
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftClaimApprovalCreateOrConnectWithoutUserInput = {
+    where: NftClaimApprovalWhereUniqueInput
+    create: XOR<NftClaimApprovalCreateWithoutUserInput, NftClaimApprovalUncheckedCreateWithoutUserInput>
+  }
+
+  export type NftClaimApprovalCreateWithoutApproverInput = {
+    id?: string
+    approved?: boolean
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutNftClaimApprovalInput
+  }
+
+  export type NftClaimApprovalUncheckedCreateWithoutApproverInput = {
+    id?: string
+    userId: string
+    approved?: boolean
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftClaimApprovalCreateOrConnectWithoutApproverInput = {
+    where: NftClaimApprovalWhereUniqueInput
+    create: XOR<NftClaimApprovalCreateWithoutApproverInput, NftClaimApprovalUncheckedCreateWithoutApproverInput>
+  }
+
+  export type NftClaimApprovalCreateManyApproverInputEnvelope = {
+    data: NftClaimApprovalCreateManyApproverInput | NftClaimApprovalCreateManyApproverInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type AirdropSeasonCreateWithoutCreatorInput = {
+    id?: string
+    name: string
+    description?: string | null
+    status?: string
+    totalAllocation: bigint | number
+    claimedAmount?: bigint | number
+    startDate?: Date | string
+    endDate?: Date | string | null
+    nftPassRequired?: boolean
+    requireApproval?: boolean
+    feeAmount?: Decimal | DecimalJsLike | number | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    claims?: AirdropClaimCreateNestedManyWithoutSeasonInput
+  }
+
+  export type AirdropSeasonUncheckedCreateWithoutCreatorInput = {
+    id?: string
+    name: string
+    description?: string | null
+    status?: string
+    totalAllocation: bigint | number
+    claimedAmount?: bigint | number
+    startDate?: Date | string
+    endDate?: Date | string | null
+    nftPassRequired?: boolean
+    requireApproval?: boolean
+    feeAmount?: Decimal | DecimalJsLike | number | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    claims?: AirdropClaimUncheckedCreateNestedManyWithoutSeasonInput
+  }
+
+  export type AirdropSeasonCreateOrConnectWithoutCreatorInput = {
+    where: AirdropSeasonWhereUniqueInput
+    create: XOR<AirdropSeasonCreateWithoutCreatorInput, AirdropSeasonUncheckedCreateWithoutCreatorInput>
+  }
+
+  export type AirdropSeasonCreateManyCreatorInputEnvelope = {
+    data: AirdropSeasonCreateManyCreatorInput | AirdropSeasonCreateManyCreatorInput[]
+    skipDuplicates?: boolean
+  }
+
   export type DailyEarningUpsertWithWhereUniqueWithoutUserInput = {
     where: DailyEarningWhereUniqueInput
     update: XOR<DailyEarningUpdateWithoutUserInput, DailyEarningUncheckedUpdateWithoutUserInput>
@@ -33189,6 +40452,8 @@ export namespace Prisma {
     transactionSignature?: StringNullableFilter<"AirdropClaim"> | string | null
     status?: StringFilter<"AirdropClaim"> | string
     claimedAt?: DateTimeFilter<"AirdropClaim"> | Date | string
+    createdAt?: DateTimeFilter<"AirdropClaim"> | Date | string
+    updatedAt?: DateTimeFilter<"AirdropClaim"> | Date | string
   }
 
   export type TwitterEngagementUpsertWithWhereUniqueWithoutUserInput = {
@@ -33278,8 +40543,12 @@ export namespace Prisma {
     paymentMethod?: EnumPaymentMethodFilter<"Claim"> | $Enums.PaymentMethod
     metadata?: JsonNullableFilter<"Claim">
     processedAt?: DateTimeNullableFilter<"Claim"> | Date | string | null
+    feesPaid?: DecimalFilter<"Claim"> | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFilter<"Claim"> | Date | string
     updatedAt?: DateTimeFilter<"Claim"> | Date | string
+    type?: StringNullableFilter<"Claim"> | string | null
+    nftPasses?: JsonNullableFilter<"Claim">
+    userTier?: StringNullableFilter<"Claim"> | string | null
   }
 
   export type PointHistoryUpsertWithWhereUniqueWithoutUserInput = {
@@ -33552,6 +40821,196 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"CampaignConfig"> | Date | string
   }
 
+  export type NftCollectionUpsertWithWhereUniqueWithoutCreatorInput = {
+    where: NftCollectionWhereUniqueInput
+    update: XOR<NftCollectionUpdateWithoutCreatorInput, NftCollectionUncheckedUpdateWithoutCreatorInput>
+    create: XOR<NftCollectionCreateWithoutCreatorInput, NftCollectionUncheckedCreateWithoutCreatorInput>
+  }
+
+  export type NftCollectionUpdateWithWhereUniqueWithoutCreatorInput = {
+    where: NftCollectionWhereUniqueInput
+    data: XOR<NftCollectionUpdateWithoutCreatorInput, NftCollectionUncheckedUpdateWithoutCreatorInput>
+  }
+
+  export type NftCollectionUpdateManyWithWhereWithoutCreatorInput = {
+    where: NftCollectionScalarWhereInput
+    data: XOR<NftCollectionUpdateManyMutationInput, NftCollectionUncheckedUpdateManyWithoutCreatorInput>
+  }
+
+  export type NftCollectionScalarWhereInput = {
+    AND?: NftCollectionScalarWhereInput | NftCollectionScalarWhereInput[]
+    OR?: NftCollectionScalarWhereInput[]
+    NOT?: NftCollectionScalarWhereInput | NftCollectionScalarWhereInput[]
+    id?: StringFilter<"NftCollection"> | string
+    mintAddress?: StringFilter<"NftCollection"> | string
+    name?: StringFilter<"NftCollection"> | string
+    symbol?: StringFilter<"NftCollection"> | string
+    description?: StringNullableFilter<"NftCollection"> | string | null
+    uri?: StringFilter<"NftCollection"> | string
+    supply?: IntFilter<"NftCollection"> | number
+    createdBy?: StringFilter<"NftCollection"> | string
+    metadata?: JsonNullableFilter<"NftCollection">
+    createdAt?: DateTimeFilter<"NftCollection"> | Date | string
+    updatedAt?: DateTimeFilter<"NftCollection"> | Date | string
+  }
+
+  export type NftDistributionUpsertWithWhereUniqueWithoutDistributorInput = {
+    where: NftDistributionWhereUniqueInput
+    update: XOR<NftDistributionUpdateWithoutDistributorInput, NftDistributionUncheckedUpdateWithoutDistributorInput>
+    create: XOR<NftDistributionCreateWithoutDistributorInput, NftDistributionUncheckedCreateWithoutDistributorInput>
+  }
+
+  export type NftDistributionUpdateWithWhereUniqueWithoutDistributorInput = {
+    where: NftDistributionWhereUniqueInput
+    data: XOR<NftDistributionUpdateWithoutDistributorInput, NftDistributionUncheckedUpdateWithoutDistributorInput>
+  }
+
+  export type NftDistributionUpdateManyWithWhereWithoutDistributorInput = {
+    where: NftDistributionScalarWhereInput
+    data: XOR<NftDistributionUpdateManyMutationInput, NftDistributionUncheckedUpdateManyWithoutDistributorInput>
+  }
+
+  export type NftDistributionScalarWhereInput = {
+    AND?: NftDistributionScalarWhereInput | NftDistributionScalarWhereInput[]
+    OR?: NftDistributionScalarWhereInput[]
+    NOT?: NftDistributionScalarWhereInput | NftDistributionScalarWhereInput[]
+    id?: StringFilter<"NftDistribution"> | string
+    mintAddress?: StringFilter<"NftDistribution"> | string
+    distributedBy?: StringFilter<"NftDistribution"> | string
+    recipientCount?: IntFilter<"NftDistribution"> | number
+    nftsPerUser?: IntFilter<"NftDistribution"> | number
+    results?: JsonFilter<"NftDistribution">
+    success?: BoolFilter<"NftDistribution"> | boolean
+    createdAt?: DateTimeFilter<"NftDistribution"> | Date | string
+    updatedAt?: DateTimeFilter<"NftDistribution"> | Date | string
+  }
+
+  export type UserNftHoldingUpsertWithWhereUniqueWithoutUserInput = {
+    where: UserNftHoldingWhereUniqueInput
+    update: XOR<UserNftHoldingUpdateWithoutUserInput, UserNftHoldingUncheckedUpdateWithoutUserInput>
+    create: XOR<UserNftHoldingCreateWithoutUserInput, UserNftHoldingUncheckedCreateWithoutUserInput>
+  }
+
+  export type UserNftHoldingUpdateWithWhereUniqueWithoutUserInput = {
+    where: UserNftHoldingWhereUniqueInput
+    data: XOR<UserNftHoldingUpdateWithoutUserInput, UserNftHoldingUncheckedUpdateWithoutUserInput>
+  }
+
+  export type UserNftHoldingUpdateManyWithWhereWithoutUserInput = {
+    where: UserNftHoldingScalarWhereInput
+    data: XOR<UserNftHoldingUpdateManyMutationInput, UserNftHoldingUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type UserNftHoldingScalarWhereInput = {
+    AND?: UserNftHoldingScalarWhereInput | UserNftHoldingScalarWhereInput[]
+    OR?: UserNftHoldingScalarWhereInput[]
+    NOT?: UserNftHoldingScalarWhereInput | UserNftHoldingScalarWhereInput[]
+    id?: StringFilter<"UserNftHolding"> | string
+    userId?: StringFilter<"UserNftHolding"> | string
+    mintAddress?: StringFilter<"UserNftHolding"> | string
+    tokenAccount?: StringFilter<"UserNftHolding"> | string
+    amount?: IntFilter<"UserNftHolding"> | number
+    metadata?: JsonNullableFilter<"UserNftHolding">
+    acquiredAt?: DateTimeFilter<"UserNftHolding"> | Date | string
+    createdAt?: DateTimeFilter<"UserNftHolding"> | Date | string
+    updatedAt?: DateTimeFilter<"UserNftHolding"> | Date | string
+  }
+
+  export type NftClaimApprovalUpsertWithoutUserInput = {
+    update: XOR<NftClaimApprovalUpdateWithoutUserInput, NftClaimApprovalUncheckedUpdateWithoutUserInput>
+    create: XOR<NftClaimApprovalCreateWithoutUserInput, NftClaimApprovalUncheckedCreateWithoutUserInput>
+    where?: NftClaimApprovalWhereInput
+  }
+
+  export type NftClaimApprovalUpdateToOneWithWhereWithoutUserInput = {
+    where?: NftClaimApprovalWhereInput
+    data: XOR<NftClaimApprovalUpdateWithoutUserInput, NftClaimApprovalUncheckedUpdateWithoutUserInput>
+  }
+
+  export type NftClaimApprovalUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    approved?: BoolFieldUpdateOperationsInput | boolean
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    approver?: UserUpdateOneWithoutApprovedClaimsNestedInput
+  }
+
+  export type NftClaimApprovalUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    approved?: BoolFieldUpdateOperationsInput | boolean
+    approvedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftClaimApprovalUpsertWithWhereUniqueWithoutApproverInput = {
+    where: NftClaimApprovalWhereUniqueInput
+    update: XOR<NftClaimApprovalUpdateWithoutApproverInput, NftClaimApprovalUncheckedUpdateWithoutApproverInput>
+    create: XOR<NftClaimApprovalCreateWithoutApproverInput, NftClaimApprovalUncheckedCreateWithoutApproverInput>
+  }
+
+  export type NftClaimApprovalUpdateWithWhereUniqueWithoutApproverInput = {
+    where: NftClaimApprovalWhereUniqueInput
+    data: XOR<NftClaimApprovalUpdateWithoutApproverInput, NftClaimApprovalUncheckedUpdateWithoutApproverInput>
+  }
+
+  export type NftClaimApprovalUpdateManyWithWhereWithoutApproverInput = {
+    where: NftClaimApprovalScalarWhereInput
+    data: XOR<NftClaimApprovalUpdateManyMutationInput, NftClaimApprovalUncheckedUpdateManyWithoutApproverInput>
+  }
+
+  export type NftClaimApprovalScalarWhereInput = {
+    AND?: NftClaimApprovalScalarWhereInput | NftClaimApprovalScalarWhereInput[]
+    OR?: NftClaimApprovalScalarWhereInput[]
+    NOT?: NftClaimApprovalScalarWhereInput | NftClaimApprovalScalarWhereInput[]
+    id?: StringFilter<"NftClaimApproval"> | string
+    userId?: StringFilter<"NftClaimApproval"> | string
+    approved?: BoolFilter<"NftClaimApproval"> | boolean
+    approvedBy?: StringNullableFilter<"NftClaimApproval"> | string | null
+    approvedAt?: DateTimeNullableFilter<"NftClaimApproval"> | Date | string | null
+    createdAt?: DateTimeFilter<"NftClaimApproval"> | Date | string
+    updatedAt?: DateTimeFilter<"NftClaimApproval"> | Date | string
+  }
+
+  export type AirdropSeasonUpsertWithWhereUniqueWithoutCreatorInput = {
+    where: AirdropSeasonWhereUniqueInput
+    update: XOR<AirdropSeasonUpdateWithoutCreatorInput, AirdropSeasonUncheckedUpdateWithoutCreatorInput>
+    create: XOR<AirdropSeasonCreateWithoutCreatorInput, AirdropSeasonUncheckedCreateWithoutCreatorInput>
+  }
+
+  export type AirdropSeasonUpdateWithWhereUniqueWithoutCreatorInput = {
+    where: AirdropSeasonWhereUniqueInput
+    data: XOR<AirdropSeasonUpdateWithoutCreatorInput, AirdropSeasonUncheckedUpdateWithoutCreatorInput>
+  }
+
+  export type AirdropSeasonUpdateManyWithWhereWithoutCreatorInput = {
+    where: AirdropSeasonScalarWhereInput
+    data: XOR<AirdropSeasonUpdateManyMutationInput, AirdropSeasonUncheckedUpdateManyWithoutCreatorInput>
+  }
+
+  export type AirdropSeasonScalarWhereInput = {
+    AND?: AirdropSeasonScalarWhereInput | AirdropSeasonScalarWhereInput[]
+    OR?: AirdropSeasonScalarWhereInput[]
+    NOT?: AirdropSeasonScalarWhereInput | AirdropSeasonScalarWhereInput[]
+    id?: StringFilter<"AirdropSeason"> | string
+    name?: StringFilter<"AirdropSeason"> | string
+    description?: StringNullableFilter<"AirdropSeason"> | string | null
+    status?: StringFilter<"AirdropSeason"> | string
+    totalAllocation?: BigIntFilter<"AirdropSeason"> | bigint | number
+    claimedAmount?: BigIntFilter<"AirdropSeason"> | bigint | number
+    startDate?: DateTimeFilter<"AirdropSeason"> | Date | string
+    endDate?: DateTimeNullableFilter<"AirdropSeason"> | Date | string | null
+    nftPassRequired?: BoolFilter<"AirdropSeason"> | boolean
+    requireApproval?: BoolFilter<"AirdropSeason"> | boolean
+    feeAmount?: DecimalFilter<"AirdropSeason"> | Decimal | DecimalJsLike | number | string
+    createdBy?: StringFilter<"AirdropSeason"> | string
+    metadata?: JsonNullableFilter<"AirdropSeason">
+    createdAt?: DateTimeFilter<"AirdropSeason"> | Date | string
+    updatedAt?: DateTimeFilter<"AirdropSeason"> | Date | string
+  }
+
   export type UserAchievementCreateWithoutAchievementInput = {
     id?: string
     unlockedAt?: Date | string
@@ -33634,6 +41093,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutAchievementsInput = {
@@ -33678,6 +41143,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutAchievementsInput = {
@@ -33765,6 +41236,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAchievementsInput = {
@@ -33809,6 +41286,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type AchievementUpsertWithoutUserAchievementsInput = {
@@ -33886,6 +41369,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -33930,6 +41419,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -33990,6 +41485,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -34034,6 +41535,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserCreateWithoutEngagementsInput = {
@@ -34078,6 +41585,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutEngagementsInput = {
@@ -34122,6 +41635,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutEngagementsInput = {
@@ -34182,6 +41701,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutEngagementsInput = {
@@ -34226,6 +41751,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type TaskCompletionCreateWithoutTaskInput = {
@@ -34316,6 +41847,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutAdminSessionsInput = {
@@ -34360,6 +41897,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutAdminSessionsInput = {
@@ -34420,6 +41963,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAdminSessionsInput = {
@@ -34464,6 +42013,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserCreateWithoutAuditLogsInput = {
@@ -34508,6 +42063,12 @@ export namespace Prisma {
     adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutAuditLogsInput = {
@@ -34552,6 +42113,12 @@ export namespace Prisma {
     adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutAuditLogsInput = {
@@ -34612,6 +42179,12 @@ export namespace Prisma {
     adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAuditLogsInput = {
@@ -34656,6 +42229,12 @@ export namespace Prisma {
     adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserCreateWithoutFraudAlertsInput = {
@@ -34700,6 +42279,12 @@ export namespace Prisma {
     adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutFraudAlertsInput = {
@@ -34744,6 +42329,12 @@ export namespace Prisma {
     adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutFraudAlertsInput = {
@@ -34804,6 +42395,12 @@ export namespace Prisma {
     adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutFraudAlertsInput = {
@@ -34848,6 +42445,12 @@ export namespace Prisma {
     adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserCreateWithoutCampaignsInput = {
@@ -34892,6 +42495,12 @@ export namespace Prisma {
     adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutCampaignsInput = {
@@ -34936,6 +42545,12 @@ export namespace Prisma {
     adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutCampaignsInput = {
@@ -34996,6 +42611,12 @@ export namespace Prisma {
     adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCampaignsInput = {
@@ -35040,6 +42661,12 @@ export namespace Prisma {
     adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserCreateWithoutTasksInput = {
@@ -35084,6 +42711,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutTasksInput = {
@@ -35128,6 +42761,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutTasksInput = {
@@ -35219,6 +42858,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTasksInput = {
@@ -35263,6 +42908,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type TaskUpsertWithoutCompletionsInput = {
@@ -35344,6 +42995,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutClaimsInput = {
@@ -35388,6 +43045,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutClaimsInput = {
@@ -35448,6 +43111,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutClaimsInput = {
@@ -35492,6 +43161,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserCreateWithoutPointHistoryInput = {
@@ -35536,6 +43211,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutPointHistoryInput = {
@@ -35580,6 +43261,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutPointHistoryInput = {
@@ -35640,6 +43327,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPointHistoryInput = {
@@ -35684,6 +43377,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserCreateWithoutReferralsInput = {
@@ -35728,6 +43427,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutReferralsInput = {
@@ -35772,6 +43477,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutReferralsInput = {
@@ -35821,6 +43532,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutReferredByInput = {
@@ -35865,6 +43582,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutReferredByInput = {
@@ -35925,6 +43648,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReferralsInput = {
@@ -35969,6 +43698,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUpsertWithoutReferredByInput = {
@@ -36024,6 +43759,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutReferredByInput = {
@@ -36068,6 +43809,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserCreateWithoutDailyEarningsInput = {
@@ -36112,6 +43859,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutDailyEarningsInput = {
@@ -36156,6 +43909,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutDailyEarningsInput = {
@@ -36216,6 +43975,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutDailyEarningsInput = {
@@ -36260,6 +44025,117 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserCreateWithoutAirdropSeasonsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionCreateNestedManyWithoutUserInput
+    claims?: ClaimCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
+    referrals?: ReferralCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+  }
+
+  export type UserUncheckedCreateWithoutAirdropSeasonsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+    claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
+    referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+  }
+
+  export type UserCreateOrConnectWithoutAirdropSeasonsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAirdropSeasonsInput, UserUncheckedCreateWithoutAirdropSeasonsInput>
   }
 
   export type AirdropClaimCreateWithoutSeasonInput = {
@@ -36270,6 +44146,8 @@ export namespace Prisma {
     transactionSignature?: string | null
     status: string
     claimedAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
     user: UserCreateNestedOneWithoutAirdropClaimsInput
   }
 
@@ -36282,6 +44160,8 @@ export namespace Prisma {
     transactionSignature?: string | null
     status: string
     claimedAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type AirdropClaimCreateOrConnectWithoutSeasonInput = {
@@ -36292,6 +44172,117 @@ export namespace Prisma {
   export type AirdropClaimCreateManySeasonInputEnvelope = {
     data: AirdropClaimCreateManySeasonInput | AirdropClaimCreateManySeasonInput[]
     skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutAirdropSeasonsInput = {
+    update: XOR<UserUpdateWithoutAirdropSeasonsInput, UserUncheckedUpdateWithoutAirdropSeasonsInput>
+    create: XOR<UserCreateWithoutAirdropSeasonsInput, UserUncheckedCreateWithoutAirdropSeasonsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAirdropSeasonsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAirdropSeasonsInput, UserUncheckedUpdateWithoutAirdropSeasonsInput>
+  }
+
+  export type UserUpdateWithoutAirdropSeasonsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
+    claims?: ClaimUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAirdropSeasonsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+    claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
   }
 
   export type AirdropClaimUpsertWithWhereUniqueWithoutSeasonInput = {
@@ -36352,6 +44343,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutAirdropClaimsInput = {
@@ -36396,6 +44393,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutAirdropClaimsInput = {
@@ -36406,23 +44409,37 @@ export namespace Prisma {
   export type AirdropSeasonCreateWithoutClaimsInput = {
     id?: string
     name: string
-    status: string
+    description?: string | null
+    status?: string
     totalAllocation: bigint | number
-    startDate: Date | string
+    claimedAmount?: bigint | number
+    startDate?: Date | string
     endDate?: Date | string | null
-    claimingStartedAt?: Date | string | null
+    nftPassRequired?: boolean
+    requireApproval?: boolean
+    feeAmount?: Decimal | DecimalJsLike | number | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
+    updatedAt?: Date | string
+    creator: UserCreateNestedOneWithoutAirdropSeasonsInput
   }
 
   export type AirdropSeasonUncheckedCreateWithoutClaimsInput = {
     id?: string
     name: string
-    status: string
+    description?: string | null
+    status?: string
     totalAllocation: bigint | number
-    startDate: Date | string
+    claimedAmount?: bigint | number
+    startDate?: Date | string
     endDate?: Date | string | null
-    claimingStartedAt?: Date | string | null
+    nftPassRequired?: boolean
+    requireApproval?: boolean
+    feeAmount?: Decimal | DecimalJsLike | number | string
+    createdBy: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type AirdropSeasonCreateOrConnectWithoutClaimsInput = {
@@ -36483,6 +44500,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAirdropClaimsInput = {
@@ -36527,6 +44550,12 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type AirdropSeasonUpsertWithoutClaimsInput = {
@@ -36543,23 +44572,1237 @@ export namespace Prisma {
   export type AirdropSeasonUpdateWithoutClaimsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    claimedAmount?: BigIntFieldUpdateOperationsInput | bigint | number
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    claimingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nftPassRequired?: BoolFieldUpdateOperationsInput | boolean
+    requireApproval?: BoolFieldUpdateOperationsInput | boolean
+    feeAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creator?: UserUpdateOneRequiredWithoutAirdropSeasonsNestedInput
   }
 
   export type AirdropSeasonUncheckedUpdateWithoutClaimsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    claimedAmount?: BigIntFieldUpdateOperationsInput | bigint | number
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    claimingStartedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nftPassRequired?: BoolFieldUpdateOperationsInput | boolean
+    requireApproval?: BoolFieldUpdateOperationsInput | boolean
+    feeAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    createdBy?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserCreateWithoutNftCollectionsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionCreateNestedManyWithoutUserInput
+    claims?: ClaimCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
+    referrals?: ReferralCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserUncheckedCreateWithoutNftCollectionsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+    claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
+    referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserCreateOrConnectWithoutNftCollectionsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutNftCollectionsInput, UserUncheckedCreateWithoutNftCollectionsInput>
+  }
+
+  export type NftDistributionCreateWithoutCollectionInput = {
+    id?: string
+    recipientCount: number
+    nftsPerUser: number
+    results: JsonNullValueInput | InputJsonValue
+    success?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    distributor: UserCreateNestedOneWithoutNftDistributionsInput
+  }
+
+  export type NftDistributionUncheckedCreateWithoutCollectionInput = {
+    id?: string
+    distributedBy: string
+    recipientCount: number
+    nftsPerUser: number
+    results: JsonNullValueInput | InputJsonValue
+    success?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftDistributionCreateOrConnectWithoutCollectionInput = {
+    where: NftDistributionWhereUniqueInput
+    create: XOR<NftDistributionCreateWithoutCollectionInput, NftDistributionUncheckedCreateWithoutCollectionInput>
+  }
+
+  export type NftDistributionCreateManyCollectionInputEnvelope = {
+    data: NftDistributionCreateManyCollectionInput | NftDistributionCreateManyCollectionInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UserUpsertWithoutNftCollectionsInput = {
+    update: XOR<UserUpdateWithoutNftCollectionsInput, UserUncheckedUpdateWithoutNftCollectionsInput>
+    create: XOR<UserCreateWithoutNftCollectionsInput, UserUncheckedCreateWithoutNftCollectionsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutNftCollectionsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutNftCollectionsInput, UserUncheckedUpdateWithoutNftCollectionsInput>
+  }
+
+  export type UserUpdateWithoutNftCollectionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
+    claims?: ClaimUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutNftCollectionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+    claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type NftDistributionUpsertWithWhereUniqueWithoutCollectionInput = {
+    where: NftDistributionWhereUniqueInput
+    update: XOR<NftDistributionUpdateWithoutCollectionInput, NftDistributionUncheckedUpdateWithoutCollectionInput>
+    create: XOR<NftDistributionCreateWithoutCollectionInput, NftDistributionUncheckedCreateWithoutCollectionInput>
+  }
+
+  export type NftDistributionUpdateWithWhereUniqueWithoutCollectionInput = {
+    where: NftDistributionWhereUniqueInput
+    data: XOR<NftDistributionUpdateWithoutCollectionInput, NftDistributionUncheckedUpdateWithoutCollectionInput>
+  }
+
+  export type NftDistributionUpdateManyWithWhereWithoutCollectionInput = {
+    where: NftDistributionScalarWhereInput
+    data: XOR<NftDistributionUpdateManyMutationInput, NftDistributionUncheckedUpdateManyWithoutCollectionInput>
+  }
+
+  export type NftCollectionCreateWithoutDistributionsInput = {
+    id?: string
+    mintAddress: string
+    name: string
+    symbol: string
+    description?: string | null
+    uri: string
+    supply?: number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    creator: UserCreateNestedOneWithoutNftCollectionsInput
+  }
+
+  export type NftCollectionUncheckedCreateWithoutDistributionsInput = {
+    id?: string
+    mintAddress: string
+    name: string
+    symbol: string
+    description?: string | null
+    uri: string
+    supply?: number
+    createdBy: string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftCollectionCreateOrConnectWithoutDistributionsInput = {
+    where: NftCollectionWhereUniqueInput
+    create: XOR<NftCollectionCreateWithoutDistributionsInput, NftCollectionUncheckedCreateWithoutDistributionsInput>
+  }
+
+  export type UserCreateWithoutNftDistributionsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionCreateNestedManyWithoutUserInput
+    claims?: ClaimCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
+    referrals?: ReferralCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserUncheckedCreateWithoutNftDistributionsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+    claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
+    referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserCreateOrConnectWithoutNftDistributionsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutNftDistributionsInput, UserUncheckedCreateWithoutNftDistributionsInput>
+  }
+
+  export type NftCollectionUpsertWithoutDistributionsInput = {
+    update: XOR<NftCollectionUpdateWithoutDistributionsInput, NftCollectionUncheckedUpdateWithoutDistributionsInput>
+    create: XOR<NftCollectionCreateWithoutDistributionsInput, NftCollectionUncheckedCreateWithoutDistributionsInput>
+    where?: NftCollectionWhereInput
+  }
+
+  export type NftCollectionUpdateToOneWithWhereWithoutDistributionsInput = {
+    where?: NftCollectionWhereInput
+    data: XOR<NftCollectionUpdateWithoutDistributionsInput, NftCollectionUncheckedUpdateWithoutDistributionsInput>
+  }
+
+  export type NftCollectionUpdateWithoutDistributionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    uri?: StringFieldUpdateOperationsInput | string
+    supply?: IntFieldUpdateOperationsInput | number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creator?: UserUpdateOneRequiredWithoutNftCollectionsNestedInput
+  }
+
+  export type NftCollectionUncheckedUpdateWithoutDistributionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    uri?: StringFieldUpdateOperationsInput | string
+    supply?: IntFieldUpdateOperationsInput | number
+    createdBy?: StringFieldUpdateOperationsInput | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserUpsertWithoutNftDistributionsInput = {
+    update: XOR<UserUpdateWithoutNftDistributionsInput, UserUncheckedUpdateWithoutNftDistributionsInput>
+    create: XOR<UserCreateWithoutNftDistributionsInput, UserUncheckedCreateWithoutNftDistributionsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutNftDistributionsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutNftDistributionsInput, UserUncheckedUpdateWithoutNftDistributionsInput>
+  }
+
+  export type UserUpdateWithoutNftDistributionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
+    claims?: ClaimUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutNftDistributionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+    claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserCreateWithoutNftClaimApprovalInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionCreateNestedManyWithoutUserInput
+    claims?: ClaimCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
+    referrals?: ReferralCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserUncheckedCreateWithoutNftClaimApprovalInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+    claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
+    referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserCreateOrConnectWithoutNftClaimApprovalInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutNftClaimApprovalInput, UserUncheckedCreateWithoutNftClaimApprovalInput>
+  }
+
+  export type UserCreateWithoutApprovedClaimsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionCreateNestedManyWithoutUserInput
+    claims?: ClaimCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
+    referrals?: ReferralCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserUncheckedCreateWithoutApprovedClaimsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+    claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
+    referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserCreateOrConnectWithoutApprovedClaimsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutApprovedClaimsInput, UserUncheckedCreateWithoutApprovedClaimsInput>
+  }
+
+  export type UserUpsertWithoutNftClaimApprovalInput = {
+    update: XOR<UserUpdateWithoutNftClaimApprovalInput, UserUncheckedUpdateWithoutNftClaimApprovalInput>
+    create: XOR<UserCreateWithoutNftClaimApprovalInput, UserUncheckedCreateWithoutNftClaimApprovalInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutNftClaimApprovalInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutNftClaimApprovalInput, UserUncheckedUpdateWithoutNftClaimApprovalInput>
+  }
+
+  export type UserUpdateWithoutNftClaimApprovalInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
+    claims?: ClaimUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutNftClaimApprovalInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+    claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUpsertWithoutApprovedClaimsInput = {
+    update: XOR<UserUpdateWithoutApprovedClaimsInput, UserUncheckedUpdateWithoutApprovedClaimsInput>
+    create: XOR<UserCreateWithoutApprovedClaimsInput, UserUncheckedCreateWithoutApprovedClaimsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutApprovedClaimsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutApprovedClaimsInput, UserUncheckedUpdateWithoutApprovedClaimsInput>
+  }
+
+  export type UserUpdateWithoutApprovedClaimsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
+    claims?: ClaimUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutApprovedClaimsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+    claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserCreateWithoutNftHoldingsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionCreateNestedManyWithoutUserInput
+    claims?: ClaimCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
+    referrals?: ReferralCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserUncheckedCreateWithoutNftHoldingsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+    claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
+    referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserCreateOrConnectWithoutNftHoldingsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutNftHoldingsInput, UserUncheckedCreateWithoutNftHoldingsInput>
+  }
+
+  export type UserUpsertWithoutNftHoldingsInput = {
+    update: XOR<UserUpdateWithoutNftHoldingsInput, UserUncheckedUpdateWithoutNftHoldingsInput>
+    create: XOR<UserCreateWithoutNftHoldingsInput, UserUncheckedCreateWithoutNftHoldingsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutNftHoldingsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutNftHoldingsInput, UserUncheckedUpdateWithoutNftHoldingsInput>
+  }
+
+  export type UserUpdateWithoutNftHoldingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
+    claims?: ClaimUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutNftHoldingsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+    claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
   export type DailyEarningCreateManyUserInput = {
@@ -36578,6 +45821,8 @@ export namespace Prisma {
     transactionSignature?: string | null
     status: string
     claimedAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type TwitterEngagementCreateManyUserInput = {
@@ -36607,8 +45852,12 @@ export namespace Prisma {
     paymentMethod?: $Enums.PaymentMethod
     metadata?: NullableJsonNullValueInput | InputJsonValue
     processedAt?: Date | string | null
+    feesPaid?: Decimal | DecimalJsLike | number | string
     createdAt?: Date | string
     updatedAt?: Date | string
+    type?: string | null
+    nftPasses?: NullableJsonNullValueInput | InputJsonValue
+    userTier?: string | null
   }
 
   export type PointHistoryCreateManyUserInput = {
@@ -36692,6 +45941,67 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type NftCollectionCreateManyCreatorInput = {
+    id?: string
+    mintAddress: string
+    name: string
+    symbol: string
+    description?: string | null
+    uri: string
+    supply?: number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftDistributionCreateManyDistributorInput = {
+    id?: string
+    mintAddress: string
+    recipientCount: number
+    nftsPerUser: number
+    results: JsonNullValueInput | InputJsonValue
+    success?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type UserNftHoldingCreateManyUserInput = {
+    id?: string
+    mintAddress: string
+    tokenAccount: string
+    amount?: number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    acquiredAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftClaimApprovalCreateManyApproverInput = {
+    id?: string
+    userId: string
+    approved?: boolean
+    approvedAt?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type AirdropSeasonCreateManyCreatorInput = {
+    id?: string
+    name: string
+    description?: string | null
+    status?: string
+    totalAllocation: bigint | number
+    claimedAmount?: bigint | number
+    startDate?: Date | string
+    endDate?: Date | string | null
+    nftPassRequired?: boolean
+    requireApproval?: boolean
+    feeAmount?: Decimal | DecimalJsLike | number | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type DailyEarningUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     tokens?: FloatFieldUpdateOperationsInput | number
@@ -36721,6 +46031,8 @@ export namespace Prisma {
     transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     season?: AirdropSeasonUpdateOneRequiredWithoutClaimsNestedInput
   }
 
@@ -36733,6 +46045,8 @@ export namespace Prisma {
     transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AirdropClaimUncheckedUpdateManyWithoutUserInput = {
@@ -36744,6 +46058,8 @@ export namespace Prisma {
     transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TwitterEngagementUpdateWithoutUserInput = {
@@ -36811,8 +46127,12 @@ export namespace Prisma {
     paymentMethod?: EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
     metadata?: NullableJsonNullValueInput | InputJsonValue
     processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    feesPaid?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    nftPasses?: NullableJsonNullValueInput | InputJsonValue
+    userTier?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ClaimUncheckedUpdateWithoutUserInput = {
@@ -36823,8 +46143,12 @@ export namespace Prisma {
     paymentMethod?: EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
     metadata?: NullableJsonNullValueInput | InputJsonValue
     processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    feesPaid?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    nftPasses?: NullableJsonNullValueInput | InputJsonValue
+    userTier?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ClaimUncheckedUpdateManyWithoutUserInput = {
@@ -36835,8 +46159,12 @@ export namespace Prisma {
     paymentMethod?: EnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod
     metadata?: NullableJsonNullValueInput | InputJsonValue
     processedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    feesPaid?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    type?: NullableStringFieldUpdateOperationsInput | string | null
+    nftPasses?: NullableJsonNullValueInput | InputJsonValue
+    userTier?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PointHistoryUpdateWithoutUserInput = {
@@ -37082,6 +46410,193 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type NftCollectionUpdateWithoutCreatorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    uri?: StringFieldUpdateOperationsInput | string
+    supply?: IntFieldUpdateOperationsInput | number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    distributions?: NftDistributionUpdateManyWithoutCollectionNestedInput
+  }
+
+  export type NftCollectionUncheckedUpdateWithoutCreatorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    uri?: StringFieldUpdateOperationsInput | string
+    supply?: IntFieldUpdateOperationsInput | number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    distributions?: NftDistributionUncheckedUpdateManyWithoutCollectionNestedInput
+  }
+
+  export type NftCollectionUncheckedUpdateManyWithoutCreatorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    symbol?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    uri?: StringFieldUpdateOperationsInput | string
+    supply?: IntFieldUpdateOperationsInput | number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftDistributionUpdateWithoutDistributorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    recipientCount?: IntFieldUpdateOperationsInput | number
+    nftsPerUser?: IntFieldUpdateOperationsInput | number
+    results?: JsonNullValueInput | InputJsonValue
+    success?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    collection?: NftCollectionUpdateOneRequiredWithoutDistributionsNestedInput
+  }
+
+  export type NftDistributionUncheckedUpdateWithoutDistributorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    recipientCount?: IntFieldUpdateOperationsInput | number
+    nftsPerUser?: IntFieldUpdateOperationsInput | number
+    results?: JsonNullValueInput | InputJsonValue
+    success?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftDistributionUncheckedUpdateManyWithoutDistributorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    recipientCount?: IntFieldUpdateOperationsInput | number
+    nftsPerUser?: IntFieldUpdateOperationsInput | number
+    results?: JsonNullValueInput | InputJsonValue
+    success?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserNftHoldingUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    tokenAccount?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    acquiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserNftHoldingUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    tokenAccount?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    acquiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type UserNftHoldingUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    mintAddress?: StringFieldUpdateOperationsInput | string
+    tokenAccount?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    acquiredAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftClaimApprovalUpdateWithoutApproverInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    approved?: BoolFieldUpdateOperationsInput | boolean
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutNftClaimApprovalNestedInput
+  }
+
+  export type NftClaimApprovalUncheckedUpdateWithoutApproverInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    approved?: BoolFieldUpdateOperationsInput | boolean
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftClaimApprovalUncheckedUpdateManyWithoutApproverInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    approved?: BoolFieldUpdateOperationsInput | boolean
+    approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AirdropSeasonUpdateWithoutCreatorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    claimedAmount?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nftPassRequired?: BoolFieldUpdateOperationsInput | boolean
+    requireApproval?: BoolFieldUpdateOperationsInput | boolean
+    feeAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    claims?: AirdropClaimUpdateManyWithoutSeasonNestedInput
+  }
+
+  export type AirdropSeasonUncheckedUpdateWithoutCreatorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    claimedAmount?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nftPassRequired?: BoolFieldUpdateOperationsInput | boolean
+    requireApproval?: BoolFieldUpdateOperationsInput | boolean
+    feeAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    claims?: AirdropClaimUncheckedUpdateManyWithoutSeasonNestedInput
+  }
+
+  export type AirdropSeasonUncheckedUpdateManyWithoutCreatorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    totalAllocation?: BigIntFieldUpdateOperationsInput | bigint | number
+    claimedAmount?: BigIntFieldUpdateOperationsInput | bigint | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    nftPassRequired?: BoolFieldUpdateOperationsInput | boolean
+    requireApproval?: BoolFieldUpdateOperationsInput | boolean
+    feeAmount?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserAchievementCreateManyAchievementInput = {
     id?: string
     userId: string
@@ -37159,6 +46674,8 @@ export namespace Prisma {
     transactionSignature?: string | null
     status: string
     claimedAt?: Date | string
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type AirdropClaimUpdateWithoutSeasonInput = {
@@ -37169,6 +46686,8 @@ export namespace Prisma {
     transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutAirdropClaimsNestedInput
   }
 
@@ -37181,6 +46700,8 @@ export namespace Prisma {
     transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AirdropClaimUncheckedUpdateManyWithoutSeasonInput = {
@@ -37192,6 +46713,52 @@ export namespace Prisma {
     transactionSignature?: NullableStringFieldUpdateOperationsInput | string | null
     status?: StringFieldUpdateOperationsInput | string
     claimedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftDistributionCreateManyCollectionInput = {
+    id?: string
+    distributedBy: string
+    recipientCount: number
+    nftsPerUser: number
+    results: JsonNullValueInput | InputJsonValue
+    success?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftDistributionUpdateWithoutCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    recipientCount?: IntFieldUpdateOperationsInput | number
+    nftsPerUser?: IntFieldUpdateOperationsInput | number
+    results?: JsonNullValueInput | InputJsonValue
+    success?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    distributor?: UserUpdateOneRequiredWithoutNftDistributionsNestedInput
+  }
+
+  export type NftDistributionUncheckedUpdateWithoutCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    distributedBy?: StringFieldUpdateOperationsInput | string
+    recipientCount?: IntFieldUpdateOperationsInput | number
+    nftsPerUser?: IntFieldUpdateOperationsInput | number
+    results?: JsonNullValueInput | InputJsonValue
+    success?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftDistributionUncheckedUpdateManyWithoutCollectionInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    distributedBy?: StringFieldUpdateOperationsInput | string
+    recipientCount?: IntFieldUpdateOperationsInput | number
+    nftsPerUser?: IntFieldUpdateOperationsInput | number
+    results?: JsonNullValueInput | InputJsonValue
+    success?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

@@ -51,10 +51,13 @@ export async function POST(req: NextRequest) {
     const existingUser = await prisma.user.findUnique({
       where: { walletAddress }
     })
-
+    console.log('=========EXISITING======', existingUser , "=========wallet=====",walletAddress)
     // Authenticate wallet
     console.log('🔐 Calling authenticateWallet...')
     const { user, token } = await authenticateWallet(walletAddress)
+
+    console.log('=========EXISITING TOKEN======', token , "=========USER=====", user)
+
 
     // Process referral if this is a new user and referral code is provided
     if (!existingUser && referralCode) {
