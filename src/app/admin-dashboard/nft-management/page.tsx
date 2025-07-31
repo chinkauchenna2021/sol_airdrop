@@ -121,7 +121,7 @@ export default function NFTManagementPage() {
 
   return (
     // <AdminLayout>
-      <div className="space-y-6">
+      <div className="space-y-6 px-2 lg:px-8 lg:px-10">
         {/* Page Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
