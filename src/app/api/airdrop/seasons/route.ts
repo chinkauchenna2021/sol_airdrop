@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { requireAdmin } from '@/lib/auth'
+import { getSession, requireAdmin } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
 export async function GET(req: NextRequest) {
   await requireAdmin(req)
+      const session = await getSession(req)
+  
 
   try {
     const seasons = await prisma.airdropSeason.findMany({
@@ -28,6 +30,8 @@ export async function GET(req: NextRequest) {
 
 export async function POST(req: NextRequest) {
   await requireAdmin(req)
+  const session = await getSession(req)
+  
 
   try {
     const { name, totalAllocation } = await req.json()
@@ -43,6 +47,7 @@ export async function POST(req: NextRequest) {
       data: {
         name,
         totalAllocation: BigInt(totalAllocation),
+        creator: session?.user.id as any,
         status: 'ACTIVE',
         startDate: new Date()
       }

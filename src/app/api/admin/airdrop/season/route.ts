@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { requireAdmin } from '@/lib/auth'
+import { getSession, requireAdmin } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
 export async function POST(req: NextRequest) {
   await requireAdmin(req)
-
+    const session = await getSession(req)
   try {
     const { name, totalAllocation, highTierTokens, mediumTierTokens, lowTierTokens } = await req.json()
 
@@ -53,6 +53,7 @@ export async function POST(req: NextRequest) {
         data: {
           name,
           status: 'ACTIVE',
+          creator: session?.user.id as any,
           totalAllocation: BigInt(totalAllocation),
           startDate: new Date()
         }

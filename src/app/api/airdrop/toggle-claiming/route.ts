@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
       where: { id: currentSeason.id },
       data: { 
         status: newStatus,
-        claimingStartedAt: enabled ? new Date() : null
+        startDate: (enabled ? new Date() : null) as any
       }
     })
 
