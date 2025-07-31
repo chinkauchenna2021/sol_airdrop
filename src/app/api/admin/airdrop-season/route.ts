@@ -3,6 +3,7 @@ import { getSession, requireAdmin } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 import { TOKEN_CONFIG } from '@/lib/constants'
 
+
 export async function POST(req: NextRequest) {
         const session = await getSession(req)
         if (!session || !session.user.isAdmin) {
@@ -39,8 +40,10 @@ export async function POST(req: NextRequest) {
         data: {
           name: `Season ${new Date().getFullYear()}-${new Date().getMonth() + 1}`,
           status: 'ACTIVE',
+          creator: session.user.id as any,
           totalAllocation: TOKEN_CONFIG.AIRDROP_ALLOCATION / 4, // Quarterly allocation
           startDate: new Date(),
+           
         }
       })
 
