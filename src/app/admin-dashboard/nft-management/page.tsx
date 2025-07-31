@@ -120,7 +120,7 @@ export default function NFTManagementPage() {
   }
 
   return (
-    <AdminLayout>
+    // <AdminLayout>
       <div className="space-y-6">
         {/* Page Header */}
         <motion.div
@@ -275,7 +275,7 @@ export default function NFTManagementPage() {
           )}
         </motion.div>
       </div>
-    </AdminLayout>
+    // </AdminLayout>
   )
 }
 
