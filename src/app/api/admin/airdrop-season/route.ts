@@ -23,8 +23,7 @@ export async function POST(req: NextRequest) {
       const season = await prisma.airdropSeason.update({
         where: { id: seasonId },
         data: { 
-          status: 'CLAIMING',
-          claimingStartedAt: new Date()
+          status: 'CLAIMING'
         }
       })
 
