@@ -10,13 +10,16 @@ import {
   Layers, Target, Gift, Sparkles, Rocket, Crown, Medal
 } from 'lucide-react'
 import { useWalletStore } from '@/store/useWalletStore'
+import { useUserStore } from '@/store/useUserStore'
 import { WalletButton } from '@/components/wallet/WalletButton'
 import { FloatingElements } from '@/components/animations/FloatingElements'
 import { CountUp } from '@/components/animations/CountUp'
 import { TwitterConnection } from '@/components/twitter/TwitterConnection'
+import { TwitterConnectionIndicator } from '@/components/ui/TwitterConnectionIndicator'
 
 export default function EnhancedHomepage() {
   const { connected } = useWalletStore()
+  const { user } = useUserStore()
   const [stats, setStats] = useState({
     totalUsers: 0,
     totalRewards: 0,
@@ -28,6 +31,9 @@ export default function EnhancedHomepage() {
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0])
+
+  // Check if user has Twitter connected
+  const hasTwitterConnection = user?.twitterId != null
 
   useEffect(() => {
     setMounted(true)
@@ -134,6 +140,12 @@ export default function EnhancedHomepage() {
     <main className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-purple-900 overflow-hidden">
       <FloatingElements />
       
+      {/* Twitter Connection Floating Indicator */}
+      <TwitterConnectionIndicator 
+        connected={connected}
+        hasTwitter={hasTwitterConnection}
+      />
+      
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center px-4">
         <motion.div
@@ -150,7 +162,7 @@ export default function EnhancedHomepage() {
           >
             <div className="inline-flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-full mb-6">
               <Sparkles className="w-4 h-4 text-purple-400" />
-              <span className="text-purple-400 font-medium">Connect token airdrop</span>
+              <span className="text-purple-400 font-medium">$connect token airdrop</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 leading-tight">
@@ -210,18 +222,6 @@ export default function EnhancedHomepage() {
             )}
           </motion.div>
 
-
-          {/* Twitter Connection Section */}
-            {
-              connected && 
-              (
-            <section className="relative py-16 px-4">
-              <div className="max-w-4xl mx-auto">
-                <TwitterConnection />
-              </div>
-            </section>
-              )
-            }
           {/* Stats Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -277,6 +277,18 @@ export default function EnhancedHomepage() {
         </motion.div>
       </section>
 
+      {/* Twitter Connection Section */}
+      {connected && (
+        <section 
+          className="relative py-16 px-4"
+          data-twitter-connection // This attribute helps the indicator detect when section is in view
+        >
+          <div className="max-w-4xl mx-auto">
+            <TwitterConnection />
+          </div>
+        </section>
+      )}
+
       {/* Features Section */}
       <section className="relative py-32 px-4">
         <div className="max-w-7xl mx-auto">
@@ -327,62 +339,6 @@ export default function EnhancedHomepage() {
           </div>
         </div>
       </section>
-
-      {/* Testimonials Section */}
-      {/* <section className="relative py-32 px-4 bg-gradient-to-r from-purple-900/20 to-pink-900/20">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              What Our <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Community</span> Says
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Join thousands of satisfied users who are already earning rewards daily.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="p-8 rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300"
-              >
-                <div className="flex items-center space-x-1 mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-300 leading-relaxed mb-6 italic">
-                  "{testimonial.content}"
-                </p>
-                <div className="flex items-center space-x-3">
-                  <Image
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    width={48}
-                    height={48}
-                    className="rounded-full"
-                  />
-                  <div>
-                    <p className="text-white font-semibold">{testimonial.name}</p>
-                    <p className="text-gray-400 text-sm">{testimonial.role}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section> */}
 
       {/* Roadmap Section */}
       <section className="relative py-32 px-4">

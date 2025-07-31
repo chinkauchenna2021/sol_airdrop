@@ -347,7 +347,9 @@ import Image from 'next/image'
 import { 
   Menu, X, ChevronDown, Wallet, Trophy, BarChart3, 
   Coins, Users, Settings, Bell, Search, Zap, Shield,
-  TrendingUp, Gift, Globe, Star, ArrowRight
+  TrendingUp, Gift, Globe, Star, ArrowRight, Crown,
+  Database, FileText, UserCheck, Cog, Activity,
+  Lock, Eye, BarChart2
 } from 'lucide-react'
 import { useWalletStore } from '@/store/useWalletStore'
 import { WalletButton } from '@/components/wallet/WalletButton'
@@ -366,23 +368,70 @@ const navItems = [
     icon: Trophy,
     description: 'Global rankings and competitions'
   },
+  { 
+    name: 'Claim', 
+    href: '/claimtoken', 
+    icon: Coins,
+    description: 'Claim your earned CONNECT tokens'
+  },
+]
+
+const adminItems = [
+  {
+    name: 'Admin Hub',
+    href: '/admin-dashboard',
+    icon: Crown,
+    description: 'Administrative control center'
+  },
+  {
+    name: 'User Management',
+    href: '/admin-dashboard/manage-users',
+    icon: Users,
+    description: 'Manage platform users'
+  },
+  {
+    name: 'NFT Claims',
+    href: '/admin-dashboard/nft-claims',
+    icon: Shield,
+    description: 'Monitor NFT claim requests'
+  },
+  {
+    name: 'NFT Management',
+    href: '/admin-dashboard/nft-management',
+    icon: Database,
+    description: 'Create and manage NFT collections'
+  },
+  {
+    name: 'Claim Control',
+    href: '/admin-dashboard/nft-claiming',
+    icon: Settings,
+    description: 'Configure claiming system'
+  },
+  {
+    name: 'Analytics',
+    href: '/admin-dashboard/analytics',
+    icon: BarChart2,
+    description: 'Platform insights and reports'
+  }
 ]
 
 const resources = [
-  { name: 'Whitepaper', href: '/whitepaper', icon: Shield },
-  { name: 'Documentation', href: '/docs', icon: Globe },
-  { name: 'Community', href: '/community', icon: Users },
-  { name: 'Support', href: '/support', icon: Gift }
+  { name: 'Whitepaper', href: '/', icon: Shield },
+  { name: 'Documentation', href: '/', icon: Globe },
+  { name: 'Community', href: '/', icon: Users },
+  { name: 'Support', href: '/', icon: Gift }
 ]
 
 export default function CryptoNavbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const [showResources, setShowResources] = useState(false)
+  const [showAdminMenu, setShowAdminMenu] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [notifications, setNotifications] = useState(3)
   const pathname = usePathname()
   const { connected } = useWalletStore()
   const { user } = useUserStore()
+
+  const isAdmin = user?.isAdmin || false
+  const isAdminRoute = pathname.startsWith('/admin-dashboard')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -392,10 +441,20 @@ export default function CryptoNavbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    // Close menus when route changes
+    setIsOpen(false)
+    setShowAdminMenu(false)
+  }, [pathname])
+
   const closeMenu = () => {
     setIsOpen(false)
-    setShowResources(false)
+    setShowAdminMenu(false)
   }
+
+  // Combine regular nav items with admin items if user is admin
+  const allNavItems = isAdmin ? [...navItems] : navItems
+  const displayAdminItems = isAdmin ? adminItems.slice(0, 3) : [] // Show only 3 main admin items in navbar
 
   return (
     <>
@@ -411,11 +470,12 @@ export default function CryptoNavbar() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* THREE-COLUMN LAYOUT FOR PERFECT CENTERING */}
-          <div className="grid grid-cols-3 items-center h-20">
+          {/* FLEXIBLE LAYOUT FOR NATURAL FLOW */}
+          <div className="flex items-center justify-between h-20">
             
-            {/* LEFT SECTION - Logo */}
-            <div className="flex items-center justify-start">
+            {/* LEFT SECTION - Logo and Navigation */}
+            <div className="flex items-center space-x-8">
+              {/* Logo */}
               <motion.div 
                 className="flex items-center space-x-3"
                 whileHover={{ scale: 1.05 }}
@@ -431,12 +491,11 @@ export default function CryptoNavbar() {
                   />
                 </Link>
               </motion.div>
-            </div>
 
-            {/* CENTER SECTION - Navigation (Always Centered) */}
-            <div className="flex items-center justify-center">
-              <div className="hidden lg:flex items-center space-x-6 bg-white/5 backdrop-blur-sm rounded-2xl px-6 py-3 border border-white/10">
-                {navItems.map((item) => {
+              {/* Navigation Items */}
+              <div className="hidden lg:flex items-center space-x-2 bg-white/5 backdrop-blur-sm rounded-2xl px-4 py-3 border border-white/10">
+                {/* Regular Navigation Items */}
+                {allNavItems.map((item) => {
                   const isActive = pathname === item.href
                   const Icon = item.icon
                   
@@ -448,14 +507,14 @@ export default function CryptoNavbar() {
                     >
                       <Link
                         href={item.href as any}
-                        className={`group relative flex items-center space-x-2 px-4 py-2 rounded-xl transition-all duration-300 ${
+                        className={`group relative flex items-center space-x-2 px-3 py-2 rounded-xl transition-all duration-300 ${
                           isActive 
                             ? 'bg-gradient-to-r from-purple-500/30 to-pink-500/30 text-purple-300 shadow-lg shadow-purple-500/20' 
                             : 'text-gray-300 hover:text-white hover:bg-white/10'
                         }`}
                       >
                         <Icon className="w-4 h-4" />
-                        <span className="font-medium">{item.name}</span>
+                        <span className="font-medium text-sm">{item.name}</span>
                         {isActive && (
                           <motion.div
                             layoutId="activeTab"
@@ -466,11 +525,100 @@ export default function CryptoNavbar() {
                     </motion.div>
                   )
                 })}
+
+                {/* Admin Dropdown - Only show if user is admin */}
+                {isAdmin && (
+                  <div className="relative">
+                    <motion.button
+                      whileHover={{ y: -2 }}
+                      onClick={() => setShowAdminMenu(!showAdminMenu)}
+                      className={`group relative flex items-center space-x-2 px-3 py-2 rounded-xl transition-all duration-300 ${
+                        isAdminRoute
+                          ? 'bg-gradient-to-r from-red-500/30 to-orange-500/30 text-red-300 shadow-lg shadow-red-500/20'
+                          : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      }`}
+                    >
+                      <Crown className="w-4 h-4" />
+                      <span className="font-medium text-sm">Admin</span>
+                      <ChevronDown className={`w-3 h-3 transition-transform ${showAdminMenu ? 'rotate-180' : ''}`} />
+                      {isAdminRoute && (
+                        <motion.div
+                          layoutId="activeTab"
+                          className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-red-400 to-orange-400 rounded-full"
+                        />
+                      )}
+                    </motion.button>
+
+                    {/* Admin Dropdown Menu */}
+                    <AnimatePresence>
+                      {showAdminMenu && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full right-0 mt-2 w-80 bg-gray-900/95 backdrop-blur-xl rounded-2xl border border-red-500/20 shadow-2xl shadow-red-500/10 p-2 z-50"
+                        >
+                          <div className="p-2">
+                            <div className="flex items-center space-x-2 px-3 py-2 border-b border-white/10 mb-2">
+                              <Crown className="w-4 h-4 text-red-400" />
+                              <span className="text-red-300 font-semibold text-sm">Administrative Panel</span>
+                            </div>
+                            
+                            <div className="grid grid-cols-1 gap-1">
+                              {adminItems.map((item) => {
+                                const Icon = item.icon
+                                const isActiveAdmin = pathname === item.href
+                                
+                                return (
+                                  <motion.div
+                                    key={item.name}
+                                    whileHover={{ x: 4 }}
+                                    transition={{ duration: 0.2 }}
+                                  >
+                                    <Link
+                                      href={item.href as any}
+                                      onClick={closeMenu}
+                                      className={`flex items-center space-x-3 px-3 py-3 rounded-xl transition-all duration-200 group ${
+                                        isActiveAdmin
+                                          ? 'bg-red-500/20 text-red-300 border border-red-500/30'
+                                          : 'hover:bg-red-500/10 text-gray-300 hover:text-red-300'
+                                      }`}
+                                    >
+                                      <Icon className="w-4 h-4" />
+                                      <div className="flex-1">
+                                        <p className="font-medium text-sm">{item.name}</p>
+                                        <p className="text-xs text-gray-500">{item.description}</p>
+                                      </div>
+                                      <ArrowRight className="w-3 h-3 text-gray-500 group-hover:text-red-400" />
+                                    </Link>
+                                  </motion.div>
+                                )
+                              })}
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                )}
               </div>
             </div>
 
             {/* RIGHT SECTION - User Controls */}
-            <div className="flex items-center justify-end space-x-3">
+            <div className="flex items-center space-x-3">
+              {/* Admin Badge */}
+              {isAdmin && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="hidden md:flex items-center space-x-1 px-3 py-1 rounded-full bg-gradient-to-r from-red-500/20 to-orange-500/20 border border-red-500/30"
+                >
+                  <Crown className="w-3 h-3 text-red-400" />
+                  <span className="text-red-300 font-medium text-xs">ADMIN</span>
+                </motion.div>
+              )}
+
               {/* User Points */}
               {connected && user && (
                 <motion.div
@@ -520,7 +668,7 @@ export default function CryptoNavbar() {
               transition={{ duration: 0.3 }}
               className="lg:hidden bg-black/95 backdrop-blur-xl border-t border-purple-500/20"
             >
-              <div className="px-4 py-6 space-y-4">
+              <div className="px-4 py-6 space-y-4 max-h-screen overflow-y-auto">
                 {/* User Info */}
                 {connected && user && (
                   <motion.div
@@ -532,7 +680,15 @@ export default function CryptoNavbar() {
                       <Wallet className="w-5 h-5 text-white" />
                     </div>
                     <div className="flex-1">
-                      <p className="text-white font-medium">{user.twitterUsername || 'Anonymous'}</p>
+                      <div className="flex items-center space-x-2">
+                        <p className="text-white font-medium">{user.twitterUsername || 'Anonymous'}</p>
+                        {isAdmin && (
+                          <div className="flex items-center space-x-1 px-2 py-0.5 rounded-full bg-red-500/20 border border-red-500/30">
+                            <Crown className="w-3 h-3 text-red-400" />
+                            <span className="text-red-300 font-medium text-xs">ADMIN</span>
+                          </div>
+                        )}
+                      </div>
                       <p className="text-sm text-gray-400">{user.totalPoints?.toLocaleString() || 0} points</p>
                     </div>
                     <div className="flex items-center space-x-1">
@@ -544,9 +700,10 @@ export default function CryptoNavbar() {
                   </motion.div>
                 )}
 
-                {/* Navigation Links */}
+                {/* Regular Navigation Links */}
                 <div className="space-y-2">
-                  {navItems.map((item, index) => {
+                  <p className="text-gray-400 text-sm font-medium px-4">Navigation</p>
+                  {allNavItems.map((item, index) => {
                     const Icon = item.icon
                     const isActive = pathname === item.href
                     
@@ -581,12 +738,59 @@ export default function CryptoNavbar() {
                   })}
                 </div>
 
+                {/* Admin Section - Only show if user is admin */}
+                {isAdmin && (
+                  <div className="pt-4 border-t border-white/10 space-y-2">
+                    <div className="flex items-center space-x-2 px-4">
+                      <Crown className="w-4 h-4 text-red-400" />
+                      <p className="text-red-300 text-sm font-medium">Administrative Panel</p>
+                    </div>
+                    {adminItems.map((item, index) => {
+                      const Icon = item.icon
+                      const isActive = pathname === item.href
+                      
+                      return (
+                        <motion.div
+                          key={item.name}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: (index + allNavItems.length) * 0.1 }}
+                          whileHover={{ x: 4 }}
+                        >
+                          <Link
+                            href={item.href as any}
+                            onClick={closeMenu}
+                            className={`flex items-center space-x-3 px-4 py-3 rounded-xl transition-all duration-300 ${
+                              isActive 
+                                ? 'bg-gradient-to-r from-red-500/30 to-orange-500/30 text-red-300 shadow-lg border border-red-500/30' 
+                                : 'text-gray-300 hover:text-red-300 hover:bg-red-500/5 hover:border-red-500/20 border border-transparent'
+                            }`}
+                          >
+                            <Icon className="w-4 h-4" />
+                            <div className="flex-1">
+                              <p className="font-medium text-sm">{item.name}</p>
+                              <p className="text-xs text-gray-500">{item.description}</p>
+                            </div>
+                            {isActive && (
+                              <div className="w-2 h-2 bg-gradient-to-r from-red-400 to-orange-400 rounded-full" />
+                            )}
+                          </Link>
+                        </motion.div>
+                      )
+                    })}
+                  </div>
+                )}
+
                 {/* Quick Actions */}
                 <div className="pt-4 border-t border-white/10">
                   <div className="grid grid-cols-2 gap-3">
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
+                      onClick={() => {
+                        closeMenu()
+                        window.location.href = '/leaderboard'
+                      }}
                       className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 text-purple-300"
                     >
                       <Trophy className="w-4 h-4" />
@@ -596,10 +800,14 @@ export default function CryptoNavbar() {
                     <motion.button
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
+                      onClick={() => {
+                        closeMenu()
+                        window.location.href = '/claimtoken'
+                      }}
                       className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 text-green-300"
                     >
-                      <Gift className="w-4 h-4" />
-                      <span className="text-sm font-medium">Rewards</span>
+                      <Coins className="w-4 h-4" />
+                      <span className="text-sm font-medium">Claim</span>
                     </motion.button>
                   </div>
                 </div>
