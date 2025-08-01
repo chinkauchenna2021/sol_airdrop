@@ -109,25 +109,25 @@ export default function EnhancedHomepage() {
 
   const roadmapItems = [
     {
-      quarter: "Q1 2025",
+      quarter: "2025",
       title: "Platform Launch",
       description: "Core features, wallet integration, and initial token distribution",
       status: "completed"
     },
     {
-      quarter: "Q2 2025",
+      quarter: "2025",
       title: "Social Integration",
       description: "Twitter integration, engagement tracking, and referral system",
       status: "completed"
     },
     {
-      quarter: "Q3 2025",
+      quarter: "2025",
       title: "Advanced Features",
       description: "Multi-chain support, NFT rewards, and governance features",
       status: "in-progress"
     },
     {
-      quarter: "Q4 2025",
+      quarter: "2025",
       title: "Ecosystem Expansion",
       description: "Mobile app, API access, and enterprise partnerships",
       status: "upcoming"

@@ -48,8 +48,8 @@ const socialLinks = [
 ]
 
 const stats = [
-  { label: 'Total Users', value: '150K+', icon: Users },
-  { label: 'Tokens Distributed', value: '$2.5M+', icon: Coins },
+  // { label: 'Total Users', value: '150K+', icon: Users },
+  { label: 'Tokens Distributed', value: '400M', icon: Coins },
   { label: 'Security Score', value: '99.9%', icon: Shield },
   { label: 'Uptime', value: '99.99%', icon: TrendingUp }
 ]
@@ -91,7 +91,7 @@ export default function CryptoFooter() {
         {/* Stats Section */}
         <div className="border-b border-purple-500/20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
               {stats.map((stat, index) => {
                 const Icon = stat.icon
                 return (
