@@ -354,6 +354,8 @@ import {
 import { useWalletStore } from '@/store/useWalletStore'
 import { WalletButton } from '@/components/wallet/WalletButton'
 import { useUserStore } from '@/store/useUserStore'
+import { DashboardData } from '@/app/dashboard/page'
+import toast from 'react-hot-toast'
 
 const navItems = [
   { 
@@ -423,6 +425,8 @@ const resources = [
 ]
 
 export default function CryptoNavbar() {
+  const [data, setData] = useState<DashboardData | null>(null)
+  const [loading, setLoading] = useState(true)
   const [isOpen, setIsOpen] = useState(false)
   const [showAdminMenu, setShowAdminMenu] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -432,6 +436,94 @@ export default function CryptoNavbar() {
 
   const isAdmin = user?.isAdmin || false
   const isAdminRoute = pathname.startsWith('/admin-dashboard')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  useEffect(() => {
+    fetchDashboardData()
+    const interval = setInterval(fetchDashboardData, 30000)
+    return () => clearInterval(interval)
+  }, [])
+
+  // Fetch main dashboard data with daily earning status
+  const fetchDashboardData = async () => {
+    try {
+      // Fetch dashboard data and daily earning status in parallel
+      const [dashboardRes, earningRes] = await Promise.all([
+        fetch('/api/user/dashboard'),
+        fetch('/api/earning/status').catch(() => null) // Don't fail if this endpoint doesn't exist yet
+      ])
+      
+      if (dashboardRes.ok) {
+        const dashboardData = await dashboardRes.json()
+        console.log('Dashboard data loaded:', dashboardData)
+        
+        // Add daily earning status if available
+        if (earningRes?.ok) {
+          const earningData = await earningRes.json()
+          dashboardData.stats.dailyEarningStatus = earningData
+        } else {
+          // Fallback daily earning status
+          dashboardData.stats.dailyEarningStatus = {
+            canClaim: true,
+            currentStreak: dashboardData.user.streak || 0,
+            totalEarned: dashboardData.user.totalEarnedTokens || 0,
+            nextClaimIn: 0
+          }
+        }
+        
+        setData(dashboardData)
+      } else {
+        console.error('Failed to fetch dashboard data:', dashboardRes.status)
+        // Don't use fallback anymore - show error instead
+        throw new Error('Failed to load dashboard')
+      }
+    } catch (error) {
+      console.error('Failed to load dashboard:', error)
+      toast.error('Failed to load dashboard data')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -627,7 +719,7 @@ export default function CryptoNavbar() {
                   className="hidden md:flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30"
                 >
                   <Star className="w-4 h-4 text-yellow-400" />
-                  <span className="text-white font-bold">{user.totalPoints?.toLocaleString() || 0}</span>
+                  <span className="text-white font-bold">{data?.stats.pointsStats.totalPoints || 0}</span>
                   <span className="text-gray-400 text-sm">pts</span>
                 </motion.div>
               )}

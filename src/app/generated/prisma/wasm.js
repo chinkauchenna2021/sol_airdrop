@@ -135,6 +135,7 @@ exports.Prisma.UserScalarFieldEnum = {
   referralCode: 'referralCode',
   email: 'email',
   totalPoints: 'totalPoints',
+  totalTokens: 'totalTokens',
   rank: 'rank',
   isAdmin: 'isAdmin',
   isActive: 'isActive',
@@ -151,46 +152,26 @@ exports.Prisma.UserScalarFieldEnum = {
   claimsEnabled: 'claimsEnabled'
 };
 
-exports.Prisma.AchievementScalarFieldEnum = {
+exports.Prisma.PointHistoryScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  description: 'description',
-  icon: 'icon',
-  requirements: 'requirements',
+  userId: 'userId',
   points: 'points',
-  isSecret: 'isSecret',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.UserAchievementScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  achievementId: 'achievementId',
-  unlockedAt: 'unlockedAt',
-  progress: 'progress'
-};
-
-exports.Prisma.NotificationScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  title: 'title',
-  message: 'message',
+  tokens: 'tokens',
   type: 'type',
-  read: 'read',
-  actionUrl: 'actionUrl',
+  action: 'action',
+  description: 'description',
+  metadata: 'metadata',
   createdAt: 'createdAt'
 };
 
-exports.Prisma.TwitterAnalyticsScalarFieldEnum = {
+exports.Prisma.ReferralScalarFieldEnum = {
   id: 'id',
-  userId: 'userId',
-  tweetId: 'tweetId',
-  likes: 'likes',
-  retweets: 'retweets',
-  comments: 'comments',
-  impressions: 'impressions',
-  engagement_rate: 'engagement_rate',
-  calculatedAt: 'calculatedAt'
+  referrerId: 'referrerId',
+  referredId: 'referredId',
+  tokens: 'tokens',
+  completed: 'completed',
+  createdAt: 'createdAt',
+  isActive: 'isActive'
 };
 
 exports.Prisma.TwitterEngagementScalarFieldEnum = {
@@ -198,8 +179,21 @@ exports.Prisma.TwitterEngagementScalarFieldEnum = {
   userId: 'userId',
   tweetId: 'tweetId',
   engagementType: 'engagementType',
-  points: 'points',
+  tokens: 'tokens',
   verified: 'verified',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.TaskCompletionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  taskId: 'taskId',
+  completed: 'completed',
+  points: 'points',
+  tokens: 'tokens',
+  rewardType: 'rewardType',
+  metadata: 'metadata',
+  completedAt: 'completedAt',
   createdAt: 'createdAt'
 };
 
@@ -209,72 +203,13 @@ exports.Prisma.TaskScalarFieldEnum = {
   description: 'description',
   type: 'type',
   points: 'points',
+  tokens: 'tokens',
+  rewardType: 'rewardType',
   requirements: 'requirements',
   isActive: 'isActive',
   expiresAt: 'expiresAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
-};
-
-exports.Prisma.AdminSessionScalarFieldEnum = {
-  id: 'id',
-  adminId: 'adminId',
-  ipAddress: 'ipAddress',
-  userAgent: 'userAgent',
-  permissions: 'permissions',
-  expiresAt: 'expiresAt',
-  lastActivity: 'lastActivity',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.AdminAuditLogScalarFieldEnum = {
-  id: 'id',
-  adminId: 'adminId',
-  action: 'action',
-  metadata: 'metadata',
-  timestamp: 'timestamp',
-  ipAddress: 'ipAddress'
-};
-
-exports.Prisma.FraudAlertScalarFieldEnum = {
-  id: 'id',
-  type: 'type',
-  severity: 'severity',
-  userId: 'userId',
-  description: 'description',
-  evidence: 'evidence',
-  riskScore: 'riskScore',
-  status: 'status',
-  createdAt: 'createdAt',
-  investigatedBy: 'investigatedBy',
-  resolvedAt: 'resolvedAt'
-};
-
-exports.Prisma.CampaignConfigScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  description: 'description',
-  tokenMint: 'tokenMint',
-  totalAllocation: 'totalAllocation',
-  startDate: 'startDate',
-  endDate: 'endDate',
-  eligibilityCriteria: 'eligibilityCriteria',
-  distributionRules: 'distributionRules',
-  isActive: 'isActive',
-  createdBy: 'createdBy',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.TaskCompletionScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  taskId: 'taskId',
-  completed: 'completed',
-  points: 'points',
-  metadata: 'metadata',
-  completedAt: 'completedAt',
-  createdAt: 'createdAt'
 };
 
 exports.Prisma.ClaimScalarFieldEnum = {
@@ -294,26 +229,6 @@ exports.Prisma.ClaimScalarFieldEnum = {
   userTier: 'userTier'
 };
 
-exports.Prisma.PointHistoryScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  points: 'points',
-  action: 'action',
-  description: 'description',
-  metadata: 'metadata',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.ReferralScalarFieldEnum = {
-  id: 'id',
-  referrerId: 'referrerId',
-  referredId: 'referredId',
-  points: 'points',
-  completed: 'completed',
-  createdAt: 'createdAt',
-  isActive: 'isActive'
-};
-
 exports.Prisma.SystemConfigScalarFieldEnum = {
   id: 'id',
   key: 'key',
@@ -329,6 +244,7 @@ exports.Prisma.AnalyticsScalarFieldEnum = {
   activeUsers: 'activeUsers',
   totalClaims: 'totalClaims',
   totalPoints: 'totalPoints',
+  totalTokens: 'totalTokens',
   totalEngagements: 'totalEngagements',
   metadata: 'metadata',
   createdAt: 'createdAt'
@@ -338,7 +254,9 @@ exports.Prisma.DailyEarningScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   tokens: 'tokens',
+  points: 'points',
   type: 'type',
+  rewardType: 'rewardType',
   claimedAt: 'claimedAt'
 };
 
@@ -422,6 +340,98 @@ exports.Prisma.UserNftHoldingScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.AdminSessionScalarFieldEnum = {
+  id: 'id',
+  adminId: 'adminId',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  permissions: 'permissions',
+  expiresAt: 'expiresAt',
+  lastActivity: 'lastActivity',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AdminAuditLogScalarFieldEnum = {
+  id: 'id',
+  adminId: 'adminId',
+  action: 'action',
+  metadata: 'metadata',
+  timestamp: 'timestamp',
+  ipAddress: 'ipAddress'
+};
+
+exports.Prisma.FraudAlertScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  severity: 'severity',
+  userId: 'userId',
+  description: 'description',
+  evidence: 'evidence',
+  riskScore: 'riskScore',
+  status: 'status',
+  createdAt: 'createdAt',
+  investigatedBy: 'investigatedBy',
+  resolvedAt: 'resolvedAt'
+};
+
+exports.Prisma.CampaignConfigScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  tokenMint: 'tokenMint',
+  totalAllocation: 'totalAllocation',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  eligibilityCriteria: 'eligibilityCriteria',
+  distributionRules: 'distributionRules',
+  isActive: 'isActive',
+  createdBy: 'createdBy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AchievementScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  icon: 'icon',
+  requirements: 'requirements',
+  points: 'points',
+  isSecret: 'isSecret',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.UserAchievementScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  achievementId: 'achievementId',
+  unlockedAt: 'unlockedAt',
+  progress: 'progress'
+};
+
+exports.Prisma.NotificationScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  title: 'title',
+  message: 'message',
+  type: 'type',
+  read: 'read',
+  actionUrl: 'actionUrl',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.TwitterAnalyticsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  tweetId: 'tweetId',
+  likes: 'likes',
+  retweets: 'retweets',
+  comments: 'comments',
+  impressions: 'impressions',
+  engagement_rate: 'engagement_rate',
+  calculatedAt: 'calculatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -457,14 +467,6 @@ exports.TwitterActivity = exports.$Enums.TwitterActivity = {
   LOW: 'LOW'
 };
 
-exports.NotificationType = exports.$Enums.NotificationType = {
-  INFO: 'INFO',
-  SUCCESS: 'SUCCESS',
-  WARNING: 'WARNING',
-  ERROR: 'ERROR',
-  ACHIEVEMENT: 'ACHIEVEMENT'
-};
-
 exports.EngagementType = exports.$Enums.EngagementType = {
   LIKE: 'LIKE',
   RETWEET: 'RETWEET',
@@ -495,22 +497,22 @@ exports.PaymentMethod = exports.$Enums.PaymentMethod = {
   USDC: 'USDC'
 };
 
+exports.NotificationType = exports.$Enums.NotificationType = {
+  INFO: 'INFO',
+  SUCCESS: 'SUCCESS',
+  WARNING: 'WARNING',
+  ERROR: 'ERROR',
+  ACHIEVEMENT: 'ACHIEVEMENT'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
-  Achievement: 'Achievement',
-  UserAchievement: 'UserAchievement',
-  Notification: 'Notification',
-  TwitterAnalytics: 'TwitterAnalytics',
-  TwitterEngagement: 'TwitterEngagement',
-  Task: 'Task',
-  AdminSession: 'AdminSession',
-  AdminAuditLog: 'AdminAuditLog',
-  FraudAlert: 'FraudAlert',
-  CampaignConfig: 'CampaignConfig',
-  TaskCompletion: 'TaskCompletion',
-  Claim: 'Claim',
   PointHistory: 'PointHistory',
   Referral: 'Referral',
+  TwitterEngagement: 'TwitterEngagement',
+  TaskCompletion: 'TaskCompletion',
+  Task: 'Task',
+  Claim: 'Claim',
   SystemConfig: 'SystemConfig',
   Analytics: 'Analytics',
   DailyEarning: 'DailyEarning',
@@ -519,7 +521,15 @@ exports.Prisma.ModelName = {
   NftCollection: 'NftCollection',
   NftDistribution: 'NftDistribution',
   NftClaimApproval: 'NftClaimApproval',
-  UserNftHolding: 'UserNftHolding'
+  UserNftHolding: 'UserNftHolding',
+  AdminSession: 'AdminSession',
+  AdminAuditLog: 'AdminAuditLog',
+  FraudAlert: 'FraudAlert',
+  CampaignConfig: 'CampaignConfig',
+  Achievement: 'Achievement',
+  UserAchievement: 'UserAchievement',
+  Notification: 'Notification',
+  TwitterAnalytics: 'TwitterAnalytics'
 };
 
 /**

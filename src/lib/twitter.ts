@@ -124,7 +124,6 @@ export async function trackEngagement(
         userId,
         tweetId,
         engagementType,
-        points,
         verified: true,
       }
     })

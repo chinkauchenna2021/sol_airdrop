@@ -48,7 +48,7 @@ export async function GET(req: NextRequest) {
           twitterUsername: activity.user.twitterUsername
         },
         engagementType: activity.engagementType,
-        points: activity.points,
+        points: activity.tokens,
         createdAt: activity.createdAt.toISOString()
       }))
     })

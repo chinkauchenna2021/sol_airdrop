@@ -121,7 +121,7 @@ export async function GET(req: NextRequest) {
         engagements: {
           where: Object.keys(dateFilter).length > 0 ? { createdAt: dateFilter } : {},
           select: {
-            points: true,
+            // totalPoints: true,
             createdAt: true,
             engagementType: true
           }

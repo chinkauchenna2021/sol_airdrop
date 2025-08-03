@@ -18,6 +18,7 @@ interface LeaderboardEntry {
     twitterUsername?: string
     twitterImage?: string
     totalPoints: number
+    totalTokens: number
     level?: number
     streak?: number
     twitterFollowers?: number

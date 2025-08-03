@@ -1222,23 +1222,15 @@
 
 
 
-
-
-
-
-
-
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { 
   Wallet, Twitter, Trophy, TrendingUp, Users, Coins, 
-  Star, Activity, Target, Gift, Zap, ArrowUpRight,
-  CheckCircle, Circle, Calendar, Award, Copy, Check,
-  Eye, Heart, MessageCircle, Repeat, UserPlus, Share2,
-  ExternalLink, Crown, Medal, Clock, BarChart3, Flame,
-  DollarSign, AlertTriangle, Shield
+  Star, Activity, Target, Gift,
+  CheckCircle, Calendar, Award, Copy, Check,
+  UserPlus, Share2,Clock, BarChart3, Flame
 } from 'lucide-react'
 import toast from 'react-hot-toast'
 
@@ -1264,6 +1256,12 @@ export interface DashboardData {
     totalEngagements: number
     referralCount: number
     tokenAllocation: number
+    pointsStats:{
+      todayPoints:number;
+      weeklyPoints:number;
+      totalPoints:number;
+
+    }
     dailyEarningStatus?: {
       canClaim: boolean
       currentStreak: number
@@ -1792,7 +1790,7 @@ export default function EnhancedDashboard() {
                         </div>
                         <div>
                           <h3 className="text-xl font-bold text-white">Daily Earning</h3>
-                          <p className="text-gray-400">Login to earn 5 CONNECT daily</p>
+                          <p className="text-gray-400">Login to earn 5 Points daily</p>
                         </div>
                       </div>
                       <div className="text-right">
@@ -1871,11 +1869,11 @@ export default function EnhancedDashboard() {
                     <div className="space-y-4">
                       <div className="flex justify-between">
                         <span className="text-gray-400">Today's Points</span>
-                        <span className="text-white font-semibold">{data.stats.todayPoints}</span>
+                        <span className="text-white font-semibold">{data.stats.pointsStats.todayPoints || "0"}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-400">This Week</span>
-                        <span className="text-white font-semibold">{data.stats.weeklyPoints}</span>
+                        <span className="text-white font-semibold">{data.stats.pointsStats.weeklyPoints || "0"}</span>
                       </div>
                       <div className="flex justify-between">
                         <span className="text-gray-400">Referrals</span>
@@ -1923,7 +1921,7 @@ export default function EnhancedDashboard() {
                       </div>
                       <div>
                         <h3 className="text-xl font-bold text-white">Daily Earning</h3>
-                        <p className="text-gray-400">Login to earn 5 CONNECT daily</p>
+                        <p className="text-gray-400">Login to earn 5 Points daily</p>
                       </div>
                     </div>
                     <div className="text-right">
@@ -1935,7 +1933,7 @@ export default function EnhancedDashboard() {
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="bg-white/5 rounded-xl p-4">
                       <div className="flex items-center gap-2 mb-2">
-                        <Clock className="w-5 h-5 text-blue-400" />
+                        <Clock className="w-5 h-5 text-blue-40 0" />
                         <span className="text-white font-semibold">Next Claim</span>
                       </div>
                       <p className="text-blue-400 font-semibold">
@@ -2412,9 +2410,9 @@ export default function EnhancedDashboard() {
                 <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20 rounded-xl p-6">
                   <div className="flex items-center justify-between mb-3">
                     <TrendingUp className="w-6 h-6 text-blue-400" />
-                    <span className="text-sm px-2 py-1 rounded bg-green-500/20 text-green-400">
+                    {/* <span className="text-sm px-2 py-1 rounded bg-green-500/20 text-green-400">
                       +12%
-                    </span>
+                    </span> */}
                   </div>
                   <h4 className="text-white font-semibold mb-1">Total Points</h4>
                   <p className="text-3xl font-bold text-blue-400">{data.user.totalPoints.toLocaleString()}</p>
@@ -2423,7 +2421,7 @@ export default function EnhancedDashboard() {
                 <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20 rounded-xl p-6">
                   <Activity className="w-6 h-6 text-green-400 mb-3" />
                   <h4 className="text-white font-semibold mb-1">Weekly Average</h4>
-                  <p className="text-3xl font-bold text-green-400">{Math.round(data.stats.weeklyPoints / 7)}</p>
+                  <p className="text-3xl font-bold text-green-400">{Math.round(Number(data.stats.pointsStats.weeklyPoints) / 7)}</p>
                 </div>
 
                 <div className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-xl p-6">

@@ -23,7 +23,7 @@ import { useSolana } from '@/hooks/useSolana'
 import { useUserStore } from '@/store/useUserStore'
 import { getSolAmountForUsd, checkNftOwnership, transferNftWithSolCheck } from '@/utils'
 import toast from 'react-hot-toast'
-import { DashboardData } from '../dashboard/page'
+import  {DashboardData}  from '../dashboard/page'
 
 interface UserBalance {
   solBalance: number
@@ -250,7 +250,7 @@ export default function AdvancedTokenClaimPage() {
         toast.success(`Claimed ${result.tokens || 5} CONNECT tokens! 🎉`)
         
         if (data) {
-          setData(prev => ({
+          setData((prev: any) => ({
             ...prev!,
             user: {
               ...prev!.user,

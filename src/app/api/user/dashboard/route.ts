@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getSession } from '@/lib/auth'
 import prisma from '@/lib/prisma'
-import { startOfDay, startOfWeek, subDays } from 'date-fns'
+import { startOfDay, subDays } from 'date-fns'
+import { ACTIVITY_TYPES } from '@/lib/constants'
 
 export async function GET(req: NextRequest) {
   const session = await getSession(req)
@@ -11,163 +12,210 @@ export async function GET(req: NextRequest) {
   }
 
   try {
+    const userId = session.user.id
     const today = startOfDay(new Date())
-    const weekStart = startOfWeek(new Date(), { weekStartsOn: 1 })
+    const yesterday = subDays(today, 1)
+    const weekAgo = subDays(today, 7)
 
-    // Fetch user with additional data - enhanced from your existing version
+    // Get comprehensive user data
     const user = await prisma.user.findUnique({
-      where: { id: session.user.id },
+      where: { id: userId },
       include: {
         _count: {
           select: {
             engagements: true,
-            referrals: {
-              where: { completed: true }
-            }
+            referrals: { where: { completed: true } },
           }
         }
       }
     })
 
     if (!user) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 })
+      return NextResponse.json(
+        { error: 'User not found' },
+        { status: 404 }
+      )
     }
-    
 
-
- const userAchievements = await prisma.userAchievement.findMany({
-  where: { userId: user.id },
-  include: {
-    achievement: {
-      select: {
-        id: true,
-        name: true,
-        description: true,
-        icon: true
-      }
-    }
-  }
-})
-
-    // Calculate stats - enhanced calculations
-    const [todayPoints, weeklyPoints, recentActivity, referralData, totalEarned] = await Promise.all([
+    // Get activity statistics (separated by points and tokens)
+    const [todayPoints, todayTokens, weeklyPoints, weeklyTokens, recentActivity, totalEarned] = await Promise.all([
       // Today's points
       prisma.pointHistory.aggregate({
         where: {
-          userId: user.id,
+          userId,
+          type: ACTIVITY_TYPES.POINTS,
           createdAt: { gte: today }
         },
         _sum: { points: true }
       }),
-      
-      // This week's points
+      // Today's tokens
       prisma.pointHistory.aggregate({
         where: {
-          userId: user.id,
-          createdAt: { gte: weekStart }
+          userId,
+          type: ACTIVITY_TYPES.TOKENS,
+          createdAt: { gte: today }
+        },
+        _sum: { tokens: true }
+      }),
+      // Weekly points
+      prisma.pointHistory.aggregate({
+        where: {
+          userId,
+          type: ACTIVITY_TYPES.POINTS,
+          createdAt: { gte: weekAgo }
         },
         _sum: { points: true }
       }),
-      
-      // Recent activity - enhanced with more details
+      // Weekly tokens
+      prisma.pointHistory.aggregate({
+        where: {
+          userId,
+          type: ACTIVITY_TYPES.TOKENS,
+          createdAt: { gte: weekAgo }
+        },
+        _sum: { tokens: true }
+      }),
+      // Recent activity (both points and tokens)
       prisma.pointHistory.findMany({
-        where: { userId: user.id },
+        where: { userId },
         orderBy: { createdAt: 'desc' },
         take: 10,
         select: {
           id: true,
-          action: true,
           points: true,
+          tokens: true,
+          type: true,
+          action: true,
           description: true,
           createdAt: true,
           metadata: true
         }
       }),
-
-      // Referral data
-      prisma.referral.findMany({
-        where: { referrerId: user.id },
-        include: {
-          referred: {
-            select: {
-              walletAddress: true,
-              twitterUsername: true,
-              isActive: true
-            }
-          }
-        },
-        orderBy: { createdAt: 'desc' },
-        take: 5
-      }),
-
       // Total earned from referrals
       prisma.referral.aggregate({
         where: { 
-          referrerId: user.id,
+          referrerId: userId,
           completed: true 
         },
-        _sum: { points: true }
+        _sum: { tokens: true }
       })
     ])
 
-    // Get user rank - enhanced calculation
-    const usersAhead = await prisma.user.count({
+    // Get user's rank based on total points (leaderboard still based on points)
+    const higherRankedUsers = await prisma.user.count({
       where: {
-        totalPoints: { gt: user.totalPoints }
+        totalPoints: { gt: user.totalPoints },
+        isActive: true
       }
     })
-    const rank = usersAhead + 1
+    const rank = higherRankedUsers + 1
 
-    // Calculate Twitter activity level and token allocation
-    const twitterActivityLevel = user.twitterActivity || 'LOW'
+    // Calculate streak and daily claim status
+    const streak = await calculateStreak(user.id)
+    const dailyClaimStatus = await getDailyClaimStatus(user.id)
+
+    // Get referral data
+    const referralData = await prisma.referral.findMany({
+      where: { referrerId: userId },
+      include: {
+        referred: {
+          select: {
+            walletAddress: true,
+            twitterUsername: true,
+            isActive: true,
+            createdAt: true
+          }
+        }
+      },
+      orderBy: { createdAt: 'desc' },
+      take: 5
+    })
+
+    // Calculate Twitter activity level for airdrop eligibility
+    const twitterActivityLevel = getTwitterActivityLevel(user)
     const tokenAllocation = getTokenAllocation(twitterActivityLevel)
 
-    // Calculate streak
-    const streak = await calculateStreak(user.id)
-
-    // Enhanced response with referral data
+    // UPDATED: Return separate points and tokens data
     const response = {
       user: {
         id: user.id,
         walletAddress: user.walletAddress,
-        totalPoints: user.totalPoints,
+        totalPoints: user.totalPoints,              // Points balance
+        totalTokens: user.totalTokens,              // NEW: Token balance
+        totalEarnedTokens: user.totalEarnedTokens,  // Lifetime tokens
         rank,
         twitterUsername: user.twitterUsername,
         twitterId: user.twitterId,
         twitterImage: user.twitterImage,
         twitterFollowers: user.twitterFollowers || 0,
-        level: Math.floor(user.totalPoints / 1000) + 1,
+        level: Math.floor(user.totalPoints / 1000) + 1, // Level based on points
         twitterActivity: twitterActivityLevel,
         streak: streak,
-        referralCode: user.referralCode
+        referralCode: user.referralCode,
+        isActive: user.isActive,
+        claimsEnabled: user.claimsEnabled
       },
       stats: {
-        todayPoints: todayPoints._sum.points || 0,
-        weeklyPoints: weeklyPoints._sum.points || 0,
+        // Points statistics
+        pointsStats: {
+          todayPoints: todayPoints._sum.points || 0,
+          weeklyPoints: weeklyPoints._sum.points || 0,
+          totalPoints: user.totalPoints
+        },
+        // Token statistics  
+        tokenStats: {
+          todayTokens: todayTokens._sum.tokens || 0,
+          weeklyTokens: weeklyTokens._sum.tokens || 0,
+          totalTokens: user.totalTokens,
+          totalEarnedTokens: user.totalEarnedTokens,
+          claimableTokens: user.totalTokens // What can be claimed
+        },
+        // General stats
         totalEngagements: user._count.engagements,
         referralCount: user._count.referrals,
-        tokenAllocation: tokenAllocation
+        tokenAllocation: tokenAllocation,
+        // Daily claim status
+        dailyEarningStatus: dailyClaimStatus
       },
-      recentActivity: recentActivity.map((activity: any) => ({
+      recentActivity: recentActivity.map((activity) => ({
         id: activity.id,
         action: activity.description || activity.action,
-        points: activity.points,
+        points: activity.points || 0,
+        tokens: activity.tokens || 0,
+        type: activity.type,
         createdAt: activity.createdAt.toISOString(),
         metadata: activity.metadata
       })),
-      userAchievements, // Placeholder for achievements
       referrals: {
         totalReferrals: referralData.length,
         activeReferrals: referralData.filter(r => r.completed && r.referred.isActive).length,
-        totalEarned: totalEarned._sum.points || 0,
+        totalEarnedTokens: totalEarned._sum.tokens || 0, // CHANGED: Referrals give tokens
         recentReferrals: referralData.map(r => ({
           id: r.id,
           walletAddress: r.referred.walletAddress,
           twitterUsername: r.referred.twitterUsername,
-          points: r.points,
+          tokens: r.tokens, // CHANGED: Show tokens instead of points
           completed: r.completed,
           createdAt: r.createdAt.toISOString()
         }))
+      },
+      // Separate balances for clarity
+      balances: {
+        points: {
+          current: user.totalPoints,
+          todayEarned: todayPoints._sum.points || 0,
+          weeklyEarned: weeklyPoints._sum.points || 0,
+          canClaim: false, // Points cannot be claimed
+          description: "Points are earned from daily activities and tasks. They cannot be claimed."
+        },
+        tokens: {
+          current: user.totalTokens,
+          todayEarned: todayTokens._sum.tokens || 0,
+          weeklyEarned: weeklyTokens._sum.tokens || 0,
+          lifetime: user.totalEarnedTokens,
+          canClaim: true, // Tokens can be claimed
+          description: "Tokens are earned from referrals and Twitter activities. They can be claimed."
+        }
       }
     }
 
@@ -189,6 +237,17 @@ function getTokenAllocation(activityLevel: string): number {
     case 'LOW': return 3000
     default: return 3000
   }
+}
+
+function getTwitterActivityLevel(user: any): string {
+  if (!user.twitterId) return 'NONE'
+  
+  // Calculate based on followers and engagement
+  const followers = user.twitterFollowers || 0
+  
+  if (followers >= 1000) return 'HIGH'
+  if (followers >= 500) return 'MEDIUM'
+  return 'LOW'
 }
 
 async function calculateStreak(userId: string): Promise<number> {
@@ -222,5 +281,48 @@ async function calculateStreak(userId: string): Promise<number> {
   } catch (error) {
     console.error('Error calculating streak:', error)
     return 0
+  }
+}
+
+async function getDailyClaimStatus(userId: string) {
+  try {
+    const today = startOfDay(new Date())
+    
+    // Check if claimed today
+    const todayClaim = await prisma.pointHistory.findFirst({
+      where: {
+        userId,
+        action: 'DAILY_CHECK_IN',
+        createdAt: { gte: today }
+      }
+    })
+
+    // Get recent earnings
+    const recentEarnings = await prisma.pointHistory.aggregate({
+      where: {
+        userId,
+        action: 'DAILY_CHECK_IN',
+        createdAt: { gte: subDays(new Date(), 30) }
+      },
+      _sum: { points: true },
+      _count: true
+    })
+
+    return {
+      canClaim: !todayClaim,
+      currentStreak: await calculateStreak(userId),
+      totalEarned: recentEarnings._sum.points || 0,
+      claimCount: recentEarnings._count,
+      nextClaimIn: todayClaim ? 24 : 0 // Hours
+    }
+  } catch (error) {
+    console.error('Error getting daily claim status:', error)
+    return {
+      canClaim: false,
+      currentStreak: 0,
+      totalEarned: 0,
+      claimCount: 0,
+      nextClaimIn: 24
+    }
   }
 }

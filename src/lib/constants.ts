@@ -1,17 +1,47 @@
 export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || 'Solana Airdrop Platform'
 export const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'
-export const TOKEN_SYMBOL = process.env.NEXT_PUBLIC_TOKEN_SYMBOL || 'AIRDROP'
+export const TOKEN_SYMBOL = process.env.NEXT_PUBLIC_TOKEN_SYMBOL || 'CONNECT'
 export const TOKEN_DECIMALS = parseInt(process.env.NEXT_PUBLIC_TOKEN_DECIMALS || '9')
 
-export const POINTS = {
-  LIKE: parseInt(process.env.POINTS_PER_LIKE || '10'),
-  RETWEET: parseInt(process.env.POINTS_PER_RETWEET || '20'),
-  COMMENT: parseInt(process.env.POINTS_PER_COMMENT || '15'),
-  FOLLOW: parseInt(process.env.POINTS_PER_FOLLOW || '50'),
-  REFERRAL: parseInt(process.env.POINTS_PER_REFERRAL || '100'),
+// UPDATED: Separate Points and Tokens Configuration
+export const POINTS_CONFIG = {
+  // Activities that give POINTS only
   DAILY_CHECK_IN: parseInt(process.env.DAILY_CHECK_IN_POINTS || '5'),
-  WELCOME_BONUS: 100,
-  TWITTER_CONNECT: 50,
+  WELCOME_BONUS: parseInt(process.env.WELCOME_BONUS_POINTS || '100'),
+  TWITTER_CONNECT: parseInt(process.env.TWITTER_CONNECT_POINTS || '50'),
+  TASK_COMPLETION: parseInt(process.env.TASK_COMPLETION_POINTS || '25'),
+  STREAK_BONUS_7_DAYS: parseInt(process.env.STREAK_BONUS_7_POINTS || '10'),
+  STREAK_BONUS_30_DAYS: parseInt(process.env.STREAK_BONUS_30_POINTS || '25'),
+  ACHIEVEMENT_UNLOCK: parseInt(process.env.ACHIEVEMENT_POINTS || '15'),
+  WALLET_CONNECT: parseInt(process.env.WALLET_CONNECT_POINTS || '25'),
+} as const
+
+export const TOKENS_CONFIG = {
+  // Activities that give TOKENS only
+  REFERRAL: parseFloat(process.env.REFERRAL_TOKENS || '50'),
+  TWITTER_LIKE: parseFloat(process.env.TWITTER_LIKE_TOKENS || '0.5'),
+  TWITTER_RETWEET: parseFloat(process.env.TWITTER_RETWEET_TOKENS || '1.0'),
+  TWITTER_COMMENT: parseFloat(process.env.TWITTER_COMMENT_TOKENS || '0.8'),
+  TWITTER_FOLLOW: parseFloat(process.env.TWITTER_FOLLOW_TOKENS || '2.0'),
+  TWITTER_QUOTE: parseFloat(process.env.TWITTER_QUOTE_TOKENS || '1.5'),
+} as const
+
+// LEGACY: Keep for backward compatibility but mark as deprecated
+export const POINTS = {
+  LIKE: 0, // DEPRECATED: Now gives tokens
+  RETWEET: 0, // DEPRECATED: Now gives tokens  
+  COMMENT: 0, // DEPRECATED: Now gives tokens
+  FOLLOW: 0, // DEPRECATED: Now gives tokens
+  REFERRAL: 0, // DEPRECATED: Now gives tokens
+  DAILY_CHECK_IN: POINTS_CONFIG.DAILY_CHECK_IN,
+  WELCOME_BONUS: POINTS_CONFIG.WELCOME_BONUS,
+  TWITTER_CONNECT: POINTS_CONFIG.TWITTER_CONNECT,
+} as const
+
+export const ACTIVITY_TYPES = {
+  POINTS: 'POINTS',
+  TOKENS: 'TOKENS',
+  BOTH: 'BOTH'
 } as const
 
 export const ENGAGEMENT_TYPES = {
@@ -59,8 +89,10 @@ export const ERROR_MESSAGES = {
   WALLET_NOT_CONNECTED: 'Please connect your wallet first',
   TWITTER_NOT_CONNECTED: 'Please connect your Twitter account first',
   INSUFFICIENT_POINTS: 'You do not have enough points',
+  INSUFFICIENT_TOKENS: 'You do not have enough tokens', // NEW
   CLAIM_DISABLED: 'Claims are temporarily disabled',
   TASK_ALREADY_COMPLETED: 'You have already completed this task',
+  POINTS_NOT_CLAIMABLE: 'Points cannot be claimed, only tokens can be claimed', // NEW
 } as const
 
 export const SUCCESS_MESSAGES = {
@@ -69,6 +101,8 @@ export const SUCCESS_MESSAGES = {
   TASK_COMPLETED: 'Task completed successfully',
   CLAIM_SUBMITTED: 'Your claim has been submitted',
   REFERRAL_SUCCESS: 'Referral registered successfully',
+  TOKENS_EARNED: 'Tokens earned successfully', // NEW
+  POINTS_EARNED: 'Points earned successfully', // NEW
 } as const
 
 export const ROUTES = {
@@ -89,6 +123,8 @@ export const CACHE_KEYS = {
   TASKS: 'tasks',
   ANALYTICS: 'analytics',
   CONFIG: 'config',
+  TOKEN_BALANCE: 'token_balance', // NEW
+  POINT_BALANCE: 'point_balance', // NEW
 } as const
 
 export const CACHE_DURATION = {
@@ -101,6 +137,7 @@ export const CACHE_DURATION = {
 export const LIMITS = {
   MAX_CLAIM_AMOUNT: 1000000,
   MIN_CLAIM_AMOUNT: 100,
+  MIN_TOKEN_CLAIM: 10, // NEW: Minimum tokens to claim
   MAX_USERNAME_LENGTH: 30,
   MAX_BIO_LENGTH: 200,
   LEADERBOARD_PAGE_SIZE: 100,
@@ -113,8 +150,6 @@ export const REGEX = {
   EMAIL: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
   URL: /^https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)$/,
 } as const
-
-
 
 export const TOKEN_CONFIG = {
   NAME: 'CONNECT',
@@ -147,26 +182,26 @@ export const AIRDROP_CONFIG = {
   }
 } as const
 
-// export const DAILY_EARNING_CONFIG = {
-//   LOGIN_REWARD: 5, // 5 CONNECT tokens per day
-//   REFERRAL_REWARD: 3, // 3 CONNECT tokens per referral
-//   COOLDOWN_HOURS: 24, // Can only claim once per 24 hours
-// } as const
-
-
-
-
-
-
 export const ENHANCED_CONFIG = {
-  // Daily Earning Configuration
+  // Daily Earning Configuration (POINTS)
   DAILY_EARNING: {
-    LOGIN_REWARD: 5,
-    REFERRAL_REWARD: 3,
-    STREAK_BONUS_7_DAYS: 5,
-    STREAK_BONUS_30_DAYS: 15,
-    TWITTER_CONNECT_BONUS: 50,
+    LOGIN_REWARD: POINTS_CONFIG.DAILY_CHECK_IN,
+    STREAK_BONUS_7_DAYS: POINTS_CONFIG.STREAK_BONUS_7_DAYS,
+    STREAK_BONUS_30_DAYS: POINTS_CONFIG.STREAK_BONUS_30_DAYS,
+    TWITTER_CONNECT_BONUS: POINTS_CONFIG.TWITTER_CONNECT,
     COOLDOWN_HOURS: 24
+  },
+
+  // Token Earning Configuration (TOKENS)
+  TOKEN_EARNING: {
+    REFERRAL_REWARD: TOKENS_CONFIG.REFERRAL,
+    TWITTER_REWARDS: {
+      LIKE: TOKENS_CONFIG.TWITTER_LIKE,
+      RETWEET: TOKENS_CONFIG.TWITTER_RETWEET,
+      COMMENT: TOKENS_CONFIG.TWITTER_COMMENT,
+      FOLLOW: TOKENS_CONFIG.TWITTER_FOLLOW,
+      QUOTE: TOKENS_CONFIG.TWITTER_QUOTE,
+    }
   },
 
   // Airdrop Configuration
@@ -194,15 +229,6 @@ export const ENHANCED_CONFIG = {
     }
   },
 
-  // Twitter Points Configuration
-  TWITTER_POINTS: {
-    LIKE: 10,
-    RETWEET: 20,
-    COMMENT: 15,
-    QUOTE: 25,
-    FOLLOW: 50
-  },
-
   // System Thresholds
   THRESHOLDS: {
     HIGH_ACTIVITY_FOLLOWERS: 1000,
@@ -214,9 +240,7 @@ export const ENHANCED_CONFIG = {
   }
 } as const
 
-
-
-// Default achievements configuration
+// Default achievements configuration (POINTS only)
 export const DEFAULT_ACHIEVEMENTS = [
   {
     id: 'first-steps',
@@ -224,6 +248,7 @@ export const DEFAULT_ACHIEVEMENTS = [
     description: 'Complete your first task',
     icon: '🚀',
     points: 25,
+    rewardType: 'POINTS',
     requirements: { totalPoints: { gte: 1 } }
   },
   {
@@ -232,6 +257,7 @@ export const DEFAULT_ACHIEVEMENTS = [
     description: 'Connect your Twitter account',
     icon: '🐦',
     points: 50,
+    rewardType: 'POINTS',
     requirements: { twitterConnected: true }
   },
   {
@@ -240,6 +266,7 @@ export const DEFAULT_ACHIEVEMENTS = [
     description: 'Reach 100 points',
     icon: '💰',
     points: 0,
+    rewardType: 'POINTS',
     requirements: { totalPoints: { gte: 100 } }
   },
   {
@@ -248,7 +275,17 @@ export const DEFAULT_ACHIEVEMENTS = [
     description: 'Complete 10 tasks',
     icon: '💪',
     points: 100,
+    rewardType: 'POINTS',
     requirements: { completedTasks: { gte: 10 } }
+  },
+  {
+    id: 'token-earner',
+    name: 'Token Earner',
+    description: 'Earn your first 10 tokens from Twitter activities',
+    icon: '🪙',
+    points: 50,
+    rewardType: 'POINTS',
+    requirements: { totalTokens: { gte: 10 } }
   },
   {
     id: 'referral-champion',
@@ -256,6 +293,7 @@ export const DEFAULT_ACHIEVEMENTS = [
     description: 'Refer 5 users successfully',
     icon: '🏆',
     points: 200,
+    rewardType: 'POINTS',
     requirements: { referralCount: { gte: 5 } }
   },
   {
@@ -264,6 +302,43 @@ export const DEFAULT_ACHIEVEMENTS = [
     description: 'Maintain a 7-day login streak',
     icon: '🔥',
     points: 150,
+    rewardType: 'POINTS',
     requirements: { streak: { gte: 7 } }
   }
 ] as const
+
+// Helper functions for reward calculation
+export const getTwitterTokenReward = (engagementType: string): number => {
+  switch (engagementType.toUpperCase()) {
+    case 'LIKE': return TOKENS_CONFIG.TWITTER_LIKE
+    case 'RETWEET': return TOKENS_CONFIG.TWITTER_RETWEET
+    case 'COMMENT': return TOKENS_CONFIG.TWITTER_COMMENT
+    case 'FOLLOW': return TOKENS_CONFIG.TWITTER_FOLLOW
+    case 'QUOTE': return TOKENS_CONFIG.TWITTER_QUOTE
+    default: return 0.5 // Default fallback
+  }
+}
+
+export const getPointsReward = (actionType: string): number => {
+  switch (actionType.toUpperCase()) {
+    case 'DAILY_CHECK_IN': return POINTS_CONFIG.DAILY_CHECK_IN
+    case 'WELCOME_BONUS': return POINTS_CONFIG.WELCOME_BONUS
+    case 'TWITTER_CONNECT': return POINTS_CONFIG.TWITTER_CONNECT
+    case 'TASK_COMPLETION': return POINTS_CONFIG.TASK_COMPLETION
+    case 'STREAK_BONUS_7': return POINTS_CONFIG.STREAK_BONUS_7_DAYS
+    case 'STREAK_BONUS_30': return POINTS_CONFIG.STREAK_BONUS_30_DAYS
+    case 'ACHIEVEMENT': return POINTS_CONFIG.ACHIEVEMENT_UNLOCK
+    case 'WALLET_CONNECT': return POINTS_CONFIG.WALLET_CONNECT
+    default: return 0
+  }
+}
+
+export const isTokenActivity = (activityType: string): boolean => {
+  const tokenActivities = ['REFERRAL', 'TWITTER_LIKE', 'TWITTER_RETWEET', 'TWITTER_COMMENT', 'TWITTER_FOLLOW', 'TWITTER_QUOTE']
+  return tokenActivities.includes(activityType.toUpperCase())
+}
+
+export const isPointActivity = (activityType: string): boolean => {
+  const pointActivities = ['DAILY_CHECK_IN', 'WELCOME_BONUS', 'TWITTER_CONNECT', 'TASK_COMPLETION', 'STREAK_BONUS', 'ACHIEVEMENT', 'WALLET_CONNECT']
+  return pointActivities.some(activity => activityType.toUpperCase().includes(activity))
+}
