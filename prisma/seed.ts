@@ -407,21 +407,18 @@ async function main() {
                 userId: user.id,
                 tweetId: 'demo_tweet_1',
                 engagementType: EngagementType.LIKE,
-                points: 10,
                 verified: true
               },
               {
                 userId: user.id,
                 tweetId: 'demo_tweet_2',
                 engagementType: EngagementType.RETWEET,
-                points: 20,
                 verified: true
               },
               {
                 userId: user.id,
                 tweetId: 'demo_tweet_3',
                 engagementType: EngagementType.COMMENT,
-                points: 15,
                 verified: true
               }
             ],
@@ -483,7 +480,6 @@ async function main() {
           create: {
             referrerId: users[0].id,
             referredId: users[1].id,
-            points: 100,
             completed: true
           }
         })
