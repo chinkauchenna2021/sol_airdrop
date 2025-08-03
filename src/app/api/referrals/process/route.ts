@@ -43,7 +43,7 @@ export async function POST(req: NextRequest) {
         data: {
           referrerId: referrer.id,
           referredId: newUserId,
-          points: referralPoints,
+          tokens: referralPoints,
           completed: true
         }
       })

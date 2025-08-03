@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
       data: {
         referrerId: userId,
         referredId: referredUserId,
-        // points: ENHANCED_CONFIG.DAILY_EARNING.REFERRAL_REWARD,
+        tokens: ENHANCED_CONFIG.TOKEN_EARNING.REFERRAL_REWARD,
         completed: true,
       }
     })
