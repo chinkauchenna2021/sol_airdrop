@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
       data: {
         referrerId: userId,
         referredId: referredUserId,
-        points: ENHANCED_CONFIG.DAILY_EARNING.REFERRAL_REWARD,
+        // points: ENHANCED_CONFIG.DAILY_EARNING.REFERRAL_REWARD,
         completed: true,
       }
     })
@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
     await prisma.dailyEarning.create({
       data: {
         userId,
-        tokens: ENHANCED_CONFIG.DAILY_EARNING.REFERRAL_REWARD,
+        tokens: ENHANCED_CONFIG.TOKEN_EARNING.REFERRAL_REWARD,
         type: 'REFERRAL_BONUS',
         claimedAt: new Date(),
       }
@@ -65,14 +65,14 @@ export async function POST(req: NextRequest) {
     await prisma.user.update({
       where: { id: userId },
       data: {
-        totalEarnedTokens: { increment: ENHANCED_CONFIG.DAILY_EARNING.REFERRAL_REWARD }
+        totalEarnedTokens: { increment: ENHANCED_CONFIG.TOKEN_EARNING.REFERRAL_REWARD}
       }
     })
 
     return NextResponse.json({
       success: true,
-      tokens: ENHANCED_CONFIG.DAILY_EARNING.REFERRAL_REWARD,
-      message: `Earned ${ENHANCED_CONFIG.DAILY_EARNING.REFERRAL_REWARD} CONNECT tokens for successful referral!`
+      tokens: ENHANCED_CONFIG.TOKEN_EARNING.REFERRAL_REWARD,
+      message: `Earned ${ENHANCED_CONFIG.TOKEN_EARNING.REFERRAL_REWARD} CONNECT tokens for successful referral!`
     })
 
   } catch (error) {
