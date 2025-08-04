@@ -16,6 +16,7 @@ import { FloatingElements } from '@/components/animations/FloatingElements'
 import { CountUp } from '@/components/animations/CountUp'
 import { TwitterConnection } from '@/components/twitter/TwitterConnection'
 import { TwitterConnectionIndicator } from '@/components/ui/TwitterConnectionIndicator'
+import TwitterIntegrationComponent from '@/components/twitter/TwitterBoard'
 
 export default function EnhancedHomepage() {
   const { connected } = useWalletStore()
@@ -285,6 +286,7 @@ export default function EnhancedHomepage() {
         >
           <div className="max-w-4xl mx-auto">
             <TwitterConnection />
+            <TwitterIntegrationComponent />
           </div>
         </section>
       )}

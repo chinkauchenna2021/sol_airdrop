@@ -295,3 +295,223 @@ export async function PATCH(req: NextRequest) {
     )
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+/**
+ * @description used for the new auth provider
+ */
+
+export const AUTH_SYSTEM_CONFIG = {
+  // Current active system
+  ACTIVE_SYSTEM: process.env.AUTH_SYSTEM || 'LEGACY',
+  
+  // Better Auth Configuration
+  BETTER_AUTH: {
+    enabled: process.env.AUTH_SYSTEM === 'BETTER_AUTH',
+    secret: process.env.BETTER_AUTH_SECRET || process.env.NEXTAUTH_SECRET,
+    url: process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL,
+    database: {
+      url: process.env.DATABASE_URL,
+      directUrl: process.env.DIRECT_URL
+    },
+    twitter: {
+      clientId: process.env.TWITTER_CLIENT_ID,
+      clientSecret: process.env.TWITTER_CLIENT_SECRET,
+      redirectUri: `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/callback/twitter`
+    },
+    features: {
+      twoFactor: true,
+      admin: true,
+      sessionManagement: true,
+      enhancedMonitoring: true
+    }
+  },
+
+  // Legacy System Configuration  
+  LEGACY: {
+    enabled: process.env.AUTH_SYSTEM === 'LEGACY' || !process.env.AUTH_SYSTEM,
+    api: {
+      key: process.env.TWITTER_API_KEY,
+      secret: process.env.TWITTER_API_SECRET,
+      accessToken: process.env.TWITTER_ACCESS_TOKEN,
+      accessTokenSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET,
+      bearerToken: process.env.TWITTER_BEARER_TOKEN
+    },
+    oauth: {
+      clientId: process.env.TWITTER_CLIENT_ID,
+      clientSecret: process.env.TWITTER_CLIENT_SECRET
+    },
+    features: {
+      basicMonitoring: true,
+      webhooks: true,
+      oauth2: true
+    }
+  },
+
+  // Monitoring Configuration
+  MONITORING: {
+    intervals: {
+      highActivity: 30 * 60 * 1000,    // 30 minutes
+      mediumActivity: 60 * 60 * 1000,  // 1 hour
+      lowActivity: 4 * 60 * 60 * 1000  // 4 hours
+    },
+    batchSize: 100,
+    maxRetries: 3,
+    rateLimit: {
+      requests: 100,
+      windowMs: 15 * 60 * 1000 // 15 minutes
+    }
+  },
+
+  // Point System Configuration
+  POINTS: {
+    engagements: {
+      LIKE: parseInt(process.env.POINTS_PER_LIKE || '10'),
+      RETWEET: parseInt(process.env.POINTS_PER_RETWEET || '20'),
+      COMMENT: parseInt(process.env.POINTS_PER_COMMENT || '15'),
+      QUOTE: parseInt(process.env.POINTS_PER_QUOTE || '25'),
+      FOLLOW: parseInt(process.env.POINTS_PER_FOLLOW || '50')
+    },
+    bonuses: {
+      WELCOME: 100,
+      TWITTER_CONNECT: 50,
+      DAILY_LOGIN: 5,
+      STREAK_MULTIPLIER: 1.5
+    },
+    activityLevelBonuses: {
+      HIGH: 100,
+      MEDIUM: 50,
+      LOW: 25
+    }
+  },
+
+  // Database Configuration
+  DATABASE: {
+    url: process.env.DATABASE_URL,
+    directUrl: process.env.DIRECT_URL,
+    schema: 'public',
+    ssl: process.env.NODE_ENV === 'production'
+  },
+
+  // Security Configuration
+  SECURITY: {
+    jwtSecret: process.env.NEXTAUTH_SECRET,
+    cookiePrefix: 'airdrop-auth',
+    sessionExpiry: 30 * 24 * 60 * 60 * 1000, // 30 days
+    tokenEncryptionKey: process.env.TOKEN_ENCRYPTION_KEY || process.env.NEXTAUTH_SECRET
+  }
+} as const
+
+// Environment validation
+export function validateEnvironment(): {
+  valid: boolean
+  errors: string[]
+  warnings: string[]
+} {
+  const errors: string[] = []
+  const warnings: string[] = []
+
+  // Required for both systems
+  if (!process.env.DATABASE_URL) {
+    errors.push('DATABASE_URL is required')
+  }
+  
+  if (!process.env.NEXTAUTH_SECRET) {
+    errors.push('NEXTAUTH_SECRET is required')
+  }
+
+  if (!process.env.NEXT_PUBLIC_APP_URL) {
+    warnings.push('NEXT_PUBLIC_APP_URL not set, using localhost:3000')
+  }
+
+  // Twitter OAuth (required for both systems)
+  if (!process.env.TWITTER_CLIENT_ID || !process.env.TWITTER_CLIENT_SECRET) {
+    errors.push('Twitter OAuth credentials (TWITTER_CLIENT_ID, TWITTER_CLIENT_SECRET) are required')
+  }
+
+  // System-specific validation
+  if (AUTH_SYSTEM_CONFIG.ACTIVE_SYSTEM === 'BETTER_AUTH') {
+    if (!process.env.BETTER_AUTH_SECRET) {
+      warnings.push('BETTER_AUTH_SECRET not set, using NEXTAUTH_SECRET')
+    }
+  } else {
+    // Legacy system requirements
+    if (!process.env.TWITTER_API_KEY || !process.env.TWITTER_API_SECRET) {
+      errors.push('Legacy system requires TWITTER_API_KEY and TWITTER_API_SECRET')
+    }
+    
+    if (!process.env.TWITTER_BEARER_TOKEN) {
+      warnings.push('TWITTER_BEARER_TOKEN recommended for enhanced API access')
+    }
+  }
+
+  return {
+    valid: errors.length === 0,
+    errors,
+    warnings
+  }
+}
+
+// Initialize system configuration
+export async function initializeAuthSystem(): Promise<{
+  success: boolean
+  system: string
+  message: string
+}> {
+  try {
+    console.log('🚀 Initializing authentication system...')
+    
+    // Validate environment
+    const validation = validateEnvironment()
+    
+    if (!validation.valid) {
+      console.error('❌ Environment validation failed:')
+      validation.errors.forEach(error => console.error(`  - ${error}`))
+      return {
+        success: false,
+        system: AUTH_SYSTEM_CONFIG.ACTIVE_SYSTEM,
+        message: `Environment validation failed: ${validation.errors.join(', ')}`
+      }
+    }
+
+    if (validation.warnings.length > 0) {
+      console.warn('⚠️ Environment warnings:')
+      validation.warnings.forEach(warning => console.warn(`  - ${warning}`))
+    }
+
+    console.log(`✅ Using ${AUTH_SYSTEM_CONFIG.ACTIVE_SYSTEM} authentication system`)
+    
+    // Log active features
+    const features = AUTH_SYSTEM_CONFIG.ACTIVE_SYSTEM === 'BETTER_AUTH'
+      ? Object.keys(AUTH_SYSTEM_CONFIG.BETTER_AUTH.features)
+      : Object.keys(AUTH_SYSTEM_CONFIG.LEGACY.features)
+    
+    console.log('📋 Active features:', features.join(', '))
+
+    return {
+      success: true,
+      system: AUTH_SYSTEM_CONFIG.ACTIVE_SYSTEM,
+      message: `${AUTH_SYSTEM_CONFIG.ACTIVE_SYSTEM} system initialized successfully`
+    }
+
+  } catch (error) {
+    console.error('❌ Failed to initialize auth system:', error)
+    return {
+      success: false,
+      system: AUTH_SYSTEM_CONFIG.ACTIVE_SYSTEM,
+      message: error instanceof Error ? error.message : 'Unknown initialization error'
+    }
+  }
+}
