@@ -66,6 +66,7 @@ export default function AuthSystemDashboard() {
   const [switching, setSwitching] = useState(false)
   const [testing, setTesting] = useState<string | null>(null)
   const [testResults, setTestResults] = useState<any>(null)
+  const [activeTab, setActiveTab] = useState('overview')
 
   useEffect(() => {
     loadSystemData()
@@ -251,9 +252,8 @@ export default function AuthSystemDashboard() {
         </Alert>
       )}
 
-      <Tabs  className="w-full" value={''} onValueChange={function (value: string): void {
-        throw new Error('Function not implemented.')
-      } } children={undefined}>
+
+      <Tabs value={activeTab as any} onValueChange={()=>setActiveTab}  className="w-full">
         <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="systems">Systems</TabsTrigger>
           <TabsTrigger value="monitoring">Monitoring</TabsTrigger>
