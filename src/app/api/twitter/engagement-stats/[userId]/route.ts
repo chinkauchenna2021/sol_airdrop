@@ -3,10 +3,11 @@ import { getSession } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 
 export async function GET(
-  req: NextRequest,
-  { params }: { params: { userId: string } }
+  req: NextRequest
 ) {
   try {
+    const requestUrl = new URL(req.url);
+    const userId = requestUrl.searchParams.get("userId");
     const session = await getSession(req)
     
     if (!session) {
@@ -16,7 +17,7 @@ export async function GET(
       )
     }
 
-    const { userId } = params
+    // const { userId } = params
 
     // Verify user access
     if (session.user.id !== userId && !session.user.isAdmin) {
@@ -37,13 +38,13 @@ export async function GET(
     ] = await Promise.all([
       // Total engagements
       prisma.twitterEngagement.count({
-        where: { userId }
+        where: { userId:userId as any }
       }),
       
       // Today's engagements
       prisma.twitterEngagement.count({
         where: {
-          userId,
+          userId: userId as any,
           createdAt: {
             gte: new Date(new Date().setHours(0, 0, 0, 0))
           }
@@ -53,7 +54,7 @@ export async function GET(
       // Weekly engagements
       prisma.twitterEngagement.count({
         where: {
-          userId,
+          userId: userId as any,
           createdAt: {
             gte: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
           }
@@ -63,7 +64,7 @@ export async function GET(
       // Monthly engagements
       prisma.twitterEngagement.count({
         where: {
-          userId,
+          userId: userId as any,
           createdAt: {
             gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)
           }
@@ -72,7 +73,7 @@ export async function GET(
 
       // Recent activity
       prisma.twitterEngagement.findMany({
-        where: { userId },
+        where: { userId: userId as any },
         orderBy: { createdAt: 'desc' },
         take: 10,
         select: {
@@ -86,7 +87,7 @@ export async function GET(
 
       // Get user's activity level and token info
       prisma.user.findUnique({
-        where: { id: userId },
+        where: { id: session.user.id as any },
         select: { 
           twitterActivity: true,
           totalTokens: true,
@@ -98,7 +99,7 @@ export async function GET(
     // Calculate engagement breakdown by type with tokens
     const engagementBreakdown = await prisma.twitterEngagement.groupBy({
       by: ['engagementType'],
-      where: { userId },
+      where: { userId: userId as any },
       _count: { engagementType: true },
       _sum: { tokens: true } // Sum tokens instead of points
     })

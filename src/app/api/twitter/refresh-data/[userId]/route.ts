@@ -4,10 +4,11 @@ import { TwitterApi } from 'twitter-api-v2'
 import prisma from '@/lib/prisma'
 
 export async function POST(
-  req: NextRequest,
-  { params }: { params: { userId: string } }
+  req: NextRequest
 ) {
   try {
+    const requestUrl = new URL(req.url);
+    const userId = requestUrl.searchParams.get("userId");
     const session = await getSession(req)
     
     if (!session) {
@@ -17,7 +18,6 @@ export async function POST(
       )
     }
 
-    const { userId } = params
 
     // Verify user access
     if (session.user.id !== userId && !session.user.isAdmin) {
@@ -29,7 +29,7 @@ export async function POST(
 
     // Get user's Twitter data
     const user = await prisma.user.findUnique({
-      where: { id: userId },
+      where: { id: session.user.id as string },
       select: { twitterId: true, twitterUsername: true }
     })
 
@@ -61,7 +61,7 @@ export async function POST(
     // Calculate new activity level
     const engagements = await prisma.twitterEngagement.count({
       where: {
-        userId,
+        userId: userId as any,
         createdAt: {
           gte: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000)
         }
@@ -77,7 +77,7 @@ export async function POST(
 
     // Update user data
     const updatedUser = await prisma.user.update({
-      where: { id: userId },
+      where: { id: session.user.id as string },
       data: {
         twitterFollowers: followers,
         twitterActivity: activityLevel,
