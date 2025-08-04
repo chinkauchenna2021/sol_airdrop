@@ -251,7 +251,9 @@ export default function AuthSystemDashboard() {
         </Alert>
       )}
 
-      <Tabs  className="w-full">
+      <Tabs  className="w-full" value={''} onValueChange={function (value: string): void {
+        throw new Error('Function not implemented.')
+      } } children={undefined}>
         <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="systems">Systems</TabsTrigger>
           <TabsTrigger value="monitoring">Monitoring</TabsTrigger>
