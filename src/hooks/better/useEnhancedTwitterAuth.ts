@@ -1,3 +1,4 @@
+'use client'
 import { useState, useEffect, useCallback } from 'react'
 import { createAuthClient } from "better-auth/react"
 import { useWalletStore } from '@/store/useWalletStore'
