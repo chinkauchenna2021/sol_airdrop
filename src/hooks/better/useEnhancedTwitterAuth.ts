@@ -5,6 +5,7 @@ import { useWalletStore } from '@/store/useWalletStore'
 import { useUserStore } from '@/store/useUserStore'
 import { toast } from 'sonner'
 import type { Session, User } from '@/lib/better-auth-enhanced'
+import { authClient } from '@/lib/auth-client'
 
 interface TwitterEngagementData {
   totalEngagements: number
@@ -48,18 +49,18 @@ interface EnhancedUser {
 }
 
 // Enhanced auth client with custom configuration
-export const authClient = createAuthClient({
-  baseURL: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
-  fetchOptions: {
-    credentials: 'include',
-    headers: {
-      'Content-Type': 'application/json',
-    }
-  }
-})
+// export const authClient = createAuthClient({
+//   baseURL: process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000",
+//   fetchOptions: {
+//     credentials: 'include',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     }
+//   }
+// })
 
 export function useEnhancedTwitterAuth() {
-  const { data: session, isPending, error } = authClient.useSession()
+  const { data:session, isPending } = authClient.useSession()
   const { user, setUser, } = useUserStore()
   const { connected, publicKey } = useWalletStore()
   
@@ -342,7 +343,7 @@ export function useEnhancedTwitterAuth() {
   // Computed properties
   const isTwitterConnected = !!(session?.user && user?.twitterId)
   const isLoading = isPending || isConnecting || isSyncing
-  const hasError = !!error || !!connectionError
+  const hasError =  !!connectionError
 
   return {
     // Core auth state
@@ -351,7 +352,7 @@ export function useEnhancedTwitterAuth() {
     isTwitterConnected,
     isLoading,
     hasError,
-    error: error || connectionError,
+    error: connectionError,
 
     // User data
     user,

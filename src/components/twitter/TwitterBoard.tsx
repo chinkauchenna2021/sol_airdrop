@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -96,8 +97,6 @@ export default function TwitterIntegrationComponent() {
   const [data, setData] = useState<DashboardData | null>(null)
   const [loading, setLoading] = useState(true)
   const [activeTab, setActiveTab] = useState('overview')
-
-
 
 /**
  * @description from dashboard data 
@@ -262,7 +261,7 @@ export default function TwitterIntegrationComponent() {
         <AlertTitle>Authentication Error</AlertTitle>
         <AlertDescription>
           <div>
-            {error?.toString() || 'Failed to load Twitter authentication'}
+            {JSON.stringify(error) || 'Failed to load Twitter authentication'}
           </div>
         </AlertDescription>
       </Alert>

@@ -286,7 +286,7 @@ export default function EnhancedHomepage() {
         >
           <div className="max-w-4xl mx-auto">
             <TwitterConnection />
-            <TwitterIntegrationComponent />
+            {/* <TwitterIntegrationComponent /> */}
           </div>
         </section>
       )}
