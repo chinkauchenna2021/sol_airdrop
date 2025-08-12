@@ -349,7 +349,7 @@ import {
   Coins, Users, Settings, Bell, Search, Zap, Shield,
   TrendingUp, Gift, Globe, Star, ArrowRight, Crown,
   Database, FileText, UserCheck, Cog, Activity,
-  Lock, Eye, BarChart2
+  Lock, Eye, BarChart2,User2Icon
 } from 'lucide-react'
 import { useWalletStore } from '@/store/useWalletStore'
 import { WalletButton } from '@/components/wallet/WalletButton'
@@ -375,6 +375,12 @@ const navItems = [
     href: '/claimtoken', 
     icon: Coins,
     description: 'Claim your earned CONNECT tokens'
+  },
+   { 
+    name: 'Nft Pass', 
+    href: '/nftclaim', 
+    icon: User2Icon,
+    description: 'Get Nft Pass to claim Connect tokens'
   },
 ]
 
@@ -414,6 +420,12 @@ const adminItems = [
     href: '/admin-dashboard/analytics',
     icon: BarChart2,
     description: 'Platform insights and reports'
+  },
+  {
+    name: 'Approve Nft & Tokens',
+    href: '/admin-dashboard/admin-nft-approval',
+    icon: UserCheck,
+    description: 'Manage Nft and Token approval'
   }
 ]
 

@@ -234,6 +234,7 @@ exports.Prisma.SystemConfigScalarFieldEnum = {
   key: 'key',
   value: 'value',
   description: 'description',
+  createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
 
@@ -302,6 +303,10 @@ exports.Prisma.NftCollectionScalarFieldEnum = {
   supply: 'supply',
   createdBy: 'createdBy',
   metadata: 'metadata',
+  minted: 'minted',
+  creatorWallet: 'creatorWallet',
+  royaltyPercentage: 'royaltyPercentage',
+  isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -311,8 +316,13 @@ exports.Prisma.NftDistributionScalarFieldEnum = {
   mintAddress: 'mintAddress',
   distributedBy: 'distributedBy',
   recipientCount: 'recipientCount',
+  recipientWallets: 'recipientWallets',
+  nftsPerRecipient: 'nftsPerRecipient',
   nftsPerUser: 'nftsPerUser',
   results: 'results',
+  transactionHash: 'transactionHash',
+  errorMessage: 'errorMessage',
+  collectionId: 'collectionId',
   success: 'success',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -325,7 +335,9 @@ exports.Prisma.NftClaimApprovalScalarFieldEnum = {
   approvedBy: 'approvedBy',
   approvedAt: 'approvedAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  claimed: 'claimed',
+  claimedAt: 'claimedAt'
 };
 
 exports.Prisma.UserNftHoldingScalarFieldEnum = {
@@ -357,7 +369,8 @@ exports.Prisma.AdminAuditLogScalarFieldEnum = {
   action: 'action',
   metadata: 'metadata',
   timestamp: 'timestamp',
-  ipAddress: 'ipAddress'
+  ipAddress: 'ipAddress',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.FraudAlertScalarFieldEnum = {
@@ -430,6 +443,22 @@ exports.Prisma.TwitterAnalyticsScalarFieldEnum = {
   impressions: 'impressions',
   engagement_rate: 'engagement_rate',
   calculatedAt: 'calculatedAt'
+};
+
+exports.Prisma.NftClaimScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  userWallet: 'userWallet',
+  mintAddress: 'mintAddress',
+  nftNumber: 'nftNumber',
+  paymentSignature: 'paymentSignature',
+  createSignature: 'createSignature',
+  transferSignature: 'transferSignature',
+  status: 'status',
+  errorMessage: 'errorMessage',
+  metadata: 'metadata',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -529,7 +558,8 @@ exports.Prisma.ModelName = {
   Achievement: 'Achievement',
   UserAchievement: 'UserAchievement',
   Notification: 'Notification',
-  TwitterAnalytics: 'TwitterAnalytics'
+  TwitterAnalytics: 'TwitterAnalytics',
+  NftClaim: 'NftClaim'
 };
 
 /**

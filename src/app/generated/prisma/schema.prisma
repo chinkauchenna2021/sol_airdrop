@@ -60,6 +60,9 @@ model User {
   fraudAlerts   FraudAlert[]
   campaigns     CampaignConfig[]
 
+  // New NFT-related relations
+  nftClaims NftClaim[]
+
   nftCollections   NftCollection[]
   nftDistributions NftDistribution[]
   nftHoldings      UserNftHolding[]
@@ -194,6 +197,7 @@ model SystemConfig {
   key         String   @unique
   value       Json
   description String?
+  createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
   @@index([key])
@@ -272,34 +276,42 @@ model AirdropClaim {
 
 // Keep all other models exactly the same...
 model NftCollection {
-  id          String   @id @default(cuid())
-  mintAddress String   @unique @map("mint_address")
-  name        String
-  symbol      String
-  description String?
-  uri         String
-  supply      Int      @default(0)
-  createdBy   String   @map("created_by")
-  metadata    Json?
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
-
-  creator       User              @relation(fields: [createdBy], references: [id])
-  distributions NftDistribution[]
+  id                String            @id @default(cuid())
+  mintAddress       String            @unique @map("mint_address")
+  name              String
+  symbol            String
+  description       String?
+  uri               String
+  supply            Int               @default(0)
+  createdBy         String            @map("created_by")
+  metadata          Json?
+  minted            Int               @default(0)
+  creatorWallet     String?
+  royaltyPercentage Float             @default(0)
+  isActive          Boolean           @default(true)
+  createdAt         DateTime          @default(now()) @map("created_at")
+  updatedAt         DateTime          @updatedAt @map("updated_at")
+  creator           User              @relation(fields: [createdBy], references: [id])
+  distributions     NftDistribution[]
 
   @@map("nft_collections")
 }
 
 model NftDistribution {
-  id             String   @id @default(cuid())
-  mintAddress    String   @map("mint_address")
-  distributedBy  String   @map("distributed_by")
-  recipientCount Int      @map("recipient_count")
-  nftsPerUser    Int      @map("nfts_per_user")
-  results        Json
-  success        Boolean  @default(true)
-  createdAt      DateTime @default(now()) @map("created_at")
-  updatedAt      DateTime @updatedAt @map("updated_at")
+  id               String   @id @default(cuid())
+  mintAddress      String   @map("mint_address")
+  distributedBy    String   @map("distributed_by")
+  recipientCount   Int      @map("recipient_count")
+  recipientWallets Json?
+  nftsPerRecipient Int      @default(1)
+  nftsPerUser      Int      @map("nfts_per_user")
+  results          Json?
+  transactionHash  String?
+  errorMessage     String?
+  collectionId     String?
+  success          Boolean  @default(true)
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
 
   collection  NftCollection @relation(fields: [mintAddress], references: [mintAddress])
   distributor User          @relation(fields: [distributedBy], references: [id])
@@ -318,6 +330,9 @@ model NftClaimApproval {
 
   user     User  @relation(fields: [userId], references: [id])
   approver User? @relation("ApprovedBy", fields: [approvedBy], references: [id])
+
+  claimed   Boolean   @default(false)
+  claimedAt DateTime?
 
   @@map("nft_claim_approvals")
 }
@@ -361,6 +376,7 @@ model AdminAuditLog {
   metadata  Json
   timestamp DateTime @default(now())
   ipAddress String
+  createdAt DateTime @default(now())
 
   admin User @relation(fields: [adminId], references: [id], onDelete: Cascade)
 
@@ -462,6 +478,28 @@ model TwitterAnalytics {
 
   @@unique([tweetId])
   @@map("twitter_analytics")
+}
+
+// New schema
+
+model NftClaim {
+  id                String   @id @default(cuid())
+  userId            String
+  userWallet        String
+  mintAddress       String?
+  nftNumber         Int?
+  paymentSignature  String
+  createSignature   String?
+  transferSignature String?
+  status            String   @default("PENDING") // PENDING, PROCESSING, COMPLETED, FAILED
+  errorMessage      String?
+  metadata          Json? // Store NFT metadata, payment info, etc.
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("nft_claims")
 }
 
 enum TwitterActivity {

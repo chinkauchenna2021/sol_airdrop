@@ -133,6 +133,11 @@ export type Notification = $Result.DefaultSelection<Prisma.$NotificationPayload>
  * 
  */
 export type TwitterAnalytics = $Result.DefaultSelection<Prisma.$TwitterAnalyticsPayload>
+/**
+ * Model NftClaim
+ * 
+ */
+export type NftClaim = $Result.DefaultSelection<Prisma.$NftClaimPayload>
 
 /**
  * Enums
@@ -589,6 +594,16 @@ export class PrismaClient<
     * ```
     */
   get twitterAnalytics(): Prisma.TwitterAnalyticsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.nftClaim`: Exposes CRUD operations for the **NftClaim** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more NftClaims
+    * const nftClaims = await prisma.nftClaim.findMany()
+    * ```
+    */
+  get nftClaim(): Prisma.NftClaimDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1052,7 +1067,8 @@ export namespace Prisma {
     Achievement: 'Achievement',
     UserAchievement: 'UserAchievement',
     Notification: 'Notification',
-    TwitterAnalytics: 'TwitterAnalytics'
+    TwitterAnalytics: 'TwitterAnalytics',
+    NftClaim: 'NftClaim'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1071,7 +1087,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "pointHistory" | "referral" | "twitterEngagement" | "taskCompletion" | "task" | "claim" | "systemConfig" | "analytics" | "dailyEarning" | "airdropSeason" | "airdropClaim" | "nftCollection" | "nftDistribution" | "nftClaimApproval" | "userNftHolding" | "adminSession" | "adminAuditLog" | "fraudAlert" | "campaignConfig" | "achievement" | "userAchievement" | "notification" | "twitterAnalytics"
+      modelProps: "user" | "pointHistory" | "referral" | "twitterEngagement" | "taskCompletion" | "task" | "claim" | "systemConfig" | "analytics" | "dailyEarning" | "airdropSeason" | "airdropClaim" | "nftCollection" | "nftDistribution" | "nftClaimApproval" | "userNftHolding" | "adminSession" | "adminAuditLog" | "fraudAlert" | "campaignConfig" | "achievement" | "userAchievement" | "notification" | "twitterAnalytics" | "nftClaim"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2851,6 +2867,80 @@ export namespace Prisma {
           }
         }
       }
+      NftClaim: {
+        payload: Prisma.$NftClaimPayload<ExtArgs>
+        fields: Prisma.NftClaimFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NftClaimFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NftClaimFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimPayload>
+          }
+          findFirst: {
+            args: Prisma.NftClaimFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NftClaimFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimPayload>
+          }
+          findMany: {
+            args: Prisma.NftClaimFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimPayload>[]
+          }
+          create: {
+            args: Prisma.NftClaimCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimPayload>
+          }
+          createMany: {
+            args: Prisma.NftClaimCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NftClaimCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimPayload>[]
+          }
+          delete: {
+            args: Prisma.NftClaimDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimPayload>
+          }
+          update: {
+            args: Prisma.NftClaimUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimPayload>
+          }
+          deleteMany: {
+            args: Prisma.NftClaimDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NftClaimUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NftClaimUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimPayload>[]
+          }
+          upsert: {
+            args: Prisma.NftClaimUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimPayload>
+          }
+          aggregate: {
+            args: Prisma.NftClaimAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNftClaim>
+          }
+          groupBy: {
+            args: Prisma.NftClaimGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NftClaimGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NftClaimCountArgs<ExtArgs>
+            result: $Utils.Optional<NftClaimCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2959,6 +3049,7 @@ export namespace Prisma {
     userAchievement?: UserAchievementOmit
     notification?: NotificationOmit
     twitterAnalytics?: TwitterAnalyticsOmit
+    nftClaim?: NftClaimOmit
   }
 
   /* Types for Logging */
@@ -3066,6 +3157,7 @@ export namespace Prisma {
     auditLogs: number
     fraudAlerts: number
     campaigns: number
+    nftClaims: number
     nftCollections: number
     nftDistributions: number
     nftHoldings: number
@@ -3087,6 +3179,7 @@ export namespace Prisma {
     auditLogs?: boolean | UserCountOutputTypeCountAuditLogsArgs
     fraudAlerts?: boolean | UserCountOutputTypeCountFraudAlertsArgs
     campaigns?: boolean | UserCountOutputTypeCountCampaignsArgs
+    nftClaims?: boolean | UserCountOutputTypeCountNftClaimsArgs
     nftCollections?: boolean | UserCountOutputTypeCountNftCollectionsArgs
     nftDistributions?: boolean | UserCountOutputTypeCountNftDistributionsArgs
     nftHoldings?: boolean | UserCountOutputTypeCountNftHoldingsArgs
@@ -3194,6 +3287,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountCampaignsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CampaignConfigWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountNftClaimsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NftClaimWhereInput
   }
 
   /**
@@ -3784,6 +3884,7 @@ export namespace Prisma {
     auditLogs?: boolean | User$auditLogsArgs<ExtArgs>
     fraudAlerts?: boolean | User$fraudAlertsArgs<ExtArgs>
     campaigns?: boolean | User$campaignsArgs<ExtArgs>
+    nftClaims?: boolean | User$nftClaimsArgs<ExtArgs>
     nftCollections?: boolean | User$nftCollectionsArgs<ExtArgs>
     nftDistributions?: boolean | User$nftDistributionsArgs<ExtArgs>
     nftHoldings?: boolean | User$nftHoldingsArgs<ExtArgs>
@@ -3905,6 +4006,7 @@ export namespace Prisma {
     auditLogs?: boolean | User$auditLogsArgs<ExtArgs>
     fraudAlerts?: boolean | User$fraudAlertsArgs<ExtArgs>
     campaigns?: boolean | User$campaignsArgs<ExtArgs>
+    nftClaims?: boolean | User$nftClaimsArgs<ExtArgs>
     nftCollections?: boolean | User$nftCollectionsArgs<ExtArgs>
     nftDistributions?: boolean | User$nftDistributionsArgs<ExtArgs>
     nftHoldings?: boolean | User$nftHoldingsArgs<ExtArgs>
@@ -3933,6 +4035,7 @@ export namespace Prisma {
       auditLogs: Prisma.$AdminAuditLogPayload<ExtArgs>[]
       fraudAlerts: Prisma.$FraudAlertPayload<ExtArgs>[]
       campaigns: Prisma.$CampaignConfigPayload<ExtArgs>[]
+      nftClaims: Prisma.$NftClaimPayload<ExtArgs>[]
       nftCollections: Prisma.$NftCollectionPayload<ExtArgs>[]
       nftDistributions: Prisma.$NftDistributionPayload<ExtArgs>[]
       nftHoldings: Prisma.$UserNftHoldingPayload<ExtArgs>[]
@@ -4378,6 +4481,7 @@ export namespace Prisma {
     auditLogs<T extends User$auditLogsArgs<ExtArgs> = {}>(args?: Subset<T, User$auditLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuditLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     fraudAlerts<T extends User$fraudAlertsArgs<ExtArgs> = {}>(args?: Subset<T, User$fraudAlertsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FraudAlertPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     campaigns<T extends User$campaignsArgs<ExtArgs> = {}>(args?: Subset<T, User$campaignsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CampaignConfigPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    nftClaims<T extends User$nftClaimsArgs<ExtArgs> = {}>(args?: Subset<T, User$nftClaimsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftClaimPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     nftCollections<T extends User$nftCollectionsArgs<ExtArgs> = {}>(args?: Subset<T, User$nftCollectionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftCollectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     nftDistributions<T extends User$nftDistributionsArgs<ExtArgs> = {}>(args?: Subset<T, User$nftDistributionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftDistributionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     nftHoldings<T extends User$nftHoldingsArgs<ExtArgs> = {}>(args?: Subset<T, User$nftHoldingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserNftHoldingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -5158,6 +5262,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: CampaignConfigScalarFieldEnum | CampaignConfigScalarFieldEnum[]
+  }
+
+  /**
+   * User.nftClaims
+   */
+  export type User$nftClaimsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaim
+     */
+    select?: NftClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaim
+     */
+    omit?: NftClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimInclude<ExtArgs> | null
+    where?: NftClaimWhereInput
+    orderBy?: NftClaimOrderByWithRelationInput | NftClaimOrderByWithRelationInput[]
+    cursor?: NftClaimWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: NftClaimScalarFieldEnum | NftClaimScalarFieldEnum[]
   }
 
   /**
@@ -12285,6 +12413,7 @@ export namespace Prisma {
     id: string | null
     key: string | null
     description: string | null
+    createdAt: Date | null
     updatedAt: Date | null
   }
 
@@ -12292,6 +12421,7 @@ export namespace Prisma {
     id: string | null
     key: string | null
     description: string | null
+    createdAt: Date | null
     updatedAt: Date | null
   }
 
@@ -12300,6 +12430,7 @@ export namespace Prisma {
     key: number
     value: number
     description: number
+    createdAt: number
     updatedAt: number
     _all: number
   }
@@ -12309,6 +12440,7 @@ export namespace Prisma {
     id?: true
     key?: true
     description?: true
+    createdAt?: true
     updatedAt?: true
   }
 
@@ -12316,6 +12448,7 @@ export namespace Prisma {
     id?: true
     key?: true
     description?: true
+    createdAt?: true
     updatedAt?: true
   }
 
@@ -12324,6 +12457,7 @@ export namespace Prisma {
     key?: true
     value?: true
     description?: true
+    createdAt?: true
     updatedAt?: true
     _all?: true
   }
@@ -12405,6 +12539,7 @@ export namespace Prisma {
     key: string
     value: JsonValue
     description: string | null
+    createdAt: Date
     updatedAt: Date
     _count: SystemConfigCountAggregateOutputType | null
     _min: SystemConfigMinAggregateOutputType | null
@@ -12430,6 +12565,7 @@ export namespace Prisma {
     key?: boolean
     value?: boolean
     description?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["systemConfig"]>
 
@@ -12438,6 +12574,7 @@ export namespace Prisma {
     key?: boolean
     value?: boolean
     description?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["systemConfig"]>
 
@@ -12446,6 +12583,7 @@ export namespace Prisma {
     key?: boolean
     value?: boolean
     description?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["systemConfig"]>
 
@@ -12454,10 +12592,11 @@ export namespace Prisma {
     key?: boolean
     value?: boolean
     description?: boolean
+    createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type SystemConfigOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "key" | "value" | "description" | "updatedAt", ExtArgs["result"]["systemConfig"]>
+  export type SystemConfigOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "key" | "value" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["systemConfig"]>
 
   export type $SystemConfigPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "SystemConfig"
@@ -12467,6 +12606,7 @@ export namespace Prisma {
       key: string
       value: Prisma.JsonValue
       description: string | null
+      createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["systemConfig"]>
     composites: {}
@@ -12895,6 +13035,7 @@ export namespace Prisma {
     readonly key: FieldRef<"SystemConfig", 'String'>
     readonly value: FieldRef<"SystemConfig", 'Json'>
     readonly description: FieldRef<"SystemConfig", 'String'>
+    readonly createdAt: FieldRef<"SystemConfig", 'DateTime'>
     readonly updatedAt: FieldRef<"SystemConfig", 'DateTime'>
   }
     
@@ -17942,10 +18083,14 @@ export namespace Prisma {
 
   export type NftCollectionAvgAggregateOutputType = {
     supply: number | null
+    minted: number | null
+    royaltyPercentage: number | null
   }
 
   export type NftCollectionSumAggregateOutputType = {
     supply: number | null
+    minted: number | null
+    royaltyPercentage: number | null
   }
 
   export type NftCollectionMinAggregateOutputType = {
@@ -17957,6 +18102,10 @@ export namespace Prisma {
     uri: string | null
     supply: number | null
     createdBy: string | null
+    minted: number | null
+    creatorWallet: string | null
+    royaltyPercentage: number | null
+    isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -17970,6 +18119,10 @@ export namespace Prisma {
     uri: string | null
     supply: number | null
     createdBy: string | null
+    minted: number | null
+    creatorWallet: string | null
+    royaltyPercentage: number | null
+    isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -17984,6 +18137,10 @@ export namespace Prisma {
     supply: number
     createdBy: number
     metadata: number
+    minted: number
+    creatorWallet: number
+    royaltyPercentage: number
+    isActive: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -17992,10 +18149,14 @@ export namespace Prisma {
 
   export type NftCollectionAvgAggregateInputType = {
     supply?: true
+    minted?: true
+    royaltyPercentage?: true
   }
 
   export type NftCollectionSumAggregateInputType = {
     supply?: true
+    minted?: true
+    royaltyPercentage?: true
   }
 
   export type NftCollectionMinAggregateInputType = {
@@ -18007,6 +18168,10 @@ export namespace Prisma {
     uri?: true
     supply?: true
     createdBy?: true
+    minted?: true
+    creatorWallet?: true
+    royaltyPercentage?: true
+    isActive?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -18020,6 +18185,10 @@ export namespace Prisma {
     uri?: true
     supply?: true
     createdBy?: true
+    minted?: true
+    creatorWallet?: true
+    royaltyPercentage?: true
+    isActive?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -18034,6 +18203,10 @@ export namespace Prisma {
     supply?: true
     createdBy?: true
     metadata?: true
+    minted?: true
+    creatorWallet?: true
+    royaltyPercentage?: true
+    isActive?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -18135,6 +18308,10 @@ export namespace Prisma {
     supply: number
     createdBy: string
     metadata: JsonValue | null
+    minted: number
+    creatorWallet: string | null
+    royaltyPercentage: number
+    isActive: boolean
     createdAt: Date
     updatedAt: Date
     _count: NftCollectionCountAggregateOutputType | null
@@ -18168,6 +18345,10 @@ export namespace Prisma {
     supply?: boolean
     createdBy?: boolean
     metadata?: boolean
+    minted?: boolean
+    creatorWallet?: boolean
+    royaltyPercentage?: boolean
+    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     creator?: boolean | UserDefaultArgs<ExtArgs>
@@ -18185,6 +18366,10 @@ export namespace Prisma {
     supply?: boolean
     createdBy?: boolean
     metadata?: boolean
+    minted?: boolean
+    creatorWallet?: boolean
+    royaltyPercentage?: boolean
+    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     creator?: boolean | UserDefaultArgs<ExtArgs>
@@ -18200,6 +18385,10 @@ export namespace Prisma {
     supply?: boolean
     createdBy?: boolean
     metadata?: boolean
+    minted?: boolean
+    creatorWallet?: boolean
+    royaltyPercentage?: boolean
+    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     creator?: boolean | UserDefaultArgs<ExtArgs>
@@ -18215,11 +18404,15 @@ export namespace Prisma {
     supply?: boolean
     createdBy?: boolean
     metadata?: boolean
+    minted?: boolean
+    creatorWallet?: boolean
+    royaltyPercentage?: boolean
+    isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type NftCollectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mintAddress" | "name" | "symbol" | "description" | "uri" | "supply" | "createdBy" | "metadata" | "createdAt" | "updatedAt", ExtArgs["result"]["nftCollection"]>
+  export type NftCollectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mintAddress" | "name" | "symbol" | "description" | "uri" | "supply" | "createdBy" | "metadata" | "minted" | "creatorWallet" | "royaltyPercentage" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["nftCollection"]>
   export type NftCollectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     creator?: boolean | UserDefaultArgs<ExtArgs>
     distributions?: boolean | NftCollection$distributionsArgs<ExtArgs>
@@ -18248,6 +18441,10 @@ export namespace Prisma {
       supply: number
       createdBy: string
       metadata: Prisma.JsonValue | null
+      minted: number
+      creatorWallet: string | null
+      royaltyPercentage: number
+      isActive: boolean
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["nftCollection"]>
@@ -18684,6 +18881,10 @@ export namespace Prisma {
     readonly supply: FieldRef<"NftCollection", 'Int'>
     readonly createdBy: FieldRef<"NftCollection", 'String'>
     readonly metadata: FieldRef<"NftCollection", 'Json'>
+    readonly minted: FieldRef<"NftCollection", 'Int'>
+    readonly creatorWallet: FieldRef<"NftCollection", 'String'>
+    readonly royaltyPercentage: FieldRef<"NftCollection", 'Float'>
+    readonly isActive: FieldRef<"NftCollection", 'Boolean'>
     readonly createdAt: FieldRef<"NftCollection", 'DateTime'>
     readonly updatedAt: FieldRef<"NftCollection", 'DateTime'>
   }
@@ -19138,11 +19339,13 @@ export namespace Prisma {
 
   export type NftDistributionAvgAggregateOutputType = {
     recipientCount: number | null
+    nftsPerRecipient: number | null
     nftsPerUser: number | null
   }
 
   export type NftDistributionSumAggregateOutputType = {
     recipientCount: number | null
+    nftsPerRecipient: number | null
     nftsPerUser: number | null
   }
 
@@ -19151,7 +19354,11 @@ export namespace Prisma {
     mintAddress: string | null
     distributedBy: string | null
     recipientCount: number | null
+    nftsPerRecipient: number | null
     nftsPerUser: number | null
+    transactionHash: string | null
+    errorMessage: string | null
+    collectionId: string | null
     success: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -19162,7 +19369,11 @@ export namespace Prisma {
     mintAddress: string | null
     distributedBy: string | null
     recipientCount: number | null
+    nftsPerRecipient: number | null
     nftsPerUser: number | null
+    transactionHash: string | null
+    errorMessage: string | null
+    collectionId: string | null
     success: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -19173,8 +19384,13 @@ export namespace Prisma {
     mintAddress: number
     distributedBy: number
     recipientCount: number
+    recipientWallets: number
+    nftsPerRecipient: number
     nftsPerUser: number
     results: number
+    transactionHash: number
+    errorMessage: number
+    collectionId: number
     success: number
     createdAt: number
     updatedAt: number
@@ -19184,11 +19400,13 @@ export namespace Prisma {
 
   export type NftDistributionAvgAggregateInputType = {
     recipientCount?: true
+    nftsPerRecipient?: true
     nftsPerUser?: true
   }
 
   export type NftDistributionSumAggregateInputType = {
     recipientCount?: true
+    nftsPerRecipient?: true
     nftsPerUser?: true
   }
 
@@ -19197,7 +19415,11 @@ export namespace Prisma {
     mintAddress?: true
     distributedBy?: true
     recipientCount?: true
+    nftsPerRecipient?: true
     nftsPerUser?: true
+    transactionHash?: true
+    errorMessage?: true
+    collectionId?: true
     success?: true
     createdAt?: true
     updatedAt?: true
@@ -19208,7 +19430,11 @@ export namespace Prisma {
     mintAddress?: true
     distributedBy?: true
     recipientCount?: true
+    nftsPerRecipient?: true
     nftsPerUser?: true
+    transactionHash?: true
+    errorMessage?: true
+    collectionId?: true
     success?: true
     createdAt?: true
     updatedAt?: true
@@ -19219,8 +19445,13 @@ export namespace Prisma {
     mintAddress?: true
     distributedBy?: true
     recipientCount?: true
+    recipientWallets?: true
+    nftsPerRecipient?: true
     nftsPerUser?: true
     results?: true
+    transactionHash?: true
+    errorMessage?: true
+    collectionId?: true
     success?: true
     createdAt?: true
     updatedAt?: true
@@ -19318,8 +19549,13 @@ export namespace Prisma {
     mintAddress: string
     distributedBy: string
     recipientCount: number
+    recipientWallets: JsonValue | null
+    nftsPerRecipient: number
     nftsPerUser: number
-    results: JsonValue
+    results: JsonValue | null
+    transactionHash: string | null
+    errorMessage: string | null
+    collectionId: string | null
     success: boolean
     createdAt: Date
     updatedAt: Date
@@ -19349,8 +19585,13 @@ export namespace Prisma {
     mintAddress?: boolean
     distributedBy?: boolean
     recipientCount?: boolean
+    recipientWallets?: boolean
+    nftsPerRecipient?: boolean
     nftsPerUser?: boolean
     results?: boolean
+    transactionHash?: boolean
+    errorMessage?: boolean
+    collectionId?: boolean
     success?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -19363,8 +19604,13 @@ export namespace Prisma {
     mintAddress?: boolean
     distributedBy?: boolean
     recipientCount?: boolean
+    recipientWallets?: boolean
+    nftsPerRecipient?: boolean
     nftsPerUser?: boolean
     results?: boolean
+    transactionHash?: boolean
+    errorMessage?: boolean
+    collectionId?: boolean
     success?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -19377,8 +19623,13 @@ export namespace Prisma {
     mintAddress?: boolean
     distributedBy?: boolean
     recipientCount?: boolean
+    recipientWallets?: boolean
+    nftsPerRecipient?: boolean
     nftsPerUser?: boolean
     results?: boolean
+    transactionHash?: boolean
+    errorMessage?: boolean
+    collectionId?: boolean
     success?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -19391,14 +19642,19 @@ export namespace Prisma {
     mintAddress?: boolean
     distributedBy?: boolean
     recipientCount?: boolean
+    recipientWallets?: boolean
+    nftsPerRecipient?: boolean
     nftsPerUser?: boolean
     results?: boolean
+    transactionHash?: boolean
+    errorMessage?: boolean
+    collectionId?: boolean
     success?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type NftDistributionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mintAddress" | "distributedBy" | "recipientCount" | "nftsPerUser" | "results" | "success" | "createdAt" | "updatedAt", ExtArgs["result"]["nftDistribution"]>
+  export type NftDistributionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mintAddress" | "distributedBy" | "recipientCount" | "recipientWallets" | "nftsPerRecipient" | "nftsPerUser" | "results" | "transactionHash" | "errorMessage" | "collectionId" | "success" | "createdAt" | "updatedAt", ExtArgs["result"]["nftDistribution"]>
   export type NftDistributionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     collection?: boolean | NftCollectionDefaultArgs<ExtArgs>
     distributor?: boolean | UserDefaultArgs<ExtArgs>
@@ -19423,8 +19679,13 @@ export namespace Prisma {
       mintAddress: string
       distributedBy: string
       recipientCount: number
+      recipientWallets: Prisma.JsonValue | null
+      nftsPerRecipient: number
       nftsPerUser: number
-      results: Prisma.JsonValue
+      results: Prisma.JsonValue | null
+      transactionHash: string | null
+      errorMessage: string | null
+      collectionId: string | null
       success: boolean
       createdAt: Date
       updatedAt: Date
@@ -19857,8 +20118,13 @@ export namespace Prisma {
     readonly mintAddress: FieldRef<"NftDistribution", 'String'>
     readonly distributedBy: FieldRef<"NftDistribution", 'String'>
     readonly recipientCount: FieldRef<"NftDistribution", 'Int'>
+    readonly recipientWallets: FieldRef<"NftDistribution", 'Json'>
+    readonly nftsPerRecipient: FieldRef<"NftDistribution", 'Int'>
     readonly nftsPerUser: FieldRef<"NftDistribution", 'Int'>
     readonly results: FieldRef<"NftDistribution", 'Json'>
+    readonly transactionHash: FieldRef<"NftDistribution", 'String'>
+    readonly errorMessage: FieldRef<"NftDistribution", 'String'>
+    readonly collectionId: FieldRef<"NftDistribution", 'String'>
     readonly success: FieldRef<"NftDistribution", 'Boolean'>
     readonly createdAt: FieldRef<"NftDistribution", 'DateTime'>
     readonly updatedAt: FieldRef<"NftDistribution", 'DateTime'>
@@ -20294,6 +20560,8 @@ export namespace Prisma {
     approvedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
+    claimed: boolean | null
+    claimedAt: Date | null
   }
 
   export type NftClaimApprovalMaxAggregateOutputType = {
@@ -20304,6 +20572,8 @@ export namespace Prisma {
     approvedAt: Date | null
     createdAt: Date | null
     updatedAt: Date | null
+    claimed: boolean | null
+    claimedAt: Date | null
   }
 
   export type NftClaimApprovalCountAggregateOutputType = {
@@ -20314,6 +20584,8 @@ export namespace Prisma {
     approvedAt: number
     createdAt: number
     updatedAt: number
+    claimed: number
+    claimedAt: number
     _all: number
   }
 
@@ -20326,6 +20598,8 @@ export namespace Prisma {
     approvedAt?: true
     createdAt?: true
     updatedAt?: true
+    claimed?: true
+    claimedAt?: true
   }
 
   export type NftClaimApprovalMaxAggregateInputType = {
@@ -20336,6 +20610,8 @@ export namespace Prisma {
     approvedAt?: true
     createdAt?: true
     updatedAt?: true
+    claimed?: true
+    claimedAt?: true
   }
 
   export type NftClaimApprovalCountAggregateInputType = {
@@ -20346,6 +20622,8 @@ export namespace Prisma {
     approvedAt?: true
     createdAt?: true
     updatedAt?: true
+    claimed?: true
+    claimedAt?: true
     _all?: true
   }
 
@@ -20429,6 +20707,8 @@ export namespace Prisma {
     approvedAt: Date | null
     createdAt: Date
     updatedAt: Date
+    claimed: boolean
+    claimedAt: Date | null
     _count: NftClaimApprovalCountAggregateOutputType | null
     _min: NftClaimApprovalMinAggregateOutputType | null
     _max: NftClaimApprovalMaxAggregateOutputType | null
@@ -20456,6 +20736,8 @@ export namespace Prisma {
     approvedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    claimed?: boolean
+    claimedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     approver?: boolean | NftClaimApproval$approverArgs<ExtArgs>
   }, ExtArgs["result"]["nftClaimApproval"]>
@@ -20468,6 +20750,8 @@ export namespace Prisma {
     approvedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    claimed?: boolean
+    claimedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     approver?: boolean | NftClaimApproval$approverArgs<ExtArgs>
   }, ExtArgs["result"]["nftClaimApproval"]>
@@ -20480,6 +20764,8 @@ export namespace Prisma {
     approvedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    claimed?: boolean
+    claimedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     approver?: boolean | NftClaimApproval$approverArgs<ExtArgs>
   }, ExtArgs["result"]["nftClaimApproval"]>
@@ -20492,9 +20778,11 @@ export namespace Prisma {
     approvedAt?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    claimed?: boolean
+    claimedAt?: boolean
   }
 
-  export type NftClaimApprovalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "approved" | "approvedBy" | "approvedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["nftClaimApproval"]>
+  export type NftClaimApprovalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "approved" | "approvedBy" | "approvedAt" | "createdAt" | "updatedAt" | "claimed" | "claimedAt", ExtArgs["result"]["nftClaimApproval"]>
   export type NftClaimApprovalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     approver?: boolean | NftClaimApproval$approverArgs<ExtArgs>
@@ -20522,6 +20810,8 @@ export namespace Prisma {
       approvedAt: Date | null
       createdAt: Date
       updatedAt: Date
+      claimed: boolean
+      claimedAt: Date | null
     }, ExtArgs["result"]["nftClaimApproval"]>
     composites: {}
   }
@@ -20954,6 +21244,8 @@ export namespace Prisma {
     readonly approvedAt: FieldRef<"NftClaimApproval", 'DateTime'>
     readonly createdAt: FieldRef<"NftClaimApproval", 'DateTime'>
     readonly updatedAt: FieldRef<"NftClaimApproval", 'DateTime'>
+    readonly claimed: FieldRef<"NftClaimApproval", 'Boolean'>
+    readonly claimedAt: FieldRef<"NftClaimApproval", 'DateTime'>
   }
     
 
@@ -23636,6 +23928,7 @@ export namespace Prisma {
     action: string | null
     timestamp: Date | null
     ipAddress: string | null
+    createdAt: Date | null
   }
 
   export type AdminAuditLogMaxAggregateOutputType = {
@@ -23644,6 +23937,7 @@ export namespace Prisma {
     action: string | null
     timestamp: Date | null
     ipAddress: string | null
+    createdAt: Date | null
   }
 
   export type AdminAuditLogCountAggregateOutputType = {
@@ -23653,6 +23947,7 @@ export namespace Prisma {
     metadata: number
     timestamp: number
     ipAddress: number
+    createdAt: number
     _all: number
   }
 
@@ -23663,6 +23958,7 @@ export namespace Prisma {
     action?: true
     timestamp?: true
     ipAddress?: true
+    createdAt?: true
   }
 
   export type AdminAuditLogMaxAggregateInputType = {
@@ -23671,6 +23967,7 @@ export namespace Prisma {
     action?: true
     timestamp?: true
     ipAddress?: true
+    createdAt?: true
   }
 
   export type AdminAuditLogCountAggregateInputType = {
@@ -23680,6 +23977,7 @@ export namespace Prisma {
     metadata?: true
     timestamp?: true
     ipAddress?: true
+    createdAt?: true
     _all?: true
   }
 
@@ -23762,6 +24060,7 @@ export namespace Prisma {
     metadata: JsonValue
     timestamp: Date
     ipAddress: string
+    createdAt: Date
     _count: AdminAuditLogCountAggregateOutputType | null
     _min: AdminAuditLogMinAggregateOutputType | null
     _max: AdminAuditLogMaxAggregateOutputType | null
@@ -23788,6 +24087,7 @@ export namespace Prisma {
     metadata?: boolean
     timestamp?: boolean
     ipAddress?: boolean
+    createdAt?: boolean
     admin?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminAuditLog"]>
 
@@ -23798,6 +24098,7 @@ export namespace Prisma {
     metadata?: boolean
     timestamp?: boolean
     ipAddress?: boolean
+    createdAt?: boolean
     admin?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminAuditLog"]>
 
@@ -23808,6 +24109,7 @@ export namespace Prisma {
     metadata?: boolean
     timestamp?: boolean
     ipAddress?: boolean
+    createdAt?: boolean
     admin?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminAuditLog"]>
 
@@ -23818,9 +24120,10 @@ export namespace Prisma {
     metadata?: boolean
     timestamp?: boolean
     ipAddress?: boolean
+    createdAt?: boolean
   }
 
-  export type AdminAuditLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "adminId" | "action" | "metadata" | "timestamp" | "ipAddress", ExtArgs["result"]["adminAuditLog"]>
+  export type AdminAuditLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "adminId" | "action" | "metadata" | "timestamp" | "ipAddress" | "createdAt", ExtArgs["result"]["adminAuditLog"]>
   export type AdminAuditLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -23843,6 +24146,7 @@ export namespace Prisma {
       metadata: Prisma.JsonValue
       timestamp: Date
       ipAddress: string
+      createdAt: Date
     }, ExtArgs["result"]["adminAuditLog"]>
     composites: {}
   }
@@ -24273,6 +24577,7 @@ export namespace Prisma {
     readonly metadata: FieldRef<"AdminAuditLog", 'Json'>
     readonly timestamp: FieldRef<"AdminAuditLog", 'DateTime'>
     readonly ipAddress: FieldRef<"AdminAuditLog", 'String'>
+    readonly createdAt: FieldRef<"AdminAuditLog", 'DateTime'>
   }
     
 
@@ -31475,6 +31780,1198 @@ export namespace Prisma {
 
 
   /**
+   * Model NftClaim
+   */
+
+  export type AggregateNftClaim = {
+    _count: NftClaimCountAggregateOutputType | null
+    _avg: NftClaimAvgAggregateOutputType | null
+    _sum: NftClaimSumAggregateOutputType | null
+    _min: NftClaimMinAggregateOutputType | null
+    _max: NftClaimMaxAggregateOutputType | null
+  }
+
+  export type NftClaimAvgAggregateOutputType = {
+    nftNumber: number | null
+  }
+
+  export type NftClaimSumAggregateOutputType = {
+    nftNumber: number | null
+  }
+
+  export type NftClaimMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    userWallet: string | null
+    mintAddress: string | null
+    nftNumber: number | null
+    paymentSignature: string | null
+    createSignature: string | null
+    transferSignature: string | null
+    status: string | null
+    errorMessage: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NftClaimMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    userWallet: string | null
+    mintAddress: string | null
+    nftNumber: number | null
+    paymentSignature: string | null
+    createSignature: string | null
+    transferSignature: string | null
+    status: string | null
+    errorMessage: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type NftClaimCountAggregateOutputType = {
+    id: number
+    userId: number
+    userWallet: number
+    mintAddress: number
+    nftNumber: number
+    paymentSignature: number
+    createSignature: number
+    transferSignature: number
+    status: number
+    errorMessage: number
+    metadata: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type NftClaimAvgAggregateInputType = {
+    nftNumber?: true
+  }
+
+  export type NftClaimSumAggregateInputType = {
+    nftNumber?: true
+  }
+
+  export type NftClaimMinAggregateInputType = {
+    id?: true
+    userId?: true
+    userWallet?: true
+    mintAddress?: true
+    nftNumber?: true
+    paymentSignature?: true
+    createSignature?: true
+    transferSignature?: true
+    status?: true
+    errorMessage?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NftClaimMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    userWallet?: true
+    mintAddress?: true
+    nftNumber?: true
+    paymentSignature?: true
+    createSignature?: true
+    transferSignature?: true
+    status?: true
+    errorMessage?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type NftClaimCountAggregateInputType = {
+    id?: true
+    userId?: true
+    userWallet?: true
+    mintAddress?: true
+    nftNumber?: true
+    paymentSignature?: true
+    createSignature?: true
+    transferSignature?: true
+    status?: true
+    errorMessage?: true
+    metadata?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type NftClaimAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which NftClaim to aggregate.
+     */
+    where?: NftClaimWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftClaims to fetch.
+     */
+    orderBy?: NftClaimOrderByWithRelationInput | NftClaimOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NftClaimWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftClaims from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftClaims.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned NftClaims
+    **/
+    _count?: true | NftClaimCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: NftClaimAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: NftClaimSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NftClaimMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NftClaimMaxAggregateInputType
+  }
+
+  export type GetNftClaimAggregateType<T extends NftClaimAggregateArgs> = {
+        [P in keyof T & keyof AggregateNftClaim]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNftClaim[P]>
+      : GetScalarType<T[P], AggregateNftClaim[P]>
+  }
+
+
+
+
+  export type NftClaimGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NftClaimWhereInput
+    orderBy?: NftClaimOrderByWithAggregationInput | NftClaimOrderByWithAggregationInput[]
+    by: NftClaimScalarFieldEnum[] | NftClaimScalarFieldEnum
+    having?: NftClaimScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NftClaimCountAggregateInputType | true
+    _avg?: NftClaimAvgAggregateInputType
+    _sum?: NftClaimSumAggregateInputType
+    _min?: NftClaimMinAggregateInputType
+    _max?: NftClaimMaxAggregateInputType
+  }
+
+  export type NftClaimGroupByOutputType = {
+    id: string
+    userId: string
+    userWallet: string
+    mintAddress: string | null
+    nftNumber: number | null
+    paymentSignature: string
+    createSignature: string | null
+    transferSignature: string | null
+    status: string
+    errorMessage: string | null
+    metadata: JsonValue | null
+    createdAt: Date
+    updatedAt: Date
+    _count: NftClaimCountAggregateOutputType | null
+    _avg: NftClaimAvgAggregateOutputType | null
+    _sum: NftClaimSumAggregateOutputType | null
+    _min: NftClaimMinAggregateOutputType | null
+    _max: NftClaimMaxAggregateOutputType | null
+  }
+
+  type GetNftClaimGroupByPayload<T extends NftClaimGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NftClaimGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NftClaimGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NftClaimGroupByOutputType[P]>
+            : GetScalarType<T[P], NftClaimGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NftClaimSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    userWallet?: boolean
+    mintAddress?: boolean
+    nftNumber?: boolean
+    paymentSignature?: boolean
+    createSignature?: boolean
+    transferSignature?: boolean
+    status?: boolean
+    errorMessage?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["nftClaim"]>
+
+  export type NftClaimSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    userWallet?: boolean
+    mintAddress?: boolean
+    nftNumber?: boolean
+    paymentSignature?: boolean
+    createSignature?: boolean
+    transferSignature?: boolean
+    status?: boolean
+    errorMessage?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["nftClaim"]>
+
+  export type NftClaimSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    userWallet?: boolean
+    mintAddress?: boolean
+    nftNumber?: boolean
+    paymentSignature?: boolean
+    createSignature?: boolean
+    transferSignature?: boolean
+    status?: boolean
+    errorMessage?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["nftClaim"]>
+
+  export type NftClaimSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    userWallet?: boolean
+    mintAddress?: boolean
+    nftNumber?: boolean
+    paymentSignature?: boolean
+    createSignature?: boolean
+    transferSignature?: boolean
+    status?: boolean
+    errorMessage?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type NftClaimOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "userWallet" | "mintAddress" | "nftNumber" | "paymentSignature" | "createSignature" | "transferSignature" | "status" | "errorMessage" | "metadata" | "createdAt" | "updatedAt", ExtArgs["result"]["nftClaim"]>
+  export type NftClaimInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type NftClaimIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type NftClaimIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $NftClaimPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "NftClaim"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      userWallet: string
+      mintAddress: string | null
+      nftNumber: number | null
+      paymentSignature: string
+      createSignature: string | null
+      transferSignature: string | null
+      status: string
+      errorMessage: string | null
+      metadata: Prisma.JsonValue | null
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["nftClaim"]>
+    composites: {}
+  }
+
+  type NftClaimGetPayload<S extends boolean | null | undefined | NftClaimDefaultArgs> = $Result.GetResult<Prisma.$NftClaimPayload, S>
+
+  type NftClaimCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<NftClaimFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: NftClaimCountAggregateInputType | true
+    }
+
+  export interface NftClaimDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['NftClaim'], meta: { name: 'NftClaim' } }
+    /**
+     * Find zero or one NftClaim that matches the filter.
+     * @param {NftClaimFindUniqueArgs} args - Arguments to find a NftClaim
+     * @example
+     * // Get one NftClaim
+     * const nftClaim = await prisma.nftClaim.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NftClaimFindUniqueArgs>(args: SelectSubset<T, NftClaimFindUniqueArgs<ExtArgs>>): Prisma__NftClaimClient<$Result.GetResult<Prisma.$NftClaimPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one NftClaim that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {NftClaimFindUniqueOrThrowArgs} args - Arguments to find a NftClaim
+     * @example
+     * // Get one NftClaim
+     * const nftClaim = await prisma.nftClaim.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NftClaimFindUniqueOrThrowArgs>(args: SelectSubset<T, NftClaimFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NftClaimClient<$Result.GetResult<Prisma.$NftClaimPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first NftClaim that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftClaimFindFirstArgs} args - Arguments to find a NftClaim
+     * @example
+     * // Get one NftClaim
+     * const nftClaim = await prisma.nftClaim.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NftClaimFindFirstArgs>(args?: SelectSubset<T, NftClaimFindFirstArgs<ExtArgs>>): Prisma__NftClaimClient<$Result.GetResult<Prisma.$NftClaimPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first NftClaim that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftClaimFindFirstOrThrowArgs} args - Arguments to find a NftClaim
+     * @example
+     * // Get one NftClaim
+     * const nftClaim = await prisma.nftClaim.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NftClaimFindFirstOrThrowArgs>(args?: SelectSubset<T, NftClaimFindFirstOrThrowArgs<ExtArgs>>): Prisma__NftClaimClient<$Result.GetResult<Prisma.$NftClaimPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more NftClaims that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftClaimFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all NftClaims
+     * const nftClaims = await prisma.nftClaim.findMany()
+     * 
+     * // Get first 10 NftClaims
+     * const nftClaims = await prisma.nftClaim.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const nftClaimWithIdOnly = await prisma.nftClaim.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NftClaimFindManyArgs>(args?: SelectSubset<T, NftClaimFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftClaimPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a NftClaim.
+     * @param {NftClaimCreateArgs} args - Arguments to create a NftClaim.
+     * @example
+     * // Create one NftClaim
+     * const NftClaim = await prisma.nftClaim.create({
+     *   data: {
+     *     // ... data to create a NftClaim
+     *   }
+     * })
+     * 
+     */
+    create<T extends NftClaimCreateArgs>(args: SelectSubset<T, NftClaimCreateArgs<ExtArgs>>): Prisma__NftClaimClient<$Result.GetResult<Prisma.$NftClaimPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many NftClaims.
+     * @param {NftClaimCreateManyArgs} args - Arguments to create many NftClaims.
+     * @example
+     * // Create many NftClaims
+     * const nftClaim = await prisma.nftClaim.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NftClaimCreateManyArgs>(args?: SelectSubset<T, NftClaimCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many NftClaims and returns the data saved in the database.
+     * @param {NftClaimCreateManyAndReturnArgs} args - Arguments to create many NftClaims.
+     * @example
+     * // Create many NftClaims
+     * const nftClaim = await prisma.nftClaim.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many NftClaims and only return the `id`
+     * const nftClaimWithIdOnly = await prisma.nftClaim.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NftClaimCreateManyAndReturnArgs>(args?: SelectSubset<T, NftClaimCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftClaimPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a NftClaim.
+     * @param {NftClaimDeleteArgs} args - Arguments to delete one NftClaim.
+     * @example
+     * // Delete one NftClaim
+     * const NftClaim = await prisma.nftClaim.delete({
+     *   where: {
+     *     // ... filter to delete one NftClaim
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NftClaimDeleteArgs>(args: SelectSubset<T, NftClaimDeleteArgs<ExtArgs>>): Prisma__NftClaimClient<$Result.GetResult<Prisma.$NftClaimPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one NftClaim.
+     * @param {NftClaimUpdateArgs} args - Arguments to update one NftClaim.
+     * @example
+     * // Update one NftClaim
+     * const nftClaim = await prisma.nftClaim.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NftClaimUpdateArgs>(args: SelectSubset<T, NftClaimUpdateArgs<ExtArgs>>): Prisma__NftClaimClient<$Result.GetResult<Prisma.$NftClaimPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more NftClaims.
+     * @param {NftClaimDeleteManyArgs} args - Arguments to filter NftClaims to delete.
+     * @example
+     * // Delete a few NftClaims
+     * const { count } = await prisma.nftClaim.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NftClaimDeleteManyArgs>(args?: SelectSubset<T, NftClaimDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NftClaims.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftClaimUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many NftClaims
+     * const nftClaim = await prisma.nftClaim.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NftClaimUpdateManyArgs>(args: SelectSubset<T, NftClaimUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NftClaims and returns the data updated in the database.
+     * @param {NftClaimUpdateManyAndReturnArgs} args - Arguments to update many NftClaims.
+     * @example
+     * // Update many NftClaims
+     * const nftClaim = await prisma.nftClaim.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more NftClaims and only return the `id`
+     * const nftClaimWithIdOnly = await prisma.nftClaim.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NftClaimUpdateManyAndReturnArgs>(args: SelectSubset<T, NftClaimUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftClaimPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one NftClaim.
+     * @param {NftClaimUpsertArgs} args - Arguments to update or create a NftClaim.
+     * @example
+     * // Update or create a NftClaim
+     * const nftClaim = await prisma.nftClaim.upsert({
+     *   create: {
+     *     // ... data to create a NftClaim
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the NftClaim we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NftClaimUpsertArgs>(args: SelectSubset<T, NftClaimUpsertArgs<ExtArgs>>): Prisma__NftClaimClient<$Result.GetResult<Prisma.$NftClaimPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of NftClaims.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftClaimCountArgs} args - Arguments to filter NftClaims to count.
+     * @example
+     * // Count the number of NftClaims
+     * const count = await prisma.nftClaim.count({
+     *   where: {
+     *     // ... the filter for the NftClaims we want to count
+     *   }
+     * })
+    **/
+    count<T extends NftClaimCountArgs>(
+      args?: Subset<T, NftClaimCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NftClaimCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a NftClaim.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftClaimAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NftClaimAggregateArgs>(args: Subset<T, NftClaimAggregateArgs>): Prisma.PrismaPromise<GetNftClaimAggregateType<T>>
+
+    /**
+     * Group by NftClaim.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NftClaimGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NftClaimGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NftClaimGroupByArgs['orderBy'] }
+        : { orderBy?: NftClaimGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NftClaimGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNftClaimGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the NftClaim model
+   */
+  readonly fields: NftClaimFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for NftClaim.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NftClaimClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the NftClaim model
+   */
+  interface NftClaimFieldRefs {
+    readonly id: FieldRef<"NftClaim", 'String'>
+    readonly userId: FieldRef<"NftClaim", 'String'>
+    readonly userWallet: FieldRef<"NftClaim", 'String'>
+    readonly mintAddress: FieldRef<"NftClaim", 'String'>
+    readonly nftNumber: FieldRef<"NftClaim", 'Int'>
+    readonly paymentSignature: FieldRef<"NftClaim", 'String'>
+    readonly createSignature: FieldRef<"NftClaim", 'String'>
+    readonly transferSignature: FieldRef<"NftClaim", 'String'>
+    readonly status: FieldRef<"NftClaim", 'String'>
+    readonly errorMessage: FieldRef<"NftClaim", 'String'>
+    readonly metadata: FieldRef<"NftClaim", 'Json'>
+    readonly createdAt: FieldRef<"NftClaim", 'DateTime'>
+    readonly updatedAt: FieldRef<"NftClaim", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * NftClaim findUnique
+   */
+  export type NftClaimFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaim
+     */
+    select?: NftClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaim
+     */
+    omit?: NftClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimInclude<ExtArgs> | null
+    /**
+     * Filter, which NftClaim to fetch.
+     */
+    where: NftClaimWhereUniqueInput
+  }
+
+  /**
+   * NftClaim findUniqueOrThrow
+   */
+  export type NftClaimFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaim
+     */
+    select?: NftClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaim
+     */
+    omit?: NftClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimInclude<ExtArgs> | null
+    /**
+     * Filter, which NftClaim to fetch.
+     */
+    where: NftClaimWhereUniqueInput
+  }
+
+  /**
+   * NftClaim findFirst
+   */
+  export type NftClaimFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaim
+     */
+    select?: NftClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaim
+     */
+    omit?: NftClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimInclude<ExtArgs> | null
+    /**
+     * Filter, which NftClaim to fetch.
+     */
+    where?: NftClaimWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftClaims to fetch.
+     */
+    orderBy?: NftClaimOrderByWithRelationInput | NftClaimOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NftClaims.
+     */
+    cursor?: NftClaimWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftClaims from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftClaims.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NftClaims.
+     */
+    distinct?: NftClaimScalarFieldEnum | NftClaimScalarFieldEnum[]
+  }
+
+  /**
+   * NftClaim findFirstOrThrow
+   */
+  export type NftClaimFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaim
+     */
+    select?: NftClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaim
+     */
+    omit?: NftClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimInclude<ExtArgs> | null
+    /**
+     * Filter, which NftClaim to fetch.
+     */
+    where?: NftClaimWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftClaims to fetch.
+     */
+    orderBy?: NftClaimOrderByWithRelationInput | NftClaimOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for NftClaims.
+     */
+    cursor?: NftClaimWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftClaims from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftClaims.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of NftClaims.
+     */
+    distinct?: NftClaimScalarFieldEnum | NftClaimScalarFieldEnum[]
+  }
+
+  /**
+   * NftClaim findMany
+   */
+  export type NftClaimFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaim
+     */
+    select?: NftClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaim
+     */
+    omit?: NftClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimInclude<ExtArgs> | null
+    /**
+     * Filter, which NftClaims to fetch.
+     */
+    where?: NftClaimWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of NftClaims to fetch.
+     */
+    orderBy?: NftClaimOrderByWithRelationInput | NftClaimOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing NftClaims.
+     */
+    cursor?: NftClaimWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` NftClaims from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` NftClaims.
+     */
+    skip?: number
+    distinct?: NftClaimScalarFieldEnum | NftClaimScalarFieldEnum[]
+  }
+
+  /**
+   * NftClaim create
+   */
+  export type NftClaimCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaim
+     */
+    select?: NftClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaim
+     */
+    omit?: NftClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimInclude<ExtArgs> | null
+    /**
+     * The data needed to create a NftClaim.
+     */
+    data: XOR<NftClaimCreateInput, NftClaimUncheckedCreateInput>
+  }
+
+  /**
+   * NftClaim createMany
+   */
+  export type NftClaimCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many NftClaims.
+     */
+    data: NftClaimCreateManyInput | NftClaimCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * NftClaim createManyAndReturn
+   */
+  export type NftClaimCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaim
+     */
+    select?: NftClaimSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaim
+     */
+    omit?: NftClaimOmit<ExtArgs> | null
+    /**
+     * The data used to create many NftClaims.
+     */
+    data: NftClaimCreateManyInput | NftClaimCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * NftClaim update
+   */
+  export type NftClaimUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaim
+     */
+    select?: NftClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaim
+     */
+    omit?: NftClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimInclude<ExtArgs> | null
+    /**
+     * The data needed to update a NftClaim.
+     */
+    data: XOR<NftClaimUpdateInput, NftClaimUncheckedUpdateInput>
+    /**
+     * Choose, which NftClaim to update.
+     */
+    where: NftClaimWhereUniqueInput
+  }
+
+  /**
+   * NftClaim updateMany
+   */
+  export type NftClaimUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update NftClaims.
+     */
+    data: XOR<NftClaimUpdateManyMutationInput, NftClaimUncheckedUpdateManyInput>
+    /**
+     * Filter which NftClaims to update
+     */
+    where?: NftClaimWhereInput
+    /**
+     * Limit how many NftClaims to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * NftClaim updateManyAndReturn
+   */
+  export type NftClaimUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaim
+     */
+    select?: NftClaimSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaim
+     */
+    omit?: NftClaimOmit<ExtArgs> | null
+    /**
+     * The data used to update NftClaims.
+     */
+    data: XOR<NftClaimUpdateManyMutationInput, NftClaimUncheckedUpdateManyInput>
+    /**
+     * Filter which NftClaims to update
+     */
+    where?: NftClaimWhereInput
+    /**
+     * Limit how many NftClaims to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * NftClaim upsert
+   */
+  export type NftClaimUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaim
+     */
+    select?: NftClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaim
+     */
+    omit?: NftClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimInclude<ExtArgs> | null
+    /**
+     * The filter to search for the NftClaim to update in case it exists.
+     */
+    where: NftClaimWhereUniqueInput
+    /**
+     * In case the NftClaim found by the `where` argument doesn't exist, create a new NftClaim with this data.
+     */
+    create: XOR<NftClaimCreateInput, NftClaimUncheckedCreateInput>
+    /**
+     * In case the NftClaim was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NftClaimUpdateInput, NftClaimUncheckedUpdateInput>
+  }
+
+  /**
+   * NftClaim delete
+   */
+  export type NftClaimDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaim
+     */
+    select?: NftClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaim
+     */
+    omit?: NftClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimInclude<ExtArgs> | null
+    /**
+     * Filter which NftClaim to delete.
+     */
+    where: NftClaimWhereUniqueInput
+  }
+
+  /**
+   * NftClaim deleteMany
+   */
+  export type NftClaimDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which NftClaims to delete
+     */
+    where?: NftClaimWhereInput
+    /**
+     * Limit how many NftClaims to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * NftClaim without action
+   */
+  export type NftClaimDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaim
+     */
+    select?: NftClaimSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaim
+     */
+    omit?: NftClaimOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -31623,6 +33120,7 @@ export namespace Prisma {
     key: 'key',
     value: 'value',
     description: 'description',
+    createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
@@ -31706,6 +33204,10 @@ export namespace Prisma {
     supply: 'supply',
     createdBy: 'createdBy',
     metadata: 'metadata',
+    minted: 'minted',
+    creatorWallet: 'creatorWallet',
+    royaltyPercentage: 'royaltyPercentage',
+    isActive: 'isActive',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -31718,8 +33220,13 @@ export namespace Prisma {
     mintAddress: 'mintAddress',
     distributedBy: 'distributedBy',
     recipientCount: 'recipientCount',
+    recipientWallets: 'recipientWallets',
+    nftsPerRecipient: 'nftsPerRecipient',
     nftsPerUser: 'nftsPerUser',
     results: 'results',
+    transactionHash: 'transactionHash',
+    errorMessage: 'errorMessage',
+    collectionId: 'collectionId',
     success: 'success',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -31735,7 +33242,9 @@ export namespace Prisma {
     approvedBy: 'approvedBy',
     approvedAt: 'approvedAt',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    claimed: 'claimed',
+    claimedAt: 'claimedAt'
   };
 
   export type NftClaimApprovalScalarFieldEnum = (typeof NftClaimApprovalScalarFieldEnum)[keyof typeof NftClaimApprovalScalarFieldEnum]
@@ -31776,7 +33285,8 @@ export namespace Prisma {
     action: 'action',
     metadata: 'metadata',
     timestamp: 'timestamp',
-    ipAddress: 'ipAddress'
+    ipAddress: 'ipAddress',
+    createdAt: 'createdAt'
   };
 
   export type AdminAuditLogScalarFieldEnum = (typeof AdminAuditLogScalarFieldEnum)[keyof typeof AdminAuditLogScalarFieldEnum]
@@ -31870,6 +33380,25 @@ export namespace Prisma {
   };
 
   export type TwitterAnalyticsScalarFieldEnum = (typeof TwitterAnalyticsScalarFieldEnum)[keyof typeof TwitterAnalyticsScalarFieldEnum]
+
+
+  export const NftClaimScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    userWallet: 'userWallet',
+    mintAddress: 'mintAddress',
+    nftNumber: 'nftNumber',
+    paymentSignature: 'paymentSignature',
+    createSignature: 'createSignature',
+    transferSignature: 'transferSignature',
+    status: 'status',
+    errorMessage: 'errorMessage',
+    metadata: 'metadata',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type NftClaimScalarFieldEnum = (typeof NftClaimScalarFieldEnum)[keyof typeof NftClaimScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -32164,6 +33693,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogListRelationFilter
     fraudAlerts?: FraudAlertListRelationFilter
     campaigns?: CampaignConfigListRelationFilter
+    nftClaims?: NftClaimListRelationFilter
     nftCollections?: NftCollectionListRelationFilter
     nftDistributions?: NftDistributionListRelationFilter
     nftHoldings?: UserNftHoldingListRelationFilter
@@ -32216,6 +33746,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogOrderByRelationAggregateInput
     fraudAlerts?: FraudAlertOrderByRelationAggregateInput
     campaigns?: CampaignConfigOrderByRelationAggregateInput
+    nftClaims?: NftClaimOrderByRelationAggregateInput
     nftCollections?: NftCollectionOrderByRelationAggregateInput
     nftDistributions?: NftDistributionOrderByRelationAggregateInput
     nftHoldings?: UserNftHoldingOrderByRelationAggregateInput
@@ -32271,6 +33802,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogListRelationFilter
     fraudAlerts?: FraudAlertListRelationFilter
     campaigns?: CampaignConfigListRelationFilter
+    nftClaims?: NftClaimListRelationFilter
     nftCollections?: NftCollectionListRelationFilter
     nftDistributions?: NftDistributionListRelationFilter
     nftHoldings?: UserNftHoldingListRelationFilter
@@ -32854,6 +34386,7 @@ export namespace Prisma {
     key?: StringFilter<"SystemConfig"> | string
     value?: JsonFilter<"SystemConfig">
     description?: StringNullableFilter<"SystemConfig"> | string | null
+    createdAt?: DateTimeFilter<"SystemConfig"> | Date | string
     updatedAt?: DateTimeFilter<"SystemConfig"> | Date | string
   }
 
@@ -32862,6 +34395,7 @@ export namespace Prisma {
     key?: SortOrder
     value?: SortOrder
     description?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -32873,6 +34407,7 @@ export namespace Prisma {
     NOT?: SystemConfigWhereInput | SystemConfigWhereInput[]
     value?: JsonFilter<"SystemConfig">
     description?: StringNullableFilter<"SystemConfig"> | string | null
+    createdAt?: DateTimeFilter<"SystemConfig"> | Date | string
     updatedAt?: DateTimeFilter<"SystemConfig"> | Date | string
   }, "id" | "key">
 
@@ -32881,6 +34416,7 @@ export namespace Prisma {
     key?: SortOrder
     value?: SortOrder
     description?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: SystemConfigCountOrderByAggregateInput
     _max?: SystemConfigMaxOrderByAggregateInput
@@ -32895,6 +34431,7 @@ export namespace Prisma {
     key?: StringWithAggregatesFilter<"SystemConfig"> | string
     value?: JsonWithAggregatesFilter<"SystemConfig">
     description?: StringNullableWithAggregatesFilter<"SystemConfig"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"SystemConfig"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"SystemConfig"> | Date | string
   }
 
@@ -33258,6 +34795,10 @@ export namespace Prisma {
     supply?: IntFilter<"NftCollection"> | number
     createdBy?: StringFilter<"NftCollection"> | string
     metadata?: JsonNullableFilter<"NftCollection">
+    minted?: IntFilter<"NftCollection"> | number
+    creatorWallet?: StringNullableFilter<"NftCollection"> | string | null
+    royaltyPercentage?: FloatFilter<"NftCollection"> | number
+    isActive?: BoolFilter<"NftCollection"> | boolean
     createdAt?: DateTimeFilter<"NftCollection"> | Date | string
     updatedAt?: DateTimeFilter<"NftCollection"> | Date | string
     creator?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -33274,6 +34815,10 @@ export namespace Prisma {
     supply?: SortOrder
     createdBy?: SortOrder
     metadata?: SortOrderInput | SortOrder
+    minted?: SortOrder
+    creatorWallet?: SortOrderInput | SortOrder
+    royaltyPercentage?: SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     creator?: UserOrderByWithRelationInput
@@ -33293,6 +34838,10 @@ export namespace Prisma {
     supply?: IntFilter<"NftCollection"> | number
     createdBy?: StringFilter<"NftCollection"> | string
     metadata?: JsonNullableFilter<"NftCollection">
+    minted?: IntFilter<"NftCollection"> | number
+    creatorWallet?: StringNullableFilter<"NftCollection"> | string | null
+    royaltyPercentage?: FloatFilter<"NftCollection"> | number
+    isActive?: BoolFilter<"NftCollection"> | boolean
     createdAt?: DateTimeFilter<"NftCollection"> | Date | string
     updatedAt?: DateTimeFilter<"NftCollection"> | Date | string
     creator?: XOR<UserScalarRelationFilter, UserWhereInput>
@@ -33309,6 +34858,10 @@ export namespace Prisma {
     supply?: SortOrder
     createdBy?: SortOrder
     metadata?: SortOrderInput | SortOrder
+    minted?: SortOrder
+    creatorWallet?: SortOrderInput | SortOrder
+    royaltyPercentage?: SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: NftCollectionCountOrderByAggregateInput
@@ -33331,6 +34884,10 @@ export namespace Prisma {
     supply?: IntWithAggregatesFilter<"NftCollection"> | number
     createdBy?: StringWithAggregatesFilter<"NftCollection"> | string
     metadata?: JsonNullableWithAggregatesFilter<"NftCollection">
+    minted?: IntWithAggregatesFilter<"NftCollection"> | number
+    creatorWallet?: StringNullableWithAggregatesFilter<"NftCollection"> | string | null
+    royaltyPercentage?: FloatWithAggregatesFilter<"NftCollection"> | number
+    isActive?: BoolWithAggregatesFilter<"NftCollection"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"NftCollection"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"NftCollection"> | Date | string
   }
@@ -33343,8 +34900,13 @@ export namespace Prisma {
     mintAddress?: StringFilter<"NftDistribution"> | string
     distributedBy?: StringFilter<"NftDistribution"> | string
     recipientCount?: IntFilter<"NftDistribution"> | number
+    recipientWallets?: JsonNullableFilter<"NftDistribution">
+    nftsPerRecipient?: IntFilter<"NftDistribution"> | number
     nftsPerUser?: IntFilter<"NftDistribution"> | number
-    results?: JsonFilter<"NftDistribution">
+    results?: JsonNullableFilter<"NftDistribution">
+    transactionHash?: StringNullableFilter<"NftDistribution"> | string | null
+    errorMessage?: StringNullableFilter<"NftDistribution"> | string | null
+    collectionId?: StringNullableFilter<"NftDistribution"> | string | null
     success?: BoolFilter<"NftDistribution"> | boolean
     createdAt?: DateTimeFilter<"NftDistribution"> | Date | string
     updatedAt?: DateTimeFilter<"NftDistribution"> | Date | string
@@ -33357,8 +34919,13 @@ export namespace Prisma {
     mintAddress?: SortOrder
     distributedBy?: SortOrder
     recipientCount?: SortOrder
+    recipientWallets?: SortOrderInput | SortOrder
+    nftsPerRecipient?: SortOrder
     nftsPerUser?: SortOrder
-    results?: SortOrder
+    results?: SortOrderInput | SortOrder
+    transactionHash?: SortOrderInput | SortOrder
+    errorMessage?: SortOrderInput | SortOrder
+    collectionId?: SortOrderInput | SortOrder
     success?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -33374,8 +34941,13 @@ export namespace Prisma {
     mintAddress?: StringFilter<"NftDistribution"> | string
     distributedBy?: StringFilter<"NftDistribution"> | string
     recipientCount?: IntFilter<"NftDistribution"> | number
+    recipientWallets?: JsonNullableFilter<"NftDistribution">
+    nftsPerRecipient?: IntFilter<"NftDistribution"> | number
     nftsPerUser?: IntFilter<"NftDistribution"> | number
-    results?: JsonFilter<"NftDistribution">
+    results?: JsonNullableFilter<"NftDistribution">
+    transactionHash?: StringNullableFilter<"NftDistribution"> | string | null
+    errorMessage?: StringNullableFilter<"NftDistribution"> | string | null
+    collectionId?: StringNullableFilter<"NftDistribution"> | string | null
     success?: BoolFilter<"NftDistribution"> | boolean
     createdAt?: DateTimeFilter<"NftDistribution"> | Date | string
     updatedAt?: DateTimeFilter<"NftDistribution"> | Date | string
@@ -33388,8 +34960,13 @@ export namespace Prisma {
     mintAddress?: SortOrder
     distributedBy?: SortOrder
     recipientCount?: SortOrder
+    recipientWallets?: SortOrderInput | SortOrder
+    nftsPerRecipient?: SortOrder
     nftsPerUser?: SortOrder
-    results?: SortOrder
+    results?: SortOrderInput | SortOrder
+    transactionHash?: SortOrderInput | SortOrder
+    errorMessage?: SortOrderInput | SortOrder
+    collectionId?: SortOrderInput | SortOrder
     success?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -33408,8 +34985,13 @@ export namespace Prisma {
     mintAddress?: StringWithAggregatesFilter<"NftDistribution"> | string
     distributedBy?: StringWithAggregatesFilter<"NftDistribution"> | string
     recipientCount?: IntWithAggregatesFilter<"NftDistribution"> | number
+    recipientWallets?: JsonNullableWithAggregatesFilter<"NftDistribution">
+    nftsPerRecipient?: IntWithAggregatesFilter<"NftDistribution"> | number
     nftsPerUser?: IntWithAggregatesFilter<"NftDistribution"> | number
-    results?: JsonWithAggregatesFilter<"NftDistribution">
+    results?: JsonNullableWithAggregatesFilter<"NftDistribution">
+    transactionHash?: StringNullableWithAggregatesFilter<"NftDistribution"> | string | null
+    errorMessage?: StringNullableWithAggregatesFilter<"NftDistribution"> | string | null
+    collectionId?: StringNullableWithAggregatesFilter<"NftDistribution"> | string | null
     success?: BoolWithAggregatesFilter<"NftDistribution"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"NftDistribution"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"NftDistribution"> | Date | string
@@ -33426,6 +35008,8 @@ export namespace Prisma {
     approvedAt?: DateTimeNullableFilter<"NftClaimApproval"> | Date | string | null
     createdAt?: DateTimeFilter<"NftClaimApproval"> | Date | string
     updatedAt?: DateTimeFilter<"NftClaimApproval"> | Date | string
+    claimed?: BoolFilter<"NftClaimApproval"> | boolean
+    claimedAt?: DateTimeNullableFilter<"NftClaimApproval"> | Date | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     approver?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
@@ -33438,6 +35022,8 @@ export namespace Prisma {
     approvedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    claimed?: SortOrder
+    claimedAt?: SortOrderInput | SortOrder
     user?: UserOrderByWithRelationInput
     approver?: UserOrderByWithRelationInput
   }
@@ -33453,6 +35039,8 @@ export namespace Prisma {
     approvedAt?: DateTimeNullableFilter<"NftClaimApproval"> | Date | string | null
     createdAt?: DateTimeFilter<"NftClaimApproval"> | Date | string
     updatedAt?: DateTimeFilter<"NftClaimApproval"> | Date | string
+    claimed?: BoolFilter<"NftClaimApproval"> | boolean
+    claimedAt?: DateTimeNullableFilter<"NftClaimApproval"> | Date | string | null
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     approver?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id" | "userId">
@@ -33465,6 +35053,8 @@ export namespace Prisma {
     approvedAt?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    claimed?: SortOrder
+    claimedAt?: SortOrderInput | SortOrder
     _count?: NftClaimApprovalCountOrderByAggregateInput
     _max?: NftClaimApprovalMaxOrderByAggregateInput
     _min?: NftClaimApprovalMinOrderByAggregateInput
@@ -33481,6 +35071,8 @@ export namespace Prisma {
     approvedAt?: DateTimeNullableWithAggregatesFilter<"NftClaimApproval"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"NftClaimApproval"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"NftClaimApproval"> | Date | string
+    claimed?: BoolWithAggregatesFilter<"NftClaimApproval"> | boolean
+    claimedAt?: DateTimeNullableWithAggregatesFilter<"NftClaimApproval"> | Date | string | null
   }
 
   export type UserNftHoldingWhereInput = {
@@ -33641,6 +35233,7 @@ export namespace Prisma {
     metadata?: JsonFilter<"AdminAuditLog">
     timestamp?: DateTimeFilter<"AdminAuditLog"> | Date | string
     ipAddress?: StringFilter<"AdminAuditLog"> | string
+    createdAt?: DateTimeFilter<"AdminAuditLog"> | Date | string
     admin?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
@@ -33651,6 +35244,7 @@ export namespace Prisma {
     metadata?: SortOrder
     timestamp?: SortOrder
     ipAddress?: SortOrder
+    createdAt?: SortOrder
     admin?: UserOrderByWithRelationInput
   }
 
@@ -33664,6 +35258,7 @@ export namespace Prisma {
     metadata?: JsonFilter<"AdminAuditLog">
     timestamp?: DateTimeFilter<"AdminAuditLog"> | Date | string
     ipAddress?: StringFilter<"AdminAuditLog"> | string
+    createdAt?: DateTimeFilter<"AdminAuditLog"> | Date | string
     admin?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
@@ -33674,6 +35269,7 @@ export namespace Prisma {
     metadata?: SortOrder
     timestamp?: SortOrder
     ipAddress?: SortOrder
+    createdAt?: SortOrder
     _count?: AdminAuditLogCountOrderByAggregateInput
     _max?: AdminAuditLogMaxOrderByAggregateInput
     _min?: AdminAuditLogMinOrderByAggregateInput
@@ -33689,6 +35285,7 @@ export namespace Prisma {
     metadata?: JsonWithAggregatesFilter<"AdminAuditLog">
     timestamp?: DateTimeWithAggregatesFilter<"AdminAuditLog"> | Date | string
     ipAddress?: StringWithAggregatesFilter<"AdminAuditLog"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"AdminAuditLog"> | Date | string
   }
 
   export type FraudAlertWhereInput = {
@@ -34152,6 +35749,103 @@ export namespace Prisma {
     calculatedAt?: DateTimeWithAggregatesFilter<"TwitterAnalytics"> | Date | string
   }
 
+  export type NftClaimWhereInput = {
+    AND?: NftClaimWhereInput | NftClaimWhereInput[]
+    OR?: NftClaimWhereInput[]
+    NOT?: NftClaimWhereInput | NftClaimWhereInput[]
+    id?: StringFilter<"NftClaim"> | string
+    userId?: StringFilter<"NftClaim"> | string
+    userWallet?: StringFilter<"NftClaim"> | string
+    mintAddress?: StringNullableFilter<"NftClaim"> | string | null
+    nftNumber?: IntNullableFilter<"NftClaim"> | number | null
+    paymentSignature?: StringFilter<"NftClaim"> | string
+    createSignature?: StringNullableFilter<"NftClaim"> | string | null
+    transferSignature?: StringNullableFilter<"NftClaim"> | string | null
+    status?: StringFilter<"NftClaim"> | string
+    errorMessage?: StringNullableFilter<"NftClaim"> | string | null
+    metadata?: JsonNullableFilter<"NftClaim">
+    createdAt?: DateTimeFilter<"NftClaim"> | Date | string
+    updatedAt?: DateTimeFilter<"NftClaim"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type NftClaimOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    userWallet?: SortOrder
+    mintAddress?: SortOrderInput | SortOrder
+    nftNumber?: SortOrderInput | SortOrder
+    paymentSignature?: SortOrder
+    createSignature?: SortOrderInput | SortOrder
+    transferSignature?: SortOrderInput | SortOrder
+    status?: SortOrder
+    errorMessage?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type NftClaimWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: NftClaimWhereInput | NftClaimWhereInput[]
+    OR?: NftClaimWhereInput[]
+    NOT?: NftClaimWhereInput | NftClaimWhereInput[]
+    userId?: StringFilter<"NftClaim"> | string
+    userWallet?: StringFilter<"NftClaim"> | string
+    mintAddress?: StringNullableFilter<"NftClaim"> | string | null
+    nftNumber?: IntNullableFilter<"NftClaim"> | number | null
+    paymentSignature?: StringFilter<"NftClaim"> | string
+    createSignature?: StringNullableFilter<"NftClaim"> | string | null
+    transferSignature?: StringNullableFilter<"NftClaim"> | string | null
+    status?: StringFilter<"NftClaim"> | string
+    errorMessage?: StringNullableFilter<"NftClaim"> | string | null
+    metadata?: JsonNullableFilter<"NftClaim">
+    createdAt?: DateTimeFilter<"NftClaim"> | Date | string
+    updatedAt?: DateTimeFilter<"NftClaim"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type NftClaimOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    userWallet?: SortOrder
+    mintAddress?: SortOrderInput | SortOrder
+    nftNumber?: SortOrderInput | SortOrder
+    paymentSignature?: SortOrder
+    createSignature?: SortOrderInput | SortOrder
+    transferSignature?: SortOrderInput | SortOrder
+    status?: SortOrder
+    errorMessage?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: NftClaimCountOrderByAggregateInput
+    _avg?: NftClaimAvgOrderByAggregateInput
+    _max?: NftClaimMaxOrderByAggregateInput
+    _min?: NftClaimMinOrderByAggregateInput
+    _sum?: NftClaimSumOrderByAggregateInput
+  }
+
+  export type NftClaimScalarWhereWithAggregatesInput = {
+    AND?: NftClaimScalarWhereWithAggregatesInput | NftClaimScalarWhereWithAggregatesInput[]
+    OR?: NftClaimScalarWhereWithAggregatesInput[]
+    NOT?: NftClaimScalarWhereWithAggregatesInput | NftClaimScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"NftClaim"> | string
+    userId?: StringWithAggregatesFilter<"NftClaim"> | string
+    userWallet?: StringWithAggregatesFilter<"NftClaim"> | string
+    mintAddress?: StringNullableWithAggregatesFilter<"NftClaim"> | string | null
+    nftNumber?: IntNullableWithAggregatesFilter<"NftClaim"> | number | null
+    paymentSignature?: StringWithAggregatesFilter<"NftClaim"> | string
+    createSignature?: StringNullableWithAggregatesFilter<"NftClaim"> | string | null
+    transferSignature?: StringNullableWithAggregatesFilter<"NftClaim"> | string | null
+    status?: StringWithAggregatesFilter<"NftClaim"> | string
+    errorMessage?: StringNullableWithAggregatesFilter<"NftClaim"> | string | null
+    metadata?: JsonNullableWithAggregatesFilter<"NftClaim">
+    createdAt?: DateTimeWithAggregatesFilter<"NftClaim"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"NftClaim"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     walletAddress: string
@@ -34196,6 +35890,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -34248,6 +35943,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -34300,6 +35996,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -34352,6 +36049,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -34997,6 +36695,7 @@ export namespace Prisma {
     key: string
     value: JsonNullValueInput | InputJsonValue
     description?: string | null
+    createdAt?: Date | string
     updatedAt?: Date | string
   }
 
@@ -35005,6 +36704,7 @@ export namespace Prisma {
     key: string
     value: JsonNullValueInput | InputJsonValue
     description?: string | null
+    createdAt?: Date | string
     updatedAt?: Date | string
   }
 
@@ -35013,6 +36713,7 @@ export namespace Prisma {
     key?: StringFieldUpdateOperationsInput | string
     value?: JsonNullValueInput | InputJsonValue
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -35021,6 +36722,7 @@ export namespace Prisma {
     key?: StringFieldUpdateOperationsInput | string
     value?: JsonNullValueInput | InputJsonValue
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -35029,6 +36731,7 @@ export namespace Prisma {
     key: string
     value: JsonNullValueInput | InputJsonValue
     description?: string | null
+    createdAt?: Date | string
     updatedAt?: Date | string
   }
 
@@ -35037,6 +36740,7 @@ export namespace Prisma {
     key?: StringFieldUpdateOperationsInput | string
     value?: JsonNullValueInput | InputJsonValue
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -35045,6 +36749,7 @@ export namespace Prisma {
     key?: StringFieldUpdateOperationsInput | string
     value?: JsonNullValueInput | InputJsonValue
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -35442,6 +37147,10 @@ export namespace Prisma {
     uri: string
     supply?: number
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: number
+    creatorWallet?: string | null
+    royaltyPercentage?: number
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     creator: UserCreateNestedOneWithoutNftCollectionsInput
@@ -35458,6 +37167,10 @@ export namespace Prisma {
     supply?: number
     createdBy: string
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: number
+    creatorWallet?: string | null
+    royaltyPercentage?: number
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     distributions?: NftDistributionUncheckedCreateNestedManyWithoutCollectionInput
@@ -35472,6 +37185,10 @@ export namespace Prisma {
     uri?: StringFieldUpdateOperationsInput | string
     supply?: IntFieldUpdateOperationsInput | number
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: IntFieldUpdateOperationsInput | number
+    creatorWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    royaltyPercentage?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     creator?: UserUpdateOneRequiredWithoutNftCollectionsNestedInput
@@ -35488,6 +37205,10 @@ export namespace Prisma {
     supply?: IntFieldUpdateOperationsInput | number
     createdBy?: StringFieldUpdateOperationsInput | string
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: IntFieldUpdateOperationsInput | number
+    creatorWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    royaltyPercentage?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     distributions?: NftDistributionUncheckedUpdateManyWithoutCollectionNestedInput
@@ -35503,6 +37224,10 @@ export namespace Prisma {
     supply?: number
     createdBy: string
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: number
+    creatorWallet?: string | null
+    royaltyPercentage?: number
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -35516,6 +37241,10 @@ export namespace Prisma {
     uri?: StringFieldUpdateOperationsInput | string
     supply?: IntFieldUpdateOperationsInput | number
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: IntFieldUpdateOperationsInput | number
+    creatorWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    royaltyPercentage?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -35530,6 +37259,10 @@ export namespace Prisma {
     supply?: IntFieldUpdateOperationsInput | number
     createdBy?: StringFieldUpdateOperationsInput | string
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: IntFieldUpdateOperationsInput | number
+    creatorWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    royaltyPercentage?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -35537,8 +37270,13 @@ export namespace Prisma {
   export type NftDistributionCreateInput = {
     id?: string
     recipientCount: number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: number
     nftsPerUser: number
-    results: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: string | null
+    errorMessage?: string | null
+    collectionId?: string | null
     success?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -35551,8 +37289,13 @@ export namespace Prisma {
     mintAddress: string
     distributedBy: string
     recipientCount: number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: number
     nftsPerUser: number
-    results: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: string | null
+    errorMessage?: string | null
+    collectionId?: string | null
     success?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -35561,8 +37304,13 @@ export namespace Prisma {
   export type NftDistributionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     recipientCount?: IntFieldUpdateOperationsInput | number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: IntFieldUpdateOperationsInput | number
     nftsPerUser?: IntFieldUpdateOperationsInput | number
-    results?: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    collectionId?: NullableStringFieldUpdateOperationsInput | string | null
     success?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35575,8 +37323,13 @@ export namespace Prisma {
     mintAddress?: StringFieldUpdateOperationsInput | string
     distributedBy?: StringFieldUpdateOperationsInput | string
     recipientCount?: IntFieldUpdateOperationsInput | number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: IntFieldUpdateOperationsInput | number
     nftsPerUser?: IntFieldUpdateOperationsInput | number
-    results?: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    collectionId?: NullableStringFieldUpdateOperationsInput | string | null
     success?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35587,8 +37340,13 @@ export namespace Prisma {
     mintAddress: string
     distributedBy: string
     recipientCount: number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: number
     nftsPerUser: number
-    results: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: string | null
+    errorMessage?: string | null
+    collectionId?: string | null
     success?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -35597,8 +37355,13 @@ export namespace Prisma {
   export type NftDistributionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     recipientCount?: IntFieldUpdateOperationsInput | number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: IntFieldUpdateOperationsInput | number
     nftsPerUser?: IntFieldUpdateOperationsInput | number
-    results?: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    collectionId?: NullableStringFieldUpdateOperationsInput | string | null
     success?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35609,8 +37372,13 @@ export namespace Prisma {
     mintAddress?: StringFieldUpdateOperationsInput | string
     distributedBy?: StringFieldUpdateOperationsInput | string
     recipientCount?: IntFieldUpdateOperationsInput | number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: IntFieldUpdateOperationsInput | number
     nftsPerUser?: IntFieldUpdateOperationsInput | number
-    results?: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    collectionId?: NullableStringFieldUpdateOperationsInput | string | null
     success?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -35622,6 +37390,8 @@ export namespace Prisma {
     approvedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    claimed?: boolean
+    claimedAt?: Date | string | null
     user: UserCreateNestedOneWithoutNftClaimApprovalInput
     approver?: UserCreateNestedOneWithoutApprovedClaimsInput
   }
@@ -35634,6 +37404,8 @@ export namespace Prisma {
     approvedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    claimed?: boolean
+    claimedAt?: Date | string | null
   }
 
   export type NftClaimApprovalUpdateInput = {
@@ -35642,6 +37414,8 @@ export namespace Prisma {
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    claimed?: BoolFieldUpdateOperationsInput | boolean
+    claimedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneRequiredWithoutNftClaimApprovalNestedInput
     approver?: UserUpdateOneWithoutApprovedClaimsNestedInput
   }
@@ -35654,6 +37428,8 @@ export namespace Prisma {
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    claimed?: BoolFieldUpdateOperationsInput | boolean
+    claimedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type NftClaimApprovalCreateManyInput = {
@@ -35664,6 +37440,8 @@ export namespace Prisma {
     approvedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    claimed?: boolean
+    claimedAt?: Date | string | null
   }
 
   export type NftClaimApprovalUpdateManyMutationInput = {
@@ -35672,6 +37450,8 @@ export namespace Prisma {
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    claimed?: BoolFieldUpdateOperationsInput | boolean
+    claimedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type NftClaimApprovalUncheckedUpdateManyInput = {
@@ -35682,6 +37462,8 @@ export namespace Prisma {
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    claimed?: BoolFieldUpdateOperationsInput | boolean
+    claimedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UserNftHoldingCreateInput = {
@@ -35849,6 +37631,7 @@ export namespace Prisma {
     metadata: JsonNullValueInput | InputJsonValue
     timestamp?: Date | string
     ipAddress: string
+    createdAt?: Date | string
     admin: UserCreateNestedOneWithoutAuditLogsInput
   }
 
@@ -35859,6 +37642,7 @@ export namespace Prisma {
     metadata: JsonNullValueInput | InputJsonValue
     timestamp?: Date | string
     ipAddress: string
+    createdAt?: Date | string
   }
 
   export type AdminAuditLogUpdateInput = {
@@ -35867,6 +37651,7 @@ export namespace Prisma {
     metadata?: JsonNullValueInput | InputJsonValue
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     ipAddress?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     admin?: UserUpdateOneRequiredWithoutAuditLogsNestedInput
   }
 
@@ -35877,6 +37662,7 @@ export namespace Prisma {
     metadata?: JsonNullValueInput | InputJsonValue
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     ipAddress?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminAuditLogCreateManyInput = {
@@ -35886,6 +37672,7 @@ export namespace Prisma {
     metadata: JsonNullValueInput | InputJsonValue
     timestamp?: Date | string
     ipAddress: string
+    createdAt?: Date | string
   }
 
   export type AdminAuditLogUpdateManyMutationInput = {
@@ -35894,6 +37681,7 @@ export namespace Prisma {
     metadata?: JsonNullValueInput | InputJsonValue
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     ipAddress?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminAuditLogUncheckedUpdateManyInput = {
@@ -35903,6 +37691,7 @@ export namespace Prisma {
     metadata?: JsonNullValueInput | InputJsonValue
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     ipAddress?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FraudAlertCreateInput = {
@@ -36408,6 +38197,117 @@ export namespace Prisma {
     calculatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type NftClaimCreateInput = {
+    id?: string
+    userWallet: string
+    mintAddress?: string | null
+    nftNumber?: number | null
+    paymentSignature: string
+    createSignature?: string | null
+    transferSignature?: string | null
+    status?: string
+    errorMessage?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user: UserCreateNestedOneWithoutNftClaimsInput
+  }
+
+  export type NftClaimUncheckedCreateInput = {
+    id?: string
+    userId: string
+    userWallet: string
+    mintAddress?: string | null
+    nftNumber?: number | null
+    paymentSignature: string
+    createSignature?: string | null
+    transferSignature?: string | null
+    status?: string
+    errorMessage?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftClaimUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userWallet?: StringFieldUpdateOperationsInput | string
+    mintAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    nftNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    createSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    transferSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutNftClaimsNestedInput
+  }
+
+  export type NftClaimUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    userWallet?: StringFieldUpdateOperationsInput | string
+    mintAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    nftNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    createSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    transferSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftClaimCreateManyInput = {
+    id?: string
+    userId: string
+    userWallet: string
+    mintAddress?: string | null
+    nftNumber?: number | null
+    paymentSignature: string
+    createSignature?: string | null
+    transferSignature?: string | null
+    status?: string
+    errorMessage?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftClaimUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userWallet?: StringFieldUpdateOperationsInput | string
+    mintAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    nftNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    createSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    transferSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftClaimUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    userWallet?: StringFieldUpdateOperationsInput | string
+    mintAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    nftNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    createSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    transferSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -36624,6 +38524,12 @@ export namespace Prisma {
     none?: CampaignConfigWhereInput
   }
 
+  export type NftClaimListRelationFilter = {
+    every?: NftClaimWhereInput
+    some?: NftClaimWhereInput
+    none?: NftClaimWhereInput
+  }
+
   export type NftCollectionListRelationFilter = {
     every?: NftCollectionWhereInput
     some?: NftCollectionWhereInput
@@ -36713,6 +38619,10 @@ export namespace Prisma {
   }
 
   export type CampaignConfigOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type NftClaimOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -37461,6 +39371,7 @@ export namespace Prisma {
     key?: SortOrder
     value?: SortOrder
     description?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -37468,6 +39379,7 @@ export namespace Prisma {
     id?: SortOrder
     key?: SortOrder
     description?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -37475,6 +39387,7 @@ export namespace Prisma {
     id?: SortOrder
     key?: SortOrder
     description?: SortOrder
+    createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
@@ -37734,12 +39647,18 @@ export namespace Prisma {
     supply?: SortOrder
     createdBy?: SortOrder
     metadata?: SortOrder
+    minted?: SortOrder
+    creatorWallet?: SortOrder
+    royaltyPercentage?: SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type NftCollectionAvgOrderByAggregateInput = {
     supply?: SortOrder
+    minted?: SortOrder
+    royaltyPercentage?: SortOrder
   }
 
   export type NftCollectionMaxOrderByAggregateInput = {
@@ -37751,6 +39670,10 @@ export namespace Prisma {
     uri?: SortOrder
     supply?: SortOrder
     createdBy?: SortOrder
+    minted?: SortOrder
+    creatorWallet?: SortOrder
+    royaltyPercentage?: SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -37764,12 +39687,18 @@ export namespace Prisma {
     uri?: SortOrder
     supply?: SortOrder
     createdBy?: SortOrder
+    minted?: SortOrder
+    creatorWallet?: SortOrder
+    royaltyPercentage?: SortOrder
+    isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type NftCollectionSumOrderByAggregateInput = {
     supply?: SortOrder
+    minted?: SortOrder
+    royaltyPercentage?: SortOrder
   }
 
   export type NftCollectionScalarRelationFilter = {
@@ -37782,8 +39711,13 @@ export namespace Prisma {
     mintAddress?: SortOrder
     distributedBy?: SortOrder
     recipientCount?: SortOrder
+    recipientWallets?: SortOrder
+    nftsPerRecipient?: SortOrder
     nftsPerUser?: SortOrder
     results?: SortOrder
+    transactionHash?: SortOrder
+    errorMessage?: SortOrder
+    collectionId?: SortOrder
     success?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -37791,6 +39725,7 @@ export namespace Prisma {
 
   export type NftDistributionAvgOrderByAggregateInput = {
     recipientCount?: SortOrder
+    nftsPerRecipient?: SortOrder
     nftsPerUser?: SortOrder
   }
 
@@ -37799,7 +39734,11 @@ export namespace Prisma {
     mintAddress?: SortOrder
     distributedBy?: SortOrder
     recipientCount?: SortOrder
+    nftsPerRecipient?: SortOrder
     nftsPerUser?: SortOrder
+    transactionHash?: SortOrder
+    errorMessage?: SortOrder
+    collectionId?: SortOrder
     success?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -37810,7 +39749,11 @@ export namespace Prisma {
     mintAddress?: SortOrder
     distributedBy?: SortOrder
     recipientCount?: SortOrder
+    nftsPerRecipient?: SortOrder
     nftsPerUser?: SortOrder
+    transactionHash?: SortOrder
+    errorMessage?: SortOrder
+    collectionId?: SortOrder
     success?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -37818,6 +39761,7 @@ export namespace Prisma {
 
   export type NftDistributionSumOrderByAggregateInput = {
     recipientCount?: SortOrder
+    nftsPerRecipient?: SortOrder
     nftsPerUser?: SortOrder
   }
 
@@ -37834,6 +39778,8 @@ export namespace Prisma {
     approvedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    claimed?: SortOrder
+    claimedAt?: SortOrder
   }
 
   export type NftClaimApprovalMaxOrderByAggregateInput = {
@@ -37844,6 +39790,8 @@ export namespace Prisma {
     approvedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    claimed?: SortOrder
+    claimedAt?: SortOrder
   }
 
   export type NftClaimApprovalMinOrderByAggregateInput = {
@@ -37854,6 +39802,8 @@ export namespace Prisma {
     approvedAt?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    claimed?: SortOrder
+    claimedAt?: SortOrder
   }
 
   export type UserNftHoldingUserIdMintAddressTokenAccountCompoundUniqueInput = {
@@ -37942,6 +39892,7 @@ export namespace Prisma {
     metadata?: SortOrder
     timestamp?: SortOrder
     ipAddress?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type AdminAuditLogMaxOrderByAggregateInput = {
@@ -37950,6 +39901,7 @@ export namespace Prisma {
     action?: SortOrder
     timestamp?: SortOrder
     ipAddress?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type AdminAuditLogMinOrderByAggregateInput = {
@@ -37958,6 +39910,7 @@ export namespace Prisma {
     action?: SortOrder
     timestamp?: SortOrder
     ipAddress?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type FraudAlertCountOrderByAggregateInput = {
@@ -38243,6 +40196,60 @@ export namespace Prisma {
     engagement_rate?: SortOrder
   }
 
+  export type NftClaimCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    userWallet?: SortOrder
+    mintAddress?: SortOrder
+    nftNumber?: SortOrder
+    paymentSignature?: SortOrder
+    createSignature?: SortOrder
+    transferSignature?: SortOrder
+    status?: SortOrder
+    errorMessage?: SortOrder
+    metadata?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NftClaimAvgOrderByAggregateInput = {
+    nftNumber?: SortOrder
+  }
+
+  export type NftClaimMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    userWallet?: SortOrder
+    mintAddress?: SortOrder
+    nftNumber?: SortOrder
+    paymentSignature?: SortOrder
+    createSignature?: SortOrder
+    transferSignature?: SortOrder
+    status?: SortOrder
+    errorMessage?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NftClaimMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    userWallet?: SortOrder
+    mintAddress?: SortOrder
+    nftNumber?: SortOrder
+    paymentSignature?: SortOrder
+    createSignature?: SortOrder
+    transferSignature?: SortOrder
+    status?: SortOrder
+    errorMessage?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type NftClaimSumOrderByAggregateInput = {
+    nftNumber?: SortOrder
+  }
+
   export type UserCreatesuspiciousFlagsInput = {
     set: string[]
   }
@@ -38342,6 +40349,13 @@ export namespace Prisma {
     connectOrCreate?: CampaignConfigCreateOrConnectWithoutCreatorInput | CampaignConfigCreateOrConnectWithoutCreatorInput[]
     createMany?: CampaignConfigCreateManyCreatorInputEnvelope
     connect?: CampaignConfigWhereUniqueInput | CampaignConfigWhereUniqueInput[]
+  }
+
+  export type NftClaimCreateNestedManyWithoutUserInput = {
+    create?: XOR<NftClaimCreateWithoutUserInput, NftClaimUncheckedCreateWithoutUserInput> | NftClaimCreateWithoutUserInput[] | NftClaimUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NftClaimCreateOrConnectWithoutUserInput | NftClaimCreateOrConnectWithoutUserInput[]
+    createMany?: NftClaimCreateManyUserInputEnvelope
+    connect?: NftClaimWhereUniqueInput | NftClaimWhereUniqueInput[]
   }
 
   export type NftCollectionCreateNestedManyWithoutCreatorInput = {
@@ -38480,6 +40494,13 @@ export namespace Prisma {
     connectOrCreate?: CampaignConfigCreateOrConnectWithoutCreatorInput | CampaignConfigCreateOrConnectWithoutCreatorInput[]
     createMany?: CampaignConfigCreateManyCreatorInputEnvelope
     connect?: CampaignConfigWhereUniqueInput | CampaignConfigWhereUniqueInput[]
+  }
+
+  export type NftClaimUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<NftClaimCreateWithoutUserInput, NftClaimUncheckedCreateWithoutUserInput> | NftClaimCreateWithoutUserInput[] | NftClaimUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NftClaimCreateOrConnectWithoutUserInput | NftClaimCreateOrConnectWithoutUserInput[]
+    createMany?: NftClaimCreateManyUserInputEnvelope
+    connect?: NftClaimWhereUniqueInput | NftClaimWhereUniqueInput[]
   }
 
   export type NftCollectionUncheckedCreateNestedManyWithoutCreatorInput = {
@@ -38772,6 +40793,20 @@ export namespace Prisma {
     deleteMany?: CampaignConfigScalarWhereInput | CampaignConfigScalarWhereInput[]
   }
 
+  export type NftClaimUpdateManyWithoutUserNestedInput = {
+    create?: XOR<NftClaimCreateWithoutUserInput, NftClaimUncheckedCreateWithoutUserInput> | NftClaimCreateWithoutUserInput[] | NftClaimUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NftClaimCreateOrConnectWithoutUserInput | NftClaimCreateOrConnectWithoutUserInput[]
+    upsert?: NftClaimUpsertWithWhereUniqueWithoutUserInput | NftClaimUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: NftClaimCreateManyUserInputEnvelope
+    set?: NftClaimWhereUniqueInput | NftClaimWhereUniqueInput[]
+    disconnect?: NftClaimWhereUniqueInput | NftClaimWhereUniqueInput[]
+    delete?: NftClaimWhereUniqueInput | NftClaimWhereUniqueInput[]
+    connect?: NftClaimWhereUniqueInput | NftClaimWhereUniqueInput[]
+    update?: NftClaimUpdateWithWhereUniqueWithoutUserInput | NftClaimUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: NftClaimUpdateManyWithWhereWithoutUserInput | NftClaimUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: NftClaimScalarWhereInput | NftClaimScalarWhereInput[]
+  }
+
   export type NftCollectionUpdateManyWithoutCreatorNestedInput = {
     create?: XOR<NftCollectionCreateWithoutCreatorInput, NftCollectionUncheckedCreateWithoutCreatorInput> | NftCollectionCreateWithoutCreatorInput[] | NftCollectionUncheckedCreateWithoutCreatorInput[]
     connectOrCreate?: NftCollectionCreateOrConnectWithoutCreatorInput | NftCollectionCreateOrConnectWithoutCreatorInput[]
@@ -39042,6 +41077,20 @@ export namespace Prisma {
     update?: CampaignConfigUpdateWithWhereUniqueWithoutCreatorInput | CampaignConfigUpdateWithWhereUniqueWithoutCreatorInput[]
     updateMany?: CampaignConfigUpdateManyWithWhereWithoutCreatorInput | CampaignConfigUpdateManyWithWhereWithoutCreatorInput[]
     deleteMany?: CampaignConfigScalarWhereInput | CampaignConfigScalarWhereInput[]
+  }
+
+  export type NftClaimUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<NftClaimCreateWithoutUserInput, NftClaimUncheckedCreateWithoutUserInput> | NftClaimCreateWithoutUserInput[] | NftClaimUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: NftClaimCreateOrConnectWithoutUserInput | NftClaimCreateOrConnectWithoutUserInput[]
+    upsert?: NftClaimUpsertWithWhereUniqueWithoutUserInput | NftClaimUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: NftClaimCreateManyUserInputEnvelope
+    set?: NftClaimWhereUniqueInput | NftClaimWhereUniqueInput[]
+    disconnect?: NftClaimWhereUniqueInput | NftClaimWhereUniqueInput[]
+    delete?: NftClaimWhereUniqueInput | NftClaimWhereUniqueInput[]
+    connect?: NftClaimWhereUniqueInput | NftClaimWhereUniqueInput[]
+    update?: NftClaimUpdateWithWhereUniqueWithoutUserInput | NftClaimUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: NftClaimUpdateManyWithWhereWithoutUserInput | NftClaimUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: NftClaimScalarWhereInput | NftClaimScalarWhereInput[]
   }
 
   export type NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput = {
@@ -39664,6 +41713,20 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutNotificationsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNotificationsInput, UserUpdateWithoutNotificationsInput>, UserUncheckedUpdateWithoutNotificationsInput>
+  }
+
+  export type UserCreateNestedOneWithoutNftClaimsInput = {
+    create?: XOR<UserCreateWithoutNftClaimsInput, UserUncheckedCreateWithoutNftClaimsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNftClaimsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutNftClaimsNestedInput = {
+    create?: XOR<UserCreateWithoutNftClaimsInput, UserUncheckedCreateWithoutNftClaimsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutNftClaimsInput
+    upsert?: UserUpsertWithoutNftClaimsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutNftClaimsInput, UserUpdateWithoutNftClaimsInput>, UserUncheckedUpdateWithoutNftClaimsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -40439,6 +42502,7 @@ export namespace Prisma {
     metadata: JsonNullValueInput | InputJsonValue
     timestamp?: Date | string
     ipAddress: string
+    createdAt?: Date | string
   }
 
   export type AdminAuditLogUncheckedCreateWithoutAdminInput = {
@@ -40447,6 +42511,7 @@ export namespace Prisma {
     metadata: JsonNullValueInput | InputJsonValue
     timestamp?: Date | string
     ipAddress: string
+    createdAt?: Date | string
   }
 
   export type AdminAuditLogCreateOrConnectWithoutAdminInput = {
@@ -40535,6 +42600,46 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type NftClaimCreateWithoutUserInput = {
+    id?: string
+    userWallet: string
+    mintAddress?: string | null
+    nftNumber?: number | null
+    paymentSignature: string
+    createSignature?: string | null
+    transferSignature?: string | null
+    status?: string
+    errorMessage?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftClaimUncheckedCreateWithoutUserInput = {
+    id?: string
+    userWallet: string
+    mintAddress?: string | null
+    nftNumber?: number | null
+    paymentSignature: string
+    createSignature?: string | null
+    transferSignature?: string | null
+    status?: string
+    errorMessage?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type NftClaimCreateOrConnectWithoutUserInput = {
+    where: NftClaimWhereUniqueInput
+    create: XOR<NftClaimCreateWithoutUserInput, NftClaimUncheckedCreateWithoutUserInput>
+  }
+
+  export type NftClaimCreateManyUserInputEnvelope = {
+    data: NftClaimCreateManyUserInput | NftClaimCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
   export type NftCollectionCreateWithoutCreatorInput = {
     id?: string
     mintAddress: string
@@ -40544,6 +42649,10 @@ export namespace Prisma {
     uri: string
     supply?: number
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: number
+    creatorWallet?: string | null
+    royaltyPercentage?: number
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     distributions?: NftDistributionCreateNestedManyWithoutCollectionInput
@@ -40558,6 +42667,10 @@ export namespace Prisma {
     uri: string
     supply?: number
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: number
+    creatorWallet?: string | null
+    royaltyPercentage?: number
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     distributions?: NftDistributionUncheckedCreateNestedManyWithoutCollectionInput
@@ -40576,8 +42689,13 @@ export namespace Prisma {
   export type NftDistributionCreateWithoutDistributorInput = {
     id?: string
     recipientCount: number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: number
     nftsPerUser: number
-    results: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: string | null
+    errorMessage?: string | null
+    collectionId?: string | null
     success?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -40588,8 +42706,13 @@ export namespace Prisma {
     id?: string
     mintAddress: string
     recipientCount: number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: number
     nftsPerUser: number
-    results: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: string | null
+    errorMessage?: string | null
+    collectionId?: string | null
     success?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -40643,6 +42766,8 @@ export namespace Prisma {
     approvedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    claimed?: boolean
+    claimedAt?: Date | string | null
     approver?: UserCreateNestedOneWithoutApprovedClaimsInput
   }
 
@@ -40653,6 +42778,8 @@ export namespace Prisma {
     approvedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    claimed?: boolean
+    claimedAt?: Date | string | null
   }
 
   export type NftClaimApprovalCreateOrConnectWithoutUserInput = {
@@ -40666,6 +42793,8 @@ export namespace Prisma {
     approvedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    claimed?: boolean
+    claimedAt?: Date | string | null
     user: UserCreateNestedOneWithoutNftClaimApprovalInput
   }
 
@@ -40676,6 +42805,8 @@ export namespace Prisma {
     approvedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    claimed?: boolean
+    claimedAt?: Date | string | null
   }
 
   export type NftClaimApprovalCreateOrConnectWithoutApproverInput = {
@@ -41095,6 +43226,7 @@ export namespace Prisma {
     metadata?: JsonFilter<"AdminAuditLog">
     timestamp?: DateTimeFilter<"AdminAuditLog"> | Date | string
     ipAddress?: StringFilter<"AdminAuditLog"> | string
+    createdAt?: DateTimeFilter<"AdminAuditLog"> | Date | string
   }
 
   export type FraudAlertUpsertWithWhereUniqueWithoutUserInput = {
@@ -41165,6 +43297,41 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"CampaignConfig"> | Date | string
   }
 
+  export type NftClaimUpsertWithWhereUniqueWithoutUserInput = {
+    where: NftClaimWhereUniqueInput
+    update: XOR<NftClaimUpdateWithoutUserInput, NftClaimUncheckedUpdateWithoutUserInput>
+    create: XOR<NftClaimCreateWithoutUserInput, NftClaimUncheckedCreateWithoutUserInput>
+  }
+
+  export type NftClaimUpdateWithWhereUniqueWithoutUserInput = {
+    where: NftClaimWhereUniqueInput
+    data: XOR<NftClaimUpdateWithoutUserInput, NftClaimUncheckedUpdateWithoutUserInput>
+  }
+
+  export type NftClaimUpdateManyWithWhereWithoutUserInput = {
+    where: NftClaimScalarWhereInput
+    data: XOR<NftClaimUpdateManyMutationInput, NftClaimUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type NftClaimScalarWhereInput = {
+    AND?: NftClaimScalarWhereInput | NftClaimScalarWhereInput[]
+    OR?: NftClaimScalarWhereInput[]
+    NOT?: NftClaimScalarWhereInput | NftClaimScalarWhereInput[]
+    id?: StringFilter<"NftClaim"> | string
+    userId?: StringFilter<"NftClaim"> | string
+    userWallet?: StringFilter<"NftClaim"> | string
+    mintAddress?: StringNullableFilter<"NftClaim"> | string | null
+    nftNumber?: IntNullableFilter<"NftClaim"> | number | null
+    paymentSignature?: StringFilter<"NftClaim"> | string
+    createSignature?: StringNullableFilter<"NftClaim"> | string | null
+    transferSignature?: StringNullableFilter<"NftClaim"> | string | null
+    status?: StringFilter<"NftClaim"> | string
+    errorMessage?: StringNullableFilter<"NftClaim"> | string | null
+    metadata?: JsonNullableFilter<"NftClaim">
+    createdAt?: DateTimeFilter<"NftClaim"> | Date | string
+    updatedAt?: DateTimeFilter<"NftClaim"> | Date | string
+  }
+
   export type NftCollectionUpsertWithWhereUniqueWithoutCreatorInput = {
     where: NftCollectionWhereUniqueInput
     update: XOR<NftCollectionUpdateWithoutCreatorInput, NftCollectionUncheckedUpdateWithoutCreatorInput>
@@ -41194,6 +43361,10 @@ export namespace Prisma {
     supply?: IntFilter<"NftCollection"> | number
     createdBy?: StringFilter<"NftCollection"> | string
     metadata?: JsonNullableFilter<"NftCollection">
+    minted?: IntFilter<"NftCollection"> | number
+    creatorWallet?: StringNullableFilter<"NftCollection"> | string | null
+    royaltyPercentage?: FloatFilter<"NftCollection"> | number
+    isActive?: BoolFilter<"NftCollection"> | boolean
     createdAt?: DateTimeFilter<"NftCollection"> | Date | string
     updatedAt?: DateTimeFilter<"NftCollection"> | Date | string
   }
@@ -41222,8 +43393,13 @@ export namespace Prisma {
     mintAddress?: StringFilter<"NftDistribution"> | string
     distributedBy?: StringFilter<"NftDistribution"> | string
     recipientCount?: IntFilter<"NftDistribution"> | number
+    recipientWallets?: JsonNullableFilter<"NftDistribution">
+    nftsPerRecipient?: IntFilter<"NftDistribution"> | number
     nftsPerUser?: IntFilter<"NftDistribution"> | number
-    results?: JsonFilter<"NftDistribution">
+    results?: JsonNullableFilter<"NftDistribution">
+    transactionHash?: StringNullableFilter<"NftDistribution"> | string | null
+    errorMessage?: StringNullableFilter<"NftDistribution"> | string | null
+    collectionId?: StringNullableFilter<"NftDistribution"> | string | null
     success?: BoolFilter<"NftDistribution"> | boolean
     createdAt?: DateTimeFilter<"NftDistribution"> | Date | string
     updatedAt?: DateTimeFilter<"NftDistribution"> | Date | string
@@ -41277,6 +43453,8 @@ export namespace Prisma {
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    claimed?: BoolFieldUpdateOperationsInput | boolean
+    claimedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     approver?: UserUpdateOneWithoutApprovedClaimsNestedInput
   }
 
@@ -41287,6 +43465,8 @@ export namespace Prisma {
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    claimed?: BoolFieldUpdateOperationsInput | boolean
+    claimedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type NftClaimApprovalUpsertWithWhereUniqueWithoutApproverInput = {
@@ -41316,6 +43496,8 @@ export namespace Prisma {
     approvedAt?: DateTimeNullableFilter<"NftClaimApproval"> | Date | string | null
     createdAt?: DateTimeFilter<"NftClaimApproval"> | Date | string
     updatedAt?: DateTimeFilter<"NftClaimApproval"> | Date | string
+    claimed?: BoolFilter<"NftClaimApproval"> | boolean
+    claimedAt?: DateTimeNullableFilter<"NftClaimApproval"> | Date | string | null
   }
 
   export type AirdropSeasonUpsertWithWhereUniqueWithoutCreatorInput = {
@@ -41398,6 +43580,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -41449,6 +43632,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -41516,6 +43700,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -41567,6 +43752,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -41618,6 +43804,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -41669,6 +43856,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -41725,6 +43913,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -41776,6 +43965,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -41843,6 +44033,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -41894,6 +44085,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -41956,6 +44148,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -42007,6 +44200,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -42058,6 +44252,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -42109,6 +44304,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -42176,6 +44372,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -42227,6 +44424,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -42278,6 +44476,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -42329,6 +44528,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -42431,6 +44631,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -42482,6 +44683,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -42624,6 +44826,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -42675,6 +44878,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -42742,6 +44946,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -42793,6 +44998,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -42844,6 +45050,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -42895,6 +45102,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -42962,6 +45170,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -43013,6 +45222,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -43065,6 +45275,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -43116,6 +45327,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -43219,6 +45431,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -43270,6 +45483,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -43336,6 +45550,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -43387,6 +45602,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -43495,6 +45711,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -43546,6 +45763,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -43645,6 +45863,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
     nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
@@ -43696,6 +45915,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
     nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
@@ -43711,8 +45931,13 @@ export namespace Prisma {
   export type NftDistributionCreateWithoutCollectionInput = {
     id?: string
     recipientCount: number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: number
     nftsPerUser: number
-    results: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: string | null
+    errorMessage?: string | null
+    collectionId?: string | null
     success?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -43723,8 +45948,13 @@ export namespace Prisma {
     id?: string
     distributedBy: string
     recipientCount: number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: number
     nftsPerUser: number
-    results: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: string | null
+    errorMessage?: string | null
+    collectionId?: string | null
     success?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -43795,6 +46025,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
     nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
@@ -43846,6 +46077,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
     nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
@@ -43878,6 +46110,10 @@ export namespace Prisma {
     uri: string
     supply?: number
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: number
+    creatorWallet?: string | null
+    royaltyPercentage?: number
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     creator: UserCreateNestedOneWithoutNftCollectionsInput
@@ -43893,6 +46129,10 @@ export namespace Prisma {
     supply?: number
     createdBy: string
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: number
+    creatorWallet?: string | null
+    royaltyPercentage?: number
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -43946,6 +46186,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
     nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
@@ -43997,6 +46238,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
     nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
@@ -44029,6 +46271,10 @@ export namespace Prisma {
     uri?: StringFieldUpdateOperationsInput | string
     supply?: IntFieldUpdateOperationsInput | number
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: IntFieldUpdateOperationsInput | number
+    creatorWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    royaltyPercentage?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     creator?: UserUpdateOneRequiredWithoutNftCollectionsNestedInput
@@ -44044,6 +46290,10 @@ export namespace Prisma {
     supply?: IntFieldUpdateOperationsInput | number
     createdBy?: StringFieldUpdateOperationsInput | string
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: IntFieldUpdateOperationsInput | number
+    creatorWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    royaltyPercentage?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -44103,6 +46353,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
     nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
@@ -44154,6 +46405,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
     nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
@@ -44205,6 +46457,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -44256,6 +46509,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -44312,6 +46566,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -44363,6 +46618,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -44430,6 +46686,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -44481,6 +46738,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -44543,6 +46801,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -44594,6 +46853,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -44645,6 +46905,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
@@ -44696,6 +46957,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
@@ -44763,6 +47025,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
@@ -44814,6 +47077,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
@@ -44864,6 +47128,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -44915,6 +47180,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -44982,6 +47248,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -45033,6 +47300,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -45084,6 +47352,7 @@ export namespace Prisma {
     adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -45135,6 +47404,7 @@ export namespace Prisma {
     adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -45202,6 +47472,7 @@ export namespace Prisma {
     adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -45253,6 +47524,7 @@ export namespace Prisma {
     adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -45304,6 +47576,7 @@ export namespace Prisma {
     adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -45355,6 +47628,7 @@ export namespace Prisma {
     adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -45422,6 +47696,7 @@ export namespace Prisma {
     adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -45473,6 +47748,7 @@ export namespace Prisma {
     adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -45524,6 +47800,7 @@ export namespace Prisma {
     adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -45575,6 +47852,7 @@ export namespace Prisma {
     adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -45642,6 +47920,7 @@ export namespace Prisma {
     adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -45693,6 +47972,7 @@ export namespace Prisma {
     adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -45784,6 +48064,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -45835,6 +48116,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -45929,6 +48211,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -45980,6 +48263,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
@@ -46064,6 +48348,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
@@ -46115,6 +48400,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
     fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
     campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftClaims?: NftClaimUncheckedCreateNestedManyWithoutUserInput
     nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
     nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
     nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
@@ -46182,6 +48468,7 @@ export namespace Prisma {
     auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
     campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUpdateManyWithoutUserNestedInput
     nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
     nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
     nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
@@ -46229,6 +48516,231 @@ export namespace Prisma {
     referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
     referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
     achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUncheckedUpdateManyWithoutCreatorNestedInput
+    nftClaims?: NftClaimUncheckedUpdateManyWithoutUserNestedInput
+    nftCollections?: NftCollectionUncheckedUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUncheckedUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUncheckedUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUncheckedUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUncheckedUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUncheckedUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserCreateWithoutNftClaimsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    totalTokens?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
+    dailyEarnings?: DailyEarningCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionCreateNestedManyWithoutUserInput
+    claims?: ClaimCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryCreateNestedManyWithoutUserInput
+    referrals?: ReferralCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementCreateNestedManyWithoutUserInput
+    notifications?: NotificationCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserUncheckedCreateWithoutNftClaimsInput = {
+    id?: string
+    walletAddress: string
+    twitterId?: string | null
+    twitterUsername?: string | null
+    twitterName?: string | null
+    twitterImage?: string | null
+    twitterFollowers?: number | null
+    twitterActivity?: $Enums.TwitterActivity | null
+    level?: number
+    streak?: number
+    lastCheckIn?: Date | string | null
+    referralCode?: string
+    email?: string | null
+    totalPoints?: number
+    totalTokens?: number
+    rank?: number
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: number
+    lastLoginReward?: Date | string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: number
+    suspiciousFlags?: UserCreatesuspiciousFlagsInput | string[]
+    isBanned?: boolean
+    bannedAt?: Date | string | null
+    lastActivity?: Date | string | null
+    claimsEnabled?: boolean | null
+    dailyEarnings?: DailyEarningUncheckedCreateNestedManyWithoutUserInput
+    airdropClaims?: AirdropClaimUncheckedCreateNestedManyWithoutUserInput
+    engagements?: TwitterEngagementUncheckedCreateNestedManyWithoutUserInput
+    tasks?: TaskCompletionUncheckedCreateNestedManyWithoutUserInput
+    claims?: ClaimUncheckedCreateNestedManyWithoutUserInput
+    pointHistory?: PointHistoryUncheckedCreateNestedManyWithoutUserInput
+    referrals?: ReferralUncheckedCreateNestedManyWithoutReferrerInput
+    referredBy?: ReferralUncheckedCreateNestedOneWithoutReferredInput
+    achievements?: UserAchievementUncheckedCreateNestedManyWithoutUserInput
+    notifications?: NotificationUncheckedCreateNestedManyWithoutUserInput
+    adminSessions?: AdminSessionUncheckedCreateNestedManyWithoutAdminInput
+    auditLogs?: AdminAuditLogUncheckedCreateNestedManyWithoutAdminInput
+    fraudAlerts?: FraudAlertUncheckedCreateNestedManyWithoutUserInput
+    campaigns?: CampaignConfigUncheckedCreateNestedManyWithoutCreatorInput
+    nftCollections?: NftCollectionUncheckedCreateNestedManyWithoutCreatorInput
+    nftDistributions?: NftDistributionUncheckedCreateNestedManyWithoutDistributorInput
+    nftHoldings?: UserNftHoldingUncheckedCreateNestedManyWithoutUserInput
+    nftClaimApproval?: NftClaimApprovalUncheckedCreateNestedOneWithoutUserInput
+    approvedClaims?: NftClaimApprovalUncheckedCreateNestedManyWithoutApproverInput
+    airdropSeasons?: AirdropSeasonUncheckedCreateNestedManyWithoutCreatorInput
+  }
+
+  export type UserCreateOrConnectWithoutNftClaimsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutNftClaimsInput, UserUncheckedCreateWithoutNftClaimsInput>
+  }
+
+  export type UserUpsertWithoutNftClaimsInput = {
+    update: XOR<UserUpdateWithoutNftClaimsInput, UserUncheckedUpdateWithoutNftClaimsInput>
+    create: XOR<UserCreateWithoutNftClaimsInput, UserUncheckedCreateWithoutNftClaimsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutNftClaimsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutNftClaimsInput, UserUncheckedUpdateWithoutNftClaimsInput>
+  }
+
+  export type UserUpdateWithoutNftClaimsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    totalTokens?: FloatFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dailyEarnings?: DailyEarningUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUpdateManyWithoutUserNestedInput
+    claims?: ClaimUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUpdateManyWithoutUserNestedInput
+    adminSessions?: AdminSessionUpdateManyWithoutAdminNestedInput
+    auditLogs?: AdminAuditLogUpdateManyWithoutAdminNestedInput
+    fraudAlerts?: FraudAlertUpdateManyWithoutUserNestedInput
+    campaigns?: CampaignConfigUpdateManyWithoutCreatorNestedInput
+    nftCollections?: NftCollectionUpdateManyWithoutCreatorNestedInput
+    nftDistributions?: NftDistributionUpdateManyWithoutDistributorNestedInput
+    nftHoldings?: UserNftHoldingUpdateManyWithoutUserNestedInput
+    nftClaimApproval?: NftClaimApprovalUpdateOneWithoutUserNestedInput
+    approvedClaims?: NftClaimApprovalUpdateManyWithoutApproverNestedInput
+    airdropSeasons?: AirdropSeasonUpdateManyWithoutCreatorNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutNftClaimsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    walletAddress?: StringFieldUpdateOperationsInput | string
+    twitterId?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterName?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterImage?: NullableStringFieldUpdateOperationsInput | string | null
+    twitterFollowers?: NullableIntFieldUpdateOperationsInput | number | null
+    twitterActivity?: NullableEnumTwitterActivityFieldUpdateOperationsInput | $Enums.TwitterActivity | null
+    level?: IntFieldUpdateOperationsInput | number
+    streak?: IntFieldUpdateOperationsInput | number
+    lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    referralCode?: StringFieldUpdateOperationsInput | string
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    totalPoints?: IntFieldUpdateOperationsInput | number
+    totalTokens?: FloatFieldUpdateOperationsInput | number
+    rank?: IntFieldUpdateOperationsInput | number
+    isAdmin?: BoolFieldUpdateOperationsInput | boolean
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
+    lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    permissions?: NullableJsonNullValueInput | InputJsonValue
+    riskScore?: IntFieldUpdateOperationsInput | number
+    suspiciousFlags?: UserUpdatesuspiciousFlagsInput | string[]
+    isBanned?: BoolFieldUpdateOperationsInput | boolean
+    bannedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    lastActivity?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    claimsEnabled?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    dailyEarnings?: DailyEarningUncheckedUpdateManyWithoutUserNestedInput
+    airdropClaims?: AirdropClaimUncheckedUpdateManyWithoutUserNestedInput
+    engagements?: TwitterEngagementUncheckedUpdateManyWithoutUserNestedInput
+    tasks?: TaskCompletionUncheckedUpdateManyWithoutUserNestedInput
+    claims?: ClaimUncheckedUpdateManyWithoutUserNestedInput
+    pointHistory?: PointHistoryUncheckedUpdateManyWithoutUserNestedInput
+    referrals?: ReferralUncheckedUpdateManyWithoutReferrerNestedInput
+    referredBy?: ReferralUncheckedUpdateOneWithoutReferredNestedInput
+    achievements?: UserAchievementUncheckedUpdateManyWithoutUserNestedInput
+    notifications?: NotificationUncheckedUpdateManyWithoutUserNestedInput
     adminSessions?: AdminSessionUncheckedUpdateManyWithoutAdminNestedInput
     auditLogs?: AdminAuditLogUncheckedUpdateManyWithoutAdminNestedInput
     fraudAlerts?: FraudAlertUncheckedUpdateManyWithoutUserNestedInput
@@ -46353,6 +48865,7 @@ export namespace Prisma {
     metadata: JsonNullValueInput | InputJsonValue
     timestamp?: Date | string
     ipAddress: string
+    createdAt?: Date | string
   }
 
   export type FraudAlertCreateManyUserInput = {
@@ -46383,6 +48896,21 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type NftClaimCreateManyUserInput = {
+    id?: string
+    userWallet: string
+    mintAddress?: string | null
+    nftNumber?: number | null
+    paymentSignature: string
+    createSignature?: string | null
+    transferSignature?: string | null
+    status?: string
+    errorMessage?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
   export type NftCollectionCreateManyCreatorInput = {
     id?: string
     mintAddress: string
@@ -46392,6 +48920,10 @@ export namespace Prisma {
     uri: string
     supply?: number
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: number
+    creatorWallet?: string | null
+    royaltyPercentage?: number
+    isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -46400,8 +48932,13 @@ export namespace Prisma {
     id?: string
     mintAddress: string
     recipientCount: number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: number
     nftsPerUser: number
-    results: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: string | null
+    errorMessage?: string | null
+    collectionId?: string | null
     success?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -46425,6 +48962,8 @@ export namespace Prisma {
     approvedAt?: Date | string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    claimed?: boolean
+    claimedAt?: Date | string | null
   }
 
   export type AirdropSeasonCreateManyCreatorInput = {
@@ -46768,6 +49307,7 @@ export namespace Prisma {
     metadata?: JsonNullValueInput | InputJsonValue
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     ipAddress?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminAuditLogUncheckedUpdateWithoutAdminInput = {
@@ -46776,6 +49316,7 @@ export namespace Prisma {
     metadata?: JsonNullValueInput | InputJsonValue
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     ipAddress?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdminAuditLogUncheckedUpdateManyWithoutAdminInput = {
@@ -46784,6 +49325,7 @@ export namespace Prisma {
     metadata?: JsonNullValueInput | InputJsonValue
     timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
     ipAddress?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type FraudAlertUpdateWithoutUserInput = {
@@ -46870,6 +49412,51 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type NftClaimUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userWallet?: StringFieldUpdateOperationsInput | string
+    mintAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    nftNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    createSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    transferSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftClaimUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userWallet?: StringFieldUpdateOperationsInput | string
+    mintAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    nftNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    createSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    transferSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type NftClaimUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userWallet?: StringFieldUpdateOperationsInput | string
+    mintAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    nftNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    paymentSignature?: StringFieldUpdateOperationsInput | string
+    createSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    transferSignature?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type NftCollectionUpdateWithoutCreatorInput = {
     id?: StringFieldUpdateOperationsInput | string
     mintAddress?: StringFieldUpdateOperationsInput | string
@@ -46879,6 +49466,10 @@ export namespace Prisma {
     uri?: StringFieldUpdateOperationsInput | string
     supply?: IntFieldUpdateOperationsInput | number
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: IntFieldUpdateOperationsInput | number
+    creatorWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    royaltyPercentage?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     distributions?: NftDistributionUpdateManyWithoutCollectionNestedInput
@@ -46893,6 +49484,10 @@ export namespace Prisma {
     uri?: StringFieldUpdateOperationsInput | string
     supply?: IntFieldUpdateOperationsInput | number
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: IntFieldUpdateOperationsInput | number
+    creatorWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    royaltyPercentage?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     distributions?: NftDistributionUncheckedUpdateManyWithoutCollectionNestedInput
@@ -46907,6 +49502,10 @@ export namespace Prisma {
     uri?: StringFieldUpdateOperationsInput | string
     supply?: IntFieldUpdateOperationsInput | number
     metadata?: NullableJsonNullValueInput | InputJsonValue
+    minted?: IntFieldUpdateOperationsInput | number
+    creatorWallet?: NullableStringFieldUpdateOperationsInput | string | null
+    royaltyPercentage?: FloatFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -46914,8 +49513,13 @@ export namespace Prisma {
   export type NftDistributionUpdateWithoutDistributorInput = {
     id?: StringFieldUpdateOperationsInput | string
     recipientCount?: IntFieldUpdateOperationsInput | number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: IntFieldUpdateOperationsInput | number
     nftsPerUser?: IntFieldUpdateOperationsInput | number
-    results?: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    collectionId?: NullableStringFieldUpdateOperationsInput | string | null
     success?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46926,8 +49530,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     mintAddress?: StringFieldUpdateOperationsInput | string
     recipientCount?: IntFieldUpdateOperationsInput | number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: IntFieldUpdateOperationsInput | number
     nftsPerUser?: IntFieldUpdateOperationsInput | number
-    results?: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    collectionId?: NullableStringFieldUpdateOperationsInput | string | null
     success?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46937,8 +49546,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     mintAddress?: StringFieldUpdateOperationsInput | string
     recipientCount?: IntFieldUpdateOperationsInput | number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: IntFieldUpdateOperationsInput | number
     nftsPerUser?: IntFieldUpdateOperationsInput | number
-    results?: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    collectionId?: NullableStringFieldUpdateOperationsInput | string | null
     success?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -46983,6 +49597,8 @@ export namespace Prisma {
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    claimed?: BoolFieldUpdateOperationsInput | boolean
+    claimedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneRequiredWithoutNftClaimApprovalNestedInput
   }
 
@@ -46993,6 +49609,8 @@ export namespace Prisma {
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    claimed?: BoolFieldUpdateOperationsInput | boolean
+    claimedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type NftClaimApprovalUncheckedUpdateManyWithoutApproverInput = {
@@ -47002,6 +49620,8 @@ export namespace Prisma {
     approvedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    claimed?: BoolFieldUpdateOperationsInput | boolean
+    claimedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AirdropSeasonUpdateWithoutCreatorInput = {
@@ -47161,8 +49781,13 @@ export namespace Prisma {
     id?: string
     distributedBy: string
     recipientCount: number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: number
     nftsPerUser: number
-    results: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: string | null
+    errorMessage?: string | null
+    collectionId?: string | null
     success?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -47171,8 +49796,13 @@ export namespace Prisma {
   export type NftDistributionUpdateWithoutCollectionInput = {
     id?: StringFieldUpdateOperationsInput | string
     recipientCount?: IntFieldUpdateOperationsInput | number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: IntFieldUpdateOperationsInput | number
     nftsPerUser?: IntFieldUpdateOperationsInput | number
-    results?: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    collectionId?: NullableStringFieldUpdateOperationsInput | string | null
     success?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47183,8 +49813,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     distributedBy?: StringFieldUpdateOperationsInput | string
     recipientCount?: IntFieldUpdateOperationsInput | number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: IntFieldUpdateOperationsInput | number
     nftsPerUser?: IntFieldUpdateOperationsInput | number
-    results?: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    collectionId?: NullableStringFieldUpdateOperationsInput | string | null
     success?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -47194,8 +49829,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     distributedBy?: StringFieldUpdateOperationsInput | string
     recipientCount?: IntFieldUpdateOperationsInput | number
+    recipientWallets?: NullableJsonNullValueInput | InputJsonValue
+    nftsPerRecipient?: IntFieldUpdateOperationsInput | number
     nftsPerUser?: IntFieldUpdateOperationsInput | number
-    results?: JsonNullValueInput | InputJsonValue
+    results?: NullableJsonNullValueInput | InputJsonValue
+    transactionHash?: NullableStringFieldUpdateOperationsInput | string | null
+    errorMessage?: NullableStringFieldUpdateOperationsInput | string | null
+    collectionId?: NullableStringFieldUpdateOperationsInput | string | null
     success?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

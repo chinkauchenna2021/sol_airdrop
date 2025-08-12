@@ -115,10 +115,10 @@ function MyAuthComponent() {
 
 
 
-NFT WALLET NFT AUTH
+<!-- NFT WALLET NFT AUTH
 
 https://blogs.shyft.to/build-nft-gated-dapp-397ee39dc033
 https://nft-as-access-token.vercel.app/
 
 
-https://medium.com/@accesstoarpan/how-to-airdrop-solana-nfts-with-crossmints-minting-api-5e09c295437e
+https://medium.com/@accesstoarpan/how-to-airdrop-solana-nfts-with-crossmints-minting-api-5e09c295437e -->
