@@ -5,19 +5,19 @@ import { Connection, PublicKey, Keypair, Transaction, SystemProgram } from '@sol
 import { createTransferInstruction, getOrCreateAssociatedTokenAccount, TOKEN_PROGRAM_ID } from '@solana/spl-token'
 import prisma from '@/lib/prisma'
 
-const RPC_ENDPOINT = process.env.NEXT_PUBLIC_SOLANA_RPC_URL || "https://api.devnet.solana.com"
-const ADMIN_PRIVATE_KEY = process.env.SOLANA_PRIVATE_KEY
-const TOKEN_MINT_ADDRESS = process.env.NEXT_PUBLIC_TOKEN_MINT_ADDRESS
-
-if (!ADMIN_PRIVATE_KEY || !TOKEN_MINT_ADDRESS) {
-  throw new Error('Missing required environment variables for token claiming')
-}
-
-const connection = new Connection(RPC_ENDPOINT, 'confirmed')
-const adminKeypair = Keypair.fromSecretKey(new Uint8Array(JSON.parse(ADMIN_PRIVATE_KEY)))
-const tokenMint = new PublicKey(TOKEN_MINT_ADDRESS)
 
 export async function POST(req: NextRequest) {
+  const RPC_ENDPOINT = process.env.NEXT_PUBLIC_SOLANA_RPC_URL || "https://api.devnet.solana.com"
+  const ADMIN_PRIVATE_KEY = process.env.SOLANA_PRIVATE_KEY!
+  const TOKEN_MINT_ADDRESS = process.env.NEXT_PUBLIC_TOKEN_MINT_ADDRESS!
+  
+  // if (!ADMIN_PRIVATE_KEY || !TOKEN_MINT_ADDRESS) {
+  //   throw new Error('Missing required environment variables for token claiming')
+  // }
+  
+  const connection = new Connection(RPC_ENDPOINT, 'confirmed')
+  const adminKeypair = Keypair.fromSecretKey(new Uint8Array(JSON.parse(ADMIN_PRIVATE_KEY)))
+  const tokenMint = new PublicKey(TOKEN_MINT_ADDRESS)
   try {
     const session = await getSession(req)
     if (!session) {
