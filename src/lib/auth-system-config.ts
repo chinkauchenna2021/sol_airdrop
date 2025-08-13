@@ -1,9 +1,10 @@
 // lib/auth-system-config.ts - Auth System Configuration & Switcher
 import { TwitterAuthService } from '@/lib/twitter-auth'
 import { auth as betterAuth } from '@/lib/better-auth-enhanced'
-import { authClient } from '@/hooks/better/useEnhancedTwitterAuth'
+// import { authClient } from '@/hooks/better/useEnhancedTwitterAuth'
 import { twitterMonitor } from '@/lib/twitter-monitor-enhanced'
 import prisma from '@/lib/prisma'
+import { authClient } from './auth-client'
 
 export type AuthSystem = 'LEGACY' | 'BETTER_AUTH'
 
