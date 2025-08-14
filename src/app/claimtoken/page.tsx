@@ -189,7 +189,7 @@ export default function ConnectTokenPage() {
           <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto">
             <Coins className="w-10 h-10 text-white" />
           </div>
-          <div>
+          <div suppressHydrationWarning>
             <h1 className="text-3xl font-bold text-white mb-4">Connect Token Claiming</h1>
             <p className="text-gray-300 mb-8">
               Connect your wallet to start claiming CONNECT tokens
