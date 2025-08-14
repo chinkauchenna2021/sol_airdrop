@@ -152,6 +152,56 @@ exports.Prisma.UserScalarFieldEnum = {
   claimsEnabled: 'claimsEnabled'
 };
 
+exports.Prisma.AccountScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  type: 'type',
+  provider: 'provider',
+  providerAccountId: 'providerAccountId',
+  refresh_token: 'refresh_token',
+  access_token: 'access_token',
+  expires_at: 'expires_at',
+  token_type: 'token_type',
+  scope: 'scope',
+  id_token: 'id_token',
+  session_state: 'session_state',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SessionScalarFieldEnum = {
+  id: 'id',
+  sessionToken: 'sessionToken',
+  userId: 'userId',
+  expires: 'expires',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.VerificationTokenScalarFieldEnum = {
+  identifier: 'identifier',
+  token: 'token',
+  expires: 'expires'
+};
+
+exports.Prisma.VerificationScalarFieldEnum = {
+  id: 'id',
+  identifier: 'identifier',
+  value: 'value',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TwoFactorScalarFieldEnum = {
+  id: 'id',
+  secret: 'secret',
+  backupCodes: 'backupCodes',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.PointHistoryScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -536,6 +586,11 @@ exports.NotificationType = exports.$Enums.NotificationType = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  Account: 'Account',
+  Session: 'Session',
+  VerificationToken: 'VerificationToken',
+  Verification: 'Verification',
+  TwoFactor: 'TwoFactor',
   PointHistory: 'PointHistory',
   Referral: 'Referral',
   TwitterEngagement: 'TwitterEngagement',

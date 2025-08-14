@@ -1,12 +1,12 @@
-// import { auth } from "@/lib/better-auth-enhanced"
-// import { toNextJsHandler } from "better-auth/next-js"
-// import { NextRequest, NextResponse } from "next/server"
-import { auth } from "@/lib/better-auth"
+import { auth } from "@/lib/better-auth-enhanced"
 import { toNextJsHandler } from "better-auth/next-js"
 import { NextRequest, NextResponse } from "next/server"
+// import { auth } from "@/lib/better-auth"
+// import { toNextJsHandler } from "better-auth/next-js"
+// import { NextRequest, NextResponse } from "next/server"
 
 
-const { GET: authGET, POST: authPOST } = toNextJsHandler(auth)
+export const { GET: authGET, POST: authPOST } = toNextJsHandler(auth)
 
 export async function GET(request: NextRequest) {
   try {
@@ -23,5 +23,22 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('Better Auth POST error:', error)
     return NextResponse.json({ error: 'Authentication error' }, { status: 500 })
+  }
+}
+
+// Optional: Add custom error handling
+export async function PATCH(request: Request) {
+  try {
+    // Handle any custom PATCH requests if needed
+    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
+      status: 405,
+      headers: { 'Content-Type': 'application/json' }
+    })
+  } catch (error) {
+    console.error('Auth PATCH error:', error)
+    return new Response(JSON.stringify({ error: 'Internal server error' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' }
+    })
   }
 }

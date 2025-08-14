@@ -285,8 +285,8 @@ export default function EnhancedHomepage() {
           data-twitter-connection // This attribute helps the indicator detect when section is in view
         >
           <div className="max-w-4xl mx-auto">
-            <TwitterConnection />
-            {/* <TwitterIntegrationComponent /> */}
+            {/* <TwitterConnection /> */}
+            <TwitterIntegrationComponent />
           </div>
         </section>
       )}
