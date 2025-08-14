@@ -28,7 +28,7 @@ if (!ADMIN_PRIVATE_KEY) {
 }
 
 const adminKeypair = Keypair.fromSecretKey(
-  new Uint8Array(JSON.parse(ADMIN_PRIVATE_KEY))
+  new Uint8Array(JSON.parse(String(ADMIN_PRIVATE_KEY)))
 )
 
 // Setup UMI with admin keypair
