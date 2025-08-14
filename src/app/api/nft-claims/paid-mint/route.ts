@@ -16,7 +16,7 @@ import axios from 'axios'
 import { generatePaymentTransaction, processPaidMint } from '@/lib/claim-nft'
 
 const RPC_ENDPOINT = process.env.NEXT_PUBLIC_SOLANA_RPC_URL || "https://api.devnet.solana.com"
-const ADMIN_PRIVATE_KEY = process.env.SOLANA_PRIVATE_KEY // Admin wallet private key
+const ADMIN_PRIVATE_KEY = process.env.SOLANA_PRIVATE_KEY! // Admin wallet private key
 const NFT_IMAGE_URL = "https://devnet.irys.xyz/2L1yiTEdYuV8qU88yGfU4eLqTzaETrF1bv5p5RF7vuu4"
 
 // Initialize connections

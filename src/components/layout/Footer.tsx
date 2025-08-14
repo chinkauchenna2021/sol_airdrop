@@ -26,8 +26,8 @@ const footerLinks = {
   ],
   community: [
     // { name: 'Discord Server', href: 'https://discord.gg/soldrop' },
-    { name: 'Twitter', href: 'https://twitter.com/soldrop' },
-    { name: 'Telegram', href: 'https://t.me/soldrop' },
+    { name: 'Twitter', href: 'https://x.com/connectxtoken?t=rqhi86fbyN4uBnO7d1Fh4g&s=09' },
+    { name: 'Telegram', href: 't.me/tweetxconnect' },
     // { name: 'Medium Blog', href: 'https://medium.com/@soldrop' },
     // { name: 'Reddit', href: 'https://reddit.com/r/soldrop' }
   ],
@@ -164,7 +164,7 @@ export default function CryptoFooter() {
               </div>
 
               {/* Newsletter */}
-              <motion.div
+              {/* <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -189,7 +189,7 @@ export default function CryptoFooter() {
                     <ArrowRight className="w-4 h-4" />
                   </motion.button>
                 </div>
-              </motion.div>
+              </motion.div> */}
             </div>
 
             {/* Platform Links */}
@@ -220,7 +220,7 @@ export default function CryptoFooter() {
             </motion.div>
 
             {/* Resources Links */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -244,7 +244,7 @@ export default function CryptoFooter() {
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </motion.div> */}
 
             {/* Community Links */}
             <motion.div

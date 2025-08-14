@@ -116,23 +116,23 @@ export default function EnhancedHomepage() {
       status: "completed"
     },
     {
-      quarter: "2025",
+      quarter: " 2025",
       title: "Social Integration",
-      description: "Twitter integration, engagement tracking, and referral system",
-      status: "completed"
+      description: "PLATFORM launch",
+      status: "In-Progress"
     },
-    {
+    { 
       quarter: "2025",
       title: "Advanced Features",
-      description: "Multi-chain support, NFT rewards, and governance features",
+      description: "NFT minting and Rewards $Connect token TGE",
       status: "in-progress"
     },
-    {
-      quarter: "2025",
-      title: "Ecosystem Expansion",
-      description: "Mobile app, API access, and enterprise partnerships",
-      status: "upcoming"
-    }
+    // {
+    //   quarter: "2025",
+    //   title: "Ecosystem Expansion",
+    //   description: "Mobile app, API access, and enterprise partnerships",
+    //   status: "upcoming"
+    // }
   ]
 
   if (!mounted) return null
