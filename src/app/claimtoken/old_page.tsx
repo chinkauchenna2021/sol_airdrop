@@ -375,7 +375,7 @@ export default function AdvancedTokenClaimPage() {
         const hasPass = await checkNftOwnership(
           publicKey,
           nftPassStatus?.requiredPasses || [],
-          'devnet'
+          'mainnet'
         )
         
         if (!hasPass) {

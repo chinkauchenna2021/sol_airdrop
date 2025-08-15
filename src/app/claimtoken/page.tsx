@@ -347,7 +347,7 @@ export default function ConnectTokenPage() {
                           </span>
                           {claim.transactionHash && (
                             <button
-                              onClick={() => window.open(`https://solscan.io/tx/${claim.transactionHash}?cluster=devnet`, '_blank')}
+                              onClick={() => window.open(`https://solscan.io/tx/${claim.transactionHash}`, '_blank')}
                               className="p-1 hover:bg-white/10 rounded"
                             >
                               <ExternalLink className="w-4 h-4 text-gray-400" />
@@ -470,7 +470,7 @@ export default function ConnectTokenPage() {
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-400">Network:</span>
-                  <span className="text-white">Solana Devnet</span>
+                  <span className="text-white">Solana Mainnet</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-400">Token Symbol:</span>

@@ -44,7 +44,7 @@ interface MintResult {
   message: string
 }
 
-const NFT_IMAGE_URL = "https://devnet.irys.xyz/2L1yiTEdYuV8qU88yGfU4eLqTzaETrF1bv5p5RF7vuu4"
+const NFT_IMAGE_URL = "https://node1.irys.xyz/MuZo1TfkRG39InK5rQVlK34z-laR7Q4FaWUGvmBjugs"
 
 export default function NFTMintingPage() {
   const { publicKey, signTransaction, connected } = useWallet()
@@ -253,7 +253,7 @@ export default function NFTMintingPage() {
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-400">Network:</span>
-                <span className="text-white font-medium">Solana Devnet</span>
+                <span className="text-white font-medium">Solana Mainnet</span>
               </div>
             </div>
           </motion.div>
@@ -456,7 +456,7 @@ export default function NFTMintingPage() {
 
                     <div className="flex gap-3">
                       <button
-                        onClick={() => window.open(`https://solscan.io/token/${mintResult.mintAddress}?cluster=devnet`, '_blank')}
+                        onClick={() => window.open(`https://solscan.io/token/${mintResult.mintAddress}`, '_blank')}
                         className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-all flex items-center justify-center gap-2"
                       >
                         <ExternalLink className="w-4 h-4" />
@@ -489,7 +489,7 @@ export default function NFTMintingPage() {
               <ul className="text-gray-300 space-y-1">
                 <li>• You must be approved by an admin before minting</li>
                 <li>• Payment of $7.00 worth of SOL is required</li>
-                <li>• NFTs are minted on Solana Devnet</li>
+                <li>• NFTs are minted on Solana Mainnet</li>
                 <li>• Each wallet can only mint one Connect Pass NFT</li>
               </ul>
             </div>

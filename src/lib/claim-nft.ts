@@ -14,10 +14,10 @@ import { getOrCreateAssociatedTokenAccount, transfer } from "@solana/spl-token"
 import prisma from '@/lib/prisma'
 import axios from 'axios'
 
-const RPC_ENDPOINT = process.env.NEXT_PUBLIC_SOLANA_RPC_URL || "https://api.devnet.solana.com"
+const RPC_ENDPOINT = process.env.NEXT_PUBLIC_SOLANA_RPC_URL || "https://api.mainnet-beta.solana.com"
 const ADMIN_PRIVATE_KEY = process.env.SOLANA_PRIVATE_KEY // Admin wallet private key
-const NFT_IMAGE_URL = "https://devnet.irys.xyz/2L1yiTEdYuV8qU88yGfU4eLqTzaETrF1bv5p5RF7vuu4"
-
+// const NFT_IMAGE_URL = "https://devnet.irys.xyz/2L1yiTEdYuV8qU88yGfU4eLqTzaETrF1bv5p5RF7vuu4"
+const NFT_IMAGE_URL = "https://gateway.irys.xyz/We-hYo56J103498uoeny97ANumiM-Yubp05pbZdvb_Y"
 // Initialize connections
 const connection = new Connection(RPC_ENDPOINT, 'confirmed')
 const umi = createUmi(RPC_ENDPOINT)

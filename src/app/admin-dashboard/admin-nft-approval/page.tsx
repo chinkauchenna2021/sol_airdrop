@@ -462,7 +462,7 @@ export default function AdminNFTApprovalManagement() {
                         <Eye className="w-4 h-4" />
                       </button>
                       <button
-                        onClick={() => window.open(`https://solscan.io/account/${user.walletAddress}?cluster=devnet`, '_blank')}
+                        onClick={() => window.open(`https://solscan.io/account/${user.walletAddress}`, '_blank')}
                         className="p-2 text-gray-400 hover:bg-gray-500/20 rounded-lg transition-all"
                         title="View on Explorer"
                       >
@@ -560,7 +560,7 @@ export default function AdminNFTApprovalManagement() {
                   Close
                 </button>
                 <button
-                  onClick={() => window.open(`https://solscan.io/account/${showUserModal.walletAddress}?cluster=devnet`, '_blank')}
+                  onClick={() => window.open(`https://solscan.io/account/${showUserModal.walletAddress}`, '_blank')}
                   className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all flex items-center justify-center gap-2"
                 >
                   <ExternalLink className="w-4 h-4" />

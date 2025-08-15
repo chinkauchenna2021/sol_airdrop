@@ -131,7 +131,7 @@ export function NFTCollectionsList({ collections, loading, onRefresh }: NFTColle
                         <Copy className="w-4 h-4" />
                       </button>
                       <a
-                        href={`https://solscan.io/token/${nft.mintAddress}?cluster=devnet`}
+                        href={`https://solscan.io/token/${nft.mintAddress}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
@@ -200,7 +200,7 @@ export function NFTCollectionsList({ collections, loading, onRefresh }: NFTColle
                               <div className="flex items-center gap-2">
                                 {result.success && result.signature ? (
                                   <a
-                                    href={`https://solscan.io/tx/${result.signature}?cluster=devnet`}
+                                    href={`https://solscan.io/tx/${result.signature}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="text-blue-400 hover:text-blue-300 transition-colors"

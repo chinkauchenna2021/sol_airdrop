@@ -321,7 +321,7 @@ export async function setupNFTClaimingSystemExisting() {
     console.log(`   NEXT_PUBLIC_NFT_MINT_ADDRESS=${mintAddress}`)
     console.log('2. Update your metadata URI with actual NFT metadata')
     console.log('3. Access /admin to enable claiming when ready')
-    console.log('4. Test the system on devnet before going to mainnet')
+    console.log('4. Test the system on Mainnet before going to mainnet')
 
     return { success: true, mintAddress, adminUserId: adminUser.id }
   } catch (error) {

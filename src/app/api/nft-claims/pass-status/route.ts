@@ -28,7 +28,7 @@ export async function GET(req: NextRequest) {
     const hasValidPass = await checkNftOwnership(
       wallet,
       requiredPasses,
-      process.env.SOLANA_NETWORK || 'devnet'
+      process.env.SOLANA_NETWORK || 'mainnet'
     )
 
     // Get user's NFTs (simplified version)

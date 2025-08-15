@@ -7,7 +7,7 @@ import prisma from '@/lib/prisma'
 
 
 export async function POST(req: NextRequest) {
-  const RPC_ENDPOINT = process.env.NEXT_PUBLIC_SOLANA_RPC_URL || "https://api.devnet.solana.com"
+  const RPC_ENDPOINT = process.env.NEXT_PUBLIC_SOLANA_RPC_URL || "https://api.mainnet-beta.solana.com"
   const ADMIN_PRIVATE_KEY = process.env.SOLANA_PRIVATE_KEY!
   const TOKEN_MINT_ADDRESS = process.env.NEXT_PUBLIC_TOKEN_MINT_ADDRESS!
   

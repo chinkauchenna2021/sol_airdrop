@@ -438,7 +438,7 @@ export const nftUtils = {
   /**
    * Get network explorer URL
    */
-  getExplorerUrl(signature: string, network: string = 'devnet'): string {
+  getExplorerUrl(signature: string, network: string = 'mainnet'): string {
     const baseUrl = network === 'mainnet-beta' 
       ? 'https://solscan.io' 
       : 'https://solscan.io'

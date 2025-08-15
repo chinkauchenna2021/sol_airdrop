@@ -101,7 +101,7 @@ export async function transferNftWithSolCheck(
 export async function checkNftOwnership(
   walletAddress: PublicKey | string,
   requiredNftMints: string[],
-  network: string = "devnet"
+  network: string = "mainnet"
 ): Promise<boolean> {
   try {
     const address = typeof walletAddress === "string" 
@@ -156,7 +156,7 @@ export async function claimAirdropWithChecks(
   connection: Connection,
   fromWallet: any,
   requiredNftMints: string[],
-  network: string = "devnet"
+  network: string = "mainnet"
 ): Promise<{
   success: boolean;
   signature?: string;
@@ -494,7 +494,7 @@ export async function completeAirdropWorkflow(
     symbol: string;
     uri: string;
   },
-  network: string = "devnet"
+  network: string = "mainnet"
 ): Promise<{
   success: boolean;
   mintAddress?: PublicKey;

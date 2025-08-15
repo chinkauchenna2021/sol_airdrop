@@ -15,7 +15,7 @@ import {
   TOKEN_PROGRAM_ID,
 } from '@solana/spl-token'
 
-const SOLANA_RPC_URL = process.env.NEXT_PUBLIC_SOLANA_RPC_URL! || 'https://api.devnet.solana.com'
+const SOLANA_RPC_URL = process.env.NEXT_PUBLIC_SOLANA_RPC_URL! || 'https://api.mainnet-beta.solana.com'
 const TOKEN_MINT = process.env.NEXT_PUBLIC_TOKEN_MINT_ADDRESS!
 const AIRDROP_WALLET = process.env.NEXT_PUBLIC_AIRDROP_WALLET_ADDRESS!
 const PRIVATE_KEY = process.env.SOLANA_PRIVATE_KEY!

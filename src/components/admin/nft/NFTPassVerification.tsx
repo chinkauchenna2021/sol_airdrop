@@ -176,7 +176,7 @@ export function NFTPassVerification({
                     <Copy className="w-4 h-4" />
                   </button>
                   <a
-                    href={`https://solscan.io/token/${nft.mint}?cluster=devnet`}
+                    href={`https://solscan.io/token/${nft.mint}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-2 bg-green-600/20 hover:bg-green-600/30 text-green-400 rounded-lg transition-colors"
@@ -236,7 +236,7 @@ export function NFTPassVerification({
                       <Copy className="w-3 h-3" />
                     </button>
                     <a
-                      href={`https://solscan.io/token/${mint}?cluster=devnet`}
+                      href={`https://solscan.io/token/${mint}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-1 text-red-400 hover:text-red-300 transition-colors"

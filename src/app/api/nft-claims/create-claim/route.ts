@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
       connection,
       adminWallet,
       nftPassMints || [],
-      process.env.SOLANA_NETWORK || 'devnet'
+      process.env.SOLANA_NETWORK || 'mainnet'
     )
 
     if (!result.success) {
