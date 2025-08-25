@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
       headers: req.headers,
     })
 
-    if (!session || session.user.id !== betterAuthUser.id) {
+    if (!session || session?.user.id !== betterAuthUser.id) {
       return NextResponse.json(
         { error: 'Invalid or expired Twitter session' },
         { status: 401 }
