@@ -4,8 +4,7 @@ import { NextRequest, NextResponse } from "next/server"
 // import { auth } from "@/lib/better-auth"
 // import { toNextJsHandler } from "better-auth/next-js"
 // import { NextRequest, NextResponse } from "next/server"
-
- const { GET: authGET, POST: authPOST } = toNextJsHandler(auth)
+ const { GET: authGET, POST: authPOST } = toNextJsHandler(auth.handler)
 
 export async function GET(request: NextRequest) {
   try {

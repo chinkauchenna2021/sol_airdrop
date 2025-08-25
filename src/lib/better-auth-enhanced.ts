@@ -3,6 +3,7 @@ import { betterAuth } from "better-auth"
 import { prismaAdapter } from "better-auth/adapters/prisma"
 import { twoFactor } from "better-auth/plugins/two-factor"
 import { admin } from "better-auth/plugins/admin"
+import { nextCookies } from "better-auth/next-js";
 import prisma from "@/lib/prisma"
 
 export const auth = betterAuth({
@@ -47,13 +48,13 @@ export const auth = betterAuth({
   },
 
   // Plugins
-  plugins: [
-    twoFactor({
-      issuer: process.env.NEXT_PUBLIC_APP_NAME || "Tweetxconnect Airdrop",
-    }),
-    admin(),
-  ],
-
+  // plugins: [
+  //   twoFactor({
+  //     issuer: process.env.NEXT_PUBLIC_APP_NAME || "Tweetxconnect Airdrop",
+  //   }),
+  //   admin(),
+  // ],
+  plugins: [nextCookies()],
   // Event handlers
   events: {
     onSignIn: async (data: { user: { id: any } }) => {
