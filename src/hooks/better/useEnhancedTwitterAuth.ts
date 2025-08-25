@@ -168,19 +168,20 @@ export function useEnhancedTwitterAuth() {
       // Initiate better-auth Twitter sign-in
       const result = await authClient.signIn.social({
         provider: "twitter",
-        callbackURL: "/",
-        fetchOptions: {
-          onRequest: (context) => {
-            console.log('🔄 Twitter auth request initiated')
-          },
-          onResponse: (context) => {
-            console.log('✅ Twitter auth response received')
-          },
-          onRequestError: (context: { error: any }) => {
-            console.error('❌ Twitter auth request error:', context.error)
-            setConnectionError('Authentication request failed')
-          }
-        }
+        // callbackURL: "/api/auth/callback/twitter",
+        // redirectURI: "/",
+        // fetchOptions: {
+        //   onRequest: (context) => {
+        //     console.log('🔄 Twitter auth request initiated')
+        //   },
+        //   onResponse: (context) => {
+        //     console.log('✅ Twitter auth response received')
+        //   },
+        //   onRequestError: (context: { error: any }) => {
+        //     console.error('❌ Twitter auth request error:', context.error)
+        //     setConnectionError('Authentication request failed')
+        //   }
+        // }
       })
 
       if (result.error) {

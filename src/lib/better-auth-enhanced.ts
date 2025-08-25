@@ -1,8 +1,8 @@
 // lib/better-auth-enhanced.ts - Simplified Better Auth Configuration
 import { betterAuth } from "better-auth"
 import { prismaAdapter } from "better-auth/adapters/prisma"
-import { twoFactor } from "better-auth/plugins/two-factor"
-import { admin } from "better-auth/plugins/admin"
+// import { twoFactor } from "better-auth/plugins/two-factor"
+// import { admin } from "better-auth/plugins/admin"
 import { nextCookies } from "better-auth/next-js";
 import prisma from "@/lib/prisma"
 
@@ -25,7 +25,7 @@ export const auth = betterAuth({
     twitter: {
       clientId: process.env.TWITTER_CLIENT_ID!,
       clientSecret: process.env.TWITTER_CLIENT_SECRET!,
-      redirectURI: `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/callback/twitter`,
+      // redirectURI: `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/callback/twitter`,
     },
   },
 
@@ -54,7 +54,7 @@ export const auth = betterAuth({
   //   }),
   //   admin(),
   // ],
-  plugins: [nextCookies()],
+     plugins: [nextCookies()],
   // Event handlers
   events: {
     onSignIn: async (data: { user: { id: any } }) => {

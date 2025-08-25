@@ -65,7 +65,7 @@ export function useTwitterAuth() {
       // Use better-auth to sign in with Twitter
       await authClient.signIn.social({
         provider: "twitter",
-        callbackURL: "/dashboard?twitter=connected",
+        callbackURL: "/",
       })
 
       return true
