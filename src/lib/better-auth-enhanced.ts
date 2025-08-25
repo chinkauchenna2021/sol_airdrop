@@ -1,26 +1,25 @@
-// lib/better-auth-enhanced.ts - Simplified Better Auth Configuration
 import { betterAuth } from "better-auth"
 import { prismaAdapter } from "better-auth/adapters/prisma"
 import { twoFactor } from "better-auth/plugins/two-factor"
 import { admin } from "better-auth/plugins/admin"
 import prisma from "@/lib/prisma"
-import { nextCookies } from "better-auth/next-js";
+import { nextCookies } from "better-auth/next-js"
+
+console.log('Initializing Better Auth with configuration:')
+console.log('Base URL:', process.env.NEXT_PUBLIC_APP_URL)
 
 export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
   
-  // Basic configuration
   secret: process.env.BETTER_AUTH_SECRET!,
   baseURL: process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL!,
   
-  // Disable email/password auth - only social
   emailAndPassword: {
     enabled: false,
   },
   
-  // Social providers configuration
   socialProviders: {
     twitter: {
       clientId: process.env.TWITTER_CLIENT_ID!,
@@ -28,14 +27,12 @@ export const auth = betterAuth({
       redirectURI: `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/callback/twitter`,
     },
   },
-
-  // Session configuration
+  
   session: {
     expiresIn: 60 * 60 * 24 * 30, // 30 days
     updateAge: 60 * 60 * 24, // Update every 24 hours
   },
-
-  // Advanced settings
+  
   advanced: {
     useSecureCookies: process.env.NODE_ENV === "production",
     cookiePrefix: "airdrop-auth",
@@ -46,16 +43,13 @@ export const auth = betterAuth({
         : undefined
     },
   },
-
-  // Plugins
-  plugins:[nextCookies()],
-
-  // Event handlers
+  
+  plugins: [nextCookies()],
+  
   events: {
-    onSignIn: async (data: { user: { id: any } }) => {
+    onSignIn: async (data: { user: { id: string } }) => {
       console.log("🔑 User signed in:", data.user.id)
       try {
-        // Log authentication event
         await prisma.systemConfig.create({
           data: {
             key: `auth_signin_${data.user.id}_${Date.now()}`,
@@ -72,12 +66,10 @@ export const auth = betterAuth({
       }
     },
     
-    onSignUp: async (data: { user: { id: any; email: any; name: any; image: any } }) => {
+    onSignUp: async (data: { user: { id: string; email?: string; name?: string; image?: string } }) => {
       console.log("🆕 User signed up:", data.user.id)
       try {
-        // Handle new user setup
         if (data.user.email) {
-          // Create initial user record or update existing
           await prisma.user.upsert({
             where: { email: data.user.email },
             update: {
@@ -88,12 +80,11 @@ export const auth = betterAuth({
               email: data.user.email,
               twitterName: data.user.name,
               twitterImage: data.user.image,
-              walletAddress: `wallet_${data.user.id}`, // Generate or assign wallet
+              walletAddress: `wallet_${data.user.id}`,
             }
           })
         }
-
-        // Log registration event
+        
         await prisma.systemConfig.create({
           data: {
             key: `auth_signup_${data.user.id}_${Date.now()}`,
@@ -110,12 +101,11 @@ export const auth = betterAuth({
       }
     },
     
-    onSignOut: async (data: { userId: any }) => {
+    onSignOut: async (data: { userId: string }) => {
       console.log("👋 User signed out:", data.userId)
     },
   },
-
-  // Error handling
+  
   logger: {
     level: process.env.NODE_ENV === "development" ? "debug" : "warn",
     disabled: false,
