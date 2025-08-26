@@ -41,13 +41,13 @@ class EnhancedTwitterMonitor {
   constructor() {
     // Initialize Twitter clients
     this.client = new TwitterApi({
-      appKey: process.env.TWITTER_API_KEY!,
-      appSecret: process.env.TWITTER_API_SECRET!,
-      accessToken: process.env.TWITTER_ACCESS_TOKEN!,
-      accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET!,
+      appKey: process.env.TWITTER_API_KEY as string,
+      appSecret: process.env.TWITTER_API_SECRET as string,
+      accessToken: process.env.TWITTER_ACCESS_TOKEN as string,
+      accessSecret: process.env.TWITTER_ACCESS_TOKEN_SECRET as string,
     })
 
-    this.bearerClient = new TwitterApi(process.env.TWITTER_BEARER_TOKEN!)
+    this.bearerClient = new TwitterApi(process.env.TWITTER_BEARER_TOKEN as string)
   }
 
   /**
