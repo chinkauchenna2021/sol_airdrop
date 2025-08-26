@@ -143,15 +143,15 @@ export const auth = betterAuth({
   database: prismaAdapter(prisma, {
     provider: "postgresql",
   }),
-  secret: process.env.BETTER_AUTH_SECRET!,
-  baseURL: process.env.BETTER_AUTH_URL || process.env.NEXT_PUBLIC_APP_URL!,
+  secret: process.env.BETTER_AUTH_SECRET as string,
+  baseURL: String(process.env.BETTER_AUTH_URL) || process.env.NEXT_PUBLIC_APP_URL as string,
   emailAndPassword: {
     enabled: false,
   },
   socialProviders: {
     twitter: {
-      clientId: process.env.TWITTER_CLIENT_ID!,
-      clientSecret: process.env.TWITTER_CLIENT_SECRET!,
+      clientId: process.env.TWITTER_CLIENT_ID as string,
+      clientSecret: process.env.TWITTER_CLIENT_SECRET as string,
       // redirectUri: `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/callback/twitter`,
     },
   },
