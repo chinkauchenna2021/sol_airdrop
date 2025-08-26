@@ -135,12 +135,12 @@ import { admin } from "better-auth/plugins/admin";
 import prisma from "@/lib/prisma";
 import { nextCookies } from "better-auth/next-js";
 import { createAuthMiddleware, APIError } from "better-auth/api";
-import { useWalletStore } from "@/store/useWalletStore";
+// import { useWalletStore } from "@/store/useWalletStore";
 
 console.log("Initializing Better Auth with configuration:");
 console.log("Base URL:", process.env.NEXT_PUBLIC_APP_URL);
 
-const { publicKey } = useWalletStore();
+// const { publicKey } = useWalletStore();
 
 const baseURL: string | undefined =
 	process.env.VERCEL === "1"
@@ -230,7 +230,7 @@ advanced: {
                   email: newSession.user.email,
                   twitterName: newSession.user.name,
                   twitterImage: newSession.user.image,
-                  walletAddress: publicKey || `wallet_${newSession.user.id}`,
+                  walletAddress: `wallet_${newSession.user.id}`,
                 },
               });
             }
