@@ -177,9 +177,10 @@ export const auth = betterAuth({
     twitter: {
       clientId: process.env.TWITTER_CLIENT_ID as string,
       clientSecret: process.env.TWITTER_CLIENT_SECRET as string,
-      redirectUri: '/',
+      redirectUri: `${process.env.NEXT_PUBLIC_APP_URL}/`,
     },
   },
+
   session: {
     expiresIn: 60 * 60 * 24 * 30, // 30 days
     updateAge: 60 * 60 * 24, // Update every 24 hours

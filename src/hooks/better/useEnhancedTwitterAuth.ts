@@ -168,7 +168,7 @@ export function useEnhancedTwitterAuth() {
       // Initiate better-auth Twitter sign-in
       const result = await authClient.signIn.social({
         provider: "twitter",
-        callbackURL: "/",
+        callbackURL: `${process.env.NEXT_PUBLIC_APP_URL}/`,
         // redirectURI: "/",
         fetchOptions: {
           onRequest: (context) => {
