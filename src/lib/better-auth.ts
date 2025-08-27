@@ -14,7 +14,7 @@ export const auth = betterAuth({
     twitter: {
       clientId: process.env.TWITTER_CLIENT_ID!,
       clientSecret: process.env.TWITTER_CLIENT_SECRET!,
-      redirectURI: `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/callback/twitter`,
+      redirectURI: `${process.env.NEXT_PUBLIC_APP_URL}/`,
     },
   },
   advanced: {
