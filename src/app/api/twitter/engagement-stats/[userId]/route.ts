@@ -145,11 +145,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { TwitterEngagementTracker } from "@/lib/twitter-sdk/twitter-engagement";
 
 export async function GET(
-  request: NextRequest,
-  { params }: { params: { userId: string } }
+  request: NextRequest
 ) {
   try {
-    const stats = await TwitterEngagementTracker.getUserEngagementStats(params.userId);
+    const requestUrl = new URL(request.url);
+    const userId = requestUrl.searchParams.get("userId") as string;
+    const stats = await TwitterEngagementTracker.getUserEngagementStats(userId);
     return NextResponse.json({ stats });
   } catch (error) {
     console.error("Error fetching engagement stats:", error);

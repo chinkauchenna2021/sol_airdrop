@@ -129,8 +129,9 @@ export async function POST(
   { params }: { params: { userId: string } }
 ) {
   try {
-    const engagements = await TwitterEngagementTracker.trackUserEngagement(params.userId);
-    
+    const requestUrl = new URL(request.url);
+    const userId = requestUrl.searchParams.get("userId") as string;
+    const engagements = await TwitterEngagementTracker.trackUserEngagement(userId);
     // Get updated user data
     const prisma = (await import("@/lib/prisma")).default;
     const user = await prisma.user.findUnique({
