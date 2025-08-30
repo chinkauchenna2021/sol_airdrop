@@ -221,6 +221,9 @@ importers:
       tweetnacl:
         specifier: ^1.0.3
         version: 1.0.3
+      twitter-api-sdk:
+        specifier: ^1.2.1
+        version: 1.2.1(encoding@0.1.13)
       twitter-api-v2:
         specifier: ^1.24.0
         version: 1.24.0
@@ -8657,6 +8660,10 @@ packages:
 
   tweetnacl@1.0.3:
     resolution: {integrity: sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==}
+
+  twitter-api-sdk@1.2.1:
+    resolution: {integrity: sha512-tNQ6DGYucFk94JlnUMsHCkHg5o1wnCdHh71Y2ukygNVssOdD1gNVjOpaojJrdwbEAhoZvcWdGHerCa55F8HKxQ==}
+    engines: {node: '>=14'}
 
   twitter-api-v2@1.24.0:
     resolution: {integrity: sha512-RDEiuNwnFirvf4c5f1sysgg0rfMQgekXgKt+/UdbNu+Bs5bJ1VbXkqKzdd2a2lPMlDVDbdGUoe2pOd4n25fFVQ==}
@@ -20063,6 +20070,13 @@ snapshots:
   tween-functions@1.2.0: {}
 
   tweetnacl@1.0.3: {}
+
+  twitter-api-sdk@1.2.1(encoding@0.1.13):
+    dependencies:
+      abort-controller: 3.0.0
+      node-fetch: 2.7.0(encoding@0.1.13)
+    transitivePeerDependencies:
+      - encoding
 
   twitter-api-v2@1.24.0: {}
 

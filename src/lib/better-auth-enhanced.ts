@@ -165,9 +165,9 @@ console.log("Base URL:", process.env.NEXT_PUBLIC_APP_URL);
 
 
 export const auth = betterAuth({
-  // database: prismaAdapter(prisma, {
-  //   provider: "postgresql",
-  // }),
+  database: prismaAdapter(prisma, {
+    provider: "postgresql",
+  }),
   secret: process.env.BETTER_AUTH_SECRET as string,
   baseURL: String(process.env.BETTER_AUTH_URL) || process.env.NEXT_PUBLIC_APP_URL as string,
   emailAndPassword: {

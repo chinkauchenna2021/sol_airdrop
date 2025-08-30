@@ -10,6 +10,9 @@
 !.yarn/releases
 !.yarn/versions
 
+
+/ngrok-server.js 
+ngrok-server.js
 # DOC MATERIALS
 MINT_CODE
 MINT_CODE/

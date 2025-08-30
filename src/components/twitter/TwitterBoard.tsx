@@ -149,48 +149,6 @@ export default function TwitterIntegrationComponent() {
     }
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // Auto-refresh engagement data
   useEffect(() => {
     if (autoRefresh && isTwitterConnected) {
