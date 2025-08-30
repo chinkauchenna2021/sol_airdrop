@@ -125,8 +125,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { TwitterEngagementTracker } from "@/lib/twitter-sdk/twitter-engagement";
 
 export async function POST(
-  request: NextRequest,
-  { params }: { params: { userId: string } }
+  request: NextRequest
 ) {
   try {
     const requestUrl = new URL(request.url);
@@ -135,7 +134,7 @@ export async function POST(
     // Get updated user data
     const prisma = (await import("@/lib/prisma")).default;
     const user = await prisma.user.findUnique({
-      where: { id: params.userId }
+      where: { id: userId }
     });
     
     return NextResponse.json({
