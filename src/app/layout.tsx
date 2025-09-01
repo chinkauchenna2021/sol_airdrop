@@ -7,6 +7,8 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import CryptoNavbar from '@/components/layout/Navbar'
 import { generateMetadata, siteConfig, generateStructuredData } from '@/lib/metadata'
+import {  SessionProvider } from "next-auth/react"
+// import { getSession } from '@/lib/next-auth/auth'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -23,13 +25,13 @@ export const viewport: Viewport = {
 const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = generateMetadata({})
 
-export default function RootLayout({
+export default  function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
    const structuredData = generateStructuredData()
-
+  //  const session = await getSession()
   return (
     <html lang="en" suppressHydrationWarning>
        <head>
@@ -59,11 +61,12 @@ export default function RootLayout({
         <meta name="wallet-support" content="phantom,solflare,sollet" />
       </head>
       <body className={inter.className}>
-        <Providers>
-          <CryptoNavbar />
-        <Toaster
-          position="top-right"
-          toastOptions={{
+        {/* <SessionProvider session={session}> */}
+          <Providers>
+            <CryptoNavbar />
+          <Toaster
+            position="top-right"
+            toastOptions={{
             duration: 4000,
             style: {
               background: '#333',
@@ -75,6 +78,7 @@ export default function RootLayout({
 
             <Footer />
         </Providers>
+        {/* </SessionProvider> */}
       </body>
     </html>
   )

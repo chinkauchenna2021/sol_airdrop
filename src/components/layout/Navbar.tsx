@@ -499,9 +499,9 @@ export default function CryptoNavbar() {
         
         setData(dashboardData)
       } else {
-        console.error('Failed to fetch dashboard data:', dashboardRes.status)
+        console.log('Failed to fetch dashboard data:', dashboardRes.status)
         // Don't use fallback anymore - show error instead
-        throw new Error('Failed to load dashboard')
+        // throw new Error('Failed to load dashboard')
       }
     } catch (error) {
       console.error('Failed to load dashboard:', error)

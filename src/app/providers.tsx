@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Toaster } from 'react-hot-toast'
 import  WalletContextProvider  from '@/components/wallet/WalletProvider'
 import { ErrorBoundary } from '@/components/ErrorBoundry'
+import { getSession, SessionProvider as NextAuthSessionProvider } from "next-auth/react"
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -16,8 +17,11 @@ const queryClient = new QueryClient({
 })
 
 export function Providers({ children }: { children: ReactNode }) {
+  //  const session = await getSession()
+
   return (
-      <WalletContextProvider>
+ <NextAuthSessionProvider>
+   <WalletContextProvider>
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
           <Toaster
@@ -47,5 +51,6 @@ export function Providers({ children }: { children: ReactNode }) {
       </QueryClientProvider>
     </ErrorBoundary>
      </WalletContextProvider>
+ </NextAuthSessionProvider>
   )
 }

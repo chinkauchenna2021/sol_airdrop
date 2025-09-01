@@ -738,7 +738,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 6.11.1
-   * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
+   * Query Engine version: f40f79ec31188888a2e33acda0ecc8fd10a853a9
    */
   export type PrismaVersion = {
     client: string
@@ -1223,6 +1223,10 @@ export namespace Prisma {
             args: Prisma.UserUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.UserUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserPayload>[]
+          }
           upsert: {
             args: Prisma.UserUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$UserPayload>
@@ -1292,6 +1296,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.AccountUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AccountUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AccountPayload>[]
           }
           upsert: {
             args: Prisma.AccountUpsertArgs<ExtArgs>
@@ -1363,6 +1371,10 @@ export namespace Prisma {
             args: Prisma.SessionUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.SessionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SessionPayload>[]
+          }
           upsert: {
             args: Prisma.SessionUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$SessionPayload>
@@ -1432,6 +1444,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.VerificationTokenUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.VerificationTokenUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VerificationTokenPayload>[]
           }
           upsert: {
             args: Prisma.VerificationTokenUpsertArgs<ExtArgs>
@@ -1503,6 +1519,10 @@ export namespace Prisma {
             args: Prisma.VerificationUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.VerificationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$VerificationPayload>[]
+          }
           upsert: {
             args: Prisma.VerificationUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$VerificationPayload>
@@ -1572,6 +1592,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.TwoFactorUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TwoFactorUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TwoFactorPayload>[]
           }
           upsert: {
             args: Prisma.TwoFactorUpsertArgs<ExtArgs>
@@ -1643,6 +1667,10 @@ export namespace Prisma {
             args: Prisma.PointHistoryUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.PointHistoryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PointHistoryPayload>[]
+          }
           upsert: {
             args: Prisma.PointHistoryUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$PointHistoryPayload>
@@ -1712,6 +1740,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.ReferralUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ReferralUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ReferralPayload>[]
           }
           upsert: {
             args: Prisma.ReferralUpsertArgs<ExtArgs>
@@ -1783,6 +1815,10 @@ export namespace Prisma {
             args: Prisma.TwitterEngagementUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.TwitterEngagementUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TwitterEngagementPayload>[]
+          }
           upsert: {
             args: Prisma.TwitterEngagementUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$TwitterEngagementPayload>
@@ -1852,6 +1888,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.TaskCompletionUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TaskCompletionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TaskCompletionPayload>[]
           }
           upsert: {
             args: Prisma.TaskCompletionUpsertArgs<ExtArgs>
@@ -1923,6 +1963,10 @@ export namespace Prisma {
             args: Prisma.TaskUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.TaskUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TaskPayload>[]
+          }
           upsert: {
             args: Prisma.TaskUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$TaskPayload>
@@ -1992,6 +2036,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.ClaimUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ClaimUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClaimPayload>[]
           }
           upsert: {
             args: Prisma.ClaimUpsertArgs<ExtArgs>
@@ -2063,6 +2111,10 @@ export namespace Prisma {
             args: Prisma.SystemConfigUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.SystemConfigUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SystemConfigPayload>[]
+          }
           upsert: {
             args: Prisma.SystemConfigUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$SystemConfigPayload>
@@ -2132,6 +2184,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.AnalyticsUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AnalyticsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AnalyticsPayload>[]
           }
           upsert: {
             args: Prisma.AnalyticsUpsertArgs<ExtArgs>
@@ -2203,6 +2259,10 @@ export namespace Prisma {
             args: Prisma.DailyEarningUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.DailyEarningUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DailyEarningPayload>[]
+          }
           upsert: {
             args: Prisma.DailyEarningUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$DailyEarningPayload>
@@ -2272,6 +2332,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.AirdropSeasonUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AirdropSeasonUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropSeasonPayload>[]
           }
           upsert: {
             args: Prisma.AirdropSeasonUpsertArgs<ExtArgs>
@@ -2343,6 +2407,10 @@ export namespace Prisma {
             args: Prisma.AirdropClaimUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.AirdropClaimUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AirdropClaimPayload>[]
+          }
           upsert: {
             args: Prisma.AirdropClaimUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$AirdropClaimPayload>
@@ -2412,6 +2480,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.NftCollectionUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NftCollectionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftCollectionPayload>[]
           }
           upsert: {
             args: Prisma.NftCollectionUpsertArgs<ExtArgs>
@@ -2483,6 +2555,10 @@ export namespace Prisma {
             args: Prisma.NftDistributionUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.NftDistributionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftDistributionPayload>[]
+          }
           upsert: {
             args: Prisma.NftDistributionUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$NftDistributionPayload>
@@ -2552,6 +2628,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.NftClaimApprovalUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NftClaimApprovalUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimApprovalPayload>[]
           }
           upsert: {
             args: Prisma.NftClaimApprovalUpsertArgs<ExtArgs>
@@ -2623,6 +2703,10 @@ export namespace Prisma {
             args: Prisma.UserNftHoldingUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.UserNftHoldingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserNftHoldingPayload>[]
+          }
           upsert: {
             args: Prisma.UserNftHoldingUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$UserNftHoldingPayload>
@@ -2692,6 +2776,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.AdminSessionUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AdminSessionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminSessionPayload>[]
           }
           upsert: {
             args: Prisma.AdminSessionUpsertArgs<ExtArgs>
@@ -2763,6 +2851,10 @@ export namespace Prisma {
             args: Prisma.AdminAuditLogUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.AdminAuditLogUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>[]
+          }
           upsert: {
             args: Prisma.AdminAuditLogUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$AdminAuditLogPayload>
@@ -2832,6 +2924,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.FraudAlertUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.FraudAlertUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$FraudAlertPayload>[]
           }
           upsert: {
             args: Prisma.FraudAlertUpsertArgs<ExtArgs>
@@ -2903,6 +2999,10 @@ export namespace Prisma {
             args: Prisma.CampaignConfigUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.CampaignConfigUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CampaignConfigPayload>[]
+          }
           upsert: {
             args: Prisma.CampaignConfigUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$CampaignConfigPayload>
@@ -2972,6 +3072,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.AchievementUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AchievementUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AchievementPayload>[]
           }
           upsert: {
             args: Prisma.AchievementUpsertArgs<ExtArgs>
@@ -3043,6 +3147,10 @@ export namespace Prisma {
             args: Prisma.UserAchievementUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.UserAchievementUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UserAchievementPayload>[]
+          }
           upsert: {
             args: Prisma.UserAchievementUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$UserAchievementPayload>
@@ -3112,6 +3220,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.NotificationUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NotificationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NotificationPayload>[]
           }
           upsert: {
             args: Prisma.NotificationUpsertArgs<ExtArgs>
@@ -3183,6 +3295,10 @@ export namespace Prisma {
             args: Prisma.TwitterAnalyticsUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
+          updateManyAndReturn: {
+            args: Prisma.TwitterAnalyticsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TwitterAnalyticsPayload>[]
+          }
           upsert: {
             args: Prisma.TwitterAnalyticsUpsertArgs<ExtArgs>
             result: $Utils.PayloadToResult<Prisma.$TwitterAnalyticsPayload>
@@ -3252,6 +3368,10 @@ export namespace Prisma {
           updateMany: {
             args: Prisma.NftClaimUpdateManyArgs<ExtArgs>
             result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NftClaimUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NftClaimPayload>[]
           }
           upsert: {
             args: Prisma.NftClaimUpsertArgs<ExtArgs>
@@ -3860,6 +3980,9 @@ export namespace Prisma {
     streak: number | null
     lastCheckIn: Date | null
     referralCode: string | null
+    name: string | null
+    emailVerified: Date | null
+    image: string | null
     email: string | null
     totalPoints: number | null
     totalTokens: number | null
@@ -3890,6 +4013,9 @@ export namespace Prisma {
     streak: number | null
     lastCheckIn: Date | null
     referralCode: string | null
+    name: string | null
+    emailVerified: Date | null
+    image: string | null
     email: string | null
     totalPoints: number | null
     totalTokens: number | null
@@ -3920,6 +4046,9 @@ export namespace Prisma {
     streak: number
     lastCheckIn: number
     referralCode: number
+    name: number
+    emailVerified: number
+    image: number
     email: number
     totalPoints: number
     totalTokens: number
@@ -3976,6 +4105,9 @@ export namespace Prisma {
     streak?: true
     lastCheckIn?: true
     referralCode?: true
+    name?: true
+    emailVerified?: true
+    image?: true
     email?: true
     totalPoints?: true
     totalTokens?: true
@@ -4006,6 +4138,9 @@ export namespace Prisma {
     streak?: true
     lastCheckIn?: true
     referralCode?: true
+    name?: true
+    emailVerified?: true
+    image?: true
     email?: true
     totalPoints?: true
     totalTokens?: true
@@ -4036,6 +4171,9 @@ export namespace Prisma {
     streak?: true
     lastCheckIn?: true
     referralCode?: true
+    name?: true
+    emailVerified?: true
+    image?: true
     email?: true
     totalPoints?: true
     totalTokens?: true
@@ -4144,7 +4282,7 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: string
-    walletAddress: string
+    walletAddress: string | null
     twitterId: string | null
     twitterUsername: string | null
     twitterName: string | null
@@ -4155,6 +4293,9 @@ export namespace Prisma {
     streak: number
     lastCheckIn: Date | null
     referralCode: string
+    name: string | null
+    emailVerified: Date | null
+    image: string | null
     email: string | null
     totalPoints: number
     totalTokens: number
@@ -4206,6 +4347,9 @@ export namespace Prisma {
     streak?: boolean
     lastCheckIn?: boolean
     referralCode?: boolean
+    name?: boolean
+    emailVerified?: boolean
+    image?: boolean
     email?: boolean
     totalPoints?: boolean
     totalTokens?: boolean
@@ -4262,6 +4406,9 @@ export namespace Prisma {
     streak?: boolean
     lastCheckIn?: boolean
     referralCode?: boolean
+    name?: boolean
+    emailVerified?: boolean
+    image?: boolean
     email?: boolean
     totalPoints?: boolean
     totalTokens?: boolean
@@ -4281,6 +4428,40 @@ export namespace Prisma {
     claimsEnabled?: boolean
   }, ExtArgs["result"]["user"]>
 
+  export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    walletAddress?: boolean
+    twitterId?: boolean
+    twitterUsername?: boolean
+    twitterName?: boolean
+    twitterImage?: boolean
+    twitterFollowers?: boolean
+    twitterActivity?: boolean
+    level?: boolean
+    streak?: boolean
+    lastCheckIn?: boolean
+    referralCode?: boolean
+    name?: boolean
+    emailVerified?: boolean
+    image?: boolean
+    email?: boolean
+    totalPoints?: boolean
+    totalTokens?: boolean
+    rank?: boolean
+    isAdmin?: boolean
+    isActive?: boolean
+    totalEarnedTokens?: boolean
+    lastLoginReward?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    permissions?: boolean
+    riskScore?: boolean
+    suspiciousFlags?: boolean
+    isBanned?: boolean
+    bannedAt?: boolean
+    lastActivity?: boolean
+    claimsEnabled?: boolean
+  }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
@@ -4295,6 +4476,9 @@ export namespace Prisma {
     streak?: boolean
     lastCheckIn?: boolean
     referralCode?: boolean
+    name?: boolean
+    emailVerified?: boolean
+    image?: boolean
     email?: boolean
     totalPoints?: boolean
     totalTokens?: boolean
@@ -4314,7 +4498,7 @@ export namespace Prisma {
     claimsEnabled?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walletAddress" | "twitterId" | "twitterUsername" | "twitterName" | "twitterImage" | "twitterFollowers" | "twitterActivity" | "level" | "streak" | "lastCheckIn" | "referralCode" | "email" | "totalPoints" | "totalTokens" | "rank" | "isAdmin" | "isActive" | "totalEarnedTokens" | "lastLoginReward" | "createdAt" | "updatedAt" | "permissions" | "riskScore" | "suspiciousFlags" | "isBanned" | "bannedAt" | "lastActivity" | "claimsEnabled", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walletAddress" | "twitterId" | "twitterUsername" | "twitterName" | "twitterImage" | "twitterFollowers" | "twitterActivity" | "level" | "streak" | "lastCheckIn" | "referralCode" | "name" | "emailVerified" | "image" | "email" | "totalPoints" | "totalTokens" | "rank" | "isAdmin" | "isActive" | "totalEarnedTokens" | "lastLoginReward" | "createdAt" | "updatedAt" | "permissions" | "riskScore" | "suspiciousFlags" | "isBanned" | "bannedAt" | "lastActivity" | "claimsEnabled", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
@@ -4342,6 +4526,7 @@ export namespace Prisma {
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type UserIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
@@ -4372,7 +4557,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      walletAddress: string
+      walletAddress: string | null
       twitterId: string | null
       twitterUsername: string | null
       twitterName: string | null
@@ -4383,6 +4568,9 @@ export namespace Prisma {
       streak: number
       lastCheckIn: Date | null
       referralCode: string
+      name: string | null
+      emailVerified: Date | null
+      image: string | null
       email: string | null
       totalPoints: number
       totalTokens: number
@@ -4604,6 +4792,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends UserUpdateManyArgs>(args: SelectSubset<T, UserUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Users and returns the data updated in the database.
+     * @param {UserUpdateManyAndReturnArgs} args - Arguments to update many Users.
+     * @example
+     * // Update many Users
+     * const user = await prisma.user.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Users and only return the `id`
+     * const userWithIdOnly = await prisma.user.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserUpdateManyAndReturnArgs>(args: SelectSubset<T, UserUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one User.
@@ -4828,6 +5046,9 @@ export namespace Prisma {
     readonly streak: FieldRef<"User", 'Int'>
     readonly lastCheckIn: FieldRef<"User", 'DateTime'>
     readonly referralCode: FieldRef<"User", 'String'>
+    readonly name: FieldRef<"User", 'String'>
+    readonly emailVerified: FieldRef<"User", 'DateTime'>
+    readonly image: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly totalPoints: FieldRef<"User", 'Int'>
     readonly totalTokens: FieldRef<"User", 'Float'>
@@ -5134,6 +5355,36 @@ export namespace Prisma {
      * Filter which Users to update
      */
     where?: UserWhereInput
+    /**
+     * Limit how many Users to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * User updateManyAndReturn
+   */
+  export type UserUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * The data used to update Users.
+     */
+    data: XOR<UserUpdateManyMutationInput, UserUncheckedUpdateManyInput>
+    /**
+     * Filter which Users to update
+     */
+    where?: UserWhereInput
+    /**
+     * Limit how many Users to update.
+     */
+    limit?: number
   }
 
   /**
@@ -5196,6 +5447,10 @@ export namespace Prisma {
      * Filter which Users to delete
      */
     where?: UserWhereInput
+    /**
+     * Limit how many Users to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -5787,6 +6042,8 @@ export namespace Prisma {
     providerAccountId: string | null
     refresh_token: string | null
     access_token: string | null
+    oauth_token: string | null
+    oauth_token_secret: string | null
     expires_at: number | null
     token_type: string | null
     scope: string | null
@@ -5804,6 +6061,8 @@ export namespace Prisma {
     providerAccountId: string | null
     refresh_token: string | null
     access_token: string | null
+    oauth_token: string | null
+    oauth_token_secret: string | null
     expires_at: number | null
     token_type: string | null
     scope: string | null
@@ -5821,6 +6080,8 @@ export namespace Prisma {
     providerAccountId: number
     refresh_token: number
     access_token: number
+    oauth_token: number
+    oauth_token_secret: number
     expires_at: number
     token_type: number
     scope: number
@@ -5848,6 +6109,8 @@ export namespace Prisma {
     providerAccountId?: true
     refresh_token?: true
     access_token?: true
+    oauth_token?: true
+    oauth_token_secret?: true
     expires_at?: true
     token_type?: true
     scope?: true
@@ -5865,6 +6128,8 @@ export namespace Prisma {
     providerAccountId?: true
     refresh_token?: true
     access_token?: true
+    oauth_token?: true
+    oauth_token_secret?: true
     expires_at?: true
     token_type?: true
     scope?: true
@@ -5882,6 +6147,8 @@ export namespace Prisma {
     providerAccountId?: true
     refresh_token?: true
     access_token?: true
+    oauth_token?: true
+    oauth_token_secret?: true
     expires_at?: true
     token_type?: true
     scope?: true
@@ -5986,6 +6253,8 @@ export namespace Prisma {
     providerAccountId: string
     refresh_token: string | null
     access_token: string | null
+    oauth_token: string | null
+    oauth_token_secret: string | null
     expires_at: number | null
     token_type: string | null
     scope: string | null
@@ -6022,6 +6291,8 @@ export namespace Prisma {
     providerAccountId?: boolean
     refresh_token?: boolean
     access_token?: boolean
+    oauth_token?: boolean
+    oauth_token_secret?: boolean
     expires_at?: boolean
     token_type?: boolean
     scope?: boolean
@@ -6040,6 +6311,8 @@ export namespace Prisma {
     providerAccountId?: boolean
     refresh_token?: boolean
     access_token?: boolean
+    oauth_token?: boolean
+    oauth_token_secret?: boolean
     expires_at?: boolean
     token_type?: boolean
     scope?: boolean
@@ -6050,6 +6323,25 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["account"]>
 
+  export type AccountSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    type?: boolean
+    provider?: boolean
+    providerAccountId?: boolean
+    refresh_token?: boolean
+    access_token?: boolean
+    oauth_token?: boolean
+    oauth_token_secret?: boolean
+    expires_at?: boolean
+    token_type?: boolean
+    scope?: boolean
+    id_token?: boolean
+    session_state?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["account"]>
 
   export type AccountSelectScalar = {
     id?: boolean
@@ -6059,6 +6351,8 @@ export namespace Prisma {
     providerAccountId?: boolean
     refresh_token?: boolean
     access_token?: boolean
+    oauth_token?: boolean
+    oauth_token_secret?: boolean
     expires_at?: boolean
     token_type?: boolean
     scope?: boolean
@@ -6068,11 +6362,14 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type AccountOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "type" | "provider" | "providerAccountId" | "refresh_token" | "access_token" | "expires_at" | "token_type" | "scope" | "id_token" | "session_state" | "createdAt" | "updatedAt", ExtArgs["result"]["account"]>
+  export type AccountOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "type" | "provider" | "providerAccountId" | "refresh_token" | "access_token" | "oauth_token" | "oauth_token_secret" | "expires_at" | "token_type" | "scope" | "id_token" | "session_state" | "createdAt" | "updatedAt", ExtArgs["result"]["account"]>
   export type AccountInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type AccountIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AccountIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -6089,6 +6386,8 @@ export namespace Prisma {
       providerAccountId: string
       refresh_token: string | null
       access_token: string | null
+      oauth_token: string | null
+      oauth_token_secret: string | null
       expires_at: number | null
       token_type: string | null
       scope: string | null
@@ -6302,6 +6601,36 @@ export namespace Prisma {
     updateMany<T extends AccountUpdateManyArgs>(args: SelectSubset<T, AccountUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
+     * Update zero or more Accounts and returns the data updated in the database.
+     * @param {AccountUpdateManyAndReturnArgs} args - Arguments to update many Accounts.
+     * @example
+     * // Update many Accounts
+     * const account = await prisma.account.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Accounts and only return the `id`
+     * const accountWithIdOnly = await prisma.account.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AccountUpdateManyAndReturnArgs>(args: SelectSubset<T, AccountUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
      * Create or update one Account.
      * @param {AccountUpsertArgs} args - Arguments to update or create a Account.
      * @example
@@ -6497,6 +6826,8 @@ export namespace Prisma {
     readonly providerAccountId: FieldRef<"Account", 'String'>
     readonly refresh_token: FieldRef<"Account", 'String'>
     readonly access_token: FieldRef<"Account", 'String'>
+    readonly oauth_token: FieldRef<"Account", 'String'>
+    readonly oauth_token_secret: FieldRef<"Account", 'String'>
     readonly expires_at: FieldRef<"Account", 'Int'>
     readonly token_type: FieldRef<"Account", 'String'>
     readonly scope: FieldRef<"Account", 'String'>
@@ -6797,6 +7128,40 @@ export namespace Prisma {
      * Filter which Accounts to update
      */
     where?: AccountWhereInput
+    /**
+     * Limit how many Accounts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Account updateManyAndReturn
+   */
+  export type AccountUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Account
+     */
+    select?: AccountSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Account
+     */
+    omit?: AccountOmit<ExtArgs> | null
+    /**
+     * The data used to update Accounts.
+     */
+    data: XOR<AccountUpdateManyMutationInput, AccountUncheckedUpdateManyInput>
+    /**
+     * Filter which Accounts to update
+     */
+    where?: AccountWhereInput
+    /**
+     * Limit how many Accounts to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AccountIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -6859,6 +7224,10 @@ export namespace Prisma {
      * Filter which Accounts to delete
      */
     where?: AccountWhereInput
+    /**
+     * Limit how many Accounts to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -7065,6 +7434,15 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["session"]>
 
+  export type SessionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    sessionToken?: boolean
+    userId?: boolean
+    expires?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["session"]>
 
   export type SessionSelectScalar = {
     id?: boolean
@@ -7080,6 +7458,9 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type SessionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type SessionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -7299,6 +7680,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends SessionUpdateManyArgs>(args: SelectSubset<T, SessionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Sessions and returns the data updated in the database.
+     * @param {SessionUpdateManyAndReturnArgs} args - Arguments to update many Sessions.
+     * @example
+     * // Update many Sessions
+     * const session = await prisma.session.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Sessions and only return the `id`
+     * const sessionWithIdOnly = await prisma.session.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SessionUpdateManyAndReturnArgs>(args: SelectSubset<T, SessionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Session.
@@ -7788,6 +8199,40 @@ export namespace Prisma {
      * Filter which Sessions to update
      */
     where?: SessionWhereInput
+    /**
+     * Limit how many Sessions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Session updateManyAndReturn
+   */
+  export type SessionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Session
+     */
+    select?: SessionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Session
+     */
+    omit?: SessionOmit<ExtArgs> | null
+    /**
+     * The data used to update Sessions.
+     */
+    data: XOR<SessionUpdateManyMutationInput, SessionUncheckedUpdateManyInput>
+    /**
+     * Filter which Sessions to update
+     */
+    where?: SessionWhereInput
+    /**
+     * Limit how many Sessions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SessionIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -7850,6 +8295,10 @@ export namespace Prisma {
      * Filter which Sessions to delete
      */
     where?: SessionWhereInput
+    /**
+     * Limit how many Sessions to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -8027,6 +8476,11 @@ export namespace Prisma {
     expires?: boolean
   }, ExtArgs["result"]["verificationToken"]>
 
+  export type VerificationTokenSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    identifier?: boolean
+    token?: boolean
+    expires?: boolean
+  }, ExtArgs["result"]["verificationToken"]>
 
   export type VerificationTokenSelectScalar = {
     identifier?: boolean
@@ -8247,6 +8701,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends VerificationTokenUpdateManyArgs>(args: SelectSubset<T, VerificationTokenUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more VerificationTokens and returns the data updated in the database.
+     * @param {VerificationTokenUpdateManyAndReturnArgs} args - Arguments to update many VerificationTokens.
+     * @example
+     * // Update many VerificationTokens
+     * const verificationToken = await prisma.verificationToken.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more VerificationTokens and only return the `identifier`
+     * const verificationTokenWithIdentifierOnly = await prisma.verificationToken.updateManyAndReturn({
+     *   select: { identifier: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends VerificationTokenUpdateManyAndReturnArgs>(args: SelectSubset<T, VerificationTokenUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VerificationTokenPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one VerificationToken.
@@ -8700,6 +9184,36 @@ export namespace Prisma {
      * Filter which VerificationTokens to update
      */
     where?: VerificationTokenWhereInput
+    /**
+     * Limit how many VerificationTokens to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * VerificationToken updateManyAndReturn
+   */
+  export type VerificationTokenUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the VerificationToken
+     */
+    select?: VerificationTokenSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the VerificationToken
+     */
+    omit?: VerificationTokenOmit<ExtArgs> | null
+    /**
+     * The data used to update VerificationTokens.
+     */
+    data: XOR<VerificationTokenUpdateManyMutationInput, VerificationTokenUncheckedUpdateManyInput>
+    /**
+     * Filter which VerificationTokens to update
+     */
+    where?: VerificationTokenWhereInput
+    /**
+     * Limit how many VerificationTokens to update.
+     */
+    limit?: number
   }
 
   /**
@@ -8754,6 +9268,10 @@ export namespace Prisma {
      * Filter which VerificationTokens to delete
      */
     where?: VerificationTokenWhereInput
+    /**
+     * Limit how many VerificationTokens to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -8954,6 +9472,14 @@ export namespace Prisma {
     updatedAt?: boolean
   }, ExtArgs["result"]["verification"]>
 
+  export type VerificationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    identifier?: boolean
+    value?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["verification"]>
 
   export type VerificationSelectScalar = {
     id?: boolean
@@ -9180,6 +9706,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends VerificationUpdateManyArgs>(args: SelectSubset<T, VerificationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Verifications and returns the data updated in the database.
+     * @param {VerificationUpdateManyAndReturnArgs} args - Arguments to update many Verifications.
+     * @example
+     * // Update many Verifications
+     * const verification = await prisma.verification.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Verifications and only return the `id`
+     * const verificationWithIdOnly = await prisma.verification.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends VerificationUpdateManyAndReturnArgs>(args: SelectSubset<T, VerificationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$VerificationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Verification.
@@ -9636,6 +10192,36 @@ export namespace Prisma {
      * Filter which Verifications to update
      */
     where?: VerificationWhereInput
+    /**
+     * Limit how many Verifications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Verification updateManyAndReturn
+   */
+  export type VerificationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Verification
+     */
+    select?: VerificationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Verification
+     */
+    omit?: VerificationOmit<ExtArgs> | null
+    /**
+     * The data used to update Verifications.
+     */
+    data: XOR<VerificationUpdateManyMutationInput, VerificationUncheckedUpdateManyInput>
+    /**
+     * Filter which Verifications to update
+     */
+    where?: VerificationWhereInput
+    /**
+     * Limit how many Verifications to update.
+     */
+    limit?: number
   }
 
   /**
@@ -9690,6 +10276,10 @@ export namespace Prisma {
      * Filter which Verifications to delete
      */
     where?: VerificationWhereInput
+    /**
+     * Limit how many Verifications to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -9886,6 +10476,14 @@ export namespace Prisma {
     updatedAt?: boolean
   }, ExtArgs["result"]["twoFactor"]>
 
+  export type TwoFactorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    secret?: boolean
+    backupCodes?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["twoFactor"]>
 
   export type TwoFactorSelectScalar = {
     id?: boolean
@@ -10112,6 +10710,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends TwoFactorUpdateManyArgs>(args: SelectSubset<T, TwoFactorUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TwoFactors and returns the data updated in the database.
+     * @param {TwoFactorUpdateManyAndReturnArgs} args - Arguments to update many TwoFactors.
+     * @example
+     * // Update many TwoFactors
+     * const twoFactor = await prisma.twoFactor.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TwoFactors and only return the `id`
+     * const twoFactorWithIdOnly = await prisma.twoFactor.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TwoFactorUpdateManyAndReturnArgs>(args: SelectSubset<T, TwoFactorUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TwoFactorPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one TwoFactor.
@@ -10568,6 +11196,36 @@ export namespace Prisma {
      * Filter which TwoFactors to update
      */
     where?: TwoFactorWhereInput
+    /**
+     * Limit how many TwoFactors to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TwoFactor updateManyAndReturn
+   */
+  export type TwoFactorUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TwoFactor
+     */
+    select?: TwoFactorSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TwoFactor
+     */
+    omit?: TwoFactorOmit<ExtArgs> | null
+    /**
+     * The data used to update TwoFactors.
+     */
+    data: XOR<TwoFactorUpdateManyMutationInput, TwoFactorUncheckedUpdateManyInput>
+    /**
+     * Filter which TwoFactors to update
+     */
+    where?: TwoFactorWhereInput
+    /**
+     * Limit how many TwoFactors to update.
+     */
+    limit?: number
   }
 
   /**
@@ -10622,6 +11280,10 @@ export namespace Prisma {
      * Filter which TwoFactors to delete
      */
     where?: TwoFactorWhereInput
+    /**
+     * Limit how many TwoFactors to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -10885,6 +11547,18 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pointHistory"]>
 
+  export type PointHistorySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    points?: boolean
+    tokens?: boolean
+    type?: boolean
+    action?: boolean
+    description?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pointHistory"]>
 
   export type PointHistorySelectScalar = {
     id?: boolean
@@ -10903,6 +11577,9 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type PointHistoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type PointHistoryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -11125,6 +11802,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends PointHistoryUpdateManyArgs>(args: SelectSubset<T, PointHistoryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PointHistories and returns the data updated in the database.
+     * @param {PointHistoryUpdateManyAndReturnArgs} args - Arguments to update many PointHistories.
+     * @example
+     * // Update many PointHistories
+     * const pointHistory = await prisma.pointHistory.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PointHistories and only return the `id`
+     * const pointHistoryWithIdOnly = await prisma.pointHistory.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PointHistoryUpdateManyAndReturnArgs>(args: SelectSubset<T, PointHistoryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PointHistoryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one PointHistory.
@@ -11617,6 +12324,40 @@ export namespace Prisma {
      * Filter which PointHistories to update
      */
     where?: PointHistoryWhereInput
+    /**
+     * Limit how many PointHistories to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PointHistory updateManyAndReturn
+   */
+  export type PointHistoryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PointHistory
+     */
+    select?: PointHistorySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PointHistory
+     */
+    omit?: PointHistoryOmit<ExtArgs> | null
+    /**
+     * The data used to update PointHistories.
+     */
+    data: XOR<PointHistoryUpdateManyMutationInput, PointHistoryUncheckedUpdateManyInput>
+    /**
+     * Filter which PointHistories to update
+     */
+    where?: PointHistoryWhereInput
+    /**
+     * Limit how many PointHistories to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PointHistoryIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -11679,6 +12420,10 @@ export namespace Prisma {
      * Filter which PointHistories to delete
      */
     where?: PointHistoryWhereInput
+    /**
+     * Limit how many PointHistories to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -11930,6 +12675,17 @@ export namespace Prisma {
     referred?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["referral"]>
 
+  export type ReferralSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    referrerId?: boolean
+    referredId?: boolean
+    tokens?: boolean
+    completed?: boolean
+    createdAt?: boolean
+    isActive?: boolean
+    referrer?: boolean | UserDefaultArgs<ExtArgs>
+    referred?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["referral"]>
 
   export type ReferralSelectScalar = {
     id?: boolean
@@ -11947,6 +12703,10 @@ export namespace Prisma {
     referred?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ReferralIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    referrer?: boolean | UserDefaultArgs<ExtArgs>
+    referred?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ReferralIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     referrer?: boolean | UserDefaultArgs<ExtArgs>
     referred?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -12169,6 +12929,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends ReferralUpdateManyArgs>(args: SelectSubset<T, ReferralUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Referrals and returns the data updated in the database.
+     * @param {ReferralUpdateManyAndReturnArgs} args - Arguments to update many Referrals.
+     * @example
+     * // Update many Referrals
+     * const referral = await prisma.referral.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Referrals and only return the `id`
+     * const referralWithIdOnly = await prisma.referral.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ReferralUpdateManyAndReturnArgs>(args: SelectSubset<T, ReferralUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReferralPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Referral.
@@ -12660,6 +13450,40 @@ export namespace Prisma {
      * Filter which Referrals to update
      */
     where?: ReferralWhereInput
+    /**
+     * Limit how many Referrals to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Referral updateManyAndReturn
+   */
+  export type ReferralUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Referral
+     */
+    select?: ReferralSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Referral
+     */
+    omit?: ReferralOmit<ExtArgs> | null
+    /**
+     * The data used to update Referrals.
+     */
+    data: XOR<ReferralUpdateManyMutationInput, ReferralUncheckedUpdateManyInput>
+    /**
+     * Filter which Referrals to update
+     */
+    where?: ReferralWhereInput
+    /**
+     * Limit how many Referrals to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ReferralIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -12722,6 +13546,10 @@ export namespace Prisma {
      * Filter which Referrals to delete
      */
     where?: ReferralWhereInput
+    /**
+     * Limit how many Referrals to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -12971,6 +13799,16 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["twitterEngagement"]>
 
+  export type TwitterEngagementSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    tweetId?: boolean
+    engagementType?: boolean
+    tokens?: boolean
+    verified?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["twitterEngagement"]>
 
   export type TwitterEngagementSelectScalar = {
     id?: boolean
@@ -12987,6 +13825,9 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type TwitterEngagementIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type TwitterEngagementIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -13207,6 +14048,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends TwitterEngagementUpdateManyArgs>(args: SelectSubset<T, TwitterEngagementUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TwitterEngagements and returns the data updated in the database.
+     * @param {TwitterEngagementUpdateManyAndReturnArgs} args - Arguments to update many TwitterEngagements.
+     * @example
+     * // Update many TwitterEngagements
+     * const twitterEngagement = await prisma.twitterEngagement.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TwitterEngagements and only return the `id`
+     * const twitterEngagementWithIdOnly = await prisma.twitterEngagement.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TwitterEngagementUpdateManyAndReturnArgs>(args: SelectSubset<T, TwitterEngagementUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TwitterEngagementPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one TwitterEngagement.
@@ -13697,6 +14568,40 @@ export namespace Prisma {
      * Filter which TwitterEngagements to update
      */
     where?: TwitterEngagementWhereInput
+    /**
+     * Limit how many TwitterEngagements to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TwitterEngagement updateManyAndReturn
+   */
+  export type TwitterEngagementUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TwitterEngagement
+     */
+    select?: TwitterEngagementSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TwitterEngagement
+     */
+    omit?: TwitterEngagementOmit<ExtArgs> | null
+    /**
+     * The data used to update TwitterEngagements.
+     */
+    data: XOR<TwitterEngagementUpdateManyMutationInput, TwitterEngagementUncheckedUpdateManyInput>
+    /**
+     * Filter which TwitterEngagements to update
+     */
+    where?: TwitterEngagementWhereInput
+    /**
+     * Limit how many TwitterEngagements to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TwitterEngagementIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -13759,6 +14664,10 @@ export namespace Prisma {
      * Filter which TwitterEngagements to delete
      */
     where?: TwitterEngagementWhereInput
+    /**
+     * Limit how many TwitterEngagements to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -14037,6 +14946,20 @@ export namespace Prisma {
     task?: boolean | TaskDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["taskCompletion"]>
 
+  export type TaskCompletionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    taskId?: boolean
+    completed?: boolean
+    points?: boolean
+    tokens?: boolean
+    rewardType?: boolean
+    metadata?: boolean
+    completedAt?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    task?: boolean | TaskDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["taskCompletion"]>
 
   export type TaskCompletionSelectScalar = {
     id?: boolean
@@ -14057,6 +14980,10 @@ export namespace Prisma {
     task?: boolean | TaskDefaultArgs<ExtArgs>
   }
   export type TaskCompletionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    task?: boolean | TaskDefaultArgs<ExtArgs>
+  }
+  export type TaskCompletionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     task?: boolean | TaskDefaultArgs<ExtArgs>
   }
@@ -14282,6 +15209,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends TaskCompletionUpdateManyArgs>(args: SelectSubset<T, TaskCompletionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TaskCompletions and returns the data updated in the database.
+     * @param {TaskCompletionUpdateManyAndReturnArgs} args - Arguments to update many TaskCompletions.
+     * @example
+     * // Update many TaskCompletions
+     * const taskCompletion = await prisma.taskCompletion.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TaskCompletions and only return the `id`
+     * const taskCompletionWithIdOnly = await prisma.taskCompletion.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TaskCompletionUpdateManyAndReturnArgs>(args: SelectSubset<T, TaskCompletionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TaskCompletionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one TaskCompletion.
@@ -14776,6 +15733,40 @@ export namespace Prisma {
      * Filter which TaskCompletions to update
      */
     where?: TaskCompletionWhereInput
+    /**
+     * Limit how many TaskCompletions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TaskCompletion updateManyAndReturn
+   */
+  export type TaskCompletionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TaskCompletion
+     */
+    select?: TaskCompletionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TaskCompletion
+     */
+    omit?: TaskCompletionOmit<ExtArgs> | null
+    /**
+     * The data used to update TaskCompletions.
+     */
+    data: XOR<TaskCompletionUpdateManyMutationInput, TaskCompletionUncheckedUpdateManyInput>
+    /**
+     * Filter which TaskCompletions to update
+     */
+    where?: TaskCompletionWhereInput
+    /**
+     * Limit how many TaskCompletions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TaskCompletionIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -14838,6 +15829,10 @@ export namespace Prisma {
      * Filter which TaskCompletions to delete
      */
     where?: TaskCompletionWhereInput
+    /**
+     * Limit how many TaskCompletions to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -15132,6 +16127,20 @@ export namespace Prisma {
     updatedAt?: boolean
   }, ExtArgs["result"]["task"]>
 
+  export type TaskSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    type?: boolean
+    points?: boolean
+    tokens?: boolean
+    rewardType?: boolean
+    requirements?: boolean
+    isActive?: boolean
+    expiresAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["task"]>
 
   export type TaskSelectScalar = {
     id?: boolean
@@ -15154,6 +16163,7 @@ export namespace Prisma {
     _count?: boolean | TaskCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TaskIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type TaskIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $TaskPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Task"
@@ -15377,6 +16387,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends TaskUpdateManyArgs>(args: SelectSubset<T, TaskUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tasks and returns the data updated in the database.
+     * @param {TaskUpdateManyAndReturnArgs} args - Arguments to update many Tasks.
+     * @example
+     * // Update many Tasks
+     * const task = await prisma.task.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Tasks and only return the `id`
+     * const taskWithIdOnly = await prisma.task.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TaskUpdateManyAndReturnArgs>(args: SelectSubset<T, TaskUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TaskPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Task.
@@ -15868,6 +16908,36 @@ export namespace Prisma {
      * Filter which Tasks to update
      */
     where?: TaskWhereInput
+    /**
+     * Limit how many Tasks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Task updateManyAndReturn
+   */
+  export type TaskUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Task
+     */
+    select?: TaskSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Task
+     */
+    omit?: TaskOmit<ExtArgs> | null
+    /**
+     * The data used to update Tasks.
+     */
+    data: XOR<TaskUpdateManyMutationInput, TaskUncheckedUpdateManyInput>
+    /**
+     * Filter which Tasks to update
+     */
+    where?: TaskWhereInput
+    /**
+     * Limit how many Tasks to update.
+     */
+    limit?: number
   }
 
   /**
@@ -15930,6 +17000,10 @@ export namespace Prisma {
      * Filter which Tasks to delete
      */
     where?: TaskWhereInput
+    /**
+     * Limit how many Tasks to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -16262,6 +17336,23 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["claim"]>
 
+  export type ClaimSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    amount?: boolean
+    transactionHash?: boolean
+    status?: boolean
+    paymentMethod?: boolean
+    metadata?: boolean
+    processedAt?: boolean
+    feesPaid?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    type?: boolean
+    nftPasses?: boolean
+    userTier?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["claim"]>
 
   export type ClaimSelectScalar = {
     id?: boolean
@@ -16285,6 +17376,9 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type ClaimIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ClaimIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -16512,6 +17606,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends ClaimUpdateManyArgs>(args: SelectSubset<T, ClaimUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Claims and returns the data updated in the database.
+     * @param {ClaimUpdateManyAndReturnArgs} args - Arguments to update many Claims.
+     * @example
+     * // Update many Claims
+     * const claim = await prisma.claim.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Claims and only return the `id`
+     * const claimWithIdOnly = await prisma.claim.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ClaimUpdateManyAndReturnArgs>(args: SelectSubset<T, ClaimUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClaimPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Claim.
@@ -17009,6 +18133,40 @@ export namespace Prisma {
      * Filter which Claims to update
      */
     where?: ClaimWhereInput
+    /**
+     * Limit how many Claims to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Claim updateManyAndReturn
+   */
+  export type ClaimUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Claim
+     */
+    select?: ClaimSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Claim
+     */
+    omit?: ClaimOmit<ExtArgs> | null
+    /**
+     * The data used to update Claims.
+     */
+    data: XOR<ClaimUpdateManyMutationInput, ClaimUncheckedUpdateManyInput>
+    /**
+     * Filter which Claims to update
+     */
+    where?: ClaimWhereInput
+    /**
+     * Limit how many Claims to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClaimIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -17071,6 +18229,10 @@ export namespace Prisma {
      * Filter which Claims to delete
      */
     where?: ClaimWhereInput
+    /**
+     * Limit how many Claims to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -17271,6 +18433,14 @@ export namespace Prisma {
     updatedAt?: boolean
   }, ExtArgs["result"]["systemConfig"]>
 
+  export type SystemConfigSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    key?: boolean
+    value?: boolean
+    description?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["systemConfig"]>
 
   export type SystemConfigSelectScalar = {
     id?: boolean
@@ -17497,6 +18667,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends SystemConfigUpdateManyArgs>(args: SelectSubset<T, SystemConfigUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SystemConfigs and returns the data updated in the database.
+     * @param {SystemConfigUpdateManyAndReturnArgs} args - Arguments to update many SystemConfigs.
+     * @example
+     * // Update many SystemConfigs
+     * const systemConfig = await prisma.systemConfig.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SystemConfigs and only return the `id`
+     * const systemConfigWithIdOnly = await prisma.systemConfig.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SystemConfigUpdateManyAndReturnArgs>(args: SelectSubset<T, SystemConfigUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SystemConfigPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one SystemConfig.
@@ -17953,6 +19153,36 @@ export namespace Prisma {
      * Filter which SystemConfigs to update
      */
     where?: SystemConfigWhereInput
+    /**
+     * Limit how many SystemConfigs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SystemConfig updateManyAndReturn
+   */
+  export type SystemConfigUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SystemConfig
+     */
+    select?: SystemConfigSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SystemConfig
+     */
+    omit?: SystemConfigOmit<ExtArgs> | null
+    /**
+     * The data used to update SystemConfigs.
+     */
+    data: XOR<SystemConfigUpdateManyMutationInput, SystemConfigUncheckedUpdateManyInput>
+    /**
+     * Filter which SystemConfigs to update
+     */
+    where?: SystemConfigWhereInput
+    /**
+     * Limit how many SystemConfigs to update.
+     */
+    limit?: number
   }
 
   /**
@@ -18007,6 +19237,10 @@ export namespace Prisma {
      * Filter which SystemConfigs to delete
      */
     where?: SystemConfigWhereInput
+    /**
+     * Limit how many SystemConfigs to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -18293,6 +19527,18 @@ export namespace Prisma {
     createdAt?: boolean
   }, ExtArgs["result"]["analytics"]>
 
+  export type AnalyticsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    date?: boolean
+    totalUsers?: boolean
+    activeUsers?: boolean
+    totalClaims?: boolean
+    totalPoints?: boolean
+    totalTokens?: boolean
+    totalEngagements?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["analytics"]>
 
   export type AnalyticsSelectScalar = {
     id?: boolean
@@ -18527,6 +19773,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends AnalyticsUpdateManyArgs>(args: SelectSubset<T, AnalyticsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Analytics and returns the data updated in the database.
+     * @param {AnalyticsUpdateManyAndReturnArgs} args - Arguments to update many Analytics.
+     * @example
+     * // Update many Analytics
+     * const analytics = await prisma.analytics.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Analytics and only return the `id`
+     * const analyticsWithIdOnly = await prisma.analytics.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AnalyticsUpdateManyAndReturnArgs>(args: SelectSubset<T, AnalyticsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AnalyticsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Analytics.
@@ -18987,6 +20263,36 @@ export namespace Prisma {
      * Filter which Analytics to update
      */
     where?: AnalyticsWhereInput
+    /**
+     * Limit how many Analytics to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Analytics updateManyAndReturn
+   */
+  export type AnalyticsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Analytics
+     */
+    select?: AnalyticsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Analytics
+     */
+    omit?: AnalyticsOmit<ExtArgs> | null
+    /**
+     * The data used to update Analytics.
+     */
+    data: XOR<AnalyticsUpdateManyMutationInput, AnalyticsUncheckedUpdateManyInput>
+    /**
+     * Filter which Analytics to update
+     */
+    where?: AnalyticsWhereInput
+    /**
+     * Limit how many Analytics to update.
+     */
+    limit?: number
   }
 
   /**
@@ -19041,6 +20347,10 @@ export namespace Prisma {
      * Filter which Analytics to delete
      */
     where?: AnalyticsWhereInput
+    /**
+     * Limit how many Analytics to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -19290,6 +20600,16 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["dailyEarning"]>
 
+  export type DailyEarningSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    tokens?: boolean
+    points?: boolean
+    type?: boolean
+    rewardType?: boolean
+    claimedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["dailyEarning"]>
 
   export type DailyEarningSelectScalar = {
     id?: boolean
@@ -19306,6 +20626,9 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type DailyEarningIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type DailyEarningIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -19526,6 +20849,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends DailyEarningUpdateManyArgs>(args: SelectSubset<T, DailyEarningUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DailyEarnings and returns the data updated in the database.
+     * @param {DailyEarningUpdateManyAndReturnArgs} args - Arguments to update many DailyEarnings.
+     * @example
+     * // Update many DailyEarnings
+     * const dailyEarning = await prisma.dailyEarning.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DailyEarnings and only return the `id`
+     * const dailyEarningWithIdOnly = await prisma.dailyEarning.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DailyEarningUpdateManyAndReturnArgs>(args: SelectSubset<T, DailyEarningUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DailyEarningPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one DailyEarning.
@@ -20016,6 +21369,40 @@ export namespace Prisma {
      * Filter which DailyEarnings to update
      */
     where?: DailyEarningWhereInput
+    /**
+     * Limit how many DailyEarnings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DailyEarning updateManyAndReturn
+   */
+  export type DailyEarningUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DailyEarning
+     */
+    select?: DailyEarningSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DailyEarning
+     */
+    omit?: DailyEarningOmit<ExtArgs> | null
+    /**
+     * The data used to update DailyEarnings.
+     */
+    data: XOR<DailyEarningUpdateManyMutationInput, DailyEarningUncheckedUpdateManyInput>
+    /**
+     * Filter which DailyEarnings to update
+     */
+    where?: DailyEarningWhereInput
+    /**
+     * Limit how many DailyEarnings to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DailyEarningIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -20078,6 +21465,10 @@ export namespace Prisma {
      * Filter which DailyEarnings to delete
      */
     where?: DailyEarningWhereInput
+    /**
+     * Limit how many DailyEarnings to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -20405,6 +21796,24 @@ export namespace Prisma {
     creator?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["airdropSeason"]>
 
+  export type AirdropSeasonSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    status?: boolean
+    totalAllocation?: boolean
+    claimedAmount?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    nftPassRequired?: boolean
+    requireApproval?: boolean
+    feeAmount?: boolean
+    createdBy?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["airdropSeason"]>
 
   export type AirdropSeasonSelectScalar = {
     id?: boolean
@@ -20431,6 +21840,9 @@ export namespace Prisma {
     _count?: boolean | AirdropSeasonCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type AirdropSeasonIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AirdropSeasonIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     creator?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -20660,6 +22072,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends AirdropSeasonUpdateManyArgs>(args: SelectSubset<T, AirdropSeasonUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AirdropSeasons and returns the data updated in the database.
+     * @param {AirdropSeasonUpdateManyAndReturnArgs} args - Arguments to update many AirdropSeasons.
+     * @example
+     * // Update many AirdropSeasons
+     * const airdropSeason = await prisma.airdropSeason.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AirdropSeasons and only return the `id`
+     * const airdropSeasonWithIdOnly = await prisma.airdropSeason.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AirdropSeasonUpdateManyAndReturnArgs>(args: SelectSubset<T, AirdropSeasonUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AirdropSeasonPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one AirdropSeason.
@@ -21159,6 +22601,40 @@ export namespace Prisma {
      * Filter which AirdropSeasons to update
      */
     where?: AirdropSeasonWhereInput
+    /**
+     * Limit how many AirdropSeasons to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AirdropSeason updateManyAndReturn
+   */
+  export type AirdropSeasonUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropSeason
+     */
+    select?: AirdropSeasonSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropSeason
+     */
+    omit?: AirdropSeasonOmit<ExtArgs> | null
+    /**
+     * The data used to update AirdropSeasons.
+     */
+    data: XOR<AirdropSeasonUpdateManyMutationInput, AirdropSeasonUncheckedUpdateManyInput>
+    /**
+     * Filter which AirdropSeasons to update
+     */
+    where?: AirdropSeasonWhereInput
+    /**
+     * Limit how many AirdropSeasons to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropSeasonIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -21221,6 +22697,10 @@ export namespace Prisma {
      * Filter which AirdropSeasons to delete
      */
     where?: AirdropSeasonWhereInput
+    /**
+     * Limit how many AirdropSeasons to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -21532,6 +23012,21 @@ export namespace Prisma {
     season?: boolean | AirdropSeasonDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["airdropClaim"]>
 
+  export type AirdropClaimSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    seasonId?: boolean
+    tokens?: boolean
+    tier?: boolean
+    paymentSignature?: boolean
+    transactionSignature?: boolean
+    status?: boolean
+    claimedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    season?: boolean | AirdropSeasonDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["airdropClaim"]>
 
   export type AirdropClaimSelectScalar = {
     id?: boolean
@@ -21553,6 +23048,10 @@ export namespace Prisma {
     season?: boolean | AirdropSeasonDefaultArgs<ExtArgs>
   }
   export type AirdropClaimIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    season?: boolean | AirdropSeasonDefaultArgs<ExtArgs>
+  }
+  export type AirdropClaimIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     season?: boolean | AirdropSeasonDefaultArgs<ExtArgs>
   }
@@ -21779,6 +23278,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends AirdropClaimUpdateManyArgs>(args: SelectSubset<T, AirdropClaimUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AirdropClaims and returns the data updated in the database.
+     * @param {AirdropClaimUpdateManyAndReturnArgs} args - Arguments to update many AirdropClaims.
+     * @example
+     * // Update many AirdropClaims
+     * const airdropClaim = await prisma.airdropClaim.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AirdropClaims and only return the `id`
+     * const airdropClaimWithIdOnly = await prisma.airdropClaim.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AirdropClaimUpdateManyAndReturnArgs>(args: SelectSubset<T, AirdropClaimUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AirdropClaimPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one AirdropClaim.
@@ -22274,6 +23803,40 @@ export namespace Prisma {
      * Filter which AirdropClaims to update
      */
     where?: AirdropClaimWhereInput
+    /**
+     * Limit how many AirdropClaims to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AirdropClaim updateManyAndReturn
+   */
+  export type AirdropClaimUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AirdropClaim
+     */
+    select?: AirdropClaimSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AirdropClaim
+     */
+    omit?: AirdropClaimOmit<ExtArgs> | null
+    /**
+     * The data used to update AirdropClaims.
+     */
+    data: XOR<AirdropClaimUpdateManyMutationInput, AirdropClaimUncheckedUpdateManyInput>
+    /**
+     * Filter which AirdropClaims to update
+     */
+    where?: AirdropClaimWhereInput
+    /**
+     * Limit how many AirdropClaims to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AirdropClaimIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -22336,6 +23899,10 @@ export namespace Prisma {
      * Filter which AirdropClaims to delete
      */
     where?: AirdropClaimWhereInput
+    /**
+     * Limit how many AirdropClaims to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -22663,6 +24230,24 @@ export namespace Prisma {
     creator?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["nftCollection"]>
 
+  export type NftCollectionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mintAddress?: boolean
+    name?: boolean
+    symbol?: boolean
+    description?: boolean
+    uri?: boolean
+    supply?: boolean
+    createdBy?: boolean
+    metadata?: boolean
+    minted?: boolean
+    creatorWallet?: boolean
+    royaltyPercentage?: boolean
+    isActive?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["nftCollection"]>
 
   export type NftCollectionSelectScalar = {
     id?: boolean
@@ -22689,6 +24274,9 @@ export namespace Prisma {
     _count?: boolean | NftCollectionCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type NftCollectionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type NftCollectionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     creator?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -22918,6 +24506,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends NftCollectionUpdateManyArgs>(args: SelectSubset<T, NftCollectionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NftCollections and returns the data updated in the database.
+     * @param {NftCollectionUpdateManyAndReturnArgs} args - Arguments to update many NftCollections.
+     * @example
+     * // Update many NftCollections
+     * const nftCollection = await prisma.nftCollection.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more NftCollections and only return the `id`
+     * const nftCollectionWithIdOnly = await prisma.nftCollection.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NftCollectionUpdateManyAndReturnArgs>(args: SelectSubset<T, NftCollectionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftCollectionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one NftCollection.
@@ -23417,6 +25035,40 @@ export namespace Prisma {
      * Filter which NftCollections to update
      */
     where?: NftCollectionWhereInput
+    /**
+     * Limit how many NftCollections to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * NftCollection updateManyAndReturn
+   */
+  export type NftCollectionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftCollection
+     */
+    select?: NftCollectionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftCollection
+     */
+    omit?: NftCollectionOmit<ExtArgs> | null
+    /**
+     * The data used to update NftCollections.
+     */
+    data: XOR<NftCollectionUpdateManyMutationInput, NftCollectionUncheckedUpdateManyInput>
+    /**
+     * Filter which NftCollections to update
+     */
+    where?: NftCollectionWhereInput
+    /**
+     * Limit how many NftCollections to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftCollectionIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -23479,6 +25131,10 @@ export namespace Prisma {
      * Filter which NftCollections to delete
      */
     where?: NftCollectionWhereInput
+    /**
+     * Limit how many NftCollections to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -23817,6 +25473,24 @@ export namespace Prisma {
     distributor?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["nftDistribution"]>
 
+  export type NftDistributionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    mintAddress?: boolean
+    distributedBy?: boolean
+    recipientCount?: boolean
+    recipientWallets?: boolean
+    nftsPerRecipient?: boolean
+    nftsPerUser?: boolean
+    results?: boolean
+    transactionHash?: boolean
+    errorMessage?: boolean
+    collectionId?: boolean
+    success?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    collection?: boolean | NftCollectionDefaultArgs<ExtArgs>
+    distributor?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["nftDistribution"]>
 
   export type NftDistributionSelectScalar = {
     id?: boolean
@@ -23841,6 +25515,10 @@ export namespace Prisma {
     distributor?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type NftDistributionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    collection?: boolean | NftCollectionDefaultArgs<ExtArgs>
+    distributor?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type NftDistributionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     collection?: boolean | NftCollectionDefaultArgs<ExtArgs>
     distributor?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -24070,6 +25748,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends NftDistributionUpdateManyArgs>(args: SelectSubset<T, NftDistributionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NftDistributions and returns the data updated in the database.
+     * @param {NftDistributionUpdateManyAndReturnArgs} args - Arguments to update many NftDistributions.
+     * @example
+     * // Update many NftDistributions
+     * const nftDistribution = await prisma.nftDistribution.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more NftDistributions and only return the `id`
+     * const nftDistributionWithIdOnly = await prisma.nftDistribution.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NftDistributionUpdateManyAndReturnArgs>(args: SelectSubset<T, NftDistributionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftDistributionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one NftDistribution.
@@ -24568,6 +26276,40 @@ export namespace Prisma {
      * Filter which NftDistributions to update
      */
     where?: NftDistributionWhereInput
+    /**
+     * Limit how many NftDistributions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * NftDistribution updateManyAndReturn
+   */
+  export type NftDistributionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftDistribution
+     */
+    select?: NftDistributionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftDistribution
+     */
+    omit?: NftDistributionOmit<ExtArgs> | null
+    /**
+     * The data used to update NftDistributions.
+     */
+    data: XOR<NftDistributionUpdateManyMutationInput, NftDistributionUncheckedUpdateManyInput>
+    /**
+     * Filter which NftDistributions to update
+     */
+    where?: NftDistributionWhereInput
+    /**
+     * Limit how many NftDistributions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftDistributionIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -24630,6 +26372,10 @@ export namespace Prisma {
      * Filter which NftDistributions to delete
      */
     where?: NftDistributionWhereInput
+    /**
+     * Limit how many NftDistributions to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -24865,6 +26611,19 @@ export namespace Prisma {
     approver?: boolean | NftClaimApproval$approverArgs<ExtArgs>
   }, ExtArgs["result"]["nftClaimApproval"]>
 
+  export type NftClaimApprovalSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    approved?: boolean
+    approvedBy?: boolean
+    approvedAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    claimed?: boolean
+    claimedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    approver?: boolean | NftClaimApproval$approverArgs<ExtArgs>
+  }, ExtArgs["result"]["nftClaimApproval"]>
 
   export type NftClaimApprovalSelectScalar = {
     id?: boolean
@@ -24884,6 +26643,10 @@ export namespace Prisma {
     approver?: boolean | NftClaimApproval$approverArgs<ExtArgs>
   }
   export type NftClaimApprovalIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    approver?: boolean | NftClaimApproval$approverArgs<ExtArgs>
+  }
+  export type NftClaimApprovalIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     approver?: boolean | NftClaimApproval$approverArgs<ExtArgs>
   }
@@ -25108,6 +26871,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends NftClaimApprovalUpdateManyArgs>(args: SelectSubset<T, NftClaimApprovalUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NftClaimApprovals and returns the data updated in the database.
+     * @param {NftClaimApprovalUpdateManyAndReturnArgs} args - Arguments to update many NftClaimApprovals.
+     * @example
+     * // Update many NftClaimApprovals
+     * const nftClaimApproval = await prisma.nftClaimApproval.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more NftClaimApprovals and only return the `id`
+     * const nftClaimApprovalWithIdOnly = await prisma.nftClaimApproval.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NftClaimApprovalUpdateManyAndReturnArgs>(args: SelectSubset<T, NftClaimApprovalUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftClaimApprovalPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one NftClaimApproval.
@@ -25601,6 +27394,40 @@ export namespace Prisma {
      * Filter which NftClaimApprovals to update
      */
     where?: NftClaimApprovalWhereInput
+    /**
+     * Limit how many NftClaimApprovals to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * NftClaimApproval updateManyAndReturn
+   */
+  export type NftClaimApprovalUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaimApproval
+     */
+    select?: NftClaimApprovalSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaimApproval
+     */
+    omit?: NftClaimApprovalOmit<ExtArgs> | null
+    /**
+     * The data used to update NftClaimApprovals.
+     */
+    data: XOR<NftClaimApprovalUpdateManyMutationInput, NftClaimApprovalUncheckedUpdateManyInput>
+    /**
+     * Filter which NftClaimApprovals to update
+     */
+    where?: NftClaimApprovalWhereInput
+    /**
+     * Limit how many NftClaimApprovals to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimApprovalIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -25663,6 +27490,10 @@ export namespace Prisma {
      * Filter which NftClaimApprovals to delete
      */
     where?: NftClaimApprovalWhereInput
+    /**
+     * Limit how many NftClaimApprovals to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -25945,6 +27776,18 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userNftHolding"]>
 
+  export type UserNftHoldingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    mintAddress?: boolean
+    tokenAccount?: boolean
+    amount?: boolean
+    metadata?: boolean
+    acquiredAt?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userNftHolding"]>
 
   export type UserNftHoldingSelectScalar = {
     id?: boolean
@@ -25963,6 +27806,9 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type UserNftHoldingIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type UserNftHoldingIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -26185,6 +28031,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends UserNftHoldingUpdateManyArgs>(args: SelectSubset<T, UserNftHoldingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserNftHoldings and returns the data updated in the database.
+     * @param {UserNftHoldingUpdateManyAndReturnArgs} args - Arguments to update many UserNftHoldings.
+     * @example
+     * // Update many UserNftHoldings
+     * const userNftHolding = await prisma.userNftHolding.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserNftHoldings and only return the `id`
+     * const userNftHoldingWithIdOnly = await prisma.userNftHolding.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserNftHoldingUpdateManyAndReturnArgs>(args: SelectSubset<T, UserNftHoldingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserNftHoldingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one UserNftHolding.
@@ -26677,6 +28553,40 @@ export namespace Prisma {
      * Filter which UserNftHoldings to update
      */
     where?: UserNftHoldingWhereInput
+    /**
+     * Limit how many UserNftHoldings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserNftHolding updateManyAndReturn
+   */
+  export type UserNftHoldingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserNftHolding
+     */
+    select?: UserNftHoldingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserNftHolding
+     */
+    omit?: UserNftHoldingOmit<ExtArgs> | null
+    /**
+     * The data used to update UserNftHoldings.
+     */
+    data: XOR<UserNftHoldingUpdateManyMutationInput, UserNftHoldingUncheckedUpdateManyInput>
+    /**
+     * Filter which UserNftHoldings to update
+     */
+    where?: UserNftHoldingWhereInput
+    /**
+     * Limit how many UserNftHoldings to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserNftHoldingIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -26739,6 +28649,10 @@ export namespace Prisma {
      * Filter which UserNftHoldings to delete
      */
     where?: UserNftHoldingWhereInput
+    /**
+     * Limit how many UserNftHoldings to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -26959,6 +28873,17 @@ export namespace Prisma {
     admin?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminSession"]>
 
+  export type AdminSessionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    adminId?: boolean
+    ipAddress?: boolean
+    userAgent?: boolean
+    permissions?: boolean
+    expiresAt?: boolean
+    lastActivity?: boolean
+    createdAt?: boolean
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["adminSession"]>
 
   export type AdminSessionSelectScalar = {
     id?: boolean
@@ -26976,6 +28901,9 @@ export namespace Prisma {
     admin?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type AdminSessionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AdminSessionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -27197,6 +29125,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends AdminSessionUpdateManyArgs>(args: SelectSubset<T, AdminSessionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AdminSessions and returns the data updated in the database.
+     * @param {AdminSessionUpdateManyAndReturnArgs} args - Arguments to update many AdminSessions.
+     * @example
+     * // Update many AdminSessions
+     * const adminSession = await prisma.adminSession.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AdminSessions and only return the `id`
+     * const adminSessionWithIdOnly = await prisma.adminSession.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AdminSessionUpdateManyAndReturnArgs>(args: SelectSubset<T, AdminSessionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminSessionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one AdminSession.
@@ -27688,6 +29646,40 @@ export namespace Prisma {
      * Filter which AdminSessions to update
      */
     where?: AdminSessionWhereInput
+    /**
+     * Limit how many AdminSessions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdminSession updateManyAndReturn
+   */
+  export type AdminSessionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminSession
+     */
+    select?: AdminSessionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminSession
+     */
+    omit?: AdminSessionOmit<ExtArgs> | null
+    /**
+     * The data used to update AdminSessions.
+     */
+    data: XOR<AdminSessionUpdateManyMutationInput, AdminSessionUncheckedUpdateManyInput>
+    /**
+     * Filter which AdminSessions to update
+     */
+    where?: AdminSessionWhereInput
+    /**
+     * Limit how many AdminSessions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminSessionIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -27750,6 +29742,10 @@ export namespace Prisma {
      * Filter which AdminSessions to delete
      */
     where?: AdminSessionWhereInput
+    /**
+     * Limit how many AdminSessions to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -27961,6 +29957,16 @@ export namespace Prisma {
     admin?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["adminAuditLog"]>
 
+  export type AdminAuditLogSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    adminId?: boolean
+    action?: boolean
+    metadata?: boolean
+    timestamp?: boolean
+    ipAddress?: boolean
+    createdAt?: boolean
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["adminAuditLog"]>
 
   export type AdminAuditLogSelectScalar = {
     id?: boolean
@@ -27977,6 +29983,9 @@ export namespace Prisma {
     admin?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type AdminAuditLogIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    admin?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AdminAuditLogIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     admin?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -28197,6 +30206,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends AdminAuditLogUpdateManyArgs>(args: SelectSubset<T, AdminAuditLogUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more AdminAuditLogs and returns the data updated in the database.
+     * @param {AdminAuditLogUpdateManyAndReturnArgs} args - Arguments to update many AdminAuditLogs.
+     * @example
+     * // Update many AdminAuditLogs
+     * const adminAuditLog = await prisma.adminAuditLog.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more AdminAuditLogs and only return the `id`
+     * const adminAuditLogWithIdOnly = await prisma.adminAuditLog.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AdminAuditLogUpdateManyAndReturnArgs>(args: SelectSubset<T, AdminAuditLogUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AdminAuditLogPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one AdminAuditLog.
@@ -28687,6 +30726,40 @@ export namespace Prisma {
      * Filter which AdminAuditLogs to update
      */
     where?: AdminAuditLogWhereInput
+    /**
+     * Limit how many AdminAuditLogs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * AdminAuditLog updateManyAndReturn
+   */
+  export type AdminAuditLogUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AdminAuditLog
+     */
+    select?: AdminAuditLogSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the AdminAuditLog
+     */
+    omit?: AdminAuditLogOmit<ExtArgs> | null
+    /**
+     * The data used to update AdminAuditLogs.
+     */
+    data: XOR<AdminAuditLogUpdateManyMutationInput, AdminAuditLogUncheckedUpdateManyInput>
+    /**
+     * Filter which AdminAuditLogs to update
+     */
+    where?: AdminAuditLogWhereInput
+    /**
+     * Limit how many AdminAuditLogs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AdminAuditLogIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -28749,6 +30822,10 @@ export namespace Prisma {
      * Filter which AdminAuditLogs to delete
      */
     where?: AdminAuditLogWhereInput
+    /**
+     * Limit how many AdminAuditLogs to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -29030,6 +31107,20 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["fraudAlert"]>
 
+  export type FraudAlertSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    type?: boolean
+    severity?: boolean
+    userId?: boolean
+    description?: boolean
+    evidence?: boolean
+    riskScore?: boolean
+    status?: boolean
+    createdAt?: boolean
+    investigatedBy?: boolean
+    resolvedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["fraudAlert"]>
 
   export type FraudAlertSelectScalar = {
     id?: boolean
@@ -29050,6 +31141,9 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type FraudAlertIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type FraudAlertIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -29274,6 +31368,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends FraudAlertUpdateManyArgs>(args: SelectSubset<T, FraudAlertUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more FraudAlerts and returns the data updated in the database.
+     * @param {FraudAlertUpdateManyAndReturnArgs} args - Arguments to update many FraudAlerts.
+     * @example
+     * // Update many FraudAlerts
+     * const fraudAlert = await prisma.fraudAlert.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more FraudAlerts and only return the `id`
+     * const fraudAlertWithIdOnly = await prisma.fraudAlert.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends FraudAlertUpdateManyAndReturnArgs>(args: SelectSubset<T, FraudAlertUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FraudAlertPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one FraudAlert.
@@ -29768,6 +31892,40 @@ export namespace Prisma {
      * Filter which FraudAlerts to update
      */
     where?: FraudAlertWhereInput
+    /**
+     * Limit how many FraudAlerts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * FraudAlert updateManyAndReturn
+   */
+  export type FraudAlertUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the FraudAlert
+     */
+    select?: FraudAlertSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the FraudAlert
+     */
+    omit?: FraudAlertOmit<ExtArgs> | null
+    /**
+     * The data used to update FraudAlerts.
+     */
+    data: XOR<FraudAlertUpdateManyMutationInput, FraudAlertUncheckedUpdateManyInput>
+    /**
+     * Filter which FraudAlerts to update
+     */
+    where?: FraudAlertWhereInput
+    /**
+     * Limit how many FraudAlerts to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: FraudAlertIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -29830,6 +31988,10 @@ export namespace Prisma {
      * Filter which FraudAlerts to delete
      */
     where?: FraudAlertWhereInput
+    /**
+     * Limit how many FraudAlerts to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -30125,6 +32287,22 @@ export namespace Prisma {
     creator?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["campaignConfig"]>
 
+  export type CampaignConfigSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    tokenMint?: boolean
+    totalAllocation?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    eligibilityCriteria?: boolean
+    distributionRules?: boolean
+    isActive?: boolean
+    createdBy?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["campaignConfig"]>
 
   export type CampaignConfigSelectScalar = {
     id?: boolean
@@ -30147,6 +32325,9 @@ export namespace Prisma {
     creator?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type CampaignConfigIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    creator?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type CampaignConfigIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     creator?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -30373,6 +32554,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends CampaignConfigUpdateManyArgs>(args: SelectSubset<T, CampaignConfigUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CampaignConfigs and returns the data updated in the database.
+     * @param {CampaignConfigUpdateManyAndReturnArgs} args - Arguments to update many CampaignConfigs.
+     * @example
+     * // Update many CampaignConfigs
+     * const campaignConfig = await prisma.campaignConfig.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more CampaignConfigs and only return the `id`
+     * const campaignConfigWithIdOnly = await prisma.campaignConfig.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends CampaignConfigUpdateManyAndReturnArgs>(args: SelectSubset<T, CampaignConfigUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CampaignConfigPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one CampaignConfig.
@@ -30869,6 +33080,40 @@ export namespace Prisma {
      * Filter which CampaignConfigs to update
      */
     where?: CampaignConfigWhereInput
+    /**
+     * Limit how many CampaignConfigs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CampaignConfig updateManyAndReturn
+   */
+  export type CampaignConfigUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CampaignConfig
+     */
+    select?: CampaignConfigSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the CampaignConfig
+     */
+    omit?: CampaignConfigOmit<ExtArgs> | null
+    /**
+     * The data used to update CampaignConfigs.
+     */
+    data: XOR<CampaignConfigUpdateManyMutationInput, CampaignConfigUncheckedUpdateManyInput>
+    /**
+     * Filter which CampaignConfigs to update
+     */
+    where?: CampaignConfigWhereInput
+    /**
+     * Limit how many CampaignConfigs to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CampaignConfigIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -30931,6 +33176,10 @@ export namespace Prisma {
      * Filter which CampaignConfigs to delete
      */
     where?: CampaignConfigWhereInput
+    /**
+     * Limit how many CampaignConfigs to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -31185,6 +33434,16 @@ export namespace Prisma {
     createdAt?: boolean
   }, ExtArgs["result"]["achievement"]>
 
+  export type AchievementSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    icon?: boolean
+    requirements?: boolean
+    points?: boolean
+    isSecret?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["achievement"]>
 
   export type AchievementSelectScalar = {
     id?: boolean
@@ -31203,6 +33462,7 @@ export namespace Prisma {
     _count?: boolean | AchievementCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type AchievementIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type AchievementIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $AchievementPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Achievement"
@@ -31422,6 +33682,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends AchievementUpdateManyArgs>(args: SelectSubset<T, AchievementUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Achievements and returns the data updated in the database.
+     * @param {AchievementUpdateManyAndReturnArgs} args - Arguments to update many Achievements.
+     * @example
+     * // Update many Achievements
+     * const achievement = await prisma.achievement.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Achievements and only return the `id`
+     * const achievementWithIdOnly = await prisma.achievement.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AchievementUpdateManyAndReturnArgs>(args: SelectSubset<T, AchievementUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AchievementPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Achievement.
@@ -31909,6 +34199,36 @@ export namespace Prisma {
      * Filter which Achievements to update
      */
     where?: AchievementWhereInput
+    /**
+     * Limit how many Achievements to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Achievement updateManyAndReturn
+   */
+  export type AchievementUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Achievement
+     */
+    select?: AchievementSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Achievement
+     */
+    omit?: AchievementOmit<ExtArgs> | null
+    /**
+     * The data used to update Achievements.
+     */
+    data: XOR<AchievementUpdateManyMutationInput, AchievementUncheckedUpdateManyInput>
+    /**
+     * Filter which Achievements to update
+     */
+    where?: AchievementWhereInput
+    /**
+     * Limit how many Achievements to update.
+     */
+    limit?: number
   }
 
   /**
@@ -31971,6 +34291,10 @@ export namespace Prisma {
      * Filter which Achievements to delete
      */
     where?: AchievementWhereInput
+    /**
+     * Limit how many Achievements to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -32228,6 +34552,15 @@ export namespace Prisma {
     achievement?: boolean | AchievementDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["userAchievement"]>
 
+  export type UserAchievementSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    achievementId?: boolean
+    unlockedAt?: boolean
+    progress?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    achievement?: boolean | AchievementDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["userAchievement"]>
 
   export type UserAchievementSelectScalar = {
     id?: boolean
@@ -32243,6 +34576,10 @@ export namespace Prisma {
     achievement?: boolean | AchievementDefaultArgs<ExtArgs>
   }
   export type UserAchievementIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    achievement?: boolean | AchievementDefaultArgs<ExtArgs>
+  }
+  export type UserAchievementIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     achievement?: boolean | AchievementDefaultArgs<ExtArgs>
   }
@@ -32463,6 +34800,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends UserAchievementUpdateManyArgs>(args: SelectSubset<T, UserAchievementUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UserAchievements and returns the data updated in the database.
+     * @param {UserAchievementUpdateManyAndReturnArgs} args - Arguments to update many UserAchievements.
+     * @example
+     * // Update many UserAchievements
+     * const userAchievement = await prisma.userAchievement.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more UserAchievements and only return the `id`
+     * const userAchievementWithIdOnly = await prisma.userAchievement.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends UserAchievementUpdateManyAndReturnArgs>(args: SelectSubset<T, UserAchievementUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserAchievementPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one UserAchievement.
@@ -32952,6 +35319,40 @@ export namespace Prisma {
      * Filter which UserAchievements to update
      */
     where?: UserAchievementWhereInput
+    /**
+     * Limit how many UserAchievements to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UserAchievement updateManyAndReturn
+   */
+  export type UserAchievementUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserAchievement
+     */
+    select?: UserAchievementSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the UserAchievement
+     */
+    omit?: UserAchievementOmit<ExtArgs> | null
+    /**
+     * The data used to update UserAchievements.
+     */
+    data: XOR<UserAchievementUpdateManyMutationInput, UserAchievementUncheckedUpdateManyInput>
+    /**
+     * Filter which UserAchievements to update
+     */
+    where?: UserAchievementWhereInput
+    /**
+     * Limit how many UserAchievements to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserAchievementIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -33014,6 +35415,10 @@ export namespace Prisma {
      * Filter which UserAchievements to delete
      */
     where?: UserAchievementWhereInput
+    /**
+     * Limit how many UserAchievements to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -33238,6 +35643,17 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["notification"]>
 
+  export type NotificationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    title?: boolean
+    message?: boolean
+    type?: boolean
+    read?: boolean
+    actionUrl?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["notification"]>
 
   export type NotificationSelectScalar = {
     id?: boolean
@@ -33255,6 +35671,9 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type NotificationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type NotificationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -33476,6 +35895,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends NotificationUpdateManyArgs>(args: SelectSubset<T, NotificationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Notifications and returns the data updated in the database.
+     * @param {NotificationUpdateManyAndReturnArgs} args - Arguments to update many Notifications.
+     * @example
+     * // Update many Notifications
+     * const notification = await prisma.notification.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Notifications and only return the `id`
+     * const notificationWithIdOnly = await prisma.notification.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NotificationUpdateManyAndReturnArgs>(args: SelectSubset<T, NotificationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one Notification.
@@ -33967,6 +36416,40 @@ export namespace Prisma {
      * Filter which Notifications to update
      */
     where?: NotificationWhereInput
+    /**
+     * Limit how many Notifications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Notification updateManyAndReturn
+   */
+  export type NotificationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Notification
+     */
+    select?: NotificationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Notification
+     */
+    omit?: NotificationOmit<ExtArgs> | null
+    /**
+     * The data used to update Notifications.
+     */
+    data: XOR<NotificationUpdateManyMutationInput, NotificationUncheckedUpdateManyInput>
+    /**
+     * Filter which Notifications to update
+     */
+    where?: NotificationWhereInput
+    /**
+     * Limit how many Notifications to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NotificationIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -34029,6 +36512,10 @@ export namespace Prisma {
      * Filter which Notifications to delete
      */
     where?: NotificationWhereInput
+    /**
+     * Limit how many Notifications to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -34310,6 +36797,17 @@ export namespace Prisma {
     calculatedAt?: boolean
   }, ExtArgs["result"]["twitterAnalytics"]>
 
+  export type TwitterAnalyticsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    tweetId?: boolean
+    likes?: boolean
+    retweets?: boolean
+    comments?: boolean
+    impressions?: boolean
+    engagement_rate?: boolean
+    calculatedAt?: boolean
+  }, ExtArgs["result"]["twitterAnalytics"]>
 
   export type TwitterAnalyticsSelectScalar = {
     id?: boolean
@@ -34542,6 +37040,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends TwitterAnalyticsUpdateManyArgs>(args: SelectSubset<T, TwitterAnalyticsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TwitterAnalytics and returns the data updated in the database.
+     * @param {TwitterAnalyticsUpdateManyAndReturnArgs} args - Arguments to update many TwitterAnalytics.
+     * @example
+     * // Update many TwitterAnalytics
+     * const twitterAnalytics = await prisma.twitterAnalytics.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TwitterAnalytics and only return the `id`
+     * const twitterAnalyticsWithIdOnly = await prisma.twitterAnalytics.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TwitterAnalyticsUpdateManyAndReturnArgs>(args: SelectSubset<T, TwitterAnalyticsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TwitterAnalyticsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one TwitterAnalytics.
@@ -35001,6 +37529,36 @@ export namespace Prisma {
      * Filter which TwitterAnalytics to update
      */
     where?: TwitterAnalyticsWhereInput
+    /**
+     * Limit how many TwitterAnalytics to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TwitterAnalytics updateManyAndReturn
+   */
+  export type TwitterAnalyticsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TwitterAnalytics
+     */
+    select?: TwitterAnalyticsSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TwitterAnalytics
+     */
+    omit?: TwitterAnalyticsOmit<ExtArgs> | null
+    /**
+     * The data used to update TwitterAnalytics.
+     */
+    data: XOR<TwitterAnalyticsUpdateManyMutationInput, TwitterAnalyticsUncheckedUpdateManyInput>
+    /**
+     * Filter which TwitterAnalytics to update
+     */
+    where?: TwitterAnalyticsWhereInput
+    /**
+     * Limit how many TwitterAnalytics to update.
+     */
+    limit?: number
   }
 
   /**
@@ -35055,6 +37613,10 @@ export namespace Prisma {
      * Filter which TwitterAnalytics to delete
      */
     where?: TwitterAnalyticsWhereInput
+    /**
+     * Limit how many TwitterAnalytics to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -35350,6 +37912,22 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["nftClaim"]>
 
+  export type NftClaimSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    userWallet?: boolean
+    mintAddress?: boolean
+    nftNumber?: boolean
+    paymentSignature?: boolean
+    createSignature?: boolean
+    transferSignature?: boolean
+    status?: boolean
+    errorMessage?: boolean
+    metadata?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["nftClaim"]>
 
   export type NftClaimSelectScalar = {
     id?: boolean
@@ -35372,6 +37950,9 @@ export namespace Prisma {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type NftClaimIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type NftClaimIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
@@ -35598,6 +38179,36 @@ export namespace Prisma {
      * 
      */
     updateMany<T extends NftClaimUpdateManyArgs>(args: SelectSubset<T, NftClaimUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more NftClaims and returns the data updated in the database.
+     * @param {NftClaimUpdateManyAndReturnArgs} args - Arguments to update many NftClaims.
+     * @example
+     * // Update many NftClaims
+     * const nftClaim = await prisma.nftClaim.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more NftClaims and only return the `id`
+     * const nftClaimWithIdOnly = await prisma.nftClaim.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NftClaimUpdateManyAndReturnArgs>(args: SelectSubset<T, NftClaimUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NftClaimPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
      * Create or update one NftClaim.
@@ -36094,6 +38705,40 @@ export namespace Prisma {
      * Filter which NftClaims to update
      */
     where?: NftClaimWhereInput
+    /**
+     * Limit how many NftClaims to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * NftClaim updateManyAndReturn
+   */
+  export type NftClaimUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NftClaim
+     */
+    select?: NftClaimSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the NftClaim
+     */
+    omit?: NftClaimOmit<ExtArgs> | null
+    /**
+     * The data used to update NftClaims.
+     */
+    data: XOR<NftClaimUpdateManyMutationInput, NftClaimUncheckedUpdateManyInput>
+    /**
+     * Filter which NftClaims to update
+     */
+    where?: NftClaimWhereInput
+    /**
+     * Limit how many NftClaims to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NftClaimIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -36156,6 +38801,10 @@ export namespace Prisma {
      * Filter which NftClaims to delete
      */
     where?: NftClaimWhereInput
+    /**
+     * Limit how many NftClaims to delete.
+     */
+    limit?: number
   }
 
   /**
@@ -36204,6 +38853,9 @@ export namespace Prisma {
     streak: 'streak',
     lastCheckIn: 'lastCheckIn',
     referralCode: 'referralCode',
+    name: 'name',
+    emailVerified: 'emailVerified',
+    image: 'image',
     email: 'email',
     totalPoints: 'totalPoints',
     totalTokens: 'totalTokens',
@@ -36234,6 +38886,8 @@ export namespace Prisma {
     providerAccountId: 'providerAccountId',
     refresh_token: 'refresh_token',
     access_token: 'access_token',
+    oauth_token: 'oauth_token',
+    oauth_token_secret: 'oauth_token_secret',
     expires_at: 'expires_at',
     token_type: 'token_type',
     scope: 'scope',
@@ -36810,6 +39464,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+  /**
    * Reference to a field of type 'EngagementType'
    */
   export type EnumEngagementTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'EngagementType'>
@@ -36915,7 +39576,7 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
-    walletAddress?: StringFilter<"User"> | string
+    walletAddress?: StringNullableFilter<"User"> | string | null
     twitterId?: StringNullableFilter<"User"> | string | null
     twitterUsername?: StringNullableFilter<"User"> | string | null
     twitterName?: StringNullableFilter<"User"> | string | null
@@ -36926,6 +39587,9 @@ export namespace Prisma {
     streak?: IntFilter<"User"> | number
     lastCheckIn?: DateTimeNullableFilter<"User"> | Date | string | null
     referralCode?: StringFilter<"User"> | string
+    name?: StringNullableFilter<"User"> | string | null
+    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
+    image?: StringNullableFilter<"User"> | string | null
     email?: StringNullableFilter<"User"> | string | null
     totalPoints?: IntFilter<"User"> | number
     totalTokens?: FloatFilter<"User"> | number
@@ -36952,7 +39616,7 @@ export namespace Prisma {
     claims?: ClaimListRelationFilter
     pointHistory?: PointHistoryListRelationFilter
     referrals?: ReferralListRelationFilter
-    referredBy?: XOR<ReferralNullableRelationFilter, ReferralWhereInput> | null
+    referredBy?: XOR<ReferralNullableScalarRelationFilter, ReferralWhereInput> | null
     achievements?: UserAchievementListRelationFilter
     notifications?: NotificationListRelationFilter
     adminSessions?: AdminSessionListRelationFilter
@@ -36963,14 +39627,14 @@ export namespace Prisma {
     nftCollections?: NftCollectionListRelationFilter
     nftDistributions?: NftDistributionListRelationFilter
     nftHoldings?: UserNftHoldingListRelationFilter
-    nftClaimApproval?: XOR<NftClaimApprovalNullableRelationFilter, NftClaimApprovalWhereInput> | null
+    nftClaimApproval?: XOR<NftClaimApprovalNullableScalarRelationFilter, NftClaimApprovalWhereInput> | null
     approvedClaims?: NftClaimApprovalListRelationFilter
     airdropSeasons?: AirdropSeasonListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    walletAddress?: SortOrder
+    walletAddress?: SortOrderInput | SortOrder
     twitterId?: SortOrderInput | SortOrder
     twitterUsername?: SortOrderInput | SortOrder
     twitterName?: SortOrderInput | SortOrder
@@ -36981,6 +39645,9 @@ export namespace Prisma {
     streak?: SortOrder
     lastCheckIn?: SortOrderInput | SortOrder
     referralCode?: SortOrder
+    name?: SortOrderInput | SortOrder
+    emailVerified?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     totalPoints?: SortOrder
     totalTokens?: SortOrder
@@ -37040,6 +39707,9 @@ export namespace Prisma {
     level?: IntFilter<"User"> | number
     streak?: IntFilter<"User"> | number
     lastCheckIn?: DateTimeNullableFilter<"User"> | Date | string | null
+    name?: StringNullableFilter<"User"> | string | null
+    emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
+    image?: StringNullableFilter<"User"> | string | null
     totalPoints?: IntFilter<"User"> | number
     totalTokens?: FloatFilter<"User"> | number
     rank?: IntFilter<"User"> | number
@@ -37065,7 +39735,7 @@ export namespace Prisma {
     claims?: ClaimListRelationFilter
     pointHistory?: PointHistoryListRelationFilter
     referrals?: ReferralListRelationFilter
-    referredBy?: XOR<ReferralNullableRelationFilter, ReferralWhereInput> | null
+    referredBy?: XOR<ReferralNullableScalarRelationFilter, ReferralWhereInput> | null
     achievements?: UserAchievementListRelationFilter
     notifications?: NotificationListRelationFilter
     adminSessions?: AdminSessionListRelationFilter
@@ -37076,14 +39746,14 @@ export namespace Prisma {
     nftCollections?: NftCollectionListRelationFilter
     nftDistributions?: NftDistributionListRelationFilter
     nftHoldings?: UserNftHoldingListRelationFilter
-    nftClaimApproval?: XOR<NftClaimApprovalNullableRelationFilter, NftClaimApprovalWhereInput> | null
+    nftClaimApproval?: XOR<NftClaimApprovalNullableScalarRelationFilter, NftClaimApprovalWhereInput> | null
     approvedClaims?: NftClaimApprovalListRelationFilter
     airdropSeasons?: AirdropSeasonListRelationFilter
   }, "id" | "walletAddress" | "twitterId" | "referralCode" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    walletAddress?: SortOrder
+    walletAddress?: SortOrderInput | SortOrder
     twitterId?: SortOrderInput | SortOrder
     twitterUsername?: SortOrderInput | SortOrder
     twitterName?: SortOrderInput | SortOrder
@@ -37094,6 +39764,9 @@ export namespace Prisma {
     streak?: SortOrder
     lastCheckIn?: SortOrderInput | SortOrder
     referralCode?: SortOrder
+    name?: SortOrderInput | SortOrder
+    emailVerified?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     totalPoints?: SortOrder
     totalTokens?: SortOrder
@@ -37123,7 +39796,7 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
-    walletAddress?: StringWithAggregatesFilter<"User"> | string
+    walletAddress?: StringNullableWithAggregatesFilter<"User"> | string | null
     twitterId?: StringNullableWithAggregatesFilter<"User"> | string | null
     twitterUsername?: StringNullableWithAggregatesFilter<"User"> | string | null
     twitterName?: StringNullableWithAggregatesFilter<"User"> | string | null
@@ -37134,6 +39807,9 @@ export namespace Prisma {
     streak?: IntWithAggregatesFilter<"User"> | number
     lastCheckIn?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     referralCode?: StringWithAggregatesFilter<"User"> | string
+    name?: StringNullableWithAggregatesFilter<"User"> | string | null
+    emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    image?: StringNullableWithAggregatesFilter<"User"> | string | null
     email?: StringNullableWithAggregatesFilter<"User"> | string | null
     totalPoints?: IntWithAggregatesFilter<"User"> | number
     totalTokens?: FloatWithAggregatesFilter<"User"> | number
@@ -37164,6 +39840,8 @@ export namespace Prisma {
     providerAccountId?: StringFilter<"Account"> | string
     refresh_token?: StringNullableFilter<"Account"> | string | null
     access_token?: StringNullableFilter<"Account"> | string | null
+    oauth_token?: StringNullableFilter<"Account"> | string | null
+    oauth_token_secret?: StringNullableFilter<"Account"> | string | null
     expires_at?: IntNullableFilter<"Account"> | number | null
     token_type?: StringNullableFilter<"Account"> | string | null
     scope?: StringNullableFilter<"Account"> | string | null
@@ -37171,7 +39849,7 @@ export namespace Prisma {
     session_state?: StringNullableFilter<"Account"> | string | null
     createdAt?: DateTimeFilter<"Account"> | Date | string
     updatedAt?: DateTimeFilter<"Account"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type AccountOrderByWithRelationInput = {
@@ -37182,6 +39860,8 @@ export namespace Prisma {
     providerAccountId?: SortOrder
     refresh_token?: SortOrderInput | SortOrder
     access_token?: SortOrderInput | SortOrder
+    oauth_token?: SortOrderInput | SortOrder
+    oauth_token_secret?: SortOrderInput | SortOrder
     expires_at?: SortOrderInput | SortOrder
     token_type?: SortOrderInput | SortOrder
     scope?: SortOrderInput | SortOrder
@@ -37204,6 +39884,8 @@ export namespace Prisma {
     providerAccountId?: StringFilter<"Account"> | string
     refresh_token?: StringNullableFilter<"Account"> | string | null
     access_token?: StringNullableFilter<"Account"> | string | null
+    oauth_token?: StringNullableFilter<"Account"> | string | null
+    oauth_token_secret?: StringNullableFilter<"Account"> | string | null
     expires_at?: IntNullableFilter<"Account"> | number | null
     token_type?: StringNullableFilter<"Account"> | string | null
     scope?: StringNullableFilter<"Account"> | string | null
@@ -37211,7 +39893,7 @@ export namespace Prisma {
     session_state?: StringNullableFilter<"Account"> | string | null
     createdAt?: DateTimeFilter<"Account"> | Date | string
     updatedAt?: DateTimeFilter<"Account"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "provider_providerAccountId">
 
   export type AccountOrderByWithAggregationInput = {
@@ -37222,6 +39904,8 @@ export namespace Prisma {
     providerAccountId?: SortOrder
     refresh_token?: SortOrderInput | SortOrder
     access_token?: SortOrderInput | SortOrder
+    oauth_token?: SortOrderInput | SortOrder
+    oauth_token_secret?: SortOrderInput | SortOrder
     expires_at?: SortOrderInput | SortOrder
     token_type?: SortOrderInput | SortOrder
     scope?: SortOrderInput | SortOrder
@@ -37247,6 +39931,8 @@ export namespace Prisma {
     providerAccountId?: StringWithAggregatesFilter<"Account"> | string
     refresh_token?: StringNullableWithAggregatesFilter<"Account"> | string | null
     access_token?: StringNullableWithAggregatesFilter<"Account"> | string | null
+    oauth_token?: StringNullableWithAggregatesFilter<"Account"> | string | null
+    oauth_token_secret?: StringNullableWithAggregatesFilter<"Account"> | string | null
     expires_at?: IntNullableWithAggregatesFilter<"Account"> | number | null
     token_type?: StringNullableWithAggregatesFilter<"Account"> | string | null
     scope?: StringNullableWithAggregatesFilter<"Account"> | string | null
@@ -37266,7 +39952,7 @@ export namespace Prisma {
     expires?: DateTimeFilter<"Session"> | Date | string
     createdAt?: DateTimeFilter<"Session"> | Date | string
     updatedAt?: DateTimeFilter<"Session"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type SessionOrderByWithRelationInput = {
@@ -37289,7 +39975,7 @@ export namespace Prisma {
     expires?: DateTimeFilter<"Session"> | Date | string
     createdAt?: DateTimeFilter<"Session"> | Date | string
     updatedAt?: DateTimeFilter<"Session"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "sessionToken">
 
   export type SessionOrderByWithAggregationInput = {
@@ -37487,7 +40173,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"PointHistory"> | string | null
     metadata?: JsonNullableFilter<"PointHistory">
     createdAt?: DateTimeFilter<"PointHistory"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type PointHistoryOrderByWithRelationInput = {
@@ -37516,7 +40202,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"PointHistory"> | string | null
     metadata?: JsonNullableFilter<"PointHistory">
     createdAt?: DateTimeFilter<"PointHistory"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type PointHistoryOrderByWithAggregationInput = {
@@ -37562,8 +40248,8 @@ export namespace Prisma {
     completed?: BoolFilter<"Referral"> | boolean
     createdAt?: DateTimeFilter<"Referral"> | Date | string
     isActive?: BoolFilter<"Referral"> | boolean
-    referrer?: XOR<UserRelationFilter, UserWhereInput>
-    referred?: XOR<UserRelationFilter, UserWhereInput>
+    referrer?: XOR<UserScalarRelationFilter, UserWhereInput>
+    referred?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type ReferralOrderByWithRelationInput = {
@@ -37589,8 +40275,8 @@ export namespace Prisma {
     completed?: BoolFilter<"Referral"> | boolean
     createdAt?: DateTimeFilter<"Referral"> | Date | string
     isActive?: BoolFilter<"Referral"> | boolean
-    referrer?: XOR<UserRelationFilter, UserWhereInput>
-    referred?: XOR<UserRelationFilter, UserWhereInput>
+    referrer?: XOR<UserScalarRelationFilter, UserWhereInput>
+    referred?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "referredId">
 
   export type ReferralOrderByWithAggregationInput = {
@@ -37632,7 +40318,7 @@ export namespace Prisma {
     tokens?: FloatFilter<"TwitterEngagement"> | number
     verified?: BoolFilter<"TwitterEngagement"> | boolean
     createdAt?: DateTimeFilter<"TwitterEngagement"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type TwitterEngagementOrderByWithRelationInput = {
@@ -37658,7 +40344,7 @@ export namespace Prisma {
     tokens?: FloatFilter<"TwitterEngagement"> | number
     verified?: BoolFilter<"TwitterEngagement"> | boolean
     createdAt?: DateTimeFilter<"TwitterEngagement"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "userId_tweetId_engagementType">
 
   export type TwitterEngagementOrderByWithAggregationInput = {
@@ -37703,8 +40389,8 @@ export namespace Prisma {
     metadata?: JsonNullableFilter<"TaskCompletion">
     completedAt?: DateTimeNullableFilter<"TaskCompletion"> | Date | string | null
     createdAt?: DateTimeFilter<"TaskCompletion"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    task?: XOR<TaskRelationFilter, TaskWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    task?: XOR<TaskScalarRelationFilter, TaskWhereInput>
   }
 
   export type TaskCompletionOrderByWithRelationInput = {
@@ -37737,8 +40423,8 @@ export namespace Prisma {
     metadata?: JsonNullableFilter<"TaskCompletion">
     completedAt?: DateTimeNullableFilter<"TaskCompletion"> | Date | string | null
     createdAt?: DateTimeFilter<"TaskCompletion"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    task?: XOR<TaskRelationFilter, TaskWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    task?: XOR<TaskScalarRelationFilter, TaskWhereInput>
   }, "id" | "userId_taskId">
 
   export type TaskCompletionOrderByWithAggregationInput = {
@@ -37885,7 +40571,7 @@ export namespace Prisma {
     type?: StringFilter<"Claim"> | string
     nftPasses?: JsonNullableFilter<"Claim">
     userTier?: StringNullableFilter<"Claim"> | string | null
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type ClaimOrderByWithRelationInput = {
@@ -37924,7 +40610,7 @@ export namespace Prisma {
     type?: StringFilter<"Claim"> | string
     nftPasses?: JsonNullableFilter<"Claim">
     userTier?: StringNullableFilter<"Claim"> | string | null
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type ClaimOrderByWithAggregationInput = {
@@ -38116,7 +40802,7 @@ export namespace Prisma {
     type?: StringFilter<"DailyEarning"> | string
     rewardType?: StringFilter<"DailyEarning"> | string
     claimedAt?: DateTimeFilter<"DailyEarning"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type DailyEarningOrderByWithRelationInput = {
@@ -38141,7 +40827,7 @@ export namespace Prisma {
     type?: StringFilter<"DailyEarning"> | string
     rewardType?: StringFilter<"DailyEarning"> | string
     claimedAt?: DateTimeFilter<"DailyEarning"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type DailyEarningOrderByWithAggregationInput = {
@@ -38191,7 +40877,7 @@ export namespace Prisma {
     metadata?: JsonNullableFilter<"AirdropSeason">
     createdAt?: DateTimeFilter<"AirdropSeason"> | Date | string
     updatedAt?: DateTimeFilter<"AirdropSeason"> | Date | string
-    creator?: XOR<UserRelationFilter, UserWhereInput>
+    creator?: XOR<UserScalarRelationFilter, UserWhereInput>
     claims?: AirdropClaimListRelationFilter
   }
 
@@ -38234,7 +40920,7 @@ export namespace Prisma {
     metadata?: JsonNullableFilter<"AirdropSeason">
     createdAt?: DateTimeFilter<"AirdropSeason"> | Date | string
     updatedAt?: DateTimeFilter<"AirdropSeason"> | Date | string
-    creator?: XOR<UserRelationFilter, UserWhereInput>
+    creator?: XOR<UserScalarRelationFilter, UserWhereInput>
     claims?: AirdropClaimListRelationFilter
   }, "id">
 
@@ -38297,8 +40983,8 @@ export namespace Prisma {
     claimedAt?: DateTimeFilter<"AirdropClaim"> | Date | string
     createdAt?: DateTimeFilter<"AirdropClaim"> | Date | string
     updatedAt?: DateTimeFilter<"AirdropClaim"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    season?: XOR<AirdropSeasonRelationFilter, AirdropSeasonWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    season?: XOR<AirdropSeasonScalarRelationFilter, AirdropSeasonWhereInput>
   }
 
   export type AirdropClaimOrderByWithRelationInput = {
@@ -38333,8 +41019,8 @@ export namespace Prisma {
     claimedAt?: DateTimeFilter<"AirdropClaim"> | Date | string
     createdAt?: DateTimeFilter<"AirdropClaim"> | Date | string
     updatedAt?: DateTimeFilter<"AirdropClaim"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    season?: XOR<AirdropSeasonRelationFilter, AirdropSeasonWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    season?: XOR<AirdropSeasonScalarRelationFilter, AirdropSeasonWhereInput>
   }, "id" | "userId_seasonId">
 
   export type AirdropClaimOrderByWithAggregationInput = {
@@ -38392,7 +41078,7 @@ export namespace Prisma {
     isActive?: BoolFilter<"NftCollection"> | boolean
     createdAt?: DateTimeFilter<"NftCollection"> | Date | string
     updatedAt?: DateTimeFilter<"NftCollection"> | Date | string
-    creator?: XOR<UserRelationFilter, UserWhereInput>
+    creator?: XOR<UserScalarRelationFilter, UserWhereInput>
     distributions?: NftDistributionListRelationFilter
   }
 
@@ -38435,7 +41121,7 @@ export namespace Prisma {
     isActive?: BoolFilter<"NftCollection"> | boolean
     createdAt?: DateTimeFilter<"NftCollection"> | Date | string
     updatedAt?: DateTimeFilter<"NftCollection"> | Date | string
-    creator?: XOR<UserRelationFilter, UserWhereInput>
+    creator?: XOR<UserScalarRelationFilter, UserWhereInput>
     distributions?: NftDistributionListRelationFilter
   }, "id" | "mintAddress">
 
@@ -38501,8 +41187,8 @@ export namespace Prisma {
     success?: BoolFilter<"NftDistribution"> | boolean
     createdAt?: DateTimeFilter<"NftDistribution"> | Date | string
     updatedAt?: DateTimeFilter<"NftDistribution"> | Date | string
-    collection?: XOR<NftCollectionRelationFilter, NftCollectionWhereInput>
-    distributor?: XOR<UserRelationFilter, UserWhereInput>
+    collection?: XOR<NftCollectionScalarRelationFilter, NftCollectionWhereInput>
+    distributor?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type NftDistributionOrderByWithRelationInput = {
@@ -38542,8 +41228,8 @@ export namespace Prisma {
     success?: BoolFilter<"NftDistribution"> | boolean
     createdAt?: DateTimeFilter<"NftDistribution"> | Date | string
     updatedAt?: DateTimeFilter<"NftDistribution"> | Date | string
-    collection?: XOR<NftCollectionRelationFilter, NftCollectionWhereInput>
-    distributor?: XOR<UserRelationFilter, UserWhereInput>
+    collection?: XOR<NftCollectionScalarRelationFilter, NftCollectionWhereInput>
+    distributor?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type NftDistributionOrderByWithAggregationInput = {
@@ -38601,8 +41287,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"NftClaimApproval"> | Date | string
     claimed?: BoolFilter<"NftClaimApproval"> | boolean
     claimedAt?: DateTimeNullableFilter<"NftClaimApproval"> | Date | string | null
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    approver?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    approver?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
   export type NftClaimApprovalOrderByWithRelationInput = {
@@ -38632,8 +41318,8 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"NftClaimApproval"> | Date | string
     claimed?: BoolFilter<"NftClaimApproval"> | boolean
     claimedAt?: DateTimeNullableFilter<"NftClaimApproval"> | Date | string | null
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    approver?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    approver?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id" | "userId">
 
   export type NftClaimApprovalOrderByWithAggregationInput = {
@@ -38679,7 +41365,7 @@ export namespace Prisma {
     acquiredAt?: DateTimeFilter<"UserNftHolding"> | Date | string
     createdAt?: DateTimeFilter<"UserNftHolding"> | Date | string
     updatedAt?: DateTimeFilter<"UserNftHolding"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type UserNftHoldingOrderByWithRelationInput = {
@@ -38709,7 +41395,7 @@ export namespace Prisma {
     acquiredAt?: DateTimeFilter<"UserNftHolding"> | Date | string
     createdAt?: DateTimeFilter<"UserNftHolding"> | Date | string
     updatedAt?: DateTimeFilter<"UserNftHolding"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id" | "userId_mintAddress_tokenAccount">
 
   export type UserNftHoldingOrderByWithAggregationInput = {
@@ -38756,7 +41442,7 @@ export namespace Prisma {
     expiresAt?: DateTimeFilter<"AdminSession"> | Date | string
     lastActivity?: DateTimeFilter<"AdminSession"> | Date | string
     createdAt?: DateTimeFilter<"AdminSession"> | Date | string
-    admin?: XOR<UserRelationFilter, UserWhereInput>
+    admin?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type AdminSessionOrderByWithRelationInput = {
@@ -38783,7 +41469,7 @@ export namespace Prisma {
     expiresAt?: DateTimeFilter<"AdminSession"> | Date | string
     lastActivity?: DateTimeFilter<"AdminSession"> | Date | string
     createdAt?: DateTimeFilter<"AdminSession"> | Date | string
-    admin?: XOR<UserRelationFilter, UserWhereInput>
+    admin?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type AdminSessionOrderByWithAggregationInput = {
@@ -38825,7 +41511,7 @@ export namespace Prisma {
     timestamp?: DateTimeFilter<"AdminAuditLog"> | Date | string
     ipAddress?: StringFilter<"AdminAuditLog"> | string
     createdAt?: DateTimeFilter<"AdminAuditLog"> | Date | string
-    admin?: XOR<UserRelationFilter, UserWhereInput>
+    admin?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type AdminAuditLogOrderByWithRelationInput = {
@@ -38850,7 +41536,7 @@ export namespace Prisma {
     timestamp?: DateTimeFilter<"AdminAuditLog"> | Date | string
     ipAddress?: StringFilter<"AdminAuditLog"> | string
     createdAt?: DateTimeFilter<"AdminAuditLog"> | Date | string
-    admin?: XOR<UserRelationFilter, UserWhereInput>
+    admin?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type AdminAuditLogOrderByWithAggregationInput = {
@@ -38894,7 +41580,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"FraudAlert"> | Date | string
     investigatedBy?: StringNullableFilter<"FraudAlert"> | string | null
     resolvedAt?: DateTimeNullableFilter<"FraudAlert"> | Date | string | null
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type FraudAlertOrderByWithRelationInput = {
@@ -38927,7 +41613,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"FraudAlert"> | Date | string
     investigatedBy?: StringNullableFilter<"FraudAlert"> | string | null
     resolvedAt?: DateTimeNullableFilter<"FraudAlert"> | Date | string | null
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type FraudAlertOrderByWithAggregationInput = {
@@ -38983,7 +41669,7 @@ export namespace Prisma {
     createdBy?: StringFilter<"CampaignConfig"> | string
     createdAt?: DateTimeFilter<"CampaignConfig"> | Date | string
     updatedAt?: DateTimeFilter<"CampaignConfig"> | Date | string
-    creator?: XOR<UserRelationFilter, UserWhereInput>
+    creator?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type CampaignConfigOrderByWithRelationInput = {
@@ -39020,7 +41706,7 @@ export namespace Prisma {
     createdBy?: StringFilter<"CampaignConfig"> | string
     createdAt?: DateTimeFilter<"CampaignConfig"> | Date | string
     updatedAt?: DateTimeFilter<"CampaignConfig"> | Date | string
-    creator?: XOR<UserRelationFilter, UserWhereInput>
+    creator?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type CampaignConfigOrderByWithAggregationInput = {
@@ -39144,8 +41830,8 @@ export namespace Prisma {
     achievementId?: StringFilter<"UserAchievement"> | string
     unlockedAt?: DateTimeFilter<"UserAchievement"> | Date | string
     progress?: IntFilter<"UserAchievement"> | number
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    achievement?: XOR<AchievementRelationFilter, AchievementWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    achievement?: XOR<AchievementScalarRelationFilter, AchievementWhereInput>
   }
 
   export type UserAchievementOrderByWithRelationInput = {
@@ -39168,8 +41854,8 @@ export namespace Prisma {
     achievementId?: StringFilter<"UserAchievement"> | string
     unlockedAt?: DateTimeFilter<"UserAchievement"> | Date | string
     progress?: IntFilter<"UserAchievement"> | number
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    achievement?: XOR<AchievementRelationFilter, AchievementWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    achievement?: XOR<AchievementScalarRelationFilter, AchievementWhereInput>
   }, "id" | "userId_achievementId">
 
   export type UserAchievementOrderByWithAggregationInput = {
@@ -39208,7 +41894,7 @@ export namespace Prisma {
     read?: BoolFilter<"Notification"> | boolean
     actionUrl?: StringNullableFilter<"Notification"> | string | null
     createdAt?: DateTimeFilter<"Notification"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type NotificationOrderByWithRelationInput = {
@@ -39235,7 +41921,7 @@ export namespace Prisma {
     read?: BoolFilter<"Notification"> | boolean
     actionUrl?: StringNullableFilter<"Notification"> | string | null
     createdAt?: DateTimeFilter<"Notification"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type NotificationOrderByWithAggregationInput = {
@@ -39357,7 +42043,7 @@ export namespace Prisma {
     metadata?: JsonNullableFilter<"NftClaim">
     createdAt?: DateTimeFilter<"NftClaim"> | Date | string
     updatedAt?: DateTimeFilter<"NftClaim"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type NftClaimOrderByWithRelationInput = {
@@ -39394,7 +42080,7 @@ export namespace Prisma {
     metadata?: JsonNullableFilter<"NftClaim">
     createdAt?: DateTimeFilter<"NftClaim"> | Date | string
     updatedAt?: DateTimeFilter<"NftClaim"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type NftClaimOrderByWithAggregationInput = {
@@ -39439,7 +42125,7 @@ export namespace Prisma {
 
   export type UserCreateInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -39450,6 +42136,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -39494,7 +42183,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -39505,6 +42194,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -39549,7 +42241,7 @@ export namespace Prisma {
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39560,6 +42252,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -39604,7 +42299,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39615,6 +42310,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -39659,7 +42357,7 @@ export namespace Prisma {
 
   export type UserCreateManyInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -39670,6 +42368,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -39691,7 +42392,7 @@ export namespace Prisma {
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39702,6 +42403,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -39723,7 +42427,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39734,6 +42438,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -39760,6 +42467,8 @@ export namespace Prisma {
     providerAccountId: string
     refresh_token?: string | null
     access_token?: string | null
+    oauth_token?: string | null
+    oauth_token_secret?: string | null
     expires_at?: number | null
     token_type?: string | null
     scope?: string | null
@@ -39778,6 +42487,8 @@ export namespace Prisma {
     providerAccountId: string
     refresh_token?: string | null
     access_token?: string | null
+    oauth_token?: string | null
+    oauth_token_secret?: string | null
     expires_at?: number | null
     token_type?: string | null
     scope?: string | null
@@ -39794,6 +42505,8 @@ export namespace Prisma {
     providerAccountId?: StringFieldUpdateOperationsInput | string
     refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     access_token?: NullableStringFieldUpdateOperationsInput | string | null
+    oauth_token?: NullableStringFieldUpdateOperationsInput | string | null
+    oauth_token_secret?: NullableStringFieldUpdateOperationsInput | string | null
     expires_at?: NullableIntFieldUpdateOperationsInput | number | null
     token_type?: NullableStringFieldUpdateOperationsInput | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39812,6 +42525,8 @@ export namespace Prisma {
     providerAccountId?: StringFieldUpdateOperationsInput | string
     refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     access_token?: NullableStringFieldUpdateOperationsInput | string | null
+    oauth_token?: NullableStringFieldUpdateOperationsInput | string | null
+    oauth_token_secret?: NullableStringFieldUpdateOperationsInput | string | null
     expires_at?: NullableIntFieldUpdateOperationsInput | number | null
     token_type?: NullableStringFieldUpdateOperationsInput | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39829,6 +42544,8 @@ export namespace Prisma {
     providerAccountId: string
     refresh_token?: string | null
     access_token?: string | null
+    oauth_token?: string | null
+    oauth_token_secret?: string | null
     expires_at?: number | null
     token_type?: string | null
     scope?: string | null
@@ -39845,6 +42562,8 @@ export namespace Prisma {
     providerAccountId?: StringFieldUpdateOperationsInput | string
     refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     access_token?: NullableStringFieldUpdateOperationsInput | string | null
+    oauth_token?: NullableStringFieldUpdateOperationsInput | string | null
+    oauth_token_secret?: NullableStringFieldUpdateOperationsInput | string | null
     expires_at?: NullableIntFieldUpdateOperationsInput | number | null
     token_type?: NullableStringFieldUpdateOperationsInput | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
@@ -39862,6 +42581,8 @@ export namespace Prisma {
     providerAccountId?: StringFieldUpdateOperationsInput | string
     refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     access_token?: NullableStringFieldUpdateOperationsInput | string | null
+    oauth_token?: NullableStringFieldUpdateOperationsInput | string | null
+    oauth_token_secret?: NullableStringFieldUpdateOperationsInput | string | null
     expires_at?: NullableIntFieldUpdateOperationsInput | number | null
     token_type?: NullableStringFieldUpdateOperationsInput | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
@@ -42361,12 +45082,13 @@ export namespace Prisma {
   export type JsonNullableFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
@@ -42441,7 +45163,7 @@ export namespace Prisma {
     none?: ReferralWhereInput
   }
 
-  export type ReferralNullableRelationFilter = {
+  export type ReferralNullableScalarRelationFilter = {
     is?: ReferralWhereInput | null
     isNot?: ReferralWhereInput | null
   }
@@ -42506,7 +45228,7 @@ export namespace Prisma {
     none?: UserNftHoldingWhereInput
   }
 
-  export type NftClaimApprovalNullableRelationFilter = {
+  export type NftClaimApprovalNullableScalarRelationFilter = {
     is?: NftClaimApprovalWhereInput | null
     isNot?: NftClaimApprovalWhereInput | null
   }
@@ -42625,6 +45347,9 @@ export namespace Prisma {
     streak?: SortOrder
     lastCheckIn?: SortOrder
     referralCode?: SortOrder
+    name?: SortOrder
+    emailVerified?: SortOrder
+    image?: SortOrder
     email?: SortOrder
     totalPoints?: SortOrder
     totalTokens?: SortOrder
@@ -42668,6 +45393,9 @@ export namespace Prisma {
     streak?: SortOrder
     lastCheckIn?: SortOrder
     referralCode?: SortOrder
+    name?: SortOrder
+    emailVerified?: SortOrder
+    image?: SortOrder
     email?: SortOrder
     totalPoints?: SortOrder
     totalTokens?: SortOrder
@@ -42698,6 +45426,9 @@ export namespace Prisma {
     streak?: SortOrder
     lastCheckIn?: SortOrder
     referralCode?: SortOrder
+    name?: SortOrder
+    emailVerified?: SortOrder
+    image?: SortOrder
     email?: SortOrder
     totalPoints?: SortOrder
     totalTokens?: SortOrder
@@ -42865,12 +45596,13 @@ export namespace Prisma {
   export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
@@ -42889,7 +45621,7 @@ export namespace Prisma {
     _max?: NestedBoolNullableFilter<$PrismaModel>
   }
 
-  export type UserRelationFilter = {
+  export type UserScalarRelationFilter = {
     is?: UserWhereInput
     isNot?: UserWhereInput
   }
@@ -42907,6 +45639,8 @@ export namespace Prisma {
     providerAccountId?: SortOrder
     refresh_token?: SortOrder
     access_token?: SortOrder
+    oauth_token?: SortOrder
+    oauth_token_secret?: SortOrder
     expires_at?: SortOrder
     token_type?: SortOrder
     scope?: SortOrder
@@ -42928,6 +45662,8 @@ export namespace Prisma {
     providerAccountId?: SortOrder
     refresh_token?: SortOrder
     access_token?: SortOrder
+    oauth_token?: SortOrder
+    oauth_token_secret?: SortOrder
     expires_at?: SortOrder
     token_type?: SortOrder
     scope?: SortOrder
@@ -42945,6 +45681,8 @@ export namespace Prisma {
     providerAccountId?: SortOrder
     refresh_token?: SortOrder
     access_token?: SortOrder
+    oauth_token?: SortOrder
+    oauth_token_secret?: SortOrder
     expires_at?: SortOrder
     token_type?: SortOrder
     scope?: SortOrder
@@ -43208,7 +45946,7 @@ export namespace Prisma {
     _max?: NestedEnumEngagementTypeFilter<$PrismaModel>
   }
 
-  export type TaskRelationFilter = {
+  export type TaskScalarRelationFilter = {
     is?: TaskWhereInput
     isNot?: TaskWhereInput
   }
@@ -43281,12 +46019,13 @@ export namespace Prisma {
   export type JsonFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
@@ -43366,12 +46105,13 @@ export namespace Prisma {
   export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
@@ -43711,7 +46451,7 @@ export namespace Prisma {
     _max?: NestedBigIntFilter<$PrismaModel>
   }
 
-  export type AirdropSeasonRelationFilter = {
+  export type AirdropSeasonScalarRelationFilter = {
     is?: AirdropSeasonWhereInput
     isNot?: AirdropSeasonWhereInput
   }
@@ -43835,7 +46575,7 @@ export namespace Prisma {
     royaltyPercentage?: SortOrder
   }
 
-  export type NftCollectionRelationFilter = {
+  export type NftCollectionScalarRelationFilter = {
     is?: NftCollectionWhereInput
     isNot?: NftCollectionWhereInput
   }
@@ -43899,7 +46639,7 @@ export namespace Prisma {
     nftsPerUser?: SortOrder
   }
 
-  export type UserNullableRelationFilter = {
+  export type UserNullableScalarRelationFilter = {
     is?: UserWhereInput | null
     isNot?: UserWhereInput | null
   }
@@ -44186,7 +46926,7 @@ export namespace Prisma {
     points?: SortOrder
   }
 
-  export type AchievementRelationFilter = {
+  export type AchievementScalarRelationFilter = {
     is?: AchievementWhereInput
     isNot?: AchievementWhereInput
   }
@@ -46232,12 +48972,13 @@ export namespace Prisma {
   export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
@@ -46296,12 +49037,13 @@ export namespace Prisma {
   export type NestedJsonFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
     path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
     string_contains?: string | StringFieldRefInput<$PrismaModel>
     string_starts_with?: string | StringFieldRefInput<$PrismaModel>
     string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
     gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
@@ -46421,6 +49163,8 @@ export namespace Prisma {
     providerAccountId: string
     refresh_token?: string | null
     access_token?: string | null
+    oauth_token?: string | null
+    oauth_token_secret?: string | null
     expires_at?: number | null
     token_type?: string | null
     scope?: string | null
@@ -46437,6 +49181,8 @@ export namespace Prisma {
     providerAccountId: string
     refresh_token?: string | null
     access_token?: string | null
+    oauth_token?: string | null
+    oauth_token_secret?: string | null
     expires_at?: number | null
     token_type?: string | null
     scope?: string | null
@@ -47213,6 +49959,8 @@ export namespace Prisma {
     providerAccountId?: StringFilter<"Account"> | string
     refresh_token?: StringNullableFilter<"Account"> | string | null
     access_token?: StringNullableFilter<"Account"> | string | null
+    oauth_token?: StringNullableFilter<"Account"> | string | null
+    oauth_token_secret?: StringNullableFilter<"Account"> | string | null
     expires_at?: IntNullableFilter<"Account"> | number | null
     token_type?: StringNullableFilter<"Account"> | string | null
     scope?: StringNullableFilter<"Account"> | string | null
@@ -47924,7 +50672,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutAccountsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -47935,6 +50683,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -47978,7 +50729,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutAccountsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -47989,6 +50740,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -48048,7 +50802,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutAccountsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48059,6 +50813,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -48102,7 +50859,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48113,6 +50870,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -48156,7 +50916,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutSessionsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -48167,6 +50927,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -48210,7 +50973,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutSessionsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -48221,6 +50984,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -48280,7 +51046,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48291,6 +51057,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -48334,7 +51103,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48345,6 +51114,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -48388,7 +51160,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutPointHistoryInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -48399,6 +51171,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -48442,7 +51217,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutPointHistoryInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -48453,6 +51228,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -48512,7 +51290,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutPointHistoryInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48523,6 +51301,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -48566,7 +51347,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutPointHistoryInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48577,6 +51358,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -48620,7 +51404,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutReferralsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -48631,6 +51415,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -48674,7 +51461,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutReferralsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -48685,6 +51472,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -48733,7 +51523,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutReferredByInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -48744,6 +51534,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -48787,7 +51580,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutReferredByInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -48798,6 +51591,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -48857,7 +51653,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutReferralsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48868,6 +51664,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -48911,7 +51710,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutReferralsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48922,6 +51721,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -48976,7 +51778,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutReferredByInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48987,6 +51789,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -49030,7 +51835,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutReferredByInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49041,6 +51846,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -49084,7 +51892,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutEngagementsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -49095,6 +51903,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -49138,7 +51949,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutEngagementsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -49149,6 +51960,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -49208,7 +52022,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutEngagementsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49219,6 +52033,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -49262,7 +52079,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutEngagementsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49273,6 +52090,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -49316,7 +52136,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutTasksInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -49327,6 +52147,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -49370,7 +52193,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutTasksInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -49381,6 +52204,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -49475,7 +52301,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutTasksInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49486,6 +52312,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -49529,7 +52358,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutTasksInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49540,6 +52369,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -49674,7 +52506,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutClaimsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -49685,6 +52517,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -49728,7 +52563,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutClaimsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -49739,6 +52574,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -49798,7 +52636,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutClaimsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49809,6 +52647,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -49852,7 +52693,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutClaimsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -49863,6 +52704,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -49906,7 +52750,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutDailyEarningsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -49917,6 +52761,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -49960,7 +52807,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutDailyEarningsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -49971,6 +52818,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -50030,7 +52880,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutDailyEarningsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -50041,6 +52891,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -50084,7 +52937,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutDailyEarningsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -50095,6 +52948,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -50138,7 +52994,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutAirdropSeasonsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -50149,6 +53005,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -50192,7 +53051,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutAirdropSeasonsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -50203,6 +53062,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -50298,7 +53160,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutAirdropSeasonsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -50309,6 +53171,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -50352,7 +53217,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutAirdropSeasonsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -50363,6 +53228,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -50422,7 +53290,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutAirdropClaimsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -50433,6 +53301,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -50476,7 +53347,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutAirdropClaimsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -50487,6 +53358,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -50587,7 +53461,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutAirdropClaimsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -50598,6 +53472,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -50641,7 +53518,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutAirdropClaimsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -50652,6 +53529,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -50742,7 +53622,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutNftCollectionsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -50753,6 +53633,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -50796,7 +53679,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutNftCollectionsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -50807,6 +53690,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -50908,7 +53794,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutNftCollectionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -50919,6 +53805,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -50962,7 +53851,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutNftCollectionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -50973,6 +53862,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -51073,7 +53965,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutNftDistributionsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -51084,6 +53976,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -51127,7 +54022,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutNftDistributionsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -51138,6 +54033,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -51244,7 +54142,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutNftDistributionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -51255,6 +54153,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -51298,7 +54199,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutNftDistributionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -51309,6 +54210,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -51352,7 +54256,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutNftClaimApprovalInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -51363,6 +54267,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -51406,7 +54313,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutNftClaimApprovalInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -51417,6 +54324,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -51465,7 +54375,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutApprovedClaimsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -51476,6 +54386,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -51519,7 +54432,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutApprovedClaimsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -51530,6 +54443,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -51589,7 +54505,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutNftClaimApprovalInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -51600,6 +54516,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -51643,7 +54562,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutNftClaimApprovalInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -51654,6 +54573,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -51708,7 +54630,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutApprovedClaimsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -51719,6 +54641,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -51762,7 +54687,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutApprovedClaimsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -51773,6 +54698,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -51816,7 +54744,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutNftHoldingsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -51827,6 +54755,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -51870,7 +54801,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutNftHoldingsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -51881,6 +54812,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -51940,7 +54874,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutNftHoldingsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -51951,6 +54885,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -51994,7 +54931,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutNftHoldingsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52005,6 +54942,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -52048,7 +54988,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutAdminSessionsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -52059,6 +54999,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -52102,7 +55045,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutAdminSessionsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -52113,6 +55056,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -52172,7 +55118,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutAdminSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52183,6 +55129,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -52226,7 +55175,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutAdminSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52237,6 +55186,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -52280,7 +55232,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutAuditLogsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -52291,6 +55243,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -52334,7 +55289,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutAuditLogsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -52345,6 +55300,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -52404,7 +55362,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutAuditLogsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52415,6 +55373,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -52458,7 +55419,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutAuditLogsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52469,6 +55430,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -52512,7 +55476,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutFraudAlertsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -52523,6 +55487,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -52566,7 +55533,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutFraudAlertsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -52577,6 +55544,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -52636,7 +55606,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutFraudAlertsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52647,6 +55617,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -52690,7 +55663,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutFraudAlertsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52701,6 +55674,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -52744,7 +55720,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutCampaignsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -52755,6 +55731,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -52798,7 +55777,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutCampaignsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -52809,6 +55788,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -52868,7 +55850,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutCampaignsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52879,6 +55861,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -52922,7 +55907,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutCampaignsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -52933,6 +55918,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -53016,7 +56004,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutAchievementsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -53027,6 +56015,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -53070,7 +56061,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutAchievementsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -53081,6 +56072,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -53167,7 +56161,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutAchievementsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53178,6 +56172,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -53221,7 +56218,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutAchievementsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53232,6 +56229,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -53308,7 +56308,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutNotificationsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -53319,6 +56319,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -53362,7 +56365,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutNotificationsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -53373,6 +56376,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -53432,7 +56438,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutNotificationsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53443,6 +56449,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -53486,7 +56495,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutNotificationsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53497,6 +56506,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -53540,7 +56552,7 @@ export namespace Prisma {
 
   export type UserCreateWithoutNftClaimsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -53551,6 +56563,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -53594,7 +56609,7 @@ export namespace Prisma {
 
   export type UserUncheckedCreateWithoutNftClaimsInput = {
     id?: string
-    walletAddress: string
+    walletAddress?: string | null
     twitterId?: string | null
     twitterUsername?: string | null
     twitterName?: string | null
@@ -53605,6 +56620,9 @@ export namespace Prisma {
     streak?: number
     lastCheckIn?: Date | string | null
     referralCode?: string
+    name?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
     email?: string | null
     totalPoints?: number
     totalTokens?: number
@@ -53664,7 +56682,7 @@ export namespace Prisma {
 
   export type UserUpdateWithoutNftClaimsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53675,6 +56693,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -53718,7 +56739,7 @@ export namespace Prisma {
 
   export type UserUncheckedUpdateWithoutNftClaimsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    walletAddress?: StringFieldUpdateOperationsInput | string
+    walletAddress?: NullableStringFieldUpdateOperationsInput | string | null
     twitterId?: NullableStringFieldUpdateOperationsInput | string | null
     twitterUsername?: NullableStringFieldUpdateOperationsInput | string | null
     twitterName?: NullableStringFieldUpdateOperationsInput | string | null
@@ -53729,6 +56750,9 @@ export namespace Prisma {
     streak?: IntFieldUpdateOperationsInput | number
     lastCheckIn?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     referralCode?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     totalPoints?: IntFieldUpdateOperationsInput | number
     totalTokens?: FloatFieldUpdateOperationsInput | number
@@ -53777,6 +56801,8 @@ export namespace Prisma {
     providerAccountId: string
     refresh_token?: string | null
     access_token?: string | null
+    oauth_token?: string | null
+    oauth_token_secret?: string | null
     expires_at?: number | null
     token_type?: string | null
     scope?: string | null
@@ -54031,6 +57057,8 @@ export namespace Prisma {
     providerAccountId?: StringFieldUpdateOperationsInput | string
     refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     access_token?: NullableStringFieldUpdateOperationsInput | string | null
+    oauth_token?: NullableStringFieldUpdateOperationsInput | string | null
+    oauth_token_secret?: NullableStringFieldUpdateOperationsInput | string | null
     expires_at?: NullableIntFieldUpdateOperationsInput | number | null
     token_type?: NullableStringFieldUpdateOperationsInput | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54047,6 +57075,8 @@ export namespace Prisma {
     providerAccountId?: StringFieldUpdateOperationsInput | string
     refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     access_token?: NullableStringFieldUpdateOperationsInput | string | null
+    oauth_token?: NullableStringFieldUpdateOperationsInput | string | null
+    oauth_token_secret?: NullableStringFieldUpdateOperationsInput | string | null
     expires_at?: NullableIntFieldUpdateOperationsInput | number | null
     token_type?: NullableStringFieldUpdateOperationsInput | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null
@@ -54063,6 +57093,8 @@ export namespace Prisma {
     providerAccountId?: StringFieldUpdateOperationsInput | string
     refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     access_token?: NullableStringFieldUpdateOperationsInput | string | null
+    oauth_token?: NullableStringFieldUpdateOperationsInput | string | null
+    oauth_token_secret?: NullableStringFieldUpdateOperationsInput | string | null
     expires_at?: NullableIntFieldUpdateOperationsInput | number | null
     token_type?: NullableStringFieldUpdateOperationsInput | string | null
     scope?: NullableStringFieldUpdateOperationsInput | string | null

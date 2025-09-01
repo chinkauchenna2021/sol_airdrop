@@ -21,11 +21,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 6.11.1
- * Query Engine version: 605197351a3c8bdd595af2d2a9bc3025bca48ea2
+ * Query Engine version: f40f79ec31188888a2e33acda0ecc8fd10a853a9
  */
 Prisma.prismaVersion = {
   client: "6.11.1",
-  engine: "605197351a3c8bdd595af2d2a9bc3025bca48ea2"
+  engine: "f40f79ec31188888a2e33acda0ecc8fd10a853a9"
 }
 
 Prisma.PrismaClientKnownRequestError = () => {
@@ -133,6 +133,9 @@ exports.Prisma.UserScalarFieldEnum = {
   streak: 'streak',
   lastCheckIn: 'lastCheckIn',
   referralCode: 'referralCode',
+  name: 'name',
+  emailVerified: 'emailVerified',
+  image: 'image',
   email: 'email',
   totalPoints: 'totalPoints',
   totalTokens: 'totalTokens',
@@ -160,6 +163,8 @@ exports.Prisma.AccountScalarFieldEnum = {
   providerAccountId: 'providerAccountId',
   refresh_token: 'refresh_token',
   access_token: 'access_token',
+  oauth_token: 'oauth_token',
+  oauth_token_secret: 'oauth_token_secret',
   expires_at: 'expires_at',
   token_type: 'token_type',
   scope: 'scope',

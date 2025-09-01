@@ -22,16 +22,28 @@ import {
 import { useEnhancedTwitterAuth } from '@/hooks/twitter-sdk-hook/useEnhancedTwitterAuth';
 import { useUserStore } from '@/store/useUserStore';
 import { toast } from 'sonner';
+import { useTwitterAuth } from '@/hooks/twitter-sdk-hook/userNextAuthTwitterAuth';
+import { error } from 'console';
 
 export default function TwitterIntegrationDefaultComponent() {
   const { user } = useUserStore();
-  const {
+  // const {
+  //   isTwitterConnected,
+  //   isConnecting,
+  //   error,
+  //   connectTwitter,
+  //   disconnectTwitter,
+  // } = useEnhancedTwitterAuth();
+
+    const {
+    session,
     isTwitterConnected,
     isConnecting,
     error,
+    engagement,
     connectTwitter,
     disconnectTwitter,
-  } = useEnhancedTwitterAuth();
+  } = useTwitterAuth();
   
   const [engagementData, setEngagementData] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(false);
