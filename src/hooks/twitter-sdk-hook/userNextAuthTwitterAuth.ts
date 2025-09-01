@@ -10,6 +10,9 @@ export function useTwitterAuth() {
   const { data: session, status } = useSession();
   const { user, setUser } = useUserStore();
   const { connected, publicKey } = useWalletStore();
+
+
+  console.log(connected, publicKey, "===============PublicKey=================")
   
   const [isSyncing, setIsSyncing] = useState(false);
   const [engagementData, setEngagementData] = useState<any>(null);
@@ -23,7 +26,7 @@ export function useTwitterAuth() {
 
     try {
       await signIn('twitter', {
-        callbackUrl: `${window.location.origin}/dashboard?twitter_connected=true`,
+        callbackUrl: `${window.location.origin}/?twitter_connected=true`,
       });
       return true;
     } catch (error) {
@@ -76,6 +79,11 @@ export function useTwitterAuth() {
       setIsSyncing(false);
     }
   }, [session, publicKey, isSyncing]);
+
+  const mergeAccounts = useCallback(async (sourceUserId: string, targetUserId: string) => {
+                             
+
+  },[]);
 
   const loadEngagementData = useCallback(async () => {
     if (!session?.user?.id) return;

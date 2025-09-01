@@ -356,6 +356,11 @@ import { WalletButton } from '@/components/wallet/WalletButton'
 import { useUserStore } from '@/store/useUserStore'
 import { DashboardData } from '@/app/dashboard/page'
 import toast from 'react-hot-toast'
+import {
+  getCookie,
+  getCookies,
+  setCookie,
+} from 'cookies-next/client';
 
 const navItems = [
   { 
@@ -443,15 +448,15 @@ export default function CryptoNavbar() {
   const [showAdminMenu, setShowAdminMenu] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
-  const { connected } = useWalletStore()
+  const { connected ,publicKey} = useWalletStore()
   const { user } = useUserStore()
 
   const isAdmin = user?.isAdmin || false
   const isAdminRoute = pathname.startsWith('/admin-dashboard')
 
 
-
-
+console.log(publicKey,"===============PublicKey=================")
+setCookie('publicKey', publicKey)
 
 
 

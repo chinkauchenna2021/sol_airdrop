@@ -231,7 +231,7 @@ export async function authenticateWallet(walletAddress: string) {
     try {
       const token = await createToken({
         userId: user.id,
-        walletAddress: user.walletAddress,
+        walletAddress: user.walletAddress as string,
         isAdmin: user.isAdmin,
       })
       console.log('✅ JWT token created, length:', token.length)

@@ -1,6 +1,5 @@
-// components/TwitterIntegration.tsx
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -19,23 +18,13 @@ import {
   UserPlus,
   Coins
 } from 'lucide-react';
-import { useEnhancedTwitterAuth } from '@/hooks/twitter-sdk-hook/useEnhancedTwitterAuth';
+import { useTwitterAuth } from '@/hooks/twitter-sdk-hook/userNextAuthTwitterAuth';
 import { useUserStore } from '@/store/useUserStore';
 import { toast } from 'sonner';
-import { useTwitterAuth } from '@/hooks/twitter-sdk-hook/userNextAuthTwitterAuth';
-import { error } from 'console';
 
 export default function TwitterIntegrationDefaultComponent() {
   const { user } = useUserStore();
-  // const {
-  //   isTwitterConnected,
-  //   isConnecting,
-  //   error,
-  //   connectTwitter,
-  //   disconnectTwitter,
-  // } = useEnhancedTwitterAuth();
-
-    const {
+  const {
     session,
     isTwitterConnected,
     isConnecting,
@@ -43,57 +32,31 @@ export default function TwitterIntegrationDefaultComponent() {
     engagement,
     connectTwitter,
     disconnectTwitter,
+    refreshTwitterData,
+    loadEngagementData
   } = useTwitterAuth();
   
-  const [engagementData, setEngagementData] = useState<any>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  console.log(session,"===============================Session============")
 
-  useEffect(() => {
-    if (user?.id && isTwitterConnected) {
-      loadEngagementData();
-    }
-  }, [user?.id, isTwitterConnected]);
+  const handleRefresh = async () => {
+    if (!session?.user.id) return;
 
-  const loadEngagementData = async () => {
-    if (!user?.id) return;
-    
-    setIsLoading(true);
+    setIsRefreshing(true);
     try {
-      const response = await fetch(`/api/twitter/engagement-stats/${user.id}`);
-      if (response.ok) {
-        const data = await response.json();
-        setEngagementData(data.stats);
-      }
-    } catch (error) {
-      console.error('Failed to load engagement data:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const refreshTwitterData = async () => {
-    if (!user?.id) return;
-    
-    try {
-      const response = await fetch(`/api/twitter/refresh-data/${user.id}`, {
-        method: 'POST'
-      });
-
-      if (response.ok) {
-        const { user: updatedUser } = await response.json();
-        // Update user in store if needed
-        toast.success('Twitter data refreshed successfully');
-        await loadEngagementData();
-      }
+      await refreshTwitterData();
+      toast.success('Twitter data refreshed successfully');
     } catch (error) {
       console.error('Failed to refresh Twitter data:', error);
       toast.error('Failed to refresh Twitter data');
+    } finally {
+      setIsRefreshing(false);
     }
   };
 
   if (error) {
     return (
-      <Alert variant="destructive">
+      <Alert variant="destructive" className="max-w-4xl mx-auto">
         <AlertTitle>Authentication Error</AlertTitle>
         <AlertDescription>{error}</AlertDescription>
       </Alert>
@@ -103,26 +66,31 @@ export default function TwitterIntegrationDefaultComponent() {
   return (
     <div className="space-y-6 max-w-4xl mx-auto p-6">
       {/* Connection Status */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+      <Card className="border border-gray-200 shadow-sm">
+        <CardHeader className="pb-4">
+          <CardTitle className="flex items-center gap-2 text-xl">
             <Twitter className="w-5 h-5 text-blue-500" />
             Twitter Connection Status
           </CardTitle>
+          <CardDescription>
+            Connect your Twitter account to earn tokens for engagement
+          </CardDescription>
         </CardHeader>
         <CardContent>
           {!isTwitterConnected ? (
-            <div className="text-center py-8">
-              <Twitter className="w-16 h-16 mx-auto text-gray-300 mb-4" />
+            <div className="text-center py-10">
+              <div className="mx-auto w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
+                <Twitter className="w-8 h-8 text-blue-400" />
+              </div>
               <h3 className="text-lg font-semibold mb-2">Connect Your Twitter Account</h3>
-              <p className="text-gray-600 mb-6">
+              <p className="text-gray-600 mb-6 max-w-md mx-auto">
                 Link your Twitter to start earning tokens for likes, retweets, comments, and more!
               </p>
               <Button 
                 onClick={connectTwitter} 
                 disabled={isConnecting}
                 size="lg"
-                className="bg-blue-500 hover:bg-blue-600"
+                className="bg-blue-500 hover:bg-blue-600 transition-colors"
               >
                 {isConnecting ? (
                   <>
@@ -138,79 +106,90 @@ export default function TwitterIntegrationDefaultComponent() {
               </Button>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-6">
               {/* User Info and actions */}
-              <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 bg-gray-50 rounded-lg">
                 <div className="flex items-center gap-4">
-                  {/* {user.twitterImage && (
+                  {session?.user.twitterImage && (
                     <img 
-                      src={user.twitterImage} 
-                      alt={user.twitterName || user.twitterUsername} 
-                      className="w-12 h-12 rounded-full"
+                      src={session.user.twitterImage} 
+                      alt={session.user.twitterName || session.user.twitterUsername} 
+                      className="w-12 h-12 rounded-full border border-gray-200"
                     />
-                  )} */}
+                  )}
                   <div>
-                    {/* <h3 className="font-semibold">{user.twitterName}</h3> */}
-                    <p className="text-gray-600">@{user?.twitterUsername}</p>
+                    <h3 className="font-semibold">{session?.user.twitterName}</h3>
+                    <p className="text-gray-600">@{session?.user.twitterUsername}</p>
                     <div className="flex items-center gap-2 mt-1">
                       <Users className="w-4 h-4 text-gray-500" />
                       <span className="text-sm text-gray-600">
-                        {user?.twitterFollowers?.toLocaleString() || 0} followers
+                        {session?.user.twitterFollowers?.toLocaleString() || 0} followers
                       </span>
                     </div>
                   </div>
                 </div>
                 
                 <div className="flex items-center gap-2">
-                  <Button onClick={refreshTwitterData} variant="outline" size="sm" disabled={isLoading}>
-                    <RefreshCw className={`w-4 h-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
+                  <Button 
+                    onClick={handleRefresh} 
+                    variant="outline" 
+                    size="sm" 
+                    disabled={isRefreshing}
+                    className="flex items-center gap-2"
+                  >
+                    <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
                     Refresh
                   </Button>
-                  <Button onClick={disconnectTwitter} variant="destructive" size="sm">
-                    <XCircle className="w-4 h-4 mr-2" />
+                  <Button 
+                    onClick={disconnectTwitter} 
+                    variant="destructive" 
+                    size="sm"
+                    className="flex items-center gap-2"
+                  >
+                    <XCircle className="w-4 h-4" />
                     Disconnect
                   </Button>
                 </div>
               </div>
-
+              
               {/* Engagement Stats */}
-              {engagementData && (
-                <Tabs value={''} onValueChange={()=>undefined}  >
-                  <TabsList>
+              {engagement && (
+                <Tabs  className="w-full" value={''} onValueChange={()=>undefined }>
+                  <TabsList className="grid w-full grid-cols-2">
                     <TabsTrigger value="overview">Overview</TabsTrigger>
                     <TabsTrigger value="breakdown">Breakdown</TabsTrigger>
                   </TabsList>
                   
-                  <TabsContent value="overview">
+                  <TabsContent value="overview" className="mt-4">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      <div className="text-center p-4 bg-blue-50 rounded-lg">
-                        <div className="text-2xl font-bold text-blue-600">{engagementData.totalEngagements}</div>
+                      <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-100">
+                        <div className="text-2xl font-bold text-blue-600">{engagement.totalEngagements}</div>
                         <div className="text-sm text-blue-700">Total Engagements</div>
                       </div>
-                      <div className="text-center p-4 bg-green-50 rounded-lg">
-                        <div className="text-2xl font-bold text-green-600">{engagementData.todayEngagements}</div>
+                      <div className="text-center p-4 bg-green-50 rounded-lg border border-green-100">
+                        <div className="text-2xl font-bold text-green-600">{engagement.todayEngagements}</div>
                         <div className="text-sm text-green-700">Today</div>
                       </div>
-                      <div className="text-center p-4 bg-purple-50 rounded-lg">
-                        <div className="text-2xl font-bold text-purple-600">{engagementData.weeklyEngagements}</div>
+                      <div className="text-center p-4 bg-purple-50 rounded-lg border border-purple-100">
+                        <div className="text-2xl font-bold text-purple-600">{engagement.weeklyEngagements}</div>
                         <div className="text-sm text-purple-700">This Week</div>
                       </div>
-                      <div className="text-center p-4 bg-orange-50 rounded-lg">
-                        <div className="text-2xl font-bold text-orange-600">{engagementData.monthlyEngagements}</div>
+                      <div className="text-center p-4 bg-orange-50 rounded-lg border border-orange-100">
+                        <div className="text-2xl font-bold text-orange-600">{engagement.monthlyEngagements}</div>
                         <div className="text-sm text-orange-700">This Month</div>
                       </div>
                     </div>
                   </TabsContent>
                   
-                  <TabsContent value="breakdown">
+                  <TabsContent value="breakdown" className="mt-4">
                     <div className="space-y-3">
-                      {engagementData.breakdown.map((item: any, index: number) => (
-                        <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                      {engagement.breakdown.map((item: any, index: number) => (
+                        <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100">
                           <div className="flex items-center gap-3">
-                            {item.type === 'LIKE' && <Heart className="w-4 h-4 text-red-500" />}
-                            {item.type === 'RETWEET' && <Repeat className="w-4 h-4 text-green-500" />}
-                            {item.type === 'COMMENT' && <MessageCircle className="w-4 h-4 text-blue-500" />}
-                            {item.type === 'FOLLOW' && <UserPlus className="w-4 h-4 text-indigo-500" />}
+                            {item.type === 'LIKE' && <Heart className="w-5 h-5 text-red-500" />}
+                            {item.type === 'RETWEET' && <Repeat className="w-5 h-5 text-green-500" />}
+                            {item.type === 'COMMENT' && <MessageCircle className="w-5 h-5 text-blue-500" />}
+                            {item.type === 'FOLLOW' && <UserPlus className="w-5 h-5 text-indigo-500" />}
                             <div>
                               <div className="font-medium capitalize">{item.type.toLowerCase()}s</div>
                               <div className="text-sm text-gray-600">{item.count} engagements</div>
@@ -227,6 +206,22 @@ export default function TwitterIntegrationDefaultComponent() {
                     </div>
                   </TabsContent>
                 </Tabs>
+              )}
+              
+              {!engagement && (
+                <div className="text-center py-8">
+                  <Activity className="w-12 h-12 mx-auto text-gray-300 mb-3" />
+                  <h3 className="text-lg font-medium text-gray-900 mb-1">No Engagement Data</h3>
+                  <p className="text-gray-500 mb-4">Your engagement statistics will appear here once available</p>
+                  <Button 
+                    onClick={loadEngagementData} 
+                    variant="outline"
+                    className="flex items-center gap-2 mx-auto"
+                  >
+                    <RefreshCw className="w-4 h-4" />
+                    Load Data
+                  </Button>
+                </div>
               )}
             </div>
           )}
