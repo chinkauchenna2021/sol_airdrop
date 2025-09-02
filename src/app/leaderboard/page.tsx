@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useRef, useCallback, useMemo } from 'react'
+import { useEffect, useState, useRef, useCallback, useMemo, Key } from 'react'
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion'
 import { 
   Trophy, TrendingUp, TrendingDown, Minus, Crown, Medal, Star, Flame, Zap, 
@@ -893,7 +893,7 @@ export default function ResponsiveLeaderboardPage() {
             
             {/* Mobile Podium - Stacked */}
             <div className="grid grid-cols-1 gap-6 sm:hidden">
-              {[0, 1, 2].map((index) => (
+              {[0, 1, 2].map((index: number) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 50 }}
