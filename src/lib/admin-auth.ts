@@ -121,7 +121,7 @@ export class AdminAuthService {
 
       return {
         adminId: session.adminId,
-        walletAddress: session.admin.walletAddress,
+        walletAddress: session.admin.walletAddress!,
         permissions: session.permissions as string[],
         sessionId: session.id,
         lastActivity: session.lastActivity,
