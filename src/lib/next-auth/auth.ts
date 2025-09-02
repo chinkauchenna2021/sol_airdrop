@@ -1,4 +1,4 @@
-import NextAuth, { AuthOptions, getServerSession } from "next-auth";
+import NextAuth, { AuthOptions, getServerSession, NextAuthOptions } from "next-auth";
 import TwitterProvider from "next-auth/providers/twitter";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/lib/prisma";
@@ -36,7 +36,7 @@ declare module "next-auth" {
   }
 }
 
-const authOptions: AuthOptions  = NextAuth({
+export const authOptions: AuthOptions  = {
   adapter: PrismaAdapter(prisma),
   providers: [
     TwitterProvider({
@@ -145,7 +145,7 @@ const authOptions: AuthOptions  = NextAuth({
       }
     },
   },
-});
+};
 
 
 
@@ -156,4 +156,4 @@ const authOptions: AuthOptions  = NextAuth({
  */
 const getSession = () => getServerSession(authOptions)
 
-export { authOptions, getSession }
+export { getSession }
