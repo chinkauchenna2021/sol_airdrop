@@ -155,6 +155,29 @@ export default function ResponsiveLeaderboardPage() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+
+function truncateWalletAddress(
+  address: string | null | undefined,
+  length: number = 4
+): string {
+  // Handle null/undefined case with beautiful placeholder
+  if (!address) {
+    return "No wallet connected";
+  }
+
+  // Validate address length
+  if (address.length < length * 2 + 2) {
+    return address; // Return full address if too short to truncate
+  }
+
+  // Extract start and end portions
+  const start = address.substring(0, length);
+  const end = address.substring(address.length - length);
+
+  // Return beautifully truncated address
+  return `${start}..${end}`;
+}
+
   const fetchLeaderboard = useCallback(async (silent = false) => {
     try {
       if (!silent) setLoading(true)
@@ -174,7 +197,7 @@ export default function ResponsiveLeaderboardPage() {
         ...(filters.pointsRange.max < 1000000 && { maxPoints: filters.pointsRange.max.toString() }),
         ...(filters.region !== 'all' && { region: filters.region })
       })
-      
+      console.log(params)
       const res = await fetch(`/api/leaderboard?${params}`)
       if (res.ok) {
         const leaderboardData = await res.json()
@@ -942,7 +965,7 @@ export default function ResponsiveLeaderboardPage() {
                       
                       <h3 className="font-bold text-white text-lg truncate mb-2">
                         {data.leaderboard[index].user.twitterUsername || 
-                         `${(data.leaderboard[index].user.walletAddress !== null)? data.leaderboard[index].user.walletAddress.slice(0, 4) : ''}...`}
+                         `${ truncateWalletAddress(data.leaderboard[index].user.walletAddress)}`}
                       </h3>
                       
                       <p className={`font-bold text-2xl mb-1 ${
@@ -1038,7 +1061,7 @@ export default function ResponsiveLeaderboardPage() {
                     )}
                     <h3 className="font-bold text-white text-sm lg:text-lg truncate">
                       {data.leaderboard[1].user.twitterUsername || 
-                       `${(data.leaderboard[1].user.walletAddress !== null)? data.leaderboard[1].user.walletAddress.slice(0, 4) : ''}...`}
+                       `${truncateWalletAddress(data.leaderboard[1].user.walletAddress)}`}
                     </h3>
                     <p className="text-gray-400 font-bold text-lg lg:text-2xl mt-2">
                       {data.leaderboard[1].user.totalPoints.toLocaleString()}
@@ -1126,7 +1149,7 @@ export default function ResponsiveLeaderboardPage() {
                     )}
                     <h3 className="font-bold text-white text-lg lg:text-xl truncate">
                       {data.leaderboard[0].user.twitterUsername  || 
-                       `${(data.leaderboard[0].user.walletAddress  !== null)? data.leaderboard[0].user.walletAddress.slice(0, 4) : ''}...`}
+                       `${truncateWalletAddress(data.leaderboard[0].user.walletAddress)}`}
                     </h3>
                     <p className="gradient-text font-black text-2xl lg:text-3xl mt-2">
                       {data.leaderboard[0].user.totalPoints.toLocaleString()}
@@ -1197,7 +1220,7 @@ export default function ResponsiveLeaderboardPage() {
                     )}
                     <h3 className="font-bold text-white text-sm lg:text-lg truncate">
                       {data.leaderboard[2].user.twitterUsername || 
-                       `${(data.leaderboard[2].user.walletAddress !== null) ? data.leaderboard[2].user.walletAddress.slice(0, 4) : ""}...`}
+                       `${truncateWalletAddress(data.leaderboard[2].user.walletAddress)}`}
                     </h3>
                     <p className="text-orange-400 font-bold text-lg lg:text-2xl mt-2">
                       {data.leaderboard[2].user.totalPoints.toLocaleString()}
