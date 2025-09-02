@@ -104,7 +104,7 @@ const authOptions: AuthOptions  = NextAuth({
   },
   events: {
     async createUser({ user }) {
-      console.log("Creating user:", user);
+      console.log("==========================Creating user: ====================================", user);
       // Create user record in our custom User table when a new user signs up
       try {
         await prisma.user.upsert({

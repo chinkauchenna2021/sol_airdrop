@@ -196,7 +196,7 @@ export function useTwitterAuth() {
     }
     try {
       await signIn('twitter', {
-        callbackUrl: `${window.location.origin}/?twitter_connected=true`,
+        callbackUrl: `${window.location.origin}`,
         redirect: false,
       });
       return true;
@@ -209,7 +209,7 @@ export function useTwitterAuth() {
 
   const disconnectTwitter = useCallback(async () => {
     try {
-      await signOut({ callbackUrl: `${window.location.origin}/dashboard` });
+      await signOut({ callbackUrl: `${window.location.origin}` });
       toast.success('Twitter disconnected successfully');
     } catch (error) {
       console.error('Twitter disconnect error:', error);
