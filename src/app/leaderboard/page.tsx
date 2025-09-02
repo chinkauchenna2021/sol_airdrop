@@ -942,7 +942,7 @@ export default function ResponsiveLeaderboardPage() {
                       
                       <h3 className="font-bold text-white text-lg truncate mb-2">
                         {data.leaderboard[index].user.twitterUsername || 
-                         `${data.leaderboard[index].user.walletAddress?.slice(0, 4)}...`}
+                         `${data.leaderboard[index].user.walletAddress ? data.leaderboard[index].user.walletAddress.slice(0, 4) : ''}...`}
                       </h3>
                       
                       <p className={`font-bold text-2xl mb-1 ${
@@ -1038,7 +1038,7 @@ export default function ResponsiveLeaderboardPage() {
                     )}
                     <h3 className="font-bold text-white text-sm lg:text-lg truncate">
                       {data.leaderboard[1].user.twitterUsername || 
-                       `${data.leaderboard[1].user.walletAddress?.slice(0, 4)}...`}
+                       `${data.leaderboard[1].user.walletAddress ? data.leaderboard[1].user.walletAddress.slice(0, 4) : ''}...`}
                     </h3>
                     <p className="text-gray-400 font-bold text-lg lg:text-2xl mt-2">
                       {data.leaderboard[1].user.totalPoints.toLocaleString()}
@@ -1126,7 +1126,7 @@ export default function ResponsiveLeaderboardPage() {
                     )}
                     <h3 className="font-bold text-white text-lg lg:text-xl truncate">
                       {data.leaderboard[0].user.twitterUsername || 
-                       `${data.leaderboard[0].user.walletAddress?.slice(0, 4)}...`}
+                       `${data.leaderboard[0].user.walletAddress ? data.leaderboard[0].user.walletAddress.slice(0, 4) : ''}...`}
                     </h3>
                     <p className="gradient-text font-black text-2xl lg:text-3xl mt-2">
                       {data.leaderboard[0].user.totalPoints.toLocaleString()}
@@ -1197,7 +1197,7 @@ export default function ResponsiveLeaderboardPage() {
                     )}
                     <h3 className="font-bold text-white text-sm lg:text-lg truncate">
                       {data.leaderboard[2].user.twitterUsername || 
-                       `${data.leaderboard[2].user.walletAddress?.slice(0, 4)}...`}
+                       `${data.leaderboard[2].user.walletAddress ? data.leaderboard[2].user.walletAddress.slice(0, 4) : ""}...`}
                     </h3>
                     <p className="text-orange-400 font-bold text-lg lg:text-2xl mt-2">
                       {data.leaderboard[2].user.totalPoints.toLocaleString()}
@@ -1403,9 +1403,9 @@ export default function ResponsiveLeaderboardPage() {
 
               <div className="text-center mb-6 sm:mb-8">
                 <div className="relative inline-block">
-                  {selectedUser.user.twitterImage ? (
+                  {selectedUser?.user?.twitterImage ? (
                     <Image
-                      src={selectedUser.user.twitterImage}
+                      src={selectedUser?.user?.twitterImage}
                       alt="Profile"
                       width={100}
                       height={100}
@@ -1420,23 +1420,23 @@ export default function ResponsiveLeaderboardPage() {
                 </div>
                 
                 <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
-                  {selectedUser.user.twitterUsername || 'Anonymous User'}
+                  {selectedUser?.user?.twitterUsername || 'Anonymous User'}
                 </h2>
                 
                 <p className="text-gray-400 font-mono text-xs sm:text-sm mb-4 break-all">
-                  {selectedUser.user.walletAddress}
+                  {selectedUser?.user?.walletAddress}
                 </p>
                 
                 <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
                   <div className="text-center">
                     <p className="text-2xl sm:text-3xl font-bold gradient-text">
-                      {selectedUser.user.totalPoints.toLocaleString()}
+                      {selectedUser?.user?.totalPoints?.toLocaleString()}
                     </p>
                     <p className="text-gray-400 text-sm">Points</p>
                   </div>
                   <div className="text-center">
                     <p className="text-2xl sm:text-3xl font-bold text-purple-400">
-                      {selectedUser.user.level || 1}
+                      {selectedUser?.user?.level || 1}
                     </p>
                     <p className="text-gray-400 text-sm">Level</p>
                   </div>
@@ -1445,21 +1445,21 @@ export default function ResponsiveLeaderboardPage() {
                 <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-4 sm:mb-6">
                   <div className="text-center">
                     <p className="text-lg sm:text-xl font-bold text-orange-400">
-                      {selectedUser.user.streak || 0}
+                      {selectedUser?.user?.streak || 0}
                     </p>
                     <p className="text-gray-400 text-xs sm:text-sm">Streak</p>
                   </div>
                   <div className="text-center">
                     <p className="text-lg sm:text-xl font-bold text-blue-400">
-                      {selectedUser.user.twitterFollowers?.toLocaleString() || 'N/A'}
+                      {selectedUser?.user?.twitterFollowers?.toLocaleString() || 'N/A'}
                     </p>
                     <p className="text-gray-400 text-xs sm:text-sm">Followers</p>
                   </div>
                   <div className="text-center">
                     <div className={`inline-block px-2 py-1 rounded-full text-xs font-semibold ${
-                      getActivityBadge(selectedUser.user.twitterActivity)
+                      getActivityBadge(selectedUser?.user?.twitterActivity)
                     }`}>
-                      {selectedUser.user.twitterActivity || 'LOW'}
+                      {selectedUser?.user?.twitterActivity || 'LOW'}
                     </div>
                     <p className="text-gray-400 text-xs sm:text-sm mt-1">Activity</p>
                   </div>
