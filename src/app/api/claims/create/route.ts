@@ -87,7 +87,7 @@ export async function POST(req: NextRequest) {
     })
 
     // Process claim asynchronously
-    processClaimAsync(claim.id, user.id, user.walletAddress, tokenAmount, points, paymentMethod)
+    processClaimAsync(claim.id, user.id, user?.walletAddress as string, tokenAmount, points, paymentMethod)
 
     return NextResponse.json({
       success: true,
