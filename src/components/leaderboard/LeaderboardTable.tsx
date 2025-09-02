@@ -92,7 +92,7 @@ export function EnhancedLeaderboardTable({
   }
 
   const formatWalletAddress = (address: string) => {
-    return `${address.slice(0, 6)}...${address.slice(-4)}`
+    return `${address?.slice(0, 6)}...${address?.slice(-4)}`
   }
 
   const getPositionChange = (entry: LeaderboardEntry) => {
@@ -190,7 +190,7 @@ export function EnhancedLeaderboardTable({
                     <div className="w-12 h-12 sm:w-15 sm:h-15 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
                       <span className="text-white font-bold text-sm sm:text-lg">
                         {entry.user.twitterUsername?.[0]?.toUpperCase() || 
-                         entry.user.walletAddress.slice(0, 2).toUpperCase()}
+                         entry.user.walletAddress?.slice(0, 2).toUpperCase()}
                       </span>
                     </div>
                   )}
@@ -316,7 +316,7 @@ export function EnhancedLeaderboardTable({
                   <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
                     <span className="text-white font-bold text-xs sm:text-sm">
                       {entry.user.twitterUsername?.[0]?.toUpperCase() || 
-                       entry.user.walletAddress.slice(0, 2).toUpperCase()}
+                       entry.user.walletAddress?.slice(0, 2).toUpperCase()}
                     </span>
                   </div>
                 )}
@@ -467,7 +467,7 @@ export function EnhancedLeaderboardTable({
                             <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-gradient-to-r from-purple-400 to-pink-500 flex items-center justify-center">
                               <span className="text-white font-bold text-xs sm:text-base">
                                 {entry.user.twitterUsername?.[0]?.toUpperCase() || 
-                                 entry.user.walletAddress.slice(0, 2).toUpperCase()}
+                                 entry.user.walletAddress?.slice(0, 2).toUpperCase()}
                               </span>
                             </div>
                           )}
