@@ -942,7 +942,7 @@ export default function ResponsiveLeaderboardPage() {
                       
                       <h3 className="font-bold text-white text-lg truncate mb-2">
                         {data.leaderboard[index].user.twitterUsername || 
-                         `${data.leaderboard[index].user.walletAddress ? data.leaderboard[index].user.walletAddress.slice(0, 4) : ''}...`}
+                         `${(data.leaderboard[index].user.walletAddress !== null)? data.leaderboard[index].user.walletAddress.slice(0, 4) : ''}...`}
                       </h3>
                       
                       <p className={`font-bold text-2xl mb-1 ${
@@ -1038,7 +1038,7 @@ export default function ResponsiveLeaderboardPage() {
                     )}
                     <h3 className="font-bold text-white text-sm lg:text-lg truncate">
                       {data.leaderboard[1].user.twitterUsername || 
-                       `${data.leaderboard[1].user.walletAddress ? data.leaderboard[1].user.walletAddress.slice(0, 4) : ''}...`}
+                       `${(data.leaderboard[1].user.walletAddress !== null)? data.leaderboard[1].user.walletAddress.slice(0, 4) : ''}...`}
                     </h3>
                     <p className="text-gray-400 font-bold text-lg lg:text-2xl mt-2">
                       {data.leaderboard[1].user.totalPoints.toLocaleString()}
@@ -1125,8 +1125,8 @@ export default function ResponsiveLeaderboardPage() {
                       <div className="w-16 h-16 lg:w-20 lg:h-20 mx-auto rounded-full bg-gradient-to-r from-yellow-400 to-orange-500 mb-4" />
                     )}
                     <h3 className="font-bold text-white text-lg lg:text-xl truncate">
-                      {data.leaderboard[0].user.twitterUsername || 
-                       `${data.leaderboard[0].user.walletAddress ? data.leaderboard[0].user.walletAddress.slice(0, 4) : ''}...`}
+                      {data.leaderboard[0].user.twitterUsername  || 
+                       `${(data.leaderboard[0].user.walletAddress  !== null)? data.leaderboard[0].user.walletAddress.slice(0, 4) : ''}...`}
                     </h3>
                     <p className="gradient-text font-black text-2xl lg:text-3xl mt-2">
                       {data.leaderboard[0].user.totalPoints.toLocaleString()}
@@ -1197,7 +1197,7 @@ export default function ResponsiveLeaderboardPage() {
                     )}
                     <h3 className="font-bold text-white text-sm lg:text-lg truncate">
                       {data.leaderboard[2].user.twitterUsername || 
-                       `${data.leaderboard[2].user.walletAddress ? data.leaderboard[2].user.walletAddress.slice(0, 4) : ""}...`}
+                       `${(data.leaderboard[2].user.walletAddress !== null) ? data.leaderboard[2].user.walletAddress.slice(0, 4) : ""}...`}
                     </h3>
                     <p className="text-orange-400 font-bold text-lg lg:text-2xl mt-2">
                       {data.leaderboard[2].user.totalPoints.toLocaleString()}
