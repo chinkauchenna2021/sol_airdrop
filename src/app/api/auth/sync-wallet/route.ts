@@ -74,6 +74,7 @@ import prisma from "@/lib/prisma";
 export async function POST(request: NextRequest) {
   try {
     const { userId, walletAddress } = await request.json();
+    console.log(userId, walletAddress, "============Wallet-Address========")
     
     if (!userId) {
       return NextResponse.json(
@@ -93,6 +94,8 @@ export async function POST(request: NextRequest) {
     const existingWalletUser = await prisma.user.findUnique({
       where: { walletAddress },
     });
+
+    console.log(existingWalletUser , "=========USER WALLET=======")
     
     if (existingWalletUser && existingWalletUser.id !== userId) {
       // Merge accounts
@@ -138,3 +141,54 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+
+
+
+
+// import { NextRequest, NextResponse } from "next/server";
+// import { getSession } from "@/lib/auth";
+// import prisma from "@/lib/prisma";
+
+// export async function POST(req: NextRequest) {
+//   try {
+//     const session = await getSession();
+    
+//     if (!session) {
+//       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+//     }
+    
+//     const { twitterId, twitterUsername, twitterName, twitterImage } = await req.json();
+    
+//     if (!twitterId) {
+//       return NextResponse.json({ error: "Twitter ID is required" }, { status: 400 });
+//     }
+    
+//     // Check if the Twitter ID is already linked to another user
+//     const existingUserByTwitterId = await prisma.user.findUnique({
+//       where: { twitterId },
+//     });
+    
+//     if (existingUserByTwitterId && existingUserByTwitterId.id !== session.user.id) {
+//       return NextResponse.json({ 
+//         error: "Twitter account is already linked to another user" 
+//       }, { status: 400 });
+//     }
+    
+//     // Update the current user with Twitter information
+//     const updatedUser = await prisma.user.update({
+//       where: { id: session.user.id },
+//       data: {
+//         twitterId,
+//         twitterUsername,
+//         twitterName,
+//         twitterImage,
+//       },
+//     });
+    
+//     return NextResponse.json({ user: updatedUser });
+//   } catch (error) {
+//     console.error("Error linking Twitter account:", error);
+//     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+//   }
+// }

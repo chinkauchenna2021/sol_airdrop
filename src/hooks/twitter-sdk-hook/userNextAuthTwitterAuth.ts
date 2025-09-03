@@ -223,34 +223,34 @@ export function useTwitterAuth() {
     setIsSyncing(true);
     setError(null);
     try {
-      const response = await fetch('/api/auth/sync-wallet', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          userId: session.user.id,
-          walletAddress: publicKey,
-        }),
-      });
+      // const response = await fetch('/api/auth/sync-wallet', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify({
+      //     userId: session.user.id,
+      //     walletAddress: publicKey,
+      //   }),
+      // });
       
-      if (!response.ok) {
-        throw new Error('Sync failed');
-      }
+      // if (!response.ok) {
+      //   throw new Error('Sync failed');
+      // }
       
-      const { user: syncedUser } = await response.json();
-      setUser(syncedUser);
+      // const { user: syncedUser } = await response.json();
+      // setUser(syncedUser);
       
-      // Update session to include wallet address
-      await update({
-        ...session,
-        user: {
-          ...session.user,
-          walletAddress: publicKey,
-        }
-      });
+      // // Update session to include wallet address
+      // await update({
+      //   ...session,
+      //   user: {
+      //     ...session.user,
+      //     walletAddress: publicKey,
+      //   }
+      // });
       
-      toast.success('Wallet connected successfully');
+      // toast.success('Wallet connected successfully');
     } catch (error) {
       console.error('Wallet sync error:', error);
       setError('Failed to sync wallet');

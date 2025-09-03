@@ -233,9 +233,8 @@
 
 
 
-// components/TwitterIntegration.tsx
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -258,6 +257,7 @@ import { useTwitterAuth } from '@/hooks/twitter-sdk-hook/userNextAuthTwitterAuth
 import { useUserStore } from '@/store/useUserStore';
 import { useWalletStore } from '@/store/useWalletStore';
 import { toast } from 'sonner';
+import { useSession } from 'next-auth/react';
 
 export default function TwitterIntegration() {
   const { user } = useUserStore();
@@ -275,6 +275,16 @@ export default function TwitterIntegration() {
   } = useTwitterAuth();
   
   const [isRefreshing, setIsRefreshing] = useState(false);
+
+
+  const {data:sessions} = useSession();
+  console.log(sessions,"===============================Session============")
+
+
+  useEffect(()=>{
+       if (!session?.user.id) return;
+       loadEngagementData();
+  },[])
 
   const handleRefresh = async () => {
     if (!session?.user.id) return;
