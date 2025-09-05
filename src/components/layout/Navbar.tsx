@@ -978,17 +978,6 @@ import {
 import { useSession } from 'next-auth/react'
 import { useTwitterAuth } from '@/hooks/twitter-sdk-hook/userNextAuthTwitterAuth'
 import TwitterConnectButton from '../twitter/ui/TwitterButton'
-  const {
-    isTwitterConnected,
-    isConnecting,
-    error,
-    engagement,
-    connectTwitter,
-    disconnectTwitter,
-    refreshTwitterData,
-    loadEngagementData,
-    // mergeAccounts
-  } = useTwitterAuth();
 const navItems = [
   { 
     name: 'Dashboard', 
