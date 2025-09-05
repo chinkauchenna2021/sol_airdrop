@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { signIn } from "next-auth/react";
 import { Twitter, ArrowRight, Sparkles, ShieldCheck } from "lucide-react";
@@ -7,7 +6,7 @@ import { motion } from "framer-motion";
 
 interface TwitterConnectButtonProps {
   twitterConnection: () => void;
-  isLoading:boolean;
+  isLoading: boolean;
   className?: string;
 }
 
@@ -17,10 +16,10 @@ export default function TwitterConnectButton({
   className = "" 
 }: TwitterConnectButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
-
+  
   return (
     <motion.div
-      className={`relative ${className}`}
+      className={`relative w-full max-w-md mx-auto ${className}`}
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
       onHoverStart={() => setIsHovered(true)}
@@ -44,7 +43,7 @@ export default function TwitterConnectButton({
       <motion.button
         onClick={twitterConnection}
         disabled={isLoading}
-        className="relative flex items-center justify-center w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-700 text-white font-bold text-lg shadow-lg overflow-hidden group"
+        className="relative flex items-center justify-center w-full py-4 px-4 sm:px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-purple-700 text-white font-bold text-lg shadow-lg overflow-hidden group"
         whileHover={{ boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.5)" }}
       >
         {/* Animated background pattern */}
@@ -53,28 +52,28 @@ export default function TwitterConnectButton({
         </div>
         
         {/* Left side - Twitter icon */}
-        <div className="flex items-center justify-center w-8 h-6 rounded-xl bg-white/20 backdrop-blur-sm mr-4">
-          <Twitter className="w-6 h-6 text-white" />
+        <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-white/20 backdrop-blur-sm mr-3 sm:mr-4">
+          <Twitter className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
         </div>
         
         {/* Middle - Text content */}
-        <div className="flex-1 text-left">
+        <div className="flex-1 text-left min-w-0">
           <div className="flex items-center">
-            <span className="font-bold">Connect Twitter</span>
-            <Sparkles className="w-4 h-4 ml-2 text-yellow-300" />
+            <span className="font-bold truncate">Connect Twitter</span>
+            <Sparkles className="w-4 h-4 ml-1 sm:ml-2 text-yellow-300 flex-shrink-0" />
           </div>
-          <p className="text-xs text-blue-100 font-normal mt-1">
+          <p className="text-xs sm:text-sm text-blue-100 font-normal mt-1 truncate">
             Verify your account for airdrop eligibility
           </p>
         </div>
         
         {/* Right side - Arrow */}
         <motion.div
-          className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/20 backdrop-blur-sm ml-2"
+          className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-white/20 backdrop-blur-sm ml-2 sm:ml-3 flex-shrink-0"
           animate={{ x: isHovered ? [0, 5, 0] : 0 }}
           transition={{ duration: 1.5, repeat: isHovered ? Infinity : 0 }}
         >
-          <ArrowRight className="w-5 h-5 text-white" />
+          <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
         </motion.div>
         
         {/* Loading overlay */}
@@ -84,9 +83,9 @@ export default function TwitterConnectButton({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <div className="flex flex-col items-center flex gap-6">
-              <div className="w-6 h-6 border-4 border-white border-t-transparent rounded-full animate-spin" />
-              <span className="mt-2 text-white text-sm font-medium">Connecting...</span>
+            <div className="flex flex-col items-center gap-2 sm:gap-3">
+              <div className="w-5 h-5 sm:w-6 sm:h-6 border-4 border-white border-t-transparent rounded-full animate-spin" />
+              <span className="text-xs sm:text-sm text-white font-medium">Connecting...</span>
             </div>
           </motion.div>
         )}
@@ -94,13 +93,13 @@ export default function TwitterConnectButton({
         {/* Security badge */}
         <div className="absolute -top-2 -right-2 flex items-center bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full">
           <ShieldCheck className="w-3 h-3 mr-1" />
-          Secure
+          <span className="hidden sm:inline">Secure</span>
         </div>
       </motion.button>
       
       {/* Decorative elements */}
       <motion.div
-        className="absolute -top-3 -left-3 w-6 h-6 rounded-full bg-yellow-400"
+        className="absolute -top-2 -left-2 w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-yellow-400"
         animate={{ 
           scale: [1, 1.2, 1],
           opacity: [0.7, 1, 0.7]
@@ -112,7 +111,7 @@ export default function TwitterConnectButton({
         }}
       />
       <motion.div
-        className="absolute -bottom-3 -right-3 w-4 h-4 rounded-full bg-pink-500"
+        className="absolute -bottom-2 -right-2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-pink-500"
         animate={{ 
           scale: [1, 1.3, 1],
           opacity: [0.7, 1, 0.7]

@@ -18,6 +18,7 @@ import { TwitterConnection } from '@/components/twitter/TwitterConnection'
 import { TwitterConnectionIndicator } from '@/components/ui/TwitterConnectionIndicator'
 import TwitterIntegrationComponent from '@/components/twitter/TwitterBoard'
 import TwitterIntegrationDefaultComponent from '@/components/twitter/TwitterIntegration'
+import { useSession } from 'next-auth/react'
 
 export default function EnhancedHomepage() {
   const { connected } = useWalletStore()
@@ -29,6 +30,7 @@ export default function EnhancedHomepage() {
   })
   const [activeFeature, setActiveFeature] = useState(0)
   const [mounted, setMounted] = useState(false)
+  const {data: session, status} = useSession();
 
   const { scrollYProgress } = useScroll()
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"])
@@ -144,7 +146,7 @@ export default function EnhancedHomepage() {
       
       {/* Twitter Connection Floating Indicator */}
       <TwitterConnectionIndicator 
-        connected={connected}
+        connected={status !== 'authenticated' ? false : true}
         hasTwitter={hasTwitterConnection}
       />
       
