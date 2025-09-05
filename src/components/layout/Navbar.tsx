@@ -978,6 +978,17 @@ import {
 import { useSession } from 'next-auth/react'
 import { useTwitterAuth } from '@/hooks/twitter-sdk-hook/userNextAuthTwitterAuth'
 import TwitterConnectButton from '../twitter/ui/TwitterButton'
+  const {
+    isTwitterConnected,
+    isConnecting,
+    error,
+    engagement,
+    connectTwitter,
+    disconnectTwitter,
+    refreshTwitterData,
+    loadEngagementData,
+    // mergeAccounts
+  } = useTwitterAuth();
 const navItems = [
   { 
     name: 'Dashboard', 
@@ -1071,10 +1082,6 @@ setCookie('publicKey', publicKey)
  
 const {connectTwitter , isConnecting, isTwitterConnected } = useTwitterAuth()
 const {data:session,status} = useSession();
-
-
-
-  
 
   useEffect(() => {
     fetchDashboardData()
@@ -1370,7 +1377,7 @@ const {data:session,status} = useSession();
             >
               <div className="px-4 py-6 space-y-4 max-h-screen overflow-y-auto">
                 {/* User Info */}
-                {isTwitterConnected && session?.user && (
+                { session?.user && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
