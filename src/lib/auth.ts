@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
 import prisma from './prisma'
 import { setCookie, deleteCookie, getCookie, getCookies, hasCookie } from 'cookies-next/server';
+import {getSession as newSession} from "@/lib/next-auth/auth"
 
 
 const secret = new TextEncoder().encode(
@@ -162,23 +163,25 @@ export async function clearAuthCookie(response?: NextResponse): Promise<NextResp
 
 export async function authenticateWallet(walletAddress: string) {
   console.log('🔐 authenticateWallet called for:', walletAddress)
-  
+
+  const session = await newSession()
+
   try {
     // Check database connection
     console.log('🔍 Checking database connection...')
     await prisma.$connect()
     console.log('✅ Database connected')
-
+    const userId = session?.user.id
     // Find existing user
     console.log('👤 Looking for existing user...')
     let user = await prisma.user.findUnique({
-      where: {walletAddress: walletAddress },
+      where: {id: userId},
     })
 
     const isNewUser = !user
 
-    if (user) {
-      console.log('✅ Existing user found:', user.id)
+    if (user?.walletAddress) {
+      console.log('✅ Existing user found:', user?.id)
     } else {
       console.log('📝 Creating new user...')
       
@@ -188,7 +191,8 @@ export async function authenticateWallet(walletAddress: string) {
       console.log('👑 Admin status:', isAdmin)
 
       try {
-        user = await prisma.user.create({
+        user = await prisma.user.update({
+          where: { id: userId },
           data: {
             walletAddress,
             isAdmin,
@@ -200,14 +204,14 @@ export async function authenticateWallet(walletAddress: string) {
 
         // Award welcome bonus
         console.log('🎁 Awarding welcome bonus...')
-        await prisma.pointHistory.create({
-          data: {
-            userId: user.id,
-            points: 100,
-            action: 'WELCOME_BONUS',
-            description: 'Welcome to the platform!',
-          },
-        })
+        // await prisma.pointHistory.create({
+        //   data: {
+        //     userId: user.id,
+        //     points: 100,
+        //     action: 'WELCOME_BONUS',
+        //     description: 'Welcome to the platform!',
+        //   },
+        // })
 
         await prisma.user.update({
           where: { id: user.id },
@@ -349,9 +353,7 @@ export async function debugAuth(req: NextRequest) {
   console.log('🔍 Debug Auth Info:')
   console.log('Cookies:', req.cookies.getAll())
   console.log('Auth Token:', req.cookies.get('auth-token')?.value ? 'Present' : 'Missing')
-  
   const session = await getSession(req)
   console.log('Session:', session ? 'Valid' : 'Invalid')
-  
-  return session
+  return session;
 }

@@ -280,7 +280,6 @@ export default function EnhancedHomepage() {
       </section>
 
       {/* Twitter Connection Section */}
-      {connected && (
         <section 
           className="relative py-16 px-4"
           data-twitter-connection // This attribute helps the indicator detect when section is in view
@@ -291,7 +290,6 @@ export default function EnhancedHomepage() {
              <TwitterIntegrationDefaultComponent />
           </div>
         </section>
-      )}
 
       {/* Features Section */}
       <section className="relative py-32 px-4">

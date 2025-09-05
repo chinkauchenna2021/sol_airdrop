@@ -259,11 +259,13 @@ import { useWalletStore } from '@/store/useWalletStore';
 import { toast } from 'sonner';
 import { useSession } from 'next-auth/react';
 
+import { getCookie } from 'cookies-next'
+
 export default function TwitterIntegration() {
+  const {data:session, status} = useSession();
   const { user } = useUserStore();
-  const { connected } = useWalletStore();
+  const { connected , publicKey } = useWalletStore();
   const {
-    session,
     isTwitterConnected,
     isConnecting,
     error,
@@ -271,18 +273,18 @@ export default function TwitterIntegration() {
     connectTwitter,
     disconnectTwitter,
     refreshTwitterData,
-    loadEngagementData
+    loadEngagementData,
+    // mergeAccounts
   } = useTwitterAuth();
   
   const [isRefreshing, setIsRefreshing] = useState(false);
-
-
-  const {data:sessions} = useSession();
-  console.log(sessions,"===============================Session============")
+  const walletAddress = getCookie("publicKey")
 
 
   useEffect(()=>{
-       if (!session?.user.id) return;
+    if (!session?.user.id || !walletAddress) return;
+      //  mergeAccounts(sessions?.user?.id as string, walletAddress as string);
+      console.log(isTwitterConnected, "===========connection state========")
        loadEngagementData();
   },[])
 
@@ -334,7 +336,7 @@ export default function TwitterIntegration() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {!isTwitterConnected ? (
+          {!session?.user?.id ? (
             <div className="text-center py-10">
               <div className="mx-auto w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
                 <Twitter className="w-8 h-8 text-blue-400" />
@@ -345,7 +347,7 @@ export default function TwitterIntegration() {
               </p>
               <Button 
                 onClick={connectTwitter} 
-                disabled={isConnecting || !connected}
+                disabled={isConnecting || status == 'loading' || status == 'authenticated'}
                 size="lg"
                 className="bg-blue-500 hover:bg-blue-600 transition-colors"
               >
@@ -357,12 +359,12 @@ export default function TwitterIntegration() {
                 ) : (
                   <>
                     <Twitter className="w-4 h-4 mr-2" />
-                    {connected ? 'Connect Twitter' : 'Connect Wallet First'}
+                    {session?.user ? 'Connect Wallet' : 'Connect Twitter First'}
                   </>
                 )}
               </Button>
-              {!connected && (
-                <p className="mt-3 text-sm text-gray-500">Please connect your wallet first</p>
+              {!session?.user && (
+                <p className="mt-3 text-sm text-gray-500">Please connect your Twitter</p>
               )}
             </div>
           ) : (
@@ -413,7 +415,7 @@ export default function TwitterIntegration() {
               </div>
               
               {/* Engagement Stats */}
-              {engagement ? (
+              {session?.user ? (
                 <Tabs  className="w-full" value={''} onValueChange={()=>undefined}>
                   <TabsList className="grid w-full grid-cols-2">
                     <TabsTrigger value="overview">Overview</TabsTrigger>

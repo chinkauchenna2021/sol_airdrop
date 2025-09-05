@@ -149,7 +149,8 @@ export async function GET(
 ) {
   try {
     const requestUrl = new URL(request.url);
-    const userId = requestUrl.searchParams.get("userId") as string;
+    const userId = requestUrl.searchParams.get("userId")?.toString() as string;
+    console.log("============userId===========",userId);
     const stats = await TwitterEngagementTracker.getUserEngagementStats(userId);
     return NextResponse.json({ stats });
   } catch (error) {

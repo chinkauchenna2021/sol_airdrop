@@ -166,7 +166,7 @@ import NextAuth, { AuthOptions, getServerSession, NextAuthOptions, DefaultUser ,
 import TwitterProvider from "next-auth/providers/twitter";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/lib/prisma";
-
+import { getCookies } from "cookies-next/client";
 
 // Extend the NextAuth types
 declare module "next-auth" {
@@ -215,6 +215,7 @@ declare module "next-auth/jwt" {
   }
 }
 
+
 // Add this helper function at the top of the file
 function extractTwitterProfile(profile: any) {
   // Twitter OAuth 2.0 profile structure might be nested
@@ -225,13 +226,13 @@ function extractTwitterProfile(profile: any) {
     username: twitterProfile?.username,
     name: twitterProfile?.name,
     profile_image_url: twitterProfile?.profile_image_url,
-    // Add any other fields you need
   };
 }
 
 export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
+// Update the TwitterProvider configuration
 // Update the TwitterProvider configuration
 TwitterProvider({
   clientId: process.env.TWITTER_CLIENT_ID!,
@@ -241,13 +242,12 @@ TwitterProvider({
     url: "https://twitter.com/i/oauth2/authorize",
     params: {
       scope: "tweet.read users.read like.read follows.read offline.access",
-      // Add these parameters to ensure we get the user's ID
       response_type: "code",
       code_challenge: "challenge",
       code_challenge_method: "plain",
     },
   },
-  // Add a profile callback to normalize the profile data
+  // Update the profile callback to match our schema
   profile(profile) {
     // Log the raw profile in development
     if (process.env.NODE_ENV === 'development') {
@@ -259,13 +259,21 @@ TwitterProvider({
     
     return {
       id: userData.id,
-      username: userData.username,
       name: userData.name,
+      email: null, // Twitter doesn't provide email by default
       image: userData.profile_image_url,
+      // Add Twitter-specific fields that match our schema
+      twitterUsername: userData.username,
+      twitterName: userData.name,
+      twitterImage: userData.profile_image_url,
     };
   },
 }),
   ],
+
+
+
+
   secret: process.env.NEXTAUTH_SECRET!,
   session: {
     strategy: "jwt",
@@ -328,7 +336,7 @@ async signIn({ user, account, profile, credentials }) {
     
     // Log in development for debugging
     if (process.env.NODE_ENV === 'development') {
-      console.log('Twitter Profile:', twitterProfile);
+      console.log('Twitter SignIn Profile:', twitterProfile);
     }
     
     // Validate required fields
@@ -337,6 +345,9 @@ async signIn({ user, account, profile, credentials }) {
       return false;
     }
     
+    //get users walletkey
+
+
     // Check if we have a wallet address from state parameter
     const walletAddress = (account as any)?.state?.walletAddress;
     
@@ -393,7 +404,6 @@ async signIn({ user, account, profile, credentials }) {
   }
 },
 
-// Update the jwt callback
 async jwt({ token, account, profile, user }) {
   // Initial sign in
   if (account && profile) {
@@ -522,58 +532,59 @@ async jwt({ token, account, profile, user }) {
   return token;
 }
   },
-  events: {
-    async createUser({ user }) {
-      console.log("Creating user:", user);
+events: {
+  async createUser({ user }) {
+    console.log("Creating user:", user);
+    
+    try {
+      // Check if user already exists (might have been created in the signIn callback)
+      const existingUser = await prisma.user.findUnique({
+        where: { id: user.id },
+      });
       
-      try {
-        // Check if user already exists (might have been created in the signIn callback)
-        const existingUser = await prisma.user.findUnique({
-          where: { id: user.id },
-        });
-        
-        if (existingUser) {
-          console.log("User already exists, skipping creation");
-          return;
-        }
-        
-        // Create user record in our custom User table
-        await prisma.user.create({
-          data: {
-            id: user.id,
-            email: user.email,
-            twitterId: user.twitterId as string,
-            twitterUsername: user.twitterUsername as string,
-            twitterName: user.name,
-            twitterImage: user.image,
-            walletAddress: `twitter_${user.twitterId}_${Date.now()}`,
-            totalPoints: 0,
-            totalTokens: 100, // Welcome bonus
-            totalEarnedTokens: 100,
-            level: 1,
-            rank: 0,
-            streak: 0,
-            referralCode: crypto.randomUUID().slice(0, 8),
-            isAdmin: false,
-            isActive: true,
-          },
-        });
-        
-        // Record welcome bonus
-        await prisma.pointHistory.create({
-          data: {
-            userId: user.id,
-            tokens: 100,
-            type: "TOKENS",
-            action: "WELCOME_BONUS",
-            description: "100 tokens welcome bonus for connecting Twitter",
-          },
-        });
-      } catch (error) {
-        console.error("Error creating user record:", error);
+      if (existingUser) {
+        console.log("User already exists, skipping creation");
+        return;
       }
-    },
+      
+      // Create user record in our custom User table
+      await prisma.user.create({
+        data: {
+          id: user.id,
+          email: user.email,
+          twitterId: user.id, // Twitter ID is the same as user ID
+          twitterUsername: user.twitterUsername, // Use the field from profile callback
+          twitterName: user.name,
+          twitterImage: user.image,
+          walletAddress: `twitter_${user.id}_${Date.now()}`,
+          totalPoints: 0,
+          totalTokens: 100, // Welcome bonus
+          totalEarnedTokens: 100,
+          level: 1,
+          rank: 0,
+          streak: 0,
+          referralCode: crypto.randomUUID().slice(0, 8),
+          isAdmin: false,
+          isActive: true,
+        },
+      });
+      
+      // Record welcome bonus
+      await prisma.pointHistory.create({
+        data: {
+          userId: user.id,
+          tokens: 100,
+          type: "TOKENS",
+          action: "WELCOME_BONUS",
+          description: "100 tokens welcome bonus for connecting Twitter",
+        },
+      });
+    } catch (error) {
+      console.error("Error creating user record:", error);
+      throw error; // Re-throw to see the error in NextAuth logs
+    }
   },
+},
 };
 
 

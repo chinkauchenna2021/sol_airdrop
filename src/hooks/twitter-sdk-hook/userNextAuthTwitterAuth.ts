@@ -150,8 +150,6 @@
 
 
 
-
-// hooks/useTwitterAuth.ts
 'use client'
 import { useState, useEffect, useCallback } from 'react';
 import { useSession, signIn, signOut, getSession } from 'next-auth/react';
@@ -259,50 +257,51 @@ export function useTwitterAuth() {
     }
   }, [session, publicKey, isSyncing, update, setUser]);
 
-  const mergeAccounts = useCallback(async (sourceUserId: string, targetUserId: string) => {
-    try {
-      const response = await fetch('/api/auth/merge-accounts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          sourceUserId,
-          targetUserId,
-        }),
-      });
+  // const mergeAccounts = useCallback(async (userId: string, walletAddress: string) => {
+  //   try {
+  //     const response = await fetch('/api/auth/sync-wallet', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         userId,
+  //         walletAddress,
+  //       }),
+  //     });
       
-      if (!response.ok) {
-        throw new Error('Merge failed');
-      }
+  //     if (!response.ok) {
+  //       throw new Error('Merge failed');
+  //     }
       
-      const { user: mergedUser } = await response.json();
-      setUser(mergedUser);
+  //     const { user: mergedUser } = await response.json();
+  //     setUser(mergedUser);
       
-      // Update session with merged user data
-      await update({
-        ...session,
-        user: {
-          ...session?.user,
-          ...mergedUser,
-        }
-      });
+  //     // Update session with merged user data
+  //     await update({
+  //       ...session,
+  //       user: {
+  //         ...session?.user,
+  //         ...mergedUser,
+  //       }
+  //     });
       
-      toast.success('Accounts merged successfully');
-      return true;
-    } catch (error) {
-      console.error('Account merge error:', error);
-      toast.error('Failed to merge accounts');
-      return false;
-    }
-  }, [session, update, setUser]);
+  //     toast.success('Accounts merged successfully');
+  //     return true;
+  //   } catch (error) {
+  //     console.error('Account merge error:', error);
+  //     toast.error('Failed to merge accounts');
+  //     return false;
+  //   }
+  // }, [session, update, setUser]);
 
   const loadEngagementData = useCallback(async () => {
     if (!session?.user?.id) return;
     try {
-      const response = await fetch('/api/twitter/engagement-stats');
+      const response = await fetch(`/api/twitter/twitter-engagement?userId=${session?.user?.id}`);
       if (response.ok) {
         const data = await response.json();
+        console.log(data,"==========Engagement Data==========")
         setEngagementData(data.stats);
       }
     } catch (error) {
@@ -352,6 +351,6 @@ export function useTwitterAuth() {
     disconnectTwitter,
     refreshTwitterData,
     loadEngagementData,
-    mergeAccounts,
+    // mergeAccounts,
   };
 }
