@@ -188,10 +188,10 @@ export function useTwitterAuth() {
   }, []);
 
   const connectTwitter = useCallback(async () => {
-    if (!connected || !publicKey) {
-      toast.error('Please connect your wallet first');
-      return false;
-    }
+    // if (!connected || !publicKey) {
+    //   toast.error('Please connect your wallet first');
+    //   return false;
+    // }
     try {
       await signIn('twitter', {
         callbackUrl: `${window.location.origin}`,

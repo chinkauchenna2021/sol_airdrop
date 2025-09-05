@@ -283,6 +283,15 @@ export default function TwitterIntegration() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const walletAddress = getCookie("publicKey")
 
+    useEffect(()=>{
+    if (session?.user) return;
+      //  mergeAccounts(sessions?.user?.id as string, walletAddress as string);
+      console.log(isTwitterConnected, "===========connection state========")
+       loadEngagementData();
+       fetchDashboardData()
+  },[])
+
+
     async function  fetchDashboardData() {
       try {
         // Fetch dashboard data and daily earning status in parallel
@@ -325,13 +334,6 @@ export default function TwitterIntegration() {
   
 
 
-  useEffect(()=>{
-    if (session?.user) return;
-      //  mergeAccounts(sessions?.user?.id as string, walletAddress as string);
-      console.log(isTwitterConnected, "===========connection state========")
-       loadEngagementData();
-       fetchDashboardData()
-  },[])
 
   const handleRefresh = async () => {
     if (!session?.user.id) return;
