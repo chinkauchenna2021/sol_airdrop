@@ -326,7 +326,7 @@ export default function TwitterIntegration() {
 
 
   useEffect(()=>{
-    if (!session?.user.id || !walletAddress) return;
+    if (session?.user) return;
       //  mergeAccounts(sessions?.user?.id as string, walletAddress as string);
       console.log(isTwitterConnected, "===========connection state========")
        loadEngagementData();
@@ -381,7 +381,7 @@ export default function TwitterIntegration() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {!session?.user?.id ? (
+          {!session?.user ? (
             <div className="text-center py-10">
               <div className="mx-auto w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
                 <Twitter className="w-8 h-8 text-blue-400" />
@@ -391,7 +391,7 @@ export default function TwitterIntegration() {
                 Link your Twitter to start earning tokens for likes, retweets, comments, and more!
               </p>
               <Button 
-                onClick={connectTwitter} 
+                onClick={() => connectTwitter()} 
                 disabled={isConnecting || status == 'loading' || status == 'authenticated'}
                 size="lg"
                 className="bg-blue-500 hover:bg-blue-600 transition-colors"
@@ -425,8 +425,8 @@ export default function TwitterIntegration() {
                     />
                   )}
                   <div>
-                    <h3 className="font-semibold">{session?.user.twitterName}</h3>
-                    <p className="text-gray-600">@{session?.user.twitterUsername}</p>
+                    <h3 className="font-semibold">{session?.user?.twitterName}</h3>
+                    <p className="text-gray-600">@{session?.user?.twitterUsername}</p>
                     <div className="flex items-center gap-2 mt-1">
                       <Users className="w-4 h-4 text-gray-500" />
                       <span className="text-sm text-gray-600">
@@ -490,7 +490,7 @@ export default function TwitterIntegration() {
                   
                   <TabsContent value="breakdown" className="mt-4">
                     <div className="space-y-3">
-                      {engagement.breakdown.map((item: any, index: number) => (
+                      {engagement?.breakdown?.map((item: any, index: number) => (
                         <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-100">
                           <div className="flex items-center gap-3">
                             {item.type === 'LIKE' && <Heart className="w-5 h-5 text-red-500" />}
