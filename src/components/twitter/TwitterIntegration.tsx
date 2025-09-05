@@ -260,11 +260,14 @@ import { toast } from 'sonner';
 import { useSession } from 'next-auth/react';
 
 import { getCookie } from 'cookies-next'
+import { DashboardData } from '@/app/dashboard/page';
 
 export default function TwitterIntegration() {
   const {data:session, status} = useSession();
   const { user } = useUserStore();
   const { connected , publicKey } = useWalletStore();
+  const [data, setData] = useState<DashboardData | null>(null)
+  const [loading, setLoading] = useState(true)
   const {
     isTwitterConnected,
     isConnecting,
@@ -280,12 +283,54 @@ export default function TwitterIntegration() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const walletAddress = getCookie("publicKey")
 
+    async function  fetchDashboardData() {
+      try {
+        // Fetch dashboard data and daily earning status in parallel
+        const [dashboardRes, earningRes] = await Promise.all([
+          fetch('/api/user/dashboard'),
+          fetch('/api/earning/status').catch(() => null) // Don't fail if this endpoint doesn't exist yet
+        ])
+        
+        if (dashboardRes.ok) {
+          const dashboardData = await dashboardRes.json()
+          console.log('Dashboard data loaded:', dashboardData)
+          
+          // Add daily earning status if available
+          if (earningRes?.ok) {
+            const earningData = await earningRes.json()
+            dashboardData.stats.dailyEarningStatus = earningData
+          } else {
+            // Fallback daily earning status
+            dashboardData.stats.dailyEarningStatus = {
+              canClaim: true,
+              currentStreak: dashboardData.user.streak || 0,
+              totalEarned: dashboardData.user.totalEarnedTokens || 0,
+              nextClaimIn: 0
+            }
+          }
+          
+          setData(dashboardData)
+        } else {
+          console.log('Failed to fetch dashboard data:', dashboardRes.status)
+          // Don't use fallback anymore - show error instead
+          // throw new Error('Failed to load dashboard')
+        }
+      } catch (error) {
+        console.error('Failed to load dashboard:', error)
+        toast.error('Failed to load dashboard data')
+      } finally {
+        setLoading(false)
+      }
+    }
+  
+
 
   useEffect(()=>{
     if (!session?.user.id || !walletAddress) return;
       //  mergeAccounts(sessions?.user?.id as string, walletAddress as string);
       console.log(isTwitterConnected, "===========connection state========")
        loadEngagementData();
+       fetchDashboardData()
   },[])
 
   const handleRefresh = async () => {
@@ -425,19 +470,19 @@ export default function TwitterIntegration() {
                   <TabsContent value="overview" className="mt-4">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                       <div className="text-center p-4 bg-blue-50 rounded-lg border border-blue-100">
-                        <div className="text-2xl font-bold text-blue-600">{engagement.totalEngagements}</div>
+                        <div className="text-2xl font-bold text-blue-600">{engagement?.totalEngagements}</div>
                         <div className="text-sm text-blue-700">Total Engagements</div>
                       </div>
                       <div className="text-center p-4 bg-green-50 rounded-lg border border-green-100">
-                        <div className="text-2xl font-bold text-green-600">{engagement.todayEngagements}</div>
+                        <div className="text-2xl font-bold text-green-600">{engagement?.todayEngagements}</div>
                         <div className="text-sm text-green-700">Today</div>
                       </div>
                       <div className="text-center p-4 bg-purple-50 rounded-lg border border-purple-100">
-                        <div className="text-2xl font-bold text-purple-600">{engagement.weeklyEngagements}</div>
+                        <div className="text-2xl font-bold text-purple-600">{engagement?.weeklyEngagements}</div>
                         <div className="text-sm text-purple-700">This Week</div>
                       </div>
                       <div className="text-center p-4 bg-orange-50 rounded-lg border border-orange-100">
-                        <div className="text-2xl font-bold text-orange-600">{engagement.monthlyEngagements}</div>
+                        <div className="text-2xl font-bold text-orange-600">{engagement?.monthlyEngagements}</div>
                         <div className="text-sm text-orange-700">This Month</div>
                       </div>
                     </div>
