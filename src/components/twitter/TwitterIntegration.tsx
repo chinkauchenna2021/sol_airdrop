@@ -590,11 +590,14 @@ export default function TwitterIntegration() {
     // Only fetch data when session changes, not on every render
   useEffect(() => {
     fetchDashboardData()
+    const interval = setInterval(fetchDashboardData, 30000)
+    return () => clearInterval(interval)
+  }, [])
+
+
+    useEffect(() => {
     startMonitoring()
-    const interval = setInterval(()=>{
-      fetchDashboardData()
-      startMonitoring()
-    }, 30000)
+    const interval = setInterval(startMonitoring, 30000)
     return () => clearInterval(interval)
   }, [])
 
@@ -608,12 +611,10 @@ useEffect(() => {
       startMonitoring()
     }, 30000)
     return () => clearInterval(interval)
-  }, [session])
+  }, [session?.user])
   
   // Fetch dashboard data only when session is available
   async function fetchDashboardData() {
-    if (!session?.user.id) return;
-    
     setIsDataLoading(true);
     try {
       const [dashboardRes, earningRes] = await Promise.all([
@@ -737,7 +738,7 @@ useEffect(() => {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {!data ? (
+          {(!twitterEngagement)? (
             <div className="text-center py-10">
               <div className="mx-auto w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
                 <Twitter className="w-8 h-8 text-blue-400" />
