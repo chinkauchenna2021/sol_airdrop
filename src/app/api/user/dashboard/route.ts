@@ -330,12 +330,14 @@
 // }
 
 
+// app/api/user/dashboard/route.ts
 import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
 import { startOfDay, subDays } from 'date-fns'
 import { ACTIVITY_TYPES } from '@/lib/constants'
 import { getSession } from '@/lib/next-auth/auth'
 import { EngagementType } from '@/app/generated/prisma'
+import { TwitterEngagementService } from '@/lib/next-auth/twitter-engagement-services';
 
 export async function GET(req: NextRequest) {
   const session = await getSession()
@@ -372,29 +374,55 @@ export async function GET(req: NextRequest) {
       )
     }
 
-    // Process Twitter engagement data
-    const twitterEngagements = user.engagements || []
-    const todayEngagements = twitterEngagements.filter(e => e.createdAt >= today)
-    const weeklyEngagements = twitterEngagements.filter(e => e.createdAt >= weekAgo)
-    const monthlyEngagements = twitterEngagements.filter(e => e.createdAt >= monthAgo)
-    
-    // Group by engagement type
-    const engagementBreakdown = twitterEngagements.reduce((acc, engagement) => {
-      const type = engagement.engagementType
-      if (!acc[type]) {
-        acc[type] = {
-          type,
-          count: 0,
-          tokens: 0
+    // Get Twitter engagement statistics using the service
+    let twitterStats;
+    try {
+      twitterStats = await TwitterEngagementService.getUserEngagementStats(userId);
+    } catch (error) {
+      console.error('Error fetching Twitter stats:', error);
+      // Fallback to basic Twitter engagement data if service fails
+      const twitterEngagements = user.engagements || [];
+      const todayEngagements = twitterEngagements.filter(e => e.createdAt >= today);
+      const weeklyEngagements = twitterEngagements.filter(e => e.createdAt >= weekAgo);
+      const monthlyEngagements = twitterEngagements.filter(e => e.createdAt >= monthAgo);
+      
+      // Group by engagement type
+      const engagementBreakdown = twitterEngagements.reduce((acc, engagement) => {
+        const type = engagement.engagementType;
+        if (!acc[type]) {
+          acc[type] = {
+            type,
+            count: 0,
+            tokens: 0
+          }
         }
-      }
-      acc[type].count += 1
-      acc[type].tokens += engagement.tokens || 0
-      return acc
-    }, {} as Record<EngagementType, { type: EngagementType; count: number; tokens: number }>)
-    
-    // Calculate total tokens from Twitter engagements
-    const totalTwitterTokens = twitterEngagements.reduce((sum, e) => sum + (e.tokens || 0), 0)
+        acc[type].count += 1;
+        acc[type].tokens += engagement.tokens || 0;
+        return acc;
+      }, {} as Record<EngagementType, { type: EngagementType; count: number; tokens: number }>);
+      
+      // Calculate total tokens from Twitter engagements
+      const totalTwitterTokens = twitterEngagements.reduce((sum, e) => sum + (e.tokens || 0), 0);
+      
+      twitterStats = {
+        totalEngagements: twitterEngagements.length,
+        todayEngagements: todayEngagements.length,
+        weeklyEngagements: weeklyEngagements.length,
+        monthlyEngagements: monthlyEngagements.length,
+        totalTokens: (totalTwitterTokens + user.totalTokens) || 0, // Include user's totalTokens
+        activityLevel: user.twitterActivity || 'LOW',
+        totalEarnedTokens: user.totalEarnedTokens || 0,
+        twitterFollowers: user.twitterFollowers || 0,
+        breakdown: Object.values(engagementBreakdown),
+        recentActivity: twitterEngagements.slice(0, 10).map(activity => ({
+          id: activity.id,
+          type: activity.engagementType,
+          tokens: activity.tokens,
+          createdAt: activity.createdAt.toISOString(),
+          tweetId: activity.tweetId || ''
+        }))
+      };
+    }
     
     // Get activity statistics (separated by points and tokens)
     const [todayPoints, todayTokens, weeklyPoints, weeklyTokens, recentActivity, totalEarned] = await Promise.all([
@@ -508,7 +536,7 @@ export async function GET(req: NextRequest) {
         twitterImage: user.twitterImage,
         twitterFollowers: user.twitterFollowers || 0,
         level: Math.floor(user.totalPoints / 1000) + 1, // Level based on points
-        twitterActivity: twitterActivityLevel,
+        twitterActivity: twitterStats.activityLevel, // Use from TwitterStats
         streak: streak,
         referralCode: user.referralCode,
         isActive: user.isActive,
@@ -530,21 +558,14 @@ export async function GET(req: NextRequest) {
           claimableTokens: user.totalTokens // What can be claimed
         },
         // General stats
-        totalEngagements: user._count.engagements,
+        totalEngagements: twitterStats.totalEngagements, // Use from TwitterStats
         referralCount: user._count.referrals,
         tokenAllocation: tokenAllocation,
         // Daily claim status
         dailyEarningStatus: dailyClaimStatus
       },
       // NEW: Twitter engagement data
-      twitterEngagement: {
-        totalEngagements: twitterEngagements.length,
-        todayEngagements: todayEngagements.length,
-        weeklyEngagements: weeklyEngagements.length,
-        monthlyEngagements: monthlyEngagements.length,
-        totalTokens: totalTwitterTokens,
-        breakdown: Object.values(engagementBreakdown)
-      },
+      twitterEngagement: twitterStats,
       recentActivity: recentActivity.map((activity) => ({
         id: activity.id,
         action: activity.description || activity.action,

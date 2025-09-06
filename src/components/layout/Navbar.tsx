@@ -1295,7 +1295,7 @@ const {data:session,status} = useSession();
               </div>
             </div>
             {/* RIGHT SECTION - User Controls */}
-            {(status === 'authenticated' && session?.user)? (
+            {(status === 'authenticated')? (
               <div className="flex items-center space-x-3">
                 {/* Admin Badge */}
                 {isAdmin && (
