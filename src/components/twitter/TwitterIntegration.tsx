@@ -540,7 +540,7 @@
 
 
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -588,10 +588,12 @@ export default function TwitterIntegration() {
   const walletAddress = getCookie("publicKey")
   
   useEffect(() => {
+    if (!session?.user.id) return;
     fetchDashboardData();
-  }, []);
+  }, [session]);
+
   
-  async function fetchDashboardData() {
+  const fetchDashboardData = useCallback(async () => {
     try {
       const [dashboardRes, earningRes] = await Promise.all([
         fetch('/api/user/dashboard'),
@@ -623,8 +625,11 @@ export default function TwitterIntegration() {
     } finally {
       setLoading(false)
     }
-  }
+  },[setData])
+
+  fetchDashboardData()
   
+  // Function to refresh Twitter data
   const handleRefresh = async () => {
     if (!session?.user.id) return;
     setIsRefreshing(true);
