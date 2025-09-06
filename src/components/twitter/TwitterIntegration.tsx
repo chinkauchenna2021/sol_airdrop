@@ -584,12 +584,13 @@ export default function TwitterIntegration() {
   } = useTwitterAuth();
   
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const [isMonitoring, setIsMonitoring] = useState(false);
   const walletAddress = getCookie("publicKey")
-
+  
   useEffect(() => {
     fetchDashboardData();
   }, []);
-
+  
   async function fetchDashboardData() {
     try {
       const [dashboardRes, earningRes] = await Promise.all([
@@ -623,7 +624,7 @@ export default function TwitterIntegration() {
       setLoading(false)
     }
   }
-
+  
   const handleRefresh = async () => {
     if (!session?.user.id) return;
     setIsRefreshing(true);
@@ -638,7 +639,35 @@ export default function TwitterIntegration() {
       setIsRefreshing(false);
     }
   };
-
+  
+  // Function to start monitoring
+  const startMonitoring = async () => {
+    if (!session?.user.id) return;
+    
+    setIsMonitoring(true);
+    try {
+      const response = await fetch('/api/twitter/monitor', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        toast.success(`Monitoring completed! Tracked ${data.engagementsTracked} activities and awarded ${data.tokensAwarded.toFixed(2)} tokens`);
+        fetchDashboardData(); // Refresh dashboard data
+      } else {
+        throw new Error('Failed to monitor Twitter activities');
+      }
+    } catch (error) {
+      console.error('Error monitoring Twitter:', error);
+      toast.error('Failed to monitor Twitter activities');
+    } finally {
+      setIsMonitoring(false);
+    }
+  };
+  
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
@@ -649,7 +678,7 @@ export default function TwitterIntegration() {
       </div>
     );
   }
-
+  
   if (error) {
     return (
       <Alert variant="destructive" className="max-w-4xl mx-auto">
@@ -658,10 +687,10 @@ export default function TwitterIntegration() {
       </Alert>
     );
   }
-
+  
   // Twitter engagement data from the API
   const twitterEngagement = data?.twitterEngagement as any;
-
+  
   return (
     <div className="space-y-6 max-w-4xl mx-auto p-6">
       {/* Connection Status */}
@@ -730,6 +759,25 @@ export default function TwitterIntegration() {
                 
                 <div className="flex items-center gap-2">
                   <Button 
+                    onClick={startMonitoring} 
+                    variant="outline" 
+                    size="sm" 
+                    disabled={isMonitoring}
+                    className="flex items-center gap-2"
+                  >
+                    {isMonitoring ? (
+                      <>
+                        <RefreshCw className="w-4 h-4 animate-spin" />
+                        Monitoring...
+                      </>
+                    ) : (
+                      <>
+                        <Activity className="w-4 h-4" />
+                        Monitor Activity
+                      </>
+                    )}
+                  </Button>
+                  <Button 
                     onClick={handleRefresh} 
                     variant="outline" 
                     size="sm" 
@@ -793,6 +841,15 @@ export default function TwitterIntegration() {
                         {twitterEngagement.totalTokens.toFixed(2)}
                       </div>
                       <div className="text-sm text-yellow-700">Total Tokens Earned</div>
+                    </div>
+                    
+                    {/* Add new card for followers */}
+                    <div className="mt-4 text-center p-4 bg-indigo-50 rounded-lg border border-indigo-100">
+                      <div className="text-2xl font-bold text-indigo-600 flex items-center justify-center gap-2">
+                        <Users className="w-5 h-5" />
+                        {twitterEngagement.twitterFollowers?.toLocaleString() || 0}
+                      </div>
+                      <div className="text-sm text-indigo-700">Twitter Followers</div>
                     </div>
                   </TabsContent>
                   
