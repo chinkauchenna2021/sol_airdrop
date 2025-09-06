@@ -1,10 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getSession } from '@/lib/auth'
+// import { getSession } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 import { startOfDay, differenceInHours } from 'date-fns'
+import { getSession } from '@/lib/next-auth/auth';
 
 export async function GET(req: NextRequest) {
-  const session = await getSession(req)
+  // const session = await getSession(req)
+  const session = await getSession();
   
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
