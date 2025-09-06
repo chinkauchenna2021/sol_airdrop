@@ -625,6 +625,11 @@ export default function TwitterIntegration() {
       setLoading(false);
     }
   }, [session?.user.id]);
+
+
+
+
+  console.log(data,session,"==========DATA & SESSION=================")
   
   // Only fetch data when session changes, not on every render
   useEffect(() => {
