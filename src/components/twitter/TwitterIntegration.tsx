@@ -590,12 +590,28 @@ export default function TwitterIntegration() {
     // Only fetch data when session changes, not on every render
   useEffect(() => {
     fetchDashboardData()
-    const interval = setInterval(fetchDashboardData, 30000)
+    startMonitoring()
+    const interval = setInterval(()=>{
+      fetchDashboardData()
+      startMonitoring()
+    }, 30000)
     return () => clearInterval(interval)
   }, [])
+
+
+useEffect(() => {
+   if(!session?.user.id) return;
+    fetchDashboardData()
+    startMonitoring()
+    const interval = setInterval(()=>{
+      fetchDashboardData()
+      startMonitoring()
+    }, 30000)
+    return () => clearInterval(interval)
+  }, [session])
   
   // Fetch dashboard data only when session is available
-  const fetchDashboardData = useCallback(async () => {
+  async function fetchDashboardData() {
     if (!session?.user.id) return;
     
     setIsDataLoading(true);
@@ -631,7 +647,7 @@ export default function TwitterIntegration() {
       setIsDataLoading(false);
       setLoading(false);
     }
-  }, [session?.user.id]);
+  };
 
 
 
@@ -657,8 +673,7 @@ export default function TwitterIntegration() {
   };
   
   // Function to start monitoring
-  const startMonitoring = async () => {
-    if (!session?.user.id) return;
+  async function startMonitoring (){
     
     setIsMonitoring(true);
     try {
@@ -775,7 +790,7 @@ export default function TwitterIntegration() {
                 </div>
                 
                 <div className="flex items-center gap-2">
-                  <Button 
+                  {/* <Button 
                     onClick={startMonitoring} 
                     variant="outline" 
                     size="sm" 
@@ -793,7 +808,7 @@ export default function TwitterIntegration() {
                         Monitor Activity
                       </>
                     )}
-                  </Button>
+                  </Button> */}
                   <Button 
                     onClick={handleRefresh} 
                     variant="outline" 
