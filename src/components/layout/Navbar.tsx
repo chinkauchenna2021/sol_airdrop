@@ -1066,7 +1066,6 @@ export default function CryptoNavbar() {
   const isAdmin = user?.isAdmin || false
   const isAdminRoute = pathname.startsWith('/admin-dashboard')
 
-console.log(publicKey,"===============PublicKey=================")
 setCookie('publicKey', publicKey)
  
 const {connectTwitter , isConnecting, isTwitterConnected } = useTwitterAuth()
@@ -1185,6 +1184,7 @@ const {data:session,status} = useSession();
                 </Link>
               </motion.div>
               {/* Navigation Items */}
+              {data && (
               <div className="hidden lg:flex items-center space-x-2 bg-white/5 backdrop-blur-sm rounded-2xl px-4 py-3 border border-white/10">
                 {/* Regular Navigation Items */}
                 {allNavItems.map((item) => {
@@ -1293,9 +1293,11 @@ const {data:session,status} = useSession();
                   </div>
                 )}
               </div>
+              )
+              }
             </div>
             {/* RIGHT SECTION - User Controls */}
-            {(status === 'authenticated')? (
+            {data? (
               <div className="flex items-center space-x-3">
                 {/* Admin Badge */}
                 {isAdmin && (
@@ -1309,7 +1311,7 @@ const {data:session,status} = useSession();
                 </motion.div>
               )}
               {/* User Points */}
-              {connected && user && (
+              { data && (
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -1366,7 +1368,7 @@ const {data:session,status} = useSession();
             >
               <div className="px-4 py-6 space-y-4 max-h-screen overflow-y-auto">
                 {/* User Info */}
-                { session?.user && (
+                { data && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}

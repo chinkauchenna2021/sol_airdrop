@@ -586,6 +586,13 @@ export default function TwitterIntegration() {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [isMonitoring, setIsMonitoring] = useState(false);
   const walletAddress = getCookie("publicKey")
+
+    // Only fetch data when session changes, not on every render
+  useEffect(() => {
+    fetchDashboardData()
+    const interval = setInterval(fetchDashboardData, 30000)
+    return () => clearInterval(interval)
+  }, [])
   
   // Fetch dashboard data only when session is available
   const fetchDashboardData = useCallback(async () => {
@@ -631,14 +638,7 @@ export default function TwitterIntegration() {
 
   console.log(data,session,"==========DATA & SESSION=================")
   
-  // Only fetch data when session changes, not on every render
-  useEffect(() => {
-    if (session?.user.id) {
-      fetchDashboardData();
-    } else {
-      setLoading(false);
-    }
-  }, [session?.user.id, fetchDashboardData]);
+
   
   // Function to refresh Twitter data
   const handleRefresh = async () => {
@@ -722,7 +722,7 @@ export default function TwitterIntegration() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          {!session?.user ? (
+          {!data ? (
             <div className="text-center py-10">
               <div className="mx-auto w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
                 <Twitter className="w-8 h-8 text-blue-400" />
@@ -755,20 +755,20 @@ export default function TwitterIntegration() {
               {/* User Info and actions */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 bg-gray-50 rounded-lg">
                 <div className="flex items-center gap-4">
-                  {session.user.twitterImage && (
+                  {data.user.twitterImage && (
                     <img 
-                      src={session.user.twitterImage} 
-                      alt={session.user.twitterName || session.user.twitterUsername} 
+                      src={data.user.twitterImage} 
+                      alt={data.user.twitterName || data.user.twitterUsername} 
                       className="w-12 h-12 rounded-full border border-gray-200"
                     />
                   )}
                   <div>
-                    <h3 className="font-semibold">{session.user.twitterName}</h3>
-                    <p className="text-gray-600">@{session.user.twitterUsername}</p>
+                    <h3 className="font-semibold">{data.user.twitterName}</h3>
+                    <p className="text-gray-600">@{data.user.twitterUsername}</p>
                     <div className="flex items-center gap-2 mt-1">
                       <Users className="w-4 h-4 text-gray-500" />
                       <span className="text-sm text-gray-600">
-                        {session.user.twitterFollowers?.toLocaleString() || 0} followers
+                        {data.user.twitterFollowers?.toLocaleString() || 0} followers
                       </span>
                     </div>
                   </div>
