@@ -587,9 +587,8 @@ export default function TwitterIntegration() {
   const walletAddress = getCookie("publicKey")
 
   useEffect(() => {
-    if (!session?.user) return;
     fetchDashboardData();
-  }, [session]);
+  }, []);
 
   async function fetchDashboardData() {
     try {

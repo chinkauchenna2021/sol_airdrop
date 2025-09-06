@@ -192,9 +192,9 @@ export default function EnhancedHomepage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
           >
-            {!connected ? (
+            {/* {!connected ? ( */}
               <>
-                <WalletButton />
+                {/* <WalletButton />
                 <Link
                   href="/leaderboard"
                   className="group flex items-center space-x-2 px-8 py-4 bg-white/10 backdrop-blur-xl text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300 border border-white/20"
@@ -205,7 +205,7 @@ export default function EnhancedHomepage() {
                 </Link>
               </>
             ) : (
-              <>
+              <> */}
                 <Link
                   href="/dashboard"
                   className="group flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-xl hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300"
@@ -223,7 +223,7 @@ export default function EnhancedHomepage() {
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </>
-            )}
+            {/* // )} */}
           </motion.div>
 
           {/* Stats Section */}
