@@ -203,7 +203,7 @@ export function useTwitterAuth() {
       toast.error('Failed to connect Twitter');
       return false;
     }
-  }, [connected, publicKey]);
+  }, []);
 
   const disconnectTwitter = useCallback(async () => {
     try {
@@ -328,11 +328,11 @@ export function useTwitterAuth() {
   }, [session, loadEngagementData, setUser]);
 
   // Auto-sync wallet when both are connected
-  useEffect(() => {
-    if (session?.user?.id && connected && publicKey && !session.user.walletAddress) {
-      syncUserWithWallet();
-    }
-  }, [session, connected, publicKey, syncUserWithWallet]);
+  // useEffect(() => {
+  //   if (session?.user?.id && connected && publicKey && !session.user.walletAddress) {
+  //     syncUserWithWallet();
+  //   }
+  // }, [session, syncUserWithWallet]);
 
   // Load engagement data when authenticated
   useEffect(() => {

@@ -538,7 +538,6 @@
 //   );
 // }
 
-
 'use client'
 import React, { useCallback, useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -573,6 +572,7 @@ export default function TwitterIntegration() {
   const { connected , publicKey } = useWalletStore();
   const [data, setData] = useState<DashboardData | null | any>(null)
   const [loading, setLoading] = useState(true)
+  const [isDataLoading, setIsDataLoading] = useState(false)
   
   const {
     isTwitterConnected,
@@ -587,13 +587,11 @@ export default function TwitterIntegration() {
   const [isMonitoring, setIsMonitoring] = useState(false);
   const walletAddress = getCookie("publicKey")
   
-  useEffect(() => {
-    if (!session?.user.id) return;
-    fetchDashboardData();
-  }, [session]);
-
-  
+  // Fetch dashboard data only when session is available
   const fetchDashboardData = useCallback(async () => {
+    if (!session?.user.id) return;
+    
+    setIsDataLoading(true);
     try {
       const [dashboardRes, earningRes] = await Promise.all([
         fetch('/api/user/dashboard'),
@@ -623,11 +621,19 @@ export default function TwitterIntegration() {
       console.error('Failed to load dashboard:', error)
       toast.error('Failed to load dashboard data')
     } finally {
-      setLoading(false)
+      setIsDataLoading(false);
+      setLoading(false);
     }
-  },[setData])
-
-  fetchDashboardData()
+  }, [session?.user.id]);
+  
+  // Only fetch data when session changes, not on every render
+  useEffect(() => {
+    if (session?.user.id) {
+      fetchDashboardData();
+    } else {
+      setLoading(false);
+    }
+  }, [session?.user.id, fetchDashboardData]);
   
   // Function to refresh Twitter data
   const handleRefresh = async () => {
@@ -659,8 +665,8 @@ export default function TwitterIntegration() {
       });
       
       if (response.ok) {
-        const data = await response.json();
-        toast.success(`Monitoring completed! Tracked ${data.engagementsTracked} activities and awarded ${data.tokensAwarded.toFixed(2)} tokens`);
+        const result = await response.json();
+        toast.success(`Monitoring completed! Tracked ${result.engagementsTracked} activities and awarded ${result.tokensAwarded.toFixed(2)} tokens`);
         fetchDashboardData(); // Refresh dashboard data
       } else {
         throw new Error('Failed to monitor Twitter activities');
@@ -673,7 +679,8 @@ export default function TwitterIntegration() {
     }
   };
   
-  if (loading) {
+  // Show loading only during initial load
+  if (loading && status === 'loading') {
     return (
       <div className="flex justify-center items-center h-64">
         <div className="text-center">
@@ -786,10 +793,10 @@ export default function TwitterIntegration() {
                     onClick={handleRefresh} 
                     variant="outline" 
                     size="sm" 
-                    disabled={isRefreshing}
+                    disabled={isRefreshing || isDataLoading}
                     className="flex items-center gap-2"
                   >
-                    <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                    <RefreshCw className={`w-4 h-4 ${isRefreshing || isDataLoading ? 'animate-spin' : ''}`} />
                     Refresh
                   </Button>
                   <Button 
@@ -805,7 +812,12 @@ export default function TwitterIntegration() {
               </div>
               
               {/* Engagement Stats */}
-              {twitterEngagement ? (
+              {isDataLoading ? (
+                <div className="flex justify-center items-center py-8">
+                  <RefreshCw className="w-8 h-8 mx-auto animate-spin text-blue-500" />
+                  <p className="mt-2 text-gray-600">Loading engagement data...</p>
+                </div>
+              ) : twitterEngagement ? (
                 <Tabs className="w-full" value={''} onValueChange={()=>undefined}>
                   <TabsList className="grid w-full grid-cols-2">
                     <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -901,8 +913,9 @@ export default function TwitterIntegration() {
                     onClick={fetchDashboardData} 
                     variant="outline"
                     className="flex items-center gap-2 mx-auto"
+                    disabled={isDataLoading}
                   >
-                    <RefreshCw className="w-4 h-4" />
+                    <RefreshCw className={`w-4 h-4 ${isDataLoading ? 'animate-spin' : ''}`} />
                     Load Data
                   </Button>
                 </div>

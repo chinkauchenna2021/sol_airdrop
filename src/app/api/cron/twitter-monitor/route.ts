@@ -3,6 +3,9 @@ import { monitorAllTwitterEngagements } from "@/lib/next-auth/cron-jobs/twitter-
 
 // This endpoint should be protected and only called by your cron service
 export async function GET(request: NextRequest) {
+    if (request.headers.get('Authorization') !== `Bearer ${process.env.CRON_SECRET}`) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
   try {
     // Verify cron secret if needed
     const authHeader = request.headers.get('authorization');

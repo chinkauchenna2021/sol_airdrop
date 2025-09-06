@@ -9,7 +9,11 @@
       "source": "/api/(.*)",
       "destination": "/api/$1"
     }
-  ],
+  ],  
+  "crons": [{
+    "path": "/api/cron/twitter-monitor",
+    "schedule": "0 */6 * * *"
+  }],
   "headers": [
     {
       "source": "/api/(.*)",
@@ -30,3 +34,4 @@
     }
   ]
 }
+
