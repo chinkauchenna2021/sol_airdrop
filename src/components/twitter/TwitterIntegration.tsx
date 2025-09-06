@@ -289,7 +289,7 @@ export default function TwitterIntegration() {
       console.log(isTwitterConnected, "===========connection state========")
        loadEngagementData();
        fetchDashboardData()
-  },[])
+  },[session])
 
 
     async function  fetchDashboardData() {

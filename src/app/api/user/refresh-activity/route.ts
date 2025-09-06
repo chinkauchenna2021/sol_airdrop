@@ -1,11 +1,13 @@
 // app/api/user/refresh-activity/route.ts - CREATE this new file
 import { NextRequest, NextResponse } from 'next/server'
-import { getSession } from '@/lib/auth'
+// import { getSession } from '@/lib/auth'
 import { updateUserActivityLevel } from '@/lib/twitter-enhanced'
 import prisma from '@/lib/prisma'
+import { getSession } from '@/lib/next-auth/auth';
 
 export async function POST(req: NextRequest) {
-  const session = await getSession(req)
+  // const session = await getSession(req)
+    const session = await getSession();
   
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
