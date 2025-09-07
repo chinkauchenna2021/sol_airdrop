@@ -714,7 +714,7 @@ useEffect(() => {
   };
   
   // Function to start monitoring
- const startMonitoring = async (isAuto = false) => {
+const startMonitoring = async (isAuto = false) => {
     if (!session?.user.id) return;
     
     if (isAuto) {
@@ -734,9 +734,15 @@ useEffect(() => {
       const data = await response.json();
       
       if (response.ok) {
-        // Only show toast for manual monitoring, not auto
-        if (!isAuto && data.engagementsTracked > 0) {
-          toast.success(`Monitoring completed! Tracked ${data.engagementsTracked} activities and awarded ${data.tokensAwarded.toFixed(2)} tokens`);
+        // Show toast for manual monitoring or if engagement tokens were awarded
+        if (!isAuto) {
+          let message = `Monitoring completed! Tracked ${data.engagementsTracked} activities and awarded ${data.tokensAwarded.toFixed(2)} tokens`;
+          
+          if (data.engagementTokensAwarded > 0) {
+            message += `\nEngagement level reward: ${data.engagementTokensAwarded} tokens (${data.engagementLevel.level} level)`;
+          }
+          
+          toast.success(message);
         }
         
         // Refresh dashboard data after successful monitoring

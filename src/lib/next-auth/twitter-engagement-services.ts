@@ -1,4 +1,3 @@
-// lib/twitter-engagement-service.ts (updated with better error handling)
 import { TwitterApi } from 'twitter-api-v2';
 import { EngagementType } from '@/app/generated/prisma';
 import prisma from '@/lib/prisma';
@@ -28,7 +27,8 @@ export class TwitterEngagementService {
           twitterUsername: true,
           twitterFollowers: true,
           totalTokens: true,
-          totalEarnedTokens: true
+          totalEarnedTokens: true,
+          twitterActivity: true
         }
       });
 
@@ -95,13 +95,20 @@ export class TwitterEngagementService {
       // Process engagements and award tokens
       const engagements = await this.processEngagements(userId, likesData, tweetsData, followingData);
 
+      // Calculate user's engagement level and award tokens based on activity
+      const engagementLevel = await this.calculateEngagementLevel(userId, engagements);
+      const allocationResult = await this.awardEngagementTokens(userId, engagementLevel, user.twitterActivity);
+
       // Update user stats and activity level
-      await this.updateUserStats(userId, engagements);
+      await this.updateUserStats(userId, engagements, engagementLevel);
 
       const result = {
         success: true,
         engagementsTracked: engagements.length,
-        tokensAwarded: engagements.reduce((sum, e) => sum + e.tokensAwarded, 0)
+        tokensAwarded: engagements.reduce((sum, e) => sum + e.tokensAwarded, 0),
+        engagementLevel,
+        engagementTokensAwarded: allocationResult.tokensAwarded,
+        totalTokensAwarded: engagements.reduce((sum, e) => sum + e.tokensAwarded, 0) + allocationResult.tokensAwarded
       };
 
       console.log(`Twitter engagement tracking completed for user ${userId}:`, result);
@@ -110,6 +117,141 @@ export class TwitterEngagementService {
       console.error(`Error in Twitter engagement tracking for user ${userId}:`, error);
       throw error;
     }
+  }
+
+  /**
+   * Calculate user's engagement level based on recent activities
+   */
+  private static async calculateEngagementLevel(userId: string, engagements: EngagementEvent[]) {
+    const now = new Date();
+    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const weekStart = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+    
+    // Calculate engagement metrics
+    const todayEngagements = engagements.filter(e => e.timestamp >= todayStart).length;
+    const weeklyEngagements = engagements.filter(e => e.timestamp >= weekStart).length;
+    
+    // Get user's Twitter followers
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: { twitterFollowers: true }
+    });
+    
+    const followers = user?.twitterFollowers || 0;
+    
+    // Calculate engagement score (0-100)
+    let engagementScore = 0;
+    
+    // Score based on daily engagement (max 40 points)
+    if (todayEngagements >= 20) engagementScore += 40;
+    else if (todayEngagements >= 10) engagementScore += 30;
+    else if (todayEngagements >= 5) engagementScore += 20;
+    else if (todayEngagements >= 2) engagementScore += 10;
+    
+    // Score based on weekly engagement (max 30 points)
+    if (weeklyEngagements >= 50) engagementScore += 30;
+    else if (weeklyEngagements >= 30) engagementScore += 25;
+    else if (weeklyEngagements >= 15) engagementScore += 20;
+    else if (weeklyEngagements >= 5) engagementScore += 10;
+    
+    // Score based on followers (max 30 points)
+    if (followers >= 10000) engagementScore += 30;
+    else if (followers >= 5000) engagementScore += 25;
+    else if (followers >= 1000) engagementScore += 20;
+    else if (followers >= 500) engagementScore += 15;
+    else if (followers >= 100) engagementScore += 10;
+    
+    // Determine engagement level
+    let engagementLevel: "LOW" | "MEDIUM" | "HIGH" = "LOW";
+    if (engagementScore >= 70) engagementLevel = "HIGH";
+    else if (engagementScore >= 40) engagementLevel = "MEDIUM";
+    
+    console.log(`User ${userId} engagement score: ${engagementScore}, level: ${engagementLevel}`);
+    
+    return {
+      level: engagementLevel,
+      score: engagementScore,
+      todayEngagements,
+      weeklyEngagements,
+      followers
+    };
+  }
+
+  /**
+   * Award tokens based on engagement level
+   */
+  private static async awardEngagementTokens(
+    userId: string, 
+    engagementLevel: { level: "LOW" | "MEDIUM" | "HIGH"; score: number },
+    currentActivityLevel: string | null
+  ) {
+    // Only award tokens if engagement level has changed or if it's the first time
+    if (currentActivityLevel === engagementLevel.level) {
+      console.log(`User ${userId} already has ${engagementLevel.level} engagement level, no tokens awarded`);
+      return {
+        tokensAwarded: 0,
+        message: "Engagement level unchanged"
+      };
+    }
+    
+    // Determine token amount based on engagement level
+    let tokensToAward = 0;
+    let message = "";
+    
+    switch (engagementLevel.level) {
+      case "LOW":
+        tokensToAward = 3000;
+        message = "Awarded 3000 tokens for LOW engagement level";
+        break;
+      case "MEDIUM":
+        tokensToAward = 4000;
+        message = "Awarded 4000 tokens for MEDIUM engagement level";
+        break;
+      case "HIGH":
+        tokensToAward = 4500;
+        message = "Awarded 4500 tokens for HIGH engagement level";
+        break;
+    }
+    
+    // Update user's token balance and activity level
+    await prisma.$transaction(async (tx) => {
+      // Update user's tokens and activity level
+      await tx.user.update({
+        where: { id: userId },
+        data: {
+          totalTokens: { increment: tokensToAward },
+          totalEarnedTokens: { increment: tokensToAward },
+          twitterActivity: engagementLevel.level,
+          lastActivity: new Date()
+        }
+      });
+      
+      // Record in point history
+      await tx.pointHistory.create({
+        data: {
+          userId,
+          tokens: tokensToAward,
+          type: "TOKENS",
+          action: "ENGAGEMENT_LEVEL_REWARD",
+          description: `${engagementLevel.level} engagement level reward`,
+          metadata: {
+            engagementLevel: engagementLevel.level,
+            engagementScore: engagementLevel.score,
+            tokensAwarded: tokensToAward,
+            timestamp: new Date().toISOString()
+          }
+        }
+      });
+    });
+    
+    console.log(`Awarded ${tokensToAward} tokens to user ${userId} for ${engagementLevel.level} engagement level`);
+    
+    return {
+      tokensAwarded: tokensToAward,
+      message,
+      previousLevel: currentActivityLevel,
+      newLevel: engagementLevel.level
+    };
   }
 
   /**
@@ -178,7 +320,7 @@ export class TwitterEngagementService {
       
       // Filter results to only include follows from the last 24 hours
       const filteredFollowing = (following.data || []).filter((user) => {
-        const followDate = new Date(user.created_at as string);
+        const followDate = new Date(user?.created_at as string);
         return followDate >= twentyFourHoursAgo;
       });
       
@@ -420,7 +562,11 @@ export class TwitterEngagementService {
   /**
    * Update user's Twitter activity level based on recent engagements
    */
-  private static async updateUserStats(userId: string, engagements: EngagementEvent[]) {
+  private static async updateUserStats(
+    userId: string, 
+    engagements: EngagementEvent[], 
+    engagementLevel: { level: "LOW" | "MEDIUM" | "HIGH"; score: number }
+  ) {
     try {
       console.log(`Updating user stats for user: ${userId}`);
       
@@ -431,19 +577,6 @@ export class TwitterEngagementService {
       // Calculate engagement metrics
       const todayEngagements = engagements.filter(e => e.timestamp >= todayStart).length;
       const weeklyEngagements = engagements.filter(e => e.timestamp >= weekStart).length;
-      
-      // Determine activity level based on engagement frequency
-      let twitterActivity: "HIGH" | "MEDIUM" | "LOW" = "LOW";
-      if (todayEngagements >= 10) twitterActivity = "HIGH";
-      else if (todayEngagements >= 5) twitterActivity = "MEDIUM";
-      
-      // Update user activity stats
-      await prisma.user.update({
-        where: { id: userId },
-        data: {
-          twitterActivity,
-        }
-      });
       
       // Update analytics for today
       await this.updateDailyAnalytics(todayStart, engagements);
