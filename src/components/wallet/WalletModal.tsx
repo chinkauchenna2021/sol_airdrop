@@ -28,6 +28,34 @@ export function WalletModal({ open, onClose }: WalletModalProps) {
   const [hasTriedConnect, setHasTriedConnect] = useState(false)
   const connectingRef = useRef(false)
   const { publicKey: walletAddress } = useWalletStore()
+  
+  // Prevent body scrolling when modal is open
+  useEffect(() => {
+    if (open) {
+      // Save current scroll position
+      const scrollY = window.scrollY;
+      // Add padding to prevent jump when scrollbar disappears
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      
+      // Apply styles to lock body
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.body.style.overflow = 'hidden';
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+      
+      return () => {
+        // Restore styles when modal closes
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+        // Restore scroll position
+        window.scrollTo(0, scrollY);
+      };
+    }
+  }, [open]);
 
   // Handle successful connection
   useEffect(() => {
@@ -46,13 +74,11 @@ export function WalletModal({ open, onClose }: WalletModalProps) {
       console.log('⚠️ Connection already in progress')
       return
     }
-
     try {
       setConnecting(walletName)
       connectingRef.current = true
       
       console.log('🔄 Attempting to connect to wallet:', walletName)
-
       // If it's a different wallet, select it first
       if (currentWallet?.adapter.name !== walletName) {
         select(walletName)
@@ -61,13 +87,11 @@ export function WalletModal({ open, onClose }: WalletModalProps) {
         // Wait a moment for the selection to complete
         await new Promise(resolve => setTimeout(resolve, 500))
       }
-
       // Try to connect
       if (!connected && !walletConnecting) {
         console.log('🔄 Connecting to wallet...')
         await connect()
       }
-
     } catch (error) {
       console.error('❌ Wallet connection failed:', error)
       
@@ -131,13 +155,11 @@ export function WalletModal({ open, onClose }: WalletModalProps) {
         >
           <X className="w-6 h-6" />
         </button>
-
         <h2 className="text-2xl font-bold text-white mb-6">Connect Wallet</h2>
            <div className="my-8">
             <WalletMultiButton 
             />
           </div>
-
         {/* Help Text */}
         <div className="mt-6 p-3 bg-gray-800/50 rounded-lg">
           <p className="text-gray-400 text-xs">
