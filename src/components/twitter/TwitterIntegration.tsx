@@ -714,8 +714,15 @@ useEffect(() => {
   };
   
   // Function to start monitoring
-  async function startMonitoring (){
-    setIsMonitoring(true);
+ const startMonitoring = async (isAuto = false) => {
+    if (!session?.user.id) return;
+    
+    if (isAuto) {
+      setIsMonitoring(true);
+    } else {
+      setIsMonitoring(true);
+    }
+    
     try {
       const response = await fetch('/api/twitter/monitor', {
         method: 'POST',
@@ -724,20 +731,42 @@ useEffect(() => {
         }
       });
       
+      const data = await response.json();
+      
       if (response.ok) {
-        const result = await response.json();
-        toast.success(`Monitoring completed! Tracked ${result.engagementsTracked} activities and awarded ${result.tokensAwarded.toFixed(2)} tokens`);
-        fetchDashboardData(); // Refresh dashboard data
+        // Only show toast for manual monitoring, not auto
+        if (!isAuto && data.engagementsTracked > 0) {
+          toast.success(`Monitoring completed! Tracked ${data.engagementsTracked} activities and awarded ${data.tokensAwarded.toFixed(2)} tokens`);
+        }
+        
+        // Refresh dashboard data after successful monitoring
+        await fetchDashboardData();
       } else {
-        throw new Error('Failed to monitor Twitter activities');
+        // Show more detailed error information
+        const errorMessage = data.error || "Failed to monitor Twitter activities";
+        const errorDetails = data.details || "";
+        console.error("Monitoring error:", errorMessage, errorDetails);
+        
+        // Only show toast for manual monitoring errors
+        if (!isAuto) {
+          toast.error(`${errorMessage}${errorDetails ? `: ${errorDetails}` : ''}`);
+        }
       }
     } catch (error) {
-      console.error('Error monitoring Twitter:', error);
-      toast.error('Failed to monitor Twitter activities');
+      console.error("Error monitoring Twitter:", error);
+      // Only show toast for manual monitoring errors
+      if (!isAuto) {
+        toast.error("Failed to monitor Twitter activities");
+      }
     } finally {
-      setIsMonitoring(false);
+      if (isAuto) {
+        setIsMonitoring(false);
+      } else {
+        setIsMonitoring(false);
+      }
     }
   };
+  
   
   // Show loading only during initial load
   if (loading && status === 'loading') {
