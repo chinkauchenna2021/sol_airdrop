@@ -144,7 +144,7 @@ export function WalletModal({ open, onClose }: WalletModalProps) {
   )
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 h-screen">
       <div className="absolute inset-0 bg-black/80" onClick={onClose} />
       
       <div className="relative w-full max-w-md bg-gray-900 rounded-2xl p-6 glass-effect">
