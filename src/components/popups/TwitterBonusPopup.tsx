@@ -18,13 +18,16 @@ export default function TwitterBonusPopup() {
   const { width, height } = useWindowSize()
   const { data: session, status } = useSession()
   
+
+      setShowPopup(true)
+
   // Check if user has already received bonus
     useEffect(() => {
     const checkBonusEligibility = async () => {
       try {
         // Check bonus status from server
         const response = await checkBonusStatus(session?.user.id as string)
-        
+        console.log(response, "============Response From")
         if (response.status && response.userBonusStatus) {
           const hasReceivedBonus = response.userBonusStatus.receivedTwitterBonus
           
@@ -58,6 +61,9 @@ export default function TwitterBonusPopup() {
         setIsLoading(false)
       }
     }
+
+
+
 
     if (status === 'authenticated' && user) {
       checkBonusEligibility()
