@@ -38,10 +38,11 @@ model User {
   accounts          Account[]
   sessions          Session[]
 
-  dailyEarnings DailyEarning[]
-  airdropClaims AirdropClaim[]
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
+  receivedTwitterBonus Boolean        @default(false)
+  dailyEarnings        DailyEarning[]
+  airdropClaims        AirdropClaim[]
+  createdAt            DateTime       @default(now())
+  updatedAt            DateTime       @updatedAt
 
   engagements   TwitterEngagement[]
   tasks         TaskCompletion[]

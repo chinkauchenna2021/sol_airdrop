@@ -38,7 +38,7 @@ model User {
   accounts    Account[]
   sessions    Session[]
 
-
+  receivedTwitterBonus Boolean @default(false)
   dailyEarnings   DailyEarning[]
   airdropClaims   AirdropClaim[]
   createdAt         DateTime         @default(now())

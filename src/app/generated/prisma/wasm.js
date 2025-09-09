@@ -144,6 +144,7 @@ exports.Prisma.UserScalarFieldEnum = {
   isActive: 'isActive',
   totalEarnedTokens: 'totalEarnedTokens',
   lastLoginReward: 'lastLoginReward',
+  receivedTwitterBonus: 'receivedTwitterBonus',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   permissions: 'permissions',

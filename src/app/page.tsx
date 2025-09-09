@@ -19,6 +19,7 @@ import { TwitterConnectionIndicator } from '@/components/ui/TwitterConnectionInd
 import TwitterIntegrationComponent from '@/components/twitter/TwitterBoard'
 import TwitterIntegrationDefaultComponent from '@/components/twitter/TwitterIntegration'
 import { useSession } from 'next-auth/react'
+import TwitterBonusPopup from '@/components/popups/TwitterBonusPopup'
 
 export default function EnhancedHomepage() {
   const { connected } = useWalletStore()
@@ -142,6 +143,8 @@ export default function EnhancedHomepage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-purple-900 overflow-hidden">
+       {/* Twitter Bonus Token */}
+       <TwitterBonusPopup  />
       <FloatingElements />
       
       {/* Twitter Connection Floating Indicator */}

@@ -3991,6 +3991,7 @@ export namespace Prisma {
     isActive: boolean | null
     totalEarnedTokens: number | null
     lastLoginReward: Date | null
+    receivedTwitterBonus: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
     riskScore: number | null
@@ -4024,6 +4025,7 @@ export namespace Prisma {
     isActive: boolean | null
     totalEarnedTokens: number | null
     lastLoginReward: Date | null
+    receivedTwitterBonus: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
     riskScore: number | null
@@ -4057,6 +4059,7 @@ export namespace Prisma {
     isActive: number
     totalEarnedTokens: number
     lastLoginReward: number
+    receivedTwitterBonus: number
     createdAt: number
     updatedAt: number
     permissions: number
@@ -4116,6 +4119,7 @@ export namespace Prisma {
     isActive?: true
     totalEarnedTokens?: true
     lastLoginReward?: true
+    receivedTwitterBonus?: true
     createdAt?: true
     updatedAt?: true
     riskScore?: true
@@ -4149,6 +4153,7 @@ export namespace Prisma {
     isActive?: true
     totalEarnedTokens?: true
     lastLoginReward?: true
+    receivedTwitterBonus?: true
     createdAt?: true
     updatedAt?: true
     riskScore?: true
@@ -4182,6 +4187,7 @@ export namespace Prisma {
     isActive?: true
     totalEarnedTokens?: true
     lastLoginReward?: true
+    receivedTwitterBonus?: true
     createdAt?: true
     updatedAt?: true
     permissions?: true
@@ -4304,6 +4310,7 @@ export namespace Prisma {
     isActive: boolean
     totalEarnedTokens: number
     lastLoginReward: Date | null
+    receivedTwitterBonus: boolean
     createdAt: Date
     updatedAt: Date
     permissions: JsonValue | null
@@ -4358,6 +4365,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: boolean
     lastLoginReward?: boolean
+    receivedTwitterBonus?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     permissions?: boolean
@@ -4417,6 +4425,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: boolean
     lastLoginReward?: boolean
+    receivedTwitterBonus?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     permissions?: boolean
@@ -4452,6 +4461,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: boolean
     lastLoginReward?: boolean
+    receivedTwitterBonus?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     permissions?: boolean
@@ -4487,6 +4497,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: boolean
     lastLoginReward?: boolean
+    receivedTwitterBonus?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     permissions?: boolean
@@ -4498,7 +4509,7 @@ export namespace Prisma {
     claimsEnabled?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walletAddress" | "twitterId" | "twitterUsername" | "twitterName" | "twitterImage" | "twitterFollowers" | "twitterActivity" | "level" | "streak" | "lastCheckIn" | "referralCode" | "name" | "emailVerified" | "image" | "email" | "totalPoints" | "totalTokens" | "rank" | "isAdmin" | "isActive" | "totalEarnedTokens" | "lastLoginReward" | "createdAt" | "updatedAt" | "permissions" | "riskScore" | "suspiciousFlags" | "isBanned" | "bannedAt" | "lastActivity" | "claimsEnabled", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walletAddress" | "twitterId" | "twitterUsername" | "twitterName" | "twitterImage" | "twitterFollowers" | "twitterActivity" | "level" | "streak" | "lastCheckIn" | "referralCode" | "name" | "emailVerified" | "image" | "email" | "totalPoints" | "totalTokens" | "rank" | "isAdmin" | "isActive" | "totalEarnedTokens" | "lastLoginReward" | "receivedTwitterBonus" | "createdAt" | "updatedAt" | "permissions" | "riskScore" | "suspiciousFlags" | "isBanned" | "bannedAt" | "lastActivity" | "claimsEnabled", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
@@ -4579,6 +4590,7 @@ export namespace Prisma {
       isActive: boolean
       totalEarnedTokens: number
       lastLoginReward: Date | null
+      receivedTwitterBonus: boolean
       createdAt: Date
       updatedAt: Date
       permissions: Prisma.JsonValue | null
@@ -5057,6 +5069,7 @@ export namespace Prisma {
     readonly isActive: FieldRef<"User", 'Boolean'>
     readonly totalEarnedTokens: FieldRef<"User", 'Float'>
     readonly lastLoginReward: FieldRef<"User", 'DateTime'>
+    readonly receivedTwitterBonus: FieldRef<"User", 'Boolean'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
     readonly permissions: FieldRef<"User", 'Json'>
@@ -38864,6 +38877,7 @@ export namespace Prisma {
     isActive: 'isActive',
     totalEarnedTokens: 'totalEarnedTokens',
     lastLoginReward: 'lastLoginReward',
+    receivedTwitterBonus: 'receivedTwitterBonus',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     permissions: 'permissions',
@@ -39598,6 +39612,7 @@ export namespace Prisma {
     isActive?: BoolFilter<"User"> | boolean
     totalEarnedTokens?: FloatFilter<"User"> | number
     lastLoginReward?: DateTimeNullableFilter<"User"> | Date | string | null
+    receivedTwitterBonus?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     permissions?: JsonNullableFilter<"User">
@@ -39656,6 +39671,7 @@ export namespace Prisma {
     isActive?: SortOrder
     totalEarnedTokens?: SortOrder
     lastLoginReward?: SortOrderInput | SortOrder
+    receivedTwitterBonus?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     permissions?: SortOrderInput | SortOrder
@@ -39717,6 +39733,7 @@ export namespace Prisma {
     isActive?: BoolFilter<"User"> | boolean
     totalEarnedTokens?: FloatFilter<"User"> | number
     lastLoginReward?: DateTimeNullableFilter<"User"> | Date | string | null
+    receivedTwitterBonus?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     permissions?: JsonNullableFilter<"User">
@@ -39775,6 +39792,7 @@ export namespace Prisma {
     isActive?: SortOrder
     totalEarnedTokens?: SortOrder
     lastLoginReward?: SortOrderInput | SortOrder
+    receivedTwitterBonus?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     permissions?: SortOrderInput | SortOrder
@@ -39818,6 +39836,7 @@ export namespace Prisma {
     isActive?: BoolWithAggregatesFilter<"User"> | boolean
     totalEarnedTokens?: FloatWithAggregatesFilter<"User"> | number
     lastLoginReward?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
+    receivedTwitterBonus?: BoolWithAggregatesFilter<"User"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     permissions?: JsonNullableWithAggregatesFilter<"User">
@@ -42147,6 +42166,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -42205,6 +42225,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -42263,6 +42284,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -42321,6 +42343,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -42379,6 +42402,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -42414,6 +42438,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -42449,6 +42474,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -45358,6 +45384,7 @@ export namespace Prisma {
     isActive?: SortOrder
     totalEarnedTokens?: SortOrder
     lastLoginReward?: SortOrder
+    receivedTwitterBonus?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     permissions?: SortOrder
@@ -45404,6 +45431,7 @@ export namespace Prisma {
     isActive?: SortOrder
     totalEarnedTokens?: SortOrder
     lastLoginReward?: SortOrder
+    receivedTwitterBonus?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     riskScore?: SortOrder
@@ -45437,6 +45465,7 @@ export namespace Prisma {
     isActive?: SortOrder
     totalEarnedTokens?: SortOrder
     lastLoginReward?: SortOrder
+    receivedTwitterBonus?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     riskScore?: SortOrder
@@ -50694,6 +50723,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -50751,6 +50781,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -50824,6 +50855,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -50881,6 +50913,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -50938,6 +50971,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -50995,6 +51029,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51068,6 +51103,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51125,6 +51161,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51182,6 +51219,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51239,6 +51277,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51312,6 +51351,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51369,6 +51409,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51426,6 +51467,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51483,6 +51525,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51545,6 +51588,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51602,6 +51646,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51675,6 +51720,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51732,6 +51778,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51800,6 +51847,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51857,6 +51905,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51914,6 +51963,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -51971,6 +52021,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -52044,6 +52095,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -52101,6 +52153,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -52158,6 +52211,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -52215,6 +52269,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -52323,6 +52378,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -52380,6 +52436,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -52528,6 +52585,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -52585,6 +52643,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -52658,6 +52717,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -52715,6 +52775,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -52772,6 +52833,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -52829,6 +52891,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -52902,6 +52965,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -52959,6 +53023,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -53016,6 +53081,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -53073,6 +53139,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -53182,6 +53249,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -53239,6 +53307,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -53312,6 +53381,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -53369,6 +53439,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -53483,6 +53554,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -53540,6 +53612,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -53644,6 +53717,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -53701,6 +53775,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -53816,6 +53891,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -53873,6 +53949,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -53987,6 +54064,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -54044,6 +54122,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -54164,6 +54243,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -54221,6 +54301,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -54278,6 +54359,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -54335,6 +54417,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -54397,6 +54480,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -54454,6 +54538,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -54527,6 +54612,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -54584,6 +54670,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -54652,6 +54739,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -54709,6 +54797,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -54766,6 +54855,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -54823,6 +54913,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -54896,6 +54987,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -54953,6 +55045,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55010,6 +55103,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55067,6 +55161,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55140,6 +55235,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55197,6 +55293,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55254,6 +55351,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55311,6 +55409,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55384,6 +55483,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55441,6 +55541,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55498,6 +55599,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55555,6 +55657,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55628,6 +55731,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55685,6 +55789,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55742,6 +55847,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55799,6 +55905,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55872,6 +55979,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -55929,6 +56037,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -56026,6 +56135,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -56083,6 +56193,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -56183,6 +56294,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -56240,6 +56352,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -56330,6 +56443,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -56387,6 +56501,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -56460,6 +56575,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -56517,6 +56633,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -56574,6 +56691,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -56631,6 +56749,7 @@ export namespace Prisma {
     isActive?: boolean
     totalEarnedTokens?: number
     lastLoginReward?: Date | string | null
+    receivedTwitterBonus?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -56704,6 +56823,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue
@@ -56761,6 +56881,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     totalEarnedTokens?: FloatFieldUpdateOperationsInput | number
     lastLoginReward?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    receivedTwitterBonus?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     permissions?: NullableJsonNullValueInput | InputJsonValue

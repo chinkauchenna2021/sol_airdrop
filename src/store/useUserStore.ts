@@ -8,6 +8,7 @@ interface User {
   twitterId?: string
   totalPoints: number
   rank: number
+  receivedTwitterBonus?: boolean
   isAdmin: boolean
   twitterActivity? : "HIGH"|'LOW'|'MEDIUM'
   twitterFollowers?:number
