@@ -169,7 +169,7 @@ export default function TwitterBonusPopup() {
 
   return (
     <AnimatePresence>
-      {showPopup && (
+      {/* {showPopup && ( */}
         <>
           <Confetti
             width={width}
@@ -261,7 +261,7 @@ export default function TwitterBonusPopup() {
             </motion.div>
           </div>
         </>
-      )}
+      {/* )} */}
     </AnimatePresence>
   )
 }
