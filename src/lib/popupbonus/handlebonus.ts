@@ -38,9 +38,9 @@ export async function checkBonusStatus(userId:string) {
     });
 
     const data = await response.json();
-    
+    console.log(data)
     if (response.ok) {
-      console.log('Bonus status:', data.userBonusDtatus);
+      console.log('Bonus status:', data.userBonusStatus);
       return data;
     } else {
       console.error('Failed to check bonus status:', data.error);

@@ -17,28 +17,40 @@ export default function TwitterBonusPopup() {
   const [isLoading, setIsLoading] = useState(true)
   const { width, height } = useWindowSize()
   const { data: session, status } = useSession()
-
+  
   // Check if user has already received bonus
-  useEffect(() => {
+
+    useEffect(() => {
     const checkBonusEligibility = async () => {
-      if (!user?.id || !session?.user.twitterId) {
-        setIsLoading(false)
-        return
-      }
+    //   if (!user?.id || !session?.user.twitterId) {
+    //     setIsLoading(false)
+    //     return
+    //   }
 
       try {
         // Check bonus status from server
-        const response = await checkBonusStatus(user.id)
+        const response = await checkBonusStatus(session?.user.id as string)
         
         if (response.status && response.userBonusStatus) {
           const hasReceivedBonus = response.userBonusStatus.receivedTwitterBonus
           
           // Update local state to match server
-          if (user.receivedTwitterBonus !== hasReceivedBonus) {
-            setUser({
-              ...user,
-              receivedTwitterBonus: hasReceivedBonus
-            })
+          if (user?.receivedTwitterBonus !== hasReceivedBonus) {
+            if (user) {
+              setUser({
+                ...user,
+                id: user.id,
+                walletAddress: user.walletAddress ?? '',
+                twitterUsername: user.twitterUsername ?? '',
+                twitterId: user.twitterId ?? '',
+                totalPoints: user.totalPoints ?? 0,
+                rank: user.rank ?? 0,
+                isAdmin: user.isAdmin ?? false,
+                twitterActivity: user.twitterActivity ?? 'LOW',
+                twitterFollowers: user.twitterFollowers ?? 0,
+                receivedTwitterBonus: hasReceivedBonus
+              })
+            }
           }
 
           // Show popup only if user hasn't received bonus yet
@@ -47,7 +59,60 @@ export default function TwitterBonusPopup() {
       } catch (error) {
         console.error('Error checking bonus status:', error)
         // Fallback to client state if server check fails
-        setShowPopup(!user.receivedTwitterBonus)
+        setShowPopup(!user?.receivedTwitterBonus)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+
+    if (status === 'authenticated' && user) {
+      checkBonusEligibility()
+    } else {
+      setIsLoading(false)
+    }
+  }, [])
+
+  
+  useEffect(() => {
+    const checkBonusEligibility = async () => {
+    //   if (!user?.id || !session?.user.twitterId) {
+    //     setIsLoading(false)
+    //     return
+    //   }
+
+      try {
+        // Check bonus status from server
+        const response = await checkBonusStatus(session?.user.id as string)
+        
+        if (response.status && response.userBonusStatus) {
+          const hasReceivedBonus = response.userBonusStatus.receivedTwitterBonus
+          
+          // Update local state to match server
+          if (user?.receivedTwitterBonus !== hasReceivedBonus) {
+            if (user) {
+              setUser({
+                ...user,
+                id: user.id,
+                walletAddress: user.walletAddress ?? '',
+                twitterUsername: user.twitterUsername ?? '',
+                twitterId: user.twitterId ?? '',
+                totalPoints: user.totalPoints ?? 0,
+                rank: user.rank ?? 0,
+                isAdmin: user.isAdmin ?? false,
+                twitterActivity: user.twitterActivity ?? 'LOW',
+                twitterFollowers: user.twitterFollowers ?? 0,
+                receivedTwitterBonus: hasReceivedBonus
+              })
+            }
+          }
+
+          // Show popup only if user hasn't received bonus yet
+          setShowPopup(!hasReceivedBonus)
+        }
+      } catch (error) {
+        console.error('Error checking bonus status:', error)
+        // Fallback to client state if server check fails
+        setShowPopup(!user?.receivedTwitterBonus)
       } finally {
         setIsLoading(false)
       }
