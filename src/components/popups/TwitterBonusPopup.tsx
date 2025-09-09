@@ -19,14 +19,8 @@ export default function TwitterBonusPopup() {
   const { data: session, status } = useSession()
   
   // Check if user has already received bonus
-
     useEffect(() => {
     const checkBonusEligibility = async () => {
-    //   if (!user?.id || !session?.user.twitterId) {
-    //     setIsLoading(false)
-    //     return
-    //   }
-
       try {
         // Check bonus status from server
         const response = await checkBonusStatus(session?.user.id as string)
@@ -35,7 +29,7 @@ export default function TwitterBonusPopup() {
           const hasReceivedBonus = response.userBonusStatus.receivedTwitterBonus
           
           // Update local state to match server
-          if (user?.receivedTwitterBonus !== hasReceivedBonus) {
+          if (hasReceivedBonus) {
             if (user) {
               setUser({
                 ...user,
@@ -72,7 +66,7 @@ export default function TwitterBonusPopup() {
     }
   }, [])
 
-  
+
   useEffect(() => {
     const checkBonusEligibility = async () => {
     //   if (!user?.id || !session?.user.twitterId) {
