@@ -224,7 +224,7 @@ export default function NFTMintingPage() {
           >
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold text-white mb-2">Connect Pass NFT</h3>
-              <p className="text-gray-300">Limited Edition • $7.00</p>
+              {/* <p className="text-gray-300">Limited Edition • $7.00</p> */}
             </div>
             
             <div className="relative group mb-6">

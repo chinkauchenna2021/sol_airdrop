@@ -20,6 +20,7 @@ import TwitterIntegrationComponent from '@/components/twitter/TwitterBoard'
 import TwitterIntegrationDefaultComponent from '@/components/twitter/TwitterIntegration'
 import { useSession } from 'next-auth/react'
 import TwitterBonusPopup from '@/components/popups/TwitterBonusPopup'
+import toast from 'react-hot-toast'
 
 export default function EnhancedHomepage() {
   const { connected } = useWalletStore()
@@ -40,22 +41,73 @@ export default function EnhancedHomepage() {
   // Check if user has Twitter connected
   const hasTwitterConnection = user?.twitterId != null
 
-  useEffect(() => {
-    setMounted(true)
-    fetchStats()
-  }, [])
+  // useEffect(() => {
+  //   setMounted(true)
+  //   fetchStats()
+  // }, [])
 
-  const fetchStats = async () => {
-    try {
-      const res = await fetch('/api/stats')
-      if (res.ok) {
-        const data = await res.json()
-        setStats(data)
+
+    useEffect(() => {
+      fetchDashboardData()
+      const interval = setInterval(fetchDashboardData, 30000)
+      return () => clearInterval(interval)
+    }, [])
+    // Fetch main dashboard data with daily earning status
+    const fetchDashboardData = async () => {
+      try {
+        // Fetch dashboard data and daily earning status in parallel
+        const [dashboardRes, earningRes] = await Promise.all([
+          fetch('/api/user/dashboard'),
+          fetch('/api/earning/status').catch(() => null) // Don't fail if this endpoint doesn't exist yet
+        ])
+        
+        if (dashboardRes.ok) {
+          const dashboardData = await dashboardRes.json()
+          console.log('Dashboard data loaded:', dashboardData)
+          
+          // Add daily earning status if available
+          if (earningRes?.ok) {
+            const earningData = await earningRes.json()
+            dashboardData.stats.dailyEarningStatus = earningData
+          } else {
+            // Fallback daily earning status
+            dashboardData.stats.dailyEarningStatus = {
+              canClaim: true,
+              currentStreak: dashboardData.user.streak || 0,
+              totalEarned: dashboardData.user.totalEarnedTokens || 0,
+              nextClaimIn: 0
+            }
+          }
+          
+          setStats(dashboardData)
+        } else {
+          console.log('Failed to fetch dashboard data:', dashboardRes.status)
+          // Don't use fallback anymore - show error instead
+          // throw new Error('Failed to load dashboard')
+        }
+      } catch (error) {
+        console.error('Failed to load dashboard:', error)
+        toast.error('Failed to load dashboard data')
+      } finally {
+        setMounted(false)
       }
-    } catch (error) {
-      console.error('Failed to fetch stats:', error)
     }
-  }
+  
+  
+  
+  
+
+  // const fetchStats = async () => {
+  //   try {
+  //     const res = await fetch('/api/stats')
+  //     if (res.ok) {
+  //       const data = await res.json()
+  //       setStats(data)
+  //     }
+  //   } catch (error) {
+  //     console.error('Failed to fetch stats:', error)
+  //   }
+  // }
 
   const features = [
     {

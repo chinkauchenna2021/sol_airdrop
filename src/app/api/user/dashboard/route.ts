@@ -330,7 +330,6 @@
 // }
 
 
-// app/api/user/dashboard/route.ts
 import { NextRequest, NextResponse } from 'next/server'
 import prisma from '@/lib/prisma'
 import { startOfDay, subDays } from 'date-fns'

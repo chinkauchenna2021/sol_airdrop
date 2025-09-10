@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getSession } from '@/lib/auth'
+// import { getSession } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 import { POINTS_CONFIG, TOKENS_CONFIG, ACTIVITY_TYPES, isTokenActivity, isPointActivity, getTwitterTokenReward, getPointsReward } from '@/lib/constants'
+import { getSession } from '@/lib/next-auth/auth'
 
 export async function POST(req: NextRequest) {
-  const session = await getSession(req)
-  
+  const session = await getSession();
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
@@ -318,7 +318,7 @@ export async function POST(req: NextRequest) {
 
 // GET route to fetch available tasks
 export async function GET(req: NextRequest) {
-  const session = await getSession(req)
+  const session = await getSession()
   
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })

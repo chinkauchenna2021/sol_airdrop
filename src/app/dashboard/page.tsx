@@ -2211,7 +2211,7 @@ export default function EnhancedDashboard() {
               </div>
 
               {/* Available Rewards */}
-              <div className="space-y-6">
+              {/* <div className="space-y-6">
                 <h3 className="text-2xl font-bold text-white flex items-center gap-3">
                   <Gift className="w-7 h-7 text-purple-400" />
                   Available Rewards
@@ -2251,7 +2251,7 @@ export default function EnhancedDashboard() {
                     </div>
                   )}
                 </div>
-              </div>
+              </div> */}
             </motion.div>
           )}
 
