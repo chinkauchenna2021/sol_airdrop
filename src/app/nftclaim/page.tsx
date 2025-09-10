@@ -482,7 +482,7 @@ export default function NFTMintingPage() {
           animate={{ opacity: 1, y: 0 }}
           className="mt-8 bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4"
         >
-          <div className="flex items-start gap-3">
+          {/* <div className="flex items-start gap-3">
             <AlertTriangle className="w-5 h-5 text-yellow-400 mt-0.5" />
             <div className="text-sm">
               <p className="text-yellow-400 font-semibold mb-1">Important Notes:</p>
@@ -493,7 +493,7 @@ export default function NFTMintingPage() {
                 <li>• Each wallet can only mint one Connect Pass NFT</li>
               </ul>
             </div>
-          </div>
+          </div> */}
         </motion.div>
       </div>
     </div>
