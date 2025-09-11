@@ -38,14 +38,11 @@ import TwitterIntegrationDefaultComponent from "@/components/twitter/TwitterInte
 import { useSession } from "next-auth/react";
 import TwitterBonusPopup from "@/components/popups/TwitterBonusPopup";
 import toast from "react-hot-toast";
+import { DashboardData } from "./dashboard/page";
 export default function EnhancedHomepage() {
   const { connected } = useWalletStore();
   const { user } = useUserStore();
-  const [stats, setStats] = useState({
-    totalUsers: 0,
-    totalRewards: 0,
-    totalEngagements: 0,
-  });
+  const [stats, setStats] = useState<DashboardData | null>(null);
   const [activeFeature, setActiveFeature] = useState(0);
   const [mounted, setMounted] = useState(false);
   const { data: session, status } = useSession();
@@ -68,17 +65,19 @@ export default function EnhancedHomepage() {
   const fetchDashboardData = async () => {
     try {
       // Fetch dashboard data and daily earning status in parallel
-      const [dashboardRes, earningRes] = await Promise.all([
+      const [dashboardRes, earningRes, statsdata] = await Promise.all([
         fetch("/api/user/dashboard"),
-        fetch("/api/earning/status").catch(() => null), // Don't fail if this endpoint doesn't exist yet
+        fetch("/api/earning/status").catch(() => null),
+        fetch('/api/stats').catch(()=>null) // Don't fail if this endpoint doesn't exist yet
       ]);
-
+      
+      const statsNewData = await statsdata?.json()
       if (dashboardRes.ok) {
         const dashboardData = await dashboardRes.json();
         console.log("Dashboard data loaded:", dashboardData);
 
         // Add daily earning status if available
-        if (earningRes?.ok) {
+        if (earningRes?.ok && statsdata?.ok) {
           const earningData = await earningRes.json();
           dashboardData.stats.dailyEarningStatus = earningData;
         } else {
@@ -88,9 +87,11 @@ export default function EnhancedHomepage() {
             currentStreak: dashboardData.user.streak || 0,
             totalEarned: dashboardData.user.totalEarnedTokens || 0,
             nextClaimIn: 0,
+            totalUser: statsNewData?.totalUsers 
+
           };
         }
-
+        console.log(dashboardData, "==============Dashboard=========")
         setStats(dashboardData);
       } else {
         console.log("Failed to fetch dashboard data:", dashboardRes.status);
@@ -306,20 +307,20 @@ className="group flex items-center space-x-2 px-8 py-4 bg-white/10 backdrop-blur
               {
                 icon: Users,
                 label: "Active Users",
-                value: stats.totalUsers,
+                value: ((stats?.stats as any)?.totalUser as string),
                 color: "from-blue-500 to-blue-600",
               },
               {
                 icon: Coins,
                 label: "Total Rewards",
-                value: stats.totalRewards,
-                prefix: "$",
+                value: stats?.stats?.tokenAllocation,
+                // prefix: "$",
                 color: "from-green-500 to-green-600",
               },
               {
                 icon: TrendingUp,
                 label: "Engagements",
-                value: stats.totalEngagements,
+                value: stats?.stats?.totalEngagements,
                 color: "from-purple-500 to-purple-600",
               },
             ].map((stat, index) => {
@@ -342,7 +343,7 @@ className="group flex items-center space-x-2 px-8 py-4 bg-white/10 backdrop-blur
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-3xl font-bold text-white mb-2">
-                      <CountUp end={stat.value} prefix={stat.prefix} />
+                      <CountUp end={stat.value as any}  />
                     </h3>
                     <p className="text-gray-400 font-medium">{stat.label}</p>
                   </div>
