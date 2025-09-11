@@ -35,10 +35,9 @@ model User {
   isActive          Boolean          @default(true)
   totalEarnedTokens Float            @default(0)      // Historical tokens earned (lifetime)
   lastLoginReward   DateTime?
+  receivedTwitterBonus Boolean       @default(false)
   accounts    Account[]
   sessions    Session[]
-
-  receivedTwitterBonus Boolean @default(false)
   dailyEarnings   DailyEarning[]
   airdropClaims   AirdropClaim[]
   createdAt         DateTime         @default(now())

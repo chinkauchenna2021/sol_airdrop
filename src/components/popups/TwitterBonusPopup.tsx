@@ -28,6 +28,7 @@ export default function TwitterBonusPopup() {
 
       try {
         const response = await checkBonusStatus(session.user.id)
+        console.log(response,"=========RESPONSE FROM TWITTER BONUS==========")
         
         if (response.status && response.userBonusStatus) {
           const hasReceivedBonus = response.userBonusStatus.receivedTwitterBonus
@@ -84,9 +85,9 @@ export default function TwitterBonusPopup() {
     setShowPopup(false)
   }
 
-  if (isLoading || status !== 'authenticated' || !user) {
-    return null
-  }
+  // if (isLoading || status !== 'authenticated' || !user) {
+  //   return null
+  // }
 
   return (
     <AnimatePresence>

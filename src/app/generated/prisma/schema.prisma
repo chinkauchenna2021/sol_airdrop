@@ -27,18 +27,17 @@ model User {
   emailVerified    DateTime? // Add this line
   image            String? // Add this line
 
-  email             String?   @unique
-  totalPoints       Int       @default(0) // For activities that give points
-  totalTokens       Float     @default(0) // NEW: Current token balance (claimable)
-  rank              Int       @default(0)
-  isAdmin           Boolean   @default(false)
-  isActive          Boolean   @default(true)
-  totalEarnedTokens Float     @default(0) // Historical tokens earned (lifetime)
-  lastLoginReward   DateTime?
-  accounts          Account[]
-  sessions          Session[]
-
+  email                String?        @unique
+  totalPoints          Int            @default(0) // For activities that give points
+  totalTokens          Float          @default(0) // NEW: Current token balance (claimable)
+  rank                 Int            @default(0)
+  isAdmin              Boolean        @default(false)
+  isActive             Boolean        @default(true)
+  totalEarnedTokens    Float          @default(0) // Historical tokens earned (lifetime)
+  lastLoginReward      DateTime?
   receivedTwitterBonus Boolean        @default(false)
+  accounts             Account[]
+  sessions             Session[]
   dailyEarnings        DailyEarning[]
   airdropClaims        AirdropClaim[]
   createdAt            DateTime       @default(now())
