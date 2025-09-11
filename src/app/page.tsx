@@ -43,6 +43,8 @@ export default function EnhancedHomepage() {
   const { connected } = useWalletStore();
   const { user } = useUserStore();
   const [stats, setStats] = useState<DashboardData | null>(null);
+  const [userStats, setUserStats] = useState({
+    totalEngagements:0,totalPoints:0,totalRewards:0,totalUsers:0})
   const [activeFeature, setActiveFeature] = useState(0);
   const [mounted, setMounted] = useState(false);
   const { data: session, status } = useSession();
@@ -93,6 +95,7 @@ export default function EnhancedHomepage() {
         }
         console.log(dashboardData,statsNewData, "==============Dashboard=========")
         setStats(dashboardData);
+        setUserStats(statsNewData)
       } else {
         console.log("Failed to fetch dashboard data:", dashboardRes.status);
         // Don't use fallback anymore - show error instead
@@ -266,17 +269,17 @@ export default function EnhancedHomepage() {
             {/* {!connected ? ( */}
             <>
               {/* <WalletButton />
-<Link
-href="/leaderboard"
-className="group flex items-center space-x-2 px-8 py-4 bg-white/10 backdrop-blur-xl text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300 border border-white/20"
->
-<Trophy className="w-5 h-5" />
-<span>View Leaderboard</span>
-<ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-</Link>
-</>
-) : (
-<> */}
+              <Link
+              href="/leaderboard"
+              className="group flex items-center space-x-2 px-8 py-4 bg-white/10 backdrop-blur-xl text-white font-semibold rounded-xl hover:bg-white/20 transition-all duration-300 border border-white/20"
+              >
+              <Trophy className="w-5 h-5" />
+              <span>View Leaderboard</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              </>
+              ) : (
+              <> */}
               <Link
                 href="/dashboard"
                 className="group flex items-center space-x-2 px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-xl hover:shadow-2xl hover:shadow-purple-500/25 transition-all duration-300"
@@ -307,7 +310,7 @@ className="group flex items-center space-x-2 px-8 py-4 bg-white/10 backdrop-blur
               {
                 icon: Users,
                 label: "Active Users",
-                value: ((stats?.stats as any)?.totalUser as string),
+                value: userStats.totalUsers,
                 color: "from-blue-500 to-blue-600",
               },
               {
