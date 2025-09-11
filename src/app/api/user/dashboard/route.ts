@@ -344,9 +344,10 @@ export async function GET(req: NextRequest) {
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
-  
+
+
   try {
-    const userId = session.user.id
+    const userId = session?.user.id
     const today = startOfDay(new Date())
     const yesterday = subDays(today, 1)
     const weekAgo = subDays(today, 7)
@@ -376,7 +377,7 @@ export async function GET(req: NextRequest) {
     // Get Twitter engagement statistics using the service
     let twitterStats;
     try {
-      twitterStats = await TwitterEngagementService.getUserEngagementStats(userId);
+      twitterStats = await TwitterEngagementService.getUserEngagementStats(userId as string);
     } catch (error) {
       console.error('Error fetching Twitter stats:', error);
       // Fallback to basic Twitter engagement data if service fails

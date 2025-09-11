@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const userId = session.user.id
+    const userId = session?.user.id
     const today = startOfDay(new Date())
 
     // Check if already claimed today

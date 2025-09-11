@@ -1,7 +1,7 @@
 'use client'
+
 import { useState, useEffect } from 'react'
 import Confetti from 'react-confetti'
-import { useWindowSize } from 'react-use'
 import { Gift, X, CheckCircle, Sparkles, Coins } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useUserStore } from '@/store/useUserStore'
@@ -10,30 +10,28 @@ import { claimTwitterBonus, checkBonusStatus } from '@/lib/popupbonus/handlebonu
 
 export default function TwitterBonusPopup() {
   const { user, setUser } = useUserStore()
-  const [showPopup, setShowPopup] = useState(true)
+  const [showPopup, setShowPopup] = useState(false)
   const [isClaiming, setIsClaiming] = useState(false)
   const [claimed, setClaimed] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [confettiKey, setConfettiKey] = useState(0)
-  const { width, height } = useWindowSize()
+  const { width, height } = { width: window.innerWidth, height: window.innerHeight }
   const { data: session, status } = useSession()
-  
-  // Check if user has already received bonus
+
+  // Initialize popup state based on user bonus status
   useEffect(() => {
-    const checkBonusEligibility = async () => {
+    const initializePopupState = async () => {
       if (status !== 'authenticated' || !user || !session?.user?.id) {
         setIsLoading(false)
         return
       }
-      
+
       try {
-        // Check bonus status from server
         const response = await checkBonusStatus(session.user.id)
         
         if (response.status && response.userBonusStatus) {
           const hasReceivedBonus = response.userBonusStatus.receivedTwitterBonus
           
-          // Update local state to match server
           if (user?.receivedTwitterBonus !== hasReceivedBonus) {
             setUser({
               ...user,
@@ -41,21 +39,19 @@ export default function TwitterBonusPopup() {
             })
           }
           
-          // Show popup only if user hasn't received bonus yet
           setShowPopup(!hasReceivedBonus)
         }
       } catch (error) {
         console.error('Error checking bonus status:', error)
-        // Fallback to client state if server check fails
         setShowPopup(!user?.receivedTwitterBonus)
       } finally {
         setIsLoading(false)
       }
     }
-    
-    checkBonusEligibility()
+
+    initializePopupState()
   }, [user, session, status, setUser])
-  
+
   const handleClaimBonus = async () => {
     if (!user || isClaiming || claimed) return
     setIsClaiming(true)
@@ -64,22 +60,18 @@ export default function TwitterBonusPopup() {
       const response = await claimTwitterBonus()
       
       if (response.status) {
-        // Update local state
         setUser({
           ...user,
           receivedTwitterBonus: true,
         })
         
         setClaimed(true)
-        setConfettiKey(prev => prev + 1) // Trigger confetti again
+        setConfettiKey(prev => prev + 1)
         
-        // Auto close after success
         setTimeout(() => {
           setShowPopup(false)
           setClaimed(false)
         }, 5000)
-      } else {
-        console.error('Failed to claim bonus:', response.message)
       }
     } catch (error) {
       console.error('Error claiming bonus:', error)
@@ -87,16 +79,15 @@ export default function TwitterBonusPopup() {
       setIsClaiming(false)
     }
   }
-  
+
   const handleClose = () => {
     setShowPopup(false)
   }
-  
-  // Don't render anything while loading or if not authenticated
+
   if (isLoading || status !== 'authenticated' || !user) {
     return null
   }
-  
+
   return (
     <AnimatePresence>
       {showPopup && (
@@ -121,7 +112,7 @@ export default function TwitterBonusPopup() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.8, y: 30 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="relative bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 rounded-3xl p-8 max-w-md w-full shadow-2xl border border-purple-500/30 overflow-hidden"
+              className="relative z-10 bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-800 rounded-3xl p-8 max-w-md w-full shadow-2xl border border-purple-500/30 overflow-hidden"
             >
               {/* Decorative elements */}
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 to-pink-500"></div>
@@ -176,7 +167,7 @@ export default function TwitterBonusPopup() {
                 </motion.div>
                 
                 <motion.h2 
-                  className="text-3xl font-bold text-white mb-2 bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 to-orange-400"
+                  className="text-3xl md:text-4xl font-bold text-white mb-2 bg-clip-text text-transparent"
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
@@ -222,14 +213,11 @@ export default function TwitterBonusPopup() {
                   <motion.button
                     onClick={handleClaimBonus}
                     disabled={isClaiming}
-                    className="w-full py-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-yellow-500/30 transition-all duration-300 disabled:opacity-70 flex items-center justify-center space-x-2 relative overflow-hidden group"
+                    className="w-full py-4 bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-bold rounded-xl hover:shadow-lg hover:shadow-yellow-500/25 transition-all duration-300 disabled:opacity-70 flex items-center justify-center space-x-2 relative overflow-hidden"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
                   >
-                    <span className="absolute inset-0 bg-gradient-to-r from-yellow-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                    <span className="absolute inset-0 bg-gradient-to-r from-yellow-600 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                     <span className="relative flex items-center space-x-2">
                       {isClaiming ? (
                         <>
