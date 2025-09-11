@@ -71,8 +71,8 @@ export default function EnhancedHomepage() {
         fetch('/api/stats').catch(()=>null) // Don't fail if this endpoint doesn't exist yet
       ]);
       
-      const statsNewData = await statsdata?.json()
       if (dashboardRes.ok) {
+        const statsNewData = await statsdata?.json()
         const dashboardData = await dashboardRes.json();
         console.log("Dashboard data loaded:", dashboardData);
 
@@ -91,7 +91,7 @@ export default function EnhancedHomepage() {
 
           };
         }
-        console.log(dashboardData, "==============Dashboard=========")
+        console.log(dashboardData,statsNewData, "==============Dashboard=========")
         setStats(dashboardData);
       } else {
         console.log("Failed to fetch dashboard data:", dashboardRes.status);
