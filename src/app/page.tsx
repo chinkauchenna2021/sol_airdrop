@@ -71,6 +71,7 @@ export default function EnhancedHomepage() {
 
   const handleClaim = () => {
     console.log("Token claimed!");
+    setShowModal(false);
     // Here you would typically update state or call an API
   };
 

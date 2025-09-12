@@ -257,8 +257,7 @@
 //         };
         
 
-
-
+"use client"
 
  import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
@@ -494,28 +493,4 @@ import { useState, useEffect, useRef } from 'react';
                 </>
             );
         };
-        
-        // // Usage Example Component
-        // const App: React.FC = () => {
-        //     const [showModal, setShowModal] = useState<boolean>(true);
-            
-        //     const handleClose = () => {
-        //         setShowModal(false);
-        //     };
-            
-        //     const handleClaim = () => {
-        //         console.log("Token claimed!");
-        //         // Here you would typically update state or call an API
-        //     };
-            
-        //     return (
-        //         <div className="min-h-screen bg-gray-900 flex items-center justify-center">
-        //             <TokenAwardModal 
-        //                 isOpen={showModal} 
-        //                 onClose={handleClose} 
-        //                 onClaim={handleClaim} 
-        //             />
-        //         </div>
-        //     );
-        // };
         
