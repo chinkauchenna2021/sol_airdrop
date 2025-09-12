@@ -339,7 +339,7 @@ export default function EnhancedHomepage() {
               },
               {
                 icon: Coins,
-                label: "Total Rewards",
+                label: "$connect Token Rewards",
                 value: stats?.stats?.tokenAllocation,
                 // prefix: "$",
                 color: "from-green-500 to-green-600",
