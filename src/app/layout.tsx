@@ -10,6 +10,7 @@ import { generateMetadata, siteConfig, generateStructuredData } from '@/lib/meta
 import {  SessionProvider } from "next-auth/react"
 import { authOptions } from '@/lib/next-auth/auth'
 import { getServerSession } from 'next-auth'
+import ReferralProcessor from '@/components/referral/ReferralProcessor'
 // import { getSession } from '@/lib/next-auth/auth'
 
 export const viewport: Viewport = {
@@ -78,7 +79,7 @@ export default async function RootLayout({
           }}
         />
                {children}
-
+              <ReferralProcessor />
             <Footer />
         </Providers>
         {/* </SessionProvider> */}

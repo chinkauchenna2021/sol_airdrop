@@ -86,12 +86,13 @@
 
 
 import { NextRequest, NextResponse } from 'next/server'
-import { getSession } from '@/lib/auth'
+// import { getSession } from '@/lib/auth'
 import prisma from '@/lib/prisma'
 import { TOKENS_CONFIG, ACTIVITY_TYPES } from '@/lib/constants'
+import { getSession } from '@/lib/next-auth/auth'
 
 export async function POST(req: NextRequest) {
-  const session = await getSession(req)
+  const session = await getSession()
   const { referredUserId } = await req.json()
   
   if (!session) {
@@ -212,7 +213,7 @@ export async function POST(req: NextRequest) {
 
 // GET route to fetch referral stats
 export async function GET(req: NextRequest) {
-  const session = await getSession(req)
+  const session = await getSession()
   
   if (!session) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })

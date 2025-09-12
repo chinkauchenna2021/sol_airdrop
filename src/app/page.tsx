@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useSearchParams } from 'next/navigation';
 import {
   ArrowRight,
   Twitter,
@@ -64,6 +65,25 @@ export default function EnhancedHomepage() {
   // }, [])
 
   const [showModal, setShowModal] = useState<boolean>(true);
+
+  const searchParams = useSearchParams();
+  const [referralCode, setReferralCode] = useState<string | null>(null);
+  
+  // Capture referral code from URL
+  useEffect(() => {
+    const refCode = searchParams.get('ref');
+    if (refCode) {
+      setReferralCode(refCode);
+      // Store in localStorage for later use during user initialization
+      localStorage.setItem('referralCode', refCode);
+      
+      // Optional: Remove ref from URL without reloading
+      const url = new URL(window.location.href);
+      url.searchParams.delete('ref');
+      window.history.replaceState({}, '', url.toString());
+    }
+  }, [searchParams]);
+
 
   const handleClose = () => {
     setShowModal(false);
@@ -237,7 +257,7 @@ export default function EnhancedHomepage() {
                 onClaim={handleClaim} 
             />
       <FloatingElements />
-
+      
       {/* Twitter Connection Floating Indicator */}
       <TwitterConnectionIndicator
         connected={status !== "authenticated" ? false : true}
