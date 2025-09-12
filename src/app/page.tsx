@@ -340,14 +340,14 @@ export default function EnhancedHomepage() {
               {
                 icon: Coins,
                 label: "$connect Token Rewards",
-                value: stats?.stats?.tokenAllocation,
+                value: stats?.stats?.tokenAllocation? stats?.stats?.tokenAllocation : 0,
                 // prefix: "$",
                 color: "from-green-500 to-green-600",
               },
               {
                 icon: TrendingUp,
                 label: "Engagements",
-                value: stats?.stats?.totalEngagements,
+                value: stats?.stats?.totalEngagements? stats?.stats?.totalEngagements : 0,
                 color: "from-purple-500 to-purple-600",
               },
             ].map((stat, index) => {
