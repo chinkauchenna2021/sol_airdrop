@@ -105,24 +105,24 @@ async function processReferral(referralCode: string, newUserId: string) {
     });
 
     // Award bonus points to new user
-    await tx.pointHistory.create({
-      data: {
-        userId: newUserId,
-        tokens: referralPoints,
-        action: 'REFERRAL_WELCOME',
-        description: 'Welcome bonus for joining via referral',
-        metadata: {
-          referrerId: referrer.id,
-          timestamp: new Date().toISOString()
-        }
-      }
-    });
+    // await tx.pointHistory.create({
+    //   data: {
+    //     userId: newUserId,
+    //     tokens: referralPoints,
+    //     action: 'REFERRAL_WELCOME',
+    //     description: 'Welcome bonus for joining via referral',
+    //     metadata: {
+    //       referrerId: referrer.id,
+    //       timestamp: new Date().toISOString()
+    //     }
+    //   }
+    // });
 
     // Update new user's total points
-    await tx.user.update({
-      where: { id: newUserId },
-      data: { totalTokens: { increment: referralPoints } }
-    });
+    // await tx.user.update({
+    //   where: { id: newUserId },
+    //   data: { totalTokens: { increment: referralPoints } }
+    // });
 
     return { success: true, tokens: referralPoints };
   });
